@@ -77,13 +77,13 @@ export async function generateMetadata({
     // ── Canonical & hreflang alternates ──────────────────────────────────
     alternates: {
       canonical: `${SITE_URL}/${locale}`,
-      // 'cnr' and 'srb' are project-internal codes, not BCP-47 — use 'x-' prefix
+      // cnr = Montenegrin (IETF-recognized), sr mapped to /srb path
       languages: {
-        en:      `${SITE_URL}/en`,
-        ru:      `${SITE_URL}/ru`,
-        'x-cnr': `${SITE_URL}/cnr`,
-        'x-srb': `${SITE_URL}/srb`,
-        sq:      `${SITE_URL}/sq`,
+        en:  `${SITE_URL}/en`,
+        ru:  `${SITE_URL}/ru`,
+        cnr: `${SITE_URL}/cnr`,
+        sr:  `${SITE_URL}/srb`,
+        sq:  `${SITE_URL}/sq`,
       } as Record<string, string>,
     },
 

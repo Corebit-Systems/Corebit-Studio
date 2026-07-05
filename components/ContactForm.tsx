@@ -118,7 +118,7 @@ export default function ContactForm({ dict }: ContactFormProps) {
         <button
           disabled={status === 'loading' || status === 'success'}
           type="submit"
-          className="w-full py-4 mt-2 rounded-2xl bg-emerald-500 text-white font-bold text-base sm:text-lg hover:bg-emerald-600 active:scale-95 transition-all flex items-center justify-center disabled:opacity-50 min-h-[56px]"
+          className="w-full py-4 mt-2 rounded-2xl bg-emerald-600 text-white font-bold text-base sm:text-lg hover:bg-emerald-700 active:scale-95 transition-all flex items-center justify-center disabled:opacity-50 min-h-[56px]"
         >
           <AnimatePresence mode="wait">
             {status === 'idle' || status === 'error' ? (
