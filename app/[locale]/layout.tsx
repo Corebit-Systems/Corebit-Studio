@@ -6,27 +6,78 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const inter = Inter({ subsets: ['latin', 'cyrillic'], variable: '--font-inter' });
 const SITE_URL = 'https://corebit-studio.vercel.app';
-const OG_IMAGE = `${SITE_URL}/og-image.png`;
+
+// ── Per-locale metadata registry ─────────────────────────────────────────────
+// Each entry drives title, description, OG image, and Twitter card for its route.
+const LOCALE_META: Record<
+  string,
+  { title: string; description: string; ogLocale: string; twitterDesc: string; keywords: string[] }
+> = {
+  en: {
+    title:       'Corebit Studio | High-Performance Web Architecture & Automation',
+    description: 'We architect proprietary business automation modules and ultra-fast Next.js web platforms with sub-100ms load times. Based in Tivat, Montenegro.',
+    ogLocale:    'en_US',
+    twitterDesc: 'Proprietary automation modules & ultra-fast Next.js platforms. Sub-100ms. Tivat, Montenegro.',
+    keywords:    ['web architecture Montenegro', 'Next.js automation agency', 'booking system Tivat', 'high-performance web platforms', 'custom automation modules', 'Corebit Studio'],
+  },
+  ru: {
+    title:       'Corebit Studio | Высокопроизводительная веб-архитектура и автоматизация',
+    description: 'Разработка проприетарных модулей автоматизации бизнеса и сверхбыстрых веб-платформ на Next.js с загрузкой до 100 мс. Тиват, Черногория.',
+    ogLocale:    'ru_RU',
+    twitterDesc: 'Модули автоматизации и сверхбыстрые платформы Next.js. Загрузка до 100 мс. Тиват, Черногория.',
+    keywords:    ['веб-архитектура Черногория', 'Next.js агентство автоматизации', 'система бронирования Тиват', 'высокопроизводительные веб-платформы', 'Corebit Studio'],
+  },
+  cnr: {
+    title:       'Corebit Studio | Vrhunska veb arhitektura i automatizacija poslovanja',
+    description: 'Projektujemo sopstvene module za automatizaciju poslovanja i ultra brze Next.js veb platforme sa učitavanjem ispod 100ms. Tivat, Crna Gora.',
+    ogLocale:    'sr_ME',
+    twitterDesc: 'Moduli za automatizaciju i ultra brze Next.js platforme. Ispod 100ms. Tivat, Crna Gora.',
+    keywords:    ['veb arhitektura Crna Gora', 'Next.js agencija automatizacija', 'sistem rezervacija Tivat', 'Corebit Studio'],
+  },
+  srb: {
+    title:       'Corebit Studio | Vrhunska veb arhitektura i automatizacija poslovanja',
+    description: 'Projektujemo sopstvene module za automatizaciju poslovanja i ultra brze Next.js veb platforme sa učitavanjem ispod 100ms. Tivat, Crna Gora.',
+    ogLocale:    'sr_RS',
+    twitterDesc: 'Moduli za automatizaciju i ultra brze Next.js platforme. Ispod 100ms. Tivat, Crna Gora.',
+    keywords:    ['veb arhitektura Srbija', 'Next.js agencija automatizacija', 'sistem rezervacija', 'Corebit Studio'],
+  },
+  sq: {
+    title:       'Corebit Studio | Arkitekturë Ueb me Performancë të Lartë & Automatizim',
+    description: 'Ne projektojmë module të automatizimit të biznesit dhe platforma ueb ultra të shpejta Next.js me kohë ngarkimi nën 100ms. Tivat, Mal i Zi.',
+    ogLocale:    'sq_AL',
+    twitterDesc: 'Module automatizimi & platforma Next.js ultra të shpejta. Nën 100ms. Tivat, Mal i Zi.',
+    keywords:    ['arkitekturë ueb Shqipëri', 'Next.js agjensi automatizim', 'sistem rezervimi Tivat', 'Corebit Studio'],
+  },
+};
 
 export async function generateMetadata({
   params: { locale },
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  // Fall back to English if an unsupported locale is somehow received
+  const meta     = LOCALE_META[locale] ?? LOCALE_META.en;
+  const ogImage  = `${SITE_URL}/og-image-${locale in LOCALE_META ? locale : 'en'}.png`;
+  const ogAltMap: Record<string, string> = {
+    en:  'Corebit Studio — Premium Glassmorphic Web Architecture Banner',
+    ru:  'Corebit Studio — Высокопроизводительная веб-архитектура',
+    cnr: 'Corebit Studio — Vrhunska veb arhitektura i automatizacija',
+    srb: 'Corebit Studio — Vrhunska veb arhitektura i automatizacija',
+    sq:  'Corebit Studio — Arkitekturë Ueb me Performancë të Lartë',
+  };
+
   return {
     metadataBase: new URL(SITE_URL),
 
-    title: 'Corebit Studio | High-Performance Web Architecture & Automation',
-    description:
-      'We architect proprietary business automation modules and ultra-fast Next.js web platforms with sub-100ms load times. Based in Tivat, Montenegro.',
+    title:       meta.title,
+    description: meta.description,
 
     // ── Canonical & hreflang alternates ──────────────────────────────────
     alternates: {
       canonical: `${SITE_URL}/${locale}`,
-      // NOTE: 'cnr' and 'srb' are project-internal codes, not BCP-47,
-      // so we use the 'x-' extension prefix to keep the build clean.
+      // 'cnr' and 'srb' are project-internal codes, not BCP-47 — use 'x-' prefix
       languages: {
         en:      `${SITE_URL}/en`,
         ru:      `${SITE_URL}/ru`,
@@ -36,33 +87,33 @@ export async function generateMetadata({
       } as Record<string, string>,
     },
 
-    // ── Open Graph ────────────────────────────────────────────────────────
+    // ── Open Graph (locale-specific image) ───────────────────────────────
     openGraph: {
       type:        'website',
       url:         `${SITE_URL}/${locale}`,
       siteName:    'Corebit Studio',
-      title:       'Corebit Studio | High-Performance Web Architecture & Automation',
-      description: 'We architect proprietary business automation modules and ultra-fast Next.js web platforms with sub-100ms load times. Based in Tivat, Montenegro.',
-      locale:      locale === 'en' ? 'en_US' : locale,
+      title:       meta.title,
+      description: meta.description,
+      locale:      meta.ogLocale,
       images: [
         {
-          url:    OG_IMAGE,
+          url:    ogImage,
           width:  1200,
           height: 630,
-          alt:    'Corebit Studio — Premium Glassmorphic Web Architecture Banner',
+          alt:    ogAltMap[locale] ?? ogAltMap.en,
           type:   'image/png',
         },
       ],
     },
 
-    // ── Twitter / X Card ─────────────────────────────────────────────────
+    // ── Twitter / X Card (locale-specific image) ─────────────────────────
     twitter: {
       card:        'summary_large_image',
       site:        '@CorebitStudio',
       creator:     '@CorebitStudio',
-      title:       'Corebit Studio | High-Performance Web Architecture & Automation',
-      description: 'Proprietary automation modules & ultra-fast Next.js platforms. Sub-100ms load times. Tivat, Montenegro.',
-      images:      [OG_IMAGE],
+      title:       meta.title,
+      description: meta.twitterDesc,
+      images:      [ogImage],
     },
 
     // ── Viewport ──────────────────────────────────────────────────────────
@@ -74,8 +125,8 @@ export async function generateMetadata({
 
     // ── Robots ────────────────────────────────────────────────────────────
     robots: {
-      index:          true,
-      follow:         true,
+      index:     true,
+      follow:    true,
       googleBot: {
         index:               true,
         follow:              true,
@@ -85,15 +136,8 @@ export async function generateMetadata({
       },
     },
 
-    // ── Extra ─────────────────────────────────────────────────────────────
-    keywords: [
-      'web architecture Montenegro',
-      'Next.js automation agency',
-      'booking system Tivat',
-      'high-performance web platforms',
-      'custom automation modules',
-      'Corebit Studio',
-    ],
+    // ── Authoring ─────────────────────────────────────────────────────────
+    keywords:  meta.keywords,
     authors:   [{ name: 'Corebit Studio', url: SITE_URL }],
     creator:   'Corebit Studio',
     publisher: 'Corebit Studio',
@@ -125,23 +169,26 @@ export default async function RootLayout({
   params: { locale: string };
 }) {
   const rawDict = await getDictionary(locale as Locale);
-  const dict = rawDict as unknown as LayoutDict;
+  const dict    = rawDict as unknown as LayoutDict;
+
+  // Schema.org image always points to the EN canonical OG image for the @id entity
+  const canonicalOgImage = `${SITE_URL}/og-image-en.png`;
 
   // ── Schema.org JSON-LD — ProfessionalService entity (AEO anchor) ───────
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type':    'ProfessionalService',
     name:       'Corebit Studio',
-    image:      OG_IMAGE,
+    image:      canonicalOgImage,
     '@id':      SITE_URL,
     url:        SITE_URL,
     telephone:  '+38268914816',
     email:      'hello@corebitsystems.io',
     priceRange: '€360 - €3150',
     address: {
-      '@type':          'PostalAddress',
-      addressLocality:  'Tivat',
-      addressCountry:   'ME',
+      '@type':         'PostalAddress',
+      addressLocality: 'Tivat',
+      addressCountry:  'ME',
     },
     geo: {
       '@type':    'GeoCoordinates',
@@ -149,10 +196,10 @@ export default async function RootLayout({
       longitude:  '18.6961',
     },
     openingHoursSpecification: {
-      '@type':      'OpeningHoursSpecification',
-      dayOfWeek:    ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens:        '09:00',
-      closes:       '18:00',
+      '@type':     'OpeningHoursSpecification',
+      dayOfWeek:   ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens:       '09:00',
+      closes:      '18:00',
     },
     sameAs: ['https://wa.me/359882905657'],
     // Offer catalogue for rich results
@@ -169,7 +216,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className="dark scroll-smooth">
-      {/* overflow-x-hidden on body prevents horizontal scroll */}
+      {/* overflow-x-hidden on body prevents horizontal scroll on mobile */}
       <body
         className={`${inter.variable} font-sans bg-[#050506] text-white antialiased min-h-screen selection:bg-white/20 selection:text-white flex flex-col overflow-x-hidden`}
       >
@@ -183,7 +230,7 @@ export default async function RootLayout({
 
         <Header dict={dict} locale={locale} />
 
-        {/* pt-20 → header is ~64px, pt-32 was excessive */}
+        {/* pt-20 → header is ~64px; pt-32 was excessive */}
         <main className="relative z-10 flex flex-col items-center w-full flex-grow pt-20 sm:pt-24">
           {children}
         </main>
