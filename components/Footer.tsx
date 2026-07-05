@@ -35,13 +35,13 @@ export default function Footer({ dict }: FooterProps) {
         <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 w-full">
 
           <a
-            href="tel:068914816"
+            href="tel:+38268914816"
             className="group flex flex-col items-center gap-3 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/[0.02] border border-white/10 hover:border-white/30 hover:bg-white/[0.04] transition-all w-full sm:w-auto sm:flex-1"
           >
             <div className="p-3 sm:p-4 rounded-full bg-white/5 text-neutral-400 group-hover:text-white group-hover:bg-white/10 transition-all">
               <Phone size={22} />
             </div>
-            <span className="font-mono text-base sm:text-xl tracking-wider text-white">068 914 816</span>
+            <span className="font-mono text-base sm:text-xl tracking-wider text-white">+382 68 914 816</span>
           </a>
 
           <a
