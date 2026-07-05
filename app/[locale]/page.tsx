@@ -157,9 +157,26 @@ export default async function HomePage({ params: { locale } }: { params: { local
         </div>
         {/* ФИКС: grid-cols-1 на мобиле — md:grid-cols-3 */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 items-stretch">
-          <BentoCard title={dict.automation.tables.title} description={dict.automation.tables.desc} icon={<Utensils size={24} />} delay={0.1} />
-          <BentoCard title={dict.automation.booking.title} description={dict.automation.booking.desc} icon={<CalendarClock size={24} />} delay={0.2} className="md:col-span-2" />
-          <BentoCard title={dict.automation.schedule.title} description={dict.automation.schedule.desc} icon={<CalendarHeart size={24} />} delay={0.3} className="md:col-span-3" />
+          <BentoCard
+            title={dict.automation.tables.title}
+            description={dict.automation.tables.desc}
+            icon={<Utensils size={24} aria-label="Restaurant table booking module icon" />}
+            delay={0.1}
+          />
+          <BentoCard
+            title={dict.automation.booking.title}
+            description={dict.automation.booking.desc}
+            icon={<CalendarClock size={24} aria-label="Time-slot booking calendar module icon" />}
+            delay={0.2}
+            className="md:col-span-2"
+          />
+          <BentoCard
+            title={dict.automation.schedule.title}
+            description={dict.automation.schedule.desc}
+            icon={<CalendarHeart size={24} aria-label="Beauty salon appointment scheduler module icon" />}
+            delay={0.3}
+            className="md:col-span-3"
+          />
         </div>
       </section>
 
@@ -172,10 +189,38 @@ export default async function HomePage({ params: { locale } }: { params: { local
         </div>
         {/* ФИКС: grid-cols-1 sm:grid-cols-2 — корректное разбиение */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 relative z-10 items-stretch">
-          <BentoCard href={`/${locale}/portfolio/cupertino-roast`} title={dict.portfolio.items['cupertino-roast'].title} description={dict.portfolio.items['cupertino-roast'].desc} visual={CupertinoVisual} delay={0.1} />
-          <BentoCard href={`/${locale}/portfolio/shift-drive`}     title={dict.portfolio.items['shift-drive'].title}     description={dict.portfolio.items['shift-drive'].desc}     visual={ShiftDriveVisual} delay={0.2} />
-          <BentoCard href={`/${locale}/portfolio/umami-bistro`}    title={dict.portfolio.items['umami-bistro'].title}    description={dict.portfolio.items['umami-bistro'].desc}    visual={UmamiVisual}  delay={0.3} />
-          <BentoCard href={`/${locale}/portfolio/aura-wellness`}   title={dict.portfolio.items['aura-wellness'].title}   description={dict.portfolio.items['aura-wellness'].desc}   visual={AuraVisual}   delay={0.4} />
+          <BentoCard
+            href={`/${locale}/portfolio/cupertino-roast`}
+            title={dict.portfolio.items['cupertino-roast'].title}
+            description={dict.portfolio.items['cupertino-roast'].desc}
+            visual={CupertinoVisual}
+            visualAlt="Cupertino Roast — Premium artisan coffee house digital storefront with interactive menu"
+            delay={0.1}
+          />
+          <BentoCard
+            href={`/${locale}/portfolio/shift-drive`}
+            title={dict.portfolio.items['shift-drive'].title}
+            description={dict.portfolio.items['shift-drive'].desc}
+            visual={ShiftDriveVisual}
+            visualAlt="Shift & Drive STO — Automotive service portal with real-time mechanic slot booking interface"
+            delay={0.2}
+          />
+          <BentoCard
+            href={`/${locale}/portfolio/umami-bistro`}
+            title={dict.portfolio.items['umami-bistro'].title}
+            description={dict.portfolio.items['umami-bistro'].desc}
+            visual={UmamiVisual}
+            visualAlt="Umami Bistro — Restaurant website with interactive SVG live table reservation engine"
+            delay={0.3}
+          />
+          <BentoCard
+            href={`/${locale}/portfolio/aura-wellness`}
+            title={dict.portfolio.items['aura-wellness'].title}
+            description={dict.portfolio.items['aura-wellness'].desc}
+            visual={AuraVisual}
+            visualAlt="Aura Wellness — Glassmorphic booking platform for luxury beauty salon with step-by-step onboarding"
+            delay={0.4}
+          />
         </div>
       </section>
 

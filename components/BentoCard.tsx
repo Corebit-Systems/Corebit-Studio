@@ -10,6 +10,8 @@ interface BentoCardProps {
   description: string;
   icon?: React.ReactNode;
   visual?: React.ReactNode;
+  /** Accessible description for Google Images / AI vision bots */
+  visualAlt?: string;
   className?: string;
   delay?: number;
   href?: string;
@@ -20,6 +22,7 @@ export default function BentoCard({
   description,
   icon,
   visual,
+  visualAlt,
   className = '',
   delay = 0,
   href,
@@ -65,7 +68,11 @@ export default function BentoCard({
       <div style={{ transform: 'translateZ(30px)' }} className="flex flex-col h-full">
         {visual && (
           // ФИКС: h-48 → h-36 sm:h-48 — уменьшаем высоту визуала на мобиле
-          <div className="w-full h-36 sm:h-48 mb-4 sm:mb-6 rounded-xl sm:rounded-2xl overflow-hidden relative border border-white/5">
+          <div
+            className="w-full h-36 sm:h-48 mb-4 sm:mb-6 rounded-xl sm:rounded-2xl overflow-hidden relative border border-white/5"
+            role="img"
+            aria-label={visualAlt ?? title}
+          >
             {visual}
           </div>
         )}
