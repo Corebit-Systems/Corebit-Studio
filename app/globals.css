@@ -7,4 +7,31 @@
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
   }
+
+  /* ФИКС: Устраняем горизонтальный скролл на корневом уровне */
+  html,
+  body {
+    overflow-x: hidden;
+    /* Запрещаем переполнение по горизонтали глобально */
+    max-width: 100%;
+  }
+
+  /* Плавный скролл с учётом фиксированного хедера */
+  html {
+    scroll-padding-top: 100px;
+  }
+
+  /* Улучшение tap-targets на iOS */
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer utilities {
+  /* Утилита для безопасного скрытия горизонтального overflow в секциях */
+  .section-safe {
+    width: 100%;
+    overflow-x: hidden;
+  }
 }

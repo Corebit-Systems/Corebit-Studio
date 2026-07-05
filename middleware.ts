@@ -1,8 +1,9 @@
-// File: C:\dev\Studio\middleware.ts
+// File: C:\dev\Corebit-Studio\middleware.ts
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const locales = ['en', 'ru', 'cnr', 'sr', 'sq'];
+// ФИКС: синхронизированный список локалей — добавлен 'srb', убран 'sr' (несуществующий)
+const locales = ['en', 'ru', 'cnr', 'srb', 'sq'] as const;
 const defaultLocale = 'en';
 
 export function middleware(request: NextRequest) {

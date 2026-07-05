@@ -1,4 +1,4 @@
-// File: C:\dev\Studio\components\Header.tsx
+// File: C:\dev\Corebit-Studio\components\Header.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -6,47 +6,57 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import LangSwitcher from './LangSwitcher';
 
-// Строгая типизация пропсов (никаких any)
+// ФИКС: Строгая типизация — убран [key: string]: any
+interface NavDict {
+  services: string;
+  portfolio: string;
+  pricing: string;
+  contact?: string;
+}
+
+interface HeroDict {
+  cta: string;
+}
+
 interface HeaderProps {
   locale: string;
   dict: {
-    nav: {
-      services: string;
-      portfolio: string;
-      pricing: string;
-      contact?: string;
-    };
-    hero: {
-      cta: string;
-    };
-    [key: string]: any; // Позволяет безопасно прокидывать полный словарь из layout
+    nav: NavDict;
+    hero: HeroDict;
   };
 }
 
 export default function Header({ dict, locale }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   // Блокировка скролла при открытом мобильном меню (Apple UX)
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
     };
   }, [isOpen]);
+
+  // Определяем скролл для усиления blur при прокрутке
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const closeMenu = () => setIsOpen(false);
 
   // Apple-grade easing function
-  const customEase = [0.22, 1, 0.36, 1];
+  const customEase = [0.22, 1, 0.36, 1] as const;
 
-  // Варианты анимаций для Stagger-эффекта ссылок
   const containerVars = {
-    initial: { transition: { staggerChildren: 0.09, staggerDirection: -1 } },
-    open: { transition: { delayChildren: 0.1, staggerChildren: 0.09, staggerDirection: 1 } },
+    initial: { transition: { staggerChildren: 0.09, staggerDirection: -1 as const } },
+    open: { transition: { delayChildren: 0.1, staggerChildren: 0.09, staggerDirection: 1 as const } },
   };
 
   const linkVars = {
@@ -54,43 +64,58 @@ export default function Header({ dict, locale }: HeaderProps) {
     open: { opacity: 1, y: 0, transition: { duration: 0.7, ease: customEase } },
   };
 
+  const navLinks = [
+    { name: dict.nav.services, href: `/${locale}#modules` },
+    { name: dict.nav.portfolio, href: `/${locale}#portfolio` },
+    { name: dict.nav.pricing, href: `/${locale}#pricing` },
+  ];
+
   return (
-    <header className="fixed top-4 left-4 right-4 md:left-8 md:right-8 z-50">
+    // ФИКС: убран left-4 right-4 — заменён на px с max-w чтобы не вызывать overflow
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 md:px-8">
       {/* Главная стеклянная панель (Pill) */}
-      <div 
-        className={`max-w-7xl mx-auto px-6 py-4 flex items-center justify-between rounded-2xl transition-all duration-500 relative z-[60] ${
-          isOpen 
-            ? 'bg-transparent border-transparent shadow-none' 
-            : 'bg-[#050506]/60 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]'
+      <div
+        className={`max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between rounded-2xl transition-all duration-500 relative z-[60] ${
+          isOpen
+            ? 'bg-transparent border-transparent shadow-none'
+            : scrolled
+              ? 'bg-[#050506]/80 backdrop-blur-3xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.6)]'
+              : 'bg-[#050506]/60 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]'
         }`}
       >
-        {/* Минималистичный логотип */}
-        <Link href={`/${locale}`} onClick={closeMenu} className="flex items-center gap-2 group relative z-[60]">
-          <span className="font-bold text-xl tracking-tight text-white group-hover:text-emerald-400 transition-colors duration-300">
+        {/* Логотип */}
+        <Link href={`/${locale}`} onClick={closeMenu} className="flex items-center gap-2 group relative z-[60] shrink-0">
+          <span className="font-bold text-lg sm:text-xl tracking-tight text-white group-hover:text-emerald-400 transition-colors duration-300">
             Corebit Studio
           </span>
         </Link>
 
         {/* Десктопная навигация */}
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-400">
-          <Link href={`/${locale}#modules`} className="hover:text-white transition-colors">{dict.nav.services}</Link>
-          <Link href={`/${locale}#portfolio`} className="hover:text-white transition-colors">{dict.nav.portfolio}</Link>
-          <Link href={`/${locale}#pricing`} className="hover:text-white transition-colors">{dict.nav.pricing}</Link>
+          {navLinks.map((link) => (
+            <Link key={link.href} href={link.href} className="hover:text-white transition-colors">
+              {link.name}
+            </Link>
+          ))}
         </nav>
 
         {/* Экшены (LangSwitcher + CTA + Burger) */}
-        <div className="flex items-center gap-4 relative z-[60]">
+        <div className="flex items-center gap-2 sm:gap-4 relative z-[60]">
           <LangSwitcher currentLocale={locale} />
-          
-          <Link href={`/${locale}#contact`} className="hidden sm:block px-4 py-2 rounded-xl bg-white text-black text-sm font-semibold hover:bg-neutral-200 transition-colors">
+
+          <Link
+            href={`/${locale}#contact`}
+            className="hidden sm:block px-4 py-2 rounded-xl bg-white text-black text-sm font-semibold hover:bg-neutral-200 transition-colors whitespace-nowrap"
+          >
             {dict.hero.cta}
           </Link>
 
-          {/* Мобильный бургер-крестик (Математически точная анимация) */}
+          {/* Мобильный бургер — минимум 44x44px для пальца */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden relative w-10 h-10 flex items-center justify-center focus:outline-none"
-            aria-label="Toggle Mobile Menu"
+            className="md:hidden relative w-11 h-11 flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded-xl"
+            aria-label={isOpen ? 'Закрыть меню' : 'Открыть меню'}
+            aria-expanded={isOpen}
           >
             <div className="relative w-6 h-4 flex flex-col justify-between">
               <motion.span
@@ -113,33 +138,30 @@ export default function Header({ dict, locale }: HeaderProps) {
         </div>
       </div>
 
-      {/* Полноэкранное мобильное меню (Apple iOS Style) */}
+      {/* Полноэкранное мобильное меню */}
+      {/* ФИКС: w-screen → w-full, добавлен safe-area для notch */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { delay: 0.2, duration: 0.3 } }}
-            className="fixed top-0 left-0 w-screen h-screen bg-[#050506]/95 backdrop-blur-3xl z-[55] flex flex-col px-8 pt-32 pb-12 overflow-y-auto"
+            className="fixed top-0 left-0 w-full h-[100dvh] bg-[#050506]/97 backdrop-blur-3xl z-[55] flex flex-col px-6 pt-28 pb-8 overflow-y-auto overflow-x-hidden"
           >
             <motion.nav
               variants={containerVars}
               initial="initial"
               animate="open"
               exit="initial"
-              className="flex flex-col gap-8 text-4xl font-semibold tracking-tight mt-12"
+              className="flex flex-col gap-6 mt-4"
             >
-              {[
-                { name: dict.nav.services, href: `/${locale}#modules` },
-                { name: dict.nav.portfolio, href: `/${locale}#portfolio` },
-                { name: dict.nav.pricing, href: `/${locale}#pricing` },
-              ].map((link, index) => (
-                <div key={index} className="overflow-hidden">
+              {navLinks.map((link, index) => (
+                <div key={index} className="overflow-hidden border-b border-white/5 pb-6">
                   <motion.div variants={linkVars}>
-                    <Link 
-                      href={link.href} 
-                      onClick={closeMenu} 
-                      className="text-white hover:text-emerald-400 transition-colors block"
+                    <Link
+                      href={link.href}
+                      onClick={closeMenu}
+                      className="text-white hover:text-emerald-400 transition-colors block text-4xl font-semibold tracking-tight"
                     >
                       {link.name}
                     </Link>
@@ -147,18 +169,18 @@ export default function Header({ dict, locale }: HeaderProps) {
                 </div>
               ))}
             </motion.nav>
-            
-            <motion.div 
+
+            <motion.div
               variants={linkVars}
               initial="initial"
               animate="open"
               exit="initial"
-              className="mt-auto flex flex-col gap-8 pt-12"
+              className="mt-auto flex flex-col gap-6 pt-8"
             >
-              <Link 
-                href={`/${locale}#contact`} 
-                onClick={closeMenu} 
-                className="w-full py-5 rounded-2xl bg-white text-black text-center font-bold text-xl hover:bg-neutral-200 transition-colors shadow-[0_0_40px_rgba(255,255,255,0.2)]"
+              <Link
+                href={`/${locale}#contact`}
+                onClick={closeMenu}
+                className="w-full py-5 rounded-2xl bg-white text-black text-center font-bold text-xl hover:bg-neutral-200 transition-colors shadow-[0_0_40px_rgba(255,255,255,0.2)] active:scale-95"
               >
                 {dict.hero.cta}
               </Link>
