@@ -1,0 +1,25 @@
+"use strict";
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+exports.id = "_rsc_i18n_dictionaries_en_json";
+exports.ids = ["_rsc_i18n_dictionaries_en_json"];
+exports.modules = {
+
+/***/ "(rsc)/./i18n/dictionaries/en.json":
+/*!***********************************!*\
+  !*** ./i18n/dictionaries/en.json ***!
+  \***********************************/
+/***/ ((module) => {
+
+module.exports = JSON.parse('{"nav":{"services":"Modules","portfolio":"Assets","pricing":"Pricing","contact":"Contact"},"hero":{"badge":"Engineering High-Performance Assets","title":"Corebit Studio","subtitle":"We architect proprietary business automation modules and ultra-fast web platforms that convert visitors into loyal clients.","cta":"Initiate Project"},"about":{"title":"High-Conversion Architecture","desc":"A client visits your site and instantly desires your service. We achieve this by combining Apple-grade glassmorphism with Next.js Edge networks, delivering sub-100ms load times and seamless user onboarding.","badges":["Sub-100ms Load","Flawless Mobile UX","3s Attention Capture","Absolute Security"]},"automation":{"title":"Proprietary Automation Modules","subtitle":"Turn your website into a 24/7 autonomous sales and booking engine.","tables":{"title":"Smart Table Reservations","desc":"Live interactive layouts and real-time booking engines for premium restaurants and cafes."},"booking":{"title":"Dynamic Time-Slot Booking","desc":"Intelligent scheduling engines for automotive repair centers (STO), detailing hubs, and medical clinics."},"schedule":{"title":"Automated Schedulers","desc":"Seamless appointment flows for beauty salons featuring step-by-step onboarding and SMS/Email webhooks."}},"portfolio":{"title":"Breathtaking Digital Assets","subtitle":"Recent high-converting platforms engineered by Corebit Studio.","items":{"cupertino-roast":{"title":"Cupertino Roast","desc":"A premium, high-converting digital storefront and interactive menu for an artisan coffee house."},"shift-drive":{"title":"Shift & Drive STO","desc":"A sleek, high-performance automotive service portal with built-in real-time mechanics schedule booking."},"umami-bistro":{"title":"Umami Bistro","desc":"A breathtaking restaurant website featuring an advanced, interactive live table reservation engine."},"aura-wellness":{"title":"Aura Wellness","desc":"An elegant, glassmorphic booking platform for a luxury beauty salon with smooth step-by-step onboarding."}}},"portfolio_page":{"tech_stack":"Technology Stack","features":"Advanced Features","back":"Back to Home"},"pricing":{"title":"Commercial Directives","subtitle":"Transparent, high-conversion engineering packages.","toggle_full":"Full Payment (-10%)","toggle_split":"Milestone (50/50)","tier1":{"title":"Entry / Kickstart","price":400,"desc":"Premium landing pages and business card websites with custom ultra-fast architecture.","btn":"Start Kickstart"},"tier2":{"title":"Growth / Business","price":1200,"desc":"Fully interactive commercial platforms featuring custom booking systems and automation workflows.","btn":"Deploy Platform"},"tier3":{"title":"Enterprise Architecture","price":3500,"desc":"Deep-dive custom system integrations, extreme performance optimization, and digital system hardening.","btn":"Build Enterprise"}},"contact_form":{"title":"Establish Secure Connection","name":"Full Name","email":"Corporate Email","message":"Project Details","send":"Initialize Sequence","sending":"Encrypting...","success":"Connection Established. We will contact you shortly.","error_rate":"Rate limit exceeded. Please wait 60 seconds.","error_spam":"Security protocol triggered. Invalid payload.","error_general":"Transmission failed. Please try again."},"footer":{"cta_btn":"Launch Project","rights":"© 2026 Corebit Studio. All rights reserved. Tivat, Montenegro."}}');
+
+/***/ })
+
+};
+;
