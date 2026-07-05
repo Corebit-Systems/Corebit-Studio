@@ -103,5 +103,23 @@
   "footer": {
     "cta_btn": "Запустить проект",
     "rights": "© 2026 Corebit Studio. Все права защищены. Тиват, Черногория."
+  },
+  "portfolio_tech": {
+    "cupertino-roast": {
+      "stack": ["Next.js 14 Edge", "Tailwind Custom Config", "Stripe Payments", "Vercel KV"],
+      "features": ["Интерактивное 3D-меню", "Синхронизация остатков в реальном времени", "Оплата Apple Pay в 1 клик"]
+    },
+    "shift-drive": {
+      "stack": ["React Server Components", "PostgreSQL", "WebSockets", "Framer Motion Engine"],
+      "features": ["Расчёт временных слотов в реальном времени", "Отслеживание статуса поста механика", "Автоматические SMS-напоминания через Twilio"]
+    },
+    "umami-bistro": {
+      "stack": ["Next.js App Router", "Redis Caching", "Custom Webhooks", "Glassmorphism UI"],
+      "features": ["Интерактивные SVG-планы зала для бронирования столиков", "Мгновенное управление листом ожидания", "Синхронизация дашборда менеджера"]
+    },
+    "aura-wellness": {
+      "stack": ["Next.js", "Tailwind CSS", "Prisma ORM", "Stripe Connect"],
+      "features": ["Плавные пошаговые формы записи", "Синхронизация календарей персонала", "Авторизация авансового платежа"]
+    }
   }
 }

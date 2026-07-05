@@ -103,5 +103,23 @@
   "footer": {
     "cta_btn": "Fillo Projektin",
     "rights": "© 2026 Corebit Studio. Të gjitha të drejtat e rezervuara. Tivat, Mali i Zi."
+  },
+  "portfolio_tech": {
+    "cupertino-roast": {
+      "stack": ["Next.js 14 Edge", "Tailwind Custom Config", "Stripe Payments", "Vercel KV"],
+      "features": ["Menu 3D Interaktive", "Sinkronizim i aksioneve në kohë reale", "Blerje me Apple Pay me 1 klik"]
+    },
+    "shift-drive": {
+      "stack": ["React Server Components", "PostgreSQL", "WebSockets", "Framer Motion Engine"],
+      "features": ["Llogaritje e sloteve kohore në kohë reale", "Ndjekja e statusit të boksit të mekanikut", "Kujtues automatikë SMS përmes Twilio"]
+    },
+    "umami-bistro": {
+      "stack": ["Next.js App Router", "Redis Caching", "Custom Webhooks", "Glassmorphism UI"],
+      "features": ["Planet SVG interaktive për rezervimet e tavolinave", "Menaxhim i listës së pritjes në çast", "Sinkronizim i panelit të menaxherit"]
+    },
+    "aura-wellness": {
+      "stack": ["Next.js", "Tailwind CSS", "Prisma ORM", "Stripe Connect"],
+      "features": ["Formularë hap-pas-hapi të qetë", "Sinkronizim i kalendarit të stafit", "Autorizim i pagesës së depozitës"]
+    }
   }
 }

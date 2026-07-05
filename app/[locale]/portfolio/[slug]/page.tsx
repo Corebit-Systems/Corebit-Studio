@@ -9,6 +9,11 @@ interface PortfolioItem {
   desc: string;
 }
 
+interface TechData {
+  stack: string[];
+  features: string[];
+}
+
 interface PortfolioPageDict {
   tech_stack: string;
   features: string;
@@ -20,31 +25,8 @@ interface PageDict {
     items: Record<string, PortfolioItem | undefined>;
   };
   portfolio_page: PortfolioPageDict;
+  portfolio_tech: Record<string, TechData | undefined>;
 }
-
-interface TechData {
-  stack: string[];
-  features: string[];
-}
-
-const techData: Record<string, TechData> = {
-  'cupertino-roast': {
-    stack: ['Next.js 14 Edge', 'Tailwind Custom Config', 'Stripe Payments', 'Vercel KV'],
-    features: ['Interactive 3D Menu', 'Real-time stock synchronization', 'Apple Pay 1-click checkout'],
-  },
-  'shift-drive': {
-    stack: ['React Server Components', 'PostgreSQL', 'WebSockets', 'Framer Motion Engine'],
-    features: ['Real-time time-slot calculation', 'Live mechanic bay status tracking', 'Automated SMS Reminders via Twilio'],
-  },
-  'umami-bistro': {
-    stack: ['Next.js App Router', 'Redis Caching', 'Custom Webhooks', 'Glassmorphism UI'],
-    features: ['Interactive SVG floor plans for table reservations', 'Instant waitlist queue management', 'Manager dashboard sync'],
-  },
-  'aura-wellness': {
-    stack: ['Next.js', 'Tailwind CSS', 'Prisma ORM', 'Stripe Connect'],
-    features: ['Smooth step-by-step onboarding forms', 'Staff calendar synchronization', 'Deposit payment authorization'],
-  },
-};
 
 export default async function PortfolioProjectPage({
   params: { locale, slug },
@@ -63,7 +45,7 @@ export default async function PortfolioProjectPage({
   }
 
   // ФИКС: безопасное обращение — details может быть undefined если slug нестандартный
-  const details = techData[slug];
+  const details = dict.portfolio_tech[slug];
 
   return (
     // ФИКС: px-6 → px-4 sm:px-6, py-24 → py-8 sm:py-16 md:py-24, gap-16 → gap-8 sm:gap-12 md:gap-16

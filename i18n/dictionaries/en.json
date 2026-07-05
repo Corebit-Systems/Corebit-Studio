@@ -103,5 +103,23 @@
   "footer": {
     "cta_btn": "Launch Project",
     "rights": "© 2026 Corebit Studio. All rights reserved. Tivat, Montenegro."
+  },
+  "portfolio_tech": {
+    "cupertino-roast": {
+      "stack": ["Next.js 14 Edge", "Tailwind Custom Config", "Stripe Payments", "Vercel KV"],
+      "features": ["Interactive 3D Menu", "Real-time stock synchronization", "Apple Pay 1-click checkout"]
+    },
+    "shift-drive": {
+      "stack": ["React Server Components", "PostgreSQL", "WebSockets", "Framer Motion Engine"],
+      "features": ["Real-time time-slot calculation", "Live mechanic bay status tracking", "Automated SMS Reminders via Twilio"]
+    },
+    "umami-bistro": {
+      "stack": ["Next.js App Router", "Redis Caching", "Custom Webhooks", "Glassmorphism UI"],
+      "features": ["Interactive SVG floor plans for table reservations", "Instant waitlist queue management", "Manager dashboard sync"]
+    },
+    "aura-wellness": {
+      "stack": ["Next.js", "Tailwind CSS", "Prisma ORM", "Stripe Connect"],
+      "features": ["Smooth step-by-step onboarding forms", "Staff calendar synchronization", "Deposit payment authorization"]
+    }
   }
 }

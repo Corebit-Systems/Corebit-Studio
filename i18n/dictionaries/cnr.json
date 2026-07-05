@@ -103,5 +103,23 @@
   "footer": {
     "cta_btn": "Pokreni Projekat",
     "rights": "© 2026 Corebit Studio. Sva prava zadržana. Tivat, Crna Gora."
+  },
+  "portfolio_tech": {
+    "cupertino-roast": {
+      "stack": ["Next.js 14 Edge", "Tailwind Custom Config", "Stripe Payments", "Vercel KV"],
+      "features": ["Interaktivni 3D Meni", "Sinhronizacija zaliha u realnom vremenu", "Apple Pay plaćanje jednim klikom"]
+    },
+    "shift-drive": {
+      "stack": ["React Server Components", "PostgreSQL", "WebSockets", "Framer Motion Engine"],
+      "features": ["Izračunavanje termina u realnom vremenu", "Praćenje statusa boksa mehaničara", "Automatski SMS podsjetnici putem Twilio-a"]
+    },
+    "umami-bistro": {
+      "stack": ["Next.js App Router", "Redis Caching", "Custom Webhooks", "Glassmorphism UI"],
+      "features": ["Interaktivni SVG planovi za rezervacije stolova", "Upravljanje listom čekanja u realnom vremenu", "Sinhronizacija menadžerskog panela"]
+    },
+    "aura-wellness": {
+      "stack": ["Next.js", "Tailwind CSS", "Prisma ORM", "Stripe Connect"],
+      "features": ["Glatki obrasci za korak-po-korak zakazivanje", "Sinhronizacija kalendara osoblja", "Autorizacija depozitnog plaćanja"]
+    }
   }
 }
