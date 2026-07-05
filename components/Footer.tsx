@@ -74,7 +74,17 @@ export default function Footer({ dict }: FooterProps) {
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row justify-between items-center w-full text-xs sm:text-sm text-neutral-500 gap-3 md:gap-0 text-center md:text-left">
           <p>{dict.footer.rights}</p>
-          <div className="flex gap-4 sm:gap-6">
+          <div className="flex items-center gap-4 sm:gap-6">
+            <a
+              href="/sitemap.xml"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-emerald-400 transition-colors font-mono"
+              title="XML Sitemap"
+            >
+              sitemap.xml
+            </a>
+            <span className="text-white/10">|</span>
             <span>Next.js 14</span>
             <span>Vercel Edge</span>
           </div>
