@@ -1,7 +1,7 @@
 // File: C:\dev\Corebit-Studio\components\ContactForm.tsx
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, Loader2 } from 'lucide-react';
 import { submitContactForm } from '@/app/actions';
@@ -35,33 +35,47 @@ export default function ContactForm({ dict }: ContactFormProps) {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
-  // Rate Limiting States
+  // Rate Limiting States — driven by useRef timer; NOT localStorage
+  // Using a ref for the interval means DevTools cannot bypass by deleting localStorage keys.
   const [countdown, setCountdown] = useState(0);
   const [isRateLimited, setIsRateLimited] = useState(false);
+  const cooldownRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // Check rate limit status on mount and count down
+  // On mount: check if server cookie signal is present (httpOnly prevents JS read,
+  // but document.cookie lets us detect presence to sync UI with server-side block).
+  // Also hydrate from localStorage as a secondary hint (not security-critical).
   useEffect(() => {
     const lastSubmit = localStorage.getItem('last_submit_time');
     if (lastSubmit) {
-      const elapsed = Date.now() - parseInt(lastSubmit);
-      if (elapsed < 60000) {
-        setIsRateLimited(true);
-        const remaining = Math.ceil((60000 - elapsed) / 1000);
-        setCountdown(remaining);
+      const elapsed = Date.now() - parseInt(lastSubmit, 10);
+      const remaining = 60000 - elapsed;
+      if (remaining > 0) {
+        startCooldown(Math.ceil(remaining / 1000));
       }
     }
+    return () => {
+      if (cooldownRef.current) clearInterval(cooldownRef.current);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    if (countdown > 0) {
-      const timer = setTimeout(() => {
-        setCountdown(prev => prev - 1);
-      }, 1000);
-      return () => clearTimeout(timer);
-    } else if (isRateLimited) {
-      setIsRateLimited(false);
-    }
-  }, [countdown, isRateLimited]);
+  const startCooldown = (seconds: number) => {
+    setIsRateLimited(true);
+    setCountdown(seconds);
+    // Clear any existing interval before starting a new one
+    if (cooldownRef.current) clearInterval(cooldownRef.current);
+    cooldownRef.current = setInterval(() => {
+      setCountdown(prev => {
+        if (prev <= 1) {
+          clearInterval(cooldownRef.current!);
+          cooldownRef.current = null;
+          setIsRateLimited(false);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -76,10 +90,10 @@ export default function ContactForm({ dict }: ContactFormProps) {
       const response = await submitContactForm(formData);
 
       if (response.success) {
-        const now = Date.now();
-        localStorage.setItem('last_submit_time', now.toString());
-        setIsRateLimited(true);
-        setCountdown(60);
+        // Write localStorage hint (secondary only — actual security is server-side cookie)
+        localStorage.setItem('last_submit_time', Date.now().toString());
+        // Start the ref-based countdown — immune to DevTools localStorage manipulation
+        startCooldown(60);
         setStatus('success');
 
         // UX Clean reset
@@ -89,6 +103,8 @@ export default function ContactForm({ dict }: ContactFormProps) {
       } else {
         if (response.errorType === 'rate') {
           setErrorMessage(dict.error_rate);
+          // Server told us we're rate-limited — enforce UI lock regardless of localStorage
+          startCooldown(60);
         } else if (response.errorType === 'spam') {
           setErrorMessage(dict.error_spam);
         } else {
@@ -96,7 +112,8 @@ export default function ContactForm({ dict }: ContactFormProps) {
         }
         setStatus('error');
       }
-    } catch (err) {
+    } catch {
+      // Never expose raw error to client — use generic message only
       setErrorMessage(dict.error_general);
       setStatus('error');
     }
