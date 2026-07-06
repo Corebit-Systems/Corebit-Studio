@@ -79,7 +79,7 @@ export default function HeroSection({ dict, locale }: HeroSectionProps) {
   };
 
   return (
-    <div className="relative w-full overflow-hidden flex flex-col items-center">
+    <div className="relative w-full flex flex-col items-center">
       <motion.div
         style={{
           x: springBgX,
@@ -128,17 +128,20 @@ export default function HeroSection({ dict, locale }: HeroSectionProps) {
             onMouseMove={handleCTAButtonMouseMove}
             onMouseLeave={handleCTAButtonMouseLeave}
             style={{ x: buttonX, y: buttonY }}
-            className="w-full sm:w-auto"
+            className="w-full sm:w-auto relative z-20"
           >
+            {/* Glow effect */}
+            <div className="absolute inset-0 bg-white/20 blur-[30px] rounded-2xl pointer-events-none z-0" />
+            
             <a
               href={`/${locale}#contact`}
-              className="group relative w-full sm:w-auto px-6 sm:px-8 py-4 rounded-2xl bg-white text-black font-semibold text-base sm:text-lg hover:bg-neutral-100 transition-all flex items-center justify-center gap-2 min-h-[52px] shadow-[0_4px_24px_rgba(255,255,255,0.1)] overflow-hidden"
+              className="group relative z-10 w-full sm:w-auto px-6 sm:px-8 py-4 rounded-2xl bg-white text-black font-semibold text-base sm:text-lg hover:bg-neutral-100 transition-all flex items-center justify-center gap-2 min-h-[52px] shadow-[0_4px_24px_rgba(255,255,255,0.1)] overflow-hidden"
             >
               <motion.div
                 initial={{ x: '-100%' }}
                 whileHover={{ x: '100%' }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent -skew-x-12 pointer-events-none z-10"
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-black/5 to-transparent -skew-x-12 pointer-events-none"
               />
               <span className="relative z-20 flex items-center gap-2">
                 {dict.cta} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
