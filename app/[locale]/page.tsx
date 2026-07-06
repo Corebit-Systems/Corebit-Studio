@@ -111,92 +111,10 @@ export default async function HomePage({ params: { locale } }: { params: { local
     </div>
   );
 
-  // Authoritative JSON-LD Microdata context (ProfessionalService + OfferCatalog + FAQPage unified)
-  const jsonLd = [
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Corebit Studio",
-      "image": "https://corebit-studio.vercel.app/og-image-en.png",
-      "@id": "https://corebit-studio.vercel.app",
-      "url": "https://corebit-studio.vercel.app",
-      "telephone": "+38268914816",
-      "email": "corebitstudio@corebitsystems.io",
-      "priceRange": "€360 - €3150",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Tivat",
-        "addressCountry": "ME"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "42.4350",
-        "longitude": "18.6961"
-      },
-      "contactPoint": [
-        {
-          "@type": "ContactPoint",
-          "telephone": "+38268914816",
-          "contactType": "customer support",
-          "areaServed": ["ME", "RS", "AL"]
-        },
-        {
-          "@type": "ContactPoint",
-          "telephone": "+359882905657",
-          "contactType": "International Sales & WhatsApp Support",
-          "areaServed": "Worldwide"
-        }
-      ],
-      "sameAs": [
-        "https://wa.me/359882905657",
-        "https://t.me/corebitsystems"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Web Architecture & Automation Services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "name": "Entry / Kickstart",
-            "price": "360",
-            "priceCurrency": "EUR"
-          },
-          {
-            "@type": "Offer",
-            "name": "Growth / Business",
-            "price": "1080",
-            "priceCurrency": "EUR"
-          },
-          {
-            "@type": "Offer",
-            "name": "Enterprise Architecture",
-            "price": "3150",
-            "priceCurrency": "EUR"
-          }
-        ]
-      }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": dict.faq.items.map((item) => ({
-        "@type": "Question",
-        "name": item.q,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": item.a
-        }
-      }))
-    }
-  ];
+  // Schema moved to layout.tsx for global SSR AEO extraction
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24 flex flex-col gap-24 md:gap-32">
-      {/* Schema.org Entity script */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
 
       {/* Animated Hero Section */}
       <HeroSection dict={dict.hero} locale={locale} />

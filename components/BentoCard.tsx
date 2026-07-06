@@ -51,7 +51,7 @@ export default function BentoCard({
   };
 
   const CardContent = (
-    <motion.div
+    <motion.article
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -91,7 +91,7 @@ export default function BentoCard({
           <p className="text-sm text-neutral-400 leading-relaxed">{description}</p>
         </div>
       </div>
-    </motion.div>
+    </motion.article>
   );
 
   // ФИКС: Link обёртка — добавлен min-h-0 чтобы Link не ломал flex-контейнеры

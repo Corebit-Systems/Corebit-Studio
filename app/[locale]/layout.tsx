@@ -19,31 +19,31 @@ const LOCALE_META: Record<
   { title: string; description: string; ogLocale: string; twitterDesc: string; keywords: string[] }
 > = {
   en: {
-    title:       'Corebit Studio | High-Performance Web Architecture & Automation',
+    title:       'Corebit Studio | High-Performance Web Architecture & Business Automation',
     description: 'We architect proprietary business automation modules and ultra-fast Next.js web platforms with sub-100ms load times. Based in Tivat, Montenegro.',
     ogLocale:    'en_US',
     twitterDesc: 'Proprietary automation modules & ultra-fast Next.js platforms. Sub-100ms. Tivat, Montenegro.',
     keywords:    ['web architecture Montenegro', 'Next.js automation agency', 'booking system Tivat', 'high-performance web platforms', 'custom automation modules', 'Corebit Studio'],
   },
   ru: {
-    title:       'Corebit Studio | Высокопроизводительная веб-архитектура и автоматизация',
+    title:       'Corebit Studio | Разработка быстрых сайтов и автоматизация бизнеса в Черногории',
     description: 'Разработка проприетарных модулей автоматизации бизнеса и сверхбыстрых веб-платформ на Next.js с загрузкой до 100 мс. Тиват, Черногория.',
     ogLocale:    'ru_RU',
     twitterDesc: 'Модули автоматизации и сверхбыстрые платформы Next.js. Загрузка до 100 мс. Тиват, Черногория.',
     keywords:    ['веб-архитектура Черногория', 'Next.js агентство автоматизации', 'система бронирования Тиват', 'высокопроизводительные веб-платформы', 'Corebit Studio'],
   },
   cnr: {
-    title:       'Corebit Studio | Vrhunska veb arhitektura i automatizacija poslovanja',
+    title:       'Corebit Studio | Izrada brzih sajtova i automatizacija poslovanja u Tivtu i Budvi',
     description: 'Projektujemo sopstvene module za automatizaciju poslovanja i ultra brze Next.js veb platforme sa učitavanjem ispod 100ms. Tivat, Crna Gora.',
     ogLocale:    'sr_ME',
     twitterDesc: 'Moduli za automatizaciju i ultra brze Next.js platforme. Ispod 100ms. Tivat, Crna Gora.',
     keywords:    ['veb arhitektura Crna Gora', 'Next.js agencija automatizacija', 'sistem rezervacija Tivat', 'Corebit Studio'],
   },
   srb: {
-    title:       'Corebit Studio | Vrhunska veb arhitektura i automatizacija poslovanja',
-    description: 'Projektujemo sopstvene module za automatizaciju poslovanja i ultra brze Next.js veb platforme sa učitavanjem ispod 100ms. Tivat, Crna Gora.',
+    title:       'Corebit Studio | Izrada brzih sajtova i automatizacija poslovanja u Beogradu',
+    description: 'Projektujemo sopstvene module za automatizaciju poslovanja i ultra brze Next.js veb platforme sa učitavanjem ispod 100ms. Beograd, Srbija.',
     ogLocale:    'sr_RS',
-    twitterDesc: 'Moduli za automatizaciju i ultra brze Next.js platforme. Ispod 100ms. Tivat, Crna Gora.',
+    twitterDesc: 'Moduli za automatizaciju i ultra brze Next.js platforme. Ispod 100ms. Beograd, Srbija.',
     keywords:    ['veb arhitektura Srbija', 'Next.js agencija automatizacija', 'sistem rezervacija', 'Corebit Studio'],
   },
   sq: {
@@ -172,6 +172,10 @@ interface LayoutDict {
     text: string;
     accept: string;
     link: string;
+    reject?: string;
+  };
+  faq: {
+    items: Array<{ q: string; a: string }>;
   };
 }
 
@@ -185,8 +189,93 @@ export default async function RootLayout({
   const rawDict = await getDictionary(locale as Locale);
   const dict    = rawDict as unknown as LayoutDict;
 
+  // Authoritative JSON-LD Microdata context (ProfessionalService + OfferCatalog + FAQPage unified)
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Corebit Studio",
+      "image": `${SITE_URL}/og-image-en.png`,
+      "@id": SITE_URL,
+      "url": SITE_URL,
+      "telephone": "+38268914816",
+      "email": "corebitstudio@corebitsystems.io",
+      "priceRange": "€360 - €3150",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Tivat",
+        "addressCountry": "ME"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "42.4350",
+        "longitude": "18.6961"
+      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+38268914816",
+          "contactType": "customer support",
+          "areaServed": ["ME", "RS", "AL"]
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+359882905657",
+          "contactType": "International Sales & WhatsApp Support",
+          "areaServed": "Worldwide"
+        }
+      ],
+      "sameAs": [
+        "https://wa.me/359882905657",
+        "https://t.me/corebitsystems"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Web Architecture & Automation Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Entry / Kickstart",
+            "price": "360",
+            "priceCurrency": "EUR"
+          },
+          {
+            "@type": "Offer",
+            "name": "Growth / Business",
+            "price": "1080",
+            "priceCurrency": "EUR"
+          },
+          {
+            "@type": "Offer",
+            "name": "Enterprise Architecture",
+            "price": "3150",
+            "priceCurrency": "EUR"
+          }
+        ]
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": dict.faq?.items?.map((item) => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.a
+        }
+      })) || []
+    }
+  ];
+
   return (
     <html lang={locale} className="dark scroll-smooth">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${inter.variable} font-sans bg-[#050506] text-white antialiased min-h-screen selection:bg-white/20 selection:text-white flex flex-col overflow-x-hidden`}
       >
