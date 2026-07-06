@@ -152,5 +152,10 @@
     "text": "Koristimo neophodne kolačiće za mjerenje performansi i optimizaciju brzine. Korišćenjem Corebit Studio-a, prihvatate naše politike.",
     "accept": "Prihvati",
     "link": "Politika kolačića"
+  },
+  "not_found": {
+    "title": "Stranica nije pronađena",
+    "subtitle": "Stranica koju tražite ne postoji ili je premještena.",
+    "back": "Nazad na početnu"
   }
 }

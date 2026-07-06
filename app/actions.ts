@@ -34,6 +34,12 @@ const ContactSchema = z.object({
     .refine((val) => !/<[^>]+>/.test(val), {
       message: 'HTML markup is not allowed in messages',
     }),
+  locale: z
+    .string()
+    .trim()
+    .regex(/^(en|ru|cnr|srb|sq)$/, 'Invalid locale')
+    .optional()
+    .default('en'),
   bot_field: z.literal('').optional(),
 });
 
@@ -83,6 +89,7 @@ export async function submitContactForm(formData: FormData) {
     name:      formData.get('name'),
     email:     formData.get('email'),
     message:   formData.get('message'),
+    locale:    formData.get('locale') ?? 'en',
     bot_field: formData.get('bot_field') ?? '',
   };
 
@@ -95,7 +102,7 @@ export async function submitContactForm(formData: FormData) {
     return { success: false, errorType: isSpamLike ? 'spam' : 'general' };
   }
 
-  const { name, email, message } = parsed.data;
+  const { name, email, message, locale: userLocale } = parsed.data;
 
   // 5. Encode for safe email body transmission (HTML entity encoding)
   const safeBody = {
@@ -124,6 +131,7 @@ export async function submitContactForm(formData: FormData) {
     senderEmail:   safeBody.email,
     senderName:    safeBody.name.slice(0, 60),
     messageLength: safeBody.message.length,
+    replyLocale:   userLocale,  // Language the lead used — determines reply language
     ipHash:        ip.slice(0, 8) + '***',  // Partial IP — not full PII
   };
   console.log(JSON.stringify(auditLog));

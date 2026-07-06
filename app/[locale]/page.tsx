@@ -238,7 +238,7 @@ export default async function HomePage({ params: { locale } }: { params: { local
       <FAQSection dict={dict.faq} />
 
       {/* Contact */}
-      <ContactForm dict={dict.contact_form} />
+      <ContactForm dict={dict.contact_form} locale={locale} />
     </div>
   );
 }

@@ -152,5 +152,10 @@
     "text": "We use essential cookies to measure performance and optimize load times. By utilizing Corebit Studio, you acknowledge our policies.",
     "accept": "Accept Cookies",
     "link": "Cookie Policy"
+  },
+  "not_found": {
+    "title": "Page Not Found",
+    "subtitle": "The page you're looking for doesn't exist or has been moved.",
+    "back": "Back to Home"
   }
 }

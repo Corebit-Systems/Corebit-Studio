@@ -152,5 +152,10 @@
     "text": "Ne përdorim cookie thelbësore për të matur performancën dhe optimizuar ngarkimin. Duke përdorur Corebit Studio, ju pranoni politikat tona.",
     "accept": "Prano",
     "link": "Politika e cookies"
+  },
+  "not_found": {
+    "title": "Faqja nuk u gjet",
+    "subtitle": "Faqja që po kërkoni nuk ekziston ose është zhvendosur.",
+    "back": "Kthehu në fëllesë"
   }
 }

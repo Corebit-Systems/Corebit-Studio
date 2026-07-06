@@ -26,6 +26,53 @@
   a {
     -webkit-tap-highlight-color: transparent;
   }
+
+  /* ── Custom Scrollbar — Glassmorphic Dark Theme ─────────────────────────── */
+  /* Webkit browsers: Chrome, Safari, Edge */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    transition: background 0.2s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(16, 185, 129, 0.35); /* emerald-500 at 35% */
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  /* Firefox — uses scrollbar-color + scrollbar-width */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.08) transparent;
+  }
+
+  /* Текстовые области и поля ввода — локальный тонкий скроллбар */
+  textarea {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(16, 185, 129, 0.25) transparent;
+  }
+
+  textarea::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  textarea::-webkit-scrollbar-thumb {
+    background: rgba(16, 185, 129, 0.25);
+    border-radius: 999px;
+  }
 }
 
 @layer utilities {
@@ -35,3 +82,4 @@
     overflow-x: hidden;
   }
 }
+

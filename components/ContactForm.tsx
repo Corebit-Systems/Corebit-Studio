@@ -23,9 +23,10 @@ interface ContactFormDict {
 
 interface ContactFormProps {
   dict: ContactFormDict;
+  locale: string;
 }
 
-export default function ContactForm({ dict }: ContactFormProps) {
+export default function ContactForm({ dict, locale }: ContactFormProps) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [agreeGDPR, setAgreeGDPR] = useState(false);
@@ -85,6 +86,8 @@ export default function ContactForm({ dict }: ContactFormProps) {
     setErrorMessage('');
 
     const formData = new FormData(e.currentTarget);
+    // Always include locale in payload so the server knows which language to reply in
+    formData.set('locale', locale);
 
     try {
       const response = await submitContactForm(formData);
