@@ -220,7 +220,7 @@ export default function ContactForm({ dict }: ContactFormProps) {
             </a>
             <span className="text-white/10">|</span>
             <a
-              href="mailto:hello@corebitsystems.io"
+              href="mailto:corebitstudio@corebitsystems.io"
               className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors"
             >
               <svg className="w-4.5 h-4.5 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">

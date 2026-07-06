@@ -53,7 +53,7 @@ const POLICY_CONTENT: Record<string, PolicyContent> = {
       },
       {
         title: "3. Your Rights",
-        text: "Under legal regulations, you have full rights to inspect, update, or completely delete any secure message logs. Write to hello@corebitsystems.io for data requests."
+        text: "Under legal regulations, you have full rights to inspect, update, or completely delete any secure message logs. Write to corebitstudio@corebitsystems.io for data requests."
       }
     ]
   },
@@ -73,7 +73,7 @@ const POLICY_CONTENT: Record<string, PolicyContent> = {
       },
       {
         title: "3. Ваши права",
-        text: "Вы имеете право запросить просмотр, изменение или полное удаление ваших контактных логов. Для этого свяжитесь с нами по адресу hello@corebitsystems.io."
+        text: "Вы имеете право запросить просмотр, изменение или полное удаление ваших контактных логов. Для этого свяжитесь с нами по адресу corebitstudio@corebitsystems.io."
       }
     ]
   },
@@ -93,7 +93,7 @@ const POLICY_CONTENT: Record<string, PolicyContent> = {
       },
       {
         title: "3. Vaša Prava",
-        text: "Imate pravo da u svakom trenutku zatražite uvid, izmjenu ili potpuno brisanje vaših kontakt podataka slanjem upita na hello@corebitsystems.io."
+        text: "Imate pravo da u svakom trenutku zatražite uvid, izmjenu ili potpuno brisanje vaših kontakt podataka slanjem upita na corebitstudio@corebitsystems.io."
       }
     ]
   },
@@ -113,7 +113,7 @@ const POLICY_CONTENT: Record<string, PolicyContent> = {
       },
       {
         title: "3. Vaša Prava",
-        text: "Imate pravo da u svakom trenutku zatražite uvid, izmenu ili potpuno brisanje vaših kontakt podataka slanjem upita na hello@corebitsystems.io."
+        text: "Imate pravo da u svakom trenutku zatražite uvid, izmenu ili potpuno brisanje vaših kontakt podataka slanjem upita na corebitstudio@corebitsystems.io."
       }
     ]
   },
@@ -133,7 +133,7 @@ const POLICY_CONTENT: Record<string, PolicyContent> = {
       },
       {
         title: "3. Të Drejtat Tuaja",
-        text: "Ju keni të drejtë të plotë të kërkoni inspektimin, përditësimin ose fshirjen e plotë të të dhënave tuaja duke na shkruar në hello@corebitsystems.io."
+        text: "Ju keni të drejtë të plotë të kërkoni inspektimin, përditësimin ose fshirjen e plotë të të dhënave tuaja duke na shkruar në corebitstudio@corebitsystems.io."
       }
     ]
   }

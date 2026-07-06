@@ -7,9 +7,9 @@ import { useState, useEffect, useRef } from 'react';
 const locales = [
   { code: 'en', label: 'English', flag: '🇬🇧' },
   { code: 'ru', label: 'Русский', flag: '🇷🇺' },
-  { code: 'cnr', label: 'Црногорски', flag: '🇲🇪' },
+  { code: 'sq', label: 'Shqip', flag: '🇦🇱' },
   { code: 'srb', label: 'Српски', flag: '🇷🇸' },
-  { code: 'sq', label: 'Shqip', flag: '🇦🇱' }
+  { code: 'cnr', label: 'Црногорски', flag: '🇲🇪' }
 ];
 
 export default function LangSwitcher({ currentLocale }: { currentLocale: string }) {
@@ -55,9 +55,8 @@ export default function LangSwitcher({ currentLocale }: { currentLocale: string 
         aria-label="Change Language"
         aria-expanded={isOpen}
       >
-        <Globe size={16} className="text-neutral-400" />
-        <span className="uppercase text-neutral-200">{currentLocale}</span>
-        <span className="text-sm ml-0.5">{activeLoc.flag}</span>
+        <span className="text-base leading-none shrink-0">{activeLoc.flag}</span>
+        <span className="uppercase text-neutral-200 leading-none">{activeLoc.code}</span>
       </button>
 
       {isOpen && (
@@ -67,14 +66,14 @@ export default function LangSwitcher({ currentLocale }: { currentLocale: string 
               <button
                 key={loc.code}
                 onClick={() => switchLang(loc.code)}
-                className={`flex items-center justify-between w-full px-3.5 py-2.5 rounded-xl text-sm transition-all ${
+                className={`flex items-center gap-2.5 w-full px-3.5 py-2.5 rounded-xl text-sm transition-all text-left ${
                   currentLocale === loc.code 
                     ? 'text-emerald-400 font-bold bg-white/5' 
                     : 'text-neutral-300 hover:text-white hover:bg-white/5'
                 }`}
               >
-                <span className="font-medium">{loc.label}</span>
-                <span className="text-base">{loc.flag}</span>
+                <span className="text-base shrink-0 leading-none">{loc.flag}</span>
+                <span className="font-medium leading-none">{loc.label}</span>
               </button>
             ))}
           </div>

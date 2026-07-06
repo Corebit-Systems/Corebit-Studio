@@ -91,7 +91,7 @@ export default function RootLayout({
     "name": "Corebit Studio",
     "url": SITE_URL,
     "telephone": "068914816",
-    "email": "hello@corebitsystems.io",
+    "email": "corebitstudio@corebitsystems.io",
     "priceRange": "€2900 - €7500+",
     "address": {
       "@type": "PostalAddress",
@@ -336,7 +336,7 @@ DICTIONARY_JSON = {
         "title": "Establish Secure Connection",
         "phone": "068914816",
         "whatsapp": "+359882905657",
-        "email": "hello@corebitsystems.io"
+        "email": "corebitstudio@corebitsystems.io"
     }
 }
 

@@ -121,7 +121,7 @@ export default async function HomePage({ params: { locale } }: { params: { local
       "@id": "https://corebit-studio.vercel.app",
       "url": "https://corebit-studio.vercel.app",
       "telephone": "+38268914816",
-      "email": "hello@corebitsystems.io",
+      "email": "corebitstudio@corebitsystems.io",
       "priceRange": "€360 - €3150",
       "address": {
         "@type": "PostalAddress",
