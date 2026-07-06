@@ -37,7 +37,7 @@ export default function Footer({ dict }: FooterProps) {
             href="tel:+38268914816"
             className="group flex flex-col items-center gap-3 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/[0.02] border border-white/10 hover:border-white/30 hover:bg-white/[0.04] transition-all"
           >
-            <div className="p-3 sm:p-4 rounded-full bg-white/5 text-neutral-400 group-hover:text-white group-hover:bg-white/10 transition-all">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-white/5 text-neutral-400 group-hover:text-white group-hover:bg-white/10 transition-all shrink-0">
               <Phone size={22} />
             </div>
             <span className="font-mono text-base sm:text-lg tracking-wider text-white">+382 68 914 816</span>
@@ -49,7 +49,7 @@ export default function Footer({ dict }: FooterProps) {
             rel="noopener noreferrer"
             className="group flex flex-col items-center gap-3 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/[0.02] border border-white/10 hover:border-emerald-600/50 hover:bg-emerald-600/5 transition-all"
           >
-            <div className="p-3 sm:p-4 rounded-full bg-emerald-600/10 text-emerald-400 group-hover:bg-emerald-600/20 transition-all">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-emerald-600/10 text-emerald-400 group-hover:bg-emerald-600/20 transition-all shrink-0">
               <MessageCircle size={22} />
             </div>
             <span className="font-mono text-base sm:text-lg tracking-wider text-white text-center leading-none">+359 88 290 5657</span>
@@ -62,9 +62,9 @@ export default function Footer({ dict }: FooterProps) {
             rel="noopener noreferrer"
             className="group flex flex-col items-center gap-3 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/[0.02] border border-white/10 hover:border-emerald-600/50 hover:bg-emerald-600/5 transition-all"
           >
-            <div className="p-3 sm:p-4 rounded-full bg-sky-500/10 text-sky-400 group-hover:bg-sky-500/20 transition-all">
-              <svg className="w-[22px] h-[22px] fill-current" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15.9-2.5 10.6-2.77 11.8-.12.5-.34.8-.71.9-.78.2-1.37-.2-2.09-.7-.56-.3-2.03-1.6-2.59-2.1-.15-.1-.31-.3-.03-.6.09-.09 1.56-1.4 2.87-2.6.59-.5 1.18-1.2-.09-1.2-.28 0-.75.1-.93.3-5.18 3.3-5.18 3.3-5.18 3.3-.46.2-.9.4-1.28.4-.4 0-1.21-.2-1.81-.4-.71-.2-1.28-.3-1.21-.8.03-.2.34-.4.93-.6 3.65-1.5 6.09-2.6 7.31-3.1 3.5-1.4 4.21-1.7 4.68-1.7.12 0 .37 0 .53.1.12.09.21.2.25.4.03.1.03.5-.03.8z"/>
+            <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-sky-500/10 text-sky-400 group-hover:bg-sky-500/20 transition-all shrink-0">
+              <svg className="w-[22px] h-[22px] fill-current block" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21.9,2.1C21.7,2 21.4,2 21.2,2.1L2.3,9.3C1.8,9.5 1.7,10.1 2.1,10.4L7.6,13.6L18.6,5.3C18.8,5.1 19,5.4 18.8,5.6L10,13.9V19.8C10,20.4 10.7,20.7 11.1,20.2L13.8,16.8L18.6,20.4C18.9,20.6 19.3,20.4 19.4,20.1L22.9,3C23,2.7 22.8,2.3 21.9,2.1Z" />
               </svg>
             </div>
             <span className="font-mono text-base sm:text-lg tracking-wider text-white">@corebitsystems</span>
@@ -74,7 +74,7 @@ export default function Footer({ dict }: FooterProps) {
             href="mailto:corebitstudio@corebitsystems.io"
             className="group flex flex-col items-center gap-3 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/[0.02] border border-white/10 hover:border-white/30 hover:bg-white/[0.04] transition-all"
           >
-            <div className="p-3 sm:p-4 rounded-full bg-white/5 text-neutral-400 group-hover:text-white group-hover:bg-white/10 transition-all">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-white/5 text-neutral-400 group-hover:text-white group-hover:bg-white/10 transition-all shrink-0">
               <Mail size={22} />
             </div>
             <span className="font-mono text-sm sm:text-base tracking-wider text-white break-all text-center">corebitstudio@corebitsystems.io</span>
