@@ -75,6 +75,11 @@ export async function generateMetadata({
     verification: {
       google: 'G8PO2v-HeIoMTxZXUb8qNopkCV6sQPH4Cd0VEftJyVQ',
     },
+    icons: {
+      icon: '/icon.png',
+      shortcut: '/favicon.ico',
+      apple: '/apple-icon.png',
+    },
 
     title:       meta.title,
     description: meta.description,
