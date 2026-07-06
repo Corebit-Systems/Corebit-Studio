@@ -3,9 +3,10 @@ import { getDictionary, Locale } from '@/i18n/getDictionary';
 import BentoCard from '@/components/BentoCard';
 import PricingSection from '@/components/PricingSection';
 import ContactForm from '@/components/ContactForm';
+import HeroSection from '@/components/HeroSection';
+import FAQSection from '@/components/FAQSection';
 import { ArrowRight, CheckCircle2, CalendarClock, Utensils, CalendarHeart } from 'lucide-react';
 
-// Строгая типизация словаря страницы
 interface PageDict {
   hero: {
     badge: string;
@@ -21,6 +22,7 @@ interface PageDict {
   automation: {
     title: string;
     subtitle: string;
+    seo_tagline?: string;
     tables: { title: string; desc: string };
     booking: { title: string; desc: string };
     schedule: { title: string; desc: string };
@@ -32,6 +34,18 @@ interface PageDict {
   };
   pricing: PricingDict;
   contact_form: ContactFormDict;
+  faq: FAQDict;
+}
+
+interface FAQItem {
+  q: string;
+  a: string;
+}
+
+interface FAQDict {
+  title: string;
+  subtitle: string;
+  items: FAQItem[];
 }
 
 interface PricingDict {
@@ -55,13 +69,14 @@ interface ContactFormDict {
   error_rate: string;
   error_spam: string;
   error_general: string;
+  gdpr_text: string;
+  privacy_policy_link: string;
 }
 
 export default async function HomePage({ params: { locale } }: { params: { locale: Locale } }) {
   const rawDict = await getDictionary(locale);
   const dict = rawDict as unknown as PageDict;
 
-  // High-Fidelity CSS Mockups для портфолио
   const CupertinoVisual = (
     <div className="absolute inset-0 bg-gradient-to-br from-amber-900/40 to-orange-600/20 flex items-center justify-center">
       <div className="w-full h-full bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px]" />
@@ -95,51 +110,49 @@ export default async function HomePage({ params: { locale } }: { params: { local
     </div>
   );
 
+  // Authoritative JSON-LD Microdata context
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Corebit Studio",
+    "image": "https://corebit-studio.vercel.app/og-image-en.png",
+    "@id": "https://corebit-studio.vercel.app",
+    "url": "https://corebit-studio.vercel.app",
+    "telephone": "+38268914816",
+    "email": "hello@corebitsystems.io",
+    "priceRange": "€360 - €3150",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Tivat",
+      "addressCountry": "ME"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "42.4350",
+      "longitude": "18.6961"
+    }
+  };
+
   return (
-    // ФИКС: gap-40 → gap-24 md:gap-32 (160px → 96px/128px), убраны px-6 в пользу px-4 sm:px-6
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24 flex flex-col gap-24 md:gap-32">
+      {/* Schema.org Entity script */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
-      {/* Hero */}
-      <section className="flex flex-col items-center text-center gap-6 sm:gap-8 pt-8 sm:pt-16">
-        <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs sm:text-sm font-medium text-neutral-300 backdrop-blur-md shadow-2xl">
-          <span className="relative flex h-2 w-2 shrink-0">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-          </span>
-          <span className="line-clamp-1">{dict.hero.badge}</span>
-        </div>
-
-        {/* ФИКС: text-6xl → text-4xl sm:text-5xl md:text-7xl lg:text-8xl — предотвращает overflow на 320px */}
-        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-white/40 max-w-5xl leading-tight">
-          {dict.hero.title}
-        </h1>
-
-        <p className="text-base sm:text-lg md:text-xl text-neutral-400 max-w-2xl leading-relaxed font-light px-2">
-          {dict.hero.subtitle}
-        </p>
-
-        {/* ФИКС: flex-col на мобиле, gap уменьшен */}
-        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 mt-4 sm:mt-8 w-full sm:w-auto">
-          <a
-            href={`/${locale}#contact`}
-            className="w-full sm:w-auto px-6 sm:px-8 py-4 rounded-2xl bg-white text-black font-semibold text-base sm:text-lg hover:bg-neutral-200 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2 min-h-[52px]"
-          >
-            {dict.hero.cta} <ArrowRight size={20} />
-          </a>
-        </div>
-      </section>
+      {/* Animated Hero Section */}
+      <HeroSection dict={dict.hero} locale={locale} />
 
       {/* About */}
-      {/* ФИКС: p-12 → p-6 sm:p-8 md:p-12, убран flex-1 у бейдж-грида чтобы не растягивать */}
       <section className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16 p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-[3rem] bg-white/[0.02] border border-white/10 backdrop-blur-xl relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-72 sm:w-[500px] h-72 sm:h-[500px] bg-emerald-500/10 blur-[150px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 right-0 w-72 sm:w-[500px] h-72 sm:h-[500px] bg-emerald-600/10 blur-[150px] rounded-full pointer-events-none" />
 
         <div className="flex flex-col gap-4 md:flex-1 relative z-10">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">{dict.about.title}</h2>
-          <p className="text-base text-neutral-400 leading-relaxed">{dict.about.desc}</p>
+          <p className="text-base text-neutral-400 leading-relaxed font-light">{dict.about.desc}</p>
         </div>
 
-        {/* ФИКС: grid-cols-1 sm:grid-cols-2 — избегаем переполнения на 320px */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 relative z-10 w-full md:flex-1">
           {dict.about.badges.map((badge: string, i: number) => (
             <div key={i} className="flex items-center gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-xs sm:text-sm font-medium min-h-[52px]">
@@ -152,10 +165,14 @@ export default async function HomePage({ params: { locale } }: { params: { local
       {/* Modules */}
       <section id="modules" className="flex flex-col gap-8 sm:gap-12">
         <div className="text-center flex flex-col gap-3 sm:gap-4 px-2">
+          {dict.automation.seo_tagline && (
+            <h3 className="text-xs sm:text-sm font-bold tracking-wider text-emerald-500 uppercase">
+              {dict.automation.seo_tagline}
+            </h3>
+          )}
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">{dict.automation.title}</h2>
           <p className="text-base sm:text-xl text-neutral-400">{dict.automation.subtitle}</p>
         </div>
-        {/* ФИКС: grid-cols-1 на мобиле — md:grid-cols-3 */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 items-stretch">
           <BentoCard
             title={dict.automation.tables.title}
@@ -182,12 +199,11 @@ export default async function HomePage({ params: { locale } }: { params: { local
 
       {/* Portfolio */}
       <section id="portfolio" className="flex flex-col gap-8 sm:gap-12 relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[300px] sm:h-[400px] bg-emerald-500/5 blur-[200px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[300px] sm:h-[400px] bg-emerald-600/5 blur-[200px] rounded-full pointer-events-none" />
         <div className="text-center flex flex-col gap-3 sm:gap-4 relative z-10 px-2">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">{dict.portfolio.title}</h2>
           <p className="text-base sm:text-xl text-neutral-400">{dict.portfolio.subtitle}</p>
         </div>
-        {/* ФИКС: grid-cols-1 sm:grid-cols-2 — корректное разбиение */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 relative z-10 items-stretch">
           <BentoCard
             href={`/${locale}/portfolio/cupertino-roast`}
@@ -226,6 +242,9 @@ export default async function HomePage({ params: { locale } }: { params: { local
 
       {/* Pricing */}
       <PricingSection dict={dict.pricing} />
+
+      {/* FAQ Accordion */}
+      <FAQSection dict={dict.faq} />
 
       {/* Contact */}
       <ContactForm dict={dict.contact_form} />

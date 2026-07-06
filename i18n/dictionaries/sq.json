@@ -13,7 +13,7 @@
   },
   "about": {
     "title": "Arkitekturë me Konvertim të Lartë",
-    "desc": "Një klient viziton faqen tuaj dhe menjëherë dëshiron shërbimin tuaj. Ne e arrijmë këtë duke kombinuar dizajnin Apple me rrjetet e shpejta Next.js Edge.",
+    "desc": "Një klient viziton faqen tuaj dhe menjëherë dëshiron shërbimin tuaj. Ne e arrijmë këtë duke kombinuar dizajnin Apple me rrjetet e shpejta Next.js Edge, duke siguruar një integrim të qetë. Ne shtrijmë shërbimet tona të inxhinierisë dhe automatizimit në të gjithë Malin e Zi (Tivat, Budvë, Podgoricë), Serbinë (Beograd) dhe Shqipërinë (Tiranë).",
     "badges": [
       "Ngarkim < 100ms",
       "UX Mobil i Përsosur",
@@ -24,6 +24,7 @@
   "automation": {
     "title": "Module të Automatizimit",
     "subtitle": "Kthejeni faqen tuaj në një makinë shitjeje autonome 24/7.",
+    "seo_tagline": "Zgjidhje softuerike në Shqipëri & Automatizim Biznesi",
     "tables": {
       "title": "Rezervime të Zgjuara",
       "desc": "Sisteme rezervimi në kohë reale dhe plane interaktive për restorante premium."
@@ -98,7 +99,9 @@
     "success": "Lidhja u krijua. Ne do t'ju kontaktojmë së shpejti.",
     "error_rate": "Kufiri i normës u tejkalua. Ju lutemi prisni 60 sekonda.",
     "error_spam": "Protokolli i sigurisë u aktivizua. Të dhëna të pavlefshme.",
-    "error_general": "Transmetimi dështoi. Ju lutemi provoni përsëri."
+    "error_general": "Transmetimi dështoi. Ju lutemi provoni përsëri.",
+    "gdpr_text": "Unë pajtohem me përpunimin e të dhënave të mia në përputhje me",
+    "privacy_policy_link": "Politikën e privatësisë."
   },
   "footer": {
     "cta_btn": "Fillo Projektin",
@@ -121,5 +124,28 @@
       "stack": ["Next.js", "Tailwind CSS", "Prisma ORM", "Stripe Connect"],
       "features": ["Formularë hap-pas-hapi të qetë", "Sinkronizim i kalendarit të stafit", "Autorizim i pagesës së depozitës"]
     }
+  },
+  "faq": {
+    "title": "Pyetjet më të Shpeshta",
+    "subtitle": "Përgjigje të qarta rreth teknologjive tona, afateve dhe mbështetjes rajonale.",
+    "items": [
+      {
+        "q": "Çfarë teknologjish përdorni?",
+        "a": "Ne ndërtojmë me Next.js 14 (App Router) dhe Tailwind CSS, duke shfrytëzuar rrjetet Vercel Edge për të arritur kohë ngarkimi nën 100ms. Për bazat e të dhënave dhe integrimet tona, ne përdorim PostgreSQL, Redis dhe sisteme të sigurta Webhook."
+      },
+      {
+        "q": "Sa është afati i prodhimit për modulet e automatizimit të biznesit?",
+        "a": "Modulet standarde (si rezervimet e tavolinave ose rezervimet e takimeve) vendosen në punë brenda 2-4 javëve. Automatizimi i sistemeve të ndërlikuara ndërmarrjeje zgjat midis 6-8 javëve."
+      },
+      {
+        "q": "A ofroni mbështetje teknike lokale për kompanitë në Mal të Zi, Serbi dhe Shqipëri?",
+        "a": "Po! Ne ofrojmë mbështetje teknike të dedikuar nga distanca dhe në vend për kompanitë në Mal të Zi (Tivat, Budvë, Podgoricë), Serbi (Beograd) dhe Shqipëri (Tiranë) me kohë reagimi sipas SLA nën 2 orë."
+      }
+    ]
+  },
+  "cookie": {
+    "text": "Ne përdorim cookie thelbësore për të matur performancën dhe optimizuar ngarkimin. Duke përdorur Corebit Studio, ju pranoni politikat tona.",
+    "accept": "Prano",
+    "link": "Politika e cookies"
   }
 }

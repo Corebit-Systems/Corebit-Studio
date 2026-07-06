@@ -79,7 +79,7 @@ export default async function PortfolioProjectPage({
             <ul className="flex flex-col gap-3 sm:gap-4 mt-2 sm:mt-4">
               {details.stack.map((tech, i) => (
                 <li key={i} className="flex items-center gap-3 text-neutral-300 font-medium text-sm sm:text-base">
-                  <div className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" /> {tech}
+                  <div className="w-2 h-2 rounded-full bg-emerald-600 shrink-0" /> {tech}
                 </li>
               ))}
             </ul>
@@ -87,7 +87,7 @@ export default async function PortfolioProjectPage({
 
           <div className="flex flex-col h-full p-5 sm:p-8 md:p-10 rounded-2xl sm:rounded-[2.5rem] border border-white/10 bg-white/[0.02] backdrop-blur-xl gap-4 sm:gap-6">
             <div className="flex items-center gap-3 text-white">
-              <CheckCircle2 size={22} className="text-emerald-500" />
+              <CheckCircle2 size={22} className="text-emerald-600" />
               <h3 className="text-xl sm:text-2xl font-semibold">{dict.portfolio_page.features}</h3>
             </div>
             <ul className="flex flex-col gap-3 sm:gap-4 mt-2 sm:mt-4">

@@ -13,7 +13,7 @@
   },
   "about": {
     "title": "High-Conversion Architecture",
-    "desc": "A client visits your site and instantly desires your service. We achieve this by combining Apple-grade glassmorphism with Next.js Edge networks, delivering sub-100ms load times and seamless user onboarding.",
+    "desc": "A client visits your site and instantly desires your service. We achieve this by combining Apple-grade glassmorphism with Next.js Edge networks, delivering sub-100ms load times and seamless user onboarding. We explicitly extend our high-performance engineering and automation coverage across Montenegro (Tivat, Budva, Podgorica), Serbia (Belgrade), and Albania (Tirana).",
     "badges": [
       "Sub-100ms Load",
       "Flawless Mobile UX",
@@ -24,6 +24,7 @@
   "automation": {
     "title": "Proprietary Automation Modules",
     "subtitle": "Turn your website into a 24/7 autonomous sales and booking engine.",
+    "seo_tagline": "Web Development in Montenegro & Balkan Business Automation",
     "tables": {
       "title": "Smart Table Reservations",
       "desc": "Live interactive layouts and real-time booking engines for premium restaurants and cafes."
@@ -98,7 +99,9 @@
     "success": "Connection Established. We will contact you shortly.",
     "error_rate": "Rate limit exceeded. Please wait 60 seconds.",
     "error_spam": "Security protocol triggered. Invalid payload.",
-    "error_general": "Transmission failed. Please try again."
+    "error_general": "Transmission failed. Please try again.",
+    "gdpr_text": "I agree to the processing of my data in accordance with the",
+    "privacy_policy_link": "Privacy Policy."
   },
   "footer": {
     "cta_btn": "Launch Project",
@@ -121,5 +124,28 @@
       "stack": ["Next.js", "Tailwind CSS", "Prisma ORM", "Stripe Connect"],
       "features": ["Smooth step-by-step onboarding forms", "Staff calendar synchronization", "Deposit payment authorization"]
     }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Clear insights into our engineering workflows, timeframes, and localized operations.",
+    "items": [
+      {
+        "q": "What technologies do you use?",
+        "a": "We build with Next.js 14 (App Router) and Tailwind CSS, leveraging Vercel Edge networks to deliver sub-100ms load times. For database and custom pipelines, we integrate PostgreSQL, Redis, and secure Webhook systems."
+      },
+      {
+        "q": "What is the production timeline for custom business automation modules?",
+        "a": "Standard table reservation, appointment booking, or time-slot schedulers are typically deployed within 2-4 weeks. Enterprise-scale system automation and backend integrations take between 6-8 weeks."
+      },
+      {
+        "q": "Do you provide localized tech-support for companies in Montenegro, Serbia, and Albania?",
+        "a": "Yes, we provide dedicated remote and on-site support for companies in Montenegro (Tivat, Budva, Podgorica), Serbia (Belgrade), and Albania (Tirana) with SLA response times under 2 hours."
+      }
+    ]
+  },
+  "cookie": {
+    "text": "We use essential cookies to measure performance and optimize load times. By utilizing Corebit Studio, you acknowledge our policies.",
+    "accept": "Accept Cookies",
+    "link": "Cookie Policy"
   }
 }

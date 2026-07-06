@@ -32,5 +32,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...localeRoutes, ...portfolioRoutes];
+  // ── Compliance policy pages per locale (priority 0.5) ─────────────────
+  const compliancePages = ['cookie-policy', 'privacy-policy'] as const;
+  const policyRoutes: MetadataRoute.Sitemap = locales.flatMap((locale) =>
+    compliancePages.map((page) => ({
+      url:             `${SITE_URL}/${locale}/${page}`,
+      lastModified:    now,
+      changeFrequency: 'monthly' as const,
+      priority:        0.5,
+    }))
+  );
+
+  return [...localeRoutes, ...portfolioRoutes, ...policyRoutes];
 }

@@ -13,7 +13,7 @@
   },
   "about": {
     "title": "Arhitektura Visoke Konverzije",
-    "desc": "Klijent posjeti vaš sajt i odmah želi vašu uslugu. To postižemo kombinovanjem Apple dizajna sa ultra-brzim Next.js Edge mrežama.",
+    "desc": "Klijent posjeti vaš sajt i odmah želi vašu uslugu. To postižemo kombinovanjem Apple dizajna sa ultra-brzim Next.js Edge mrežama, obezbjeđujući besprekoran onbording. Ponosno pružamo usluge inženjeringa i automatizacije širom Crne Gore (Tivat, Budva, Podgorica), Srbije (Beograd) i Albanije (Tirana).",
     "badges": [
       "Učitavanje < 100ms",
       "Besprekoran Mobilni UX",
@@ -24,6 +24,7 @@
   "automation": {
     "title": "Sopstveni Moduli",
     "subtitle": "Pretvorite vaš sajt u autonomnu mašinu za prodaju 24/7.",
+    "seo_tagline": "Automatizacija poslovanja Crna Gora & Veb Razvoj",
     "tables": {
       "title": "Pametne Rezervacije Stolova",
       "desc": "Interaktivni rasporedi i sistemi za rezervaciju u realnom vremenu za premium restorane."
@@ -98,7 +99,9 @@
     "success": "Veza uspostavljena. Uskoro ćemo vas kontaktirati.",
     "error_rate": "Previše zahtjeva. Sačekajte 60 sekundi.",
     "error_spam": "Sigurnosni protokol aktiviran. Nevažeći podaci.",
-    "error_general": "Slanje nije uspjelo. Pokušajte ponovo."
+    "error_general": "Slanje nije uspjelo. Pokušajte ponovo.",
+    "gdpr_text": "Saglasan sam sa obradom mojih podataka u skladu sa",
+    "privacy_policy_link": "Politikom privatnosti."
   },
   "footer": {
     "cta_btn": "Pokreni Projekat",
@@ -121,5 +124,28 @@
       "stack": ["Next.js", "Tailwind CSS", "Prisma ORM", "Stripe Connect"],
       "features": ["Glatki obrasci za korak-po-korak zakazivanje", "Sinhronizacija kalendara osoblja", "Autorizacija depozitnog plaćanja"]
     }
+  },
+  "faq": {
+    "title": "Često Postavljana Pitanja",
+    "subtitle": "Jasni odgovori o našim tehnologijama, rokovima i regionalnoj podršci.",
+    "items": [
+      {
+        "q": "Koje tehnologije koristite?",
+        "a": "Gradimo koristeći Next.js 14 (App Router) i Tailwind CSS, koristeći Vercel Edge mreže za postizanje učitavanja ispod 100ms. Za baze podataka i prilagođene sisteme, integrišemo PostgreSQL, Redis i sigurne Webhook sisteme."
+      },
+      {
+        "q": "Koji je rok izrade za prilagođene module automatizacije?",
+        "a": "Standardni moduli (poput rezervacije stolova ili zakazivanja termina) se obično puštaju u rad za 2-4 nedelje. Automatizacija kompleksnih sistema na nivou preduzeća traje između 6-8 nedelja."
+      },
+      {
+        "q": "Da li pružaš lokalizovanu tehničku podršku u Crnoj Gori, Srbiji i Albaniji?",
+        "a": "Da! Pružamo posvećenu daljinsku i terensku tehničku podršku za kompanije u Crnoj Gori (Tivat, Budva, Podgorica), Srbiji (Beograd) i Albaniji (Tirana) sa vremenom odziva ispod 2 sata."
+      }
+    ]
+  },
+  "cookie": {
+    "text": "Koristimo neophodne kolačiće za mjerenje performansi i optimizaciju brzine. Korišćenjem Corebit Studio-a, prihvatate naše politike.",
+    "accept": "Prihvati",
+    "link": "Politika kolačića"
   }
 }

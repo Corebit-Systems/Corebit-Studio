@@ -4,6 +4,9 @@ import { Inter } from 'next/font/google';
 import '@/app/globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import CookieBanner from '@/components/CookieBanner';
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 
 const inter = Inter({ subsets: ['latin', 'cyrillic'], variable: '--font-inter' });
@@ -57,7 +60,6 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
-  // Fall back to English if an unsupported locale is somehow received
   const meta     = LOCALE_META[locale] ?? LOCALE_META.en;
   const ogImage  = `${SITE_URL}/og-image-${locale in LOCALE_META ? locale : 'en'}.png`;
   const ogAltMap: Record<string, string> = {
@@ -77,8 +79,8 @@ export async function generateMetadata({
     // ── Canonical & hreflang alternates ──────────────────────────────────
     alternates: {
       canonical: `${SITE_URL}/${locale}`,
-      // cnr = Montenegrin (IETF-recognized), sr mapped to /srb path
       languages: {
+        'x-default': `${SITE_URL}/en`,
         en:  `${SITE_URL}/en`,
         ru:  `${SITE_URL}/ru`,
         cnr: `${SITE_URL}/cnr`,
@@ -87,7 +89,7 @@ export async function generateMetadata({
       } as Record<string, string>,
     },
 
-    // ── Open Graph (locale-specific image) ───────────────────────────────
+    // ── Open Graph ───────────────────────────────────────────────────────
     openGraph: {
       type:        'website',
       url:         `${SITE_URL}/${locale}`,
@@ -106,7 +108,7 @@ export async function generateMetadata({
       ],
     },
 
-    // ── Twitter / X Card (locale-specific image) ─────────────────────────
+    // ── Twitter / X Card ─────────────────────────────────────────────────
     twitter: {
       card:        'summary_large_image',
       site:        '@CorebitStudio',
@@ -136,7 +138,6 @@ export async function generateMetadata({
       },
     },
 
-    // ── Authoring ─────────────────────────────────────────────────────────
     keywords:  meta.keywords,
     authors:   [{ name: 'Corebit Studio', url: SITE_URL }],
     creator:   'Corebit Studio',
@@ -159,6 +160,11 @@ interface LayoutDict {
     cta_btn: string;
     rights:  string;
   };
+  cookie: {
+    text: string;
+    accept: string;
+    link: string;
+  };
 }
 
 export default async function RootLayout({
@@ -171,10 +177,8 @@ export default async function RootLayout({
   const rawDict = await getDictionary(locale as Locale);
   const dict    = rawDict as unknown as LayoutDict;
 
-  // Schema.org image always points to the EN canonical OG image for the @id entity
   const canonicalOgImage = `${SITE_URL}/og-image-en.png`;
 
-  // ── Schema.org JSON-LD — ProfessionalService entity (AEO anchor) ───────
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type':    'ProfessionalService',
@@ -201,8 +205,7 @@ export default async function RootLayout({
       opens:       '09:00',
       closes:      '18:00',
     },
-    sameAs: ['https://wa.me/359882905657'],
-    // Offer catalogue for rich results
+    sameAs: ['https://wa.me/359882905657', 'https://t.me/corebitsystems'],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name:    'Web Architecture & Automation Services',
@@ -216,11 +219,9 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className="dark scroll-smooth">
-      {/* overflow-x-hidden on body prevents horizontal scroll on mobile */}
       <body
         className={`${inter.variable} font-sans bg-[#050506] text-white antialiased min-h-screen selection:bg-white/20 selection:text-white flex flex-col overflow-x-hidden`}
       >
-        {/* Schema.org JSON-LD — injected server-side, zero client JS cost */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -230,12 +231,18 @@ export default async function RootLayout({
 
         <Header dict={dict} locale={locale} />
 
-        {/* pt-20 → header is ~64px; pt-32 was excessive */}
         <main className="relative z-10 flex flex-col items-center w-full flex-grow pt-20 sm:pt-24">
           {children}
         </main>
 
         <Footer dict={dict} />
+
+        {/* Global Compliance & Consent management */}
+        <CookieBanner dict={dict.cookie} locale={locale} />
+
+        {/* Vercel Speed & Analytics telemetry */}
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );

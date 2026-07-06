@@ -64,7 +64,8 @@ export default function PricingSection({ dict }: PricingSectionProps) {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 w-full items-stretch">
 
         {/* Tier 1 */}
-        <div className="flex flex-col p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2.5rem] border border-white/10 bg-white/[0.02] backdrop-blur-xl gap-4 sm:gap-6 hover:bg-white/[0.04] transition-colors">
+        <div className="group relative flex flex-col p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2.5rem] border border-white/10 bg-white/[0.02] backdrop-blur-xl gap-4 sm:gap-6 hover:bg-white/[0.04] hover:scale-[1.02] transition-all duration-300">
+          <div className="absolute inset-0 rounded-[inherit] shadow-[0_0_50px_rgba(255,255,255,0.03)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-[-1] will-change-opacity" />
           <h3 className="text-xl sm:text-2xl font-semibold">{dict.tier1.title}</h3>
           <div className="text-3xl sm:text-4xl font-bold">€{calculatePrice(dict.tier1.price)}</div>
           <p className="text-neutral-400 text-sm flex-grow">{dict.tier1.desc}</p>
@@ -77,9 +78,9 @@ export default function PricingSection({ dict }: PricingSectionProps) {
         </div>
 
         {/* Tier 2 — Featured */}
-        {/* ФИКС: убран lg:-translate-y-4, заменён на ring и усиленную тень для выделения */}
-        <div className="flex flex-col p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2.5rem] border border-emerald-500/40 bg-emerald-500/[0.03] backdrop-blur-xl gap-4 sm:gap-6 relative overflow-hidden shadow-2xl shadow-emerald-500/10 ring-1 ring-emerald-500/20">
-          <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-emerald-500/0 via-emerald-500 to-emerald-500/0" />
+        <div className="group relative flex flex-col p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2.5rem] border border-emerald-600/40 bg-emerald-600/[0.03] backdrop-blur-xl gap-4 sm:gap-6 overflow-hidden hover:scale-[1.02] transition-all duration-300 ring-1 ring-emerald-600/20">
+          <div className="absolute inset-0 rounded-[inherit] shadow-[0_0_60px_rgba(16,185,129,0.15)] opacity-50 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-[-1] will-change-opacity" />
+          <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-emerald-600/0 via-emerald-600 to-emerald-600/0" />
           <h3 className="text-xl sm:text-2xl font-semibold text-emerald-400">{dict.tier2.title}</h3>
           <div className="text-3xl sm:text-4xl font-bold">€{calculatePrice(dict.tier2.price)}</div>
           <p className="text-neutral-400 text-sm flex-grow">{dict.tier2.desc}</p>
@@ -92,7 +93,8 @@ export default function PricingSection({ dict }: PricingSectionProps) {
         </div>
 
         {/* Tier 3 */}
-        <div className="flex flex-col p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2.5rem] border border-white/10 bg-white/[0.02] backdrop-blur-xl gap-4 sm:gap-6 hover:bg-white/[0.04] transition-colors">
+        <div className="group relative flex flex-col p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2.5rem] border border-white/10 bg-white/[0.02] backdrop-blur-xl gap-4 sm:gap-6 hover:bg-white/[0.04] hover:scale-[1.02] transition-all duration-300">
+          <div className="absolute inset-0 rounded-[inherit] shadow-[0_0_50px_rgba(255,255,255,0.03)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-[-1] will-change-opacity" />
           <h3 className="text-xl sm:text-2xl font-semibold">{dict.tier3.title}</h3>
           <div className="text-3xl sm:text-4xl font-bold">€{calculatePrice(dict.tier3.price)}</div>
           <p className="text-neutral-400 text-sm flex-grow">{dict.tier3.desc}</p>

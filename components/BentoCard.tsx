@@ -57,12 +57,15 @@ export default function BentoCard({
       onMouseLeave={handleMouseLeave}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ scale: 1.02 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.7, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
       style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
-      // ФИКС: p-8 → p-5 sm:p-8, rounded-3xl уменьшен до rounded-2xl sm:rounded-3xl
-      className={`relative group rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-2xl p-5 sm:p-8 flex flex-col h-full overflow-hidden ${className} ${href ? 'cursor-pointer hover:border-emerald-500/50 transition-colors' : ''}`}
+      className={`relative group rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-2xl p-5 sm:p-8 flex flex-col h-full overflow-hidden ${className} ${href ? 'cursor-pointer hover:border-emerald-600/50 transition-colors' : ''}`}
     >
+      {/* GPU-composited shadow glow using opacity transition */}
+      <div className="absolute inset-0 rounded-[inherit] shadow-[0_0_50px_rgba(16,185,129,0.15)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-[-1] will-change-opacity" />
+
       <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
       <div style={{ transform: 'translateZ(30px)' }} className="flex flex-col h-full">

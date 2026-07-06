@@ -1,125 +1,151 @@
 {
   "nav": {
-    "services": "Модули",
-    "portfolio": "Проекты",
-    "pricing": "Цены",
-    "contact": "Контакты"
+    "services": "Moduli",
+    "portfolio": "Projekti",
+    "pricing": "Cene",
+    "contact": "Kontakt"
   },
   "hero": {
-    "badge": "Создаем высокопроизводительные активы",
+    "badge": "Inženjering platformi visokih performansi",
     "title": "Corebit Studio",
-    "subtitle": "Мы проектируем проприетарные модули автоматизации бизнеса и сверхбыстрые веб-платформы, превращающие посетителей в лояльных клиентов.",
-    "cta": "Начать проект"
+    "subtitle": "Projektujemo sopstvene module za automatizaciju i ultra-brze web platforme koje pretvaraju posetioce u klijente.",
+    "cta": "Započni Projekat"
   },
   "about": {
-    "title": "Архитектура высокой конверсии",
-    "desc": "Клиент заходит на ваш сайт и мгновенно хочет купить вашу услугу. Мы достигаем этого, объединяя дизайн в стиле Apple со сверхбыстрыми сетями Next.js Edge.",
+    "title": "Arhitektura Visoke Konverzije",
+    "desc": "Klijent poseti vaš sajt i odmah želi vašu uslugu. To postižemo kombinovanjem Apple dizajna sa ultra-brzim Next.js Edge mrežama, obezbeđujući besprekoran onbording. Ponosno pružamo usluge inženjeringa i automatizacije širom Crne Gore (Tivat, Budva, Podgorica), Srbije (Beograd) i Albanije (Tirana).",
     "badges": [
-      "Загрузка < 100мс",
-      "Идеально на смартфонах",
-      "Захват внимания за 3с",
-      "Абсолютная безопасность"
+      "Učitavanje < 100ms",
+      "Besprekoran Mobilni UX",
+      "Zadržavanje pažnje 3s",
+      "Apsolutna Bezbednost"
     ]
   },
   "automation": {
-    "title": "Собственные модули",
-    "subtitle": "Превратите ваш сайт в автономную машину продаж 24/7.",
+    "title": "Sopstveni Moduli",
+    "subtitle": "Pretvorite vaš sajt u autonomnu mašinu za prodaju 24/7.",
+    "seo_tagline": "Automatizacija poslovanja Srbija & Veb Razvoj",
     "tables": {
-      "title": "Умное бронирование столов",
-      "desc": "Интерактивные схемы залов и системы бронирования в реальном времени для премиальных ресторанов."
+      "title": "Pametne Rezervacije Stolova",
+      "desc": "Interaktivni rasporedi i sistemi za rezervaciju u realnom vremenu za premium restorane."
     },
     "booking": {
-      "title": "Динамическое бронирование",
-      "desc": "Интеллектуальные системы записи для СТО, детейлинг-центров и медицинских клиник."
+      "title": "Dinamičko Zakazivanje",
+      "desc": "Inteligentni sistemi za zakazivanje za auto servise (STO) i medicinske klinike."
     },
     "schedule": {
-      "title": "Автоматизированные расписания",
-      "desc": "Бесшовные системы записи для салонов красоты с пошаговым онбордингом и SMS/Email уведомлениями."
+      "title": "Automated Schedulers",
+      "desc": "Besprekorni sistemi zakazivanja za salone lepote sa SMS/Email obaveštenjima."
     }
   },
   "portfolio": {
-    "title": "Впечатляющие цифровые активы",
-    "subtitle": "Недавние высококонверсионные платформы, разработанные Corebit Studio.",
+    "title": "Fascinantni Digitalni Projekti",
+    "subtitle": "Nedavne platforme visoke konverzije koje je razvio Corebit Studio.",
     "items": {
       "cupertino-roast": {
         "title": "Cupertino Roast",
-        "desc": "Премиальная цифровая витрина и интерактивное меню для ремесленной кофейни."
+        "desc": "Premium digitalni izlog i interaktivni meni za zanatsku kafeteriju."
       },
       "shift-drive": {
         "title": "Shift & Drive STO",
-        "desc": "Стильный портал автосервиса со встроенной системой записи к механикам в реальном времени."
+        "desc": "Moderan portal za auto servise sa ugrađenim sistemom zakazivanja u realnom vremenu."
       },
       "umami-bistro": {
         "title": "Umami Bistro",
-        "desc": "Потрясающий сайт ресторана с продвинутой системой бронирования столов."
+        "desc": "Zapanjujući web sajt restorana sa naprednim sistemom za rezervaciju stolova."
       },
       "aura-wellness": {
         "title": "Aura Wellness",
-        "desc": "Элегантная платформа для люксового салона красоты с плавной пошаговой записью."
+        "desc": "Elegantna platforma za luksuzni salon lepote sa glatkim procesom zakazivanja."
       }
     }
   },
   "portfolio_page": {
-    "tech_stack": "Технологический Стек",
-    "features": "Продвинутые Функции",
-    "back": "На главную"
+    "tech_stack": "Tehnološki Stek",
+    "features": "Napredne Funkcije",
+    "back": "Nazad na Početnu"
   },
   "pricing": {
-    "title": "Коммерческие пакеты",
-    "subtitle": "Прозрачные, высококонверсионные инженерные решения.",
-    "toggle_full": "Полная оплата (-10%)",
-    "toggle_split": "Поэтапно (50/50)",
+    "title": "Komercijalni Paketi",
+    "subtitle": "Transparentna, visoko-konverzna inženjerska rešenja.",
+    "toggle_full": "Puna Uplata (-10%)",
+    "toggle_split": "Plaćanje na rate (50/50)",
     "tier1": {
-      "title": "Старт / Визитка",
+      "title": "Start / Vizitka",
       "price": 400,
-      "desc": "Премиальные лендинги и сайты-визитки с кастомной сверхбыстрой архитектурой.",
-      "btn": "Заказать Старт"
+      "desc": "Premium landing stranice i sajtovi sa prilagođenom ultra-brzom arhitekturom.",
+      "btn": "Započni Start"
     },
     "tier2": {
-      "title": "Рост / Бизнес",
+      "title": "Rast / Biznis",
       "price": 1200,
-      "desc": "Полностью интерактивные платформы с системами бронирования и автоматизацией бизнес-процессов.",
-      "btn": "Внедрить Платформу"
+      "desc": "Potpuno interaktivne platforme sa sistemima za zakazivanje i automatizacijom.",
+      "btn": "Implementiraj Platformu"
     },
     "tier3": {
-      "title": "Enterprise Архитектура",
+      "title": "Enterprise Arhitektura",
       "price": 3500,
-      "desc": "Глубокие интеграции, экстремальная оптимизация производительности и усиление безопасности.",
-      "btn": "Создать Enterprise"
+      "desc": "Duboke integracije, ekstremna optimizacija performansi i bezbednost.",
+      "btn": "Izgradi Enterprise"
     }
   },
   "contact_form": {
-    "title": "Установить защищенное соединение",
-    "name": "Ваше Имя",
-    "email": "Корпоративный Email",
-    "message": "Детали проекта",
-    "send": "Инициировать передачу",
-    "sending": "Шифрование...",
-    "success": "Соединение установлено. Мы скоро свяжемся с вами.",
-    "error_rate": "Слишком много запросов. Подождите 60 секунд.",
-    "error_spam": "Сработал протокол безопасности. Неверный payload.",
-    "error_general": "Ошибка передачи. Попробуйте еще раз."
+    "title": "Uspostavite Sigurnu Vezu",
+    "name": "Puno Ime",
+    "email": "Poslovni Email",
+    "message": "Detalji Projekta",
+    "send": "Iniciraj Slanje",
+    "sending": "Šifrovanje...",
+    "success": "Veza uspostavljena. Uskoro ćemo vas kontaktirati.",
+    "error_rate": "Previše zahteva. Sačekajte 60 sekundi.",
+    "error_spam": "Sigurnosni protokol aktiviran. Nevažeći podaci.",
+    "error_general": "Slanje nije uspelo. Pokušajte ponovo.",
+    "gdpr_text": "Saglasan sam sa obradom mojih podataka u skladu sa",
+    "privacy_policy_link": "Politikom privatnosti."
   },
   "footer": {
-    "cta_btn": "Запустить проект",
-    "rights": "© 2026 Corebit Studio. Все права защищены. Тиват, Черногория."
+    "cta_btn": "Pokreni Projekat",
+    "rights": "© 2026 Corebit Studio. Sva prava zadržana. Tivat, Crna Gora."
   },
   "portfolio_tech": {
     "cupertino-roast": {
       "stack": ["Next.js 14 Edge", "Tailwind Custom Config", "Stripe Payments", "Vercel KV"],
-      "features": ["Интерактивное 3D-меню", "Синхронизация остатков в реальном времени", "Оплата Apple Pay в 1 клик"]
+      "features": ["Interaktivni 3D Meni", "Sinhronizacija zaliha u realnom vremenu", "Apple Pay plaćanje jednim klikom"]
     },
     "shift-drive": {
       "stack": ["React Server Components", "PostgreSQL", "WebSockets", "Framer Motion Engine"],
-      "features": ["Расчёт временных слотов в реальном времени", "Отслеживание статуса поста механика", "Автоматические SMS-напоминания через Twilio"]
+      "features": ["Izračunavanje termina u realnom vremenu", "Praćenje statusa boksa mehaničara", "Automatski SMS podsetnici putem Twilio-a"]
     },
     "umami-bistro": {
       "stack": ["Next.js App Router", "Redis Caching", "Custom Webhooks", "Glassmorphism UI"],
-      "features": ["Интерактивные SVG-планы зала для бронирования столиков", "Мгновенное управление листом ожидания", "Синхронизация дашборда менеджера"]
+      "features": ["Interaktivni SVG planovi za rezervaciju stolova", "Upravljanje listom čekanja u realnom vremenu", "Sinhronizacija menadžerskog panela"]
     },
     "aura-wellness": {
       "stack": ["Next.js", "Tailwind CSS", "Prisma ORM", "Stripe Connect"],
-      "features": ["Плавные пошаговые формы записи", "Синхронизация календарей персонала", "Авторизация авансового платежа"]
+      "features": ["Glatki obrasci za korak-po-korak zakazivanje", "Sinhronizacija kalendara osoblja", "Autorizacija depozitnog plaćanja"]
     }
+  },
+  "faq": {
+    "title": "Često Postavljana Pitanja",
+    "subtitle": "Jasni odgovori o našim tehnologijama, rokovima i regionalnoj podršci.",
+    "items": [
+      {
+        "q": "Koje tehnologije koristite?",
+        "a": "Gradimo koristeći Next.js 14 (App Router) i Tailwind CSS, koristeći Vercel Edge mreže za postizanje učitavanja ispod 100ms. Za baze podataka i prilagođene sisteme, integrišemo PostgreSQL, Redis i sigurne Webhook sisteme."
+      },
+      {
+        "q": "Koji je rok izrade za prilagođene module automatizacije?",
+        "a": "Standardni moduli (poput rezervacije stolova ili zakazivanja termina) se obično puštaju u rad za 2-4 nedelje. Automatizacija kompleksnih sistema na nivou preduzeća traje između 6-8 nedelja."
+      },
+      {
+        "q": "Da li pružaš lokalizovanu tehničku podršku u Crnoj Gori, Srbiji i Albaniji?",
+        "a": "Da! Pružamo posvećenu daljinsku i terensku tehničku podršku za kompanije u Crnoj Gori (Tivat, Budva, Podgorica), Srbiji (Beograd) i Albaniji (Tirana) sa vremenom odziva ispod 2 sata."
+      }
+    ]
+  },
+  "cookie": {
+    "text": "Koristimo neophodne kolačiće za merenje performansi i optimizaciju brzine. Korišćenjem Corebit Studio-a, prihvatate naše politike.",
+    "accept": "Prihvati",
+    "link": "Politika kolačića"
   }
 }
