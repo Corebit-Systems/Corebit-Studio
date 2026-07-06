@@ -52,7 +52,8 @@ export default function Footer({ dict }: FooterProps) {
             <div className="p-3 sm:p-4 rounded-full bg-emerald-600/10 text-emerald-400 group-hover:bg-emerald-600/20 transition-all">
               <MessageCircle size={22} />
             </div>
-            <span className="font-mono text-base sm:text-lg tracking-wider text-white">+359 88 290 5657</span>
+            <span className="font-mono text-base sm:text-lg tracking-wider text-white text-center leading-none">+359 88 290 5657</span>
+            <span className="text-xs text-neutral-400 font-light text-center leading-tight -mt-1">(International Sales & WhatsApp)</span>
           </a>
 
           <a

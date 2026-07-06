@@ -35,6 +35,7 @@ interface PageDict {
   pricing: PricingDict;
   contact_form: ContactFormDict;
   faq: FAQDict;
+  leak: { title: string; subtitle: string; text: string };
 }
 
 interface FAQItem {
@@ -90,7 +91,7 @@ export default async function HomePage({ params: { locale } }: { params: { local
       <div className="absolute inset-0 border-[0.5px] border-lime-500/10 m-4 rounded-lg" />
       <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-lime-500/20" />
       <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-lime-500/20" />
-      <div className="w-20 h-10 border border-lime-400/50 rounded bg-lime-900/20 text-[10px] font-mono text-lime-400 flex items-center justify-center shadow-[0_0_15px_rgba(132,204,22,0.2)]">SLOT_A1</div>
+      <div className="w-20 h-10 border border-lime-400/50 rounded bg-lime-900/20 shadow-[0_0_15px_rgba(132,204,22,0.2)]" />
     </div>
   );
 
@@ -110,28 +111,84 @@ export default async function HomePage({ params: { locale } }: { params: { local
     </div>
   );
 
-  // Authoritative JSON-LD Microdata context
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Corebit Studio",
-    "image": "https://corebit-studio.vercel.app/og-image-en.png",
-    "@id": "https://corebit-studio.vercel.app",
-    "url": "https://corebit-studio.vercel.app",
-    "telephone": "+38268914816",
-    "email": "hello@corebitsystems.io",
-    "priceRange": "€360 - €3150",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Tivat",
-      "addressCountry": "ME"
+  // Authoritative JSON-LD Microdata context (ProfessionalService + OfferCatalog + FAQPage unified)
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Corebit Studio",
+      "image": "https://corebit-studio.vercel.app/og-image-en.png",
+      "@id": "https://corebit-studio.vercel.app",
+      "url": "https://corebit-studio.vercel.app",
+      "telephone": "+38268914816",
+      "email": "hello@corebitsystems.io",
+      "priceRange": "€360 - €3150",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Tivat",
+        "addressCountry": "ME"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "42.4350",
+        "longitude": "18.6961"
+      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+38268914816",
+          "contactType": "customer support",
+          "areaServed": ["ME", "RS", "AL"]
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+359882905657",
+          "contactType": "International Sales & WhatsApp Support",
+          "areaServed": "Worldwide"
+        }
+      ],
+      "sameAs": [
+        "https://wa.me/359882905657",
+        "https://t.me/corebitsystems"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Web Architecture & Automation Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Entry / Kickstart",
+            "price": "360",
+            "priceCurrency": "EUR"
+          },
+          {
+            "@type": "Offer",
+            "name": "Growth / Business",
+            "price": "1080",
+            "priceCurrency": "EUR"
+          },
+          {
+            "@type": "Offer",
+            "name": "Enterprise Architecture",
+            "price": "3150",
+            "priceCurrency": "EUR"
+          }
+        ]
+      }
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "42.4350",
-      "longitude": "18.6961"
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": dict.faq.items.map((item) => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.a
+        }
+      }))
     }
-  };
+  ];
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24 flex flex-col gap-24 md:gap-32">
@@ -242,6 +299,22 @@ export default async function HomePage({ params: { locale } }: { params: { local
 
       {/* Pricing */}
       <PricingSection dict={dict.pricing} />
+
+      {/* Warning Section: Losing Clients */}
+      <section className="flex flex-col md:flex-row items-center gap-8 md:gap-16 p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-[3rem] bg-red-950/10 border border-red-900/20 backdrop-blur-xl relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-72 sm:w-[500px] h-72 sm:h-[500px] bg-red-600/5 blur-[150px] rounded-full pointer-events-none" />
+        <div className="flex flex-col gap-4 md:flex-1 relative z-10">
+          <span className="text-xs sm:text-sm font-bold tracking-wider text-red-400 uppercase">
+            {dict.leak.subtitle}
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">
+            {dict.leak.title}
+          </h2>
+          <p className="text-base text-neutral-400 leading-relaxed font-light">
+            {dict.leak.text}
+          </p>
+        </div>
+      </section>
 
       {/* FAQ Accordion */}
       <FAQSection dict={dict.faq} />

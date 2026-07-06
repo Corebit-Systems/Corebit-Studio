@@ -7,9 +7,9 @@
   },
   "hero": {
     "badge": "Inženjering platformi visokih performansi",
-    "title": "Corebit Studio",
-    "subtitle": "Projektujemo sopstvene module za automatizaciju i ultra-brze web platforme koje pretvaraju posetioce u klijente.",
-    "cta": "Započni Projekat"
+    "title": "Vaš sajt bi trebao da prodaje dok vi spavate",
+    "subtitle": "Gradimo ultra brze, visoko-konverzne veb sisteme i prilagođene module automatizacije koji eliminišu manuelno zakazivanje, maksimizuju ROI i skaliraju vaše poslovanje 24/7. Za restorane, STO i klinike.",
+    "cta": "Povećajte profit"
   },
   "about": {
     "title": "Arhitektura Visoke Konverzije",
@@ -34,7 +34,7 @@
       "desc": "Inteligentni sistemi za zakazivanje za auto servise (STO) i medicinske klinike."
     },
     "schedule": {
-      "title": "Automated Schedulers",
+      "title": "Automatizovani Rasporedi",
       "desc": "Besprekorni sistemi zakazivanja za salone lepote sa SMS/Email obaveštenjima."
     }
   },
@@ -67,27 +67,32 @@
   },
   "pricing": {
     "title": "Komercijalni Paketi",
-    "subtitle": "Transparentna, visoko-konverzna inženjerska rešenja.",
+    "subtitle": "Transparentna inženjerska rešenja fokusirana na ROI vašeg poslovanja.",
     "toggle_full": "Puna Uplata (-10%)",
     "toggle_split": "Plaćanje na rate (50/50)",
     "tier1": {
-      "title": "Start / Vizitka",
-      "price": 400,
-      "desc": "Premium landing stranice i sajtovi sa prilagođenom ultra-brzom arhitekturom.",
-      "btn": "Započni Start"
+      "title": "Entry / Kickstart",
+      "price": 360,
+      "desc": "Brze landing stranice za trenutan prihvat posetilaca. Namenjeno za: restorane i klinike. Uticaj: Zadržava 98% mobilne pažnje. Povrat investicije (ROI): Odmah otplaćuje troškove sa prvih 5-10 klijenata.",
+      "btn": "Započni Kickstart"
     },
     "tier2": {
-      "title": "Rast / Biznis",
-      "price": 1200,
-      "desc": "Potpuno interaktivne platforme sa sistemima za zakazivanje i automatizacijom.",
-      "btn": "Implementiraj Platformu"
+      "title": "Growth / Business",
+      "price": 1080,
+      "desc": "Interaktivne platforme sa integrisanim sistemima rezervacija. Namenjeno za: auto servise (STO) i ordinacije. Uticaj: Štedi 15+ sati rada nedeljno. Povrat investicije (ROI): Otplata u roku od 30-45 dana.",
+      "btn": "Skaliraj Posao"
     },
     "tier3": {
       "title": "Enterprise Arhitektura",
-      "price": 3500,
-      "desc": "Duboke integracije, ekstremna optimizacija performansi i bezbednost.",
-      "btn": "Izgradi Enterprise"
+      "price": 3150,
+      "desc": "Duboka integracija API sistema i napredna sigurnost. Namenjeno za: mrežne brendove i brendove sa velikim prometom. Uticaj: Eliminiše ljudske greške u potpunosti. Povrat investicije (ROI): Otplata za manje od 90 dana.",
+      "btn": "Kontaktiraj Arhitektu"
     }
+  },
+  "leak": {
+    "title": "Gubite li klijente a da toga niste ni svesni?",
+    "subtitle": "Spora učitavanja i manuelna koordinacija smanjuju vaš profit.",
+    "text": "Svaka sekunda kašnjenja vašeg veb sajta smanjuje stopu konverzije za 20%. Dok vaša konkurencija gubi klijente zbog sporog učitavanja stranica, vaši menadžeri gube sate manuelno usklađujući termine na WhatsApp-u, što dovodi do duplih rezervacija i propuštenih prilika. Ovaj operativni haos zamenjujemo brzim Edge mrežama i autonomnim modulima za instant rezervacije."
   },
   "contact_form": {
     "title": "Uspostavite Sigurnu Vezu",
@@ -118,7 +123,7 @@
     },
     "umami-bistro": {
       "stack": ["Next.js App Router", "Redis Caching", "Custom Webhooks", "Glassmorphism UI"],
-      "features": ["Interaktivni SVG planovi za rezervaciju stolova", "Upravljanje listom čekanja u realnom vremenu", "Sinhronizacija menadžerskog panela"]
+      "features": ["Interaktivni SVG planovi za rezervacije stolova", "Sinhronizacija menadžerskog panela u realnom vremenu", "Sinhronizacija menadžerskog panela"]
     },
     "aura-wellness": {
       "stack": ["Next.js", "Tailwind CSS", "Prisma ORM", "Stripe Connect"],

@@ -83,9 +83,9 @@ export async function generateMetadata({
         'x-default': `${SITE_URL}/en`,
         en:  `${SITE_URL}/en`,
         ru:  `${SITE_URL}/ru`,
-        cnr: `${SITE_URL}/cnr`,
-        sr:  `${SITE_URL}/srb`,
-        sq:  `${SITE_URL}/sq`,
+        'sq-AL': `${SITE_URL}/sq`,
+        'sr-RS': `${SITE_URL}/srb`,
+        'sr-ME': `${SITE_URL}/cnr`,
       } as Record<string, string>,
     },
 
@@ -177,56 +177,11 @@ export default async function RootLayout({
   const rawDict = await getDictionary(locale as Locale);
   const dict    = rawDict as unknown as LayoutDict;
 
-  const canonicalOgImage = `${SITE_URL}/og-image-en.png`;
-
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type':    'ProfessionalService',
-    name:       'Corebit Studio',
-    image:      canonicalOgImage,
-    '@id':      SITE_URL,
-    url:        SITE_URL,
-    telephone:  '+38268914816',
-    email:      'hello@corebitsystems.io',
-    priceRange: '€360 - €3150',
-    address: {
-      '@type':         'PostalAddress',
-      addressLocality: 'Tivat',
-      addressCountry:  'ME',
-    },
-    geo: {
-      '@type':    'GeoCoordinates',
-      latitude:   '42.4350',
-      longitude:  '18.6961',
-    },
-    openingHoursSpecification: {
-      '@type':     'OpeningHoursSpecification',
-      dayOfWeek:   ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens:       '09:00',
-      closes:      '18:00',
-    },
-    sameAs: ['https://wa.me/359882905657', 'https://t.me/corebitsystems'],
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name:    'Web Architecture & Automation Services',
-      itemListElement: [
-        { '@type': 'Offer', name: 'Entry / Kickstart',       price: '360',  priceCurrency: 'EUR' },
-        { '@type': 'Offer', name: 'Growth / Business',       price: '1080', priceCurrency: 'EUR' },
-        { '@type': 'Offer', name: 'Enterprise Architecture', price: '3150', priceCurrency: 'EUR' },
-      ],
-    },
-  };
-
   return (
     <html lang={locale} className="dark scroll-smooth">
       <body
         className={`${inter.variable} font-sans bg-[#050506] text-white antialiased min-h-screen selection:bg-white/20 selection:text-white flex flex-col overflow-x-hidden`}
       >
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-
         <div className="fixed inset-0 z-[-1] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-900/40 via-[#050506] to-[#050506]" />
 
         <Header dict={dict} locale={locale} />

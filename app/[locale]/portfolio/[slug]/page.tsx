@@ -1,8 +1,30 @@
 // File: C:\dev\Corebit-Studio\app\[locale]\portfolio\[slug]\page.tsx
+import type { Metadata } from 'next';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 import Link from 'next/link';
 import { ArrowLeft, CheckCircle2, Cpu } from 'lucide-react';
 import { notFound } from 'next/navigation';
+
+export async function generateMetadata({
+  params: { locale, slug },
+}: {
+  params: { locale: string; slug: string };
+}): Promise<Metadata> {
+  const SITE_URL = 'https://corebit-studio.vercel.app';
+  return {
+    alternates: {
+      canonical: `${SITE_URL}/${locale}/portfolio/${slug}`,
+      languages: {
+        'x-default': `${SITE_URL}/en/portfolio/${slug}`,
+        en:  `${SITE_URL}/en/portfolio/${slug}`,
+        ru:  `${SITE_URL}/ru/portfolio/${slug}`,
+        'sq-AL': `${SITE_URL}/sq/portfolio/${slug}`,
+        'sr-RS': `${SITE_URL}/srb/portfolio/${slug}`,
+        'sr-ME': `${SITE_URL}/cnr/portfolio/${slug}`,
+      } as Record<string, string>,
+    },
+  };
+}
 
 interface PortfolioItem {
   title: string;

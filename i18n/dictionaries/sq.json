@@ -7,9 +7,9 @@
   },
   "hero": {
     "badge": "Inxhinieri e Aseteve me Performancë të Lartë",
-    "title": "Corebit Studio",
-    "subtitle": "Ne projektojmë module të automatizimit të biznesit dhe platforma uebi ultra të shpejta që kthejnë vizitorët në klientë besnikë.",
-    "cta": "Fillo Projektin"
+    "title": "Faqja juaj duhet të shesë ndërsa ju flini",
+    "subtitle": "Ne ndërtojmë sisteme uebi ultra të shpejta dhe module automatizimi që eliminojnë rezervimet manuale, maksimizojnë ROI-në dhe rrisin shitjet 24/7. Për restorante, auto-servise (STO) dhe klinika.",
+    "cta": "Fillo të fitosh më shumë"
   },
   "about": {
     "title": "Arkitekturë me Konvertim të Lartë",
@@ -44,7 +44,7 @@
     "items": {
       "cupertino-roast": {
         "title": "Cupertino Roast",
-        "desc": "Një vitrinë dixhitale premium dhe menu interaktive për një kafene artizanale."
+        "desc": "Një vitrinë dixhitale premium menu interaktive për një kafene artizanale."
       },
       "shift-drive": {
         "title": "Shift & Drive STO",
@@ -66,28 +66,33 @@
     "back": "Kthehu në Fillim"
   },
   "pricing": {
-    "title": "Paketat Komerciale",
-    "subtitle": "Paketa inxhinierike transparente me konvertim të lartë.",
+    "title": "Paketat Tregtare",
+    "subtitle": "Zgjidhje inxhinierike transparente të fokusuara në ROI për biznesin tuaj.",
     "toggle_full": "Pagesë e Plotë (-10%)",
-    "toggle_split": "Me Këste (50/50)",
+    "toggle_split": "Pagesë me Faza (50/50)",
     "tier1": {
-      "title": "Hyrje / Kickstart",
-      "price": 400,
-      "desc": "Faqe premium dhe faqe vizitkarta me arkitekturë ultra të shpejtë.",
+      "title": "Entry / Kickstart",
+      "price": 360,
+      "desc": "Landing faqe të optimizuara për shpejtësi. Ideale për: bare dhe klinika të reja. Ndikimi: Kap 98% të vëmendjes celulare. Kthimi i investimit (ROI): Kthehet me 5-10 klientët e parë digjitalë.",
       "btn": "Fillo Kickstart"
     },
     "tier2": {
-      "title": "Rritje / Biznes",
-      "price": 1200,
-      "desc": "Platforma tregtare plotësisht interaktive me sisteme rezervimi me porosi.",
-      "btn": "Zbato Platformën"
+      "title": "Growth / Business",
+      "price": 1080,
+      "desc": "Platforma uebi me motorë rezervimesh dhe CRM sinkronizim. Ideale për: auto-servise (STO) dhe klinika. Ndikimi: Kursen 15+ orë në javë nga puna manuale. Kthimi i investimit (ROI): Kthehet brenda 30-45 ditëve.",
+      "btn": "Skalo Biznesin"
     },
     "tier3": {
-      "title": "Arkitektura Enterprise",
-      "price": 3500,
-      "desc": "Integrime të thella të sistemit, optimizim ekstrem i performancës dhe siguri.",
-      "btn": "Ndërto Enterprise"
+      "title": "Enterprise Arkitekturë",
+      "price": 3150,
+      "desc": "Integrime të sistemit të personalizuar dhe mbrojtje sigurie. Ideale për: marka shërbimesh me shumë pika. Ndikimi: Eliminohen gabimet njerëzore plotësisht. Kthimi i investimit (ROI): Kthehet për më pak se 90 ditë.",
+      "btn": "Konsulto Arkitektin"
     }
+  },
+  "leak": {
+    "title": "A po humbisni klientë pa e vënë re?",
+    "subtitle": "Ngarkimi i ngadaltë dhe koordinimi manual po zvogëlojnë fitimin tuaj.",
+    "text": "Çdo sekondë vonesë në faqen tuaj të uebit ul konvertimet me 20%. Ndërsa konkurrenca humb klientë për shkak të faqeve të ngadalta, administratorët tuaj humbasin orë të tëra duke koordinuar manualisht takimet në WhatsApp, duke shkaktuar gabime dhe rezervime të dyfishta. Ne e zëvendësojmë këtë kaos me rrjete Edge ultra të shpejta dhe automatizim autonom."
   },
   "contact_form": {
     "title": "Krijo Lidhje të Sigurt",
@@ -118,7 +123,7 @@
     },
     "umami-bistro": {
       "stack": ["Next.js App Router", "Redis Caching", "Custom Webhooks", "Glassmorphism UI"],
-      "features": ["Planet SVG interaktive për rezervimet e tavolinave", "Menaxhim i listës së pritjes në çast", "Sinkronizim i panelit të menaxherit"]
+      "features": ["Planet SVG interaktive për rezervimet e tavolinave", "Instant waitlist queue management", "Sinkronizim i panelit të menaxherit"]
     },
     "aura-wellness": {
       "stack": ["Next.js", "Tailwind CSS", "Prisma ORM", "Stripe Connect"],

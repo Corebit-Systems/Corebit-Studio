@@ -1,5 +1,27 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const SITE_URL = 'https://corebit-studio.vercel.app';
+  return {
+    alternates: {
+      canonical: `${SITE_URL}/${locale}/privacy-policy`,
+      languages: {
+        'x-default': `${SITE_URL}/en/privacy-policy`,
+        en:  `${SITE_URL}/en/privacy-policy`,
+        ru:  `${SITE_URL}/ru/privacy-policy`,
+        'sq-AL': `${SITE_URL}/sq/privacy-policy`,
+        'sr-RS': `${SITE_URL}/srb/privacy-policy`,
+        'sr-ME': `${SITE_URL}/cnr/privacy-policy`,
+      } as Record<string, string>,
+    },
+  };
+}
 
 interface PolicySection {
   title: string;

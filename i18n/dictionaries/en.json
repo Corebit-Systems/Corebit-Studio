@@ -7,9 +7,9 @@
   },
   "hero": {
     "badge": "Engineering High-Performance Assets",
-    "title": "Corebit Studio",
-    "subtitle": "We architect proprietary business automation modules and ultra-fast web platforms that convert visitors into loyal clients.",
-    "cta": "Initiate Project"
+    "title": "Your Website Should Sell While You Sleep",
+    "subtitle": "We design ultra-fast web platforms and custom booking automation modules that convert traffic into revenue, eliminate manual scheduling, and boost B2B ROI. Tailored for restaurants, STOs, and medical clinics.",
+    "cta": "Start Earning More"
   },
   "about": {
     "title": "High-Conversion Architecture",
@@ -67,27 +67,32 @@
   },
   "pricing": {
     "title": "Commercial Directives",
-    "subtitle": "Transparent, high-conversion engineering packages.",
+    "subtitle": "Transparent, high-conversion engineering packages focused on business ROI.",
     "toggle_full": "Full Payment (-10%)",
     "toggle_split": "Milestone (50/50)",
     "tier1": {
       "title": "Entry / Kickstart",
-      "price": 400,
-      "desc": "Premium landing pages and business card websites with custom ultra-fast architecture.",
-      "btn": "Start Kickstart"
+      "price": 360,
+      "desc": "Premium, speed-optimized storefronts designed to capture immediate traffic. Best for: local bistros and emerging clinics wanting an elite digital card. Business impact: Captures 98% of mobile attention. ROI payback: Instantly offsets costs by converting the first 5-10 digital clients.",
+      "btn": "Deploy Kickstart"
     },
     "tier2": {
       "title": "Growth / Business",
-      "price": 1200,
-      "desc": "Fully interactive commercial platforms featuring custom booking systems and automation workflows.",
-      "btn": "Deploy Platform"
+      "price": 1080,
+      "desc": "Interactive web platforms with custom booking engines and CRM sync. Best for: busy STOs, cafes, and medical hubs. Business impact: Saves 15+ hours of manual scheduling weekly. ROI payback: Fully recovers initial capital within 30-45 days through zero double-bookings.",
+      "btn": "Scale Your Business"
     },
     "tier3": {
       "title": "Enterprise Architecture",
-      "price": 3500,
-      "desc": "Deep-dive custom system integrations, extreme performance optimization, and digital system hardening.",
-      "btn": "Build Enterprise"
+      "price": 3150,
+      "desc": "Custom infrastructure integrations, extreme API speed optimization, and security hardening. Best for: multisite service brands and high-volume operations. Business impact: Eliminates human coordination errors completely. ROI payback: Realized via massive overhead reduction in under 90 days.",
+      "btn": "Consult Architect"
     }
+  },
+  "leak": {
+    "title": "Losing Clients While You're Not Looking?",
+    "subtitle": "Slow load speeds and manual coordination are leaking your revenue.",
+    "text": "Every second of delay on your website drops conversion rates by 20%. While your competitors lose high-value prospects to sluggish page loads, your managers are stuck manually typing time-slots in WhatsApp, leading to double-bookings and lost opportunities. We replace this operational chaos with sub-100ms Edge networks and autonomous automation engines that secure bookings instantly."
   },
   "contact_form": {
     "title": "Establish Secure Connection",
