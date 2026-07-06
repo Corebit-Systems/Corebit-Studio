@@ -1,23 +1,10 @@
 // File: C:\dev\Corebit-Studio\components\ContactForm.tsx
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, Loader2 } from 'lucide-react';
-
-// ФИКС: Строгая типизация вместо dict: any
-interface ContactFormDict {
-  title: string;
-  name: string;
-  email: string;
-  message: string;
-  send: string;
-  sending: string;
-  success: string;
-  error_rate: string;
-  error_spam: string;
-  error_general: string;
-}
+import { submitContactForm } from '@/app/actions';
 
 interface ContactFormDict {
   title: string;
@@ -43,44 +30,76 @@ export default function ContactForm({ dict }: ContactFormProps) {
   const [errorMessage, setErrorMessage] = useState('');
   const [agreeGDPR, setAgreeGDPR] = useState(false);
 
+  // Controlled input states
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  // Rate Limiting States
+  const [countdown, setCountdown] = useState(0);
+  const [isRateLimited, setIsRateLimited] = useState(false);
+
+  // Check rate limit status on mount and count down
+  useEffect(() => {
+    const lastSubmit = localStorage.getItem('last_submit_time');
+    if (lastSubmit) {
+      const elapsed = Date.now() - parseInt(lastSubmit);
+      if (elapsed < 60000) {
+        setIsRateLimited(true);
+        const remaining = Math.ceil((60000 - elapsed) / 1000);
+        setCountdown(remaining);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (countdown > 0) {
+      const timer = setTimeout(() => {
+        setCountdown(prev => prev - 1);
+      }, 1000);
+      return () => clearTimeout(timer);
+    } else if (isRateLimited) {
+      setIsRateLimited(false);
+    }
+  }, [countdown, isRateLimited]);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!agreeGDPR) return;
+    if (!agreeGDPR || isRateLimited || status === 'loading') return;
+
     setStatus('loading');
+    setErrorMessage('');
 
     const formData = new FormData(e.currentTarget);
-    const honeypot = formData.get('bot_field');
-    const message = formData.get('message') as string;
 
-    // 1. Invisible Honeypot check (Anti-Bot)
-    if (honeypot) {
-      setErrorMessage(dict.error_spam);
+    try {
+      const response = await submitContactForm(formData);
+
+      if (response.success) {
+        const now = Date.now();
+        localStorage.setItem('last_submit_time', now.toString());
+        setIsRateLimited(true);
+        setCountdown(60);
+        setStatus('success');
+
+        // UX Clean reset
+        setName('');
+        setEmail('');
+        setMessage('');
+      } else {
+        if (response.errorType === 'rate') {
+          setErrorMessage(dict.error_rate);
+        } else if (response.errorType === 'spam') {
+          setErrorMessage(dict.error_spam);
+        } else {
+          setErrorMessage(dict.error_general);
+        }
+        setStatus('error');
+      }
+    } catch (err) {
+      setErrorMessage(dict.error_general);
       setStatus('error');
-      return;
     }
-
-    // 2. Client-side Rate Limiting
-    const lastSubmit = localStorage.getItem('last_submit_time');
-    const now = Date.now();
-    if (lastSubmit && now - parseInt(lastSubmit) < 60000) {
-      setErrorMessage(dict.error_rate);
-      setStatus('error');
-      return;
-    }
-
-    // 3. Anti-XSS payload check
-    const sanitizedMessage = message.replace(/[<>]/g, '');
-    if (message !== sanitizedMessage) {
-      setErrorMessage(dict.error_spam);
-      setStatus('error');
-      return;
-    }
-
-    // Simulate Secure Network Request
-    setTimeout(() => {
-      localStorage.setItem('last_submit_time', now.toString());
-      setStatus('success');
-    }, 1500);
   };
 
   return (
@@ -102,31 +121,40 @@ export default function ContactForm({ dict }: ContactFormProps) {
         <div className="flex flex-col gap-2">
           <input
             required
+            disabled={status === 'loading' || isRateLimited}
             type="text"
             name="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             placeholder={dict.name}
-            className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-600/50 focus:bg-white/10 transition-all text-base min-h-[52px]"
+            className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-600/50 focus:bg-white/10 transition-all text-base min-h-[52px] disabled:opacity-40 disabled:cursor-not-allowed"
           />
         </div>
 
         <div className="flex flex-col gap-2">
           <input
             required
+            disabled={status === 'loading' || isRateLimited}
             type="email"
             name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder={dict.email}
-            className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-600/50 focus:bg-white/10 transition-all text-base min-h-[52px]"
+            className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-600/50 focus:bg-white/10 transition-all text-base min-h-[52px] disabled:opacity-40 disabled:cursor-not-allowed"
           />
         </div>
 
         <div className="flex flex-col gap-2">
           <textarea
             required
+            disabled={status === 'loading' || isRateLimited}
             name="message"
-            placeholder={dict.message}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder={isRateLimited ? `${dict.error_rate} (${countdown}s)` : dict.message}
             rows={4}
             maxLength={1000}
-            className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-600/50 focus:bg-white/10 transition-all resize-none text-base"
+            className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-600/50 focus:bg-white/10 transition-all resize-none text-base disabled:opacity-40 disabled:cursor-not-allowed"
           />
         </div>
 
@@ -136,9 +164,10 @@ export default function ContactForm({ dict }: ContactFormProps) {
             id="gdpr-consent"
             type="checkbox"
             required
+            disabled={status === 'loading' || isRateLimited}
             checked={agreeGDPR}
             onChange={(e) => setAgreeGDPR(e.target.checked)}
-            className="mt-1 h-4.5 w-4.5 rounded border-white/10 bg-white/5 text-emerald-600 focus:ring-emerald-500 shrink-0 cursor-pointer"
+            className="mt-1 h-4.5 w-4.5 rounded border-white/10 bg-white/5 text-emerald-600 focus:ring-emerald-500 shrink-0 cursor-pointer disabled:opacity-40"
           />
           <label htmlFor="gdpr-consent" className="text-xs sm:text-sm text-neutral-400 leading-normal cursor-pointer select-none">
             {dict.gdpr_text}{' '}
@@ -149,12 +178,16 @@ export default function ContactForm({ dict }: ContactFormProps) {
         </div>
 
         <button
-          disabled={status === 'loading' || status === 'success' || !agreeGDPR}
+          disabled={status === 'loading' || !agreeGDPR || isRateLimited}
           type="submit"
           className="w-full py-4 mt-2 rounded-2xl bg-emerald-600 text-white font-bold text-base sm:text-lg hover:bg-emerald-700 active:scale-95 transition-all flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed min-h-[56px]"
         >
           <AnimatePresence mode="wait">
-            {status === 'idle' || status === 'error' ? (
+            {isRateLimited ? (
+              <motion.span key="limited" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                Locked ({countdown}s)
+              </motion.span>
+            ) : status === 'idle' || status === 'error' ? (
               <motion.span key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                 {dict.send}
               </motion.span>
