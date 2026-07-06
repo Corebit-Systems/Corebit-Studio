@@ -3,8 +3,8 @@
   "/sitemap.xml/route": "app/sitemap.xml/route.js",
   "/apple-icon.png/route": "app/apple-icon.png/route.js",
   "/icon.png/route": "app/icon.png/route.js",
-  "/[locale]/page": "app/[locale]/page.js",
   "/[locale]/cookie-policy/page": "app/[locale]/cookie-policy/page.js",
+  "/[locale]/portfolio/[slug]/page": "app/[locale]/portfolio/[slug]/page.js",
   "/[locale]/privacy-policy/page": "app/[locale]/privacy-policy/page.js",
-  "/[locale]/portfolio/[slug]/page": "app/[locale]/portfolio/[slug]/page.js"
+  "/[locale]/page": "app/[locale]/page.js"
 }
