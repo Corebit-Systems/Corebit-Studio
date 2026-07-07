@@ -109,7 +109,10 @@
     "privacy_policy_link": "Politikën e privatësisë.",
     "whatsapp_btn": "Bisedo në WhatsApp",
     "telegram_btn": "Bisedo në Telegram",
-    "prefilled_msg": "Përshëndetje! Dëshiroj të diskutoj për zhvillimin e uebit dhe zgjidhjet e automatizimit për biznesin tim..."
+    "prefilled_msg": "Përshëndetje! Dëshiroj të diskutoj për zhvillimin e uebit dhe zgjidhjet e automatizimit për biznesin tim...",
+    "locked_label": "E kyçur",
+    "or_label": "Ose lidhu përmes:",
+    "or_email_label": "Ose:"
   },
   "footer": {
     "cta_btn": "Fillo Projektin",
@@ -181,6 +184,7 @@
     "form_send": "Dërgo për Moderim",
     "form_sending": "Duke u dërguar...",
     "form_success": "Faleminderit! Vlerësimi juaj është dërguar për moderim dhe do të shfaqet në faqen tonë pas verifikimit.",
+    "form_rating_aria": "Vlerëso me {stars} yje",
     "items": [
       {
         "author": "Marko J., Drejtor Menaxhues",
@@ -210,10 +214,21 @@
     ]
   },
   "before_after": {
-    "title": "Provë Vizuale: Uebfaqja e Vjetër vs Corebit",
+    "title": "Provë Vizuale: Uebfaqja e Vjetër vs Corebit Studio",
     "subtitle": "Tërhiqni rrëshqitësin për të krahasuar ngarkimin standard të ngadaltë me standardet tona të performancës.",
     "before_label": "Dizajn i vjetëruar & ngarkim i ngadaltë (LCP > 6s)",
-    "after_label": "Arkitekturë premium & ngarkim i menjëhershëm (LCP < 1.5s)"
+    "after_label": "Arkitekturë premium & ngarkim i menjëhershëm (LCP < 1.5s)",
+    "after_badge": "LCP < 1.5s (Ngarkim i menjëhershëm)",
+    "after_title": "Asete digjitale me konvertim të lartë për rritjen e biznesit",
+    "after_desc": "Shpejtësia e lartë e ngarkimit siguron mbajtjen e mysafirëve, pagesa të sigurta dhe konvertim maksimal të rezervimeve të drejtpërdrejta.",
+    "after_status": "Statusi: Aktiv / E mbrojtur",
+    "after_score": "100% Performanca",
+    "before_badge": "LCP > 6s (Vonesë kritike)",
+    "before_title": "Shabllone të vjetëruara dhe koordinim manual i orareve",
+    "before_desc": "Ngarkimi i ngadaltë ul shkallën e konvertimit, duke çuar në humbjen e klientëve dhe rezervimeve.",
+    "before_status": "Statusi: Madhësi e madhe e paketave",
+    "before_score": "42% Shkalla e largimit",
+    "before_site_label": "Uebfaqja tipike e ngadaltë"
   },
   "speed_check": {
     "title": "Testoni Shpejtësinë e Uebfaqes Suaj",
@@ -222,12 +237,18 @@
     "btn_check": "Analizo",
     "btn_analyzing": "Duke skanuar përgjigjen e serverit...",
     "result_text": "Uebfaqja juaj aktuale po ngarkohet shumë ngadalë. Sipas Google Core Web Vitals, po humbisni deri në 40% të trafikut celular dhe rezervimeve. Standardi ynë për bizneset e hotelerisë dhe ato premium B2B është nën 1.5 sekonda.",
-    "cta_btn": "Rregulloni Shpejtësinë Tani"
+    "cta_btn": "Rregulloni Shpejtësinë Tani",
+    "alert_title": "Paralajmërim Performance",
+    "step1": "Duke filluar HTTP handshake...",
+    "step2": "Duke analizuar Largest Contentful Paint (LCP)...",
+    "step3": "Duke kontrolluar zhvendosjet e faqeve (CLS)...",
+    "step4": "Duke vlerësuar bllokimet e JS..."
   },
   "ecosystem": {
     "title": "Ekosistemi i Integruar IT i Biznesit",
     "subtitle": "Ne ndërtojmë infrastrukturë digjitale plotësisht të integruar, jo vetëm faqe të veçuara.",
     "core_label": "Bërthama e Sistemit Corebit",
+    "ready_label": "Gati për integrim",
     "modules": {
       "pms": {
         "title": "Sinkronizimi me PMS & Channel Manager",

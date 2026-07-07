@@ -11,6 +11,11 @@ interface SpeedCheckDict {
   btn_analyzing: string;
   result_text: string;
   cta_btn: string;
+  alert_title: string;
+  step1: string;
+  step2: string;
+  step3: string;
+  step4: string;
 }
 
 interface SpeedCheckWidgetProps {
@@ -23,10 +28,10 @@ export default function SpeedCheckWidget({ dict }: SpeedCheckWidgetProps) {
   const [scanStep, setScanStep] = useState(0);
 
   const steps = [
-    'Initializing HTTP handshake...',
-    'Analyzing Largest Contentful Paint (LCP)...',
-    'Checking layout shift triggers (CLS)...',
-    'Evaluating JS package thread blockades...'
+    dict.step1,
+    dict.step2,
+    dict.step3,
+    dict.step4
   ];
 
   const handleCheck = (e: React.FormEvent) => {
@@ -117,7 +122,7 @@ export default function SpeedCheckWidget({ dict }: SpeedCheckWidgetProps) {
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-5 rounded-xl bg-red-500/10 border border-red-500/20 text-center sm:text-left">
               <ShieldAlert className="text-red-400 shrink-0" size={28} />
               <div className="flex flex-col gap-2">
-                <span className="text-sm font-bold text-red-400 uppercase tracking-widest">Performance Alert</span>
+                <span className="text-sm font-bold text-red-400 uppercase tracking-widest">{dict.alert_title}</span>
                 <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed font-light">
                   {dict.result_text}
                 </p>

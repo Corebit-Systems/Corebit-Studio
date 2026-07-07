@@ -61,8 +61,9 @@ function encodeForEmail(input: string): string {
 export async function submitContactForm(formData: FormData) {
   // 1. Honeypot — silent reject; bots filling hidden fields are discarded first
   const honeypot = formData.get('bot_field') as string;
-  if (honeypot) {
-    return { success: false, errorType: 'spam' };
+  const bTrap = formData.get('b_trap') as string;
+  if (honeypot || bTrap) {
+    return { success: true };
   }
 
   // 2. IP-based rate limiter: max MAX_HITS submissions within WINDOW_MS

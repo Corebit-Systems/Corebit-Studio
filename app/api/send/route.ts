@@ -1,29 +1,69 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { getDictionary, Locale } from '@/i18n/getDictionary';
+
+// Sliding window IP rate limiter cache
+const ipCache = new Map<string, number[]>();
+const WINDOW_MS = 5 * 60 * 1000; // 5 minutes
+const MAX_HITS = 3;
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const timestamps = ipCache.get(ip) || [];
+  const recent = timestamps.filter(t => now - t < WINDOW_MS);
+  if (recent.length >= MAX_HITS) {
+    return false;
+  }
+  recent.push(now);
+  ipCache.set(ip, recent);
+  return true;
+}
+
+function sanitizeString(str: any): string {
+  if (typeof str !== 'string') return '';
+  return str.replace(/<[^>]*>/g, '').trim(); // Strip HTML tags
+}
 
 export async function POST(request: Request) {
   try {
-    const resend = new Resend(process.env.RESEND_API_KEY || 're_placeholder_for_build');
     const body = await request.json();
-    const { name, email, message, source = 'form' } = body;
+    const { name: rawName, email: rawEmail, message: rawMessage, source = 'form', locale = 'en', b_trap } = body;
 
-    // Validate presence of required fields
+    // 1. Honeypot check
+    if (b_trap) {
+      // Instantly return 200 OK without executing any further logic (silent block)
+      return NextResponse.json({ success: true });
+    }
+
+    // 2. IP Rate Limiting
+    const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || '127.0.0.1';
+    const firstIp = ip.split(',')[0].trim();
+    if (!checkRateLimit(firstIp)) {
+      const dict = (await getDictionary(locale as Locale)) as any;
+      const errorMsg = dict.contact_form?.error_rate || 'Too many requests. Please try again later.';
+      return NextResponse.json({ error: errorMsg }, { status: 429 });
+    }
+
+    // 3. Input Validation & XSS Sanitization
+    const name = sanitizeString(rawName);
+    const email = sanitizeString(rawEmail);
+    const message = sanitizeString(rawMessage);
+
     if (!name || !email || !message) {
       return NextResponse.json(
-        { error: 'Missing required fields (name, email, message)' },
+        { error: 'Missing or invalid fields (name, email, message)' },
         { status: 400 }
       );
     }
 
+    const resend = new Resend(process.env.RESEND_API_KEY || 're_placeholder_for_build');
     const isDirect = source === 'direct';
     const dateStr = new Date().toLocaleString('en-US', { timeZone: 'UTC' }) + ' UTC';
 
-    // Define source tags and visual elements
     const sourceLabel = isDirect ? 'Direct Client Email Simulation' : 'Website Lead Form';
     const subjectPrefix = isDirect ? '[Direct Email]' : '[Lead Form]';
     const subject = `${subjectPrefix} Inquiry from ${name}`;
 
-    // Premium HTML Email Template styled for clean, readable layout in Gmail/clients
     const htmlContent = `
       <!DOCTYPE html>
       <html>
@@ -145,7 +185,6 @@ export async function POST(request: Request) {
       </html>
     `;
 
-    // Send email using Resend SDK
     const data = await resend.emails.send({
       from: 'Corebit Studio <noreply@corebitsystems.io>',
       to: 'corebitsystems.office@gmail.com',

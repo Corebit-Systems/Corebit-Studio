@@ -109,7 +109,10 @@
     "privacy_policy_link": "Politikom privatnosti.",
     "whatsapp_btn": "WhatsApp ćaskanje",
     "telegram_btn": "Telegram podrška",
-    "prefilled_msg": "Dobar dan! Želim da razgovaram o veb razvoju i automatizaciji za moj biznis..."
+    "prefilled_msg": "Dobar dan! Želim da razgovaram o veb razvoju i automatizaciji za moj biznis...",
+    "locked_label": "Zaključano",
+    "or_label": "Ili se povežite putem:",
+    "or_email_label": "Ili:"
   },
   "footer": {
     "cta_btn": "Pokreni Projekat",
@@ -181,6 +184,7 @@
     "form_send": "Pošaljite na moderaciju",
     "form_sending": "Slanje...",
     "form_success": "Hvala vam! Vaš utisak je poslat na moderaciju i biće prikazan na sajtu nakon verifikacije.",
+    "form_rating_aria": "Ocenite sa {stars} zvezdica",
     "items": [
       {
         "author": "Marko J., izvršni direktor",
@@ -210,10 +214,21 @@
     ]
   },
   "before_after": {
-    "title": "Vizuelni dokaz: Stari sajt vs Corebit",
+    "title": "Vizuelni dokaz: Stari sajt vs Corebit Studio",
     "subtitle": "Prevucite klizač da biste uporedili standardno sporo učitavanje sa našim standardima performansi.",
     "before_label": "Zastarjeli dizajn i sporo učitavanje (LCP > 6s)",
-    "after_label": "Vrhunska arhitektura i trenutno učitavanje (LCP < 1.5s)"
+    "after_label": "Vrhunska arhitektura i trenutno učitavanje (LCP < 1.5s)",
+    "after_badge": "LCP < 1.5s (Trenutno učitavanje)",
+    "after_title": "Visoko-konverzioni digitalni sajtovi za rast poslovanja",
+    "after_desc": "Ultra brza učitavanja osiguravaju zadržavanje posetilaca, sigurna plaćanja i maksimalan broj direktnih rezervacija.",
+    "after_status": "Status: Aktivno / Zaštićeno",
+    "after_score": "100% Performanse",
+    "before_badge": "LCP > 6s (Kritično kašnjenje)",
+    "before_title": "Zastarjeli šabloni i manuelno usklađivanje termina",
+    "before_desc": "Sporo učitavanje smanjuje stopu konverzije, što dovodi do gubitka upita i rezervacija.",
+    "before_status": "Status: Prevelika veličina fajlova",
+    "before_score": "42% Stopa napuštanja",
+    "before_site_label": "Tipičan spori sajt"
   },
   "speed_check": {
     "title": "Proverite brzinu vašeg sajta",
@@ -222,12 +237,18 @@
     "btn_check": "Proveri",
     "btn_analyzing": "Skeniranje odgovora servera...",
     "result_text": "Vaš trenutni sajt se učitava previše sporo. Prema Google Core Web Vitals, gubite do 40% mobilnog saobraćaja i rezervacija. Naš standard za ugostiteljstvo i premijum B2B je ispod 1.5 sekundi.",
-    "cta_btn": "Popravi brzinu sajta"
+    "cta_btn": "Popravi brzinu sajta",
+    "alert_title": "Upozorenje performansi",
+    "step1": "Inicijalizacija HTTP veze...",
+    "step2": "Analiza Largest Contentful Paint (LCP)...",
+    "step3": "Provera pomeranja rasporeda (CLS)...",
+    "step4": "Procena blokada JS paketa..."
   },
   "ecosystem": {
     "title": "Integracija u IT ekosistem poslovanja",
     "subtitle": "Gradimo potpuno integrisanu digitalnu infrastrukturu, a ne samo izolovane stranice.",
     "core_label": "Corebit Jezgro Sistema",
+    "ready_label": "Spremno za integraciju",
     "modules": {
       "pms": {
         "title": "PMS & Channel Sync",

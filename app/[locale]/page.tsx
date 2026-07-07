@@ -62,6 +62,17 @@ interface PageDict {
     subtitle: string;
     before_label: string;
     after_label: string;
+    after_badge: string;
+    after_title: string;
+    after_desc: string;
+    after_status: string;
+    after_score: string;
+    before_badge: string;
+    before_title: string;
+    before_desc: string;
+    before_status: string;
+    before_score: string;
+    before_site_label: string;
   };
   speed_check: {
     title: string;
@@ -71,11 +82,17 @@ interface PageDict {
     btn_analyzing: string;
     result_text: string;
     cta_btn: string;
+    alert_title: string;
+    step1: string;
+    step2: string;
+    step3: string;
+    step4: string;
   };
   ecosystem: {
     title: string;
     subtitle: string;
     core_label: string;
+    ready_label: string;
     modules: {
       pms: { title: string; desc: string };
       pay: { title: string; desc: string };

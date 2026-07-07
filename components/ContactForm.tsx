@@ -23,6 +23,9 @@ interface ContactFormDict {
   whatsapp_btn?: string;
   telegram_btn?: string;
   prefilled_msg?: string;
+  locked_label?: string;
+  or_label?: string;
+  or_email_label?: string;
 }
 
 interface ContactFormProps {
@@ -153,6 +156,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:gap-6 relative z-10">
         {/* Invisible Honeypot */}
         <input type="text" name="bot_field" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
+        <input type="text" name="b_trap" className="hidden" tabIndex={-1} autoComplete="off" />
 
         <div className="flex flex-col gap-2">
           <input
@@ -224,7 +228,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
           <AnimatePresence mode="wait">
             {isRateLimited ? (
               <motion.span key="limited" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                Locked ({countdown}s)
+                {dict.locked_label || 'Locked'} ({countdown}s)
               </motion.span>
             ) : status === 'idle' || status === 'error' ? (
               <motion.span key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
@@ -301,7 +305,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
           </div>
           
           <div className="flex items-center justify-center gap-2 text-xs text-neutral-400">
-            <span>Or:</span>
+            <span>{dict.or_email_label || 'Or:'}</span>
             <a
               href="mailto:corebitstudio@corebitsystems.io"
               className="hover:text-emerald-400 transition-colors underline"

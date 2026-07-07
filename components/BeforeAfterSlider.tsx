@@ -8,6 +8,17 @@ interface BeforeAfterSliderProps {
     subtitle: string;
     before_label: string;
     after_label: string;
+    after_badge: string;
+    after_title: string;
+    after_desc: string;
+    after_status: string;
+    after_score: string;
+    before_badge: string;
+    before_title: string;
+    before_desc: string;
+    before_status: string;
+    before_score: string;
+    before_site_label: string;
   };
 }
 
@@ -106,7 +117,7 @@ export default function BeforeAfterSlider({ dict }: BeforeAfterSliderProps) {
           <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-10 bg-gradient-to-tr from-emerald-950/20 via-neutral-950 to-neutral-950">
             {/* Mock Premium Interface */}
             <div className="flex justify-between items-center border-b border-white/5 pb-4">
-              <span className="text-xs sm:text-sm font-semibold tracking-widest text-emerald-400 uppercase">Corebit Architecture</span>
+              <span className="text-xs sm:text-sm font-semibold tracking-widest text-emerald-400 uppercase">Corebit Studio</span>
               <div className="flex gap-2">
                 <div className="h-2 w-2 rounded-full bg-white/20" />
                 <div className="h-2 w-2 rounded-full bg-white/20" />
@@ -116,19 +127,19 @@ export default function BeforeAfterSlider({ dict }: BeforeAfterSliderProps) {
 
             <div className="flex flex-col gap-4 sm:gap-6 my-auto text-left max-w-md sm:max-w-xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold w-fit">
-                LCP &lt; 1.5s (Instant Paint)
+                {dict.after_badge}
               </div>
               <h3 className="text-2xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
-                High-Conversion Digital Assets Built for Growth
+                {dict.after_title}
               </h3>
               <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed hidden sm:block">
-                Ultra-fast load speeds secure guest retention, seamless checkouts, and maximum direct revenue booking conversions.
+                {dict.after_desc}
               </p>
             </div>
 
             <div className="flex justify-between items-center border-t border-white/5 pt-4 text-[10px] sm:text-xs text-neutral-400 font-mono">
-              <span>Status: Online / Protected</span>
-              <span>100% Performance Score</span>
+              <span>{dict.after_status}</span>
+              <span>{dict.after_score}</span>
             </div>
           </div>
           
@@ -146,7 +157,7 @@ export default function BeforeAfterSlider({ dict }: BeforeAfterSliderProps) {
           <div className="absolute inset-0 w-full h-full p-6 sm:p-10 bg-neutral-950 flex flex-col justify-between" style={{ width: containerRef.current?.getBoundingClientRect().width }}>
             {/* Mock Legacy Interface */}
             <div className="flex justify-between items-center border-b border-red-900/10 pb-4 opacity-40">
-              <span className="text-xs sm:text-sm font-semibold tracking-widest text-red-500 uppercase">Legacy Standard Site</span>
+              <span className="text-xs sm:text-sm font-semibold tracking-widest text-red-500 uppercase">{dict.before_site_label}</span>
               <div className="flex gap-2">
                 <div className="h-2 w-2 rounded-full bg-white/10" />
                 <div className="h-2 w-2 rounded-full bg-white/10" />
@@ -156,19 +167,19 @@ export default function BeforeAfterSlider({ dict }: BeforeAfterSliderProps) {
 
             <div className="flex flex-col gap-4 sm:gap-6 my-auto text-left max-w-md sm:max-w-xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-semibold w-fit animate-pulse">
-                LCP &gt; 6s (Severe Delay)
+                {dict.before_badge}
               </div>
               <h3 className="text-2xl sm:text-4xl font-bold tracking-tight text-neutral-500 line-through leading-tight decoration-red-500/50">
-                Outdated Templates & Manual Scheduling Layouts
+                {dict.before_title}
               </h3>
               <p className="text-xs sm:text-sm text-neutral-600 font-light leading-relaxed hidden sm:block blur-[1px]">
-                Slow loading drops conversion rates, leading to heavy dropouts and lost reservations.
+                {dict.before_desc}
               </p>
             </div>
 
             <div className="flex justify-between items-center border-t border-red-900/10 pt-4 text-[10px] sm:text-xs text-red-400/60 font-mono">
-              <span>Status: Critical Package Overhead</span>
-              <span>42% Bounce Rate</span>
+              <span>{dict.before_status}</span>
+              <span>{dict.before_score}</span>
             </div>
           </div>
 

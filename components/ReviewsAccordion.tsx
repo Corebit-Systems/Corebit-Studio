@@ -22,6 +22,7 @@ interface ReviewsDict {
   form_send: string;
   form_sending: string;
   form_success: string;
+  form_rating_aria?: string;
   items: ReviewItem[];
 }
 
@@ -38,6 +39,7 @@ export default function ReviewsAccordion({ dict }: ReviewsAccordionProps) {
   const [company, setCompany] = useState('');
   const [rating, setRating] = useState(5);
   const [text, setText] = useState('');
+  const [bTrap, setBTrap] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   const toggleReview = (index: number) => {
@@ -60,7 +62,7 @@ export default function ReviewsAccordion({ dict }: ReviewsAccordionProps) {
       const response = await fetch('/api/review', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, company, rating, text }),
+        body: JSON.stringify({ name, company, rating, text, b_trap: bTrap }),
       });
 
       if (response.ok) {
@@ -69,6 +71,7 @@ export default function ReviewsAccordion({ dict }: ReviewsAccordionProps) {
         setCompany('');
         setRating(5);
         setText('');
+        setBTrap('');
       } else {
         setStatus('error');
       }
@@ -171,6 +174,7 @@ export default function ReviewsAccordion({ dict }: ReviewsAccordionProps) {
               onSubmit={handleSubmit}
               className="flex flex-col gap-5 p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/10 relative"
             >
+              <input type="text" name="b_trap" value={bTrap} onChange={(e) => setBTrap(e.target.value)} className="hidden" tabIndex={-1} autoComplete="off" />
               <div className="flex justify-between items-center border-b border-white/5 pb-4">
                 <span className="font-semibold text-white text-base sm:text-lg flex items-center gap-2">
                   <ShieldCheck size={18} className="text-emerald-500" />
@@ -228,7 +232,7 @@ export default function ReviewsAccordion({ dict }: ReviewsAccordionProps) {
                         onClick={() => setRating(starValue)}
                         disabled={status === 'loading'}
                         className="text-neutral-500 hover:text-emerald-500 transition-colors focus:outline-none"
-                        aria-label={`Rate ${starValue} Stars`}
+                        aria-label={dict.form_rating_aria ? dict.form_rating_aria.replace('{stars}', String(starValue)) : `Rate ${starValue} Stars`}
                       >
                         <Star
                           size={24}

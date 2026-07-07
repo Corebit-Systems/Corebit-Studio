@@ -12,6 +12,7 @@ interface EcosystemDict {
   title: string;
   subtitle: string;
   core_label: string;
+  ready_label: string;
   modules: {
     pms: ModuleData;
     pay: ModuleData;
@@ -174,7 +175,7 @@ export default function TechEcosystem({ dict }: TechEcosystemProps) {
 
             {/* Quick indicators */}
             <div className="flex gap-2 items-center text-xs text-emerald-400 font-mono mt-auto">
-              <span>Ready for integration</span>
+              <span>{dict.ready_label}</span>
               <ArrowRight size={14} />
             </div>
           </div>

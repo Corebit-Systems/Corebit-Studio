@@ -109,7 +109,10 @@
     "privacy_policy_link": "Privacy Policy.",
     "whatsapp_btn": "WhatsApp Chat",
     "telegram_btn": "Telegram Support",
-    "prefilled_msg": "Hello! I would like to discuss web development and automation solutions for my business..."
+    "prefilled_msg": "Hello! I would like to discuss web development and automation solutions for my business...",
+    "locked_label": "Locked",
+    "or_label": "Or connect via:",
+    "or_email_label": "Or:"
   },
   "footer": {
     "cta_btn": "Launch Project",
@@ -181,6 +184,7 @@
     "form_send": "Submit for Moderation",
     "form_sending": "Submitting...",
     "form_success": "Thank you! Your review has been submitted for moderation and will appear on the site after verification.",
+    "form_rating_aria": "Rate {stars} Stars",
     "items": [
       {
         "author": "Marko J., Managing Director",
@@ -210,10 +214,21 @@
     ]
   },
   "before_after": {
-    "title": "Visual Proof: Legacy vs Corebit",
+    "title": "Visual Proof: Legacy vs Corebit Studio",
     "subtitle": "Drag the slider to compare standard slow loading with our performance standards.",
     "before_label": "Legacy design & slow load (LCP > 6s)",
-    "after_label": "Premium architecture & instant paint (LCP < 1.5s)"
+    "after_label": "Premium architecture & instant paint (LCP < 1.5s)",
+    "after_badge": "LCP < 1.5s (Instant Paint)",
+    "after_title": "High-Conversion Digital Assets Built for Growth",
+    "after_desc": "Ultra-fast load speeds secure guest retention, seamless checkouts, and maximum direct revenue booking conversions.",
+    "after_status": "Status: Online / Protected",
+    "after_score": "100% Performance Score",
+    "before_badge": "LCP > 6s (Severe Delay)",
+    "before_title": "Outdated Templates & Manual Scheduling Layouts",
+    "before_desc": "Slow loading drops conversion rates, leading to heavy dropouts and lost reservations.",
+    "before_status": "Status: Critical Package Overhead",
+    "before_score": "42% Bounce Rate",
+    "before_site_label": "Legacy Standard Site"
   },
   "speed_check": {
     "title": "Test Your Website Speed",
@@ -222,12 +237,18 @@
     "btn_check": "Analyze",
     "btn_analyzing": "Scanning server response...",
     "result_text": "Your current website is loading too slowly. According to Google Core Web Vitals, you are losing up to 40% of mobile traffic and bookings. Our standard for hospitality and premium B2B businesses is under 1.5 seconds.",
-    "cta_btn": "Fix Site Speed Now"
+    "cta_btn": "Fix Site Speed Now",
+    "alert_title": "Performance Alert",
+    "step1": "Initializing HTTP handshake...",
+    "step2": "Analyzing Largest Contentful Paint (LCP)...",
+    "step3": "Checking layout shift triggers (CLS)...",
+    "step4": "Evaluating JS package thread blockades..."
   },
   "ecosystem": {
     "title": "Integrated Business IT Ecosystem",
     "subtitle": "We build fully integrated digital infrastructure, not just stand-alone pages.",
     "core_label": "Corebit Studio System",
+    "ready_label": "Ready for integration",
     "modules": {
       "pms": {
         "title": "PMS & Channel Sync",
