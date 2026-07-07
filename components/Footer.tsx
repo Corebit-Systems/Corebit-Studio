@@ -72,12 +72,12 @@ export default function Footer({ dict }: FooterProps) {
 
           <a
             href="mailto:corebitstudio@corebitsystems.io"
-            className="group flex flex-col items-center gap-3 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/[0.02] border border-white/10 hover:border-white/30 hover:bg-white/[0.04] transition-all min-w-0 overflow-hidden w-full"
+            className="group flex flex-col items-center gap-3 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/[0.02] border border-white/10 hover:border-white/30 hover:bg-white/[0.04] transition-all w-full"
           >
             <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-white/5 text-neutral-400 group-hover:text-white group-hover:bg-white/10 transition-all shrink-0">
               <Mail size={22} />
             </div>
-            <span className="font-mono text-sm sm:text-base tracking-wider text-white whitespace-nowrap truncate max-w-full block text-center">corebitstudio@corebitsystems.io</span>
+            <span className="font-mono text-[3.2vw] xs:text-[3.6vw] sm:text-sm md:text-base tracking-wider text-white whitespace-nowrap block text-center">corebitstudio@corebitsystems.io</span>
           </a>
 
         </div>

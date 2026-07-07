@@ -2,6 +2,7 @@
 
 import { z } from 'zod';
 import { headers, cookies } from 'next/headers';
+import { Resend } from 'resend';
 
 // ── In-memory sliding-window rate limiter ────────────────────────────────────
 // NOTE: Resets on serverless cold-start; the cookie-based limiter is the durable layer.
@@ -136,14 +137,144 @@ export async function submitContactForm(formData: FormData) {
   };
   console.log(JSON.stringify(auditLog));
 
-  // 9. TODO: Replace this block with a real email transport (e.g. Resend, Nodemailer)
-  // Example payload ready for transmission:
-  // await sendEmail({
-  //   to: 'corebitstudio@corebitsystems.io',
-  //   subject: `New contact from ${safeBody.name}`,
-  //   html: `<p><strong>From:</strong> ${safeBody.name} &lt;${safeBody.email}&gt;</p>
-  //          <p><strong>Message:</strong></p><p>${safeBody.message}</p>`,
-  // });
+  // 9. Send email using Resend SDK
+  try {
+    if (process.env.RESEND_API_KEY) {
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      const dateStr = new Date().toLocaleString('en-US', { timeZone: 'UTC' }) + ' UTC';
+
+      const htmlContent = `
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>[Lead Form] Inquiry from ${safeBody.name}</title>
+            <style>
+              body {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                background-color: #050506;
+                color: #f4f4f5;
+                margin: 0;
+                padding: 0;
+                -webkit-font-smoothing: antialiased;
+              }
+              .wrapper {
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 24px;
+                box-sizing: border-box;
+              }
+              .card {
+                background-color: #0d0d11;
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 16px;
+                padding: 32px;
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+              }
+              .header {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+                padding-bottom: 20px;
+                margin-bottom: 24px;
+              }
+              .brand {
+                font-size: 20px;
+                font-weight: 700;
+                color: #ffffff;
+                letter-spacing: -0.02em;
+              }
+              .badge {
+                display: inline-block;
+                font-size: 11px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                background-color: rgba(16, 185, 129, 0.1);
+                color: #10b981;
+                padding: 6px 12px;
+                border-radius: 9999px;
+                margin-top: 8px;
+              }
+              .section-title {
+                font-size: 12px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: #71717a;
+                margin-top: 24px;
+                margin-bottom: 8px;
+              }
+              .field-value {
+                font-size: 16px;
+                color: #e4e4e7;
+                line-height: 1.5;
+              }
+              .message-box {
+                background-color: #16161e;
+                border: 1px solid rgba(255, 255, 255, 0.04);
+                border-radius: 12px;
+                padding: 20px;
+                margin-top: 8px;
+                font-size: 15px;
+                color: #d4d4d8;
+                line-height: 1.6;
+                white-space: pre-wrap;
+              }
+              .footer {
+                margin-top: 32px;
+                text-align: center;
+                font-size: 12px;
+                color: #52525b;
+              }
+              .footer a {
+                color: #10b981;
+                text-decoration: none;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="wrapper">
+              <div class="card">
+                <div class="header">
+                  <div class="brand">Corebit Studio</div>
+                  <div class="badge">Website Lead Form</div>
+                </div>
+                
+                <div class="section-title">Client Name</div>
+                <div class="field-value">${safeBody.name}</div>
+                
+                <div class="section-title">Contact Email</div>
+                <div class="field-value">
+                  <a href="mailto:${safeBody.email}" style="color: #10b981; text-decoration: none;">${safeBody.email}</a>
+                </div>
+                
+                <div class="section-title">Submitted Time</div>
+                <div class="field-value">${dateStr}</div>
+                
+                <div class="section-title">Project Details / Message</div>
+                <div class="message-box">${safeBody.message}</div>
+              </div>
+              
+              <div class="footer">
+                <p>Sent automatically from <a href="https://corebit-studio.vercel.app">corebit-studio.vercel.app</a></p>
+              </div>
+            </div>
+          </body>
+        </html>
+      `;
+
+      await resend.emails.send({
+        from: 'Corebit Studio Leads <onboarding@resend.dev>', // Replace with custom sender once domain is verified
+        to: 'corebitsystems.office@gmail.com',
+        replyTo: safeBody.email,
+        subject: `[Lead Form] Inquiry from ${safeBody.name}`,
+        html: htmlContent,
+      });
+    }
+  } catch (err) {
+    console.error('Resend email dispatch error:', err);
+  }
 
   return { success: true };
 }
