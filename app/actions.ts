@@ -265,7 +265,7 @@ export async function submitContactForm(formData: FormData) {
       `;
 
       await resend.emails.send({
-        from: 'Corebit Studio Leads <onboarding@resend.dev>', // Replace with custom sender once domain is verified
+        from: 'Corebit Studio <noreply@corebitsystems.io>',
         to: 'corebitsystems.office@gmail.com',
         replyTo: safeBody.email,
         subject: `[Lead Form] Inquiry from ${safeBody.name}`,

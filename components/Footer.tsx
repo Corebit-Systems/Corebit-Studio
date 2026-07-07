@@ -77,7 +77,7 @@ export default function Footer({ dict }: FooterProps) {
             <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-white/5 text-neutral-400 group-hover:text-white group-hover:bg-white/10 transition-all shrink-0">
               <Mail size={22} />
             </div>
-            <span className="font-mono text-[3.2vw] xs:text-[3.6vw] sm:text-sm md:text-base tracking-wider text-white whitespace-nowrap block text-center">corebitstudio@corebitsystems.io</span>
+            <span className="font-mono text-[min(3.8vw,16px)] sm:text-sm md:text-base tracking-wider text-white whitespace-nowrap block text-center">corebitstudio@corebitsystems.io</span>
           </a>
 
         </div>

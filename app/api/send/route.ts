@@ -147,7 +147,7 @@ export async function POST(request: Request) {
 
     // Send email using Resend SDK
     const data = await resend.emails.send({
-      from: 'Corebit Studio Leads <onboarding@resend.dev>', // Replace with your domain sender if configured in Resend dashboard
+      from: 'Corebit Studio <noreply@corebitsystems.io>',
       to: 'corebitsystems.office@gmail.com',
       replyTo: email,
       subject: subject,
