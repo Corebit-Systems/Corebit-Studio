@@ -106,7 +106,10 @@
     "error_spam": "Protokolli i sigurisë u aktivizua. Të dhëna të pavlefshme.",
     "error_general": "Transmetimi dështoi. Ju lutemi provoni përsëri.",
     "gdpr_text": "Unë pajtohem me përpunimin e të dhënave të mia në përputhje me",
-    "privacy_policy_link": "Politikën e privatësisë."
+    "privacy_policy_link": "Politikën e privatësisë.",
+    "whatsapp_btn": "Bisedo në WhatsApp",
+    "telegram_btn": "Bisedo në Telegram",
+    "prefilled_msg": "Përshëndetje! Dëshiroj të diskutoj për zhvillimin e uebit dhe zgjidhjet e automatizimit për biznesin tim..."
   },
   "footer": {
     "cta_btn": "Fillo Projektin",
@@ -205,5 +208,43 @@
         "text": "Ne bashkëpunojmë sipas modelit të zhvillimit agjil. Ekipi i Corebit Systems dhe njësia e tyre e studios mbulojnë detyrat më komplekse të integrimit të agregatorëve financiarë shumëkombësh. Nivel i lartë i ekspertizës teknike, kod i shkallëzueshëm (Next.js) dhe respektim i rreptë i afateve."
       }
     ]
+  },
+  "before_after": {
+    "title": "Provë Vizuale: Uebfaqja e Vjetër vs Corebit",
+    "subtitle": "Tërhiqni rrëshqitësin për të krahasuar ngarkimin standard të ngadaltë me standardet tona të performancës.",
+    "before_label": "Dizajn i vjetëruar & ngarkim i ngadaltë (LCP > 6s)",
+    "after_label": "Arkitekturë premium & ngarkim i menjëhershëm (LCP < 1.5s)"
+  },
+  "speed_check": {
+    "title": "Testoni Shpejtësinë e Uebfaqes Suaj",
+    "subtitle": "Shikoni sa trafik dhe rezervime potenciale po humb uebfaqja juaj aktuale.",
+    "placeholder": "Vendosni URL-në e uebfaqes (p.sh., mysite.com)",
+    "btn_check": "Analizo",
+    "btn_analyzing": "Duke skanuar përgjigjen e serverit...",
+    "result_text": "Uebfaqja juaj aktuale po ngarkohet shumë ngadalë. Sipas Google Core Web Vitals, po humbisni deri në 40% të trafikut celular dhe rezervimeve. Standardi ynë për bizneset e hotelerisë dhe ato premium B2B është nën 1.5 sekonda.",
+    "cta_btn": "Rregulloni Shpejtësinë Tani"
+  },
+  "ecosystem": {
+    "title": "Ekosistemi i Integruar IT i Biznesit",
+    "subtitle": "Ne ndërtojmë infrastrukturë digjitale plotësisht të integruar, jo vetëm faqe të veçuara.",
+    "core_label": "Bërthama e Sistemit Corebit",
+    "modules": {
+      "pms": {
+        "title": "Sinkronizimi me PMS & Channel Manager",
+        "desc": "Përditësime të menjëhershme të ndarjes së dhomave dhe tavolinave të restoranteve në Booking, AirBnb dhe kalendarët e brendshëm."
+      },
+      "pay": {
+        "title": "Portat e Sigurta të Pagesave",
+        "desc": "Konfigurime të pajtueshme me PCI-DSS për transfertat bankare SEPA, integrimet me Stripe dhe mekanizmat lokalë të pagesave."
+      },
+      "notify": {
+        "title": "Motorri i Njoftimeve të Klientit",
+        "desc": "Konfirmime të menjëhershme dhe të automatizuara me SMS dhe email, kujtesë rezervimesh dhe fatura të dërguara direkt."
+      },
+      "seo": {
+        "title": "SEO & AEO për Kërkimin AI",
+        "desc": "Markime semantike të strukturuara që sigurojnë që marka juaj të citohet drejtpërdrejt nga botët bisedorë si ChatGPT dhe Perplexity."
+      }
+    }
   }
 }

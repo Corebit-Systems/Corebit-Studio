@@ -106,7 +106,10 @@
     "error_spam": "Sigurnosni protokol aktiviran. Nevažeći podaci.",
     "error_general": "Slanje nije uspjelo. Pokušajte ponovo.",
     "gdpr_text": "Saglasan sam sa obradom mojih podataka u skladu sa",
-    "privacy_policy_link": "Politikom privatnosti."
+    "privacy_policy_link": "Politikom privatnosti.",
+    "whatsapp_btn": "WhatsApp ćaskanje",
+    "telegram_btn": "Telegram podrška",
+    "prefilled_msg": "Dobar dan! Želim da razgovaram o veb razvoju i automatizaciji za moj biznis..."
   },
   "footer": {
     "cta_btn": "Pokreni Projekat",
@@ -205,5 +208,43 @@
         "text": "Sarađujemo po modelu agilnog razvoja. Tim Corebit Systems-a i njihova studijska jedinica rešavaju najkompleksnije zadatke integracije multinacionalnih finansijskih agregatora. Vrhunski nivo tehničke ekspertize, skalabilan kod (Next.js) i striktno poštovanje rokova."
       }
     ]
+  },
+  "before_after": {
+    "title": "Vizuelni dokaz: Stari sajt vs Corebit",
+    "subtitle": "Prevucite klizač da biste uporedili standardno sporo učitavanje sa našim standardima performansi.",
+    "before_label": "Zastarjeli dizajn i sporo učitavanje (LCP > 6s)",
+    "after_label": "Vrhunska arhitektura i trenutno učitavanje (LCP < 1.5s)"
+  },
+  "speed_check": {
+    "title": "Provjerite brzinu vašeg sajta",
+    "subtitle": "Saznajte koliko saobraćaja i potencijalnih rezervacija gubite sa trenutnim sajtom.",
+    "placeholder": "Unesite adresu sajta (npr. mysite.com)",
+    "btn_check": "Provjeri",
+    "btn_analyzing": "Skeniranje odgovora servera...",
+    "result_text": "Vaš trenutni sajt se učitava previše sporo. Prema Google Core Web Vitals, gubite do 40% mobilnog saobraćaja i rezervacija. Naš standard za ugostiteljstvo i premijum B2B je ispod 1.5 sekundi.",
+    "cta_btn": "Popravi brzinu sajta"
+  },
+  "ecosystem": {
+    "title": "Integracija u IT ekosistem poslovanja",
+    "subtitle": "Gradimo potpuno integrisanu digitalnu infrastrukturu, a ne samo izolovane stranice.",
+    "core_label": "Corebit Jezgro Sistema",
+    "modules": {
+      "pms": {
+        "title": "PMS & Channel Sync",
+        "desc": "Trenutno ažuriranje slobodnih soba i stolova na kanalima Booking, AirBnb i internim kalendarima."
+      },
+      "pay": {
+        "title": "Sigurni platni prolazi",
+        "desc": "PCI-DSS kompatibilna rješenja za SEPA bankovne transfere, integraciju sa Stripe-om i lokalne metode plaćanja."
+      },
+      "notify": {
+        "title": "Sistem za obavještenja gostiju",
+        "desc": "Automatska i instant SMS i email obavještenja, potvrde rezervacija i slanje faktura klijentima."
+      },
+      "seo": {
+        "title": "SEO & AEO optimizacija za AI",
+        "desc": "Strukturisana semantička oznaka koja omogućava da vaš brend bude direktno citiran od strane AI botova kao što su ChatGPT i Perplexity."
+      }
+    }
   }
 }

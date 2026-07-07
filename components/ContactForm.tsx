@@ -20,6 +20,9 @@ interface ContactFormDict {
   gdpr_text: string;
   privacy_policy_link: string;
   disclaimer?: string;
+  whatsapp_btn?: string;
+  telegram_btn?: string;
+  prefilled_msg?: string;
 }
 
 interface ContactFormProps {
@@ -267,42 +270,39 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
         )}
 
         {/* Quick Contact links */}
-        <div className="mt-4 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-center gap-4 text-xs sm:text-sm text-neutral-400">
-          <span>Or connect via:</span>
-          <div className="flex items-center gap-4">
+        <div className="mt-6 pt-6 border-t border-white/10 flex flex-col gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
             <a
-              href="https://wa.me/359882905657"
+              href={`https://wa.me/359882905657?text=${encodeURIComponent(dict.prefilled_msg || '')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors"
+              className="flex items-center justify-center gap-3 px-5 py-4 rounded-xl bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/20 hover:border-[#25D366]/40 text-[#25D366] transition-all text-sm font-semibold active:scale-95 shadow-lg"
             >
-              <svg className="w-4.5 h-4.5 fill-current text-emerald-500" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                 <path d="M12.012 2c-5.506 0-9.988 4.475-9.988 9.981 0 1.762.456 3.481 1.325 5.012L2 22l5.138-1.344a9.92 9.92 0 0 0 4.875 1.275h.005c5.506 0 9.994-4.475 9.994-9.981 0-2.669-1.038-5.175-2.925-7.062C17.188 3.037 14.688 2 12.012 2zm5.787 13.987c-.244.688-1.219 1.25-1.688 1.344-.438.094-.981.169-2.95-.65-2.519-1.044-4.138-3.612-4.262-3.781-.125-.169-.994-1.325-.994-2.525 0-1.2.625-1.787.844-2.031.219-.244.488-.306.65-.306.169 0 .344.006.494.013.156.006.363-.063.569.444.206.506.712 1.731.775 1.862.063.131.106.288.019.462-.088.175-.169.3-.338.5-.169.194-.35.394-.5.562-.169.181-.344.375-.15.712.194.331.862 1.419 1.844 2.294.125.112.231.2.338.281.812.637 1.287.544 1.5-.281.088-.175.4-.813.506-1.031.106-.219.219-.175.331-.131.119.044.75.356 1.538.744.788.388.906.575.981.7.075.125.075.725-.169 1.412z"/>
               </svg>
-              <span>WhatsApp</span>
+              <span>{dict.whatsapp_btn || 'WhatsApp Chat'}</span>
             </a>
-            <span className="text-white/10">|</span>
             <a
-              href="https://t.me/corebitsystems"
+              href={`https://t.me/corebitsystems?text=${encodeURIComponent(dict.prefilled_msg || '')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors"
+              className="flex items-center justify-center gap-3 px-5 py-4 rounded-xl bg-[#0088cc]/10 hover:bg-[#0088cc]/20 border border-[#0088cc]/20 hover:border-[#0088cc]/40 text-[#0088cc] transition-all text-sm font-semibold active:scale-95 shadow-lg"
             >
-              <svg className="w-4.5 h-4.5 fill-current text-sky-500" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15.9-2.5 10.6-2.77 11.8-.12.5-.34.8-.71.9-.78.2-1.37-.2-2.09-.7-.56-.3-2.03-1.6-2.59-2.1-.15-.1-.31-.3-.03-.6.09-.09 1.56-1.4 2.87-2.6.59-.5 1.18-1.2-.09-1.2-.28 0-.75.1-.93.3-5.18 3.3-5.18 3.3-5.18 3.3-.46.2-.9.4-1.28.4-.4 0-1.21-.2-1.81-.4-.71-.2-1.28-.3-1.21-.8.03-.2.34-.4.93-.6 3.65-1.5 6.09-2.6 7.31-3.1 3.5-1.4 4.21-1.7 4.68-1.7.12 0 .37 0 .53.1.12.09.21.2.25.4.03.1.03.5-.03.8z"/>
               </svg>
-              <span>Telegram</span>
+              <span>{dict.telegram_btn || 'Telegram Support'}</span>
             </a>
-            <span className="text-white/10">|</span>
+          </div>
+          
+          <div className="flex items-center justify-center gap-2 text-xs text-neutral-400">
+            <span>Or:</span>
             <a
               href="mailto:corebitstudio@corebitsystems.io"
-              className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors"
+              className="hover:text-emerald-400 transition-colors underline"
             >
-              <svg className="w-4.5 h-4.5 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                <path d="m22 2-7 20-4-9-9-4Z" />
-                <path d="M22 2 11 13" />
-              </svg>
-              <span>Email</span>
+              corebitstudio@corebitsystems.io
             </a>
           </div>
         </div>

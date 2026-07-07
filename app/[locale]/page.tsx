@@ -1,4 +1,3 @@
-// File: C:\dev\Corebit-Studio\app\[locale]\page.tsx
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 import BentoCard from '@/components/BentoCard';
 import PricingSection from '@/components/PricingSection';
@@ -7,6 +6,9 @@ import HeroSection from '@/components/HeroSection';
 import FAQSection from '@/components/FAQSection';
 import RoiCalculator from '@/components/RoiCalculator';
 import ReviewsAccordion from '@/components/ReviewsAccordion';
+import BeforeAfterSlider from '@/components/BeforeAfterSlider';
+import SpeedCheckWidget from '@/components/SpeedCheckWidget';
+import TechEcosystem from '@/components/TechEcosystem';
 import { ArrowRight, CheckCircle2, CalendarClock, Utensils, CalendarHeart } from 'lucide-react';
 
 export async function generateStaticParams() {
@@ -55,6 +57,32 @@ interface PageDict {
     result_desc: string;
     cta_btn: string;
   };
+  before_after: {
+    title: string;
+    subtitle: string;
+    before_label: string;
+    after_label: string;
+  };
+  speed_check: {
+    title: string;
+    subtitle: string;
+    placeholder: string;
+    btn_check: string;
+    btn_analyzing: string;
+    result_text: string;
+    cta_btn: string;
+  };
+  ecosystem: {
+    title: string;
+    subtitle: string;
+    core_label: string;
+    modules: {
+      pms: { title: string; desc: string };
+      pay: { title: string; desc: string };
+      notify: { title: string; desc: string };
+      seo: { title: string; desc: string };
+    };
+  };
 }
 
 interface FAQItem {
@@ -91,6 +119,9 @@ interface ContactFormDict {
   error_general: string;
   gdpr_text: string;
   privacy_policy_link: string;
+  whatsapp_btn?: string;
+  telegram_btn?: string;
+  prefilled_msg?: string;
 }
 
 export default async function HomePage({ params: { locale } }: { params: { locale: Locale } }) {
@@ -137,6 +168,9 @@ export default async function HomePage({ params: { locale } }: { params: { local
 
       {/* Animated Hero Section */}
       <HeroSection dict={dict.hero} locale={locale} />
+
+      {/* Before / After visual slider comparison */}
+      <BeforeAfterSlider dict={dict.before_after} />
 
       {/* About */}
       <section className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16 p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-[3rem] bg-white/[0.02] border border-white/10 backdrop-blur-xl relative overflow-hidden">
@@ -234,6 +268,9 @@ export default async function HomePage({ params: { locale } }: { params: { local
         </div>
       </section>
 
+      {/* Mock Speed Self-Diagnostic Widget */}
+      <SpeedCheckWidget dict={dict.speed_check} />
+
       {/* Interactive Profit Leakage Calculator */}
       <RoiCalculator dict={dict.roi} />
 
@@ -255,6 +292,9 @@ export default async function HomePage({ params: { locale } }: { params: { local
           </p>
         </div>
       </section>
+
+      {/* Interactive Business IT Ecosystem Diagram */}
+      <TechEcosystem dict={dict.ecosystem} />
 
       {/* Client Reviews Accordion & Feedback Form */}
       <ReviewsAccordion dict={(dict as any).reviews} />
