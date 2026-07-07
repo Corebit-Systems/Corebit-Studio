@@ -157,5 +157,12 @@
     "title": "Page Not Found",
     "subtitle": "The page you're looking for doesn't exist or has been moved.",
     "back": "Back to Home"
+  },
+  "roi": {
+    "title": "Profit Leakage Calculator",
+    "slider1_label": "How many bookings or clients do you lose per month due to manual coordination?",
+    "slider2_label": "Average check per booking / client (€)",
+    "result_desc": "Your business is missing out on approximately {amount} € every month. Our digital ecosystem pays for itself within the first 1.5 months.",
+    "cta_btn": "Stop losing profit"
   }
 }

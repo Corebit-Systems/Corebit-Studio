@@ -157,5 +157,12 @@
     "title": "Stranica nije pronađena",
     "subtitle": "Stranica koju tražite ne postoji ili je premještena.",
     "back": "Nazad na početnu"
+  },
+  "roi": {
+    "title": "Kalkulator izgubljene dobiti",
+    "slider1_label": "Koliko rezervacija ili klijenata gubite mesečno zbog ručne koordinacije?",
+    "slider2_label": "Prosečan račun po rezervaciji / klijentu (€)",
+    "result_desc": "Vaš biznis gubi oko {amount} € svakog meseca. Naš digitalni ekosistem se otplaćuje u prvih 1.5 meseci rada.",
+    "cta_btn": "Zaustavite gubitak profita"
   }
 }

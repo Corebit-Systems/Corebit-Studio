@@ -157,5 +157,12 @@
     "title": "Faqja nuk u gjet",
     "subtitle": "Faqja që po kërkoni nuk ekziston ose është zhvendosur.",
     "back": "Kthehu në fëllesë"
+  },
+  "roi": {
+    "title": "Kalkulatori i Humbjes së Fitimit",
+    "slider1_label": "Sa rezervime apo klientë humbisni në muaj për shkak të koordinimit manual?",
+    "slider2_label": "Fatura mesatare për rezervim / klient (€)",
+    "result_desc": "Biznesi juaj po humbet rreth {amount} € çdo muaj. Ekosistemi ynë digjital e shpaguajnë veten brenda 1.5 muajve të parë.",
+    "cta_btn": "Naloni humbjen e fitimit"
   }
 }

@@ -9,7 +9,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 
-const inter = Inter({ subsets: ['latin', 'cyrillic'], variable: '--font-inter' });
+const inter = Inter({ subsets: ['latin', 'cyrillic'], variable: '--font-inter', display: 'swap' });
 const SITE_URL = 'https://corebit-studio.vercel.app';
 
 // ── Per-locale metadata registry ─────────────────────────────────────────────
@@ -19,38 +19,38 @@ const LOCALE_META: Record<
   { title: string; description: string; ogLocale: string; twitterDesc: string; keywords: string[] }
 > = {
   en: {
-    title:       'Corebit Studio | Premium Web Development & Booking Automation for Business',
-    description: 'We build high-converting, ultra-fast websites and custom booking engines that turn traffic into revenue. Tailored digital solutions for restaurants, hotels, and local businesses.',
+    title:       'Corebit Studio | Web Development & IT Systems for Hotels and Restaurants in Montenegro & Europe',
+    description: 'We build high-converting websites and automation systems for premium hospitality and SMBs. Boost your bookings and revenue within 30 days.',
     ogLocale:    'en_US',
-    twitterDesc: 'Premium websites and automated booking engines to grow your business. Tailored for restaurants, hotels, and local brands.',
+    twitterDesc: 'Boost bookings and revenue with high-converting websites and booking automation. Tailored for hotels, restaurants, and SMBs in Montenegro.',
     keywords:    ['web development Montenegro', 'booking automation agency', 'restaurant booking system', 'hotel web solutions', 'custom booking engines', 'Corebit Studio'],
   },
   ru: {
-    title:       'Corebit Studio | Разработка продающих сайтов и автоматизация бронирования для бизнеса',
-    description: 'Создаем сверхбыстрые премиум-сайты и автоматизированные системы бронирования, которые привлекают клиентов и увеличивают выручку ресторанов, отелей и локального бизнеса.',
+    title:       'Corebit Studio | Разработка сайтов и ИТ-систем для отелей и ресторанов в Черногории',
+    description: 'Создаем высококонверсионные сайты и системы автоматизации для премиального бизнеса. Увеличьте поток бронирований и доход вашего отеля или ресторана уже через 30 дней.',
     ogLocale:    'ru_RU',
-    twitterDesc: 'Разработка сайтов и систем автоматизации бронирования для отелей, ресторанов и локального бизнеса.',
+    twitterDesc: 'Высококонверсионные сайты и системы автоматизации для отелей и ресторанов в Черногории. Рост броней за 30 дней.',
     keywords:    ['разработка сайтов Черногория', 'автоматизация ресторанов Тиват', 'система бронирования отелей', 'веб-студия Черногория', 'Corebit Studio'],
   },
   cnr: {
-    title:       'Corebit Studio | Izrada sajtova i automatizacija rezervacija za biznis',
-    description: 'Kreiramo brze i moderne sajtove i sisteme za online rezervacije koji privlače goste i povećavaju prihode hotela, restorana i lokalnih biznisa.',
+    title:       'Corebit Studio | Izrada sajtova i IT sistema za hotele i restorane u Crnoj Gori',
+    description: 'Izrađujemo visoko-konverzione sajtove i sisteme automatizacije za premijum ugostiteljstvo i biznise. Povećajte broj rezervacija i prihode u roku od 30 dana.',
     ogLocale:    'sr_ME',
-    twitterDesc: 'Izrada sajtova i sistema za rezervacije za hotele, restorane i lokalna preduzeća. Povećajte prodaju.',
+    twitterDesc: 'Izrada sajtova i online rezervacionih sistema za hotele i restorane u Crnoj Gori. Povećajte profit.',
     keywords:    ['izrada sajtova Crna Gora', 'rezervacija restorana Tivat', 'sistem rezervacije hotela', 'Corebit Studio'],
   },
   srb: {
-    title:       'Corebit Studio | Izrada sajtova i automatizacija rezervacija za biznis',
-    description: 'Kreiramo brze i moderne sajtove i sisteme za online rezervacije koji privlače klijente i povećavaju prihode hotela, restorana i lokalnih biznisa.',
+    title:       'Corebit Studio | Izrada sajtova i IT sistema za hotele i restorane u Crnoj Gori',
+    description: 'Izrađujemo visoko-konverzione sajtove i sisteme automatizacije za premijum ugostiteljstvo i biznise. Povećajte broj rezervacija i prihode u roku od 30 dana.',
     ogLocale:    'sr_RS',
-    twitterDesc: 'Izrada sajtova i sistema za rezervacije za hotele, restorane i lokalna preduzeća. Povećajte prodaju.',
+    twitterDesc: 'Izrada sajtova i online rezervacionih sistema za hotele i restorane u Crnoj Gori. Povećajte profit.',
     keywords:    ['izrada sajtova Srbija', 'rezervacija restorana', 'sistem rezervacije hotela', 'Corebit Studio'],
   },
   sq: {
-    title:       'Corebit Studio | Zhvillim Ueb Premium & Automatizim Rezervimesh për Biznes',
-    description: 'Ne ndërtojmë uebfaqe me konvertim të lartë dhe motorë rezervimi të personalizuar që rrisin të ardhurat. Zgjidhje digjitale për restorante, hotele dhe biznese.',
+    title:       'Corebit Studio | Zhvillim Ueb & Sisteme IT për Hotele dhe Restorante në Mal të Zi',
+    description: 'Ne ndërtojmë uebfaqe me konvertim të lartë dhe sisteme automatizimi për hoteleri dhe biznese. Rritni rezervimet dhe të ardhurat tuaja brenda 30 ditëve.',
     ogLocale:    'sq_AL',
-    twitterDesc: 'Uebfaqe premium dhe sisteme rezervimi të automatizuara për restorante, hotele dhe biznese lokale.',
+    twitterDesc: 'Zhvillim ueb dhe sisteme automatizimi për hotele dhe restorante në Mal të Zi. Rritni të ardhurat tuaja.',
     keywords:    ['zhvillim ueb Shqipëri', 'automatizim rezervimesh', 'sistem rezervimi hotel', 'Corebit Studio'],
   },
 };

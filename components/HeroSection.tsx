@@ -105,19 +105,13 @@ export default function HeroSection({ dict, locale }: HeroSectionProps) {
           <span className="line-clamp-1">{dict.badge}</span>
         </motion.div>
 
-        <motion.h1
-          variants={itemVariants}
-          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-white/40 max-w-5xl leading-tight"
-        >
+        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-white/40 max-w-5xl leading-tight">
           {dict.title}
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          variants={itemVariants}
-          className="text-base sm:text-lg md:text-xl text-neutral-400 max-w-2xl leading-relaxed font-light px-2"
-        >
+        <p className="text-base sm:text-lg md:text-xl text-neutral-300 max-w-2xl leading-relaxed font-light px-2">
           {dict.subtitle}
-        </motion.p>
+        </p>
 
         <motion.div
           variants={itemVariants}

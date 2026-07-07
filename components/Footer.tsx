@@ -85,10 +85,10 @@ export default function Footer({ dict }: FooterProps) {
         <div className="w-full h-[1px] bg-white/10" />
 
         {/* Bottom bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center w-full text-xs sm:text-sm text-neutral-500 gap-3 md:gap-0 text-center md:text-left">
+        <div className="flex flex-col md:flex-row justify-between items-center w-full text-xs sm:text-sm text-neutral-400 gap-3 md:gap-0 text-center md:text-left">
           <div className="flex flex-col gap-1 items-center md:items-start">
             <p>{dict.footer.rights}</p>
-            <p className="text-neutral-600 text-[11px] sm:text-xs">
+            <p className="text-neutral-400 text-[11px] sm:text-xs">
               Corebit Studio is a subsidiary of{' '}
               <a
                 href="https://corebitsystems.io"
