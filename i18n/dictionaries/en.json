@@ -184,6 +184,7 @@
     "form_send": "Submit for Moderation",
     "form_sending": "Submitting...",
     "form_success": "Thank you! Your review has been submitted for moderation and will appear on the site after verification.",
+    "form_error": "Something went wrong. Please try again later.",
     "form_rating_aria": "Rate {stars} Stars",
     "items": [
       {

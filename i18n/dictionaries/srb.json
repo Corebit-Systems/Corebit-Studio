@@ -184,6 +184,7 @@
     "form_send": "Pošaljite na moderaciju",
     "form_sending": "Slanje...",
     "form_success": "Hvala vam! Vaš utisak je poslat na moderaciju i biće prikazan na sajtu nakon verifikacije.",
+    "form_error": "Nešto je pošlo naopako. Molimo pokušajte ponovo.",
     "form_rating_aria": "Ocenite sa {stars} zvezdica",
     "items": [
       {

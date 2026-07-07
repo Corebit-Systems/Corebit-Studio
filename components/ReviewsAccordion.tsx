@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { ChevronDown, Star, MessageSquare, ShieldCheck } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronDown, Star, MessageSquare, ShieldCheck, Loader2 } from 'lucide-react';
 
 interface ReviewItem {
   author: string;
@@ -22,6 +23,7 @@ interface ReviewsDict {
   form_send: string;
   form_sending: string;
   form_success: string;
+  form_error?: string;
   form_rating_aria?: string;
   items: ReviewItem[];
 }
@@ -41,6 +43,7 @@ export default function ReviewsAccordion({ dict }: ReviewsAccordionProps) {
   const [text, setText] = useState('');
   const [bTrap, setBTrap] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const toggleReview = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -58,11 +61,18 @@ export default function ReviewsAccordion({ dict }: ReviewsAccordionProps) {
     if (!name || !company || !text) return;
 
     setStatus('loading');
+    setErrorMessage('');
+
+    // Detect current locale from the URL path
+    const locale = typeof window !== 'undefined'
+      ? (window.location.pathname.split('/')[1] || 'en')
+      : 'en';
+
     try {
       const response = await fetch('/api/review', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, company, rating, text, b_trap: bTrap }),
+        body: JSON.stringify({ name, company, rating, text, b_trap: bTrap, locale }),
       });
 
       if (response.ok) {
@@ -73,9 +83,12 @@ export default function ReviewsAccordion({ dict }: ReviewsAccordionProps) {
         setText('');
         setBTrap('');
       } else {
+        const data = await response.json().catch(() => ({}));
+        setErrorMessage(data.error || (dict.form_error || 'Something went wrong. Please try again.'));
         setStatus('error');
       }
     } catch {
+      setErrorMessage(dict.form_error || 'Network error. Please try again.');
       setStatus('error');
     }
   };
@@ -266,8 +279,30 @@ export default function ReviewsAccordion({ dict }: ReviewsAccordionProps) {
                 disabled={status === 'loading'}
                 className="w-full py-3 rounded-xl bg-white text-black font-semibold hover:bg-neutral-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-h-[46px]"
               >
-                {status === 'loading' ? dict.form_sending : dict.form_send}
+                <AnimatePresence mode="wait">
+                  {status === 'loading' ? (
+                    <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex items-center gap-2">
+                      <Loader2 className="animate-spin" size={18} />
+                      {dict.form_sending}
+                    </motion.div>
+                  ) : (
+                    <motion.span key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                      {dict.form_send}
+                    </motion.span>
+                  )}
+                </AnimatePresence>
               </button>
+
+              {/* Error Message */}
+              {status === 'error' && errorMessage && (
+                <motion.p
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-red-400 text-sm text-center font-medium"
+                >
+                  {errorMessage}
+                </motion.p>
+              )}
             </form>
           </div>
         </div>

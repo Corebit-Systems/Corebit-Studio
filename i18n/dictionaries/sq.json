@@ -184,6 +184,7 @@
     "form_send": "Dërgo për Moderim",
     "form_sending": "Duke u dërguar...",
     "form_success": "Faleminderit! Vlerësimi juaj është dërguar për moderim dhe do të shfaqet në faqen tonë pas verifikimit.",
+    "form_error": "Diçka shkoi keq. Ju lutem provoni sërish.",
     "form_rating_aria": "Vlerëso me {stars} yje",
     "items": [
       {
