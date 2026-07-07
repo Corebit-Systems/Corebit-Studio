@@ -1,5 +1,5 @@
 // File: C:\dev\Corebit-Studio\app\[locale]\layout.tsx
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import '@/app/globals.css';
 import Header from '@/components/Header';
@@ -126,12 +126,6 @@ export async function generateMetadata({
       images:      [ogImage],
     },
 
-    // ── Viewport ──────────────────────────────────────────────────────────
-    viewport: {
-      width:        'device-width',
-      initialScale: 1,
-      maximumScale: 5,
-    },
 
     // ── Robots ────────────────────────────────────────────────────────────
     robots: {
@@ -152,6 +146,14 @@ export async function generateMetadata({
     publisher: 'Corebit Studio',
   };
 }
+
+// ── Viewport — must be a separate export in Next.js 14+ ──────────────────────
+export const generateViewport = (): Viewport => ({
+  width:        'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+});
+
 
 // ── Strict dictionary typing for Header / Footer ──────────────────────────
 interface LayoutDict {
