@@ -289,8 +289,12 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-3 px-5 py-4 rounded-xl bg-[#0088cc]/10 hover:bg-[#0088cc]/20 border border-[#0088cc]/20 hover:border-[#0088cc]/40 text-[#0088cc] transition-all text-sm font-semibold active:scale-95 shadow-lg"
             >
-              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5.84 8.01l-1.9 8.93c-.14.63-.52.79-1.05.49l-2.9-2.13-1.4 1.35c-.15.15-.28.28-.58.28l.2-2.94 5.37-4.85c.23-.2-.05-.32-.36-.12L10.5 14.7l-2.85-.89c-.62-.19-.63-.62.13-.92L18.8 4.7c.5-.18.96.12.78.93z"/>
+              <svg 
+                viewBox="0 0 24 24" 
+                className="w-5 h-5 fill-current text-[#38bdf8]" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.52-1.4.51-.46-.01-1.35-.26-2.01-.48-.81-.27-1.46-.42-1.4-.88.03-.24.36-.49.99-.74 3.89-1.69 6.48-2.8 7.78-3.33 3.69-1.54 4.46-1.81 4.96-1.82.11 0 .36.03.52.16.14.11.18.26.19.37 0 .07.01.22 0 .24z"/>
               </svg>
               <span>{dict.telegram_btn || 'Telegram Support'}</span>
             </a>
