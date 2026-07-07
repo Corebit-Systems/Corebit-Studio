@@ -164,5 +164,46 @@
     "slider2_label": "Average check per booking / client (€)",
     "result_desc": "Your business is missing out on approximately {amount} € every month. Our digital ecosystem pays for itself within the first 1.5 months.",
     "cta_btn": "Stop losing profit"
+  },
+  "reviews": {
+    "title": "Client Reviews",
+    "subtitle": "Decisions backed by metrics, direct revenue growth, and robust automation ROI.",
+    "leave_btn": "Leave a Review",
+    "close_btn": "Close Form",
+    "form_title": "Submit Your Review",
+    "form_name": "Your Name & Title",
+    "form_company": "Company Name & Industry",
+    "form_rating": "Select Rating",
+    "form_text": "Review Details",
+    "form_send": "Submit for Moderation",
+    "form_sending": "Submitting...",
+    "form_success": "Thank you! Your review has been submitted for moderation and will appear on the site after verification.",
+    "items": [
+      {
+        "author": "Marko J., Managing Director",
+        "company": "Premium Restaurant & Lounge (Adriatic / Budva)",
+        "text": "Before switching to Corebit Studio, we were losing up to 20% of evening bookings due to the slow loading of our old website on mobile devices during peak season. The team built an instant booking system for us. The site speed is now astonishing, and the multi-language support has helped attract tourists from Western Europe. Full payback in the first month."
+      },
+      {
+        "author": "Elena R., Owner",
+        "company": "Boutique Hotel 5* (Boka Bay)",
+        "text": "We were looking for a local agency that understands the specifics of the hotel business on the Adriatic. Corebit Studio created not just a beautiful landing page, but a complete digital infrastructure integrated with our internal PMS. Direct bookings through the website bypassing aggregators grew by 35%."
+      },
+      {
+        "author": "Christophe B., Marketing Director",
+        "company": "Charter Company (Yacht & Car Rental, Montenegro)",
+        "text": "For our business, it is critical that clients can easily send inquiries in one click. The Corebit developers integrated secure forms and a smart profit calculator. Now we get clean, verified leads directly to our corporate email without spam. Highly recommended as a reliable IT partner."
+      },
+      {
+        "author": "Anja V., Operations Director",
+        "company": "Spa & Wellness Chain (Podgorica)",
+        "text": "Automation saved our customer service. Thanks to Corebit Studio, the integration of procedure schedules and specialists went seamlessly. The site is fully responsive, runs fast on 4G, and the interface is intuitive even for elderly guests."
+      },
+      {
+        "author": "Thomas M., Co-founder",
+        "company": "International FinTech Project (Central Europe)",
+        "text": "We collaborate under an agile software development model. The Corebit Systems team and their studio unit handle highly complex integration tasks for multinational financial aggregators. Exceptional technical expertise, scalable code (Next.js), and strict deadline compliance."
+      }
+    ]
   }
 }

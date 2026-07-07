@@ -6,6 +6,7 @@ import ContactForm from '@/components/ContactForm';
 import HeroSection from '@/components/HeroSection';
 import FAQSection from '@/components/FAQSection';
 import RoiCalculator from '@/components/RoiCalculator';
+import ReviewsAccordion from '@/components/ReviewsAccordion';
 import { ArrowRight, CheckCircle2, CalendarClock, Utensils, CalendarHeart } from 'lucide-react';
 
 interface PageDict {
@@ -244,6 +245,9 @@ export default async function HomePage({ params: { locale } }: { params: { local
           </p>
         </div>
       </section>
+
+      {/* Client Reviews Accordion & Feedback Form */}
+      <ReviewsAccordion dict={(dict as any).reviews} />
 
       {/* FAQ Accordion */}
       <FAQSection dict={dict.faq} />

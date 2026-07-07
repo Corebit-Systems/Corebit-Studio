@@ -164,5 +164,46 @@
     "slider2_label": "Prosečan račun po rezervaciji / klijentu (€)",
     "result_desc": "Vaš biznis gubi oko {amount} € svakog meseca. Naš digitalni ekosistem se otplaćuje u prvih 1.5 meseci rada.",
     "cta_btn": "Zaustavite gubitak profita"
+  },
+  "reviews": {
+    "title": "Utisci klijenata",
+    "subtitle": "Odluke potkrepljene metrikama, rastom direktnih prihoda i povratom investicije u automatizaciju.",
+    "leave_btn": "Ostavite utisak",
+    "close_btn": "Zatvorite formu",
+    "form_title": "Pošaljite vaš utisak",
+    "form_name": "Vaše ime i funkcija",
+    "form_company": "Naziv kompanije i industrija",
+    "form_rating": "Izaberite ocenu",
+    "form_text": "Detalji utiska",
+    "form_send": "Pošaljite na moderaciju",
+    "form_sending": "Slanje...",
+    "form_success": "Hvala vam! Vaš utisak je poslat na moderaciju i biće prikazan na sajtu nakon verifikacije.",
+    "items": [
+      {
+        "author": "Marko J., izvršni direktor",
+        "company": "Premium Restaurant & Lounge (Adriatik / Budva)",
+        "text": "Pre prelaska na platformu Corebit Studio gubili smo do 20% večernjih rezervacija zbog sporog učitavanja starog sajta na mobilnim uređajima u špicu sezone. Tim je za nas razvio sistem za trenutnu rezervaciju. Brzina sajta je sada zapanjujuća, a višejezičnost je pomogla da privučemo turiste iz Zapadne Evrope. Potpuna otplata u prvom mesecu."
+      },
+      {
+        "author": "Elena R., vlasnica",
+        "company": "Boutique Hotel 5* (Bokokotorski zaliv)",
+        "text": "Tražili smo lokalnog izvođača koji razume specifičnosti hotelskog poslovanja na Jadranu. Corebit Studio je kreirao ne samo lepu prezentaciju, već kompletnu digitalnu infrastrukturu sa integracijom našeg internog sistema upravljanja sobama. Broj direktnih rezervacija putem sajta mimo agregatora porastao je za 35%."
+      },
+      {
+        "author": "Kristof B., direktor marketinga",
+        "company": "Charter kompanija (Iznajmljivanje jahti i automobila, Crna Gora)",
+        "text": "Za naš biznis je od ključnog značaja da klijenti mogu lako poslati upit u jednom kliku. Programeri Corebit-a su integrisali zaštićene forme i pametni kalkulator dobiti. Sada dobijamo čiste, verifikovane upite direktno na korporativni mejl bez spama. Preporučujem ih kao pouzdanog IT partnera."
+      },
+      {
+        "author": "Anja V., operativni direktor",
+        "company": "Lanac SPA centara (Podgorica)",
+        "text": "Automatizacija je spasila naš korisnički servis. Zahvaljujući Corebit Studio-u, integracija rasporeda tretmana i terapeuta prošla je bez problema. Sajt je potpuno prilagođen pametnim telefonima, leti na 4G mreži, a interfejs je intuitivan čak i za starije goste."
+      },
+      {
+        "author": "Tomas M., suosnivač",
+        "company": "Međunarodni FinTech projekat (Centralna Evropa)",
+        "text": "Sarađujemo po modelu agilnog razvoja. Tim Corebit Systems-a i njihova studijska jedinica rešavaju najkompleksnije zadatke integracije multinacionalnih finansijskih agregatora. Vrhunski nivo tehničke ekspertize, skalabilan kod (Next.js) i striktno poštovanje rokova."
+      }
+    ]
   }
 }

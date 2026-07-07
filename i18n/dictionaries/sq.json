@@ -164,5 +164,46 @@
     "slider2_label": "Fatura mesatare për rezervim / klient (€)",
     "result_desc": "Biznesi juaj po humbet rreth {amount} € çdo muaj. Ekosistemi ynë digjital e shpaguajnë veten brenda 1.5 muajve të parë.",
     "cta_btn": "Naloni humbjen e fitimit"
+  },
+  "reviews": {
+    "title": "Vlerësimet e Klientëve",
+    "subtitle": "Vendime të mbështetura nga metrikat, rritja e drejtpërdrejtë e të ardhurave dhe ROI e lartë e automatizimit.",
+    "leave_btn": "Lini një Vlerësim",
+    "close_btn": "Mbyllni Formularin",
+    "form_title": "Dërgoni Vlerësimin Tuaj",
+    "form_name": "Emri dhe Pozicioni juaj",
+    "form_company": "Emri i Kompanisë dhe Industria",
+    "form_rating": "Zgjidhni Vlerësimin",
+    "form_text": "Detajet e Vlerësimit",
+    "form_send": "Dërgo për Moderim",
+    "form_sending": "Duke u dërguar...",
+    "form_success": "Faleminderit! Vlerësimi juaj është dërguar për moderim dhe do të shfaqet në faqen tonë pas verifikimit.",
+    "items": [
+      {
+        "author": "Marko J., Drejtor Menaxhues",
+        "company": "Premium Restaurant & Lounge (Adriatik / Budva)",
+        "text": "Para kalimit në platformën Corebit Studio, ne humbisnim deri në 20% të rezervimeve të mbrëmjes për shkak të ngarkimit të ngadaltë të faqes sonë të vjetër në pajisjet celulare gjatë pikut të sezonit. Ekipi zhvilloi një sistem rezervimi të menjëhershëm për ne. Shpejtësia e faqes tani është e mahnitshme dhe mbështetja shumëgjuhëshe ndihmoi në tërheqjen e turistëve nga Evropa Perëndimore. Shpagim i plotë brenda muajit të parë."
+      },
+      {
+        "author": "Elena R., Pronare",
+        "company": "Boutique Hotel 5* (Gjiri i Kotorrit)",
+        "text": "Po kërkonim një kontraktor lokal që kupton specifikat e biznesit të hoteleve në Adriatik. Corebit Studio krijoi jo thjesht një prezantim të bukur, por një infrastrukturë të plotë digjitale me integrimin e sistemit tonë të brendshëm të dhomave. Numri i rezervimeve të drejtpërdrejta përmes faqes u rrit me 35%."
+      },
+      {
+        "author": "Christophe B., Drejtor Marketingu",
+        "company": "Kompani Çarteri (Qira jahtesh dhe makinash, Mali i Zi)",
+        "text": "Për biznesin tonë është kritike që klientët të dërgojnë lehtësisht kërkesa me një klikim. Zhvilluesit e Corebit integruan forma të sigurta dhe një kalkulator të zgjuar fitimi. Tani ne marrim kërkesa të pastra dhe të verifikuara direkt në emailin tonë të korporatës pa spam. E rekomandoj si një partner të besueshëm të TI-së."
+      },
+      {
+        "author": "Anja V., Drejtoreshë Operacionale",
+        "company": "Zinxhir SPA & Wellness (Podgoricë)",
+        "text": "Automatizimi shpëtoi shërbimin tonë ndaj klientit. Falë Corebit Studio, integrimi i orareve të procedurave dhe specialistëve kaloi pa asnjë problem. Faqja është e përshtatur plotësisht për telefonat inteligjentë, funksionon shpejt në 4G dhe ndërfaqja është intuitive edhe për mysafirët e moshuar."
+      },
+      {
+        "author": "Thomas M., Bashkëthemelues",
+        "company": "Projekt Ndërkombëtar FinTech (Evropa Qendrore)",
+        "text": "Ne bashkëpunojmë sipas modelit të zhvillimit agjil. Ekipi i Corebit Systems dhe njësia e tyre e studios mbulojnë detyrat më komplekse të integrimit të agregatorëve financiarë shumëkombësh. Nivel i lartë i ekspertizës teknike, kod i shkallëzueshëm (Next.js) dhe respektim i rreptë i afateve."
+      }
+    ]
   }
 }
