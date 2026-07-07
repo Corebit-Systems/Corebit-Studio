@@ -9,7 +9,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 
-const inter = Inter({ subsets: ['latin', 'cyrillic'], display: 'swap' });
+const inter = Inter({ subsets: ['latin', 'cyrillic'], display: 'swap', weight: ['400', '500', '700'] });
 const SITE_URL = 'https://corebit-studio.vercel.app';
 
 // ── Per-locale metadata registry ─────────────────────────────────────────────

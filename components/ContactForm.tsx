@@ -159,6 +159,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder={dict.name}
+            aria-label={dict.name}
             className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-600/50 focus:bg-white/10 transition-all text-base min-h-[52px] disabled:opacity-40 disabled:cursor-not-allowed"
           />
         </div>
@@ -172,6 +173,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder={dict.email}
+            aria-label={dict.email}
             className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-600/50 focus:bg-white/10 transition-all text-base min-h-[52px] disabled:opacity-40 disabled:cursor-not-allowed"
           />
         </div>
@@ -184,6 +186,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder={isRateLimited ? `${dict.error_rate} (${countdown}s)` : dict.message}
+            aria-label={dict.message}
             rows={4}
             maxLength={1000}
             className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-600/50 focus:bg-white/10 transition-all resize-none text-base disabled:opacity-40 disabled:cursor-not-allowed"

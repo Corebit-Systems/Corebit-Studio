@@ -1,63 +1,63 @@
 {
   "pages": {
     "/_not-found/page": [
-      "static/chunks/webpack-a810a7e0c2eb3259.js",
+      "static/chunks/webpack-01176b70c30e9ef4.js",
       "static/chunks/fd9d1056-b11b2651f33aae7f.js",
       "static/chunks/117-4fb98f46134f50ed.js",
       "static/chunks/main-app-766cac2c6eb17ae1.js",
       "static/chunks/app/_not-found/page-6915dce16fc5fc6c.js"
     ],
-    "/[locale]/cookie-policy/page": [
-      "static/chunks/webpack-a810a7e0c2eb3259.js",
+    "/[locale]/portfolio/[slug]/page": [
+      "static/chunks/webpack-01176b70c30e9ef4.js",
       "static/chunks/fd9d1056-b11b2651f33aae7f.js",
       "static/chunks/117-4fb98f46134f50ed.js",
       "static/chunks/main-app-766cac2c6eb17ae1.js",
       "static/chunks/972-2894ed878a6244e4.js",
-      "static/chunks/app/[locale]/cookie-policy/page-cd1aae6df712052f.js"
+      "static/chunks/app/[locale]/portfolio/[slug]/page-f99be9a28c39c819.js"
     ],
     "/[locale]/layout": [
-      "static/chunks/webpack-a810a7e0c2eb3259.js",
+      "static/chunks/webpack-01176b70c30e9ef4.js",
       "static/chunks/fd9d1056-b11b2651f33aae7f.js",
       "static/chunks/117-4fb98f46134f50ed.js",
       "static/chunks/main-app-766cac2c6eb17ae1.js",
-      "static/css/1421b3a4e1fd79af.css",
+      "static/css/8e1ca41d70ba66d4.css",
       "static/chunks/972-2894ed878a6244e4.js",
       "static/chunks/249-1ff7dbe673d63413.js",
-      "static/chunks/816-86362021e40ef2d7.js",
-      "static/chunks/app/[locale]/layout-6d93db94c0688c60.js"
+      "static/chunks/133-54cce5ff5c0da92d.js",
+      "static/chunks/app/[locale]/layout-50e95a24e0fd5bdf.js"
     ],
     "/[locale]/not-found": [
-      "static/chunks/webpack-a810a7e0c2eb3259.js",
+      "static/chunks/webpack-01176b70c30e9ef4.js",
       "static/chunks/fd9d1056-b11b2651f33aae7f.js",
       "static/chunks/117-4fb98f46134f50ed.js",
       "static/chunks/main-app-766cac2c6eb17ae1.js",
       "static/chunks/972-2894ed878a6244e4.js",
-      "static/chunks/app/[locale]/not-found-298bb504bf4dce46.js"
-    ],
-    "/[locale]/portfolio/[slug]/page": [
-      "static/chunks/webpack-a810a7e0c2eb3259.js",
-      "static/chunks/fd9d1056-b11b2651f33aae7f.js",
-      "static/chunks/117-4fb98f46134f50ed.js",
-      "static/chunks/main-app-766cac2c6eb17ae1.js",
-      "static/chunks/972-2894ed878a6244e4.js",
-      "static/chunks/app/[locale]/portfolio/[slug]/page-9c8f26e137341386.js"
-    ],
-    "/[locale]/privacy-policy/page": [
-      "static/chunks/webpack-a810a7e0c2eb3259.js",
-      "static/chunks/fd9d1056-b11b2651f33aae7f.js",
-      "static/chunks/117-4fb98f46134f50ed.js",
-      "static/chunks/main-app-766cac2c6eb17ae1.js",
-      "static/chunks/972-2894ed878a6244e4.js",
-      "static/chunks/app/[locale]/privacy-policy/page-0a865c8da6b28f72.js"
+      "static/chunks/app/[locale]/not-found-13297f180d4ba44c.js"
     ],
     "/[locale]/page": [
-      "static/chunks/webpack-a810a7e0c2eb3259.js",
+      "static/chunks/webpack-01176b70c30e9ef4.js",
       "static/chunks/fd9d1056-b11b2651f33aae7f.js",
       "static/chunks/117-4fb98f46134f50ed.js",
       "static/chunks/main-app-766cac2c6eb17ae1.js",
       "static/chunks/972-2894ed878a6244e4.js",
       "static/chunks/249-1ff7dbe673d63413.js",
-      "static/chunks/app/[locale]/page-dafdf902eed9e6af.js"
+      "static/chunks/app/[locale]/page-91cadf8f2c2650c0.js"
+    ],
+    "/[locale]/privacy-policy/page": [
+      "static/chunks/webpack-01176b70c30e9ef4.js",
+      "static/chunks/fd9d1056-b11b2651f33aae7f.js",
+      "static/chunks/117-4fb98f46134f50ed.js",
+      "static/chunks/main-app-766cac2c6eb17ae1.js",
+      "static/chunks/972-2894ed878a6244e4.js",
+      "static/chunks/app/[locale]/privacy-policy/page-715bb5dbacf4f34c.js"
+    ],
+    "/[locale]/cookie-policy/page": [
+      "static/chunks/webpack-01176b70c30e9ef4.js",
+      "static/chunks/fd9d1056-b11b2651f33aae7f.js",
+      "static/chunks/117-4fb98f46134f50ed.js",
+      "static/chunks/main-app-766cac2c6eb17ae1.js",
+      "static/chunks/972-2894ed878a6244e4.js",
+      "static/chunks/app/[locale]/cookie-policy/page-12497425959db419.js"
     ]
   }
 }
