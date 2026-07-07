@@ -185,7 +185,7 @@ export default function Header({ dict, locale }: HeaderProps) {
                 {dict.hero.cta}
               </Link>
               <div className="flex items-center justify-center border-t border-white/10 pt-6">
-                <span className="text-sm font-medium text-neutral-500 tracking-widest uppercase">Corebit Systems</span>
+                <span className="text-sm font-medium text-neutral-500 tracking-widest uppercase">Corebit Studio</span>
               </div>
             </motion.div>
           </motion.div>

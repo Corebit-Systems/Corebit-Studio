@@ -1,4 +1,14 @@
 User-agent: *
 Allow: /
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Host: corebit-studio.vercel.app
 Sitemap: https://corebit-studio.vercel.app/sitemap.xml

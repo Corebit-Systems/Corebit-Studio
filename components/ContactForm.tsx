@@ -95,14 +95,26 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
       if (response.success) {
         // Write localStorage hint (secondary only — actual security is server-side cookie)
         localStorage.setItem('last_submit_time', Date.now().toString());
-        // Start the ref-based countdown — immune to DevTools localStorage manipulation
-        startCooldown(60);
         setStatus('success');
 
         // UX Clean reset
         setName('');
         setEmail('');
         setMessage('');
+
+        // Delay the rate limit lock in the UI by 3 seconds so the user can read the success message.
+        // After 3 seconds, we start the cooldown with the remaining time (~57s).
+        setTimeout(() => {
+          const lastSubmit = localStorage.getItem('last_submit_time');
+          if (lastSubmit) {
+            const elapsed = Date.now() - parseInt(lastSubmit, 10);
+            const remaining = 60000 - elapsed;
+            if (remaining > 0) {
+              startCooldown(Math.ceil(remaining / 1000));
+            }
+          }
+          setStatus('idle');
+        }, 3000);
       } else {
         if (response.errorType === 'rate') {
           setErrorMessage(dict.error_rate);
