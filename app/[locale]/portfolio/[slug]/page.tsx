@@ -5,6 +5,19 @@ import Link from 'next/link';
 import { ArrowLeft, CheckCircle2, Cpu } from 'lucide-react';
 import { notFound } from 'next/navigation';
 
+export async function generateStaticParams() {
+  const locales = ['en', 'ru', 'cnr', 'srb', 'sq'];
+  const slugs = ['umami-bistro', 'aura-wellness'];
+  
+  const params = [];
+  for (const locale of locales) {
+    for (const slug of slugs) {
+      params.push({ locale, slug });
+    }
+  }
+  return params;
+}
+
 export async function generateMetadata({
   params: { locale, slug },
 }: {

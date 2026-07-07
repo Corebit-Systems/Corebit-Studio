@@ -2,6 +2,16 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
+export async function generateStaticParams() {
+  return [
+    { locale: 'en' },
+    { locale: 'ru' },
+    { locale: 'cnr' },
+    { locale: 'srb' },
+    { locale: 'sq' }
+  ];
+}
+
 export async function generateMetadata({
   params: { locale },
 }: {

@@ -23,35 +23,35 @@ const LOCALE_META: Record<
     description: 'We build high-converting websites and automation systems for premium hospitality and SMBs. Boost your bookings and revenue within 30 days.',
     ogLocale:    'en_US',
     twitterDesc: 'Boost bookings and revenue with high-converting websites and booking automation. Tailored for hotels, restaurants, and SMBs in Montenegro.',
-    keywords:    ['web development Montenegro', 'booking automation agency', 'restaurant booking system', 'hotel web solutions', 'custom booking engines', 'Corebit Studio'],
+    keywords:    ['hotel web design montenegro', 'restaurant booking software budva', 'it services tivat', 'web development montenegro', 'Corebit Studio'],
   },
   ru: {
     title:       'Corebit Studio | Разработка сайтов и ИТ-систем для отелей и ресторанов в Черногории',
     description: 'Создаем высококонверсионные сайты и системы автоматизации для премиального бизнеса. Увеличьте поток бронирований и доход вашего отеля или ресторана уже через 30 дней.',
     ogLocale:    'ru_RU',
     twitterDesc: 'Высококонверсионные сайты и системы автоматизации для отелей и ресторанов в Черногории. Рост броней за 30 дней.',
-    keywords:    ['разработка сайтов Черногория', 'автоматизация ресторанов Тиват', 'система бронирования отелей', 'веб-студия Черногория', 'Corebit Studio'],
+    keywords:    ['разработка сайтов для отелей черногория', 'автоматизация ресторанов будва тиват', 'ит услуги черногория', 'создание сайтов черногория', 'Corebit Studio'],
   },
   cnr: {
     title:       'Corebit Studio | Izrada sajtova i IT sistema za hotele i restorane u Crnoj Gori',
     description: 'Izrađujemo visoko-konverzione sajtove i sisteme automatizacije za premijum ugostiteljstvo i biznise. Povećajte broj rezervacija i prihode u roku od 30 dana.',
     ogLocale:    'sr_ME',
     twitterDesc: 'Izrada sajtova i online rezervacionih sistema za hotele i restorane u Crnoj Gori. Povećajte profit.',
-    keywords:    ['izrada sajtova Crna Gora', 'rezervacija restorana Tivat', 'sistem rezervacije hotela', 'Corebit Studio'],
+    keywords:    ['izrada sajtova za hotele crna gora', 'automatizacija restorana budva', 'it usluge crna gora', 'veb dizajn crna gora', 'Corebit Studio'],
   },
   srb: {
     title:       'Corebit Studio | Izrada sajtova i IT sistema za hotele i restorane u Crnoj Gori',
     description: 'Izrađujemo visoko-konverzione sajtove i sisteme automatizacije za premijum ugostiteljstvo i biznise. Povećajte broj rezervacija i prihode u roku od 30 dana.',
     ogLocale:    'sr_RS',
     twitterDesc: 'Izrada sajtova i online rezervacionih sistema za hotele i restorane u Crnoj Gori. Povećajte profit.',
-    keywords:    ['izrada sajtova Srbija', 'rezervacija restorana', 'sistem rezervacije hotela', 'Corebit Studio'],
+    keywords:    ['izrada sajtova za hotele crna gora', 'automatizacija restorana budva', 'it usluge crna gora', 'veb dizajn crna gora', 'Corebit Studio'],
   },
   sq: {
     title:       'Corebit Studio | Zhvillim Ueb & Sisteme IT për Hotele dhe Restorante në Mal të Zi',
     description: 'Ne ndërtojmë uebfaqe me konvertim të lartë dhe sisteme automatizimi për hoteleri dhe biznese. Rritni rezervimet dhe të ardhurat tuaja brenda 30 ditëve.',
     ogLocale:    'sq_AL',
     twitterDesc: 'Zhvillim ueb dhe sisteme automatizimi për hotele dhe restorante në Mal të Zi. Rritni të ardhurat tuaja.',
-    keywords:    ['zhvillim ueb Shqipëri', 'automatizim rezervimesh', 'sistem rezervimi hotel', 'Corebit Studio'],
+    keywords:    ['zhvillim uebfaqesh per hotele mal i zi', 'automatizim restorantesh budva', 'sherbime it mal i zi', 'dizajn ueb mal i zi', 'Corebit Studio'],
   },
 };
 
@@ -179,6 +179,16 @@ interface LayoutDict {
   };
 }
 
+export async function generateStaticParams() {
+  return [
+    { locale: 'en' },
+    { locale: 'ru' },
+    { locale: 'cnr' },
+    { locale: 'srb' },
+    { locale: 'sq' }
+  ];
+}
+
 export default async function RootLayout({
   children,
   params: { locale },
@@ -204,7 +214,7 @@ export default async function RootLayout({
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Tivat",
-        "addressCountry": "ME"
+        "addressCountry": "Montenegro"
       },
       "geo": {
         "@type": "GeoCoordinates",
@@ -256,6 +266,91 @@ export default async function RootLayout({
     },
     {
       "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Web Architecture & Booking Automation Services",
+      "provider": {
+        "@type": "ProfessionalService",
+        "name": "Corebit Studio",
+        "image": `${SITE_URL}/og-image-en.png`,
+        "telephone": "+38268914816",
+        "email": "corebitstudio@corebitsystems.io",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Tivat",
+          "addressCountry": "Montenegro"
+        }
+      },
+      "description": "High-performance Next.js custom booking automation modules and luxury brand landing pages for hospitality, STOs, and SMBs on the Adriatic.",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "5"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Marko J."
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "Before switching to Corebit Studio, we were losing up to 20% of evening bookings due to the slow loading of our old website. The team built an instant booking system for us. Excellent ROI."
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Elena R."
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "We were looking for a local agency that understands hotel business on the Adriatic. Direct bookings through the website bypassing aggregators grew by 35%."
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Christophe B."
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "For our business, it is critical that clients can easily send inquiries in one click. Now we get clean, verified leads directly to our corporate email without spam."
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Anja V."
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "Automation saved our customer service. Thanks to Corebit Studio, the integration of schedules went seamlessly. Fully responsive and intuitive."
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Thomas M."
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "Exceptional technical expertise, scalable Next.js code, and strict compliance with deadlines. Highly recommended."
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": dict.faq?.items?.map((item) => ({
         "@type": "Question",
@@ -271,6 +366,12 @@ export default async function RootLayout({
   return (
     <html lang={locale} className="dark scroll-smooth">
       <head>
+        <link rel="alternate" href={`${SITE_URL}/en`} hrefLang="x-default" />
+        <link rel="alternate" href={`${SITE_URL}/en`} hrefLang="en" />
+        <link rel="alternate" href={`${SITE_URL}/ru`} hrefLang="ru" />
+        <link rel="alternate" href={`${SITE_URL}/sq`} hrefLang="sq" />
+        <link rel="alternate" href={`${SITE_URL}/cnr`} hrefLang="sr-ME" />
+        <link rel="alternate" href={`${SITE_URL}/srb`} hrefLang="sr-ME" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

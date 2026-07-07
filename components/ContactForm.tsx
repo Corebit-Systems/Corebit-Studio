@@ -19,6 +19,7 @@ interface ContactFormDict {
   error_general: string;
   gdpr_text: string;
   privacy_policy_link: string;
+  disclaimer?: string;
 }
 
 interface ContactFormProps {
@@ -248,6 +249,12 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
             )}
           </AnimatePresence>
         </button>
+
+        {dict.disclaimer && (
+          <p className="text-[11px] sm:text-xs text-neutral-400 leading-relaxed text-center mt-3">
+            {dict.disclaimer}
+          </p>
+        )}
 
         {status === 'error' && (
           <motion.p

@@ -73,19 +73,19 @@
     "tier1": {
       "title": "Entry / Kickstart",
       "price": 360,
-      "desc": "Brze landing stranice za trenutan prihvat posetilaca. Namenjeno za: restorane i klinike. Uticaj: Zadržava 98% mobilne pažnje. Povrat investicije (ROI): Odmah otplaćuje troškove sa prvih 5-10 klijenata.",
+      "desc": "Brze landing stranice za trenutan prihvat posetilaca. Za lokalni SMB i servise za iznajmljivanje. Namenjeno za: restorane i klinike. Uticaj: Zadržava 98% mobilne pažnje. Povrat investicije (ROI): Odmah otplaćuje troškove sa prvih 5-10 klijenata.",
       "btn": "Započni Kickstart"
     },
     "tier2": {
       "title": "Growth / Business",
       "price": 1080,
-      "desc": "Interaktivne platforme sa integrisanim sistemima rezervacija. Namenjeno za: auto servise (STO) i ordinacije. Uticaj: Štedi 15+ sati rada nedeljno. Povrat investicije (ROI): Otplata u roku od 30-45 dana.",
+      "desc": "Interaktivne platforme sa integrisanim sistemima rezervacija. Za lokalni SMB i servise za iznajmljivanje. Namenjeno za: auto servise (STO) i ordinacije. Uticaj: Štedi 15+ sati rada nedeljno. Povrat investicije (ROI): Otplata u roku od 30-45 dana.",
       "btn": "Skaliraj Posao"
     },
     "tier3": {
       "title": "Enterprise Arhitektura",
       "price": 3150,
-      "desc": "Duboka integracija API sistema i napredna sigurnost. Namenjeno za: mrežne brendove i brendove sa velikim prometom. Uticaj: Eliminiše ljudske greške u potpunosti. Povrat investicije (ROI): Otplata za manje od 90 dana.",
+      "desc": "Duboka integracija API sistema i napredna sigurnost. Idealno za premium hotele i restorane. Namenjeno za: mrežne brendove i brendove sa velikim prometom. Uticaj: Eliminiše ljudske greške u potpunosti. Povrat investicije (ROI): Otplata za manje od 90 dana.",
       "btn": "Kontaktiraj Arhitektu"
     }
   },
@@ -95,11 +95,11 @@
     "text": "Svaka sekunda kašnjenja vašeg veb sajta smanjuje stopu konverzije za 20%. Dok vaša konkurencija gubi klijente zbog sporog učitavanja stranica, vaši menadžeri gube sate manuelno usklađujući termine na WhatsApp-u, što dovodi do duplih rezervacija i propuštenih prilika. Ovaj operativni haos zamenjujemo brzim Edge mrežama i autonomnim modulima za instant rezervacije."
   },
   "contact_form": {
-    "title": "Uspostavite Sigurnu Vezu",
+    "title": "Preuzmite proračun isplativosti",
     "name": "Puno Ime",
     "email": "Poslovni Email",
     "message": "Detalji Projekta",
-    "send": "Iniciraj Slanje",
+    "send": "Preuzmite proračun isplativosti",
     "sending": "Šifrovanje...",
     "success": "Veza uspostavljena. Uskoro ćemo vas kontaktirati.",
     "error_rate": "Previše zahteva. Sačekajte 60 sekundi.",

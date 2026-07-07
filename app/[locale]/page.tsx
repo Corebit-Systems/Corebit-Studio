@@ -9,6 +9,16 @@ import RoiCalculator from '@/components/RoiCalculator';
 import ReviewsAccordion from '@/components/ReviewsAccordion';
 import { ArrowRight, CheckCircle2, CalendarClock, Utensils, CalendarHeart } from 'lucide-react';
 
+export async function generateStaticParams() {
+  return [
+    { locale: 'en' },
+    { locale: 'ru' },
+    { locale: 'cnr' },
+    { locale: 'srb' },
+    { locale: 'sq' }
+  ];
+}
+
 interface PageDict {
   hero: {
     badge: string;
@@ -224,11 +234,11 @@ export default async function HomePage({ params: { locale } }: { params: { local
         </div>
       </section>
 
-      {/* Pricing */}
-      <PricingSection dict={dict.pricing} />
-
       {/* Interactive Profit Leakage Calculator */}
       <RoiCalculator dict={dict.roi} />
+
+      {/* Pricing */}
+      <PricingSection dict={dict.pricing} />
 
       {/* Warning Section: Losing Clients */}
       <section className="flex flex-col md:flex-row items-center gap-8 md:gap-16 p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-[3rem] bg-red-950/10 border border-red-900/20 backdrop-blur-xl relative overflow-hidden">
