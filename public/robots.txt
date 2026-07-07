@@ -1,14 +1,47 @@
+# 1. Traditional Search Engines (Full Indexing Allowed)
 User-agent: *
 Allow: /
+Disallow: /_next/
 
 User-agent: Googlebot
 Allow: /
+Disallow: /_next/
 
 User-agent: Yandex
 Allow: /
+Disallow: /_next/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /_next/
 
+# 2. AI & LLM Search Agents (Allow for Perplexity, ChatGPT, Gemini, Claude recommendations)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# 3. Social Media Link Previews (Allow for Rich Snippets / OpenGraph)
+User-agent: FacebookBot
+Allow: /
+
+User-agent: MetaBot
+Allow: /
+
+# 4. Scrapers & Aggregators (Blocked to protect intellectual property and crawl budget)
+User-agent: CCBot
+Disallow: /
+
+# 5. Global Directives
 Host: corebit-studio.vercel.app
 Sitemap: https://corebit-studio.vercel.app/sitemap.xml
