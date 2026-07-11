@@ -268,25 +268,34 @@ export default async function RootLayout({
     },
     {
       "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "Web Architecture & Booking Automation Services",
-      "provider": {
-        "@type": "ProfessionalService",
-        "name": "Corebit Studio",
-        "image": `${SITE_URL}/og-image-en.png`,
-        "telephone": "+38268914816",
-        "email": "corebitstudio@corebitsystems.io",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Tivat",
-          "addressCountry": "Montenegro"
-        }
+      "@type": "LocalBusiness",
+      "name": "Corebit Studio",
+      "image": `${SITE_URL}/og-image-en.png`,
+      "telephone": "+38268814816",
+      "email": "corebitstudio@corebitsystems.io",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Tivat",
+        "addressCountry": "ME"
       },
-      "description": "High-performance Next.js custom booking automation modules and luxury brand landing pages for hospitality, STOs, and SMBs on the Adriatic.",
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
         "reviewCount": "5"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Corebit Studio Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web Architecture & Booking Automation Services",
+              "description": "High-performance Next.js custom booking automation modules and luxury brand landing pages for hospitality, STOs, and SMBs on the Adriatic."
+            }
+          }
+        ]
       },
       "review": [
         {
