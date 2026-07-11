@@ -64,6 +64,7 @@ export default function RoiCalculator({ dict }: RoiCalculatorProps) {
               step="1"
               value={lostClients}
               onChange={(e) => setLostClients(Number(e.target.value))}
+              aria-label={dict.slider1_label}
               className="w-full h-2 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
             />
           </div>
@@ -83,6 +84,7 @@ export default function RoiCalculator({ dict }: RoiCalculatorProps) {
               step="10"
               value={avgTicket}
               onChange={(e) => setAvgTicket(Number(e.target.value))}
+              aria-label={dict.slider2_label}
               className="w-full h-2 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
             />
           </div>

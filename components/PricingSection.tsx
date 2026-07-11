@@ -86,7 +86,7 @@ export default function PricingSection({ dict }: PricingSectionProps) {
           <p className="text-neutral-400 text-sm flex-grow">{dict.tier2.desc}</p>
           <a
             href="#contact"
-            className="w-full py-4 mt-auto rounded-2xl bg-emerald-600 text-white text-center font-bold hover:bg-emerald-700 transition-colors min-h-[52px] flex items-center justify-center"
+            className="w-full py-4 mt-auto rounded-2xl bg-emerald-500 text-black text-center font-bold hover:bg-emerald-600 transition-colors min-h-[52px] flex items-center justify-center"
           >
             {dict.tier2.btn}
           </a>

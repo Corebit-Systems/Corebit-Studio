@@ -26,13 +26,15 @@ export default function BeforeAfterSlider({ dict }: BeforeAfterSliderProps) {
   const [position, setPosition] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
+  const containerRect = useRef<DOMRect | null>(null);
+  const [containerWidth, setContainerWidth] = useState<number | undefined>(undefined);
 
   const handleMove = (clientX: number) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
+    if (!containerRect.current) return;
+    const rect = containerRect.current;
     const x = clientX - rect.left;
     const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
-    setPosition(percentage);
+    requestAnimationFrame(() => setPosition(percentage));
   };
 
   const handleTouchMove = (e: TouchEvent) => {
@@ -59,12 +61,18 @@ export default function BeforeAfterSlider({ dict }: BeforeAfterSliderProps) {
 
   const handleMouseDown = (e: React.MouseEvent) => {
     e.preventDefault();
+    if (containerRef.current) {
+      containerRect.current = containerRef.current.getBoundingClientRect();
+    }
     isDragging.current = true;
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseup', handleMouseUp);
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
+    if (containerRef.current) {
+      containerRect.current = containerRef.current.getBoundingClientRect();
+    }
     isDragging.current = true;
     window.addEventListener('touchmove', handleTouchMove, { passive: true });
     window.addEventListener('touchend', handleTouchEnd);
@@ -82,6 +90,19 @@ export default function BeforeAfterSlider({ dict }: BeforeAfterSliderProps) {
   };
 
   useEffect(() => {
+    if (containerRef.current) {
+      const observer = new ResizeObserver((entries) => {
+        requestAnimationFrame(() => setContainerWidth(entries[0].contentRect.width));
+      });
+      observer.observe(containerRef.current);
+      return () => {
+        observer.disconnect();
+        window.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('mouseup', handleMouseUp);
+        window.removeEventListener('touchmove', handleTouchMove);
+        window.removeEventListener('touchend', handleTouchEnd);
+      };
+    }
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);
@@ -154,7 +175,7 @@ export default function BeforeAfterSlider({ dict }: BeforeAfterSliderProps) {
           className="absolute inset-0 h-full overflow-hidden bg-neutral-900"
           style={{ width: `${position}%` }}
         >
-          <div className="absolute inset-0 w-full h-full p-6 sm:p-10 bg-neutral-950 flex flex-col justify-between" style={{ width: containerRef.current?.getBoundingClientRect().width }}>
+          <div className="absolute inset-0 w-full h-full p-6 sm:p-10 bg-neutral-950 flex flex-col justify-between" style={{ width: containerWidth }}>
             {/* Mock Legacy Interface */}
             <div className="flex justify-between items-center border-b border-red-900/10 pb-4 opacity-40">
               <span className="text-xs sm:text-sm font-semibold tracking-widest text-red-500 uppercase">{dict.before_site_label}</span>
