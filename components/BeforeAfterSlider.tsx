@@ -177,7 +177,7 @@ export default function BeforeAfterSlider({ dict }: BeforeAfterSliderProps) {
         >
           <div className="absolute inset-0 w-full h-full p-6 sm:p-10 bg-neutral-950 flex flex-col justify-between" style={{ width: containerWidth }}>
             {/* Mock Legacy Interface */}
-            <div className="flex justify-between items-center border-b border-red-900/10 pb-4 opacity-40">
+            <div className="flex justify-between items-center border-b border-red-900/20 pb-4">
               <span className="text-xs sm:text-sm font-semibold tracking-widest text-red-500 uppercase">{dict.before_site_label}</span>
               <div className="flex gap-2">
                 <div className="h-2 w-2 rounded-full bg-white/10" />
@@ -190,15 +190,15 @@ export default function BeforeAfterSlider({ dict }: BeforeAfterSliderProps) {
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-semibold w-fit animate-pulse">
                 {dict.before_badge}
               </div>
-              <h3 className="text-2xl sm:text-4xl font-bold tracking-tight text-neutral-500 line-through leading-tight decoration-red-500/50">
+              <h3 className="text-2xl sm:text-4xl font-bold tracking-tight text-neutral-300 line-through leading-tight decoration-red-500/50">
                 {dict.before_title}
               </h3>
-              <p className="text-xs sm:text-sm text-neutral-600 font-light leading-relaxed hidden sm:block blur-[1px]">
+              <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed hidden sm:block">
                 {dict.before_desc}
               </p>
             </div>
 
-            <div className="flex justify-between items-center border-t border-red-900/10 pt-4 text-[10px] sm:text-xs text-red-400/60 font-mono">
+            <div className="flex justify-between items-center border-t border-red-900/20 pt-4 text-[10px] sm:text-xs text-red-400 font-mono">
               <span>{dict.before_status}</span>
               <span>{dict.before_score}</span>
             </div>

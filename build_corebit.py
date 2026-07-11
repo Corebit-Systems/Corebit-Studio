@@ -261,7 +261,7 @@ export default config
 
     "tsconfig.json": """{
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2022",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
