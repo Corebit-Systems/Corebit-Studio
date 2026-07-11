@@ -51,7 +51,7 @@ import { Inter } from 'next/font/google';
 import '../../globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const SITE_URL = 'https://corebit-studio.vercel.app';
+const SITE_URL = 'https://studio.corebitsystems.io';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
   return {

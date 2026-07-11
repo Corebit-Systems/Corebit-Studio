@@ -1,7 +1,7 @@
 // File: C:\dev\Corebit-Studio\app\sitemap.ts
 import { MetadataRoute } from 'next';
 
-const SITE_URL = 'https://corebit-studio.vercel.app';
+const SITE_URL = 'https://studio.corebitsystems.io';
 
 const locales    = ['en', 'ru', 'cnr', 'srb', 'sq'] as const;
 const portfolios = [

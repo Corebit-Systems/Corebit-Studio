@@ -5,8 +5,8 @@ import { getDictionary, Locale } from '@/i18n/getDictionary';
 
 // ── Allowed origins for CSRF protection ─────────────────────────────────────
 const ALLOWED_ORIGINS = new Set([
-  'https://corebit-studio.vercel.app',
-  'https://www.corebit-studio.vercel.app',
+  'https://studio.corebitsystems.io',
+  'https://www.studio.corebitsystems.io',
 ]);
 
 // ── Sliding window IP rate limiter cache ─────────────────────────────────────
@@ -171,7 +171,7 @@ export async function POST(request: Request) {
               <div class="message-box">${message}</div>
             </div>
             <div class="footer">
-              <p>Sent automatically from <a href="https://corebit-studio.vercel.app">corebit-studio.vercel.app</a></p>
+              <p>Sent automatically from <a href="https://studio.corebitsystems.io">studio.corebitsystems.io</a></p>
             </div>
           </div>
         </body>

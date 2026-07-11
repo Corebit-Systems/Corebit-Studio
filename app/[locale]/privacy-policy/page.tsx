@@ -17,7 +17,7 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
-  const SITE_URL = 'https://corebit-studio.vercel.app';
+  const SITE_URL = 'https://studio.corebitsystems.io';
   return {
     alternates: {
       canonical: `${SITE_URL}/${locale}/privacy-policy`,

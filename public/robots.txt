@@ -43,5 +43,5 @@ User-agent: CCBot
 Disallow: /
 
 # 5. Global Directives
-Host: corebit-studio.vercel.app
-Sitemap: https://corebit-studio.vercel.app/sitemap.xml
+Host: studio.corebitsystems.io
+Sitemap: https://studio.corebitsystems.io/sitemap.xml

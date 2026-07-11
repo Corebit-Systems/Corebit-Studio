@@ -10,7 +10,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 
 const inter = Inter({ subsets: ['latin', 'cyrillic'], display: 'swap', weight: ['400', '500', '700'] });
-const SITE_URL = 'https://corebit-studio.vercel.app';
+const SITE_URL = 'https://studio.corebitsystems.io';
 
 // ── Per-locale metadata registry ─────────────────────────────────────────────
 // Each entry drives title, description, OG image, and Twitter card for its route.

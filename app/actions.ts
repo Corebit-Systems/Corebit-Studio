@@ -258,7 +258,7 @@ export async function submitContactForm(formData: FormData) {
               </div>
               
               <div class="footer">
-                <p>Sent automatically from <a href="https://corebit-studio.vercel.app">corebit-studio.vercel.app</a></p>
+                <p>Sent automatically from <a href="https://studio.corebitsystems.io">studio.corebitsystems.io</a></p>
               </div>
             </div>
           </body>
