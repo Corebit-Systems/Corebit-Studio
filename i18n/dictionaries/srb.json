@@ -8,12 +8,12 @@
   "hero": {
     "badge": "Inženjering platformi visokih performansi",
     "title": "Vaš sajt bi trebao da prodaje dok vi spavate",
-    "subtitle": "Gradimo ultra brze, visoko-konverzne veb sisteme i prilagođene module automatizacije koji eliminišu manuelno zakazivanje, maksimizuju ROI i skaliraju vaše poslovanje 24/7. Za restorane, STO i klinike.",
-    "cta": "Povećajte profit"
+    "subtitle": "Pravimo brze sajtove ključ u ruke sa online zakazivanjem za restorane, auto servise i rent a car {where}. Transparentna cena i pokretanje za 7 dana.",
+    "cta": "Saznaj cenu sajta"
   },
   "about": {
     "title": "Arhitektura Visoke Konverzije",
-    "desc": "Klijent poseti vaš sajt i odmah želi vašu uslugu. To postižemo kombinovanjem Apple dizajna sa ultra-brzim Next.js Edge mrežama, obezbeđujući besprekoran onbording. Ponosno pružamo usluge inženjeringa i automatizacije širom Crne Gore (Tivat, Budva, Podgorica), Srbije (Beograd) i Albanije (Tirana).",
+    "desc": "Naš veb studio se nalazi odmah pored vas — {where}. Klijent poseti vaš sajt i odmah želi vašu uslugu. To postižemo kombinovanjem dizajna u stilu Apple sa ultra-brzim učitavanjem.",
     "badges": [
       "Učitavanje < 100ms",
       "Besprekoran Mobilni UX",
@@ -31,7 +31,7 @@
     },
     "booking": {
       "title": "Dinamičko Zakazivanje",
-      "desc": "Inteligentni sistemi za zakazivanje za auto servise (STO) i medicinske klinike."
+      "desc": "Sajt za rent a car {where} sa kalendarom zauzetosti."
     },
     "schedule": {
       "title": "Automatizovani Rasporedi",
@@ -74,19 +74,19 @@
       "title": "Entry / Kickstart",
       "price": 360,
       "desc": "Brze landing stranice za trenutan prihvat posetilaca. Za lokalni SMB i servise za iznajmljivanje. Namenjeno za: restorane i klinike. Uticaj: Zadržava 98% mobilne pažnje. Povrat investicije (ROI): Odmah otplaćuje troškove sa prvih 5-10 klijenata.",
-      "btn": "Započni Kickstart"
+      "btn": "Želim sajt kao ovaj"
     },
     "tier2": {
       "title": "Growth / Business",
       "price": 1080,
       "desc": "Interaktivne platforme sa integrisanim sistemima rezervacija. Za lokalni SMB i servise za iznajmljivanje. Namenjeno za: auto servise (STO) i ordinacije. Uticaj: Štedi 15+ sati rada nedeljno. Povrat investicije (ROI): Otplata u roku od 30-45 dana.",
-      "btn": "Skaliraj Posao"
+      "btn": "Želim sajt kao ovaj"
     },
     "tier3": {
       "title": "Enterprise Arhitektura",
       "price": 3150,
       "desc": "Duboka integracija API sistema i napredna sigurnost. Idealno za premium hotele i restorane. Namenjeno za: mrežne brendove i brendove sa velikim prometom. Uticaj: Eliminiše ljudske greške u potpunosti. Povrat investicije (ROI): Otplata za manje od 90 dana.",
-      "btn": "Kontaktiraj Arhitektu"
+      "btn": "Razgovarajmo o sajtu na Telegramu"
     }
   },
   "leak": {
@@ -95,11 +95,11 @@
     "text": "Svaka sekunda kašnjenja vašeg veb sajta smanjuje stopu konverzije za 20%. Dok vaša konkurencija gubi klijente zbog sporog učitavanja stranica, vaši menadžeri gube sate manuelno usklađujući termine na WhatsApp-u, što dovodi do duplih rezervacija i propuštenih prilika. Ovaj operativni haos zamenjujemo brzim Edge mrežama i autonomnim modulima za instant rezervacije."
   },
   "contact_form": {
-    "title": "Preuzmite proračun isplativosti",
+    "title": "Saznaj cenu sajta",
     "name": "Puno Ime",
     "email": "Poslovni Email",
     "message": "Detalji Projekta",
-    "send": "Preuzmite proračun isplativosti",
+    "send": "Saznaj cenu sajta",
     "sending": "Šifrovanje...",
     "success": "Veza uspostavljena. Uskoro ćemo vas kontaktirati.",
     "error_rate": "Previše zahteva. Sačekajte 60 sekundi.",
@@ -115,7 +115,7 @@
     "or_email_label": "Ili:"
   },
   "footer": {
-    "cta_btn": "Pokreni Projekat",
+    "cta_btn": "Razgovarajmo o sajtu na Telegramu",
     "rights": "© 2026 Corebit Studio. Sva prava zadržana. Tivat, Crna Gora."
   },
   "portfolio_tech": {
@@ -169,7 +169,7 @@
     "slider1_label": "Koliko rezervacija ili klijenata gubite mesečno zbog ručne koordinacije?",
     "slider2_label": "Prosečan račun po rezervaciji / klijentu (€)",
     "result_desc": "Vaš biznis gubi oko {amount} € svakog meseca. Naš digitalni ekosistem se otplaćuje u prvih 1.5 meseci rada.",
-    "cta_btn": "Zaustavite gubitak profita"
+    "cta_btn": "Saznaj cenu sajta"
   },
   "reviews": {
     "title": "Utisci klijenata",
@@ -238,7 +238,7 @@
     "btn_check": "Proveri",
     "btn_analyzing": "Skeniranje odgovora servera...",
     "result_text": "Vaš trenutni sajt se učitava previše sporo. Prema Google Core Web Vitals, gubite do 40% mobilnog saobraćaja i rezervacija. Naš standard za ugostiteljstvo i premijum B2B je ispod 1.5 sekundi.",
-    "cta_btn": "Popravi brzinu sajta",
+    "cta_btn": "Saznaj cenu sajta",
     "alert_title": "Upozorenje performansi",
     "step1": "Inicijalizacija HTTP veze...",
     "step2": "Analiza Largest Contentful Paint (LCP)...",
@@ -261,12 +261,49 @@
       },
       "notify": {
         "title": "Sistem za obaveštenja gostiju",
-        "desc": "Automatska i instant SMS i email obaveštenja, potvrde rezervacija i slanje faktura klijentima."
+        "desc": "Automatska i instant SMS i email obavještenja, potvrde rezervacija i slanje faktura klijentima."
       },
       "seo": {
         "title": "SEO & AEO optimizacija za AI",
         "desc": "Strukturisana semantička oznaka koja omogućava da vaš brend bude direktno citiran od strane AI botova kao što su ChatGPT i Perplexity."
       }
     }
+  },
+  "geo": {
+    "montenegro": { "name": "Crna Gora", "where": "u Crnoj Gori", "destination": "u Crnu Goru" },
+    "serbia": { "name": "Srbija", "where": "u Srbiji", "destination": "u Srbiju" },
+    "albania": { "name": "Albanija", "where": "u Albaniji", "destination": "u Albaniju" },
+    "north_macedonia": { "name": "Severna Macedonia", "where": "u Severnoj Makedoniji", "destination": "u Severnu Makedoniju" },
+    "bosnia_herzegovina": { "name": "Bosna i Hercegovina", "where": "u Bosni i Hercegovini", "destination": "u Bosnu i Hercegovinu" },
+    "kosovo": { "name": "Kosovo", "where": "na Kosovu", "destination": "na Kosovo" },
+    "greece": { "name": "Grčka", "where": "u Grčkoj", "destination": "u Grčku" },
+    "croatia": { "name": "Hrvatska", "where": "u Hrvatskoj", "destination": "u Hrvatsku" },
+    "slovenia": { "name": "Slovenija", "where": "u Sloveniji", "destination": "u Sloveniju" },
+    "budva": { "name": "Budva", "where": "u Budvi", "destination": "u Budvu" },
+    "tivat": { "name": "Tivat", "where": "u Tivtu", "destination": "u Tivat" },
+    "podgorica": { "name": "Podgorica", "where": "u Podgorici", "destination": "u Podgoricu" },
+    "bar": { "name": "Bar", "where": "u Baru", "destination": "u Bar" },
+    "kotor": { "name": "Kotor", "where": "u Kotoru", "destination": "u Kotor" },
+    "herceg_novi": { "name": "Herceg-Novi", "where": "u Herceg-Novom", "destination": "u Herceg-Novi" },
+    "belgrade": { "name": "Beograd", "where": "u Beogradu", "destination": "u Beograd" },
+    "novi_sad": { "name": "Novi Sad", "where": "u Novom Sadu", "destination": "u Novi Sad" },
+    "nis": { "name": "Niš", "where": "u Nišu", "destination": "u Niš" },
+    "tirana": { "name": "Tirana", "where": "u Tirani", "destination": "u Tiranu" },
+    "durres": { "name": "Drač", "where": "u Draču", "destination": "u Drač" },
+    "saranda": { "name": "Saranda", "where": "u Sarandi", "destination": "u Sarandu" },
+    "skopye": { "name": "Skoplje", "where": "u Skoplju", "destination": "u Skoplje" },
+    "ohrid": { "name": "Ohrid", "where": "u Ohridu", "destination": "u Ohrid" },
+    "sarajevo": { "name": "Sarajevo", "where": "u Sarajevu", "destination": "u Sarajevo" },
+    "mostar": { "name": "Mostar", "where": "u Mostaru", "destination": "u Mostar" },
+    "trebinje": { "name": "Trebinje", "where": "u Trebinju", "destination": "u Trebinje" },
+    "pristina": { "name": "Priština", "where": "u Prištini", "destination": "u Prištinu" },
+    "athens": { "name": "Atina", "where": "u Atini", "destination": "u Atinu" },
+    "thessaloniki": { "name": "Solun", "where": "u Solunu", "destination": "u Solun" },
+    "chalcidice": { "name": "Halkidiki", "where": "na Halkidikiju", "destination": "na Halkidiki" },
+    "zagreb": { "name": "Zagreb", "where": "u Zagrebu", "destination": "u Zagreb" },
+    "split": { "name": "Split", "where": "u Splitu", "destination": "u Split" },
+    "dubrovnik": { "name": "Dubrovnik", "where": "u Dubrovniku", "destination": "u Dubrovnik" },
+    "ljubljana": { "name": "Ljubljana", "where": "u Ljubljani", "destination": "u Ljubljanu" },
+    "maribor": { "name": "Maribor", "where": "u Mariboru", "destination": "u Maribor" }
   }
 }

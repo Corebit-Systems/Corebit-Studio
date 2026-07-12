@@ -8,12 +8,12 @@
   "hero": {
     "badge": "Inxhinieri e Aseteve me Performancë të Lartë",
     "title": "Faqja juaj duhet të shesë ndërsa ju flini",
-    "subtitle": "Ne ndërtojmë sisteme uebi ultra të shpejta dhe module automatizimi që eliminojnë rezervimet manuale, maksimizojnë ROI-në dhe rrisin shitjet 24/7. Për restorante, auto-servise (STO) dhe klinika.",
-    "cta": "Fillo të fitosh më shumë"
+    "subtitle": "Ne krijojmë uebfaqe të shpejta 'nën çelës' me rezervim online të klientëve për restorante, auto-servise dhe makina me qira {where}. Çmim transparent dhe fillim për 7 ditë.",
+    "cta": "Mëso çmimin e uebfaqes"
   },
   "about": {
     "title": "Arkitekturë me Konvertim të Lartë",
-    "desc": "Një klient viziton faqen tuaj dhe menjëherë dëshiron shërbimin tuaj. Ne e arrijmë këtë duke kombinuar dizajnin Apple me rrjetet e shpejta Next.js Edge, duke siguruar një integrim të qetë. Ne shtrijmë shërbimet tona të inxhinierisë dhe automatizimit në të gjithë Malin e Zi (Tivat, Budvë, Podgoricë), Serbinë (Beograd) dhe Shqipërinë (Tiranë).",
+    "desc": "Studioja jonë e uebit ndodhet pranë jush — {where}. Një klient viziton faqen tuaj dhe menjëherë dëshiron shërbimin tuaj. Ne e arrijmë këtë duke kombinuar dizajnin e stilit Apple me ngarkim ultra të shpejtë.",
     "badges": [
       "Ngarkim < 100ms",
       "UX Mobil i Përsosur",
@@ -31,7 +31,7 @@
     },
     "booking": {
       "title": "Rezervim Dinamik i Kohës",
-      "desc": "Motorë inteligjentë planifikimi për qendra riparimi auto (STO) dhe klinika mjekësore."
+      "desc": "Uebfaqe për makina me qira {where} me kalendar disponueshmërie."
     },
     "schedule": {
       "title": "Planifikues të Automatizuar",
@@ -74,19 +74,19 @@
       "title": "Entry / Kickstart",
       "price": 360,
       "desc": "Landing faqe të optimizuara për shpejtësi. Për SMB lokale dhe shërbime me qira. Ideale për: bare dhe klinika të reja. Ndikimi: Kap 98% të vëmendjes celulare. Kthimi i investimit (ROI): Kthehet me 5-10 klientët e parë digjitalë.",
-      "btn": "Fillo Kickstart"
+      "btn": "Dua një uebfaqe si kjo"
     },
     "tier2": {
       "title": "Growth / Business",
       "price": 1080,
       "desc": "Platforma uebi me motorë rezervimesh dhe CRM sinkronizim. Për SMB lokale dhe shërbime me qira. Ideale për: auto-servise (STO) dhe klinika. Ndikimi: Kursen 15+ orë në javë nga puna manuale. Kthimi i investimit (ROI): Kthehet brenda 30-45 ditëve.",
-      "btn": "Skalo Biznesin"
+      "btn": "Dua një uebfaqe si kjo"
     },
     "tier3": {
       "title": "Enterprise Arkitekturë",
       "price": 3150,
       "desc": "Integrime të sistemit të personalizuar dhe mbrojtje sigurie. Ideale për hotele dhe restorante premium. Ideale për: marka shërbimesh me shumë pika. Ndikimi: Eliminohen gabimet njerëzore plotësisht. Kthimi i investimit (ROI): Kthehet për më pak se 90 ditë.",
-      "btn": "Konsulto Arkitektin"
+      "btn": "Diskuto për uebfaqen në Telegram"
     }
   },
   "leak": {
@@ -95,11 +95,11 @@
     "text": "Çdo sekondë vonesë në faqen tuaj të uebit ul konvertimet me 20%. Ndërsa konkurrenca humb klientë për shkak të faqeve të ngadalta, administratorët tuaj humbasin orë të tëra duke koordinuar manualisht takimet në WhatsApp, duke shkaktuar gabime dhe rezervime të dyfishta. Ne e zëvendësojmë këtih kaos me rrjete Edge ultra të shpejta dhe automatizim autonom."
   },
   "contact_form": {
-    "title": "Merrni llogaritjen e ROI brenda 24 orëve",
+    "title": "Mëso çmimin e uebfaqes",
     "name": "Emri i Plotë",
     "email": "Email i Korporatës",
     "message": "Detajet e Projektit",
-    "send": "Merrni llogaritjen e ROI brenda 24 orëve",
+    "send": "Mëso çmimin e uebfaqes",
     "sending": "Duke Kriptuar...",
     "success": "Lidhja u krijua. Ne do t'ju kontaktojmë së shpejti.",
     "error_rate": "Kufiri i normës u tejkalua. Ju lutemi prisni 60 sekonda.",
@@ -115,7 +115,7 @@
     "or_email_label": "Ose:"
   },
   "footer": {
-    "cta_btn": "Fillo Projektin",
+    "cta_btn": "Diskuto për uebfaqen në Telegram",
     "rights": "© 2026 Corebit Studio. Të gjitha të drejtat e rezervuara. Tivat, Mali i Zi."
   },
   "portfolio_tech": {
@@ -169,7 +169,7 @@
     "slider1_label": "Sa rezervime apo klientë humbisni në muaj për shkak të koordinimit manual?",
     "slider2_label": "Fatura mesatare për rezervim / klient (€)",
     "result_desc": "Biznesi juaj po humbet rreth {amount} € çdo muaj. Ekosistemi ynë digjital e shpaguajnë veten brenda 1.5 muajve të parë.",
-    "cta_btn": "Naloni humbjen e fitimit"
+    "cta_btn": "Mëso çmimin e uebfaqes"
   },
   "reviews": {
     "title": "Vlerësimet e Klientëve",
@@ -195,7 +195,7 @@
       {
         "author": "Elena R., Pronare",
         "company": "Boutique Hotel 5* (Gjiri i Kotorrit)",
-        "text": "Po kërkonim një kontraktor lokal që kupton specifikat e biznesit të hoteleve në Adriatik. Corebit Studio krijoi jo thjesht një prezantim të bukur, por një infrastrukturë të plotë digjitale me integrimin e sistemit tonë të brendshëm të dhomave. Numri i rezervimeve të drejtpërdrejta përmes faqes u rrit me 35%."
+        "text": "Po kërkonim një kontraktor lokal që kupton specifikat e biznesit të hoteleve në Adriatik. Corebit Studio krijoi jo thjesht një prezantim të bukur, bur një infrastrukturë të plotë digjital me integrimin e sistemit tonë të brendshëm të dhomave. Numri i rezervimeve të drejtpërdrejta përmes faqes u rrit me 35%."
       },
       {
         "author": "Christophe B., Drejtor Marketingu",
@@ -238,7 +238,7 @@
     "btn_check": "Analizo",
     "btn_analyzing": "Duke skanuar përgjigjen e serverit...",
     "result_text": "Uebfaqja juaj aktuale po ngarkohet shumë ngadalë. Sipas Google Core Web Vitals, po humbisni deri në 40% të trafikut celular dhe rezervimeve. Standardi ynë për bizneset e hotelerisë dhe ato premium B2B është nën 1.5 sekonda.",
-    "cta_btn": "Rregulloni Shpejtësinë Tani",
+    "cta_btn": "Mëso çmimin e uebfaqes",
     "alert_title": "Paralajmërim Performance",
     "step1": "Duke filluar HTTP handshake...",
     "step2": "Duke analizuar Largest Contentful Paint (LCP)...",
@@ -247,7 +247,7 @@
   },
   "ecosystem": {
     "title": "Ekosistemi i Integruar IT i Biznesit",
-    "subtitle": "Ne ndërtojmë infrastrukturë digjitale plotësisht të integruar, jo vetëm faqe të veçuara.",
+    "subtitle": "Ne ndërtojmë infrastrukturë digjitale plotësisht të integruar, iso vetëm faqe të veçuara.",
     "core_label": "Bërthama e Sistemit Corebit",
     "ready_label": "Gati për integrim",
     "modules": {
@@ -268,5 +268,42 @@
         "desc": "Markime semantike të strukturuara që sigurojnë që marka juaj të citohet drejtpërdrejt nga botët bisedorë si ChatGPT dhe Perplexity."
       }
     }
+  },
+  "geo": {
+    "montenegro": { "name": "Mali i Zi", "where": "në Mal të Zi", "destination": "në Mal të Zi" },
+    "serbia": { "name": "Serbi", "where": "në Serbi", "destination": "në Serbi" },
+    "albania": { "name": "Shqipëri", "where": "në Shqipëri", "destination": "në Shqipëri" },
+    "north_macedonia": { "name": "Maqedoni e Veriut", "where": "në Maqedoni të Veriut", "destination": "në Maqedoni të Veriut" },
+    "bosnia_herzegovina": { "name": "Bosnjë-Hercegovinë", "where": "në Bosnjë-Hercegovinë", "destination": "në Bosnjë-Hercegovinë" },
+    "kosovo": { "name": "Kosovë", "where": "në Kosovë", "destination": "në Kosovë" },
+    "greece": { "name": "Greqi", "where": "në Greqi", "destination": "në Greqi" },
+    "croatia": { "name": "Kroaci", "where": "në Kroaci", "destination": "në Kroaci" },
+    "slovenia": { "name": "Slloveni", "where": "në Slloveni", "destination": "në Slloveni" },
+    "budva": { "name": "Budvë", "where": "në Budvë", "destination": "në Budvë" },
+    "tivat": { "name": "Tivat", "where": "në Tivat", "destination": "në Tivat" },
+    "podgorica": { "name": "Podgoricë", "where": "në Podgoricë", "destination": "në Podgoricë" },
+    "bar": { "name": "Tivar", "where": "në Tivar", "destination": "në Tivar" },
+    "kotor": { "name": "Kotor", "where": "në Kotor", "destination": "në Kotor" },
+    "herceg_novi": { "name": "Herceg Novi", "where": "në Herceg Novi", "destination": "në Herceg Novi" },
+    "belgrade": { "name": "Beograd", "where": "në Beograd", "destination": "në Beograd" },
+    "novi_sad": { "name": "Novi Sad", "where": "në Novi Sad", "destination": "në Novi Sad" },
+    "nis": { "name": "Nish", "where": "në Nish", "destination": "në Nish" },
+    "tirana": { "name": "Tiranë", "where": "në Tiranë", "destination": "në Tiranë" },
+    "durres": { "name": "Durrës", "where": "në Durrës", "destination": "në Durrës" },
+    "saranda": { "name": "Sarandë", "where": "në Sarandë", "destination": "në Sarandë" },
+    "skopye": { "name": "Shkup", "where": "në Shkup", "destination": "në Shkup" },
+    "ohrid": { "name": "Ohër", "where": "në Ohër", "destination": "në Ohër" },
+    "sarajevo": { "name": "Sarajevë", "where": "në Sarajevë", "destination": "në Sarajevë" },
+    "mostar": { "name": "Mostar", "where": "në Mostar", "destination": "në Mostar" },
+    "trebinje": { "name": "Trebinjë", "where": "në Trebinjë", "destination": "në Trebinjë" },
+    "pristina": { "name": "Prishtinë", "where": "në Prishtinë", "destination": "në Prishtinë" },
+    "athens": { "name": "Athinë", "where": "në Athinë", "destination": "në Athinë" },
+    "thessaloniki": { "name": "Selanik", "where": "në Selanik", "destination": "në Selanik" },
+    "chalcidice": { "name": "Halkidiki", "where": "në Halkidiki", "destination": "në Halkidiki" },
+    "zagreb": { "name": "Zagreb", "where": "në Zagreb", "destination": "në Zagreb" },
+    "split": { "name": "Split", "where": "në Split", "destination": "në Split" },
+    "dubrovnik": { "name": "Dubrovnik", "where": "në Dubrovnik", "destination": "në Dubrovnik" },
+    "ljubljana": { "name": "Lubjanë", "where": "në Lubjanë", "destination": "në Lubjanë" },
+    "maribor": { "name": "Maribor", "where": "në Maribor", "destination": "në Maribor" }
   }
 }

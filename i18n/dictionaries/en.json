@@ -8,12 +8,12 @@
   "hero": {
     "badge": "Engineering High-Performance Assets",
     "title": "Your Website Should Sell While You Sleep",
-    "subtitle": "We design ultra-fast web platforms and custom booking automation modules that convert traffic into revenue, eliminate manual scheduling, and boost B2B ROI. Tailored for restaurants, STOs, and medical clinics.",
-    "cta": "Start Earning More"
+    "subtitle": "We build quick, high-converting websites under key with online client booking for restaurants, auto services, and car rentals {where}. Transparent pricing and launch in 7 days.",
+    "cta": "Get website price"
   },
   "about": {
     "title": "High-Conversion Architecture",
-    "desc": "A client visits your site and instantly desires your service. We achieve this by combining Apple-grade glassmorphism with Next.js Edge networks, delivering sub-100ms load times and seamless user onboarding. We explicitly extend our high-performance engineering and automation coverage across Montenegro (Tivat, Budva, Podgorica), Serbia (Belgrade), and Albania (Tirana).",
+    "desc": "Our web studio is located right next to you — {where}. A client visits your site and instantly desires your service. We achieve this by combining Apple-grade design with ultra-fast load speeds.",
     "badges": [
       "Sub-100ms Load",
       "Flawless Mobile UX",
@@ -31,7 +31,7 @@
     },
     "booking": {
       "title": "Dynamic Time-Slot Booking",
-      "desc": "Intelligent scheduling engines for automotive repair centers (STO), detailing hubs, and medical clinics."
+      "desc": "Website for car rentals {where} with availability calendar."
     },
     "schedule": {
       "title": "Automated Schedulers",
@@ -74,19 +74,19 @@
       "title": "Entry / Kickstart",
       "price": 360,
       "desc": "Premium, speed-optimized storefronts designed to capture immediate traffic. For local SMB and rental services. Best for: local bistros and emerging clinics wanting an elite digital card. Business impact: Captures 98% of mobile attention. ROI payback: Instantly offsets costs by converting the first 5-10 digital clients.",
-      "btn": "Deploy Kickstart"
+      "btn": "I want a website like this"
     },
     "tier2": {
       "title": "Growth / Business",
       "price": 1080,
       "desc": "Interactive web platforms with custom booking engines and CRM sync. For local SMB and rental services. Best for: busy STOs, cafes, and medical hubs. Business impact: Saves 15+ hours of manual scheduling weekly. ROI payback: Fully recovers initial capital within 30-45 days through zero double-bookings.",
-      "btn": "Scale Your Business"
+      "btn": "I want a website like this"
     },
     "tier3": {
       "title": "Enterprise Architecture",
       "price": 3150,
       "desc": "Custom infrastructure integrations, extreme API speed optimization, and security hardening. Ideal for premium hotels and restaurants. Best for: multisite service brands and high-volume operations. Business impact: Eliminates human coordination errors completely. ROI payback: Realized via massive overhead reduction in under 90 days.",
-      "btn": "Consult Architect"
+      "btn": "Discuss website in Telegram"
     }
   },
   "leak": {
@@ -95,11 +95,11 @@
     "text": "Every second of delay on your website drops conversion rates by 20%. While your competitors lose high-value prospects to sluggish page loads, your managers are stuck manually typing time-slots in WhatsApp, leading to double-bookings and lost opportunities. We replace this operational chaos with sub-100ms Edge networks and autonomous automation engines that secure bookings instantly."
   },
   "contact_form": {
-    "title": "Get ROI Calculation within 24h",
+    "title": "Get website price",
     "name": "Full Name",
     "email": "Corporate Email",
     "message": "Project Details",
-    "send": "Get ROI Calculation within 24h",
+    "send": "Get website price",
     "sending": "Encrypting...",
     "success": "Connection Established. We will contact you shortly.",
     "error_rate": "Rate limit exceeded. Please wait 60 seconds.",
@@ -115,7 +115,7 @@
     "or_email_label": "Or:"
   },
   "footer": {
-    "cta_btn": "Launch Project",
+    "cta_btn": "Discuss website in Telegram",
     "rights": "© 2026 Corebit Studio. All rights reserved. Tivat, Montenegro."
   },
   "portfolio_tech": {
@@ -169,7 +169,7 @@
     "slider1_label": "How many bookings or clients do you lose per month due to manual coordination?",
     "slider2_label": "Average check per booking / client (€)",
     "result_desc": "Your business is missing out on approximately {amount} € every month. Our digital ecosystem pays for itself within the first 1.5 months.",
-    "cta_btn": "Stop losing profit"
+    "cta_btn": "Get website price"
   },
   "reviews": {
     "title": "Client Reviews",
@@ -209,8 +209,7 @@
       },
       {
         "author": "Thomas M., Co-founder",
-        "company": "International FinTech Project (Central Europe)",
-        "text": "We collaborate under an agile software development model. The Corebit Systems team and their studio unit handle highly complex integration tasks for multinational financial aggregators. Exceptional technical expertise, scalable code (Next.js), and strict deadline compliance."
+        "company": "Agile software development model. The Corebit Systems team and their studio unit handle highly complex integration tasks for multinational financial aggregators. Exceptional technical expertise, scalable code (Next.js), and strict deadline compliance."
       }
     ]
   },
@@ -238,7 +237,7 @@
     "btn_check": "Analyze",
     "btn_analyzing": "Scanning server response...",
     "result_text": "Your current website is loading too slowly. According to Google Core Web Vitals, you are losing up to 40% of mobile traffic and bookings. Our standard for hospitality and premium B2B businesses is under 1.5 seconds.",
-    "cta_btn": "Fix Site Speed Now",
+    "cta_btn": "Get website price",
     "alert_title": "Performance Alert",
     "step1": "Initializing HTTP handshake...",
     "step2": "Analyzing Largest Contentful Paint (LCP)...",
@@ -268,5 +267,42 @@
         "desc": "Structured semantic markups ensuring your brand is cited directly by conversational bots like ChatGPT and Perplexity."
       }
     }
+  },
+  "geo": {
+    "montenegro": { "name": "Montenegro", "where": "in Montenegro", "destination": "to Montenegro" },
+    "serbia": { "name": "Serbia", "where": "in Serbia", "destination": "to Serbia" },
+    "albania": { "name": "Albania", "where": "in Albania", "destination": "to Albania" },
+    "north_macedonia": { "name": "North Macedonia", "where": "in North Macedonia", "destination": "to North Macedonia" },
+    "bosnia_herzegovina": { "name": "Bosnia and Herzegovina", "where": "in Bosnia and Herzegovina", "destination": "to Bosnia and Herzegovina" },
+    "kosovo": { "name": "Kosovo", "where": "in Kosovo", "destination": "to Kosovo" },
+    "greece": { "name": "Greece", "where": "in Greece", "destination": "to Greece" },
+    "croatia": { "name": "Croatia", "where": "in Croatia", "destination": "to Croatia" },
+    "slovenia": { "name": "Slovenia", "where": "in Slovenia", "destination": "to Slovenia" },
+    "budva": { "name": "Budva", "where": "in Budva", "destination": "to Budva" },
+    "tivat": { "name": "Tivat", "where": "in Tivat", "destination": "to Tivat" },
+    "podgorica": { "name": "Podgorica", "where": "in Podgorica", "destination": "to Podgorica" },
+    "bar": { "name": "Bar", "where": "in Bar", "destination": "to Bar" },
+    "kotor": { "name": "Kotor", "where": "in Kotor", "destination": "to Kotor" },
+    "herceg_novi": { "name": "Herceg Novi", "where": "in Herceg Novi", "destination": "to Herceg Novi" },
+    "belgrade": { "name": "Belgrade", "where": "in Belgrade", "destination": "to Belgrade" },
+    "novi_sad": { "name": "Novi Sad", "where": "in Novi Sad", "destination": "to Novi Sad" },
+    "nis": { "name": "Nis", "where": "in Nis", "destination": "to Nis" },
+    "tirana": { "name": "Tirana", "where": "in Tirana", "destination": "to Tirana" },
+    "durres": { "name": "Durres", "where": "in Durres", "destination": "to Durres" },
+    "saranda": { "name": "Saranda", "where": "in Saranda", "destination": "to Saranda" },
+    "skopye": { "name": "Skopje", "where": "in Skopje", "destination": "to Skopje" },
+    "ohrid": { "name": "Ohrid", "where": "in Ohrid", "destination": "to Ohrid" },
+    "sarajevo": { "name": "Sarajevo", "where": "in Sarajevo", "destination": "to Sarajevo" },
+    "mostar": { "name": "Mostar", "where": "in Mostar", "destination": "to Mostar" },
+    "trebinje": { "name": "Trebinje", "where": "in Trebinje", "destination": "to Trebinje" },
+    "pristina": { "name": "Pristina", "where": "in Pristina", "destination": "to Pristina" },
+    "athens": { "name": "Athens", "where": "in Athens", "destination": "to Athens" },
+    "thessaloniki": { "name": "Thessaloniki", "where": "in Thessaloniki", "destination": "to Thessaloniki" },
+    "chalcidice": { "name": "Chalcidice", "where": "in Chalcidice", "destination": "to Chalcidice" },
+    "zagreb": { "name": "Zagreb", "where": "in Zagreb", "destination": "to Zagreb" },
+    "split": { "name": "Split", "where": "in Split", "destination": "to Split" },
+    "dubrovnik": { "name": "Dubrovnik", "where": "in Dubrovnik", "destination": "to Dubrovnik" },
+    "ljubljana": { "name": "Ljubljana", "where": "in Ljubljana", "destination": "to Ljubljana" },
+    "maribor": { "name": "Maribor", "where": "in Maribor", "destination": "to Maribor" }
   }
 }
