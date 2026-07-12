@@ -1,0 +1,27 @@
+{
+  "title": "Uslovi Korišćenja",
+  "subtitle": "Pravno obavezujući uslovi i pravila koji regulišu korišćenje sajta studio.corebitsystems.io.",
+  "last_updated": "Poslednje ažuriranje: Jul 2026",
+  "sections": [
+    {
+      "title": "1. Prihvatanje uslova, starosna ograničenja i zastupanje biznisa",
+      "text": "Pristupanjem, pregledanjem ili korišćenjem veb sajta studio.corebitsystems.io, potvrđujete da ste pročitali, razumeli i da ste saglasni da budete pravno obavezani ovim Uslovima korišćenja, našom Politikom privatnosti i Politikom kolačića. Ako niste saglasni sa bilo kojim delom ovih uslova, morate odmah prestati sa korišćenjem sajta i napustiti stranicu. Ovaj sajt je namenjen isključivo za poslovnu komunikaciju (B2B). Korišćenjem sajta studio.corebitsystems.io izjavljujete da imate najmanje 18 godina i da posedujete punu poslovnu sposobnost i pravna ovlašćenja da zastupate svoju kompaniju i zaključujete obavezujuće ugovore."
+    },
+    {
+      "title": "2. Opis usluga, ograničenja i okviri rada",
+      "text": "Corebit Studio pruža usluge izrade individualnog dizajna, visokoperformansnog veb programiranja, optimizacije arhitekture softvera, izrade sajtova pod ključ (uključujući Next.js, React i serverless rešenja), integracije baza podataka i podešavanja sistema za automatsko online zakazivanje i rezervaciju termina (za auto servise, rent-a-car agencije, restorane i salone). Sadržaj na sajtu studio.corebitsystems.io je isključivo informativnog i predugovornog karaktera. Za definisanje cena, obima radova, rokova i obaveza isporuke softvera potrebno je potpisivanje posebnog zvaničnog ugovora između ugovornih strana. Zadržavamo pravo da izmenimo, obustavimo ili prekinemo prezentaciju usluga na ovom sajtu bez prethodne najave."
+    },
+    {
+      "title": "3. Prava intelektualne svojine, zaštita autorskih prava i ograničenja licence",
+      "text": "Svi materijali prikazani na sajtu studio.corebitsystems.io—uključujući izvorni kod, TypeScript skripte, CSS stilove, dizajn korisničkog interfejsa, animacije, grafičke elemente, konceptualna rešenja, žigove i tekstualne materijale—predstavljaju isključivu intelektualnu svojinu Corebit Studio i zaštićeni su međunarodnim zakonima o autorskim pravima. Kod projekata koji se rade po narudžbini za klijente, sva prava intelektualne svojine na razvijeni kod i dizajn ostaju vlasništvo Corebit Studio sve dok se završni račun po ugovoru ne plati u potpunosti (100%). Svako neovlašćeno kopiranje, distribucija, modifikacija, struganje podataka (web scraping), obrnuti inženjering ili javno prikazivanje ovih materijala bez prethodne pismene saglasnosti Corebit Studio strogo je zabranjeno."
+    },
+    {
+      "title": "4. Potpuno odricanje od garancija i ograničenje odgovornosti",
+      "text": "Sajt studio.corebitsystems.io i svi njegovi materijali pružaju se pod uslovima 'kao što jeste' i 'kako je dostupno', bez bilo kakvih izričitih ili podrazumevanih garancija. Corebit Studio ne garantuje nesmetan rad sajta bez grešaka. U maksimalnoj meri dozvoljenoj zakonom, Corebit Studio ne snosi odgovornost za bilo kakvu direktnu, indirektnu, slučajnu ili posledičnu štetu nastalu korišćenjem ili nemogućnošću korišćenja ovog sajta. Ovo ograničenje odgovornosti se odnosi na prekide u radu hostinga (Vercel), baza podataka (PostgreSQL/Redis), telekomunikacionih veza, kompjuterske viruse, greške u radu eksternih API integracija (WhatsApp, Telegram ili Stripe) i gubitak poslovnih podataka ili profita."
+    },
+    {
+      "title": "5. Primjenjivo pravo, sudska nadležnost i rješavanje sporova",
+      "text": "Ovi Uslovi korišćenja, kao i svi sporovi ili potraživanja koji proizilaze iz korišćenja ili u vezi sa korišćenjem veb sajta studio.corebitsystems.io, regulišu se, tumače i sprovode u skladu sa zakonima Republike Srbije i relevantnim propisima Evropske unije. Svi sporovi koji se ne mogu rešiti sporazumno kroz konstruktivne pregovore ugovornih strana, biće predati na isključivo odlučivanje nadležnim privrednim sudovima u Republici Srbiji, prema mestu zvanične registracije Corebit Studio."
+    }
+  ]
+}

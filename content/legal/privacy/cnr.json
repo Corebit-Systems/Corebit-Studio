@@ -1,0 +1,27 @@
+{
+  "title": "Politika Privatnosti",
+  "subtitle": "Detaljna pravila o prikupljanju, obradi, zaštiti i pravima povezanim sa vašim ličnim podacima u Corebit Studio.",
+  "last_updated": "Posljednje ažuriranje: Jul 2026",
+  "sections": [
+    {
+      "title": "1. Kategorije i obim prikupljenih ličnih podataka",
+      "text": "Corebit Studio prikuplja lične podatke putem dva različita kanala: (a) Podaci koje korisnik direktno pruža: Kada dobrovoljno pošaljete upit za procjenu cijene projekta, popunite kontakt forme ili započnete komunikaciju preko integrisanih WhatsApp ili Telegram vidžeta, prikupljamo informacije kao što su vaše ime i prezime, korporativna e-mail adresa, kontakt telefon, korisničko ime na mesindžeru, kao i tekstualni opis projekta koji odlučite da podijelite. (b) Automatski prikupljeni podaci: Tokom vaše interakcije sa sajtom studio.corebitsystems.io bilježimo tehničke podatke iz logova, uključujući IP adresu, tip i verziju pretraživača, podešavanja jezika, operativni sistem, URL adrese referera i statistiku brzine mreže. Na ovom sajtu ne prikupljamo niti obrađujemo osjetljive lične podatke, biometrijske podatke ili finansijske podatke."
+    },
+    {
+      "title": "2. Zakoniti osnovi i svrha obrade podataka",
+      "text": "Svi prikupljeni lični podaci obrađuju se strogo na osnovu predgovornih pregovora, saglasnosti i legitimnog interesa. Konkretno, podaci se koriste za: (a) Odgovaranje na vaše upite, izradu komercijalnih ponuda i usaglašavanje detalja ugovora o uslugama dizajna, razvoja sajtova i automatizacije. (b) Praćenje bezbjednosti sajta, sprečavanje neželjene pošte (spama) i dijagnostiku performansi. (c) Analizu statistike posjeta radi poboljšanja brzine učitavanja stranica. Corebit Studio primjenjuje strogu politiku nedijeljenja podataka: nikada ne prodajemo, ne iznajmljujemo, ne razmjenjujemo i ne prosljeđujemo vaše lične kontakte marketinškim agencijama, reklamnim mrežama ili trećim licima u svrhu promocije."
+    },
+    {
+      "title": "3. Usklađenost sa GDPR-om, zakonima Crne Gore i prava korisnika",
+      "text": "U strogoj usklađenosti sa Opštom uredbom o zaštiti podataka Evropske unije (EU GDPR) i Zakonom o zaštiti podataka o ličnosti Crne Gore, korisnici imaju sveobuhvatna prava nad svojim podacima. Ova prava uključuju: (a) Pravo na pristup podacima radi provjere njihovog sadržaja. (b) Pravo na ispravku netačnih informacija. (c) Pravo na ograničenje obrade. (d) Pravo na prenosivost podataka. (e) Pravo na brisanje podataka ('Pravo na zaborav') uz potpuno uklanjanje zapisa iz naših baza podataka. Da biste ostvarili bilo koje od ovih prava, kontaktirajte našeg službenika za zaštitu podataka putem e-pošte na corebitstudio@corebitsystems.io. Obavezujemo se da ćemo odgovoriti i obraditi vaš zahtjev u roku od 30 kalendarskih dana od dana potvrde."
+    },
+    {
+      "title": "4. Tehničke mjere bezbjednosti i protokoli za čuvanje podataka",
+      "text": "Primjenjujemo pouzdane tehničke i administrativne mjere kako bismo zaštitili vaše lične podatke od slučajnog gubitka, neovlašćenog pristupa, izmjene, otkrivanja ili uništavanja. Prenos svih informacija preko sajta studio.corebitsystems.io šifrovan je korišćenjem Secure Socket Layer (SSL) protokola. Lični podaci se čuvaju u zaštićenom serverskom okruženju sa strogo ograničenim listama pristupa, čime se obezbjeđuje da samo ovlašćeno osoblje uključeno u vođenje klijentskih projekata može pristupiti podacima. Ipak, prenos podataka preko interneta ili čuvanje u bazama podataka nikada ne može biti 100% bezbjedan, i korisnici dijele informacije na sopstveni rizik."
+    },
+    {
+      "title": "5. Obrađivači podataka, period čuvanja i Pravo na zaborav",
+      "text": "Angažujemo eksterne obrađivače podataka radi olakšavanja komunikacije: (a) Meta Platforms Ireland Ltd. (prenos podataka putem WhatsApp formi na servere u SAD-u na osnovu Standardnih ugovornih klauzula - SCC). (b) Telegram FZ-LLC (prenos podataka putem botova/formi u UAE, obrada podataka van Evropskog ekonomskog prostora - EEP na osnovu saglasnosti korisnika klikom na deep-link). Period čuvanja podataka o potencijalnim klijentima (Data Retention Period) je ograničen na 12 mjeseci od posljednjeg kontakta, nakon čega se svi lični podaci trajno brišu. Korisnici zadržavaju svoje pravo na brisanje („Pravo na zaborav“) i mogu zatražiti trajno uklanjanje svojih ličnih podataka iz naših baza podataka u bilo kom trenutku slanjem zahtjeva našem službeniku za zaštitu podataka."
+    }
+  ]
+}

@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
+import fs from 'fs';
+import path from 'path';
 
 export async function generateStaticParams() {
   return [
@@ -14,15 +16,24 @@ export async function generateStaticParams() {
   ];
 }
 
+function getPrivacyPolicy(locale: string) {
+  try {
+    const filePath = path.join(process.cwd(), 'content', 'legal', 'privacy', `${locale}.json`);
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    return JSON.parse(fileContent);
+  } catch (error) {
+    console.error(`Failed to read privacy policy for ${locale}`, error);
+    return { title: 'Privacy Policy', subtitle: '', last_updated: '', sections: [] };
+  }
+}
+
 export async function generateMetadata({
   params: { locale },
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
   const SITE_URL = 'https://studio.corebitsystems.io';
-  const dict = await getDictionary(locale as Locale);
-  const policiesDict = (dict.policies as any) || {};
-  const content = policiesDict.privacy_policy || {};
+  const content = getPrivacyPolicy(locale);
 
   return {
     title: content.title || "Privacy Policy",
@@ -56,7 +67,7 @@ export async function generateMetadata({
 export default async function PrivacyPolicyPage({ params: { locale } }: { params: { locale: Locale } }) {
   const rawDict = await getDictionary(locale);
   const policiesDict = (rawDict.policies as any) || {};
-  const content = policiesDict.privacy_policy || { title: '', subtitle: '', last_updated: '', sections: [] };
+  const content = getPrivacyPolicy(locale);
   const backBtn = policiesDict.back_btn || 'Back to Home';
 
   return (

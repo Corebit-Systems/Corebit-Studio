@@ -1,0 +1,27 @@
+{
+  "title": "Terms of Service",
+  "subtitle": "The legally binding conditions and rules governing the use of studio.corebitsystems.io.",
+  "last_updated": "Last updated: July 2026",
+  "sections": [
+    {
+      "title": "1. Acceptance of Terms, Age Limits, and Business Representation",
+      "text": "By accessing, browsing, or using the website studio.corebitsystems.io, you acknowledge that you have read, understood, and agreed to be legally bound by these Terms of Service, our Privacy Policy, and our Cookie Policy. If you do not agree to any portion of these conditions, you must immediately cease using this website and leave the page. This website is intended solely for business-to-business (B2B) communications. By using studio.corebitsystems.io, you represent that you are at least 18 years of age and possess the legal capacity to represent your business entity and enter into binding commercial agreements."
+    },
+    {
+      "title": "2. Description of Services, Limits, and Scopes of Work",
+      "text": "Corebit Studio provides custom web design, high-performance web engineering, system architecture optimization, turnkey software development (including Next.js, React, and serverless architectures), database integration, and automated time-slot scheduling systems (specifically tailored for local businesses such as car rentals, auto repair shops, salons, and restaurants). The content on studio.corebitsystems.io serves informational and pre-contractual purposes. A formal contractual agreement, signed independently by both parties, is required to establish pricing, scopes of work, deadlines, and delivery obligations for any commissioned project. We reserve the right to modify, suspend, or terminate the showcase services displayed on this website without prior notice."
+    },
+    {
+      "title": "3. Intellectual Property Rights, Copyright Protection, and Licensing Restrictions",
+      "text": "All materials displayed on studio.corebitsystems.io—including but not limited to source code, TypeScript scripts, CSS layouts, user interface designs, animations, graphic assets, project concepts, trademarks, and written copy—are the exclusive intellectual property of Corebit Studio and are protected under international copyright, trademark, and intellectual property laws. For custom client development projects, all intellectual property rights and codebases remain the sole property of Corebit Studio until the final invoice is paid in full under the contract. Any unauthorized copying, distribution, modification, web scraping, reverse engineering, or public display of these materials without explicit prior written consent from Corebit Studio is strictly prohibited."
+    },
+    {
+      "title": "4. Complete Disclaimer of Warranties and Limitation of Liability",
+      "text": "The website studio.corebitsystems.io and all its contents are provided on an 'as is' and 'as available' basis, without warranties of any kind, either express or implied. Corebit Studio does not warrant that the website will run uninterrupted or error-free. To the maximum extent permitted by law, Corebit Studio disclaims all liability for any direct, indirect, incidental, special, or consequential damages resulting from your use or inability to use this website. This disclaimer covers damages caused by server downtime, hosting provider (Vercel) outages, database connection failures (PostgreSQL/Redis), telecommunication issues, computer viruses, third-party API malfunctions (such as WhatsApp, Telegram, or Stripe integrations), or loss of business data and profits, even if we have been advised of the possibility of such damages."
+    },
+    {
+      "title": "5. Governing Law, Venue, and Alternative Dispute Resolution",
+      "text": "These Terms of Service, along with any disputes or claims arising out of or in connection with the use of studio.corebitsystems.io, shall be governed by, construed, and enforced in accordance with the laws of Montenegro and relevant European Union regulations. Any dispute, controversy, or claim arising from these terms that cannot be resolved amicably through constructive negotiations between the parties shall be submitted to the exclusive jurisdiction of the competent commercial courts in Montenegro, where Corebit Studio is officially registered."
+    }
+  ]
+}

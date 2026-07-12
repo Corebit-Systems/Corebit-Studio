@@ -5,8 +5,7 @@ import '@/app/globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/next";
+import AnalyticsConsentProvider from '@/components/AnalyticsConsentProvider';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 
 const inter = Inter({ subsets: ['latin', 'cyrillic'], display: 'swap', weight: ['400', '500', '700'] });
@@ -404,9 +403,8 @@ export default async function RootLayout({
         {/* Global Compliance & Consent management */}
         <CookieBanner dict={dict.cookie} locale={locale} />
 
-        {/* Vercel Speed & Analytics telemetry */}
-        <SpeedInsights />
-        <Analytics />
+        {/* Vercel telemetry — loaded only after affirmative cookie consent (GDPR/ePrivacy) */}
+        <AnalyticsConsentProvider />
       </body>
     </html>
   );

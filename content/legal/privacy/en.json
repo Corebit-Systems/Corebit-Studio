@@ -1,0 +1,27 @@
+{
+  "title": "Privacy Policy",
+  "subtitle": "Detailed guidelines regarding the collection, processing, protection, and rights associated with your personal data at Corebit Studio.",
+  "last_updated": "Last updated: July 2026",
+  "sections": [
+    {
+      "title": "1. Categories and Scope of Collected Personal Data",
+      "text": "Corebit Studio collects personal data through two distinct channels: (a) Directly Provided Data: When you voluntarily submit a project inquiry, request a website price calculation, or initiate communication via our integrated contact forms, WhatsApp, or Telegram widgets, we collect personal details including your full name, corporate email address, telephone contact number, messenger usernames, and any project-specific descriptions you choose to disclose. (b) Automatically Collected Data: During your interaction with studio.corebitsystems.io, we collect technical log data containing your IP address, browser type and version, language configuration, operating system, referrer URLs, and network speed performance statistics. We do not gather or process sensitive personal information, biometric data, or financial credentials on this website."
+    },
+    {
+      "title": "2. Legitimate Purposes and Scope of Data Processing",
+      "text": "All personal data gathered is processed strictly under the legal bases of pre-contractual negotiations, consent, and legitimate interest. Specifically, the data is used to: (a) Respond to your requests, calculate commercial offers, and coordinate contract details for web design and custom software development services. (b) Monitor website security, prevent spam transmissions, and diagnose performance bottlenecks. (c) Analyze traffic statistics to improve loading speeds. Corebit Studio enforces a strict zero-sharing policy: we never sell, lease, rent, trade, or distribute your personal details to marketing agencies, advertising networks, or third-party corporations for promotional purposes."
+    },
+    {
+      "title": "3. GDPR Compliance, Balkan Regulations, and User Rights",
+      "text": "In strict compliance with the European Union General Data Protection Regulation (EU GDPR) and the Law on Personal Data Protection of Montenegro, Serbia, and Albania, users possess comprehensive rights over their data. These rights include: (a) The Right of Access to inspect what data we store. (b) The Right to Rectification to update inaccurate details. (c) The Right to Restriction of processing. (d) The Right to Portability. (e) The Right to Erasure ('Right to be Forgotten') to demand the complete deletion of your records from our databases. To exercise any of these statutory rights, please contact our data protection officer directly at corebitstudio@corebitsystems.io. We commit to responding to and processing all verified compliance requests within 30 calendar days."
+    },
+    {
+      "title": "4. Security Infrastructure and Data Storage Protocols",
+      "text": "We utilize robust technical and administrative measures designed to protect your personal data against accidental loss, unauthorized access, alteration, disclosure, or destruction. All data transmissions through studio.corebitsystems.io are encrypted using Secure Socket Layer (SSL) protocols. Personal information is stored securely inside protected server environments with restricted access control lists, ensuring that only authorized personnel directly involved in client relations can inspect client data. While we implement industry-standard security measures, no digital transmission over the internet or database storage system can be guaranteed to be 100% secure, and users share information at their own risk."
+    },
+    {
+      "title": "5. Data Processors, Data Retention, and Right to be Forgotten",
+      "text": "We engage third-party data processors to facilitate our communications: (a) Meta Platforms Ireland Ltd. (data transfer via WhatsApp forms to US servers based on Standard Contractual Clauses - SCC). (b) Telegram FZ-LLC (data transfer via bots/forms in UAE, processing of personal data outside the EEA based on explicit user consent when clicking deep links). The data retention period for lead information is strictly limited to 12 months from the moment of the last contact, after which all personal files are permanently deleted. Users retain their right to erasure ('Right to be Forgotten') and can request absolute removal of their personal data from our databases at any time by contacting our data protection officer."
+    }
+  ]
+}

@@ -76,10 +76,32 @@ export default function LangSwitcher({ currentLocale }: { currentLocale: string 
 
   const switchLang = (newLocale: string) => {
     if (!pathname) return;
+
+    // BCP47 tag used in hreflang for each internal locale code
+    const localeToBcp47: Record<string, string> = {
+      en:  'en',
+      ru:  'ru',
+      sq:  'sq-al',   // canonical lowercase for attribute matching
+      srb: 'sr-rs',
+      cnr: 'sr-me',
+    };
+
+    // Try to read the pre-rendered hreflang alternate from <head>
+    const targetTag = localeToBcp47[newLocale];
+    if (targetTag && typeof document !== 'undefined') {
+      const link = document.querySelector<HTMLLinkElement>(
+        `link[rel="alternate"][hreflang="${targetTag}"]`,
+      );
+      if (link?.href) {
+        router.push(new URL(link.href).pathname);
+        setIsOpen(false);
+        return;
+      }
+    }
+
+    // Fallback: simple locale-segment swap (works for non-slug pages)
     const segments = pathname.split('/');
     const supportedLocales = ['en', 'ru', 'cnr', 'srb', 'sq'];
-
-    // Segments pattern: ['', 'locale', 'subpath_1', ...]
     if (supportedLocales.includes(segments[1])) {
       segments[1] = newLocale;
     } else {
@@ -89,6 +111,7 @@ export default function LangSwitcher({ currentLocale }: { currentLocale: string 
     router.push(segments.join('/') || '/');
     setIsOpen(false);
   };
+
 
   const activeLoc = locales.find(l => l.code === currentLocale) || locales[0];
   const ActiveFlag = activeLoc.flag;

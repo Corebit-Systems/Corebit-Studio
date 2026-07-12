@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
+import fs from 'fs';
+import path from 'path';
 
 export async function generateStaticParams() {
   return [
@@ -14,15 +16,24 @@ export async function generateStaticParams() {
   ];
 }
 
+function getTermsOfService(locale: string) {
+  try {
+    const filePath = path.join(process.cwd(), 'content', 'legal', 'terms', `${locale}.json`);
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    return JSON.parse(fileContent);
+  } catch (error) {
+    console.error(`Failed to read terms of service for ${locale}`, error);
+    return { title: 'Terms of Service', subtitle: '', last_updated: '', sections: [] };
+  }
+}
+
 export async function generateMetadata({
   params: { locale },
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
   const SITE_URL = 'https://studio.corebitsystems.io';
-  const dict = await getDictionary(locale as Locale);
-  const policiesDict = (dict.policies as any) || {};
-  const content = policiesDict.terms_of_service || {};
+  const content = getTermsOfService(locale);
 
   return {
     title: content.title || "Terms of Service",
@@ -56,7 +67,7 @@ export async function generateMetadata({
 export default async function TermsOfServicePage({ params: { locale } }: { params: { locale: Locale } }) {
   const rawDict = await getDictionary(locale);
   const policiesDict = (rawDict.policies as any) || {};
-  const content = policiesDict.terms_of_service || { title: '', subtitle: '', last_updated: '', sections: [] };
+  const content = getTermsOfService(locale);
   const backBtn = policiesDict.back_btn || 'Back to Home';
 
   return (

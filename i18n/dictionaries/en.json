@@ -121,20 +121,56 @@
   },
   "portfolio_tech": {
     "cupertino-roast": {
-      "stack": ["Next.js 14 Edge", "Tailwind Custom Config", "Stripe Payments", "Vercel KV"],
-      "features": ["Interactive 3D Menu", "Real-time stock synchronization", "Apple Pay 1-click checkout"]
+      "stack": [
+        "Next.js 14 Edge",
+        "Tailwind Custom Config",
+        "Stripe Payments",
+        "Vercel KV"
+      ],
+      "features": [
+        "Interactive 3D Menu",
+        "Real-time stock synchronization",
+        "Apple Pay 1-click checkout"
+      ]
     },
     "shift-drive": {
-      "stack": ["React Server Components", "PostgreSQL", "WebSockets", "Framer Motion Engine"],
-      "features": ["Real-time time-slot calculation", "Live mechanic bay status tracking", "Automated SMS Reminders via Twilio"]
+      "stack": [
+        "React Server Components",
+        "PostgreSQL",
+        "WebSockets",
+        "Framer Motion Engine"
+      ],
+      "features": [
+        "Real-time time-slot calculation",
+        "Live mechanic bay status tracking",
+        "Automated SMS Reminders via Twilio"
+      ]
     },
     "umami-bistro": {
-      "stack": ["Next.js App Router", "Redis Caching", "Custom Webhooks", "Glassmorphism UI"],
-      "features": ["Interactive SVG floor plans for table reservations", "Instant waitlist queue management", "Manager dashboard sync"]
+      "stack": [
+        "Next.js App Router",
+        "Redis Caching",
+        "Custom Webhooks",
+        "Glassmorphism UI"
+      ],
+      "features": [
+        "Interactive SVG floor plans for table reservations",
+        "Instant waitlist queue management",
+        "Manager dashboard sync"
+      ]
     },
     "aura-wellness": {
-      "stack": ["Next.js", "Tailwind CSS", "Prisma ORM", "Stripe Connect"],
-      "features": ["Smooth step-by-step onboarding forms", "Staff calendar synchronization", "Deposit payment authorization"]
+      "stack": [
+        "Next.js",
+        "Tailwind CSS",
+        "Prisma ORM",
+        "Stripe Connect"
+      ],
+      "features": [
+        "Smooth step-by-step onboarding forms",
+        "Staff calendar synchronization",
+        "Deposit payment authorization"
+      ]
     }
   },
   "faq": {
@@ -270,115 +306,186 @@
     }
   },
   "geo": {
-    "montenegro": { "name": "Montenegro", "where": "in Montenegro", "destination": "to Montenegro" },
-    "serbia": { "name": "Serbia", "where": "in Serbia", "destination": "to Serbia" },
-    "albania": { "name": "Albania", "where": "in Albania", "destination": "to Albania" },
-    "north_macedonia": { "name": "North Macedonia", "where": "in North Macedonia", "destination": "to North Macedonia" },
-    "bosnia_herzegovina": { "name": "Bosnia and Herzegovina", "where": "in Bosnia and Herzegovina", "destination": "to Bosnia and Herzegovina" },
-    "kosovo": { "name": "Kosovo", "where": "in Kosovo", "destination": "to Kosovo" },
-    "greece": { "name": "Greece", "where": "in Greece", "destination": "to Greece" },
-    "croatia": { "name": "Croatia", "where": "in Croatia", "destination": "to Croatia" },
-    "slovenia": { "name": "Slovenia", "where": "in Slovenia", "destination": "to Slovenia" },
-    "budva": { "name": "Budva", "where": "in Budva", "destination": "to Budva" },
-    "tivat": { "name": "Tivat", "where": "in Tivat", "destination": "to Tivat" },
-    "podgorica": { "name": "Podgorica", "where": "in Podgorica", "destination": "to Podgorica" },
-    "bar": { "name": "Bar", "where": "in Bar", "destination": "to Bar" },
-    "kotor": { "name": "Kotor", "where": "in Kotor", "destination": "to Kotor" },
-    "herceg_novi": { "name": "Herceg Novi", "where": "in Herceg Novi", "destination": "to Herceg Novi" },
-    "belgrade": { "name": "Belgrade", "where": "in Belgrade", "destination": "to Belgrade" },
-    "novi_sad": { "name": "Novi Sad", "where": "in Novi Sad", "destination": "to Novi Sad" },
-    "nis": { "name": "Nis", "where": "in Nis", "destination": "to Nis" },
-    "tirana": { "name": "Tirana", "where": "in Tirana", "destination": "to Tirana" },
-    "durres": { "name": "Durres", "where": "in Durres", "destination": "to Durres" },
-    "saranda": { "name": "Saranda", "where": "in Saranda", "destination": "to Saranda" },
-    "skopye": { "name": "Skopje", "where": "in Skopje", "destination": "to Skopje" },
-    "ohrid": { "name": "Ohrid", "where": "in Ohrid", "destination": "to Ohrid" },
-    "sarajevo": { "name": "Sarajevo", "where": "in Sarajevo", "destination": "to Sarajevo" },
-    "mostar": { "name": "Mostar", "where": "in Mostar", "destination": "to Mostar" },
-    "trebinje": { "name": "Trebinje", "where": "in Trebinje", "destination": "to Trebinje" },
-    "pristina": { "name": "Pristina", "where": "in Pristina", "destination": "to Pristina" },
-    "athens": { "name": "Athens", "where": "in Athens", "destination": "to Athens" },
-    "thessaloniki": { "name": "Thessaloniki", "where": "in Thessaloniki", "destination": "to Thessaloniki" },
-    "chalcidice": { "name": "Chalcidice", "where": "in Chalcidice", "destination": "to Chalcidice" },
-    "zagreb": { "name": "Zagreb", "where": "in Zagreb", "destination": "to Zagreb" },
-    "split": { "name": "Split", "where": "in Split", "destination": "to Split" },
-    "dubrovnik": { "name": "Dubrovnik", "where": "in Dubrovnik", "destination": "to Dubrovnik" },
-    "ljubljana": { "name": "Ljubljana", "where": "in Ljubljana", "destination": "to Ljubljana" },
-    "maribor": { "name": "Maribor", "where": "in Maribor", "destination": "to Maribor" }
+    "montenegro": {
+      "name": "Montenegro",
+      "where": "in Montenegro",
+      "destination": "to Montenegro"
+    },
+    "serbia": {
+      "name": "Serbia",
+      "where": "in Serbia",
+      "destination": "to Serbia"
+    },
+    "albania": {
+      "name": "Albania",
+      "where": "in Albania",
+      "destination": "to Albania"
+    },
+    "north_macedonia": {
+      "name": "North Macedonia",
+      "where": "in North Macedonia",
+      "destination": "to North Macedonia"
+    },
+    "bosnia_herzegovina": {
+      "name": "Bosnia and Herzegovina",
+      "where": "in Bosnia and Herzegovina",
+      "destination": "to Bosnia and Herzegovina"
+    },
+    "kosovo": {
+      "name": "Kosovo",
+      "where": "in Kosovo",
+      "destination": "to Kosovo"
+    },
+    "greece": {
+      "name": "Greece",
+      "where": "in Greece",
+      "destination": "to Greece"
+    },
+    "croatia": {
+      "name": "Croatia",
+      "where": "in Croatia",
+      "destination": "to Croatia"
+    },
+    "slovenia": {
+      "name": "Slovenia",
+      "where": "in Slovenia",
+      "destination": "to Slovenia"
+    },
+    "budva": {
+      "name": "Budva",
+      "where": "in Budva",
+      "destination": "to Budva"
+    },
+    "tivat": {
+      "name": "Tivat",
+      "where": "in Tivat",
+      "destination": "to Tivat"
+    },
+    "podgorica": {
+      "name": "Podgorica",
+      "where": "in Podgorica",
+      "destination": "to Podgorica"
+    },
+    "bar": {
+      "name": "Bar",
+      "where": "in Bar",
+      "destination": "to Bar"
+    },
+    "kotor": {
+      "name": "Kotor",
+      "where": "in Kotor",
+      "destination": "to Kotor"
+    },
+    "herceg_novi": {
+      "name": "Herceg Novi",
+      "where": "in Herceg Novi",
+      "destination": "to Herceg Novi"
+    },
+    "belgrade": {
+      "name": "Belgrade",
+      "where": "in Belgrade",
+      "destination": "to Belgrade"
+    },
+    "novi_sad": {
+      "name": "Novi Sad",
+      "where": "in Novi Sad",
+      "destination": "to Novi Sad"
+    },
+    "nis": {
+      "name": "Nis",
+      "where": "in Nis",
+      "destination": "to Nis"
+    },
+    "tirana": {
+      "name": "Tirana",
+      "where": "in Tirana",
+      "destination": "to Tirana"
+    },
+    "durres": {
+      "name": "Durres",
+      "where": "in Durres",
+      "destination": "to Durres"
+    },
+    "saranda": {
+      "name": "Saranda",
+      "where": "in Saranda",
+      "destination": "to Saranda"
+    },
+    "skopye": {
+      "name": "Skopje",
+      "where": "in Skopje",
+      "destination": "to Skopje"
+    },
+    "ohrid": {
+      "name": "Ohrid",
+      "where": "in Ohrid",
+      "destination": "to Ohrid"
+    },
+    "sarajevo": {
+      "name": "Sarajevo",
+      "where": "in Sarajevo",
+      "destination": "to Sarajevo"
+    },
+    "mostar": {
+      "name": "Mostar",
+      "where": "in Mostar",
+      "destination": "to Mostar"
+    },
+    "trebinje": {
+      "name": "Trebinje",
+      "where": "in Trebinje",
+      "destination": "to Trebinje"
+    },
+    "pristina": {
+      "name": "Pristina",
+      "where": "in Pristina",
+      "destination": "to Pristina"
+    },
+    "athens": {
+      "name": "Athens",
+      "where": "in Athens",
+      "destination": "to Athens"
+    },
+    "thessaloniki": {
+      "name": "Thessaloniki",
+      "where": "in Thessaloniki",
+      "destination": "to Thessaloniki"
+    },
+    "chalcidice": {
+      "name": "Chalcidice",
+      "where": "in Chalcidice",
+      "destination": "to Chalcidice"
+    },
+    "zagreb": {
+      "name": "Zagreb",
+      "where": "in Zagreb",
+      "destination": "to Zagreb"
+    },
+    "split": {
+      "name": "Split",
+      "where": "in Split",
+      "destination": "to Split"
+    },
+    "dubrovnik": {
+      "name": "Dubrovnik",
+      "where": "in Dubrovnik",
+      "destination": "to Dubrovnik"
+    },
+    "ljubljana": {
+      "name": "Ljubljana",
+      "where": "in Ljubljana",
+      "destination": "to Ljubljana"
+    },
+    "maribor": {
+      "name": "Maribor",
+      "where": "in Maribor",
+      "destination": "to Maribor"
+    }
   },
   "policies": {
     "privacy_title": "Privacy Policy",
     "cookie_title": "Cookie Policy",
     "terms_title": "Terms of Service",
-    "back_btn": "Back to Home",
-    "cookie_policy": {
-      "title": "Cookie Policy",
-      "subtitle": "Comprehensive guidelines explaining how Corebit Studio utilizes cookies to preserve state, enhance speed, and secure user sessions.",
-      "last_updated": "Last updated: July 2026",
-      "sections": [
-        {
-          "title": "1. Definition and Nature of Cookies",
-          "text": "Cookies are small text files, containing unique alphanumeric identifiers, which are automatically downloaded and stored on your computer, tablet, or mobile device when you access and navigate the website studio.corebitsystems.io. These files enable our web servers to recognize your specific browser session, facilitate seamless page navigation, and capture operational state parameters. By storing local preferences, cookies prevent the necessity of repeatedly configuring display settings, language selections, or security consents during subsequent page requests, thereby directly optimizing the performance and loading velocity of our digital services."
-        },
-        {
-          "title": "2. Classification and Purpose of Stored Cookies",
-          "text": "Corebit Studio implements cookies strictly categorized under two primary operational models: (a) Strictly Necessary Functional Cookies: These first-party cookies are essential for the fundamental operation of the website, including keeping track of your language preference, routing translations correctly, and remembering your acceptance or rejection of our privacy banner. These cookies do not collect any personal profile information and are destroyed upon expiration or session termination. (b) Performance and Telemetry Cookies: We leverage server-side performance analytics (specifically integrated via the Vercel Edge Network platform) to collect technical data such as page loading speeds, layout render latency, and navigation pathways. This metrics data is processed anonymously without tracking individual user behavior, and we do not utilize any advertising, behavioral targeting, cross-site tracking, or marketing cookies from third-party advertising networks."
-        },
-        {
-          "title": "3. Management, Revocation, and Browser Settings Control",
-          "text": "Every user retains the full legal right to manage, restrict, block, or delete cookies at any time by accessing and modifying their web browser configuration settings (such as in Google Chrome, Mozilla Firefox, Apple Safari, or Microsoft Edge). Please be advised that disabling strictly necessary functional cookies may limit access to certain portions of studio.corebitsystems.io and degrade localized language rendering quality, though the website will remain fundamentally accessible. The settings to delete existing cookies or alert you when cookies are sent can usually be found within the 'Options', 'Preferences', or 'Security' menus of your web browser."
-        }
-      ]
-    },
-    "privacy_policy": {
-      "title": "Privacy Policy",
-      "subtitle": "Detailed guidelines regarding the collection, processing, protection, and rights associated with your personal data at Corebit Studio.",
-      "last_updated": "Last updated: July 2026",
-      "sections": [
-        {
-          "title": "1. Categories and Scope of Collected Personal Data",
-          "text": "Corebit Studio collects personal data through two distinct channels: (a) Directly Provided Data: When you voluntarily submit a project inquiry, request a website price calculation, or initiate communication via our integrated contact forms, WhatsApp, or Telegram widgets, we collect personal details including your full name, corporate email address, telephone contact number, messenger usernames, and any project-specific descriptions you choose to disclose. (b) Automatically Collected Data: During your interaction with studio.corebitsystems.io, we collect technical log data containing your IP address, browser type and version, language configuration, operating system, referrer URLs, and network speed performance statistics. We do not gather or process sensitive personal information, biometric data, or financial credentials on this website."
-        },
-        {
-          "title": "2. Legitimate Purposes and Scope of Data Processing",
-          "text": "All personal data gathered is processed strictly under the legal bases of pre-contractual negotiations, consent, and legitimate interest. Specifically, the data is used to: (a) Respond to your requests, calculate commercial offers, and coordinate contract details for web design and custom software development services. (b) Monitor website security, prevent spam transmissions, and diagnose performance bottlenecks. (c) Analyze traffic statistics to improve loading speeds. Corebit Studio enforces a strict zero-sharing policy: we never sell, lease, rent, trade, or distribute your personal details to marketing agencies, advertising networks, or third-party corporations for promotional purposes."
-        },
-        {
-          "title": "3. GDPR Compliance, Balkan Regulations, and User Rights",
-          "text": "In strict compliance with the European Union General Data Protection Regulation (EU GDPR) and the Law on Personal Data Protection of Montenegro, Serbia, and Albania, users possess comprehensive rights over their data. These rights include: (a) The Right of Access to inspect what data we store. (b) The Right to Rectification to update inaccurate details. (c) The Right to Restriction of processing. (d) The Right to Portability. (e) The Right to Erasure ('Right to be Forgotten') to demand the complete deletion of your records from our databases. To exercise any of these statutory rights, please contact our data protection officer directly at corebitstudio@corebitsystems.io. We commit to responding to and processing all verified compliance requests within 30 calendar days."
-        },
-        {
-          "title": "4. Security Infrastructure and Data Storage Protocols",
-          "text": "We utilize robust technical and administrative measures designed to protect your personal data against accidental loss, unauthorized access, alteration, disclosure, or destruction. All data transmissions through studio.corebitsystems.io are encrypted using Secure Socket Layer (SSL) protocols. Personal information is stored securely inside protected server environments with restricted access control lists, ensuring that only authorized personnel directly involved in client relations can inspect client data. While we implement industry-standard security measures, no digital transmission over the internet or database storage system can be guaranteed to be 100% secure, and users share information at their own risk."
-        }
-      ]
-    },
-    "terms_of_service": {
-      "title": "Terms of Service",
-      "subtitle": "The legally binding conditions and rules governing the use of studio.corebitsystems.io.",
-      "last_updated": "Last updated: July 2026",
-      "sections": [
-        {
-          "title": "1. Acceptance of Terms, Age Limits, and Business Representation",
-          "text": "By accessing, browsing, or using the website studio.corebitsystems.io, you acknowledge that you have read, understood, and agreed to be legally bound by these Terms of Service, our Privacy Policy, and our Cookie Policy. If you do not agree to any portion of these conditions, you must immediately cease using this website and leave the page. This website is intended solely for business-to-business (B2B) communications. By using studio.corebitsystems.io, you represent that you are at least 18 years of age and possess the legal capacity to represent your business entity and enter into binding commercial agreements."
-        },
-        {
-          "title": "2. Description of Services, Limits, and Scopes of Work",
-          "text": "Corebit Studio provides custom web design, high-performance web engineering, system architecture optimization, turnkey software development (including Next.js, React, and serverless architectures), database integration, and automated time-slot scheduling systems (specifically tailored for local businesses such as car rentals, auto repair shops, salons, and restaurants). The content on studio.corebitsystems.io serves informational and pre-contractual purposes. A formal contractual agreement, signed independently by both parties, is required to establish pricing, scopes of work, deadlines, and delivery obligations for any commissioned project. We reserve the right to modify, suspend, or terminate the showcase services displayed on this website without prior notice."
-        },
-        {
-          "title": "3. Intellectual Property Rights, Copyright Protection, and Licensing Restrictions",
-          "text": "All materials displayed on studio.corebitsystems.io—including but not limited to source code, TypeScript scripts, CSS layouts, user interface designs, animations, graphic assets, project concepts, trademarks, and written copy—are the exclusive intellectual property of Corebit Studio and are protected under international copyright, trademark, and intellectual property laws. For custom client development projects, all intellectual property rights and codebases remain the sole property of Corebit Studio until the final invoice is paid in full under the contract. Any unauthorized copying, distribution, modification, web scraping, reverse engineering, or public display of these materials without explicit prior written consent from Corebit Studio is strictly prohibited."
-        },
-        {
-          "title": "4. Complete Disclaimer of Warranties and Limitation of Liability",
-          "text": "The website studio.corebitsystems.io and all its contents are provided on an 'as is' and 'as available' basis, without warranties of any kind, either express or implied. Corebit Studio does not warrant that the website will run uninterrupted or error-free. To the maximum extent permitted by law, Corebit Studio disclaims all liability for any direct, indirect, incidental, special, or consequential damages resulting from your use or inability to use this website. This disclaimer covers damages caused by server downtime, hosting provider (Vercel) outages, database connection failures (PostgreSQL/Redis), telecommunication issues, computer viruses, third-party API malfunctions (such as WhatsApp, Telegram, or Stripe integrations), or loss of business data and profits, even if we have been advised of the possibility of such damages."
-        },
-        {
-          "title": "5. Governing Law, Venue, and Alternative Dispute Resolution",
-          "text": "These Terms of Service, along with any disputes or claims arising out of or in connection with the use of studio.corebitsystems.io, shall be governed by, construed, and enforced in accordance with the laws of Montenegro and relevant European Union regulations. Any dispute, controversy, or claim arising from these terms that cannot be resolved amicably through constructive negotiations between the parties shall be submitted to the exclusive jurisdiction of the competent commercial courts in Montenegro, where Corebit Studio is officially registered."
-        }
-      ]
-    }
+    "back_btn": "Back to Home"
   }
 }

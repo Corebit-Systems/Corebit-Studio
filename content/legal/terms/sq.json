@@ -1,0 +1,27 @@
+{
+  "title": "Kushtet e Shërbimit",
+  "subtitle": "Kushtet dhe rregullat ligjërisht të detyrueshme që rregullojnë përdorimin e studio.corebitsystems.io.",
+  "last_updated": "Përditësimi i fundit: Korrik 2026",
+  "sections": [
+    {
+      "title": "1. Pranimi i kushteve, kufijtë e moshës dhe përfaqësimi i biznesit",
+      "text": "Duke hyrë, lundruar ose përdorur uebfaqen studio.corebitsystems.io, ju pranoni se keni lexuar, kuptuar dhe jeni dakord të jeni ligjërisht të detyruar nga këto Kushte të Shërbimit, Politika jonë e Privatësisë dhe Politika jonë e Cookies. Nëse nuk jeni dakord me ndonjë pjesë të këtyre kushteve, duhet të ndaloni menjëherë përdorimin e kësaj uebfaqeje dhe të largoheni nga faqja. Kjo uebfaqe është e destinuar vetëm për komunikime biznes-me-biznes (B2B). Duke përdorur studio.corebitsystems.io, ju deklaroni se jeni të paktën 18 vjeç dhe posedoni kapacitetin ligjor për të përfaqësuar entitetin tuaj të biznesit dhe për të lidhur marrëveshje komerciale."
+    },
+    {
+      "title": "2. Përshkrimi i shërbimeve, kufizimet dhe fushëveprimi i punës",
+      "text": "Corebit Studio ofron dizajn të personalizuar të uebit, inxhinieri të uebit me performancë të lartë, optimizim të arkitekturës së sistemit, zhvillim të uebfaqeve nën çelës (përfshirë Next.js, React dhe arkitekturat pa server), integrim të bazave të të dhënave dhe sisteme të automatizuara të rezervimit të orareve (të përshtatshme posaçërisht për bizneset lokale si makinave me qira, serviseve të makinave, salloneve dhe restoranteve). Përmbajtja në studio.corebitsystems.io shërben për qëllime informative dhe para-kontraktuale. Një marrëveshje formale kontraktuale, e nënshkruar në mënyrë të pavarur nga të dyja palët, kërkohet për të përcaktuar çmimet, fushëveprimin e punës, afatet dhe detyrimet e dorëzimit për çdo projekt. Ne rezervojmë të drejtën të modifikojmë ose ndërpresim shërbimet e shfaqura pa njoftim paraprak."
+    },
+    {
+      "title": "3. Të drejtat e pronësisë intelektuale dhe kufizimet e licencimit",
+      "text": "Të gjitha materialet e shfaqura në studio.corebitsystems.io—duke përfshirë kodin burimor, TypeScript, strukturat CSS, dizajnet e ndërfaqes së përdoruesit, animacionet, asetet grafike, konceptet e projekteve, markat tregtare dhe tekstet—janë pronë intelektuale ekskluzive e Corebit Studio dhe mbrohen sipas ligjeve ndërkombëtare të të drejtave të autorit. Për projektet e personalizuara të klientëve, të gjitha të drejtat e pronësisë intelektuale dhe bazat e kodit mbeten pronë e vetme e Corebit Studio derisa fatura përfundimtare të paguhet plotësisht (100%) sipas kontratës. Çdo kopjim, shpërndarje, modifikim, scraping i uebit, reverse engineering ose shfaqje publike e paautorizuar e këtyre materialeve pa pëlqimin e shkruar paraprak nga Corebit Studio është e ndaluar në mënyrë të rreptë."
+    },
+    {
+      "title": "4. Mohimi i plotë i garancive dhe kufizimi i përgjegjësisë",
+      "text": "Uebfaqja studio.corebitsystems.io dhe të gjitha përmbajtjet e saj ofrohen në bazën 'siç është' dhe 'siç është e disponueshme', pa garanci të çfarëdo lloji, qofshin të shprehura apo të nënkuptuara. Corebit Studio nuk garanton se uebfaqja do të funksionojë pa ndërprerje ose pa gabime. Deri na masën maksimale të lejuar nga ligji, Corebit Studio mohon çdo përgjegjësi për çdo dëm të drejtpërdrejtë, të tërthortë, të rastësishëm apo rrjedhimor që vjen nga përdorimi ose pamundësia për të përdorur këtë uebfaqe. Ky mohim mbulon dëmet e shkaktuara nga ndërprerjet e serverit, outage-t e ofruesit të hostingut (Vercel), dështimet e lidhjes së bazës së të dhënave (PostgreSQL/Redis), problemet e telekomunikacionit, viruset kompjuterike, mosfunksionimet e API të palëve të treta (WhatsApp, Telegram ose Stripe) ose humbja e të dhënave dhe fitimeve të biznesit."
+    },
+    {
+      "title": "5. Ligji në fuqi, vendi i gjykimit dhe zgjidhja e mosmarrëveshjeve",
+      "text": "Këto Kushte të Shërbimit, së bashku me çdo mosmarrëveshje ose pretendim që rrjedh ose ka lidhje me përdorimin e studio.corebitsystems.io, do të rregullohen, interpretohen dhe zbatohen në përputhje me ligjet e Malit të Zi dhe rregulloret përkatëse të Bashkimit Evropian. Çdo mosmarrëveshje ose pretendim që nuk mund të zgjidhet miqësisht përmes negociatave konstruktive midis palëve, do t'i nënshtrohet juridiksionit ekskluziv të gjykatave kompetente komerciale në Malin e Zi, ku Corebit Studio është e regjistruar zyrtarisht."
+    }
+  ]
+}

@@ -28,14 +28,27 @@ export default function CookieBanner({ dict, locale }: CookieBannerProps) {
     }
   }, []);
 
+  const dispatchConsentEvent = (accepted: boolean) => {
+    window.dispatchEvent(
+      new CustomEvent<{ accepted: boolean }>('cookie_consent_change', {
+        detail: { accepted },
+        bubbles: true,
+      }),
+    );
+  };
+
   const handleAccept = () => {
     localStorage.setItem('cookie_consent_accepted', 'true');
+    localStorage.removeItem('cookie_consent_rejected');
     setShowBanner(false);
+    dispatchConsentEvent(true);
   };
 
   const handleReject = () => {
     localStorage.setItem('cookie_consent_rejected', 'true');
+    localStorage.removeItem('cookie_consent_accepted');
     setShowBanner(false);
+    dispatchConsentEvent(false);
   };
 
   return (

@@ -1,0 +1,1752 @@
+[
+  {
+    "id": "montenegro",
+    "slugs": {
+      "ru": "montenegro",
+      "en": "montenegro",
+      "cnr": "montenegro",
+      "srb": "montenegro",
+      "sq": "montenegro"
+    }
+  },
+  {
+    "id": "montenegro_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-montenegro",
+      "en": "car-rental-website-montenegro",
+      "cnr": "rent-a-car-sajt-montenegro",
+      "srb": "izrada-sajta-rent-a-car-montenegro",
+      "sq": "webfaqe-rent-a-car-montenegro"
+    }
+  },
+  {
+    "id": "montenegro_sto",
+    "slugs": {
+      "ru": "sto-sajt-montenegro",
+      "en": "auto-service-website-montenegro",
+      "cnr": "sto-sajt-montenegro",
+      "srb": "izrada-sajta-sto-montenegro",
+      "sq": "webfaqe-auto-servis-montenegro"
+    }
+  },
+  {
+    "id": "montenegro_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-montenegro",
+      "en": "restaurant-website-montenegro",
+      "cnr": "restoran-sajt-montenegro",
+      "srb": "izrada-sajta-restoran-montenegro",
+      "sq": "webfaqe-restorant-montenegro"
+    }
+  },
+  {
+    "id": "montenegro_salon",
+    "slugs": {
+      "ru": "salon-sajt-montenegro",
+      "en": "beauty-salon-website-montenegro",
+      "cnr": "salon-sajt-montenegro",
+      "srb": "izrada-sajta-salon-montenegro",
+      "sq": "webfaqe-sallon-bukurie-montenegro"
+    }
+  },
+  {
+    "id": "serbia",
+    "slugs": {
+      "ru": "serbia",
+      "en": "serbia",
+      "cnr": "serbia",
+      "srb": "serbia",
+      "sq": "serbia"
+    }
+  },
+  {
+    "id": "serbia_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-serbia",
+      "en": "car-rental-website-serbia",
+      "cnr": "rent-a-car-sajt-serbia",
+      "srb": "izrada-sajta-rent-a-car-serbia",
+      "sq": "webfaqe-rent-a-car-serbia"
+    }
+  },
+  {
+    "id": "serbia_sto",
+    "slugs": {
+      "ru": "sto-sajt-serbia",
+      "en": "auto-service-website-serbia",
+      "cnr": "sto-sajt-serbia",
+      "srb": "izrada-sajta-sto-serbia",
+      "sq": "webfaqe-auto-servis-serbia"
+    }
+  },
+  {
+    "id": "serbia_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-serbia",
+      "en": "restaurant-website-serbia",
+      "cnr": "restoran-sajt-serbia",
+      "srb": "izrada-sajta-restoran-serbia",
+      "sq": "webfaqe-restorant-serbia"
+    }
+  },
+  {
+    "id": "serbia_salon",
+    "slugs": {
+      "ru": "salon-sajt-serbia",
+      "en": "beauty-salon-website-serbia",
+      "cnr": "salon-sajt-serbia",
+      "srb": "izrada-sajta-salon-serbia",
+      "sq": "webfaqe-sallon-bukurie-serbia"
+    }
+  },
+  {
+    "id": "albania",
+    "slugs": {
+      "ru": "albania",
+      "en": "albania",
+      "cnr": "albania",
+      "srb": "albania",
+      "sq": "albania"
+    }
+  },
+  {
+    "id": "albania_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-albania",
+      "en": "car-rental-website-albania",
+      "cnr": "rent-a-car-sajt-albania",
+      "srb": "izrada-sajta-rent-a-car-albania",
+      "sq": "webfaqe-rent-a-car-albania"
+    }
+  },
+  {
+    "id": "albania_sto",
+    "slugs": {
+      "ru": "sto-sajt-albania",
+      "en": "auto-service-website-albania",
+      "cnr": "sto-sajt-albania",
+      "srb": "izrada-sajta-sto-albania",
+      "sq": "webfaqe-auto-servis-albania"
+    }
+  },
+  {
+    "id": "albania_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-albania",
+      "en": "restaurant-website-albania",
+      "cnr": "restoran-sajt-albania",
+      "srb": "izrada-sajta-restoran-albania",
+      "sq": "webfaqe-restorant-albania"
+    }
+  },
+  {
+    "id": "albania_salon",
+    "slugs": {
+      "ru": "salon-sajt-albania",
+      "en": "beauty-salon-website-albania",
+      "cnr": "salon-sajt-albania",
+      "srb": "izrada-sajta-salon-albania",
+      "sq": "webfaqe-sallon-bukurie-albania"
+    }
+  },
+  {
+    "id": "north_macedonia",
+    "slugs": {
+      "ru": "north_macedonia",
+      "en": "north_macedonia",
+      "cnr": "north_macedonia",
+      "srb": "north_macedonia",
+      "sq": "north_macedonia"
+    }
+  },
+  {
+    "id": "north_macedonia_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-north_macedonia",
+      "en": "car-rental-website-north_macedonia",
+      "cnr": "rent-a-car-sajt-north_macedonia",
+      "srb": "izrada-sajta-rent-a-car-north_macedonia",
+      "sq": "webfaqe-rent-a-car-north_macedonia"
+    }
+  },
+  {
+    "id": "north_macedonia_sto",
+    "slugs": {
+      "ru": "sto-sajt-north_macedonia",
+      "en": "auto-service-website-north_macedonia",
+      "cnr": "sto-sajt-north_macedonia",
+      "srb": "izrada-sajta-sto-north_macedonia",
+      "sq": "webfaqe-auto-servis-north_macedonia"
+    }
+  },
+  {
+    "id": "north_macedonia_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-north_macedonia",
+      "en": "restaurant-website-north_macedonia",
+      "cnr": "restoran-sajt-north_macedonia",
+      "srb": "izrada-sajta-restoran-north_macedonia",
+      "sq": "webfaqe-restorant-north_macedonia"
+    }
+  },
+  {
+    "id": "north_macedonia_salon",
+    "slugs": {
+      "ru": "salon-sajt-north_macedonia",
+      "en": "beauty-salon-website-north_macedonia",
+      "cnr": "salon-sajt-north_macedonia",
+      "srb": "izrada-sajta-salon-north_macedonia",
+      "sq": "webfaqe-sallon-bukurie-north_macedonia"
+    }
+  },
+  {
+    "id": "bosnia_herzegovina",
+    "slugs": {
+      "ru": "bosnia_herzegovina",
+      "en": "bosnia_herzegovina",
+      "cnr": "bosnia_herzegovina",
+      "srb": "bosnia_herzegovina",
+      "sq": "bosnia_herzegovina"
+    }
+  },
+  {
+    "id": "bosnia_herzegovina_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-bosnia_herzegovina",
+      "en": "car-rental-website-bosnia_herzegovina",
+      "cnr": "rent-a-car-sajt-bosnia_herzegovina",
+      "srb": "izrada-sajta-rent-a-car-bosnia_herzegovina",
+      "sq": "webfaqe-rent-a-car-bosnia_herzegovina"
+    }
+  },
+  {
+    "id": "bosnia_herzegovina_sto",
+    "slugs": {
+      "ru": "sto-sajt-bosnia_herzegovina",
+      "en": "auto-service-website-bosnia_herzegovina",
+      "cnr": "sto-sajt-bosnia_herzegovina",
+      "srb": "izrada-sajta-sto-bosnia_herzegovina",
+      "sq": "webfaqe-auto-servis-bosnia_herzegovina"
+    }
+  },
+  {
+    "id": "bosnia_herzegovina_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-bosnia_herzegovina",
+      "en": "restaurant-website-bosnia_herzegovina",
+      "cnr": "restoran-sajt-bosnia_herzegovina",
+      "srb": "izrada-sajta-restoran-bosnia_herzegovina",
+      "sq": "webfaqe-restorant-bosnia_herzegovina"
+    }
+  },
+  {
+    "id": "bosnia_herzegovina_salon",
+    "slugs": {
+      "ru": "salon-sajt-bosnia_herzegovina",
+      "en": "beauty-salon-website-bosnia_herzegovina",
+      "cnr": "salon-sajt-bosnia_herzegovina",
+      "srb": "izrada-sajta-salon-bosnia_herzegovina",
+      "sq": "webfaqe-sallon-bukurie-bosnia_herzegovina"
+    }
+  },
+  {
+    "id": "kosovo",
+    "slugs": {
+      "ru": "kosovo",
+      "en": "kosovo",
+      "cnr": "kosovo",
+      "srb": "kosovo",
+      "sq": "kosovo"
+    }
+  },
+  {
+    "id": "kosovo_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-kosovo",
+      "en": "car-rental-website-kosovo",
+      "cnr": "rent-a-car-sajt-kosovo",
+      "srb": "izrada-sajta-rent-a-car-kosovo",
+      "sq": "webfaqe-rent-a-car-kosovo"
+    }
+  },
+  {
+    "id": "kosovo_sto",
+    "slugs": {
+      "ru": "sto-sajt-kosovo",
+      "en": "auto-service-website-kosovo",
+      "cnr": "sto-sajt-kosovo",
+      "srb": "izrada-sajta-sto-kosovo",
+      "sq": "webfaqe-auto-servis-kosovo"
+    }
+  },
+  {
+    "id": "kosovo_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-kosovo",
+      "en": "restaurant-website-kosovo",
+      "cnr": "restoran-sajt-kosovo",
+      "srb": "izrada-sajta-restoran-kosovo",
+      "sq": "webfaqe-restorant-kosovo"
+    }
+  },
+  {
+    "id": "kosovo_salon",
+    "slugs": {
+      "ru": "salon-sajt-kosovo",
+      "en": "beauty-salon-website-kosovo",
+      "cnr": "salon-sajt-kosovo",
+      "srb": "izrada-sajta-salon-kosovo",
+      "sq": "webfaqe-sallon-bukurie-kosovo"
+    }
+  },
+  {
+    "id": "greece",
+    "slugs": {
+      "ru": "greece",
+      "en": "greece",
+      "cnr": "greece",
+      "srb": "greece",
+      "sq": "greece"
+    }
+  },
+  {
+    "id": "greece_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-greece",
+      "en": "car-rental-website-greece",
+      "cnr": "rent-a-car-sajt-greece",
+      "srb": "izrada-sajta-rent-a-car-greece",
+      "sq": "webfaqe-rent-a-car-greece"
+    }
+  },
+  {
+    "id": "greece_sto",
+    "slugs": {
+      "ru": "sto-sajt-greece",
+      "en": "auto-service-website-greece",
+      "cnr": "sto-sajt-greece",
+      "srb": "izrada-sajta-sto-greece",
+      "sq": "webfaqe-auto-servis-greece"
+    }
+  },
+  {
+    "id": "greece_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-greece",
+      "en": "restaurant-website-greece",
+      "cnr": "restoran-sajt-greece",
+      "srb": "izrada-sajta-restoran-greece",
+      "sq": "webfaqe-restorant-greece"
+    }
+  },
+  {
+    "id": "greece_salon",
+    "slugs": {
+      "ru": "salon-sajt-greece",
+      "en": "beauty-salon-website-greece",
+      "cnr": "salon-sajt-greece",
+      "srb": "izrada-sajta-salon-greece",
+      "sq": "webfaqe-sallon-bukurie-greece"
+    }
+  },
+  {
+    "id": "croatia",
+    "slugs": {
+      "ru": "croatia",
+      "en": "croatia",
+      "cnr": "croatia",
+      "srb": "croatia",
+      "sq": "croatia"
+    }
+  },
+  {
+    "id": "croatia_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-croatia",
+      "en": "car-rental-website-croatia",
+      "cnr": "rent-a-car-sajt-croatia",
+      "srb": "izrada-sajta-rent-a-car-croatia",
+      "sq": "webfaqe-rent-a-car-croatia"
+    }
+  },
+  {
+    "id": "croatia_sto",
+    "slugs": {
+      "ru": "sto-sajt-croatia",
+      "en": "auto-service-website-croatia",
+      "cnr": "sto-sajt-croatia",
+      "srb": "izrada-sajta-sto-croatia",
+      "sq": "webfaqe-auto-servis-croatia"
+    }
+  },
+  {
+    "id": "croatia_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-croatia",
+      "en": "restaurant-website-croatia",
+      "cnr": "restoran-sajt-croatia",
+      "srb": "izrada-sajta-restoran-croatia",
+      "sq": "webfaqe-restorant-croatia"
+    }
+  },
+  {
+    "id": "croatia_salon",
+    "slugs": {
+      "ru": "salon-sajt-croatia",
+      "en": "beauty-salon-website-croatia",
+      "cnr": "salon-sajt-croatia",
+      "srb": "izrada-sajta-salon-croatia",
+      "sq": "webfaqe-sallon-bukurie-croatia"
+    }
+  },
+  {
+    "id": "slovenia",
+    "slugs": {
+      "ru": "slovenia",
+      "en": "slovenia",
+      "cnr": "slovenia",
+      "srb": "slovenia",
+      "sq": "slovenia"
+    }
+  },
+  {
+    "id": "slovenia_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-slovenia",
+      "en": "car-rental-website-slovenia",
+      "cnr": "rent-a-car-sajt-slovenia",
+      "srb": "izrada-sajta-rent-a-car-slovenia",
+      "sq": "webfaqe-rent-a-car-slovenia"
+    }
+  },
+  {
+    "id": "slovenia_sto",
+    "slugs": {
+      "ru": "sto-sajt-slovenia",
+      "en": "auto-service-website-slovenia",
+      "cnr": "sto-sajt-slovenia",
+      "srb": "izrada-sajta-sto-slovenia",
+      "sq": "webfaqe-auto-servis-slovenia"
+    }
+  },
+  {
+    "id": "slovenia_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-slovenia",
+      "en": "restaurant-website-slovenia",
+      "cnr": "restoran-sajt-slovenia",
+      "srb": "izrada-sajta-restoran-slovenia",
+      "sq": "webfaqe-restorant-slovenia"
+    }
+  },
+  {
+    "id": "slovenia_salon",
+    "slugs": {
+      "ru": "salon-sajt-slovenia",
+      "en": "beauty-salon-website-slovenia",
+      "cnr": "salon-sajt-slovenia",
+      "srb": "izrada-sajta-salon-slovenia",
+      "sq": "webfaqe-sallon-bukurie-slovenia"
+    }
+  },
+  {
+    "id": "budva",
+    "slugs": {
+      "ru": "budva",
+      "en": "budva",
+      "cnr": "budva",
+      "srb": "budva",
+      "sq": "budva"
+    }
+  },
+  {
+    "id": "budva_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-budva",
+      "en": "car-rental-website-budva",
+      "cnr": "rent-a-car-sajt-budva",
+      "srb": "izrada-sajta-rent-a-car-budva",
+      "sq": "webfaqe-rent-a-car-budva"
+    }
+  },
+  {
+    "id": "budva_sto",
+    "slugs": {
+      "ru": "sto-sajt-budva",
+      "en": "auto-service-website-budva",
+      "cnr": "sto-sajt-budva",
+      "srb": "izrada-sajta-sto-budva",
+      "sq": "webfaqe-auto-servis-budva"
+    }
+  },
+  {
+    "id": "budva_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-budva",
+      "en": "restaurant-website-budva",
+      "cnr": "restoran-sajt-budva",
+      "srb": "izrada-sajta-restoran-budva",
+      "sq": "webfaqe-restorant-budva"
+    }
+  },
+  {
+    "id": "budva_salon",
+    "slugs": {
+      "ru": "salon-sajt-budva",
+      "en": "beauty-salon-website-budva",
+      "cnr": "salon-sajt-budva",
+      "srb": "izrada-sajta-salon-budva",
+      "sq": "webfaqe-sallon-bukurie-budva"
+    }
+  },
+  {
+    "id": "tivat",
+    "slugs": {
+      "ru": "tivat",
+      "en": "tivat",
+      "cnr": "tivat",
+      "srb": "tivat",
+      "sq": "tivat"
+    }
+  },
+  {
+    "id": "tivat_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-tivat",
+      "en": "car-rental-website-tivat",
+      "cnr": "rent-a-car-sajt-tivat",
+      "srb": "izrada-sajta-rent-a-car-tivat",
+      "sq": "webfaqe-rent-a-car-tivat"
+    }
+  },
+  {
+    "id": "tivat_sto",
+    "slugs": {
+      "ru": "sto-sajt-tivat",
+      "en": "auto-service-website-tivat",
+      "cnr": "sto-sajt-tivat",
+      "srb": "izrada-sajta-sto-tivat",
+      "sq": "webfaqe-auto-servis-tivat"
+    }
+  },
+  {
+    "id": "tivat_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-tivat",
+      "en": "restaurant-website-tivat",
+      "cnr": "restoran-sajt-tivat",
+      "srb": "izrada-sajta-restoran-tivat",
+      "sq": "webfaqe-restorant-tivat"
+    }
+  },
+  {
+    "id": "tivat_salon",
+    "slugs": {
+      "ru": "salon-sajt-tivat",
+      "en": "beauty-salon-website-tivat",
+      "cnr": "salon-sajt-tivat",
+      "srb": "izrada-sajta-salon-tivat",
+      "sq": "webfaqe-sallon-bukurie-tivat"
+    }
+  },
+  {
+    "id": "podgorica",
+    "slugs": {
+      "ru": "podgorica",
+      "en": "podgorica",
+      "cnr": "podgorica",
+      "srb": "podgorica",
+      "sq": "podgorica"
+    }
+  },
+  {
+    "id": "podgorica_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-podgorica",
+      "en": "car-rental-website-podgorica",
+      "cnr": "rent-a-car-sajt-podgorica",
+      "srb": "izrada-sajta-rent-a-car-podgorica",
+      "sq": "webfaqe-rent-a-car-podgorica"
+    }
+  },
+  {
+    "id": "podgorica_sto",
+    "slugs": {
+      "ru": "sto-sajt-podgorica",
+      "en": "auto-service-website-podgorica",
+      "cnr": "sto-sajt-podgorica",
+      "srb": "izrada-sajta-sto-podgorica",
+      "sq": "webfaqe-auto-servis-podgorica"
+    }
+  },
+  {
+    "id": "podgorica_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-podgorica",
+      "en": "restaurant-website-podgorica",
+      "cnr": "restoran-sajt-podgorica",
+      "srb": "izrada-sajta-restoran-podgorica",
+      "sq": "webfaqe-restorant-podgorica"
+    }
+  },
+  {
+    "id": "podgorica_salon",
+    "slugs": {
+      "ru": "salon-sajt-podgorica",
+      "en": "beauty-salon-website-podgorica",
+      "cnr": "salon-sajt-podgorica",
+      "srb": "izrada-sajta-salon-podgorica",
+      "sq": "webfaqe-sallon-bukurie-podgorica"
+    }
+  },
+  {
+    "id": "bar",
+    "slugs": {
+      "ru": "bar",
+      "en": "bar",
+      "cnr": "bar",
+      "srb": "bar",
+      "sq": "bar"
+    }
+  },
+  {
+    "id": "bar_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-bar",
+      "en": "car-rental-website-bar",
+      "cnr": "rent-a-car-sajt-bar",
+      "srb": "izrada-sajta-rent-a-car-bar",
+      "sq": "webfaqe-rent-a-car-bar"
+    }
+  },
+  {
+    "id": "bar_sto",
+    "slugs": {
+      "ru": "sto-sajt-bar",
+      "en": "auto-service-website-bar",
+      "cnr": "sto-sajt-bar",
+      "srb": "izrada-sajta-sto-bar",
+      "sq": "webfaqe-auto-servis-bar"
+    }
+  },
+  {
+    "id": "bar_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-bar",
+      "en": "restaurant-website-bar",
+      "cnr": "restoran-sajt-bar",
+      "srb": "izrada-sajta-restoran-bar",
+      "sq": "webfaqe-restorant-bar"
+    }
+  },
+  {
+    "id": "bar_salon",
+    "slugs": {
+      "ru": "salon-sajt-bar",
+      "en": "beauty-salon-website-bar",
+      "cnr": "salon-sajt-bar",
+      "srb": "izrada-sajta-salon-bar",
+      "sq": "webfaqe-sallon-bukurie-bar"
+    }
+  },
+  {
+    "id": "kotor",
+    "slugs": {
+      "ru": "kotor",
+      "en": "kotor",
+      "cnr": "kotor",
+      "srb": "kotor",
+      "sq": "kotor"
+    }
+  },
+  {
+    "id": "kotor_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-kotor",
+      "en": "car-rental-website-kotor",
+      "cnr": "rent-a-car-sajt-kotor",
+      "srb": "izrada-sajta-rent-a-car-kotor",
+      "sq": "webfaqe-rent-a-car-kotor"
+    }
+  },
+  {
+    "id": "kotor_sto",
+    "slugs": {
+      "ru": "sto-sajt-kotor",
+      "en": "auto-service-website-kotor",
+      "cnr": "sto-sajt-kotor",
+      "srb": "izrada-sajta-sto-kotor",
+      "sq": "webfaqe-auto-servis-kotor"
+    }
+  },
+  {
+    "id": "kotor_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-kotor",
+      "en": "restaurant-website-kotor",
+      "cnr": "restoran-sajt-kotor",
+      "srb": "izrada-sajta-restoran-kotor",
+      "sq": "webfaqe-restorant-kotor"
+    }
+  },
+  {
+    "id": "kotor_salon",
+    "slugs": {
+      "ru": "salon-sajt-kotor",
+      "en": "beauty-salon-website-kotor",
+      "cnr": "salon-sajt-kotor",
+      "srb": "izrada-sajta-salon-kotor",
+      "sq": "webfaqe-sallon-bukurie-kotor"
+    }
+  },
+  {
+    "id": "herceg_novi",
+    "slugs": {
+      "ru": "herceg_novi",
+      "en": "herceg_novi",
+      "cnr": "herceg_novi",
+      "srb": "herceg_novi",
+      "sq": "herceg_novi"
+    }
+  },
+  {
+    "id": "herceg_novi_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-herceg_novi",
+      "en": "car-rental-website-herceg_novi",
+      "cnr": "rent-a-car-sajt-herceg_novi",
+      "srb": "izrada-sajta-rent-a-car-herceg_novi",
+      "sq": "webfaqe-rent-a-car-herceg_novi"
+    }
+  },
+  {
+    "id": "herceg_novi_sto",
+    "slugs": {
+      "ru": "sto-sajt-herceg_novi",
+      "en": "auto-service-website-herceg_novi",
+      "cnr": "sto-sajt-herceg_novi",
+      "srb": "izrada-sajta-sto-herceg_novi",
+      "sq": "webfaqe-auto-servis-herceg_novi"
+    }
+  },
+  {
+    "id": "herceg_novi_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-herceg_novi",
+      "en": "restaurant-website-herceg_novi",
+      "cnr": "restoran-sajt-herceg_novi",
+      "srb": "izrada-sajta-restoran-herceg_novi",
+      "sq": "webfaqe-restorant-herceg_novi"
+    }
+  },
+  {
+    "id": "herceg_novi_salon",
+    "slugs": {
+      "ru": "salon-sajt-herceg_novi",
+      "en": "beauty-salon-website-herceg_novi",
+      "cnr": "salon-sajt-herceg_novi",
+      "srb": "izrada-sajta-salon-herceg_novi",
+      "sq": "webfaqe-sallon-bukurie-herceg_novi"
+    }
+  },
+  {
+    "id": "belgrade",
+    "slugs": {
+      "ru": "belgrade",
+      "en": "belgrade",
+      "cnr": "belgrade",
+      "srb": "belgrade",
+      "sq": "belgrade"
+    }
+  },
+  {
+    "id": "belgrade_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-belgrade",
+      "en": "car-rental-website-belgrade",
+      "cnr": "rent-a-car-sajt-belgrade",
+      "srb": "izrada-sajta-rent-a-car-belgrade",
+      "sq": "webfaqe-rent-a-car-belgrade"
+    }
+  },
+  {
+    "id": "belgrade_sto",
+    "slugs": {
+      "ru": "sto-sajt-belgrade",
+      "en": "auto-service-website-belgrade",
+      "cnr": "sto-sajt-belgrade",
+      "srb": "izrada-sajta-sto-belgrade",
+      "sq": "webfaqe-auto-servis-belgrade"
+    }
+  },
+  {
+    "id": "belgrade_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-belgrade",
+      "en": "restaurant-website-belgrade",
+      "cnr": "restoran-sajt-belgrade",
+      "srb": "izrada-sajta-restoran-belgrade",
+      "sq": "webfaqe-restorant-belgrade"
+    }
+  },
+  {
+    "id": "belgrade_salon",
+    "slugs": {
+      "ru": "salon-sajt-belgrade",
+      "en": "beauty-salon-website-belgrade",
+      "cnr": "salon-sajt-belgrade",
+      "srb": "izrada-sajta-salon-belgrade",
+      "sq": "webfaqe-sallon-bukurie-belgrade"
+    }
+  },
+  {
+    "id": "novi_sad",
+    "slugs": {
+      "ru": "novi_sad",
+      "en": "novi_sad",
+      "cnr": "novi_sad",
+      "srb": "novi_sad",
+      "sq": "novi_sad"
+    }
+  },
+  {
+    "id": "novi_sad_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-novi_sad",
+      "en": "car-rental-website-novi_sad",
+      "cnr": "rent-a-car-sajt-novi_sad",
+      "srb": "izrada-sajta-rent-a-car-novi_sad",
+      "sq": "webfaqe-rent-a-car-novi_sad"
+    }
+  },
+  {
+    "id": "novi_sad_sto",
+    "slugs": {
+      "ru": "sto-sajt-novi_sad",
+      "en": "auto-service-website-novi_sad",
+      "cnr": "sto-sajt-novi_sad",
+      "srb": "izrada-sajta-sto-novi_sad",
+      "sq": "webfaqe-auto-servis-novi_sad"
+    }
+  },
+  {
+    "id": "novi_sad_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-novi_sad",
+      "en": "restaurant-website-novi_sad",
+      "cnr": "restoran-sajt-novi_sad",
+      "srb": "izrada-sajta-restoran-novi_sad",
+      "sq": "webfaqe-restorant-novi_sad"
+    }
+  },
+  {
+    "id": "novi_sad_salon",
+    "slugs": {
+      "ru": "salon-sajt-novi_sad",
+      "en": "beauty-salon-website-novi_sad",
+      "cnr": "salon-sajt-novi_sad",
+      "srb": "izrada-sajta-salon-novi_sad",
+      "sq": "webfaqe-sallon-bukurie-novi_sad"
+    }
+  },
+  {
+    "id": "nis",
+    "slugs": {
+      "ru": "nis",
+      "en": "nis",
+      "cnr": "nis",
+      "srb": "nis",
+      "sq": "nis"
+    }
+  },
+  {
+    "id": "nis_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-nis",
+      "en": "car-rental-website-nis",
+      "cnr": "rent-a-car-sajt-nis",
+      "srb": "izrada-sajta-rent-a-car-nis",
+      "sq": "webfaqe-rent-a-car-nis"
+    }
+  },
+  {
+    "id": "nis_sto",
+    "slugs": {
+      "ru": "sto-sajt-nis",
+      "en": "auto-service-website-nis",
+      "cnr": "sto-sajt-nis",
+      "srb": "izrada-sajta-sto-nis",
+      "sq": "webfaqe-auto-servis-nis"
+    }
+  },
+  {
+    "id": "nis_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-nis",
+      "en": "restaurant-website-nis",
+      "cnr": "restoran-sajt-nis",
+      "srb": "izrada-sajta-restoran-nis",
+      "sq": "webfaqe-restorant-nis"
+    }
+  },
+  {
+    "id": "nis_salon",
+    "slugs": {
+      "ru": "salon-sajt-nis",
+      "en": "beauty-salon-website-nis",
+      "cnr": "salon-sajt-nis",
+      "srb": "izrada-sajta-salon-nis",
+      "sq": "webfaqe-sallon-bukurie-nis"
+    }
+  },
+  {
+    "id": "tirana",
+    "slugs": {
+      "ru": "tirana",
+      "en": "tirana",
+      "cnr": "tirana",
+      "srb": "tirana",
+      "sq": "tirana"
+    }
+  },
+  {
+    "id": "tirana_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-tirana",
+      "en": "car-rental-website-tirana",
+      "cnr": "rent-a-car-sajt-tirana",
+      "srb": "izrada-sajta-rent-a-car-tirana",
+      "sq": "webfaqe-rent-a-car-tirana"
+    }
+  },
+  {
+    "id": "tirana_sto",
+    "slugs": {
+      "ru": "sto-sajt-tirana",
+      "en": "auto-service-website-tirana",
+      "cnr": "sto-sajt-tirana",
+      "srb": "izrada-sajta-sto-tirana",
+      "sq": "webfaqe-auto-servis-tirana"
+    }
+  },
+  {
+    "id": "tirana_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-tirana",
+      "en": "restaurant-website-tirana",
+      "cnr": "restoran-sajt-tirana",
+      "srb": "izrada-sajta-restoran-tirana",
+      "sq": "webfaqe-restorant-tirana"
+    }
+  },
+  {
+    "id": "tirana_salon",
+    "slugs": {
+      "ru": "salon-sajt-tirana",
+      "en": "beauty-salon-website-tirana",
+      "cnr": "salon-sajt-tirana",
+      "srb": "izrada-sajta-salon-tirana",
+      "sq": "webfaqe-sallon-bukurie-tirana"
+    }
+  },
+  {
+    "id": "durres",
+    "slugs": {
+      "ru": "durres",
+      "en": "durres",
+      "cnr": "durres",
+      "srb": "durres",
+      "sq": "durres"
+    }
+  },
+  {
+    "id": "durres_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-durres",
+      "en": "car-rental-website-durres",
+      "cnr": "rent-a-car-sajt-durres",
+      "srb": "izrada-sajta-rent-a-car-durres",
+      "sq": "webfaqe-rent-a-car-durres"
+    }
+  },
+  {
+    "id": "durres_sto",
+    "slugs": {
+      "ru": "sto-sajt-durres",
+      "en": "auto-service-website-durres",
+      "cnr": "sto-sajt-durres",
+      "srb": "izrada-sajta-sto-durres",
+      "sq": "webfaqe-auto-servis-durres"
+    }
+  },
+  {
+    "id": "durres_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-durres",
+      "en": "restaurant-website-durres",
+      "cnr": "restoran-sajt-durres",
+      "srb": "izrada-sajta-restoran-durres",
+      "sq": "webfaqe-restorant-durres"
+    }
+  },
+  {
+    "id": "durres_salon",
+    "slugs": {
+      "ru": "salon-sajt-durres",
+      "en": "beauty-salon-website-durres",
+      "cnr": "salon-sajt-durres",
+      "srb": "izrada-sajta-salon-durres",
+      "sq": "webfaqe-sallon-bukurie-durres"
+    }
+  },
+  {
+    "id": "saranda",
+    "slugs": {
+      "ru": "saranda",
+      "en": "saranda",
+      "cnr": "saranda",
+      "srb": "saranda",
+      "sq": "saranda"
+    }
+  },
+  {
+    "id": "saranda_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-saranda",
+      "en": "car-rental-website-saranda",
+      "cnr": "rent-a-car-sajt-saranda",
+      "srb": "izrada-sajta-rent-a-car-saranda",
+      "sq": "webfaqe-rent-a-car-saranda"
+    }
+  },
+  {
+    "id": "saranda_sto",
+    "slugs": {
+      "ru": "sto-sajt-saranda",
+      "en": "auto-service-website-saranda",
+      "cnr": "sto-sajt-saranda",
+      "srb": "izrada-sajta-sto-saranda",
+      "sq": "webfaqe-auto-servis-saranda"
+    }
+  },
+  {
+    "id": "saranda_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-saranda",
+      "en": "restaurant-website-saranda",
+      "cnr": "restoran-sajt-saranda",
+      "srb": "izrada-sajta-restoran-saranda",
+      "sq": "webfaqe-restorant-saranda"
+    }
+  },
+  {
+    "id": "saranda_salon",
+    "slugs": {
+      "ru": "salon-sajt-saranda",
+      "en": "beauty-salon-website-saranda",
+      "cnr": "salon-sajt-saranda",
+      "srb": "izrada-sajta-salon-saranda",
+      "sq": "webfaqe-sallon-bukurie-saranda"
+    }
+  },
+  {
+    "id": "skopye",
+    "slugs": {
+      "ru": "skopye",
+      "en": "skopye",
+      "cnr": "skopye",
+      "srb": "skopye",
+      "sq": "skopye"
+    }
+  },
+  {
+    "id": "skopye_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-skopye",
+      "en": "car-rental-website-skopye",
+      "cnr": "rent-a-car-sajt-skopye",
+      "srb": "izrada-sajta-rent-a-car-skopye",
+      "sq": "webfaqe-rent-a-car-skopye"
+    }
+  },
+  {
+    "id": "skopye_sto",
+    "slugs": {
+      "ru": "sto-sajt-skopye",
+      "en": "auto-service-website-skopye",
+      "cnr": "sto-sajt-skopye",
+      "srb": "izrada-sajta-sto-skopye",
+      "sq": "webfaqe-auto-servis-skopye"
+    }
+  },
+  {
+    "id": "skopye_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-skopye",
+      "en": "restaurant-website-skopye",
+      "cnr": "restoran-sajt-skopye",
+      "srb": "izrada-sajta-restoran-skopye",
+      "sq": "webfaqe-restorant-skopye"
+    }
+  },
+  {
+    "id": "skopye_salon",
+    "slugs": {
+      "ru": "salon-sajt-skopye",
+      "en": "beauty-salon-website-skopye",
+      "cnr": "salon-sajt-skopye",
+      "srb": "izrada-sajta-salon-skopye",
+      "sq": "webfaqe-sallon-bukurie-skopye"
+    }
+  },
+  {
+    "id": "ohrid",
+    "slugs": {
+      "ru": "ohrid",
+      "en": "ohrid",
+      "cnr": "ohrid",
+      "srb": "ohrid",
+      "sq": "ohrid"
+    }
+  },
+  {
+    "id": "ohrid_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-ohrid",
+      "en": "car-rental-website-ohrid",
+      "cnr": "rent-a-car-sajt-ohrid",
+      "srb": "izrada-sajta-rent-a-car-ohrid",
+      "sq": "webfaqe-rent-a-car-ohrid"
+    }
+  },
+  {
+    "id": "ohrid_sto",
+    "slugs": {
+      "ru": "sto-sajt-ohrid",
+      "en": "auto-service-website-ohrid",
+      "cnr": "sto-sajt-ohrid",
+      "srb": "izrada-sajta-sto-ohrid",
+      "sq": "webfaqe-auto-servis-ohrid"
+    }
+  },
+  {
+    "id": "ohrid_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-ohrid",
+      "en": "restaurant-website-ohrid",
+      "cnr": "restoran-sajt-ohrid",
+      "srb": "izrada-sajta-restoran-ohrid",
+      "sq": "webfaqe-restorant-ohrid"
+    }
+  },
+  {
+    "id": "ohrid_salon",
+    "slugs": {
+      "ru": "salon-sajt-ohrid",
+      "en": "beauty-salon-website-ohrid",
+      "cnr": "salon-sajt-ohrid",
+      "srb": "izrada-sajta-salon-ohrid",
+      "sq": "webfaqe-sallon-bukurie-ohrid"
+    }
+  },
+  {
+    "id": "sarajevo",
+    "slugs": {
+      "ru": "sarajevo",
+      "en": "sarajevo",
+      "cnr": "sarajevo",
+      "srb": "sarajevo",
+      "sq": "sarajevo"
+    }
+  },
+  {
+    "id": "sarajevo_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-sarajevo",
+      "en": "car-rental-website-sarajevo",
+      "cnr": "rent-a-car-sajt-sarajevo",
+      "srb": "izrada-sajta-rent-a-car-sarajevo",
+      "sq": "webfaqe-rent-a-car-sarajevo"
+    }
+  },
+  {
+    "id": "sarajevo_sto",
+    "slugs": {
+      "ru": "sto-sajt-sarajevo",
+      "en": "auto-service-website-sarajevo",
+      "cnr": "sto-sajt-sarajevo",
+      "srb": "izrada-sajta-sto-sarajevo",
+      "sq": "webfaqe-auto-servis-sarajevo"
+    }
+  },
+  {
+    "id": "sarajevo_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-sarajevo",
+      "en": "restaurant-website-sarajevo",
+      "cnr": "restoran-sajt-sarajevo",
+      "srb": "izrada-sajta-restoran-sarajevo",
+      "sq": "webfaqe-restorant-sarajevo"
+    }
+  },
+  {
+    "id": "sarajevo_salon",
+    "slugs": {
+      "ru": "salon-sajt-sarajevo",
+      "en": "beauty-salon-website-sarajevo",
+      "cnr": "salon-sajt-sarajevo",
+      "srb": "izrada-sajta-salon-sarajevo",
+      "sq": "webfaqe-sallon-bukurie-sarajevo"
+    }
+  },
+  {
+    "id": "mostar",
+    "slugs": {
+      "ru": "mostar",
+      "en": "mostar",
+      "cnr": "mostar",
+      "srb": "mostar",
+      "sq": "mostar"
+    }
+  },
+  {
+    "id": "mostar_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-mostar",
+      "en": "car-rental-website-mostar",
+      "cnr": "rent-a-car-sajt-mostar",
+      "srb": "izrada-sajta-rent-a-car-mostar",
+      "sq": "webfaqe-rent-a-car-mostar"
+    }
+  },
+  {
+    "id": "mostar_sto",
+    "slugs": {
+      "ru": "sto-sajt-mostar",
+      "en": "auto-service-website-mostar",
+      "cnr": "sto-sajt-mostar",
+      "srb": "izrada-sajta-sto-mostar",
+      "sq": "webfaqe-auto-servis-mostar"
+    }
+  },
+  {
+    "id": "mostar_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-mostar",
+      "en": "restaurant-website-mostar",
+      "cnr": "restoran-sajt-mostar",
+      "srb": "izrada-sajta-restoran-mostar",
+      "sq": "webfaqe-restorant-mostar"
+    }
+  },
+  {
+    "id": "mostar_salon",
+    "slugs": {
+      "ru": "salon-sajt-mostar",
+      "en": "beauty-salon-website-mostar",
+      "cnr": "salon-sajt-mostar",
+      "srb": "izrada-sajta-salon-mostar",
+      "sq": "webfaqe-sallon-bukurie-mostar"
+    }
+  },
+  {
+    "id": "trebinje",
+    "slugs": {
+      "ru": "trebinje",
+      "en": "trebinje",
+      "cnr": "trebinje",
+      "srb": "trebinje",
+      "sq": "trebinje"
+    }
+  },
+  {
+    "id": "trebinje_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-trebinje",
+      "en": "car-rental-website-trebinje",
+      "cnr": "rent-a-car-sajt-trebinje",
+      "srb": "izrada-sajta-rent-a-car-trebinje",
+      "sq": "webfaqe-rent-a-car-trebinje"
+    }
+  },
+  {
+    "id": "trebinje_sto",
+    "slugs": {
+      "ru": "sto-sajt-trebinje",
+      "en": "auto-service-website-trebinje",
+      "cnr": "sto-sajt-trebinje",
+      "srb": "izrada-sajta-sto-trebinje",
+      "sq": "webfaqe-auto-servis-trebinje"
+    }
+  },
+  {
+    "id": "trebinje_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-trebinje",
+      "en": "restaurant-website-trebinje",
+      "cnr": "restoran-sajt-trebinje",
+      "srb": "izrada-sajta-restoran-trebinje",
+      "sq": "webfaqe-restorant-trebinje"
+    }
+  },
+  {
+    "id": "trebinje_salon",
+    "slugs": {
+      "ru": "salon-sajt-trebinje",
+      "en": "beauty-salon-website-trebinje",
+      "cnr": "salon-sajt-trebinje",
+      "srb": "izrada-sajta-salon-trebinje",
+      "sq": "webfaqe-sallon-bukurie-trebinje"
+    }
+  },
+  {
+    "id": "pristina",
+    "slugs": {
+      "ru": "pristina",
+      "en": "pristina",
+      "cnr": "pristina",
+      "srb": "pristina",
+      "sq": "pristina"
+    }
+  },
+  {
+    "id": "pristina_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-pristina",
+      "en": "car-rental-website-pristina",
+      "cnr": "rent-a-car-sajt-pristina",
+      "srb": "izrada-sajta-rent-a-car-pristina",
+      "sq": "webfaqe-rent-a-car-pristina"
+    }
+  },
+  {
+    "id": "pristina_sto",
+    "slugs": {
+      "ru": "sto-sajt-pristina",
+      "en": "auto-service-website-pristina",
+      "cnr": "sto-sajt-pristina",
+      "srb": "izrada-sajta-sto-pristina",
+      "sq": "webfaqe-auto-servis-pristina"
+    }
+  },
+  {
+    "id": "pristina_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-pristina",
+      "en": "restaurant-website-pristina",
+      "cnr": "restoran-sajt-pristina",
+      "srb": "izrada-sajta-restoran-pristina",
+      "sq": "webfaqe-restorant-pristina"
+    }
+  },
+  {
+    "id": "pristina_salon",
+    "slugs": {
+      "ru": "salon-sajt-pristina",
+      "en": "beauty-salon-website-pristina",
+      "cnr": "salon-sajt-pristina",
+      "srb": "izrada-sajta-salon-pristina",
+      "sq": "webfaqe-sallon-bukurie-pristina"
+    }
+  },
+  {
+    "id": "athens",
+    "slugs": {
+      "ru": "athens",
+      "en": "athens",
+      "cnr": "athens",
+      "srb": "athens",
+      "sq": "athens"
+    }
+  },
+  {
+    "id": "athens_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-athens",
+      "en": "car-rental-website-athens",
+      "cnr": "rent-a-car-sajt-athens",
+      "srb": "izrada-sajta-rent-a-car-athens",
+      "sq": "webfaqe-rent-a-car-athens"
+    }
+  },
+  {
+    "id": "athens_sto",
+    "slugs": {
+      "ru": "sto-sajt-athens",
+      "en": "auto-service-website-athens",
+      "cnr": "sto-sajt-athens",
+      "srb": "izrada-sajta-sto-athens",
+      "sq": "webfaqe-auto-servis-athens"
+    }
+  },
+  {
+    "id": "athens_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-athens",
+      "en": "restaurant-website-athens",
+      "cnr": "restoran-sajt-athens",
+      "srb": "izrada-sajta-restoran-athens",
+      "sq": "webfaqe-restorant-athens"
+    }
+  },
+  {
+    "id": "athens_salon",
+    "slugs": {
+      "ru": "salon-sajt-athens",
+      "en": "beauty-salon-website-athens",
+      "cnr": "salon-sajt-athens",
+      "srb": "izrada-sajta-salon-athens",
+      "sq": "webfaqe-sallon-bukurie-athens"
+    }
+  },
+  {
+    "id": "thessaloniki",
+    "slugs": {
+      "ru": "thessaloniki",
+      "en": "thessaloniki",
+      "cnr": "thessaloniki",
+      "srb": "thessaloniki",
+      "sq": "thessaloniki"
+    }
+  },
+  {
+    "id": "thessaloniki_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-thessaloniki",
+      "en": "car-rental-website-thessaloniki",
+      "cnr": "rent-a-car-sajt-thessaloniki",
+      "srb": "izrada-sajta-rent-a-car-thessaloniki",
+      "sq": "webfaqe-rent-a-car-thessaloniki"
+    }
+  },
+  {
+    "id": "thessaloniki_sto",
+    "slugs": {
+      "ru": "sto-sajt-thessaloniki",
+      "en": "auto-service-website-thessaloniki",
+      "cnr": "sto-sajt-thessaloniki",
+      "srb": "izrada-sajta-sto-thessaloniki",
+      "sq": "webfaqe-auto-servis-thessaloniki"
+    }
+  },
+  {
+    "id": "thessaloniki_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-thessaloniki",
+      "en": "restaurant-website-thessaloniki",
+      "cnr": "restoran-sajt-thessaloniki",
+      "srb": "izrada-sajta-restoran-thessaloniki",
+      "sq": "webfaqe-restorant-thessaloniki"
+    }
+  },
+  {
+    "id": "thessaloniki_salon",
+    "slugs": {
+      "ru": "salon-sajt-thessaloniki",
+      "en": "beauty-salon-website-thessaloniki",
+      "cnr": "salon-sajt-thessaloniki",
+      "srb": "izrada-sajta-salon-thessaloniki",
+      "sq": "webfaqe-sallon-bukurie-thessaloniki"
+    }
+  },
+  {
+    "id": "chalcidice",
+    "slugs": {
+      "ru": "chalcidice",
+      "en": "chalcidice",
+      "cnr": "chalcidice",
+      "srb": "chalcidice",
+      "sq": "chalcidice"
+    }
+  },
+  {
+    "id": "chalcidice_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-chalcidice",
+      "en": "car-rental-website-chalcidice",
+      "cnr": "rent-a-car-sajt-chalcidice",
+      "srb": "izrada-sajta-rent-a-car-chalcidice",
+      "sq": "webfaqe-rent-a-car-chalcidice"
+    }
+  },
+  {
+    "id": "chalcidice_sto",
+    "slugs": {
+      "ru": "sto-sajt-chalcidice",
+      "en": "auto-service-website-chalcidice",
+      "cnr": "sto-sajt-chalcidice",
+      "srb": "izrada-sajta-sto-chalcidice",
+      "sq": "webfaqe-auto-servis-chalcidice"
+    }
+  },
+  {
+    "id": "chalcidice_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-chalcidice",
+      "en": "restaurant-website-chalcidice",
+      "cnr": "restoran-sajt-chalcidice",
+      "srb": "izrada-sajta-restoran-chalcidice",
+      "sq": "webfaqe-restorant-chalcidice"
+    }
+  },
+  {
+    "id": "chalcidice_salon",
+    "slugs": {
+      "ru": "salon-sajt-chalcidice",
+      "en": "beauty-salon-website-chalcidice",
+      "cnr": "salon-sajt-chalcidice",
+      "srb": "izrada-sajta-salon-chalcidice",
+      "sq": "webfaqe-sallon-bukurie-chalcidice"
+    }
+  },
+  {
+    "id": "zagreb",
+    "slugs": {
+      "ru": "zagreb",
+      "en": "zagreb",
+      "cnr": "zagreb",
+      "srb": "zagreb",
+      "sq": "zagreb"
+    }
+  },
+  {
+    "id": "zagreb_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-zagreb",
+      "en": "car-rental-website-zagreb",
+      "cnr": "rent-a-car-sajt-zagreb",
+      "srb": "izrada-sajta-rent-a-car-zagreb",
+      "sq": "webfaqe-rent-a-car-zagreb"
+    }
+  },
+  {
+    "id": "zagreb_sto",
+    "slugs": {
+      "ru": "sto-sajt-zagreb",
+      "en": "auto-service-website-zagreb",
+      "cnr": "sto-sajt-zagreb",
+      "srb": "izrada-sajta-sto-zagreb",
+      "sq": "webfaqe-auto-servis-zagreb"
+    }
+  },
+  {
+    "id": "zagreb_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-zagreb",
+      "en": "restaurant-website-zagreb",
+      "cnr": "restoran-sajt-zagreb",
+      "srb": "izrada-sajta-restoran-zagreb",
+      "sq": "webfaqe-restorant-zagreb"
+    }
+  },
+  {
+    "id": "zagreb_salon",
+    "slugs": {
+      "ru": "salon-sajt-zagreb",
+      "en": "beauty-salon-website-zagreb",
+      "cnr": "salon-sajt-zagreb",
+      "srb": "izrada-sajta-salon-zagreb",
+      "sq": "webfaqe-sallon-bukurie-zagreb"
+    }
+  },
+  {
+    "id": "split",
+    "slugs": {
+      "ru": "split",
+      "en": "split",
+      "cnr": "split",
+      "srb": "split",
+      "sq": "split"
+    }
+  },
+  {
+    "id": "split_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-split",
+      "en": "car-rental-website-split",
+      "cnr": "rent-a-car-sajt-split",
+      "srb": "izrada-sajta-rent-a-car-split",
+      "sq": "webfaqe-rent-a-car-split"
+    }
+  },
+  {
+    "id": "split_sto",
+    "slugs": {
+      "ru": "sto-sajt-split",
+      "en": "auto-service-website-split",
+      "cnr": "sto-sajt-split",
+      "srb": "izrada-sajta-sto-split",
+      "sq": "webfaqe-auto-servis-split"
+    }
+  },
+  {
+    "id": "split_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-split",
+      "en": "restaurant-website-split",
+      "cnr": "restoran-sajt-split",
+      "srb": "izrada-sajta-restoran-split",
+      "sq": "webfaqe-restorant-split"
+    }
+  },
+  {
+    "id": "split_salon",
+    "slugs": {
+      "ru": "salon-sajt-split",
+      "en": "beauty-salon-website-split",
+      "cnr": "salon-sajt-split",
+      "srb": "izrada-sajta-salon-split",
+      "sq": "webfaqe-sallon-bukurie-split"
+    }
+  },
+  {
+    "id": "dubrovnik",
+    "slugs": {
+      "ru": "dubrovnik",
+      "en": "dubrovnik",
+      "cnr": "dubrovnik",
+      "srb": "dubrovnik",
+      "sq": "dubrovnik"
+    }
+  },
+  {
+    "id": "dubrovnik_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-dubrovnik",
+      "en": "car-rental-website-dubrovnik",
+      "cnr": "rent-a-car-sajt-dubrovnik",
+      "srb": "izrada-sajta-rent-a-car-dubrovnik",
+      "sq": "webfaqe-rent-a-car-dubrovnik"
+    }
+  },
+  {
+    "id": "dubrovnik_sto",
+    "slugs": {
+      "ru": "sto-sajt-dubrovnik",
+      "en": "auto-service-website-dubrovnik",
+      "cnr": "sto-sajt-dubrovnik",
+      "srb": "izrada-sajta-sto-dubrovnik",
+      "sq": "webfaqe-auto-servis-dubrovnik"
+    }
+  },
+  {
+    "id": "dubrovnik_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-dubrovnik",
+      "en": "restaurant-website-dubrovnik",
+      "cnr": "restoran-sajt-dubrovnik",
+      "srb": "izrada-sajta-restoran-dubrovnik",
+      "sq": "webfaqe-restorant-dubrovnik"
+    }
+  },
+  {
+    "id": "dubrovnik_salon",
+    "slugs": {
+      "ru": "salon-sajt-dubrovnik",
+      "en": "beauty-salon-website-dubrovnik",
+      "cnr": "salon-sajt-dubrovnik",
+      "srb": "izrada-sajta-salon-dubrovnik",
+      "sq": "webfaqe-sallon-bukurie-dubrovnik"
+    }
+  },
+  {
+    "id": "ljubljana",
+    "slugs": {
+      "ru": "ljubljana",
+      "en": "ljubljana",
+      "cnr": "ljubljana",
+      "srb": "ljubljana",
+      "sq": "ljubljana"
+    }
+  },
+  {
+    "id": "ljubljana_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-ljubljana",
+      "en": "car-rental-website-ljubljana",
+      "cnr": "rent-a-car-sajt-ljubljana",
+      "srb": "izrada-sajta-rent-a-car-ljubljana",
+      "sq": "webfaqe-rent-a-car-ljubljana"
+    }
+  },
+  {
+    "id": "ljubljana_sto",
+    "slugs": {
+      "ru": "sto-sajt-ljubljana",
+      "en": "auto-service-website-ljubljana",
+      "cnr": "sto-sajt-ljubljana",
+      "srb": "izrada-sajta-sto-ljubljana",
+      "sq": "webfaqe-auto-servis-ljubljana"
+    }
+  },
+  {
+    "id": "ljubljana_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-ljubljana",
+      "en": "restaurant-website-ljubljana",
+      "cnr": "restoran-sajt-ljubljana",
+      "srb": "izrada-sajta-restoran-ljubljana",
+      "sq": "webfaqe-restorant-ljubljana"
+    }
+  },
+  {
+    "id": "ljubljana_salon",
+    "slugs": {
+      "ru": "salon-sajt-ljubljana",
+      "en": "beauty-salon-website-ljubljana",
+      "cnr": "salon-sajt-ljubljana",
+      "srb": "izrada-sajta-salon-ljubljana",
+      "sq": "webfaqe-sallon-bukurie-ljubljana"
+    }
+  },
+  {
+    "id": "maribor",
+    "slugs": {
+      "ru": "maribor",
+      "en": "maribor",
+      "cnr": "maribor",
+      "srb": "maribor",
+      "sq": "maribor"
+    }
+  },
+  {
+    "id": "maribor_rent_a_car",
+    "slugs": {
+      "ru": "rent-a-car-sajt-maribor",
+      "en": "car-rental-website-maribor",
+      "cnr": "rent-a-car-sajt-maribor",
+      "srb": "izrada-sajta-rent-a-car-maribor",
+      "sq": "webfaqe-rent-a-car-maribor"
+    }
+  },
+  {
+    "id": "maribor_sto",
+    "slugs": {
+      "ru": "sto-sajt-maribor",
+      "en": "auto-service-website-maribor",
+      "cnr": "sto-sajt-maribor",
+      "srb": "izrada-sajta-sto-maribor",
+      "sq": "webfaqe-auto-servis-maribor"
+    }
+  },
+  {
+    "id": "maribor_restoran",
+    "slugs": {
+      "ru": "restoran-sajt-maribor",
+      "en": "restaurant-website-maribor",
+      "cnr": "restoran-sajt-maribor",
+      "srb": "izrada-sajta-restoran-maribor",
+      "sq": "webfaqe-restorant-maribor"
+    }
+  },
+  {
+    "id": "maribor_salon",
+    "slugs": {
+      "ru": "salon-sajt-maribor",
+      "en": "beauty-salon-website-maribor",
+      "cnr": "salon-sajt-maribor",
+      "srb": "izrada-sajta-salon-maribor",
+      "sq": "webfaqe-sallon-bukurie-maribor"
+    }
+  }
+]

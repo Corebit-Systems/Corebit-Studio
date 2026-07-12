@@ -1,0 +1,19 @@
+{
+  "title": "Politika Kolačića",
+  "subtitle": "Detaljna pravila koja objašnjavaju kako Corebit Studio koristi kolačiće za očuvanje stanja, poboljšanje brzine i zaštitu korisničkih sesija.",
+  "last_updated": "Poslednje ažuriranje: Jul 2026",
+  "sections": [
+    {
+      "title": "1. Definicija i priroda kolačića",
+      "text": "Kolačići su male tekstualne datoteke koje sadrže jedinstvene alfanumeričke identifikatore, a koje se automatski preuzimaju i čuvaju na vašem računaru, tabletu ili mobilnom uređaju kada pristupate i pretražujete veb sajt studio.corebitsystems.io. Ove datoteke omogućavaju našim serverima da prepoznaju sesiju vašeg pretraživača, olakšaju navigaciju po sajtu i zabeleže operativne parametre stanja. Čuvanjem lokalnih podešavanja korisnika, kolačići eliminišu potrebu za ponovnim podešavanjem prikaza stranica, izbora jezika ili potvrđivanja saglasnosti sa politikama pri narednim posetama, čime se direktno optimizuje rad i brzina učitavanja naših digitalnih servisa."
+    },
+    {
+      "title": "2. Klasifikacija i svrha kolačića koje koristimo",
+      "text": "Corebit Studio koristi kolačiće koji su strogo podeljeni u dve osnovne kategorije: (a) Obavezni funkcionalni kolačići: Ovi kolačići prve strane su od suštinskog značaja za osnovno funkcionisanje veb sajta, uključujući čuvanje vašeg jezika, ispravno usmeravanje prevoda i pamćenje vašeg prihvatanja ili odbijanja u baneru privatnosti. Ovi kolačići ne prikupljaju lične podatke o profilu i brišu se nakon isteka sesije ili zatvaranja pretraživača. (b) Analitički kolačići performansi: Koristimo veb analitiku performansi na strani servera (integrisanu preko Vercel Edge Network platforme) za prikupljanje tehničkih podataka kao što su brzina učitavanja stranica, kašnjenje u prikazivanju rasporeda i putanje navigacije. Ovi podaci se obrađuju potpuno anonimno, bez praćenja pojedinačnog ponašanja korisnika. Mi ne koristimo reklamne kolačiće, tehnologije bihevioralnog ciljanja ili unakrsnog praćenja od strane eksternih reklamnih mreža."
+    },
+    {
+      "title": "3. Upravljanje, povlačenje saglasnosti i kontrola podešavanja pretraživača",
+      "text": "Svaki korisnik zadržava puno zakonsko pravo da upravlja, ograničava, blokira ili briše kolačiće u bilo kom trenutku menjanjem podešavanja konfiguracije svog veb pretraživača (kao što su Google Chrome, Mozilla Firefox, Apple Safari ili Microsoft Edge). Imajte na umu da onemogućavanje obaveznih funkcionalnih kolačića može ograničiti pristup određenim delovima sajta studio.corebitsystems.io i pogoršati kvalitet lokalizovanog prikaza sadržaja, iako će sajt ostati u osnovi dostupan. Uputstva za brisanje kolačića ili upozorenje o njihovom slanju obično se nalaze u meniju 'Opcije', 'Podešavanja' ili 'Bezbednost' vašeg pretraživača."
+    }
+  ]
+}

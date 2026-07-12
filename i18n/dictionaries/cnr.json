@@ -121,20 +121,56 @@
   },
   "portfolio_tech": {
     "cupertino-roast": {
-      "stack": ["Next.js 14 Edge", "Tailwind Custom Config", "Stripe Payments", "Vercel KV"],
-      "features": ["Interaktivni 3D Meni", "Sinhronizacija zaliha u realnom vremenu", "Apple Pay plaćanje jednim klikom"]
+      "stack": [
+        "Next.js 14 Edge",
+        "Tailwind Custom Config",
+        "Stripe Payments",
+        "Vercel KV"
+      ],
+      "features": [
+        "Interaktivni 3D Meni",
+        "Sinhronizacija zaliha u realnom vremenu",
+        "Apple Pay plaćanje jednim klikom"
+      ]
     },
     "shift-drive": {
-      "stack": ["React Server Components", "PostgreSQL", "WebSockets", "Framer Motion Engine"],
-      "features": ["Izračunavanje termina u realnom vremenu", "Praćenje statusa boksa mehaničara", "Automatski SMS podsjetnici putem Twilio-a"]
+      "stack": [
+        "React Server Components",
+        "PostgreSQL",
+        "WebSockets",
+        "Framer Motion Engine"
+      ],
+      "features": [
+        "Izračunavanje termina u realnom vremenu",
+        "Praćenje statusa boksa mehaničara",
+        "Automatski SMS podsjetnici putem Twilio-a"
+      ]
     },
     "umami-bistro": {
-      "stack": ["Next.js App Router", "Redis Caching", "Custom Webhooks", "Glassmorphism UI"],
-      "features": ["Interaktivni SVG planovi za rezervacije stolova", "Sinhronizacija menadžerskog panela u realnom vremenu", "Sinhronizacija menadžerskog panela"]
+      "stack": [
+        "Next.js App Router",
+        "Redis Caching",
+        "Custom Webhooks",
+        "Glassmorphism UI"
+      ],
+      "features": [
+        "Interaktivni SVG planovi za rezervacije stolova",
+        "Sinhronizacija menadžerskog panela u realnom vremenu",
+        "Sinhronizacija menadžerskog panela"
+      ]
     },
     "aura-wellness": {
-      "stack": ["Next.js", "Tailwind CSS", "Prisma ORM", "Stripe Connect"],
-      "features": ["Glatki obrasci za korak-po-korak zakazivanje", "Sinhronizacija kalendara osoblja", "Autorizacija depozitnog plaćanja"]
+      "stack": [
+        "Next.js",
+        "Tailwind CSS",
+        "Prisma ORM",
+        "Stripe Connect"
+      ],
+      "features": [
+        "Glatki obrasci za korak-po-korak zakazivanje",
+        "Sinhronizacija kalendara osoblja",
+        "Autorizacija depozitnog plaćanja"
+      ]
     }
   },
   "faq": {
@@ -271,115 +307,186 @@
     }
   },
   "geo": {
-    "montenegro": { "name": "Crna Gora", "where": "u Crnoj Gori", "destination": "u Crnu Goru" },
-    "serbia": { "name": "Srbija", "where": "u Srbiji", "destination": "u Srbiju" },
-    "albania": { "name": "Albanija", "where": "u Albaniji", "destination": "u Albaniju" },
-    "north_macedonia": { "name": "Sjeverna Makedonija", "where": "u Sjevernoj Makedoniji", "destination": "u Sjevernu Makedoniju" },
-    "bosnia_herzegovina": { "name": "Bosna i Hercegovina", "where": "u Bosni i Hercegovini", "destination": "u Bosnu i Hercegovinu" },
-    "kosovo": { "name": "Kosovo", "where": "na Kosovu", "destination": "na Kosovo" },
-    "greece": { "name": "Grčka", "where": "u Grčkoj", "destination": "u Grčku" },
-    "croatia": { "name": "Hrvatska", "where": "u Hrvatskoj", "destination": "u Hrvatsku" },
-    "slovenia": { "name": "Slovenija", "where": "u Sloveniji", "destination": "u Sloveniju" },
-    "budva": { "name": "Budva", "where": "u Budvi", "destination": "u Budvu" },
-    "tivat": { "name": "Tivat", "where": "u Tivtu", "destination": "u Tivat" },
-    "podgorica": { "name": "Podgorica", "where": "u Podgorici", "destination": "u Podgoricu" },
-    "bar": { "name": "Bar", "where": "u Baru", "destination": "u Bar" },
-    "kotor": { "name": "Kotor", "where": "u Kotoru", "destination": "u Kotor" },
-    "herceg_novi": { "name": "Herceg-Novi", "where": "u Herceg-Novom", "destination": "u Herceg-Novi" },
-    "belgrade": { "name": "Beograd", "where": "u Beogradu", "destination": "u Beograd" },
-    "novi_sad": { "name": "Novi Sad", "where": "u Novom Sadu", "destination": "u Novi Sad" },
-    "nis": { "name": "Niš", "where": "u Nišu", "destination": "u Niš" },
-    "tirana": { "name": "Tirana", "where": "u Tirani", "destination": "u Tiranu" },
-    "durres": { "name": "Drač", "where": "u Draču", "destination": "u Drač" },
-    "saranda": { "name": "Saranda", "where": "u Sarandi", "destination": "u Sarandu" },
-    "skopye": { "name": "Skoplje", "where": "u Skoplju", "destination": "u Skoplje" },
-    "ohrid": { "name": "Ohrid", "where": "u Ohridu", "destination": "u Ohrid" },
-    "sarajevo": { "name": "Sarajevo", "where": "u Sarajevu", "destination": "u Sarajevo" },
-    "mostar": { "name": "Mostar", "where": "u Mostaru", "destination": "u Mostar" },
-    "trebinje": { "name": "Trebinje", "where": "u Trebinju", "destination": "u Trebinje" },
-    "pristina": { "name": "Priština", "where": "u Prištini", "destination": "u Prištinu" },
-    "athens": { "name": "Atina", "where": "u Atini", "destination": "u Atinu" },
-    "thessaloniki": { "name": "Solun", "where": "u Solunu", "destination": "u Solun" },
-    "chalcidice": { "name": "Halkidiki", "where": "na Halkidikiju", "destination": "na Halkidiki" },
-    "zagreb": { "name": "Zagreb", "where": "u Zagrebu", "destination": "u Zagreb" },
-    "split": { "name": "Split", "where": "u Splitu", "destination": "u Split" },
-    "dubrovnik": { "name": "Dubrovnik", "where": "u Dubrovniku", "destination": "u Dubrovnik" },
-    "ljubljana": { "name": "Ljubljana", "where": "u Ljubljani", "destination": "u Ljubljanu" },
-    "maribor": { "name": "Maribor", "where": "u Mariboru", "destination": "u Maribor" }
+    "montenegro": {
+      "name": "Crna Gora",
+      "where": "u Crnoj Gori",
+      "destination": "u Crnu Goru"
+    },
+    "serbia": {
+      "name": "Srbija",
+      "where": "u Srbiji",
+      "destination": "u Srbiju"
+    },
+    "albania": {
+      "name": "Albanija",
+      "where": "u Albaniji",
+      "destination": "u Albaniju"
+    },
+    "north_macedonia": {
+      "name": "Sjeverna Makedonija",
+      "where": "u Sjevernoj Makedoniji",
+      "destination": "u Sjevernu Makedoniju"
+    },
+    "bosnia_herzegovina": {
+      "name": "Bosna i Hercegovina",
+      "where": "u Bosni i Hercegovini",
+      "destination": "u Bosnu i Hercegovinu"
+    },
+    "kosovo": {
+      "name": "Kosovo",
+      "where": "na Kosovu",
+      "destination": "na Kosovo"
+    },
+    "greece": {
+      "name": "Grčka",
+      "where": "u Grčkoj",
+      "destination": "u Grčku"
+    },
+    "croatia": {
+      "name": "Hrvatska",
+      "where": "u Hrvatskoj",
+      "destination": "u Hrvatsku"
+    },
+    "slovenia": {
+      "name": "Slovenija",
+      "where": "u Sloveniji",
+      "destination": "u Sloveniju"
+    },
+    "budva": {
+      "name": "Budva",
+      "where": "u Budvi",
+      "destination": "u Budvu"
+    },
+    "tivat": {
+      "name": "Tivat",
+      "where": "u Tivtu",
+      "destination": "u Tivat"
+    },
+    "podgorica": {
+      "name": "Podgorica",
+      "where": "u Podgorici",
+      "destination": "u Podgoricu"
+    },
+    "bar": {
+      "name": "Bar",
+      "where": "u Baru",
+      "destination": "u Bar"
+    },
+    "kotor": {
+      "name": "Kotor",
+      "where": "u Kotoru",
+      "destination": "u Kotor"
+    },
+    "herceg_novi": {
+      "name": "Herceg-Novi",
+      "where": "u Herceg-Novom",
+      "destination": "u Herceg-Novi"
+    },
+    "belgrade": {
+      "name": "Beograd",
+      "where": "u Beogradu",
+      "destination": "u Beograd"
+    },
+    "novi_sad": {
+      "name": "Novi Sad",
+      "where": "u Novom Sadu",
+      "destination": "u Novi Sad"
+    },
+    "nis": {
+      "name": "Niš",
+      "where": "u Nišu",
+      "destination": "u Niš"
+    },
+    "tirana": {
+      "name": "Tirana",
+      "where": "u Tirani",
+      "destination": "u Tiranu"
+    },
+    "durres": {
+      "name": "Drač",
+      "where": "u Draču",
+      "destination": "u Drač"
+    },
+    "saranda": {
+      "name": "Saranda",
+      "where": "u Sarandi",
+      "destination": "u Sarandu"
+    },
+    "skopye": {
+      "name": "Skoplje",
+      "where": "u Skoplju",
+      "destination": "u Skoplje"
+    },
+    "ohrid": {
+      "name": "Ohrid",
+      "where": "u Ohridu",
+      "destination": "u Ohrid"
+    },
+    "sarajevo": {
+      "name": "Sarajevo",
+      "where": "u Sarajevu",
+      "destination": "u Sarajevo"
+    },
+    "mostar": {
+      "name": "Mostar",
+      "where": "u Mostaru",
+      "destination": "u Mostar"
+    },
+    "trebinje": {
+      "name": "Trebinje",
+      "where": "u Trebinju",
+      "destination": "u Trebinje"
+    },
+    "pristina": {
+      "name": "Priština",
+      "where": "u Prištini",
+      "destination": "u Prištinu"
+    },
+    "athens": {
+      "name": "Atina",
+      "where": "u Atini",
+      "destination": "u Atinu"
+    },
+    "thessaloniki": {
+      "name": "Solun",
+      "where": "u Solunu",
+      "destination": "u Solun"
+    },
+    "chalcidice": {
+      "name": "Halkidiki",
+      "where": "na Halkidikiju",
+      "destination": "na Halkidiki"
+    },
+    "zagreb": {
+      "name": "Zagreb",
+      "where": "u Zagrebu",
+      "destination": "u Zagreb"
+    },
+    "split": {
+      "name": "Split",
+      "where": "u Splitu",
+      "destination": "u Split"
+    },
+    "dubrovnik": {
+      "name": "Dubrovnik",
+      "where": "u Dubrovniku",
+      "destination": "u Dubrovnik"
+    },
+    "ljubljana": {
+      "name": "Ljubljana",
+      "where": "u Ljubljani",
+      "destination": "u Ljubljanu"
+    },
+    "maribor": {
+      "name": "Maribor",
+      "where": "u Mariboru",
+      "destination": "u Maribor"
+    }
   },
   "policies": {
     "privacy_title": "Politika Privatnosti",
     "cookie_title": "Politika Kolačića",
     "terms_title": "Uslovi Korišćenja",
-    "back_btn": "Nazad na Početnu",
-    "cookie_policy": {
-      "title": "Politika Kolačića",
-      "subtitle": "Detaljna pravila koja objašnjavaju kako Corebit Studio koristi kolačiće za očuvanje stanja, poboljšanje brzine i zaštitu korisničkih sesija.",
-      "last_updated": "Posljednje ažuriranje: Jul 2026",
-      "sections": [
-        {
-          "title": "1. Definicija i priroda kolačića",
-          "text": "Kolačići su male tekstualne datoteke koje sadrže jedinstvene alfanumeričke identifikatore, a koje se automatski preuzimaju i čuvaju na vašem računaru, tabletu ili mobilnom uređaju kada pristupate i pretražujete veb sajt studio.corebitsystems.io. Ove datoteke omogućavaju našim serverima da prepoznaju sesiju vašeg pretraživača, olakšaju navigaciju po sajtu i zabilježe operativne parametre stanja. Čuvanjem lokalnih podešavanja korisnika, kolačići eliminišu potrebu za ponovnim podešavanjem prikaza stranica, izbora jezika ili potvrđivanja saglasnosti sa politikama pri narednim posjetama, čime se direktno optimizuje rad i brzina učitavanja naših digitalnih servisa."
-        },
-        {
-          "title": "2. Klasifikacija i svrha kolačića koje koristimo",
-          "text": "Corebit Studio koristi kolačiće koji su strogo podijeljeni u dvije osnovne kategorije: (a) Obavezni funkcionalni kolačići: Ovi kolačići prve strane su od suštinskog značaja za osnovno funkcionisanje veb sajta, uključujući čuvanje vašeg jezika, ispravno usmjeravanje prevoda i pamćenje vašeg prihvatanja ili odbijanja u baneru privatnosti. Ovi kolačići ne prikupljaju lične podatke o profilu i brišu se nakon isteka sesije ili zatvaranja pretraživača. (b) Analitički kolačići performansi: Koristimo veb analitiku performansi na strani servera (integrisanu preko Vercel Edge Network platforme) za prikupljanje tehničkih podataka kao što su brzina učitavanja stranica, kašnjenje u prikazivanju rasporeda i putanje navigacije. Ovi podaci se obrađuju potpuno anonimno, bez praćenja pojedinačnog ponašanja korisnika. Mi ne koristimo reklamne kolačiće, tehnologije bihevioralnog ciljanja ili unakrsnog praćenja od strane eksternih reklamnih mreža."
-        },
-        {
-          "title": "3. Upravljanje, povlačenje saglasnosti i kontrola podešavanja pretraživača",
-          "text": "Svaki korisnik zadržava puno zakonsko pravo da upravlja, ograničava, blokira ili briše kolačiće u bilo kom trenutku mijenjanjem podešavanja konfiguracije svog veb pretraživača (kao što su Google Chrome, Mozilla Firefox, Apple Safari ili Microsoft Edge). Imajte na umu da onemogućavanje obaveznih funkcionalnih kolačića može ograničiti pristup određenim djelovima sajta studio.corebitsystems.io i pogoršati kvalitet lokalizovanog prikaza sadržaja, iako će sajt ostati u osnovi dostupan. Uputstva za brisanje kolačića ili upozorenje o njihovom slanju obično se nalaze u meniju 'Opcije', 'Podešavanja' ili 'Bezbjednost' vašeg pretraživača."
-        }
-      ]
-    },
-    "privacy_policy": {
-      "title": "Politika Privatnosti",
-      "subtitle": "Detaljna pravila o prikupljanju, obradi, zaštiti i pravima povezanim sa vašim ličnim podacima u Corebit Studio.",
-      "last_updated": "Posljednje ažuriranje: Jul 2026",
-      "sections": [
-        {
-          "title": "1. Kategorije i obim prikupljenih ličnih podataka",
-          "text": "Corebit Studio prikuplja lične podatke putem dva različita kanala: (a) Podaci koje korisnik direktno pruža: Kada dobrovoljno pošaljete upit za procjenu cijene projekta, popunite kontakt forme ili započnete komunikaciju preko integrisanih WhatsApp ili Telegram vidžeta, prikupljamo informacije kao što su vaše ime i prezime, korporativna e-mail adresa, kontakt telefon, korisničko ime na mesindžeru, kao i tekstualni opis projekta koji odlučite da podijelite. (b) Automatski prikupljeni podaci: Tokom vaše interakcije sa sajtom studio.corebitsystems.io bilježimo tehničke podatke iz logova, uključujući IP adresu, tip i verziju pretraživača, podešavanja jezika, operativni sistem, URL adrese referera i statistiku brzine mreže. Na ovom sajtu ne prikupljamo niti obrađujemo osjetljive lične podatke, biometrijske podatke ili finansijske podatke."
-        },
-        {
-          "title": "2. Zakoniti osnovi i svrha obrade podataka",
-          "text": "Svi prikupljeni lični podaci obrađuju se strogo na osnovu predgovornih pregovora, saglasnosti i legitimnog interesa. Konkretno, podaci se koriste za: (a) Odgovaranje na vaše upite, izradu komercijalnih ponuda i usaglašavanje detalja ugovora o uslugama dizajna, razvoja sajtova i automatizacije. (b) Praćenje bezbjednosti sajta, sprečavanje neželjene pošte (spama) i dijagnostiku performansi. (c) Analizu statistike posjeta radi poboljšanja brzine učitavanja stranica. Corebit Studio primjenjuje strogu politiku nedijeljenja podataka: nikada ne prodajemo, ne iznajmljujemo, ne razmjenjujemo i ne prosljeđujemo vaše lične kontakte marketinškim agencijama, reklamnim mrežama ili trećim licima u svrhu promocije."
-        },
-        {
-          "title": "3. Usklađenost sa GDPR-om, zakonima Crne Gore i prava korisnika",
-          "text": "U strogoj usklađenosti sa Opštom uredbom o zaštiti podataka Evropske unije (EU GDPR) i Zakonom o zaštiti podataka o ličnosti Crne Gore, korisnici imaju sveobuhvatna prava nad svojim podacima. Ova prava uključuju: (a) Pravo na pristup podacima radi provjere njihovog sadržaja. (b) Pravo na ispravku netačnih informacija. (c) Pravo na ograničenje obrade. (d) Pravo na prenosivost podataka. (e) Pravo na brisanje podataka ('Pravo na zaborav') uz potpuno uklanjanje zapisa iz naših baza podataka. Da biste ostvarili bilo koje od ovih prava, kontaktirajte našeg službenika za zaštitu podataka putem e-pošte na corebitstudio@corebitsystems.io. Obavezujemo se da ćemo odgovoriti i obraditi vaš zahtjev u roku od 30 kalendarskih dana od dana potvrde."
-        },
-        {
-          "title": "4. Tehničke mjere bezbjednosti i protokoli za čuvanje podataka",
-          "text": "Primjenjujemo pouzdane tehničke i administrativne mjere kako bismo zaštitili vaše lične podatke od slučajnog gubitka, neovlašćenog pristupa, izmjene, otkrivanja ili uništavanja. Prenos svih informacija preko sajta studio.corebitsystems.io šifrovan je korišćenjem Secure Socket Layer (SSL) protokola. Lični podaci se čuvaju u zaštićenom serverskom okruženju sa strogo ograničenim listama pristupa, čime se obezbjeđuje da samo ovlašćeno osoblje uključeno u vođenje klijentskih projekata može pristupiti podacima. Ipak, prenos podataka preko interneta ili čuvanje u bazama podataka nikada ne može biti 100% bezbjedan, i korisnici dijele informacije na sopstveni rizik."
-        }
-      ]
-    },
-    "terms_of_service": {
-      "title": "Uslovi Korišćenja",
-      "subtitle": "Pravno obavezujući uslovi i pravila koji regulišu korišćenje sajta studio.corebitsystems.io.",
-      "last_updated": "Posljednje ažuriranje: Jul 2026",
-      "sections": [
-        {
-          "title": "1. Prihvatanje uslova, starosna ograničenja i zastupanje biznisa",
-          "text": "Pristupanjem, pregledanjem ili korišćenjem veb sajta studio.corebitsystems.io, potvrđujete da ste pročitali, razumjeli i da ste saglasni da budete pravno obavezani ovim Uslovima korišćenja, našom Politikom privatnosti i Politikom kolačića. Ako nijeste saglasni sa bilo kojim dijelom ovih uslova, morate odmah prestati sa korišćenjem sajta i napustiti stranicu. Ovaj sajt je namijenjen isključivo za poslovnu komunikaciju (B2B). Korišćenjem sajta studio.corebitsystems.io izjavljujete da imate najmanje 18 godina i da posjedujete punu poslovnu sposobnost i pravna ovlašćenja da zastupate svoju kompaniju i zaključujete obavezujuće ugovore."
-        },
-        {
-          "title": "2. Opis usluga, ograničenja i okviri rada",
-          "text": "Corebit Studio pruža usluge izrade individualnog dizajna, visokoperformansnog veb programiranja, optimizacije arhitekture softvera, izrade sajtova pod ključ (uključujući Next.js, React i serverless rješenja), integracije baza podataka i podešavanja sistema za automatsko online zakazivanje i rezervaciju termina (za auto servise, rent-a-car agencije, restorane i salone). Sadržaj na sajtu studio.corebitsystems.io je isključivo informativnog i predugovornog karaktera. Za definisanje cijena, obima radova, rokova i obaveza isporuke softvera potrebno je potpisivanje posebnog zvaničnog ugovora između ugovornih strana. Zadržavamo pravo da izmijenimo, obustavimo ili prekinemo prezentaciju usluga na ovom sajtu bez prethodne najave."
-        },
-        {
-          "title": "3. Prava intelektualne svojine, zaštita autorskih prava i ograničenja licence",
-          "text": "Svi materijali prikazani na sajtu studio.corebitsystems.io—uključujući izvorni kod, TypeScript skripte, CSS stilove, dizajn korisničkog interfejsa, animacije, grafičke elemente, konceptualna rješenja, žigove i tekstualne materijale—predstavljaju isključivu intelektualnu svojinu Corebit Studio i zaštićeni su međunarodnim zakonima o autorskim pravima. Kod projekata koji se rade po narudžbini za klijente, sva prava intelektualne svojine na razvijeni kod i dizajn ostaju vlasništvo Corebit Studio sve dok se završni račun po ugovoru ne plati u potpunosti (100%). Svako neovlašćeno kopiranje, distribucija, modifikacija, struganje podataka (web scraping), obrnuti inženjering ili javno prikazivanje ovih materijala bez prethodne pismene saglasnosti Corebit Studio strogo je zabranjeno."
-        },
-        {
-          "title": "4. Potpuno odricanje od garancija i ograničenje odgovornosti",
-          "text": "Sajt studio.corebitsystems.io i svi njegovi materijali pružaju se pod uslovima 'kao što jeste' i 'kako je dostupno', bez bilo kakvih izričitih ili podrazumijevanih garancija. Corebit Studio ne garantuje nesmetan rad sajta bez grešaka. U maksimalnoj mjeri dozvoljenoj zakonom, Corebit Studio ne snosi odgovornost za bilo kakvu direktnu, indirektnu, slučajnu ili posledičnu štetu nastalu korišćenjem ili nemogućnošću korišćenja ovog sajta. Ovo ograničenje odgovornosti se odnosi na prekide u radu hostinga (Vercel), baza podataka (PostgreSQL/Redis), telekomunikacionih veza, kompjuterske viruse, greške u radu eksternih API integracija (WhatsApp, Telegram ili Stripe) i gubitak poslovnih podataka ili profita."
-        },
-        {
-          "title": "5. Primjenjivo pravo, sudska nadležnost i rješavanje sporova",
-          "text": "Ovi Uslovi korišćenja, kao i svi sporovi ili potraživanja koji proizilaze iz korišćenja ili u vezi sa korišćenjem veb sajta studio.corebitsystems.io, regulišu se, tumače i sprovode u skladu sa zakonima Crne Gore i relevantnim propisima Evropske unije. Svi sporovi koji se ne mogu riješiti sporazumno kroz konstruktivne pregovore ugovornih strana, biće predati na isključivo odlučivanje nadležnim privrednim sudovima u Crnoj Gori, prema mjestu zvanične registracije Corebit Studio."
-        }
-      ]
-    }
+    "back_btn": "Nazad na Početnu"
   }
 }

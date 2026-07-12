@@ -1,0 +1,19 @@
+{
+  "title": "Cookie Policy",
+  "subtitle": "Comprehensive guidelines explaining how Corebit Studio utilizes cookies to preserve state, enhance speed, and secure user sessions.",
+  "last_updated": "Last updated: July 2026",
+  "sections": [
+    {
+      "title": "1. Definition and Nature of Cookies",
+      "text": "Cookies are small text files, containing unique alphanumeric identifiers, which are automatically downloaded and stored on your computer, tablet, or mobile device when you access and navigate the website studio.corebitsystems.io. These files enable our web servers to recognize your specific browser session, facilitate seamless page navigation, and capture operational state parameters. By storing local preferences, cookies prevent the necessity of repeatedly configuring display settings, language selections, or security consents during subsequent page requests, thereby directly optimizing the performance and loading velocity of our digital services."
+    },
+    {
+      "title": "2. Classification and Purpose of Stored Cookies",
+      "text": "Corebit Studio implements cookies strictly categorized under two primary operational models: (a) Strictly Necessary Functional Cookies: These first-party cookies are essential for the fundamental operation of the website, including keeping track of your language preference, routing translations correctly, and remembering your acceptance or rejection of our privacy banner. These cookies do not collect any personal profile information and are destroyed upon expiration or session termination. (b) Performance and Telemetry Cookies: We leverage server-side performance analytics (specifically integrated via the Vercel Edge Network platform) to collect technical data such as page loading speeds, layout render latency, and navigation pathways. This metrics data is processed anonymously without tracking individual user behavior, and we do not utilize any advertising, behavioral targeting, cross-site tracking, or marketing cookies from third-party advertising networks."
+    },
+    {
+      "title": "3. Management, Revocation, and Browser Settings Control",
+      "text": "Every user retains the full legal right to manage, restrict, block, or delete cookies at any time by accessing and modifying their web browser configuration settings (such as in Google Chrome, Mozilla Firefox, Apple Safari, or Microsoft Edge). Please be advised that disabling strictly necessary functional cookies may limit access to certain portions of studio.corebitsystems.io and degrade localized language rendering quality, though the website will remain fundamentally accessible. The settings to delete existing cookies or alert you when cookies are sent can usually be found within the 'Options', 'Preferences', or 'Security' menus of your web browser."
+    }
+  ]
+}

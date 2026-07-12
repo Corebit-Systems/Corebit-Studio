@@ -2,19 +2,57 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
+import dynamic from 'next/dynamic';
 import BentoCard from '@/components/BentoCard';
 import PricingSection from '@/components/PricingSection';
 import ContactForm from '@/components/ContactForm';
 import HeroSection from '@/components/HeroSection';
 import FAQSection from '@/components/FAQSection';
-import RoiCalculator from '@/components/RoiCalculator';
 import ReviewsAccordion from '@/components/ReviewsAccordion';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider';
-import SpeedCheckWidget from '@/components/SpeedCheckWidget';
 import TechEcosystem from '@/components/TechEcosystem';
 import { ArrowRight, CheckCircle2, CalendarClock, Utensils, CalendarHeart } from 'lucide-react';
+import slugMapData from '@/i18n/slug-map.json';
+
+// Heavy client-only widgets deferred to avoid blocking the RSC shell
+const SpeedCheckWidget = dynamic(() => import('@/components/SpeedCheckWidget'), { ssr: false });
+const RoiCalculator    = dynamic(() => import('@/components/RoiCalculator'),    { ssr: false });
+
 
 export const dynamicParams = false;
+
+// ── Slug-map helpers ────────────────────────────────────────────────────────
+type SlugEntry = { id: string; slugs: Record<string, string> };
+const slugMap: SlugEntry[] = slugMapData as SlugEntry[];
+
+/**
+ * Given the incoming locale + slug string, resolve the canonical entry id and
+ * the full alternates map {bcp47Tag: absoluteURL}.
+ */
+function resolveSlugEntry(
+  locale: string,
+  slugStr: string,
+): { entry: SlugEntry; alternates: Record<string, string> } | null {
+  const entry = slugMap.find((e) => e.slugs[locale] === slugStr);
+  if (!entry) return null;
+
+  const bcp47: Record<string, string> = {
+    en:  'en',
+    ru:  'ru',
+    sq:  'sq-AL',
+    srb: 'sr-RS',
+    cnr: 'sr-ME',
+  };
+
+  const alternates: Record<string, string> = {
+    'x-default': `${SITE_URL}/en/${entry.slugs['en']}`,
+  };
+  for (const [loc, tag] of Object.entries(bcp47)) {
+    const locSlug = entry.slugs[loc];
+    if (locSlug) alternates[tag] = `${SITE_URL}/${loc}/${locSlug}`;
+  }
+  return { entry, alternates };
+}
 
 const locations = [
   'montenegro', 'serbia', 'albania', 'north_macedonia', 'bosnia_herzegovina', 'kosovo', 'greece', 'croatia', 'slovenia',
@@ -24,6 +62,7 @@ const locations = [
 ];
 const services = ['rent-a-car', 'sto', 'restoran', 'salon'];
 const locales = ['en', 'ru', 'cnr', 'srb', 'sq'];
+
 
 const SITE_URL = 'https://studio.corebitsystems.io';
 
@@ -101,28 +140,17 @@ const serviceReplacements: Record<string, Record<string, string>> = {
 export async function generateStaticParams() {
   const params: Array<{ locale: string; slug: string[] }> = [];
 
-  locales.forEach((locale) => {
-    // 1. General city routes
-    locations.forEach((city) => {
-      params.push({
-        locale,
-        slug: [city]
-      });
-    });
-
-    // 2. Niche city routes
-    locations.forEach((city) => {
-      services.forEach((service) => {
-        params.push({
-          locale,
-          slug: [`${service}-sajt-${city}`]
-        });
-      });
-    });
-  });
+  for (const entry of slugMap) {
+    for (const [locale, slug] of Object.entries(entry.slugs)) {
+      if (locales.includes(locale) && slug) {
+        params.push({ locale, slug: [slug] });
+      }
+    }
+  }
 
   return params;
 }
+
 
 export async function generateMetadata({
   params: { locale, slug }
@@ -130,14 +158,25 @@ export async function generateMetadata({
   params: { locale: string; slug: string[] };
 }): Promise<Metadata> {
   const slugStr = slug[0];
+
+  // ── Resolve cross-locale alternates from slug-map ─────────────────────
+  const resolved = resolveSlugEntry(locale, slugStr);
+
+  // Fallback: parse legacy {service}-sajt-{city} pattern for unknown slugs
   let city = '';
   let service = '';
 
-  if (slugStr.includes('-sajt-')) {
+  if (resolved) {
+    // Derive city/service from id for title/description templates
+    const parts = resolved.entry.id.split('_');
+    // id examples: "budva", "budva_restoran", "budva_rent_a_car"
+    const serviceKeys = ['rent', 'sto', 'restoran', 'salon'];
+    const svcIdx = parts.findIndex((p) => serviceKeys.includes(p));
+    city = svcIdx > 0 ? parts.slice(0, svcIdx).join('_') : parts.join('_');
+    service = svcIdx > 0 ? parts.slice(svcIdx).join('_').replace('rent_a_car', 'rent-a-car') : '';
+  } else if (slugStr.includes('-sajt-')) {
     const parts = slugStr.split('-sajt-');
-    if (parts.length !== 2) {
-      notFound();
-    }
+    if (parts.length !== 2) notFound();
     service = parts[0];
     city = parts[1];
   } else {
@@ -156,6 +195,21 @@ export async function generateMetadata({
   const activeGeo = geoDict[city.toLowerCase()] || { name: city, where: city };
   const where = activeGeo.where;
 
+  // Use slug-map alternates if available, otherwise fall back to computed
+  const languageAlternates: Record<string, string> = resolved
+    ? resolved.alternates
+    : (() => {
+        const alts: Record<string, string> = {};
+        locales.forEach((l) => {
+          const tag = l === 'sq' ? 'sq-AL' : l === 'srb' ? 'sr-RS' : l === 'cnr' ? 'sr-ME' : l;
+          alts[tag] = `${SITE_URL}/${l}/${service ? `${service}-sajt-${city}` : city}`;
+        });
+        alts['x-default'] = `${SITE_URL}/en/${service ? `${service}-sajt-${city}` : city}`;
+        return alts;
+      })();
+
+  const canonical = `${SITE_URL}/${locale}/${slugStr}`;
+
   if (service) {
     const currentServiceNames = serviceNames[locale] || serviceNames.en;
     const serviceName = currentServiceNames[service.toLowerCase()] || service;
@@ -171,41 +225,20 @@ export async function generateMetadata({
     const descriptions: Record<string, string> = {
       en: `Development of fast websites with online booking ${serviceName} ${where}. Ready business solutions, CRM integration, launch in 7 days. Get price!`,
       ru: `Разработка быстрых сайтов с онлайн-записью ${serviceName} ${where}. Готовые решения для бизнеса, интеграция с CRM, запуск за 7 дней. Узнайте цену!`,
-      cnr: `Izrada brzih sajtova sa online rezervacijama ${serviceName} {where}. Gotova rešenja, CRM integracija, pokretanje za 7 dana. Saznajte cenu!`,
-      srb: `Izrada brzih sajtova sa online rezervacijama ${serviceName} {where}. Gotova rešenja, CRM integracija, pokretanje za 7 dana. Saznajte cenu!`,
-      sq: `Zhvillim i uebfaqeve të shpejta me rezervime online ${serviceName} {where}. Zgjidhje të gatshme, integrim CRM, fillim për 7 ditë. Mëso çmimin!`
+      cnr: `Izrada brzih sajtova sa online rezervacijama ${serviceName} ${where}. Gotova rešenja, CRM integracija, pokretanje za 7 dana. Saznajte cenu!`,
+      srb: `Izrada brzih sajtova sa online rezervacijama ${serviceName} ${where}. Gotova rešenja, CRM integracija, pokretanje za 7 dana. Saznajte cenu!`,
+      sq: `Zhvillim i uebfaqeve të shpejta me rezervime online ${serviceName} ${where}. Zgjidhje të gatshme, integrim CRM, fillim për 7 ditë. Mëso çmimin!`
     };
 
-    let title = titles[locale] || titles.en;
-    let description = descriptions[locale] || descriptions.en;
-
-    title = title.replace('{serviceName}', serviceName).replace('{where}', where);
-    description = description.replace('{serviceName}', serviceName).replace('{where}', where);
-
-    const languageAlternates: Record<string, string> = {};
-    locales.forEach((l) => {
-      languageAlternates[l === 'sq' ? 'sq-AL' : l === 'srb' ? 'sr-RS' : l === 'cnr' ? 'sr-ME' : l] = `${SITE_URL}/${l}/${service}-sajt-${city}`;
-    });
+    const title = (titles[locale] || titles.en).replace('{where}', where);
+    const description = (descriptions[locale] || descriptions.en).replace('{where}', where);
 
     return {
       title,
       description,
-      alternates: {
-        canonical: `${SITE_URL}/${locale}/${slugStr}`,
-        languages: languageAlternates
-      },
-      openGraph: {
-        type: 'website',
-        url: `${SITE_URL}/${locale}/${slugStr}`,
-        title,
-        description,
-        siteName: 'Corebit Studio',
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title,
-        description,
-      }
+      alternates: { canonical, languages: languageAlternates },
+      openGraph: { type: 'website', url: canonical, title, description, siteName: 'Corebit Studio' },
+      twitter: { card: 'summary_large_image', title, description },
     };
   } else {
     const titles: Record<string, string> = {
@@ -219,41 +252,24 @@ export async function generateMetadata({
     const descriptions: Record<string, string> = {
       en: `Professional website development and booking automation systems ${where} for restaurants, auto services, beauty salons, and car rentals. Get price!`,
       ru: `Профессиональная разработка и создание сайтов под ключ ${where} для ресторанов, автосервисов (СТО), салонов красоты и аренды авто. Узнайте цену!`,
-      cnr: `Profesionalna izrada sajtova i automatizacija rezervacija {where} za restorane, auto servise, salone i rent a car. Saznajte cenu!`,
-      srb: `Profesionalna izrada sajtova i automatizacija rezervacija {where} za restorane, auto servise, salone i rent a car. Saznajte cenu!`,
-      sq: `Zhvillim profesional uebfaqesh dhe automatizim rezervimesh {where} për restorante, auto-servise, sallone dhe makina me qira. Mëso çmimin!`
+      cnr: `Profesionalna izrada sajtova i automatizacija rezervacija ${where} za restorane, auto servise, salone i rent a car. Saznajte cenu!`,
+      srb: `Profesionalna izrada sajtova i automatizacija rezervacija ${where} za restorane, auto servise, salone i rent a car. Saznajte cenu!`,
+      sq: `Zhvillim profesional uebfaqesh dhe automatizim rezervimesh ${where} për restorante, auto-servise, sallone dhe makina me qira. Mëso çmimin!`
     };
 
     const title = (titles[locale] || titles.en).replace('{where}', where);
     const description = (descriptions[locale] || descriptions.en).replace('{where}', where);
 
-    const languageAlternates: Record<string, string> = {};
-    locales.forEach((l) => {
-      languageAlternates[l === 'sq' ? 'sq-AL' : l === 'srb' ? 'sr-RS' : l === 'cnr' ? 'sr-ME' : l] = `${SITE_URL}/${l}/${city}`;
-    });
-
     return {
       title,
       description,
-      alternates: {
-        canonical: `${SITE_URL}/${locale}/${slugStr}`,
-        languages: languageAlternates
-      },
-      openGraph: {
-        type: 'website',
-        url: `${SITE_URL}/${locale}/${slugStr}`,
-        title,
-        description,
-        siteName: 'Corebit Studio',
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title,
-        description,
-      }
+      alternates: { canonical, languages: languageAlternates },
+      openGraph: { type: 'website', url: canonical, title, description, siteName: 'Corebit Studio' },
+      twitter: { card: 'summary_large_image', title, description },
     };
   }
 }
+
 
 interface PageDict {
   hero: {
