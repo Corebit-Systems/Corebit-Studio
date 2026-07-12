@@ -346,29 +346,34 @@ export default async function CatchAllSEOPage({
   const replacementPhrase = sMap[service.toLowerCase()] || service;
 
   // Helper function to recursively interpolate string values in the dictionary
-  const interpolate = (obj: any): any => {
-    if (typeof obj === 'string') {
-      let val = obj
-        .replace(/{(?:geo\.)?where}/g, activeGeo.where)
-        .replace(/{(?:geo\.)?destination}/g, activeGeo.destination)
-        .replace(/{(?:geo\.)?name}/g, activeGeo.name);
+  const interpolate = (obj: any, path: string = ''): any => {
+    try {
+      if (typeof obj === 'string') {
+        let val = obj
+          .replace(/{(?:geo\.)?where}/g, activeGeo.where)
+          .replace(/{(?:geo\.)?destination}/g, activeGeo.destination)
+          .replace(/{(?:geo\.)?name}/g, activeGeo.name);
 
-      if (service && val.includes(targetPhrase)) {
-        val = val.replace(targetPhrase, replacementPhrase);
+        if (service && val.includes(targetPhrase)) {
+          val = val.replace(targetPhrase, replacementPhrase);
+        }
+        return val;
       }
-      return val;
-    }
-    if (Array.isArray(obj)) {
-      return obj.map(interpolate);
-    }
-    if (obj !== null && typeof obj === 'object') {
-      const newObj: any = {};
-      for (const key in obj) {
-        newObj[key] = interpolate(newObj[key]);
+      if (Array.isArray(obj)) {
+        return obj.map((item, idx) => interpolate(item, `${path}[${idx}]`));
       }
-      return newObj;
+      if (obj !== null && typeof obj === 'object') {
+        const newObj: any = {};
+        for (const key in obj) {
+          newObj[key] = interpolate(obj[key], path ? `${path}.${key}` : key);
+        }
+        return newObj;
+      }
+      return obj;
+    } catch (err) {
+      console.error(`Error interpolating path "${path}":`, err);
+      throw err;
     }
-    return obj;
   };
 
   const dict = interpolate(rawDict) as unknown as PageDict;

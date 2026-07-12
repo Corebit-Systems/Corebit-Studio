@@ -1,13 +1,13 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
+  "/api/review/route": "app/api/review/route.js",
   "/api/send/route": "app/api/send/route.js",
+  "/icon.png/route": "app/icon.png/route.js",
   "/apple-icon.png/route": "app/apple-icon.png/route.js",
   "/sitemap.xml/route": "app/sitemap.xml/route.js",
-  "/api/review/route": "app/api/review/route.js",
-  "/icon.png/route": "app/icon.png/route.js",
-  "/[locale]/[...slug]/page": "app/[locale]/[...slug]/page.js",
-  "/[locale]/portfolio/[slug]/page": "app/[locale]/portfolio/[slug]/page.js",
   "/[locale]/cookie-policy/page": "app/[locale]/cookie-policy/page.js",
-  "/[locale]/page": "app/[locale]/page.js",
-  "/[locale]/privacy-policy/page": "app/[locale]/privacy-policy/page.js"
+  "/[locale]/privacy-policy/page": "app/[locale]/privacy-policy/page.js",
+  "/[locale]/portfolio/[slug]/page": "app/[locale]/portfolio/[slug]/page.js",
+  "/[locale]/[...slug]/page": "app/[locale]/[...slug]/page.js",
+  "/[locale]/page": "app/[locale]/page.js"
 }
