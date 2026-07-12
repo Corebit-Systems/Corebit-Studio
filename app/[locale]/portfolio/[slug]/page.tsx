@@ -24,7 +24,20 @@ export async function generateMetadata({
   params: { locale: string; slug: string };
 }): Promise<Metadata> {
   const SITE_URL = 'https://studio.corebitsystems.io';
+  const rawDict = await getDictionary(locale as any);
+  const dict = rawDict as unknown as PageDict;
+  const project = dict.portfolio.items[slug];
+
+  if (!project) {
+    return {};
+  }
+
+  const title = `${project.title} | Portfolio — Corebit Studio`;
+  const description = `${project.desc}`;
+
   return {
+    title,
+    description,
     alternates: {
       canonical: `${SITE_URL}/${locale}/portfolio/${slug}`,
       languages: {
@@ -36,6 +49,18 @@ export async function generateMetadata({
         'sr-ME': `${SITE_URL}/cnr/portfolio/${slug}`,
       } as Record<string, string>,
     },
+    openGraph: {
+      type: 'website',
+      url: `${SITE_URL}/${locale}/portfolio/${slug}`,
+      title,
+      description,
+      siteName: 'Corebit Studio',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    }
   };
 }
 

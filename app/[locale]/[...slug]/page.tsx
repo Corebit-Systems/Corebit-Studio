@@ -1,5 +1,6 @@
 // File: c:\dev\Corebit-Studio\app\[locale]\[...slug]\page.tsx
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 import BentoCard from '@/components/BentoCard';
 import PricingSection from '@/components/PricingSection';
@@ -128,20 +129,29 @@ export async function generateMetadata({
 }: {
   params: { locale: string; slug: string[] };
 }): Promise<Metadata> {
-  const rawDict = await getDictionary(locale as any);
-  
   const slugStr = slug[0];
   let city = '';
   let service = '';
 
   if (slugStr.includes('-sajt-')) {
     const parts = slugStr.split('-sajt-');
+    if (parts.length !== 2) {
+      notFound();
+    }
     service = parts[0];
     city = parts[1];
   } else {
     city = slugStr;
   }
 
+  const isValidCity = locations.includes(city.toLowerCase());
+  const isValidService = !service || services.includes(service.toLowerCase());
+
+  if (!isValidCity || !isValidService || slug.length > 1) {
+    notFound();
+  }
+
+  const rawDict = await getDictionary(locale as any);
   const geoDict = (rawDict as any).geo || {};
   const activeGeo = geoDict[city.toLowerCase()] || { name: city, where: city };
   const where = activeGeo.where;
@@ -183,6 +193,18 @@ export async function generateMetadata({
       alternates: {
         canonical: `${SITE_URL}/${locale}/${slugStr}`,
         languages: languageAlternates
+      },
+      openGraph: {
+        type: 'website',
+        url: `${SITE_URL}/${locale}/${slugStr}`,
+        title,
+        description,
+        siteName: 'Corebit Studio',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title,
+        description,
       }
     };
   } else {
@@ -216,6 +238,18 @@ export async function generateMetadata({
       alternates: {
         canonical: `${SITE_URL}/${locale}/${slugStr}`,
         languages: languageAlternates
+      },
+      openGraph: {
+        type: 'website',
+        url: `${SITE_URL}/${locale}/${slugStr}`,
+        title,
+        description,
+        siteName: 'Corebit Studio',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title,
+        description,
       }
     };
   }
@@ -315,10 +349,20 @@ export default async function CatchAllSEOPage({
 
   if (slugStr.includes('-sajt-')) {
     const parts = slugStr.split('-sajt-');
+    if (parts.length !== 2) {
+      notFound();
+    }
     service = parts[0];
     city = parts[1];
   } else {
     city = slugStr;
+  }
+
+  const isValidCity = locations.includes(city.toLowerCase());
+  const isValidService = !service || services.includes(service.toLowerCase());
+
+  if (!isValidCity || !isValidService || slug.length > 1) {
+    notFound();
   }
 
   // Dynamic geo-localization mapping for Balkan region & other locales fallback

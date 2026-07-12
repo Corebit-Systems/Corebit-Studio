@@ -43,13 +43,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  // 3. Compliance policies (priority 0.5, monthly updates)
+  // 3. Compliance policies (priority 0.1, yearly updates to save crawl budget)
   const policyRoutes: MetadataRoute.Sitemap = locales.flatMap((locale) =>
     compliancePages.map((page) => ({
       url: `${SITE_URL}/${locale}/${page}`,
       lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.5,
+      changeFrequency: 'yearly',
+      priority: 0.1,
     }))
   );
 

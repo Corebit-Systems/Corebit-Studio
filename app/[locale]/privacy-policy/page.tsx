@@ -38,6 +38,18 @@ export async function generateMetadata({
         'sr-ME': `${SITE_URL}/cnr/privacy-policy`,
       } as Record<string, string>,
     },
+    openGraph: {
+      type: 'website',
+      url: `${SITE_URL}/${locale}/privacy-policy`,
+      title: content.title || "Privacy Policy",
+      description: content.subtitle || "",
+      siteName: 'Corebit Studio',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: content.title || "Privacy Policy",
+      description: content.subtitle || "",
+    }
   };
 }
 

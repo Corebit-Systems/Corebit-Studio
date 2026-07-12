@@ -38,6 +38,18 @@ export async function generateMetadata({
         'sr-ME': `${SITE_URL}/cnr/terms-of-service`,
       } as Record<string, string>,
     },
+    openGraph: {
+      type: 'website',
+      url: `${SITE_URL}/${locale}/terms-of-service`,
+      title: content.title || "Terms of Service",
+      description: content.subtitle || "",
+      siteName: 'Corebit Studio',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: content.title || "Terms of Service",
+      description: content.subtitle || "",
+    }
   };
 }
 
