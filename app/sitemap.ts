@@ -11,7 +11,7 @@ const portfolios = [
   'aura-wellness',
 ] as const;
 
-const compliancePages = ['cookie-policy', 'privacy-policy'] as const;
+const compliancePages = ['cookie-policy', 'privacy-policy', 'terms-of-service'] as const;
 
 const locations = [
   'montenegro', 'serbia', 'albania', 'north_macedonia', 'bosnia_herzegovina', 'kosovo', 'greece', 'croatia', 'slovenia',

@@ -305,5 +305,65 @@
     "dubrovnik": { "name": "Dubrovnik", "where": "u Dubrovniku", "destination": "u Dubrovnik" },
     "ljubljana": { "name": "Ljubljana", "where": "u Ljubljani", "destination": "u Ljubljanu" },
     "maribor": { "name": "Maribor", "where": "u Mariboru", "destination": "u Maribor" }
+  },
+  "policies": {
+    "back_btn": "Nazad na Početnu",
+    "cookie_policy": {
+      "title": "Politika Kolačića",
+      "subtitle": "Kako Corebit Studio koristi kolačiće da bi sajt radio brže.",
+      "last_updated": "Posljednje ažuriranje: Jul 2026",
+      "sections": [
+        {
+          "title": "1. Šta su kolačići?",
+          "text": "Kolačići su male tekstualne datoteke koje se čuvaju na vašem uređaju kada posjetite naš sajt. Pomažu nam da zapamtimo izabrani jezik i ubrzamo učitavanje stranica."
+        },
+        {
+          "title": "2. Kolačići koje koristimo",
+          "text": "Koristimo samo neophodne tehničke kolačiće (za čuvanje izbora jezika i pristanak na baner) i osnovnu Vercel analitiku za praćenje brzine sajta."
+        },
+        {
+          "title": "3. Upravljanje kolačićima",
+          "text": "U svakom trenutku možete blokirati ili obrisati kolačiće u podešavanjima vašeg pretraživača. Sajt corebitsystems.io će raditi savršeno i bez njih."
+        }
+      ]
+    },
+    "privacy_policy": {
+      "title": "Politika Privatnosti",
+      "subtitle": "Kako štitimo i koristimo vaše lične podatke u Corebit Studio.",
+      "last_updated": "Posljednje ažuriranje: Jul 2026",
+      "sections": [
+        {
+          "title": "1. Podaci koje prikupljamo",
+          "text": "Prikupljamo samo kontakt podatke koje nam sami pošaljete (ime, email, broj telefona ili korisničko ime na mešindžeru) kada šaljete upit."
+        },
+        {
+          "title": "2. Kako koristimo vaše podatke",
+          "text": "Vaše podatke koristimo isključivo da bismo vas kontaktirali u vezi sa izradom sajta. Nikada ne prodajemo, ne iznajmljujemo i ne dijelimo vaše podatke sa trećim licima."
+        },
+        {
+          "title": "3. Usklađenost sa GDPR i lokalnim zakonima",
+          "text": "U potpunosti poštujemo Zakon o zaštiti podataka o ličnosti Crne Gore i pravila EU GDPR. Imate pravo da u svakom trenutku zatražite uvid, izmjenu ili brisanje vaših podataka slanjem upita na corebitstudio@corebitsystems.io."
+        }
+      ]
+    },
+    "terms_of_service": {
+      "title": "Uslovi Korišćenja",
+      "subtitle": "Jednostavna pravila za korišćenje Corebit Studio veb sajta.",
+      "last_updated": "Posljednje ažuriranje: Jul 2026",
+      "sections": [
+        {
+          "title": "1. Prihvatanje uslova",
+          "text": "Posjetom sajtu corebitsystems.io prihvatate ova jednostavna pravila. Ako se ne slažete sa njima, možete prestati sa korišćenjem sajta."
+        },
+        {
+          "title": "2. Naše usluge",
+          "text": "Predstavljamo naš rad na dizajnu i programiranju. Da biste poručili sajt, možete poslati upit putem kontakt formi na stranici."
+        },
+        {
+          "title": "3. Intelektualna svojina",
+          "text": "Svi koncepti projekata, tekstovi, dizajn i kod prikazani na ovom sajtu su vlasništvo Corebit Studio. Molimo vas da ih ne kopirate bez naše dozvole."
+        }
+      ]
+    }
   }
 }

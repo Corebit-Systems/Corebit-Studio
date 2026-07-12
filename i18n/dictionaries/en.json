@@ -304,5 +304,65 @@
     "dubrovnik": { "name": "Dubrovnik", "where": "in Dubrovnik", "destination": "to Dubrovnik" },
     "ljubljana": { "name": "Ljubljana", "where": "in Ljubljana", "destination": "to Ljubljana" },
     "maribor": { "name": "Maribor", "where": "in Maribor", "destination": "to Maribor" }
+  },
+  "policies": {
+    "back_btn": "Back to Home",
+    "cookie_policy": {
+      "title": "Cookie Policy",
+      "subtitle": "How Corebit Studio uses cookies to make the website faster.",
+      "last_updated": "Last updated: July 2026",
+      "sections": [
+        {
+          "title": "1. What are cookies?",
+          "text": "Cookies are tiny text files saved on your device when you load our website. They help us remember your language choice and make pages load instantly."
+        },
+        {
+          "title": "2. Cookies we use",
+          "text": "We only use essential functional cookies (to keep your language and consent preferences) and basic Vercel analytics to monitor page speed."
+        },
+        {
+          "title": "3. Managing cookies",
+          "text": "You can block or delete cookies in your browser settings at any time. The website corebitsystems.io will work perfectly fine without them."
+        }
+      ]
+    },
+    "privacy_policy": {
+      "title": "Privacy Policy",
+      "subtitle": "How we protect and handle your personal data at Corebit Studio.",
+      "last_updated": "Last updated: July 2026",
+      "sections": [
+        {
+          "title": "1. Data we collect",
+          "text": "We only collect the contact information you choose to give us (name, email, phone, or messenger username) when submitting an inquiry."
+        },
+        {
+          "title": "2. How we use your data",
+          "text": "Your data is only used to contact you back regarding our website development services. We never sell, rent, or share your info with third parties."
+        },
+        {
+          "title": "3. GDPR & Balkan Regulations",
+          "text": "We comply with the Law on Personal Data Protection of Balkan states and EU GDPR rules. You can ask us to view, update, or completely delete your info at any time by emailing corebitstudio@corebitsystems.io."
+        }
+      ]
+    },
+    "terms_of_service": {
+      "title": "Terms of Service",
+      "subtitle": "Simple rules for using the Corebit Studio website.",
+      "last_updated": "Last updated: July 2026",
+      "sections": [
+        {
+          "title": "1. Acceptance of terms",
+          "text": "By visiting corebitsystems.io, you agree to these simple terms. If you don't agree, you can stop using the website."
+        },
+        {
+          "title": "2. Our services",
+          "text": "We present our design and software development work. To order a website, you can send an inquiry through our contact forms."
+        },
+        {
+          "title": "3. Intellectual property",
+          "text": "All project concepts, text, designs, and code displayed on this website are owned by Corebit Studio. Please don't copy them without our permission."
+        }
+      ]
+    }
   }
 }

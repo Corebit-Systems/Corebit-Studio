@@ -305,5 +305,65 @@
     "dubrovnik": { "name": "Dubrovnik", "where": "në Dubrovnik", "destination": "në Dubrovnik" },
     "ljubljana": { "name": "Lubjanë", "where": "në Lubjanë", "destination": "në Lubjanë" },
     "maribor": { "name": "Maribor", "where": "në Maribor", "destination": "në Maribor" }
+  },
+  "policies": {
+    "back_btn": "Kthehu në Fillim",
+    "cookie_policy": {
+      "title": "Politika e Cookies",
+      "subtitle": "Si i përdor Corebit Studio cookies për ta bërë uebfaqen më të shpejtë.",
+      "last_updated": "Përditësimi i fundit: Korrik 2026",
+      "sections": [
+        {
+          "title": "1. Çfarë janë cookies?",
+          "text": "Cookies janë skedarë të vegjël teksti që ruhen në pajisjen tuaj kur vizitoni uebfaqen tonë. Ato na ndihmojnë të mbajmë mend gjuhën tuaj të preferuar dhe të ngarkojmë faqet menjëherë."
+        },
+        {
+          "title": "2. Cookies që ne përdorim",
+          "text": "Ne përdorim vetëm cookies thelbësore funksionale (p.sh. për të ruajtur gjuhën ose pranimin e banerit) dhe shërbimet e telemetrisë Vercel për matjen e shpejtësisë."
+        },
+        {
+          "title": "3. Menaxhimi i cookies",
+          "text": "Ju mund t'i bllokoni ose t'i fshini cookies në çdo kohë përmes cilësimeve të shfletuesit tuaj. Uebfaqja corebitsystems.io do të funksionojë në mënyrë të përsosur edhe pa to."
+        }
+      ]
+    },
+    "privacy_policy": {
+      "title": "Politika e Privatësisë",
+      "subtitle": "Si i mbrojmë dhe i trajtojmë të dhënat tuaja personale në Corebit Studio.",
+      "last_updated": "Përditësimi i fundit: Korrik 2026",
+      "sections": [
+        {
+          "title": "1. Të dhënat që mbledhim",
+          "text": "Ne mbledhim vetëm të dhënat e kontaktit që ju zgjidhni të na jepni (emrin, email-in, numrin e telefonit ose emrin e përdoruesit në mesazher) kur dërgoni një kërkesë."
+        },
+        {
+          "title": "2. Si i përdorim të dhënat tuaja",
+          "text": "Të dhënat tuaja përdoren vetëm për t'ju kontaktuar përsëri në lidhje me shërbimet tona të zhvillimit të uebfaqeve. Ne kurrë nuk i shesim apo ndajmë të dhënat tuaja me palë të treta."
+        },
+        {
+          "title": "3. Rregullat e GDPR dhe legjislacioni i Ballkanit",
+          "text": "Ne jemi në përputhje me ligjin për mbrojtjen e të dhënave personale të shteteve të Ballkanit dhe rregullat e GDPR-së të Bashkimit Evropian. Ju keni të drejtë të plotë të kërkoni inspektimin, përditësimin ose fshirjen e plotë të të dhënave tuaja duke na shkruar në corebitstudio@corebitsystems.io."
+        }
+      ]
+    },
+    "terms_of_service": {
+      "title": "Kushtet e Shërbimit",
+      "subtitle": "Rregulla të thjeshta për përdorimin e uebfaqes së Corebit Studio.",
+      "last_updated": "Përditësimi i fundit: Korrik 2026",
+      "sections": [
+        {
+          "title": "1. Pranimi i kushteve",
+          "text": "Duke vizituar corebitsystems.io, you pranoni këto kushte të thjeshta. Nëse nuk jeni dakord, ju lutemi ndaloni përdorimin e faqes."
+        },
+        {
+          "title": "2. Shërbimet tona",
+          "text": "Ne prezantojmë punën tonë të dizajnit dhe zhvillimit të softuerit. Për të porositur një uebfaqe, mund të dërgoni një kërkesë përmes formularëve tanë të kontaktit."
+        },
+        {
+          "title": "3. Pronësia intelektuale",
+          "text": "Të gjitha konceptet e projekteve, tekstet, dizajni dhe kodi i paraqitur në këtë uebfaqe janë pronë e Corebit Studio. Ju lutemi mos i kopjoni pa lejen tonë."
+        }
+      ]
+    }
   }
 }
