@@ -141,9 +141,56 @@ interface ContactFormDict {
   prefilled_msg?: string;
 }
 
-export default async function HomePage({ params: { locale } }: { params: { locale: Locale } }) {
+export default async function HomePage({
+  params: { locale },
+  searchParams
+}: {
+  params: { locale: Locale };
+  searchParams?: { city?: string };
+}) {
   const rawDict = await getDictionary(locale);
-  const dict = rawDict as unknown as PageDict;
+
+  // Dynamic geo-localization mapping for Balkan region & other locales fallback
+  const defaults: Record<string, { name: string; where: string; destination: string }> = {
+    en: { name: 'Montenegro', where: 'in Montenegro', destination: 'to Montenegro' },
+    ru: { name: 'Черногория', where: 'в Черногории', destination: 'в Черногорию' },
+    cnr: { name: 'Crna Gora', where: 'u Crnoj Gori', destination: 'u Crnu Goru' },
+    srb: { name: 'Crna Gora', where: 'u Crnoj Gori', destination: 'u Crnu Goru' },
+    sq: { name: 'Mali i Zi', where: 'në Mal të Zi', destination: 'në Mal të Zi' }
+  };
+
+  const geoDict = (rawDict as any).geo || {};
+  const cityKey = (searchParams?.city || 'montenegro').toLowerCase();
+
+  const defaultGeo = defaults[locale] || defaults.en;
+  const activeGeo = geoDict[cityKey] || {
+    name: defaultGeo.name,
+    where: defaultGeo.where,
+    destination: defaultGeo.destination
+  };
+
+  // Helper function to recursively interpolate string values in the dictionary
+  const interpolate = (obj: any): any => {
+    if (typeof obj === 'string') {
+      return obj
+        .replace(/{(?:geo\.)?where}/g, activeGeo.where)
+        .replace(/{(?:geo\.)?destination}/g, activeGeo.destination)
+        .replace(/{(?:geo\.)?name}/g, activeGeo.name);
+    }
+    if (Array.isArray(obj)) {
+      return obj.map(interpolate);
+    }
+    if (obj !== null && typeof obj === 'object') {
+      const newObj: any = {};
+      for (const key in obj) {
+        newObj[key] = interpolate(obj[key]);
+      }
+      return newObj;
+    }
+    return obj;
+  };
+
+  const dict = interpolate(rawDict) as unknown as PageDict;
 
   const CupertinoVisual = (
     <div className="absolute inset-0 bg-gradient-to-br from-amber-900/40 to-orange-600/20 flex items-center justify-center">
