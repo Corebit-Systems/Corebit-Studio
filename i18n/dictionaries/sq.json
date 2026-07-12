@@ -74,13 +74,13 @@
       "title": "Entry / Kickstart",
       "price": 360,
       "desc": "Landing faqe të optimizuara për shpejtësi. Për SMB lokale dhe shërbime me qira. Ideale për: bare dhe klinika të reja. Ndikimi: Kap 98% të vëmendjes celulare. Kthimi i investimit (ROI): Kthehet me 5-10 klientët e parë digjitalë.",
-      "btn": "Dua një uebfaqe si kjo"
+      "btn": "Porosit uebfaqe «Start»"
     },
     "tier2": {
       "title": "Growth / Business",
       "price": 1080,
       "desc": "Platforma uebi me motorë rezervimesh dhe CRM sinkronizim. Për SMB lokale dhe shërbime me qira. Ideale për: auto-servise (STO) dhe klinika. Ndikimi: Kursen 15+ orë në javë nga puna manuale. Kthimi i investimit (ROI): Kthehet brenda 30-45 ditëve.",
-      "btn": "Dua një uebfaqe si kjo"
+      "btn": "Porosit uebfaqe «Biznes»"
     },
     "tier3": {
       "title": "Enterprise Arkitekturë",
@@ -116,7 +116,8 @@
   },
   "footer": {
     "cta_btn": "Diskuto për uebfaqen në Telegram",
-    "rights": "© 2026 Corebit Studio. Të gjitha të drejtat e rezervuara. Tivat, Mali i Zi."
+    "rights": "© 2026 Corebit Studio. Të gjitha të drejtat e rezervuara. Tivat, Mali i Zi.",
+    "subsidiary_text": "Corebit Studio është një degë e "
   },
   "portfolio_tech": {
     "cupertino-roast": {

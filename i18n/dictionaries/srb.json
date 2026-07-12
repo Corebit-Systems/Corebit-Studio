@@ -74,19 +74,19 @@
       "title": "Entry / Kickstart",
       "price": 360,
       "desc": "Brze landing stranice za trenutan prihvat posetilaca. Za lokalni SMB i servise za iznajmljivanje. Namenjeno za: restorane i klinike. Uticaj: Zadržava 98% mobilne pažnje. Povrat investicije (ROI): Odmah otplaćuje troškove sa prvih 5-10 klijenata.",
-      "btn": "Želim sajt kao ovaj"
+      "btn": "Naruči Start sajt"
     },
     "tier2": {
       "title": "Growth / Business",
       "price": 1080,
       "desc": "Interaktivne platforme sa integrisanim sistemima rezervacija. Za lokalni SMB i servise za iznajmljivanje. Namenjeno za: auto servise (STO) i ordinacije. Uticaj: Štedi 15+ sati rada nedeljno. Povrat investicije (ROI): Otplata u roku od 30-45 dana.",
-      "btn": "Želim sajt kao ovaj"
+      "btn": "Naruči Biznis sajt"
     },
     "tier3": {
       "title": "Enterprise Arhitektura",
       "price": 3150,
       "desc": "Duboka integracija API sistema i napredna sigurnost. Idealno za premium hotele i restorane. Namenjeno za: mrežne brendove i brendove sa velikim prometom. Uticaj: Eliminiše ljudske greške u potpunosti. Povrat investicije (ROI): Otplata za manje od 90 dana.",
-      "btn": "Razgovarajmo o sajtu na Telegramu"
+      "btn": "Diskutuj o sajtu na Telegramu"
     }
   },
   "leak": {
@@ -115,8 +115,9 @@
     "or_email_label": "Ili:"
   },
   "footer": {
-    "cta_btn": "Razgovarajmo o sajtu na Telegramu",
-    "rights": "© 2026 Corebit Studio. Sva prava zadržana. Tivat, Crna Gora."
+    "cta_btn": "Diskutuj o sajtu na Telegramu",
+    "rights": "© 2026 Corebit Studio. Sva prava zadržana. Tivat, Crna Gora.",
+    "subsidiary_text": "Corebit Studio je podružnica kompanije "
   },
   "portfolio_tech": {
     "cupertino-roast": {

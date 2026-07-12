@@ -74,13 +74,13 @@
       "title": "Entry / Kickstart",
       "price": 360,
       "desc": "Premium, speed-optimized storefronts designed to capture immediate traffic. For local SMB and rental services. Best for: local bistros and emerging clinics wanting an elite digital card. Business impact: Captures 98% of mobile attention. ROI payback: Instantly offsets costs by converting the first 5-10 digital clients.",
-      "btn": "I want a website like this"
+      "btn": "Order Start Website"
     },
     "tier2": {
       "title": "Growth / Business",
       "price": 1080,
       "desc": "Interactive web platforms with custom booking engines and CRM sync. For local SMB and rental services. Best for: busy STOs, cafes, and medical hubs. Business impact: Saves 15+ hours of manual scheduling weekly. ROI payback: Fully recovers initial capital within 30-45 days through zero double-bookings.",
-      "btn": "I want a website like this"
+      "btn": "Order Business Website"
     },
     "tier3": {
       "title": "Enterprise Architecture",
@@ -116,7 +116,8 @@
   },
   "footer": {
     "cta_btn": "Discuss website in Telegram",
-    "rights": "© 2026 Corebit Studio. All rights reserved. Tivat, Montenegro."
+    "rights": "© 2026 Corebit Studio. All rights reserved. Tivat, Montenegro.",
+    "subsidiary_text": "Corebit Studio is a subsidiary of "
   },
   "portfolio_tech": {
     "cupertino-roast": {
