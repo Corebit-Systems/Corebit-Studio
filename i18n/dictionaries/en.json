@@ -313,70 +313,70 @@
     "back_btn": "Back to Home",
     "cookie_policy": {
       "title": "Cookie Policy",
-      "subtitle": "How Corebit Studio uses cookies to make the website faster and more secure.",
+      "subtitle": "Comprehensive guidelines explaining how Corebit Studio utilizes cookies to preserve state, enhance speed, and secure user sessions.",
       "last_updated": "Last updated: July 2026",
       "sections": [
         {
-          "title": "1. What are cookies?",
-          "text": "Cookies are small text files stored on your computer or mobile device when you visit studio.corebitsystems.io. They enable the website to remember your actions and preferences over a period of time, so you don't have to keep re-entering them whenever you come back to the site."
+          "title": "1. Definition and Nature of Cookies",
+          "text": "Cookies are small text files, containing unique alphanumeric identifiers, which are automatically downloaded and stored on your computer, tablet, or mobile device when you access and navigate the website studio.corebitsystems.io. These files enable our web servers to recognize your specific browser session, facilitate seamless page navigation, and capture operational state parameters. By storing local preferences, cookies prevent the necessity of repeatedly configuring display settings, language selections, or security consents during subsequent page requests, thereby directly optimizing the performance and loading velocity of our digital services."
         },
         {
-          "title": "2. Categories of cookies we use",
-          "text": "We only use essential functional cookies (to preserve your language selection and consent banner state) and basic Vercel speed analytics to measure performance, loading time, and overall system optimization. We do not use third-party tracking or advertising cookies."
+          "title": "2. Classification and Purpose of Stored Cookies",
+          "text": "Corebit Studio implements cookies strictly categorized under two primary operational models: (a) Strictly Necessary Functional Cookies: These first-party cookies are essential for the fundamental operation of the website, including keeping track of your language preference, routing translations correctly, and remembering your acceptance or rejection of our privacy banner. These cookies do not collect any personal profile information and are destroyed upon expiration or session termination. (b) Performance and Telemetry Cookies: We leverage server-side performance analytics (specifically integrated via the Vercel Edge Network platform) to collect technical data such as page loading speeds, layout render latency, and navigation pathways. This metrics data is processed anonymously without tracking individual user behavior, and we do not utilize any advertising, behavioral targeting, cross-site tracking, or marketing cookies from third-party advertising networks."
         },
         {
-          "title": "3. Managing and blocking cookies",
-          "text": "You can control, block, or delete cookies at any time via your browser settings. If you block cookies, the website studio.corebitsystems.io will remain fully functional, though we might not remember your language preference next time."
+          "title": "3. Management, Revocation, and Browser Settings Control",
+          "text": "Every user retains the full legal right to manage, restrict, block, or delete cookies at any time by accessing and modifying their web browser configuration settings (such as in Google Chrome, Mozilla Firefox, Apple Safari, or Microsoft Edge). Please be advised that disabling strictly necessary functional cookies may limit access to certain portions of studio.corebitsystems.io and degrade localized language rendering quality, though the website will remain fundamentally accessible. The settings to delete existing cookies or alert you when cookies are sent can usually be found within the 'Options', 'Preferences', or 'Security' menus of your web browser."
         }
       ]
     },
     "privacy_policy": {
       "title": "Privacy Policy",
-      "subtitle": "How we protect, collect, and process your personal data at Corebit Studio.",
+      "subtitle": "Detailed guidelines regarding the collection, processing, protection, and rights associated with your personal data at Corebit Studio.",
       "last_updated": "Last updated: July 2026",
       "sections": [
         {
-          "title": "1. Categories of collected data",
-          "text": "We only collect data that you voluntarily provide to us via contact forms, WhatsApp, or Telegram. This includes your name, corporate email address, phone number, or messenger username, as well as essential technical data (cookies, IP address) for website performance."
+          "title": "1. Categories and Scope of Collected Personal Data",
+          "text": "Corebit Studio collects personal data through two distinct channels: (a) Directly Provided Data: When you voluntarily submit a project inquiry, request a website price calculation, or initiate communication via our integrated contact forms, WhatsApp, or Telegram widgets, we collect personal details including your full name, corporate email address, telephone contact number, messenger usernames, and any project-specific descriptions you choose to disclose. (b) Automatically Collected Data: During your interaction with studio.corebitsystems.io, we collect technical log data containing your IP address, browser type and version, language configuration, operating system, referrer URLs, and network speed performance statistics. We do not gather or process sensitive personal information, biometric data, or financial credentials on this website."
         },
         {
-          "title": "2. Purpose of data processing",
-          "text": "Your personal data is processed solely to contact you back regarding our design, software development, and automation services. We strictly do not sell, rent, lease, or share your personal data with third-party advertising networks or external organizations."
+          "title": "2. Legitimate Purposes and Scope of Data Processing",
+          "text": "All personal data gathered is processed strictly under the legal bases of pre-contractual negotiations, consent, and legitimate interest. Specifically, the data is used to: (a) Respond to your requests, calculate commercial offers, and coordinate contract details for web design and custom software development services. (b) Monitor website security, prevent spam transmissions, and diagnose performance bottlenecks. (c) Analyze traffic statistics to improve loading speeds. Corebit Studio enforces a strict zero-sharing policy: we never sell, lease, rent, trade, or distribute your personal details to marketing agencies, advertising networks, or third-party corporations for promotional purposes."
         },
         {
-          "title": "3. User rights and Right to be Forgotten (GDPR)",
-          "text": "In compliance with EU GDPR and Balkan data protection laws, you possess the right to view, modify, restrict, or request the complete deletion of your personal data ('Right to be Forgotten') at any time. Simply send your request to our data protection officer at corebitstudio@corebitsystems.io."
+          "title": "3. GDPR Compliance, Balkan Regulations, and User Rights",
+          "text": "In strict compliance with the European Union General Data Protection Regulation (EU GDPR) and the Law on Personal Data Protection of Montenegro, Serbia, and Albania, users possess comprehensive rights over their data. These rights include: (a) The Right of Access to inspect what data we store. (b) The Right to Rectification to update inaccurate details. (c) The Right to Restriction of processing. (d) The Right to Portability. (e) The Right to Erasure ('Right to be Forgotten') to demand the complete deletion of your records from our databases. To exercise any of these statutory rights, please contact our data protection officer directly at corebitstudio@corebitsystems.io. We commit to responding to and processing all verified compliance requests within 30 calendar days."
         },
         {
-          "title": "4. Data security measures",
-          "text": "We use modern encryption protocols, SSL connections, and access controls to keep your data safe. We take all reasonable measures to prevent unauthorized access or alteration of your personal information."
+          "title": "4. Security Infrastructure and Data Storage Protocols",
+          "text": "We utilize robust technical and administrative measures designed to protect your personal data against accidental loss, unauthorized access, alteration, disclosure, or destruction. All data transmissions through studio.corebitsystems.io are encrypted using Secure Socket Layer (SSL) protocols. Personal information is stored securely inside protected server environments with restricted access control lists, ensuring that only authorized personnel directly involved in client relations can inspect client data. While we implement industry-standard security measures, no digital transmission over the internet or database storage system can be guaranteed to be 100% secure, and users share information at their own risk."
         }
       ]
     },
     "terms_of_service": {
       "title": "Terms of Service",
-      "subtitle": "Clear rules and conditions for using studio.corebitsystems.io.",
+      "subtitle": "The legally binding conditions and rules governing the use of studio.corebitsystems.io.",
       "last_updated": "Last updated: July 2026",
       "sections": [
         {
-          "title": "1. Acceptance of terms & definitions",
-          "text": "By accessing or using studio.corebitsystems.io, you agree to comply with these terms of service. 'Corebit Studio' refers to our web design and development team, and 'User' refers to any visitor of this website."
+          "title": "1. Acceptance of Terms, Age Limits, and Business Representation",
+          "text": "By accessing, browsing, or using the website studio.corebitsystems.io, you acknowledge that you have read, understood, and agreed to be legally bound by these Terms of Service, our Privacy Policy, and our Cookie Policy. If you do not agree to any portion of these conditions, you must immediately cease using this website and leave the page. This website is intended solely for business-to-business (B2B) communications. By using studio.corebitsystems.io, you represent that you are at least 18 years of age and possess the legal capacity to represent your business entity and enter into binding commercial agreements."
         },
         {
-          "title": "2. Scope of services",
-          "text": "We showcase our web engineering, custom design, system automation, and turnkey website development work. If you wish to commission our services, you can submit an inquiry through our contact forms."
+          "title": "2. Description of Services, Limits, and Scopes of Work",
+          "text": "Corebit Studio provides custom web design, high-performance web engineering, system architecture optimization, turnkey software development (including Next.js, React, and serverless architectures), database integration, and automated time-slot scheduling systems (specifically tailored for local businesses such as car rentals, auto repair shops, salons, and restaurants). The content on studio.corebitsystems.io serves informational and pre-contractual purposes. A formal contractual agreement, signed independently by both parties, is required to establish pricing, scopes of work, deadlines, and delivery obligations for any commissioned project. We reserve the right to modify, suspend, or terminate the showcase services displayed on this website without prior notice."
         },
         {
-          "title": "3. Intellectual property rights",
-          "text": "All original designs, animations, concepts, software code, and texts displayed on this website are the intellectual property of Corebit Studio. For commissioned client projects, all intellectual property rights belong to Corebit Studio until the final invoice is paid in full. Unauthorized copying or redistribution is prohibited."
+          "title": "3. Intellectual Property Rights, Copyright Protection, and Licensing Restrictions",
+          "text": "All materials displayed on studio.corebitsystems.io—including but not limited to source code, TypeScript scripts, CSS layouts, user interface designs, animations, graphic assets, project concepts, trademarks, and written copy—are the exclusive intellectual property of Corebit Studio and are protected under international copyright, trademark, and intellectual property laws. For custom client development projects, all intellectual property rights and codebases remain the sole property of Corebit Studio until the final invoice is paid in full under the contract. Any unauthorized copying, distribution, modification, web scraping, reverse engineering, or public display of these materials without explicit prior written consent from Corebit Studio is strictly prohibited."
         },
         {
-          "title": "4. Limitation of liability",
-          "text": "We strive to ensure continuous availability of studio.corebitsystems.io. However, Corebit Studio shall not be liable for any service interruptions, hosting provider (Vercel) downtime, network issues, or errors originating from third-party APIs beyond our direct control."
+          "title": "4. Complete Disclaimer of Warranties and Limitation of Liability",
+          "text": "The website studio.corebitsystems.io and all its contents are provided on an 'as is' and 'as available' basis, without warranties of any kind, either express or implied. Corebit Studio does not warrant that the website will run uninterrupted or error-free. To the maximum extent permitted by law, Corebit Studio disclaims all liability for any direct, indirect, incidental, special, or consequential damages resulting from your use or inability to use this website. This disclaimer covers damages caused by server downtime, hosting provider (Vercel) outages, database connection failures (PostgreSQL/Redis), telecommunication issues, computer viruses, third-party API malfunctions (such as WhatsApp, Telegram, or Stripe integrations), or loss of business data and profits, even if we have been advised of the possibility of such damages."
         },
         {
-          "title": "5. Governing law & dispute resolution",
-          "text": "These terms are governed by the laws of Montenegro and European regulations. Any disputes arising from the use of this website shall be resolved amicably through negotiations, or under the jurisdiction of the competent courts in Montenegro."
+          "title": "5. Governing Law, Venue, and Alternative Dispute Resolution",
+          "text": "These Terms of Service, along with any disputes or claims arising out of or in connection with the use of studio.corebitsystems.io, shall be governed by, construed, and enforced in accordance with the laws of Montenegro and relevant European Union regulations. Any dispute, controversy, or claim arising from these terms that cannot be resolved amicably through constructive negotiations between the parties shall be submitted to the exclusive jurisdiction of the competent commercial courts in Montenegro, where Corebit Studio is officially registered."
         }
       ]
     }
