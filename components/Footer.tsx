@@ -92,9 +92,9 @@ export default function Footer({ dict, locale }: FooterProps) {
         <div className="w-full h-[1px] bg-white/10" />
 
         {/* Bottom bar */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 items-center justify-between w-full text-xs sm:text-sm gap-6 text-center lg:text-left">
+        <div className="flex flex-col md:flex-row justify-between items-center w-full text-xs sm:text-sm gap-6 text-center md:text-left">
           {/* Block 1: Copyright + Subsidiary */}
-          <div className="flex flex-col gap-1 items-center lg:items-start text-neutral-400">
+          <div className="flex flex-col gap-1 items-center md:items-start text-neutral-400">
             <p className="font-light">{dict.footer.rights}</p>
             <p className="text-[11px] sm:text-xs text-neutral-500 font-light">
               {dict.footer.subsidiary_text || 'Corebit Studio is a subsidiary of '}{' '}
@@ -110,22 +110,20 @@ export default function Footer({ dict, locale }: FooterProps) {
           </div>
 
           {/* Block 2: Policy Links */}
-          <div className="flex flex-wrap items-center justify-center gap-x-3 sm:gap-x-4 gap-y-1 text-[11px] sm:text-xs text-neutral-300 font-medium">
+          <div className="flex flex-wrap items-center justify-center gap-6 text-[11px] sm:text-xs text-neutral-300 font-medium">
             <Link href={`/${locale}/privacy-policy`} className="hover:text-emerald-400 transition-colors">
               {dict.policies?.privacy_title || 'Privacy Policy'}
             </Link>
-            <span className="text-white/10">|</span>
             <Link href={`/${locale}/cookie-policy`} className="hover:text-emerald-400 transition-colors">
               {dict.policies?.cookie_title || 'Cookie Policy'}
             </Link>
-            <span className="text-white/10">|</span>
             <Link href={`/${locale}/terms-of-service`} className="hover:text-emerald-400 transition-colors">
               {dict.policies?.terms_title || 'Terms of Service'}
             </Link>
           </div>
 
           {/* Block 3: Tech Metadata */}
-          <div className="flex items-center justify-center lg:justify-end gap-4 text-neutral-600">
+          <div className="flex items-center justify-center md:justify-end gap-4 text-neutral-600">
             <a
               href="/sitemap.xml"
               target="_blank"

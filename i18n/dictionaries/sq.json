@@ -314,58 +314,70 @@
     "back_btn": "Kthehu në Fillim",
     "cookie_policy": {
       "title": "Politika e Cookies",
-      "subtitle": "Si i përdor Corebit Studio cookies për ta bërë uebfaqen më të shpejtë.",
+      "subtitle": "Si i përdor Corebit Studio cookies për ta bërë uebfaqen më të shpejtë dhe më të sigurt.",
       "last_updated": "Përditësimi i fundit: Korrik 2026",
       "sections": [
         {
           "title": "1. Çfarë janë cookies?",
-          "text": "Cookies janë skedarë të vegjël teksti që ruhen në pajisjen tuaj kur vizitoni uebfaqen tonë. Ato na ndihmojnë të mbajmë mend gjuhën tuaj të preferuar dhe të ngarkojmë faqet menjëherë."
+          "text": "Cookies janë skedarë të vegjël teksti që ruhen në pajisjen tuaj kur vizitoni studio.corebitsystems.io. Ato na ndihmojnë të mbajmë mend gjuhën tuaj të preferuar dhe të ngarkojmë faqet menjëherë."
         },
         {
           "title": "2. Cookies që ne përdorim",
-          "text": "Ne përdorim vetëm cookies thelbësore funksionale (p.sh. për të ruajtur gjuhën ose pranimin e banerit) dhe shërbimet e telemetrisë Vercel për matjen e shpejtësisë."
+          "text": "Ne përdorim vetëm cookies thelbësore funksionale (për të ruajtur gjuhën ose pranimin e banerit) dhe shërbimet e telemetrisë Vercel për matjen e shpejtësisë. Ne nuk përdorim cookies reklamimi apo ndjekjeje."
         },
         {
           "title": "3. Menaxhimi i cookies",
-          "text": "Ju mund t'i bllokoni ose t'i fshini cookies në çdo kohë përmes cilësimeve të shfletuesit tuaj. Uebfaqja corebitsystems.io do të funksionojë në mënyrë të përsosur edhe pa to."
+          "text": "Ju mund t'i bllokoni ose t'i fshini cookies në çdo kohë përmes cilësimeve të shfletuesit tuaj. Uebfaqja studio.corebitsystems.io do të funksionojë edhe pa to, por nuk do të mbahen mend preferencat tuaja gjuhësore."
         }
       ]
     },
     "privacy_policy": {
       "title": "Politika e Privatësisë",
-      "subtitle": "Si i mbrojmë dhe i trajtojmë të dhënat tuaja personale në Corebit Studio.",
+      "subtitle": "Si i mbrojmë, mbledhim dhe trajtojmë të dhënat tuaja personale në Corebit Studio.",
       "last_updated": "Përditësimi i fundit: Korrik 2026",
       "sections": [
         {
-          "title": "1. Të dhënat që mbledhim",
-          "text": "Ne mbledhim vetëm të dhënat e kontaktit që ju zgjidhni të na jepni (emrin, email-in, numrin e telefonit ose emrin e përdoruesit në mesazher) kur dërgoni një kërkesë."
+          "title": "1. Kategoritë e të dhënave që mbledhim",
+          "text": "Ne mbledhim vetëm të dhënat e kontaktit që ju na jepni vullnetarisht përmes formularëve, WhatsApp-it ose Telegram-it (emrin, email-in, telefonin ose emrin e përdoruesit), si dhe të dhëna teknike (cookies, IP) për funksionimin e faqes."
         },
         {
-          "title": "2. Si i përdorim të dhënat tuaja",
-          "text": "Të dhënat tuaja përdoren vetëm për t'ju kontaktuar përsëri në lidhje me shërbimet tona të zhvillimit të uebfaqeve. Ne kurrë nuk i shesim apo ndajmë të dhënat tuaja me palë të treta."
+          "title": "2. Qëllimi i përpunimit të të dhënave",
+          "text": "Të dhënat tuaja përdoren vetëm për t'ju kontaktuar përsëri në lidhje me shërbimet tona të dizajnit, zhvillimit të uebfaqeve dhe automatizimit. Ne nuk i shesim apo ndajmë të dhënat tuaja me palë të treta."
         },
         {
-          "title": "3. Rregullat e GDPR dhe legjislacioni i Ballkanit",
-          "text": "Ne jemi në përputhje me ligjin për mbrojtjen e të dhënave personale të shteteve të Ballkanit dhe rregullat e GDPR-së të Bashkimit Evropian. Ju keni të drejtë të plotë të kërkoni inspektimin, përditësimin ose fshirjen e plotë të të dhënave tuaja duke na shkruar në corebitstudio@corebitsystems.io."
+          "title": "3. Të drejtat e përdoruesit dhe e drejta për t'u harruar (GDPR)",
+          "text": "Në përputhje me GDPR të BE-së dhe ligjet e Ballkanit, ju keni të drejtë të plotë të kërkoni inspektimin, përditësimin ose fshirjen e plotë të të dhënave tuaja ('E drejta për t'u harruar') duke na shkruar në corebitstudio@corebitsystems.io."
+        },
+        {
+          "title": "4. Masat e sigurisë së të dhënave",
+          "text": "Ne përdorim protokolle moderne kriptimi, lidhje SSL dhe kontrolle aksesi për të garantuar sigurinë e të dhënave tuaja dhe për të parandaluar qasjen e paautorizuar."
         }
       ]
     },
     "terms_of_service": {
       "title": "Kushtet e Shërbimit",
-      "subtitle": "Rregulla të thjeshta për përdorimin e uebfaqes së Corebit Studio.",
+      "subtitle": "Rregulla dhe kushte për përdorimin e uebfaqes studio.corebitsystems.io.",
       "last_updated": "Përditësimi i fundit: Korrik 2026",
       "sections": [
         {
-          "title": "1. Pranimi i kushteve",
-          "text": "Duke vizituar corebitsystems.io, you pranoni këto kushte të thjeshta. Nëse nuk jeni dakord, ju lutemi ndaloni përdorimin e faqes."
+          "title": "1. Pranimi i kushteve dhe përkufizimet",
+          "text": "Duke vizituar ose përdorur studio.corebitsystems.io, ju pranoni këto kushte. Me 'Corebit Studio' nënkuptohet ekipi ynë i zhvillimit, ndërsa me 'Përdorues' nënkuptohet çdo vizitor."
         },
         {
-          "title": "2. Shërbimet tona",
-          "text": "Ne prezantojmë punën tonë të dizajnit dhe zhvillimit të softuerit. Për të porositur një uebfaqe, mund të dërgoni një kërkesë përmes formularëve tanë të kontaktit."
+          "title": "2. Fusha e shërbimeve",
+          "text": "Ne prezantojmë punën tonë të dizajnit, programimit dhe automatizimit. Për të porositur një uebfaqe, mund të dërgoni një kërkesë përmes formularëve tanë të kontaktit."
         },
         {
           "title": "3. Pronësia intelektuale",
-          "text": "Të gjitha konceptet e projekteve, tekstet, dizajni dhe kodi i paraqitur në këtë uebfaqe janë pronë e Corebit Studio. Ju lutemi mos i kopjoni pa lejen tonë."
+          "text": "Të gjitha konceptet, dizajnet dhe kodet në këtë faqe janë pronë intelektuale e Corebit Studio. Për projektet e klientëve, të gjitha të drejtat e pronësisë intelektuale i takojnë Corebit Studio derisa fatura përfundimtare të paguhet plotësisht. Kopjimi i materialeve është i ndaluar."
+        },
+        {
+          "title": "4. Kufizimi i përgjegjësisë",
+          "text": "Ne përpiqemi të sigurojmë funksionim të vazhdueshëm të studio.corebitsystems.io. Megjithatë, Corebit Studio nuk mban përgjegjësi për ndërprerje të shërbimit të hostingut (Vercel) apo API të palëve të treta jashtë kontrollit tonë."
+        },
+        {
+          "title": "5. Ligji në fuqi dhe zgjidhja e mosmarrëveshjeve",
+          "text": "Këto kushte rregullohen nga ligjet e Malit të Zi dhe rregulloret evropiane. Mosmarrëveshjet do të zgjidhen me mirëkuptim ose në gjykatat kompetente të Malit të Zi."
         }
       ]
     }

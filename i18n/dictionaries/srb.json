@@ -314,58 +314,70 @@
     "back_btn": "Nazad na Početnu",
     "cookie_policy": {
       "title": "Politika Kolačića",
-      "subtitle": "Kako Corebit Studio koristi kolačiće da bi sajt radio brže.",
+      "subtitle": "Kako Corebit Studio koristi kolačiće za ubrzanje i bezbednost sajta.",
       "last_updated": "Poslednje ažuriranje: Jul 2026",
       "sections": [
         {
           "title": "1. Šta su kolačići?",
-          "text": "Kolačići su male tekstualne datoteke koje se čuvaju na vašem uređaju kada posetite naš sajt. Pomažu nam da zapamtimo izabrani jezik i ubrzamo učitavanje stranica."
+          "text": "Kolačići su male tekstualne datoteke koje se čuvaju na vašem računaru ili mobilnom uređaju kada posetite studio.corebitsystems.io. Oni pomažu sajtu da zapamti vaše radnje i postavke (kao što je jezik) tokom određenog perioda."
         },
         {
-          "title": "2. Kolačići koje koristimo",
-          "text": "Koristimo samo neophodne tehničke kolačiće (za čuvanje izbora jezika i pristanak na baner) i osnovnu Vercel analitiku za praćenje brzine sajta."
+          "title": "2. Kategorije kolačića koje koristimo",
+          "text": "Koristimo isključivo neophodne tehničke kolačiće (za čuvanje izbora jezika i pristanak na baner) i osnovnu Vercel analitiku brzine za optimizaciju rada sajta. Ne koristimo reklamne kolačiće niti sisteme za praćenje trećih strana."
         },
         {
           "title": "3. Upravljanje kolačićima",
-          "text": "U svakom trenutku možete blokirati ili obrisati kolačiće u podešavanjima vašeg pretraživača. Sajt corebitsystems.io će raditi savršeno i bez njih."
+          "text": "U svakom trenutku možete blokirati ili izbrisati kolačiće u podešavanjima vašeg pretraživača. Sajt studio.corebitsystems.io će raditi normalno i bez njih, ali nećemo moći da zapamtimo vaš jezik pri sledećoj poseti."
         }
       ]
     },
     "privacy_policy": {
       "title": "Politika Privatnosti",
-      "subtitle": "Kako štitimo i koristimo vaše lične podatke u Corebit Studio.",
+      "subtitle": "Kako štitimo, prikupljamo i obrađujemo vaše lične podatke u Corebit Studio.",
       "last_updated": "Poslednje ažuriranje: Jul 2026",
       "sections": [
         {
-          "title": "1. Podaci koje prikupljamo",
-          "text": "Prikupljamo samo kontakt podatke koje nam sami pošaljete (ime, email, broj telefona ili korisničko ime na mešindžeru) kada šaljete upit."
+          "title": "1. Kategorije prikupljenih podataka",
+          "text": "Prikupljamo samo kontakt podatke koje nam dobrovoljno pošaljete putem kontakt formi, WhatsApp-a ili Telegrama (ime, email, broj telefona ili korisničko ime), kao i tehničke podatke (kolačići, IP adresa) za stabilan rad sajta."
         },
         {
-          "title": "2. Kako koristimo vaše podatke",
-          "text": "Vaše podatke koristimo isključivo da bismo vas kontaktirali u vezi sa izradom sajta. Nikada ne prodajemo, ne iznajmljujemo i ne delimo vaše podatke sa trećim licima."
+          "title": "2. Svrha obrade podataka",
+          "text": "Vaše podatke obrađujemo isključivo u svrhu povratnog kontaktiranja povodom usluga izrade sajta, dizajna i automatizacije. Nikada ne prodajemo niti delimo vaše kontakt podatke sa trećim licima."
         },
         {
-          "title": "3. Usklađenost sa GDPR i lokalnim zakonima",
-          "text": "U potpunosti poštujemo Zakon o zaštiti podataka o ličnosti Republike Srbije i pravila EU GDPR. Imate pravo da u svakom trenutku zatražite uvid, izmenu ili brisanje vaših podataka slanjem upita na corebitstudio@corebitsystems.io."
+          "title": "3. Prava korisnika i pravo na zaborav (GDPR)",
+          "text": "U skladu sa EU GDPR-om i Zakonom o zaštiti podataka o ličnosti Republike Srbije, imate pravo na uvid, izmenu ili potpuno brisanje vaših podataka ('Pravo na zaborav') u bilo kom trenutku. Pišite nam na corebitstudio@corebitsystems.io."
+        },
+        {
+          "title": "4. Mere bezbednosti podataka",
+          "text": "Koristimo moderne protokole šifrovanja, SSL veze i kontrolu pristupa kako bismo osigurali sigurnost vaših podataka i sprečili neovlašćeni pristup."
         }
       ]
     },
     "terms_of_service": {
       "title": "Uslovi Korišćenja",
-      "subtitle": "Jednostavna pravila za korišćenje Corebit Studio veb sajta.",
+      "subtitle": "Pravila i uslovi korišćenja veb sajta studio.corebitsystems.io.",
       "last_updated": "Poslednje ažuriranje: Jul 2026",
       "sections": [
         {
-          "title": "1. Prihvatanje uslova",
-          "text": "Posetom sajtu corebitsystems.io prihvatate ova jednostavna pravila. Ako se ne slažete sa njima, možete prestati sa korišćenjem sajta."
+          "title": "1. Prihvatanje uslova i definicije",
+          "text": "Posetom sajtu studio.corebitsystems.io prihvatate ove uslove. Pod pojmom 'Corebit Studio' podrazumeva se naš razvojni tim, a pod pojmom 'Korisnik' bilo koji posetilac ovog sajta."
         },
         {
-          "title": "2. Naše usluge",
-          "text": "Predstavljamo naš rad na dizajnu i programiranju. Da biste poručili sajt, možete poslati upit putem kontakt formi na stranici."
+          "title": "2. Predmet usluga",
+          "text": "Na sajtu su prikazani primeri naših radova na dizajnu, programiranju i automatizaciji. Da biste naručili sajt, možete poslati upit putem kontakt formi na stranici."
         },
         {
           "title": "3. Intelektualna svojina",
-          "text": "Svi koncepti projekata, tekstovi, dizajn i kod prikazani na ovom sajtu su vlasništvo Corebit Studio. Molimo vas da ih ne kopirate bez naše dozvole."
+          "text": "Svi koncepti, kodovi, tekstovi i dizajn na ovom sajtu su intelektualna svojina Corebit Studio. Za klijentske projekte, sva prava intelektualne svojine pripadaju Corebit Studio dok se završni račun ne plati u potpunosti. Kopiranje materijala je zabranjeno."
+        },
+        {
+          "title": "4. Ograničenje odgovornosti",
+          "text": "Nastojimo da obezbedimo stabilan rad sajta studio.corebitsystems.io. Ipak, Corebit Studio ne snosi odgovornost za prekide u radu hostinga (Vercel) ili eksternih API servisa van naše konrole."
+        },
+        {
+          "title": "5. Primjenjivo pravo i rješavanje sporova",
+          "text": "Ovi uslovi su regulisani zakonima Republike Srbije i evropskim propisima. Svi eventualni sporovi rešavaće se mirnim putem ili pred nadležnim sudovima u Republici Srbiji."
         }
       ]
     }

@@ -313,58 +313,70 @@
     "back_btn": "Back to Home",
     "cookie_policy": {
       "title": "Cookie Policy",
-      "subtitle": "How Corebit Studio uses cookies to make the website faster.",
+      "subtitle": "How Corebit Studio uses cookies to make the website faster and more secure.",
       "last_updated": "Last updated: July 2026",
       "sections": [
         {
           "title": "1. What are cookies?",
-          "text": "Cookies are tiny text files saved on your device when you load our website. They help us remember your language choice and make pages load instantly."
+          "text": "Cookies are small text files stored on your computer or mobile device when you visit studio.corebitsystems.io. They enable the website to remember your actions and preferences over a period of time, so you don't have to keep re-entering them whenever you come back to the site."
         },
         {
-          "title": "2. Cookies we use",
-          "text": "We only use essential functional cookies (to keep your language and consent preferences) and basic Vercel analytics to monitor page speed."
+          "title": "2. Categories of cookies we use",
+          "text": "We only use essential functional cookies (to preserve your language selection and consent banner state) and basic Vercel speed analytics to measure performance, loading time, and overall system optimization. We do not use third-party tracking or advertising cookies."
         },
         {
-          "title": "3. Managing cookies",
-          "text": "You can block or delete cookies in your browser settings at any time. The website corebitsystems.io will work perfectly fine without them."
+          "title": "3. Managing and blocking cookies",
+          "text": "You can control, block, or delete cookies at any time via your browser settings. If you block cookies, the website studio.corebitsystems.io will remain fully functional, though we might not remember your language preference next time."
         }
       ]
     },
     "privacy_policy": {
       "title": "Privacy Policy",
-      "subtitle": "How we protect and handle your personal data at Corebit Studio.",
+      "subtitle": "How we protect, collect, and process your personal data at Corebit Studio.",
       "last_updated": "Last updated: July 2026",
       "sections": [
         {
-          "title": "1. Data we collect",
-          "text": "We only collect the contact information you choose to give us (name, email, phone, or messenger username) when submitting an inquiry."
+          "title": "1. Categories of collected data",
+          "text": "We only collect data that you voluntarily provide to us via contact forms, WhatsApp, or Telegram. This includes your name, corporate email address, phone number, or messenger username, as well as essential technical data (cookies, IP address) for website performance."
         },
         {
-          "title": "2. How we use your data",
-          "text": "Your data is only used to contact you back regarding our website development services. We never sell, rent, or share your info with third parties."
+          "title": "2. Purpose of data processing",
+          "text": "Your personal data is processed solely to contact you back regarding our design, software development, and automation services. We strictly do not sell, rent, lease, or share your personal data with third-party advertising networks or external organizations."
         },
         {
-          "title": "3. GDPR & Balkan Regulations",
-          "text": "We comply with the Law on Personal Data Protection of Balkan states and EU GDPR rules. You can ask us to view, update, or completely delete your info at any time by emailing corebitstudio@corebitsystems.io."
+          "title": "3. User rights and Right to be Forgotten (GDPR)",
+          "text": "In compliance with EU GDPR and Balkan data protection laws, you possess the right to view, modify, restrict, or request the complete deletion of your personal data ('Right to be Forgotten') at any time. Simply send your request to our data protection officer at corebitstudio@corebitsystems.io."
+        },
+        {
+          "title": "4. Data security measures",
+          "text": "We use modern encryption protocols, SSL connections, and access controls to keep your data safe. We take all reasonable measures to prevent unauthorized access or alteration of your personal information."
         }
       ]
     },
     "terms_of_service": {
       "title": "Terms of Service",
-      "subtitle": "Simple rules for using the Corebit Studio website.",
+      "subtitle": "Clear rules and conditions for using studio.corebitsystems.io.",
       "last_updated": "Last updated: July 2026",
       "sections": [
         {
-          "title": "1. Acceptance of terms",
-          "text": "By visiting corebitsystems.io, you agree to these simple terms. If you don't agree, you can stop using the website."
+          "title": "1. Acceptance of terms & definitions",
+          "text": "By accessing or using studio.corebitsystems.io, you agree to comply with these terms of service. 'Corebit Studio' refers to our web design and development team, and 'User' refers to any visitor of this website."
         },
         {
-          "title": "2. Our services",
-          "text": "We present our design and software development work. To order a website, you can send an inquiry through our contact forms."
+          "title": "2. Scope of services",
+          "text": "We showcase our web engineering, custom design, system automation, and turnkey website development work. If you wish to commission our services, you can submit an inquiry through our contact forms."
         },
         {
-          "title": "3. Intellectual property",
-          "text": "All project concepts, text, designs, and code displayed on this website are owned by Corebit Studio. Please don't copy them without our permission."
+          "title": "3. Intellectual property rights",
+          "text": "All original designs, animations, concepts, software code, and texts displayed on this website are the intellectual property of Corebit Studio. For commissioned client projects, all intellectual property rights belong to Corebit Studio until the final invoice is paid in full. Unauthorized copying or redistribution is prohibited."
+        },
+        {
+          "title": "4. Limitation of liability",
+          "text": "We strive to ensure continuous availability of studio.corebitsystems.io. However, Corebit Studio shall not be liable for any service interruptions, hosting provider (Vercel) downtime, network issues, or errors originating from third-party APIs beyond our direct control."
+        },
+        {
+          "title": "5. Governing law & dispute resolution",
+          "text": "These terms are governed by the laws of Montenegro and European regulations. Any disputes arising from the use of this website shall be resolved amicably through negotiations, or under the jurisdiction of the competent courts in Montenegro."
         }
       ]
     }

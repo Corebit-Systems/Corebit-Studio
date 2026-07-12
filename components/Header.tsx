@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import LangSwitcher from './LangSwitcher';
 
@@ -23,10 +24,17 @@ interface HeaderProps {
   dict: {
     nav: NavDict;
     hero: HeroDict;
+    policies?: {
+      back_btn: string;
+    };
   };
 }
 
 export default function Header({ dict, locale }: HeaderProps) {
+  const pathname = usePathname();
+  const isPolicyPage = pathname.includes('/privacy-policy') || pathname.includes('/cookie-policy') || pathname.includes('/terms-of-service');
+  const backLabel = dict.policies?.back_btn || 'Back to Home';
+
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -103,12 +111,21 @@ export default function Header({ dict, locale }: HeaderProps) {
         <div className="flex items-center gap-2 sm:gap-4 relative z-[60]">
           <LangSwitcher currentLocale={locale} />
 
-          <Link
-            href={`/${locale}#contact`}
-            className="hidden sm:block px-4 py-2 rounded-xl bg-white text-black text-sm font-semibold hover:bg-neutral-200 transition-colors whitespace-nowrap"
-          >
-            {dict.hero.cta}
-          </Link>
+          {isPolicyPage ? (
+            <Link
+              href={`/${locale}`}
+              className="hidden sm:block px-4 py-2 rounded-xl border border-white/10 hover:bg-white/5 text-white text-sm font-semibold transition-colors whitespace-nowrap"
+            >
+              {backLabel}
+            </Link>
+          ) : (
+            <Link
+              href={`/${locale}#contact`}
+              className="hidden sm:block px-4 py-2 rounded-xl bg-white text-black text-sm font-semibold hover:bg-neutral-200 transition-colors whitespace-nowrap"
+            >
+              {dict.hero.cta}
+            </Link>
+          )}
 
           {/* Мобильный бургер — минимум 44x44px для пальца */}
           <button
@@ -178,11 +195,11 @@ export default function Header({ dict, locale }: HeaderProps) {
               className="mt-auto flex flex-col gap-6 pt-8"
             >
               <Link
-                href={`/${locale}#contact`}
+                href={isPolicyPage ? `/${locale}` : `/${locale}#contact`}
                 onClick={closeMenu}
                 className="w-full py-5 rounded-2xl bg-white text-black text-center font-bold text-xl hover:bg-neutral-200 transition-colors shadow-[0_0_40px_rgba(255,255,255,0.2)] active:scale-95"
               >
-                {dict.hero.cta}
+                {isPolicyPage ? backLabel : dict.hero.cta}
               </Link>
               <div className="flex items-center justify-center border-t border-white/10 pt-6">
                 <span className="text-sm font-medium text-neutral-300 tracking-widest uppercase">Corebit Studio</span>
