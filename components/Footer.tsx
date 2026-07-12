@@ -1,19 +1,25 @@
 // File: C:\dev\Corebit-Studio\components\Footer.tsx
 import { Phone, Mail, MessageCircle, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
-// ФИКС: Строгая типизация вместо dict: any
 interface FooterDict {
   footer: {
     cta_btn: string;
     rights: string;
   };
+  policies?: {
+    privacy_title: string;
+    cookie_title: string;
+    terms_title: string;
+  };
 }
 
 interface FooterProps {
   dict: FooterDict;
+  locale: string;
 }
 
-export default function Footer({ dict }: FooterProps) {
+export default function Footer({ dict, locale }: FooterProps) {
   return (
     // ФИКС: mt-32 → mt-16 sm:mt-32, убраны px-6 → px-4 sm:px-6
     <footer className="w-full mt-16 sm:mt-32 border-t border-white/10 bg-[#050506]/80 backdrop-blur-3xl pt-12 sm:pt-24 pb-8 sm:pb-12 px-4 sm:px-6 relative overflow-hidden flex flex-col items-center">
@@ -100,19 +106,34 @@ export default function Footer({ dict }: FooterProps) {
               </a>
             </p>
           </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-x-3 sm:gap-x-4 gap-y-1 my-2 md:my-0 text-[11px] sm:text-xs text-neutral-400">
+            <Link href={`/${locale}/privacy-policy`} className="hover:text-emerald-400 transition-colors">
+              {dict.policies?.privacy_title || 'Privacy Policy'}
+            </Link>
+            <span className="text-white/10">|</span>
+            <Link href={`/${locale}/cookie-policy`} className="hover:text-emerald-400 transition-colors">
+              {dict.policies?.cookie_title || 'Cookie Policy'}
+            </Link>
+            <span className="text-white/10">|</span>
+            <Link href={`/${locale}/terms-of-service`} className="hover:text-emerald-400 transition-colors">
+              {dict.policies?.terms_title || 'Terms of Service'}
+            </Link>
+          </div>
+
           <div className="flex items-center gap-4 sm:gap-6">
             <a
               href="/sitemap.xml"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-emerald-400 transition-colors font-mono"
+              className="hover:text-emerald-400 transition-colors font-mono text-xs"
               title="XML Sitemap"
             >
               sitemap.xml
             </a>
             <span className="text-white/10">|</span>
-            <span>Next.js 14</span>
-            <span>Vercel Edge</span>
+            <span className="text-xs">Next.js 14</span>
+            <span className="text-xs">Vercel Edge</span>
           </div>
         </div>
       </div>

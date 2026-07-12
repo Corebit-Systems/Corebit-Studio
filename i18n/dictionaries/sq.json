@@ -307,6 +307,9 @@
     "maribor": { "name": "Maribor", "where": "në Maribor", "destination": "në Maribor" }
   },
   "policies": {
+    "privacy_title": "Politika e Privatësisë",
+    "cookie_title": "Politika e Cookies",
+    "terms_title": "Kushtet e Shërbimit",
     "back_btn": "Kthehu në Fillim",
     "cookie_policy": {
       "title": "Politika e Cookies",

@@ -306,6 +306,9 @@
     "maribor": { "name": "Maribor", "where": "in Maribor", "destination": "to Maribor" }
   },
   "policies": {
+    "privacy_title": "Privacy Policy",
+    "cookie_title": "Cookie Policy",
+    "terms_title": "Terms of Service",
     "back_btn": "Back to Home",
     "cookie_policy": {
       "title": "Cookie Policy",

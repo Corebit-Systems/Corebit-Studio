@@ -310,6 +310,9 @@
     "maribor": { "name": "Марибор", "where": "в Мариборе", "destination": "в Марибор" }
   },
   "policies": {
+    "privacy_title": "Политика конфиденциальности",
+    "cookie_title": "Политика cookie",
+    "terms_title": "Пользовательское соглашение",
     "back_btn": "На главную",
     "cookie_policy": {
       "title": "Политика Cookie",

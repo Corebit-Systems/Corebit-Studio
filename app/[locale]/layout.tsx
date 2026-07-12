@@ -399,7 +399,7 @@ export default async function RootLayout({
           {children}
         </main>
 
-        <Footer dict={dict} />
+        <Footer dict={dict} locale={locale} />
 
         {/* Global Compliance & Consent management */}
         <CookieBanner dict={dict.cookie} locale={locale} />

@@ -307,6 +307,9 @@
     "maribor": { "name": "Maribor", "where": "u Mariboru", "destination": "u Maribor" }
   },
   "policies": {
+    "privacy_title": "Politika Privatnosti",
+    "cookie_title": "Politika Kolačića",
+    "terms_title": "Uslovi Korišćenja",
     "back_btn": "Nazad na Početnu",
     "cookie_policy": {
       "title": "Politika Kolačića",
