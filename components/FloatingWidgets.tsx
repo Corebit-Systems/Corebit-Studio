@@ -69,7 +69,7 @@ export default function FloatingWidgets({ locale }: FloatingWidgetsProps) {
   };
 
   const texts = WIDGET_TEXTS[locale] || WIDGET_TEXTS.en;
-  const tgLink = `https://t.me/corebitsystems?text=${encodeURIComponent(texts.tgMessage)}`;
+  const tgLink = "https://t.me/corebitsystems?text=Привет!%20Хочу%20обсудить%20проект%20для%20Corebit%20Studio";
   const waLink = `https://wa.me/359882905657?text=${encodeURIComponent(texts.waMessage)}`;
 
   return (
