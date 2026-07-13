@@ -163,7 +163,9 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
             required
             disabled={status === 'loading' || isRateLimited}
             type="text"
+            id="name"
             name="name"
+            autoComplete="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder={dict.name}
@@ -177,7 +179,9 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
             required
             disabled={status === 'loading' || isRateLimited}
             type="email"
+            id="email"
             name="email"
+            autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder={dict.email}
@@ -190,7 +194,9 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
           <textarea
             required
             disabled={status === 'loading' || isRateLimited}
+            id="message"
             name="message"
+            autoComplete="off"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder={isRateLimited ? `${dict.error_rate} (${countdown}s)` : dict.message}

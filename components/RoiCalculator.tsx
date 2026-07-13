@@ -59,6 +59,9 @@ export default function RoiCalculator({ dict }: RoiCalculatorProps) {
             </div>
             <input
               type="range"
+              id="roi-lost-clients"
+              name="lost_clients"
+              autoComplete="off"
               min="1"
               max="50"
               step="1"
@@ -79,6 +82,9 @@ export default function RoiCalculator({ dict }: RoiCalculatorProps) {
             </div>
             <input
               type="range"
+              id="roi-avg-ticket"
+              name="avg_ticket"
+              autoComplete="off"
               min="20"
               max="500"
               step="10"

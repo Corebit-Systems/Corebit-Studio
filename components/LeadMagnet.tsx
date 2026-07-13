@@ -222,6 +222,9 @@ export default function LeadMagnet({ locale }: { locale: Locale }) {
                   <input
                     type="email"
                     required
+                    id="lead-email"
+                    name="email"
+                    autoComplete="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder={texts.emailPlaceholder}

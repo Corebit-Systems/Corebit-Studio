@@ -85,6 +85,9 @@ export default function SpeedCheckWidget({ dict }: SpeedCheckWidgetProps) {
             <input
               required
               type="text"
+              id="speed-check-url"
+              name="url"
+              autoComplete="url"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder={dict.placeholder}

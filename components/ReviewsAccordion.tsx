@@ -208,6 +208,9 @@ export default function ReviewsAccordion({ dict }: ReviewsAccordionProps) {
                   required
                   disabled={status === 'loading'}
                   type="text"
+                  id="review-name"
+                  name="name"
+                  autoComplete="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder={dict.form_name}
@@ -222,6 +225,9 @@ export default function ReviewsAccordion({ dict }: ReviewsAccordionProps) {
                   required
                   disabled={status === 'loading'}
                   type="text"
+                  id="review-company"
+                  name="company"
+                  autoComplete="organization"
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
                   placeholder={dict.form_company}
@@ -263,6 +269,9 @@ export default function ReviewsAccordion({ dict }: ReviewsAccordionProps) {
                 <textarea
                   required
                   disabled={status === 'loading'}
+                  id="review-text"
+                  name="review_text"
+                  autoComplete="off"
                   rows={4}
                   maxLength={1000}
                   value={text}
