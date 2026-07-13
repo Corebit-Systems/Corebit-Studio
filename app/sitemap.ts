@@ -15,6 +15,9 @@
 import { MetadataRoute } from 'next';
 import slugMapData from '@/i18n/slug-map.json';
 
+// Serve sitemap from CDN edge — revalidate every 24h
+export const revalidate = 86400;
+
 const SITE_URL = 'https://studio.corebitsystems.io';
 const LOCALES  = ['en', 'ru', 'cnr', 'srb', 'sq'] as const;
 

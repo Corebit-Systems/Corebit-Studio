@@ -73,26 +73,26 @@
     "tier1": {
       "title": "Entry / Kickstart",
       "price": 360,
-      "desc": "Premium, speed-optimized storefronts designed to capture immediate traffic. For local SMB and rental services. Best for: local bistros and emerging clinics wanting an elite digital card. Business impact: Captures 98% of mobile attention. ROI payback: Instantly offsets costs by converting the first 5-10 digital clients.",
-      "btn": "Order Start Website"
+      "desc": "A premium, lightning-fast website that puts your business on the map. Designed for local restaurants, beauty salons, and rental services ready for their first digital win. Captures 98% of mobile visitors. Pays for itself the moment your first 5 online clients walk through the door.",
+      "btn": "Order Starter Website"
     },
     "tier2": {
       "title": "Growth / Business",
       "price": 1080,
-      "desc": "Interactive web platforms with custom booking engines and CRM sync. For local SMB and rental services. Best for: busy STOs, cafes, and medical hubs. Business impact: Saves 15+ hours of manual scheduling weekly. ROI payback: Fully recovers initial capital within 30-45 days through zero double-bookings.",
+      "desc": "A full website with an online booking calendar, SMS reminders, and all inquiries in one place. No more missed calls or double-bookings. Saves your team 15+ hours per week and fully pays back within 30-45 days through zero scheduling errors.",
       "btn": "Order Business Website"
     },
     "tier3": {
       "title": "Enterprise Architecture",
       "price": 3150,
-      "desc": "Custom infrastructure integrations, extreme API speed optimization, and security hardening. Ideal for premium hotels and restaurants. Best for: multisite service brands and high-volume operations. Business impact: Eliminates human coordination errors completely. ROI payback: Realized via massive overhead reduction in under 90 days.",
-      "btn": "Discuss website in Telegram"
+      "desc": "A custom digital platform built around your exact business workflow. Handles hundreds of bookings simultaneously, connects all your locations into one dashboard, and completely eliminates manual coordination. ROI realized in under 90 days through massive operational savings.",
+      "btn": "Submit Custom Project Inquiry"
     }
   },
   "leak": {
     "title": "Losing Clients While You're Not Looking?",
-    "subtitle": "Slow load speeds and manual coordination are leaking your revenue.",
-    "text": "Every second of delay on your website drops conversion rates by 20%. While your competitors lose high-value prospects to sluggish page loads, your managers are stuck manually typing time-slots in WhatsApp, leading to double-bookings and lost opportunities. We replace this operational chaos with sub-100ms Edge networks and autonomous automation engines that secure bookings instantly."
+    "subtitle": "A slow website and manual booking processes are draining your revenue every day.",
+    "text": "Every extra second your website takes to load costs you 20% of potential clients. Meanwhile, your team is stuck manually juggling time-slots in WhatsApp — leading to double-bookings and lost revenue. We replace that chaos with a site that loads instantly and a booking system that handles everything automatically, so you capture every client, every time."
   },
   "contact_form": {
     "title": "Get website price",
@@ -115,7 +115,7 @@
     "or_email_label": "Or:"
   },
   "footer": {
-    "cta_btn": "Discuss website in Telegram",
+    "cta_btn": "Submit Your Custom Project Inquiry",
     "rights": "© 2026 Corebit Studio. All rights reserved. Tivat, Montenegro.",
     "subsidiary_text": "Corebit Studio is a subsidiary of "
   },
@@ -149,14 +149,14 @@
     "umami-bistro": {
       "stack": [
         "Next.js App Router",
-        "Redis Caching",
-        "Custom Webhooks",
+        "Instant data delivery layer",
+        "Real-time SMS & email alerts",
         "Glassmorphism UI"
       ],
       "features": [
         "Interactive SVG floor plans for table reservations",
         "Instant waitlist queue management",
-        "Manager dashboard sync"
+        "Manager dashboard — all bookings in one place"
       ]
     },
     "aura-wellness": {
@@ -175,19 +175,19 @@
   },
   "faq": {
     "title": "Frequently Asked Questions",
-    "subtitle": "Clear insights into our engineering workflows, timeframes, and localized operations.",
+    "subtitle": "Clear answers about our process, timeline, and how we work with businesses in your region.",
     "items": [
       {
-        "q": "What technologies do you use?",
-        "a": "We build with Next.js 14 (App Router) and Tailwind CSS, leveraging Vercel Edge networks to deliver sub-100ms load times. For database and custom pipelines, we integrate PostgreSQL, Redis, and secure Webhook systems."
+        "q": "What do I actually get with a booking system?",
+        "a": "Your clients book directly on your website 24/7 — no phone calls, no WhatsApp messages. They pick a time, confirm instantly, and get an automatic SMS reminder. You see all bookings in one dashboard and never deal with double-bookings again."
       },
       {
-        "q": "What is the production timeline for custom business automation modules?",
-        "a": "Standard table reservation, appointment booking, or time-slot schedulers are typically deployed within 2-4 weeks. Enterprise-scale system automation and backend integrations take between 6-8 weeks."
+        "q": "How quickly will my website be ready?",
+        "a": "A starter website with a contact form is ready in 7 days. A full booking platform with SMS notifications takes 2–4 weeks. For large-scale custom platforms we agree on the timeline individually."
       },
       {
-        "q": "Do you provide localized tech-support for companies in Montenegro, Serbia, and Albania?",
-        "a": "Yes, we provide dedicated remote and on-site support for companies in Montenegro (Tivat, Budva, Podgorica), Serbia (Belgrade), and Albania (Tirana) with SLA response times under 2 hours."
+        "q": "Do you provide support for businesses in Montenegro, Serbia, and Albania?",
+        "a": "Yes — we provide dedicated remote and on-site support for businesses in Montenegro (Tivat, Budva, Podgorica), Serbia (Belgrade), and Albania (Tirana) with response times under 2 hours."
       }
     ]
   },
