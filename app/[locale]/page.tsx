@@ -12,6 +12,7 @@ import SpeedCheckWidget from '@/components/SpeedCheckWidget';
 import TechEcosystem from '@/components/TechEcosystem';
 import LeadMagnet from '@/components/LeadMagnet';
 import DevelopmentProcess from '@/components/DevelopmentProcess';
+import TechStackWidget from '@/components/TechStackWidget';
 import { ArrowRight, CheckCircle2, CalendarClock, Utensils, CalendarHeart } from 'lucide-react';
 
 const SITE_URL = 'https://studio.corebitsystems.io';
@@ -429,6 +430,9 @@ export default async function HomePage({
 
       {/* Contact */}
       <ContactForm dict={dict.contact_form} locale={locale} />
+
+      {/* Corebit Tech Stack & Live Infrastructure Monitor */}
+      <TechStackWidget locale={locale} />
     </div>
   );
 }

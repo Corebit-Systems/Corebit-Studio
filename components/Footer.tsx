@@ -96,7 +96,7 @@ export default function Footer({ dict, locale }: FooterProps) {
           {/* Block 1: Copyright + Subsidiary */}
           <div className="flex flex-col gap-1 items-center md:items-start text-neutral-400">
             <p className="font-light">{dict.footer.rights}</p>
-            <p className="text-[11px] sm:text-xs text-neutral-500 font-light">
+            <p className="text-[11px] sm:text-xs text-neutral-400 font-light">
               {dict.footer.subsidiary_text || 'Corebit Studio is a subsidiary of '}{' '}
               <a
                 href="https://corebitsystems.io"
@@ -123,12 +123,12 @@ export default function Footer({ dict, locale }: FooterProps) {
           </div>
 
           {/* Block 3: Tech Metadata */}
-          <div className="flex items-center justify-center md:justify-end gap-4 text-neutral-600">
+          <div className="flex items-center justify-center md:justify-end gap-4 text-neutral-400">
             <a
               href="/sitemap.xml"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-neutral-400 transition-colors font-mono text-xs"
+              className="hover:text-white transition-colors font-mono text-xs"
               title="XML Sitemap"
             >
               sitemap.xml

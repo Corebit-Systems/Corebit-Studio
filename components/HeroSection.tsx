@@ -88,14 +88,13 @@ export default function HeroSection({ dict, locale }: HeroSectionProps) {
         className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-emerald-600/10 blur-[120px] rounded-full pointer-events-none z-0 will-change-transform"
       />
 
-      <motion.section
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
+      <section
         className="flex flex-col items-center text-center gap-6 sm:gap-8 pt-8 sm:pt-16 relative z-10 w-full"
       >
         <motion.div
-          variants={itemVariants}
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs sm:text-sm font-medium text-neutral-300 backdrop-blur-md shadow-2xl"
         >
           <span className="relative flex h-2 w-2 shrink-0">
@@ -114,7 +113,9 @@ export default function HeroSection({ dict, locale }: HeroSectionProps) {
         </p>
 
         <motion.div
-          variants={itemVariants}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.15 }}
           className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 mt-4 sm:mt-8 w-full sm:w-auto px-4"
         >
           <motion.div
@@ -143,7 +144,7 @@ export default function HeroSection({ dict, locale }: HeroSectionProps) {
             </a>
           </motion.div>
         </motion.div>
-      </motion.section>
+      </section>
     </div>
   );
 }

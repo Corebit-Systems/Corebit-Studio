@@ -87,17 +87,17 @@ export default function AnalyticsConsentProvider() {
 
   return (
     <>
-      {/* ── GA4 Consent Mode v2 init (inline, before loader) ───────────── */}
-      <Script id="ga4-consent-init" strategy="afterInteractive">
+      {/* ── GA4 Consent Mode v2 init (inline, lazy loader) ───────────── */}
+      <Script id="ga4-consent-init" strategy="lazyOnload">
         {CONSENT_DEFAULT}
       </Script>
-
+ 
       {/* ── GA4 gtag.js loader ──────────────────────────────────────────── */}
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
-
+ 
       {/* ── Vercel telemetry (no PII by design, always active) ─────────── */}
       <Analytics />
       <SpeedInsights />
