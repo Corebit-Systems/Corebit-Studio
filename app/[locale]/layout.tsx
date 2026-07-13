@@ -197,8 +197,8 @@ export default async function RootLayout({
     "@type": "ProfessionalService",
     "name": "Corebit Studio",
     "image": `${SITE_URL}/og-image-en.png`,
-    "@id": "https://corebitsystems.io/#organization",
-    "url": SITE_URL,
+    "@id": "https://studio.corebitsystems.io/#organization",
+    "url": "https://studio.corebitsystems.io",
     "telephone": "+38268914816",
     "email": "corebitstudio@corebitsystems.io",
     "priceRange": "€360 - €3150",
@@ -211,6 +211,12 @@ export default async function RootLayout({
       "@type": "GeoCoordinates",
       "latitude": 42.4350,
       "longitude": 18.6961
+    },
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Corebit Systems",
+      "@id": "https://corebitsystems.io/#organization",
+      "url": "https://corebitsystems.io"
     },
     "contactPoint": [
       {
@@ -322,10 +328,10 @@ export default async function RootLayout({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "publisher": {
-      "@id": "https://corebitsystems.io/#organization"
+      "@id": "https://studio.corebitsystems.io/#organization"
     },
     "provider": {
-      "@id": "https://corebitsystems.io/#organization"
+      "@id": "https://studio.corebitsystems.io/#organization"
     },
     "mainEntity": dict.faq?.items?.map((item) => ({
       "@type": "Question",
@@ -340,12 +346,6 @@ export default async function RootLayout({
   return (
     <html lang={locale} className="dark scroll-smooth">
       <head>
-        <link rel="alternate" href={`${SITE_URL}/en`} hrefLang="x-default" />
-        <link rel="alternate" href={`${SITE_URL}/en`} hrefLang="en" />
-        <link rel="alternate" href={`${SITE_URL}/ru`} hrefLang="ru" />
-        <link rel="alternate" href={`${SITE_URL}/sq`} hrefLang="sq" />
-        <link rel="alternate" href={`${SITE_URL}/cnr`} hrefLang="sr-ME" />
-        <link rel="alternate" href={`${SITE_URL}/srb`} hrefLang="sr-RS" />
         {/* Consolidated linked JSON-LD blocks to prevent graph fragmentation */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageLd) }} />
