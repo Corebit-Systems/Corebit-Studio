@@ -84,18 +84,7 @@ export async function generateMetadata({
     title:       meta.title,
     description: meta.description,
 
-    // ── Canonical & hreflang alternates ──────────────────────────────────
-    alternates: {
-      canonical: `${SITE_URL}/${locale}`,
-      languages: {
-        'x-default': `${SITE_URL}/en`,
-        en:  `${SITE_URL}/en`,
-        ru:  `${SITE_URL}/ru`,
-        'sq-AL': `${SITE_URL}/sq`,
-        'sr-RS': `${SITE_URL}/srb`,
-        'sr-ME': `${SITE_URL}/cnr`,
-      } as Record<string, string>,
-    },
+
 
     // ── Open Graph ───────────────────────────────────────────────────────
     openGraph: {
@@ -201,179 +190,151 @@ export default async function RootLayout({
   const rawDict = await getDictionary(locale as Locale);
   const dict    = rawDict as unknown as LayoutDict;
 
-  // ── Schema.org JSON-LD — 3 independent entity blocks (no array wrapper) ─────
-  // Each entity is output as its own <script> tag to satisfy Google's
-  // structured data validator and prevent the <parent_node> invalid type error.
+  // ── Schema.org JSON-LD — 2 independent entity blocks (no array wrapper) ─────
+  // Connected via @id references to prevent graph fragmentation.
   const professionalServiceLd = {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Corebit Studio",
-      "image": `${SITE_URL}/og-image-en.png`,
-      "@id": SITE_URL,
-      "url": SITE_URL,
-      "telephone": "+38268914816",
-      "email": "corebitstudio@corebitsystems.io",
-      "priceRange": "€360 - €3150",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Tivat",
-        "addressCountry": "Montenegro"
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Corebit Studio",
+    "image": `${SITE_URL}/og-image-en.png`,
+    "@id": "https://corebitsystems.io/#organization",
+    "url": SITE_URL,
+    "telephone": "+38268914816",
+    "email": "corebitstudio@corebitsystems.io",
+    "priceRange": "€360 - €3150",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Tivat",
+      "addressCountry": "Montenegro"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 42.4350,
+      "longitude": 18.6961
+    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+38268914816",
+        "contactType": "customer support",
+        "areaServed": ["ME", "RS", "AL"]
       },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "42.4350",
-        "longitude": "18.6961"
-      },
-      "contactPoint": [
-        {
-          "@type": "ContactPoint",
-          "telephone": "+38268914816",
-          "contactType": "customer support",
-          "areaServed": ["ME", "RS", "AL"]
-        },
-        {
-          "@type": "ContactPoint",
-          "telephone": "+359882905657",
-          "contactType": "International Sales & WhatsApp Support",
-          "areaServed": "Worldwide"
-        }
-      ],
-      "sameAs": [
-        "https://wa.me/359882905657",
-        "https://t.me/corebitsystems"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Web Architecture & Automation Services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "name": "Entry / Kickstart",
-            "price": "360",
-            "priceCurrency": "EUR"
-          },
-          {
-            "@type": "Offer",
-            "name": "Growth / Business",
-            "price": "1080",
-            "priceCurrency": "EUR"
-          },
-          {
-            "@type": "Offer",
-            "name": "Enterprise Architecture",
-            "price": "3150",
-            "priceCurrency": "EUR"
-          }
-        ]
+      {
+        "@type": "ContactPoint",
+        "telephone": "+359882905657",
+        "contactType": "International Sales & WhatsApp Support",
+        "areaServed": "Worldwide"
       }
-  };
-
-  const localBusinessLd = {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Corebit Studio",
-      "image": `${SITE_URL}/og-image-en.png`,
-      "telephone": "+38268814816",
-      "email": "corebitstudio@corebitsystems.io",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Tivat",
-        "addressCountry": "ME"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "reviewCount": "5"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Corebit Studio Services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Web Architecture & Booking Automation Services",
-              "description": "High-performance Next.js custom booking automation modules and luxury brand landing pages for hospitality, STOs, and SMBs on the Adriatic."
-            }
-          }
-        ]
-      },
-      "review": [
+    ],
+    "sameAs": [
+      "https://wa.me/359882905657",
+      "https://t.me/corebitsystems"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Web Architecture & Automation Services",
+      "itemListElement": [
         {
-          "@type": "Review",
-          "author": {
-            "@type": "Person",
-            "name": "Marko J."
-          },
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5"
-          },
-          "reviewBody": "Before switching to Corebit Studio, we were losing up to 20% of evening bookings due to the slow loading of our old website. The team built an instant booking system for us. Excellent ROI."
+          "@type": "Offer",
+          "name": "Entry / Kickstart",
+          "price": "360",
+          "priceCurrency": "EUR"
         },
         {
-          "@type": "Review",
-          "author": {
-            "@type": "Person",
-            "name": "Elena R."
-          },
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5"
-          },
-          "reviewBody": "We were looking for a local agency that understands hotel business on the Adriatic. Direct bookings through the website bypassing aggregators grew by 35%."
+          "@type": "Offer",
+          "name": "Growth / Business",
+          "price": "1080",
+          "priceCurrency": "EUR"
         },
         {
-          "@type": "Review",
-          "author": {
-            "@type": "Person",
-            "name": "Christophe B."
-          },
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5"
-          },
-          "reviewBody": "For our business, it is critical that clients can easily send inquiries in one click. Now we get clean, verified leads directly to our corporate email without spam."
-        },
-        {
-          "@type": "Review",
-          "author": {
-            "@type": "Person",
-            "name": "Anja V."
-          },
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5"
-          },
-          "reviewBody": "Automation saved our customer service. Thanks to Corebit Studio, the integration of schedules went seamlessly. Fully responsive and intuitive."
-        },
-        {
-          "@type": "Review",
-          "author": {
-            "@type": "Person",
-            "name": "Thomas M."
-          },
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5"
-          },
-          "reviewBody": "Exceptional technical expertise, scalable Next.js code, and strict compliance with deadlines. Highly recommended."
+          "@type": "Offer",
+          "name": "Enterprise Architecture",
+          "price": "3150",
+          "priceCurrency": "EUR"
         }
       ]
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Marko J."
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "reviewBody": "Before switching to Corebit Studio, we were losing up to 20% of evening bookings due to the slow loading of our old website. The team built an instant booking system for us. Excellent ROI."
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Elena R."
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "reviewBody": "We were looking for a local agency that understands hotel business on the Adriatic. Direct bookings through the website bypassing aggregators grew by 35%."
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Christophe B."
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "reviewBody": "For our business, it is critical that clients can easily send inquiries in one click. Now we get clean, verified leads directly to our corporate email without spam."
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Anja V."
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "reviewBody": "Automation saved our customer service. Thanks to Corebit Studio, the integration of schedules went seamlessly. Fully responsive and intuitive."
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Thomas M."
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "reviewBody": "Exceptional technical expertise, scalable Next.js code, and strict compliance with deadlines. Highly recommended."
+      }
+    ]
   };
 
   const faqPageLd = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": dict.faq?.items?.map((item) => ({
-        "@type": "Question",
-        "name": item.q,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": item.a
-        }
-      })) || []
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "publisher": {
+      "@id": "https://corebitsystems.io/#organization"
+    },
+    "provider": {
+      "@id": "https://corebitsystems.io/#organization"
+    },
+    "mainEntity": dict.faq?.items?.map((item) => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a
+      }
+    })) || []
   };
 
   return (
@@ -385,9 +346,8 @@ export default async function RootLayout({
         <link rel="alternate" href={`${SITE_URL}/sq`} hrefLang="sq" />
         <link rel="alternate" href={`${SITE_URL}/cnr`} hrefLang="sr-ME" />
         <link rel="alternate" href={`${SITE_URL}/srb`} hrefLang="sr-RS" />
-        {/* 3 independent JSON-LD blocks — no array wrapper to avoid GSC parent_node error */}
+        {/* Consolidated linked JSON-LD blocks to prevent graph fragmentation */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceLd) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageLd) }} />
       </head>
       <body

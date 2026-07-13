@@ -26,7 +26,7 @@ interface PricingSectionProps {
 }
 
 export default function PricingSection({ dict }: PricingSectionProps) {
-  const [isFullPayment, setIsFullPayment] = useState(true);
+  const [isFullPayment, setIsFullPayment] = useState(false);
 
   const calculatePrice = (basePrice: number): number => {
     return isFullPayment ? Math.floor(basePrice * 0.9) : basePrice;
