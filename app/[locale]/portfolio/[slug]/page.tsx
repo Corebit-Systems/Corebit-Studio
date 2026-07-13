@@ -58,6 +58,22 @@ const PORTFOLIO_SCHEMA: Record<string, {
   },
 };
 
+const REVIEWS_LABEL: Record<string, string> = {
+  en: 'Reviews',
+  ru: 'Отзывов',
+  cnr: 'Recenzije',
+  srb: 'Recenzije',
+  sq: 'Rishikime',
+};
+
+const CLIENT_REVIEWS_TITLE: Record<string, string> = {
+  en: 'Client Reviews',
+  ru: 'Отзывы клиентов',
+  cnr: 'Recenzije klijenata',
+  srb: 'Recenzije klijenata',
+  sq: 'Rishikimet e klientëve',
+};
+
 export async function generateStaticParams() {
   const locales = ['en', 'ru', 'cnr', 'srb', 'sq'];
   const slugs   = Object.keys(PORTFOLIO_SCHEMA);
@@ -77,7 +93,7 @@ export async function generateMetadata({
   if (!project || !schema) return {};
 
   const title       = `${project.title} | Portfolio — Corebit Studio`;
-  const description = `${project.desc} — ${schema.industry}. Рейтинг ${schema.ratingValue}/5 от ${schema.reviewCount} клиентов.`;
+  const description = `${project.desc} — ${schema.industry}. Rating ${schema.ratingValue}/5 from ${schema.reviews.length} clients.`;
 
   return {
     title,
@@ -149,7 +165,7 @@ export default async function PortfolioProjectPage({
     aggregateRating: {
       '@type':       'AggregateRating',
       ratingValue:   schema.ratingValue.toFixed(1),
-      reviewCount:   schema.reviewCount,
+      reviewCount:   schema.reviews.length,
       bestRating:    '5',
       worstRating:   '1',
     },
@@ -190,7 +206,7 @@ export default async function PortfolioProjectPage({
             <span className="text-amber-400">{'★'.repeat(Math.round(schema.ratingValue))}</span>
             <span>{schema.ratingValue}/5</span>
             <span>·</span>
-            <span>{schema.reviewCount} reviews</span>
+            <span>{REVIEWS_LABEL[locale] || 'Reviews'}: {schema.reviews.length}</span>
             <span>·</span>
             <span className="text-emerald-400">{schema.industry}</span>
           </div>
@@ -236,7 +252,9 @@ export default async function PortfolioProjectPage({
       {/* Client testimonials from schema (visible + structured) */}
       {schema && schema.reviews.length > 0 && (
         <div className="flex flex-col gap-4">
-          <h2 className="text-xl sm:text-2xl font-semibold text-white">Client Reviews</h2>
+          <h2 className="text-xl sm:text-2xl font-semibold text-white">
+            {CLIENT_REVIEWS_TITLE[locale] || 'Client Reviews'}
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {schema.reviews.map((r, i) => (
               <div key={i} className="p-5 sm:p-6 rounded-2xl border border-white/10 bg-white/[0.02] flex flex-col gap-3">
