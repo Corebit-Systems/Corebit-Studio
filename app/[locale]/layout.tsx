@@ -200,9 +200,10 @@ export default async function RootLayout({
   const rawDict = await getDictionary(locale as Locale);
   const dict    = rawDict as unknown as LayoutDict;
 
-  // Authoritative JSON-LD Microdata context (ProfessionalService + OfferCatalog + FAQPage unified)
-  const jsonLd = [
-    {
+  // ── Schema.org JSON-LD — 3 independent entity blocks (no array wrapper) ─────
+  // Each entity is output as its own <script> tag to satisfy Google's
+  // structured data validator and prevent the <parent_node> invalid type error.
+  const professionalServiceLd = {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
       "name": "Corebit Studio",
@@ -264,8 +265,9 @@ export default async function RootLayout({
           }
         ]
       }
-    },
-    {
+  };
+
+  const localBusinessLd = {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Corebit Studio",
@@ -358,8 +360,9 @@ export default async function RootLayout({
           "reviewBody": "Exceptional technical expertise, scalable Next.js code, and strict compliance with deadlines. Highly recommended."
         }
       ]
-    },
-    {
+  };
+
+  const faqPageLd = {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": dict.faq?.items?.map((item) => ({
@@ -370,8 +373,7 @@ export default async function RootLayout({
           "text": item.a
         }
       })) || []
-    }
-  ];
+  };
 
   return (
     <html lang={locale} className="dark scroll-smooth">
@@ -382,10 +384,10 @@ export default async function RootLayout({
         <link rel="alternate" href={`${SITE_URL}/sq`} hrefLang="sq" />
         <link rel="alternate" href={`${SITE_URL}/cnr`} hrefLang="sr-ME" />
         <link rel="alternate" href={`${SITE_URL}/srb`} hrefLang="sr-RS" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        {/* 3 independent JSON-LD blocks — no array wrapper to avoid GSC parent_node error */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageLd) }} />
       </head>
       <body
         className={`${inter.className} bg-[#050506] text-white antialiased min-h-screen selection:bg-white/20 selection:text-white flex flex-col overflow-x-hidden`}

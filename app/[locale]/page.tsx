@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 import BentoCard from '@/components/BentoCard';
 import PricingSection from '@/components/PricingSection';
@@ -11,6 +12,57 @@ import SpeedCheckWidget from '@/components/SpeedCheckWidget';
 import TechEcosystem from '@/components/TechEcosystem';
 import { ArrowRight, CheckCircle2, CalendarClock, Utensils, CalendarHeart } from 'lucide-react';
 
+const SITE_URL = 'https://studio.corebitsystems.io';
+
+// ── Per-locale page-level metadata (decoupled from layout inheritance chain) ──
+const HOME_META: Record<string, { title: string; description: string; ogLocale: string }> = {
+  en:  { title: 'Corebit Studio | Web Development & IT Systems for Hotels and Restaurants in Montenegro & Europe', description: 'We build high-converting websites and automation systems for premium hospitality and SMBs. Boost your bookings and revenue within 30 days.', ogLocale: 'en_US' },
+  ru:  { title: 'Corebit Studio | Разработка сайтов и ИТ-систем для отелей и ресторанов в Черногории', description: 'Создаем высококонверсионные сайты и системы автоматизации для премиального бизнеса. Увеличьте поток бронирований и доход вашего отеля или ресторана уже через 30 дней.', ogLocale: 'ru_RU' },
+  cnr: { title: 'Corebit Studio | Izrada sajtova i IT sistema za hotele i restorane u Crnoj Gori', description: 'Izrađujemo visoko-konverzione sajtove i sisteme automatizacije za crnogorski turizam i ugostiteljstvo na Jadranu. Povećajte broj direktnih rezervacija za 30% u roku od 30 dana.', ogLocale: 'sr_ME' },
+  srb: { title: 'Corebit Studio | Izrada sajtova i IT sistema za restorane i auto servise u Srbiji', description: 'Kreiramo visoko-konverzione sajtove i sisteme automatizacije za srpske restorane, auto servise i salone lepote. Više rezervacija i prijava online za 30 dana.', ogLocale: 'sr_RS' },
+  sq:  { title: 'Corebit Studio | Zhvillim Ueb & Sisteme IT për Hotele dhe Restorante në Mal të Zi', description: 'Ne ndërtojmë uebfaqe me konvertim të lartë dhe sisteme automatizimi për hoteleri dhe biznese. Rritni rezervimet dhe të ardhurat tuaja brenda 30 ditëve.', ogLocale: 'sq_AL' },
+};
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const meta     = HOME_META[locale] ?? HOME_META.en;
+  const ogImage  = `${SITE_URL}/og-image-${locale in HOME_META ? locale : 'en'}.png`;
+  const pageUrl  = `${SITE_URL}/${locale}`;
+
+  return {
+    title:       meta.title,
+    description: meta.description,
+    alternates: {
+      canonical: pageUrl,
+      languages: {
+        'x-default': `${SITE_URL}/en`,
+        en:          `${SITE_URL}/en`,
+        ru:          `${SITE_URL}/ru`,
+        'sq-AL':     `${SITE_URL}/sq`,
+        'sr-RS':     `${SITE_URL}/srb`,
+        'sr-ME':     `${SITE_URL}/cnr`,
+      } as Record<string, string>,
+    },
+    openGraph: {
+      type:        'website',
+      url:         pageUrl,
+      siteName:    'Corebit Studio',
+      title:       meta.title,
+      description: meta.description,
+      locale:      meta.ogLocale,
+      images: [{
+        url:    ogImage,
+        width:  1200,
+        height: 630,
+        type:   'image/png',
+      }],
+    },
+  };
+}
+
 export async function generateStaticParams() {
   return [
     { locale: 'en' },
@@ -20,6 +72,7 @@ export async function generateStaticParams() {
     { locale: 'sq' }
   ];
 }
+
 
 interface PageDict {
   hero: {
