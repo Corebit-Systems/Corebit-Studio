@@ -13,6 +13,7 @@ import TechEcosystem from '@/components/TechEcosystem';
 import LeadMagnet from '@/components/LeadMagnet';
 import DevelopmentProcess from '@/components/DevelopmentProcess';
 import TechStackWidget from '@/components/TechStackWidget';
+import ScrollAnimate from '@/components/ScrollAnimate';
 import { ArrowRight, CheckCircle2, CalendarClock, Utensils, CalendarHeart } from 'lucide-react';
 
 const SITE_URL = 'https://studio.corebitsystems.io';
@@ -293,57 +294,61 @@ export default async function HomePage({
       <BeforeAfterSlider dict={dict.before_after} />
 
       {/* 3. About / Архитектура высокой конверсии */}
-      <section className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16 p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-[3rem] bg-white/[0.02] border border-white/10 backdrop-blur-xl relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-72 sm:w-[500px] h-72 sm:h-[500px] bg-emerald-600/10 blur-[150px] rounded-full pointer-events-none" />
+      <ScrollAnimate>
+        <section className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16 p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-[3rem] bg-white/[0.02] border border-white/10 backdrop-blur-xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-72 sm:w-[500px] h-72 sm:h-[500px] bg-emerald-600/10 blur-[150px] rounded-full pointer-events-none" />
 
-        <div className="flex flex-col gap-4 md:flex-1 relative z-10">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">{dict.about.title}</h2>
-          <p className="text-base text-neutral-400 leading-relaxed font-light">{dict.about.desc}</p>
-        </div>
+          <div className="flex flex-col gap-4 md:flex-1 relative z-10">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">{dict.about.title}</h2>
+            <p className="text-base text-neutral-400 leading-relaxed font-light">{dict.about.desc}</p>
+          </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 relative z-10 w-full md:flex-1">
-          {dict.about.badges.map((badge: string, i: number) => (
-            <div key={i} className="flex items-center gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-xs sm:text-sm font-medium min-h-[52px]">
-              <CheckCircle2 size={16} className="text-emerald-500 shrink-0" /> {badge}
-            </div>
-          ))}
-        </div>
-      </section>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 relative z-10 w-full md:flex-1">
+            {dict.about.badges.map((badge: string, i: number) => (
+              <div key={i} className="flex items-center gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-xs sm:text-sm font-medium min-h-[52px]">
+                <CheckCircle2 size={16} className="text-emerald-500 shrink-0" /> {badge}
+              </div>
+            ))}
+          </div>
+        </section>
+      </ScrollAnimate>
 
       {/* 4. Modules / Собственные модули */}
-      <section id="modules" className="flex flex-col gap-8 sm:gap-12">
-        <div className="text-center flex flex-col gap-3 sm:gap-4 px-2">
-          {dict.automation.seo_tagline && (
-            <h3 className="text-xs sm:text-sm font-bold tracking-wider text-emerald-500 uppercase">
-              {dict.automation.seo_tagline}
-            </h3>
-          )}
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">{dict.automation.title}</h2>
-          <p className="text-base sm:text-xl text-neutral-400">{dict.automation.subtitle}</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 items-stretch">
-          <BentoCard
-            title={dict.automation.tables.title}
-            description={dict.automation.tables.desc}
-            icon={<Utensils size={24} aria-label="Restaurant table booking module icon" />}
-            delay={0.1}
-          />
-          <BentoCard
-            title={dict.automation.booking.title}
-            description={dict.automation.booking.desc}
-            icon={<CalendarClock size={24} aria-label="Time-slot booking calendar module icon" />}
-            delay={0.2}
-            className="md:col-span-2"
-          />
-          <BentoCard
-            title={dict.automation.schedule.title}
-            description={dict.automation.schedule.desc}
-            icon={<CalendarHeart size={24} aria-label="Beauty salon appointment scheduler module icon" />}
-            delay={0.3}
-            className="md:col-span-3"
-          />
-        </div>
-      </section>
+      <ScrollAnimate>
+        <section id="modules" className="flex flex-col gap-8 sm:gap-12">
+          <div className="text-center flex flex-col gap-3 sm:gap-4 px-2">
+            {dict.automation.seo_tagline && (
+              <h3 className="text-xs sm:text-sm font-bold tracking-wider text-emerald-500 uppercase">
+                {dict.automation.seo_tagline}
+              </h3>
+            )}
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">{dict.automation.title}</h2>
+            <p className="text-base sm:text-xl text-neutral-400">{dict.automation.subtitle}</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 items-stretch">
+            <BentoCard
+              title={dict.automation.tables.title}
+              description={dict.automation.tables.desc}
+              icon={<Utensils size={24} aria-label="Restaurant table booking module icon" />}
+              delay={0.1}
+            />
+            <BentoCard
+              title={dict.automation.booking.title}
+              description={dict.automation.booking.desc}
+              icon={<CalendarClock size={24} aria-label="Time-slot booking calendar module icon" />}
+              delay={0.2}
+              className="md:col-span-2"
+            />
+            <BentoCard
+              title={dict.automation.schedule.title}
+              description={dict.automation.schedule.desc}
+              icon={<CalendarHeart size={24} aria-label="Beauty salon appointment scheduler module icon" />}
+              delay={0.3}
+              className="md:col-span-3"
+            />
+          </div>
+        </section>
+      </ScrollAnimate>
 
       {/* 5. Portfolio / Впечатляющие цифровые активы */}
       <section id="portfolio" className="flex flex-col gap-8 sm:gap-12 relative">
@@ -418,7 +423,9 @@ export default async function HomePage({
       <TechEcosystem dict={dict.ecosystem} />
 
       {/* 8. Transparent Development Process Timeline */}
-      <DevelopmentProcess locale={locale} />
+      <ScrollAnimate>
+        <DevelopmentProcess locale={locale} />
+      </ScrollAnimate>
 
       {/* 9. Client Reviews Accordion & Feedback Form + FAQ */}
       <ReviewsAccordion dict={(dict as any).reviews} />

@@ -135,12 +135,8 @@ export default function HeroSection({ dict, locale }: HeroSectionProps) {
               href={`/${locale}#contact`}
               className="group relative z-10 w-full sm:w-auto px-6 sm:px-8 py-4 rounded-2xl bg-white text-black font-semibold text-base sm:text-lg hover:bg-neutral-100 transition-all flex items-center justify-center gap-2 min-h-[52px] shadow-[0_4px_24px_rgba(255,255,255,0.1)] overflow-hidden"
             >
-              <motion.div
-                initial={{ x: '-100%' }}
-                whileHover={{ x: '100%' }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-black/5 to-transparent -skew-x-12 pointer-events-none"
-              />
+              {/* Shimmer reflection effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/[0.08] to-transparent pointer-events-none animate-shimmer" />
               <span className="relative z-20 flex items-center gap-2">
                 {dict.cta} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </span>

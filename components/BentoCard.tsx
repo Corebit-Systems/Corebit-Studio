@@ -30,6 +30,8 @@ export default function BentoCard({
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
+  const mousePX = useMotionValue(0);
+  const mousePY = useMotionValue(0);
 
   const springConfig = { damping: 20, stiffness: 150, mass: 0.5 };
   const mouseXSpring = useSpring(x, springConfig);
@@ -40,15 +42,25 @@ export default function BentoCard({
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
+    if (typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches) return;
+    
     const rect = ref.current.getBoundingClientRect();
     x.set((e.clientX - rect.left) / rect.width - 0.5);
     y.set((e.clientY - rect.top) / rect.height - 0.5);
+    
+    mousePX.set(e.clientX - rect.left);
+    mousePY.set(e.clientY - rect.top);
   };
 
   const handleMouseLeave = () => {
     x.set(0);
     y.set(0);
   };
+
+  const spotlightBg = useTransform(
+    [mousePX, mousePY],
+    ([px, py]) => `radial-gradient(350px circle at ${px}px ${py}px, rgba(16, 185, 129, 0.09), transparent 80%)`
+  );
 
   const CardContent = (
     <motion.article
@@ -67,6 +79,12 @@ export default function BentoCard({
       <div className="absolute inset-0 rounded-[inherit] shadow-[0_0_50px_rgba(16,185,129,0.15)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-[-1] will-change-opacity" />
 
       <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+      {/* Spotlight glow layer - only rendered on desktops supporting hover */}
+      <motion.div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0 hidden md:block"
+        style={{ background: spotlightBg }}
+      />
 
       <div style={{ transform: 'translateZ(30px)' }} className="flex flex-col h-full">
         {visual && (

@@ -169,9 +169,16 @@ export default function DevelopmentProcess({ locale }: DevelopmentProcessProps) 
               </span>
 
               {/* Description Box */}
-              <div className={`mt-2 md:absolute md:top-24 text-center max-w-[200px] transition-all duration-300 md:opacity-0 md:translate-y-2 pointer-events-none md:z-50 ${
-                isHovered || isCurrentActive ? 'md:opacity-100 md:translate-y-0' : 'md:hidden'
-              }`}>
+              <div 
+                style={{
+                  transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)'
+                }}
+                className={`mt-2 md:absolute md:top-24 text-center max-w-[200px] transition-all duration-500 md:z-50 ${
+                  isHovered || isCurrentActive 
+                    ? 'opacity-100 scale-100 pointer-events-auto translate-y-0 block' 
+                    : 'opacity-0 scale-95 pointer-events-none md:translate-y-1 hidden md:block'
+                }`}
+              >
                 <p className="text-xs text-neutral-400 bg-white/[0.02] border border-white/5 md:bg-neutral-900/90 md:border-white/10 md:backdrop-blur-md px-3 py-2 rounded-lg shadow-xl leading-relaxed font-light">
                   {stepInfo.desc}
                 </p>
