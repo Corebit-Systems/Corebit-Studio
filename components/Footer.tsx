@@ -27,14 +27,7 @@ export default function Footer({ dict, locale }: FooterProps) {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[100px] bg-emerald-500/10 blur-[100px] pointer-events-none" />
 
-      {/* Glowing CTA Button — glow via before: pseudo-element (GPU-composited opacity, not box-shadow) */}
-      <a
-        href="#contact"
-        className="group relative inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-10 py-4 sm:py-5 mb-10 sm:mb-16 rounded-full bg-white text-black font-bold text-lg sm:text-xl hover:scale-105 transition-transform active:scale-95 whitespace-nowrap before:content-[''] before:absolute before:inset-0 before:rounded-full before:shadow-[0_0_60px_rgba(255,255,255,0.5)] before:opacity-50 before:transition-opacity before:duration-300 hover:before:opacity-100"
-      >
-        {dict.footer.cta_btn}
-        <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-      </a>
+
 
       <div className="max-w-7xl mx-auto flex flex-col items-center gap-8 sm:gap-12 w-full">
         {/* Contact cards */}

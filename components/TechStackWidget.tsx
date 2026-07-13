@@ -111,12 +111,12 @@ export default function TechStackWidget({ locale }: TechStackWidgetProps) {
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 mt-16 sm:mt-24">
-      <div className="relative overflow-hidden rounded-2xl sm:rounded-[2.5rem] bg-[#050506]/60 border border-neutral-800 backdrop-blur-md p-6 sm:p-10 shadow-2xl">
+      <div className="relative overflow-hidden rounded-2xl sm:rounded-[2.5rem] bg-[#050506]/80 border border-white/10 backdrop-blur-md p-6 sm:p-10 shadow-2xl">
         {/* Glow effect */}
         <div className="absolute top-0 left-0 w-64 h-64 bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none" />
 
         {/* Widget Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-neutral-800 pb-6 mb-8 relative z-10">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/10 pb-6 mb-8 relative z-10">
           <div>
             <span className="text-xs font-bold text-emerald-500 uppercase tracking-widest">
               Live Infrastructure

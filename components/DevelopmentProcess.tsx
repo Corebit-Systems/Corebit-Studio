@@ -89,17 +89,18 @@ const PROCESS_TEXTS: Record<Locale, {
 export default function DevelopmentProcess({ locale }: DevelopmentProcessProps) {
   const texts = PROCESS_TEXTS[locale] || PROCESS_TEXTS.en;
   const [hoveredStep, setHoveredStep] = useState<string | null>(null);
+  const [activeStepId, setActiveStepId] = useState<string>('analytics');
 
-  const stepsList: Step[] = [
-    { id: 'analytics', icon: <Shield size={20} />, active: false },
-    { id: 'design', icon: <Sparkles size={20} />, active: false },
-    { id: 'development', icon: <Terminal size={20} />, active: true },
-    { id: 'testing', icon: <Activity size={20} />, active: false },
-    { id: 'release', icon: <Rocket size={20} />, active: false }
+  const stepsList = [
+    { id: 'analytics', icon: <Shield size={20} /> },
+    { id: 'design', icon: <Sparkles size={20} /> },
+    { id: 'development', icon: <Terminal size={20} /> },
+    { id: 'testing', icon: <Activity size={20} /> },
+    { id: 'release', icon: <Rocket size={20} /> }
   ];
 
   return (
-    <section className="flex flex-col gap-8 sm:gap-12 relative w-full overflow-hidden">
+    <section className="flex flex-col gap-8 sm:gap-12 relative w-full overflow-visible">
       <div className="text-center flex flex-col gap-3 sm:gap-4 px-2">
         <span className="text-xs sm:text-sm font-bold tracking-wider text-emerald-500 uppercase">
           OUR METHODOLOGY
@@ -113,7 +114,7 @@ export default function DevelopmentProcess({ locale }: DevelopmentProcessProps) 
       </div>
 
       {/* Interactive Timeline Layout */}
-      <div className="relative flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 max-w-5xl w-full mx-auto px-4 py-8">
+      <div className="relative flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 max-w-5xl w-full mx-auto px-4 py-8 overflow-visible">
         
         {/* Horizontal Connector Line for Desktop */}
         <div className="absolute top-[52px] left-[5%] right-[5%] h-[2px] bg-white/10 hidden md:block z-0" />
@@ -121,7 +122,7 @@ export default function DevelopmentProcess({ locale }: DevelopmentProcessProps) 
         {stepsList.map((step, idx) => {
           const stepInfo = texts.steps[step.id];
           const isHovered = hoveredStep === step.id;
-          const isCurrentActive = step.active;
+          const isCurrentActive = step.id === activeStepId;
           
           return (
             <div 
@@ -137,6 +138,7 @@ export default function DevelopmentProcess({ locale }: DevelopmentProcessProps) 
 
               {/* Step Circle */}
               <div 
+                onClick={() => setActiveStepId(step.id)}
                 className={`relative w-14 h-14 rounded-full flex items-center justify-center border transition-all duration-300 cursor-pointer ${
                   isCurrentActive 
                     ? 'bg-emerald-500/10 border-emerald-400 text-emerald-400 shadow-[0_0_20px_rgba(52,211,153,0.3)] animate-pulse'
@@ -152,9 +154,12 @@ export default function DevelopmentProcess({ locale }: DevelopmentProcessProps) 
               </div>
 
               {/* Step Title */}
-              <span className={`text-sm sm:text-base font-bold mt-3 transition-colors flex items-center gap-1.5 ${
-                isCurrentActive ? 'text-emerald-400' : 'text-neutral-300 group-hover:text-white'
-              }`}>
+              <span 
+                onClick={() => setActiveStepId(step.id)}
+                className={`text-sm sm:text-base font-bold mt-3 transition-colors flex items-center gap-1.5 cursor-pointer select-none ${
+                  isCurrentActive ? 'text-emerald-400' : 'text-neutral-300 group-hover:text-white'
+                }`}
+              >
                 {stepInfo.title}
                 {isCurrentActive && (
                   <span className="text-[9px] font-bold tracking-widest px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 uppercase inline-block">
@@ -164,7 +169,7 @@ export default function DevelopmentProcess({ locale }: DevelopmentProcessProps) 
               </span>
 
               {/* Description Box */}
-              <div className={`mt-2 md:absolute md:top-24 text-center max-w-[200px] transition-all duration-300 md:opacity-0 md:translate-y-2 pointer-events-none ${
+              <div className={`mt-2 md:absolute md:top-24 text-center max-w-[200px] transition-all duration-300 md:opacity-0 md:translate-y-2 pointer-events-none md:z-50 ${
                 isHovered || isCurrentActive ? 'md:opacity-100 md:translate-y-0' : 'md:hidden'
               }`}>
                 <p className="text-xs text-neutral-400 bg-white/[0.02] border border-white/5 md:bg-neutral-900/90 md:border-white/10 md:backdrop-blur-md px-3 py-2 rounded-lg shadow-xl leading-relaxed font-light">

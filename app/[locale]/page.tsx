@@ -286,13 +286,13 @@ export default async function HomePage({
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24 flex flex-col gap-24 md:gap-32">
 
-      {/* Animated Hero Section */}
+      {/* 1. Animated Hero Section */}
       <HeroSection dict={dict.hero} locale={locale} />
 
-      {/* Before / After visual slider comparison */}
+      {/* 2. Before / After visual slider comparison */}
       <BeforeAfterSlider dict={dict.before_after} />
 
-      {/* About */}
+      {/* 3. About / Архитектура высокой конверсии */}
       <section className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16 p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-[3rem] bg-white/[0.02] border border-white/10 backdrop-blur-xl relative overflow-hidden">
         <div className="absolute top-0 right-0 w-72 sm:w-[500px] h-72 sm:h-[500px] bg-emerald-600/10 blur-[150px] rounded-full pointer-events-none" />
 
@@ -310,10 +310,7 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* Transparent Development Process Timeline */}
-      <DevelopmentProcess locale={locale} />
-
-      {/* Modules */}
+      {/* 4. Modules / Собственные модули */}
       <section id="modules" className="flex flex-col gap-8 sm:gap-12">
         <div className="text-center flex flex-col gap-3 sm:gap-4 px-2">
           {dict.automation.seo_tagline && (
@@ -348,7 +345,7 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* Portfolio */}
+      {/* 5. Portfolio / Впечатляющие цифровые активы */}
       <section id="portfolio" className="flex flex-col gap-8 sm:gap-12 relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[300px] sm:h-[400px] bg-emerald-600/5 blur-[200px] rounded-full pointer-events-none" />
         <div className="text-center flex flex-col gap-3 sm:gap-4 relative z-10 px-2">
@@ -391,18 +388,7 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* Mock Speed Self-Diagnostic Widget */}
-      <SpeedCheckWidget dict={dict.speed_check} />
-
-      {/* Interactive Profit Leakage Calculator */}
-      <RoiCalculator dict={dict.roi} />
-
-      {/* Checklist Lead Magnet */}
-      <LeadMagnet locale={locale} />
-
-      {/* Pricing */}
-      <PricingSection dict={dict.pricing} />
-
+      {/* 6. Diagnostics, Warning Section, Calculator & Lead Magnet */}
       {/* Warning Section: Losing Clients */}
       <section className="flex flex-col md:flex-row items-center gap-8 md:gap-16 p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-[3rem] bg-red-950/10 border border-red-900/20 backdrop-blur-xl relative overflow-hidden">
         <div className="absolute top-0 right-0 w-72 sm:w-[500px] h-72 sm:h-[500px] bg-red-600/5 blur-[150px] rounded-full pointer-events-none" />
@@ -419,20 +405,33 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* Interactive Business IT Ecosystem Diagram */}
+      {/* Mock Speed Self-Diagnostic Widget */}
+      <SpeedCheckWidget dict={dict.speed_check} />
+
+      {/* Interactive Profit Leakage Calculator */}
+      <RoiCalculator dict={dict.roi} />
+
+      {/* Checklist Lead Magnet */}
+      <LeadMagnet locale={locale} />
+
+      {/* 7. Interactive Business IT Ecosystem Diagram */}
       <TechEcosystem dict={dict.ecosystem} />
 
-      {/* Client Reviews Accordion & Feedback Form */}
+      {/* 8. Transparent Development Process Timeline */}
+      <DevelopmentProcess locale={locale} />
+
+      {/* 9. Client Reviews Accordion & Feedback Form + FAQ */}
       <ReviewsAccordion dict={(dict as any).reviews} />
 
-      {/* FAQ Accordion */}
       <FAQSection dict={dict.faq} />
 
-      {/* Contact */}
-      <ContactForm dict={dict.contact_form} locale={locale} />
+      {/* 10. Pricing & TechStackWidget */}
+      <PricingSection dict={dict.pricing} />
 
-      {/* Corebit Tech Stack & Live Infrastructure Monitor */}
       <TechStackWidget locale={locale} />
+
+      {/* 11. Final Contact Lead Form */}
+      <ContactForm dict={dict.contact_form} locale={locale} />
     </div>
   );
 }
