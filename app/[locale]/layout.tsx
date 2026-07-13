@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
 import AnalyticsConsentProvider from '@/components/AnalyticsConsentProvider';
+import FloatingWidgets from '@/components/FloatingWidgets';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 
 const inter = Inter({ subsets: ['latin', 'cyrillic'], display: 'swap', weight: ['400', '500', '700'] });
@@ -407,6 +408,9 @@ export default async function RootLayout({
 
         {/* Vercel telemetry — loaded only after affirmative cookie consent (GDPR/ePrivacy) */}
         <AnalyticsConsentProvider />
+
+        {/* Global floating user utilities (FAB contact menu + Scroll-to-top) */}
+        <FloatingWidgets locale={locale as Locale} />
       </body>
     </html>
   );

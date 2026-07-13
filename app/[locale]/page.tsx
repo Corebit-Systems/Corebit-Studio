@@ -10,6 +10,8 @@ import ReviewsAccordion from '@/components/ReviewsAccordion';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider';
 import SpeedCheckWidget from '@/components/SpeedCheckWidget';
 import TechEcosystem from '@/components/TechEcosystem';
+import LeadMagnet from '@/components/LeadMagnet';
+import DevelopmentProcess from '@/components/DevelopmentProcess';
 import { ArrowRight, CheckCircle2, CalendarClock, Utensils, CalendarHeart } from 'lucide-react';
 
 const SITE_URL = 'https://studio.corebitsystems.io';
@@ -307,6 +309,9 @@ export default async function HomePage({
         </div>
       </section>
 
+      {/* Transparent Development Process Timeline */}
+      <DevelopmentProcess locale={locale} />
+
       {/* Modules */}
       <section id="modules" className="flex flex-col gap-8 sm:gap-12">
         <div className="text-center flex flex-col gap-3 sm:gap-4 px-2">
@@ -390,6 +395,9 @@ export default async function HomePage({
 
       {/* Interactive Profit Leakage Calculator */}
       <RoiCalculator dict={dict.roi} />
+
+      {/* Checklist Lead Magnet */}
+      <LeadMagnet locale={locale} />
 
       {/* Pricing */}
       <PricingSection dict={dict.pricing} />
