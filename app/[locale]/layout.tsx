@@ -33,17 +33,17 @@ const LOCALE_META: Record<
   },
   cnr: {
     title:       'Corebit Studio | Izrada sajtova i IT sistema za hotele i restorane u Crnoj Gori',
-    description: 'Izrađujemo visoko-konverzione sajtove i sisteme automatizacije za premijum ugostiteljstvo i biznise. Povećajte broj rezervacija i prihode u roku od 30 dana.',
+    description: 'Izrađujemo visoko-konverzione sajtove i sisteme automatizacije za crnogorski turizam i ugostiteljstvo na Jadranu. Povećajte broj direktnih rezervacija za 30% u roku od 30 dana.',
     ogLocale:    'sr_ME',
-    twitterDesc: 'Izrada sajtova i online rezervacionih sistema za hotele i restorane u Crnoj Gori. Povećajte profit.',
-    keywords:    ['izrada sajtova za hotele crna gora', 'automatizacija restorana budva', 'it usluge crna gora', 'veb dizajn crna gora', 'Corebit Studio'],
+    twitterDesc: 'Izrada sajtova i online rezervacionih sistema za hotele i restorane u Crnoj Gori — Budva, Tivat, Kotor.',
+    keywords:    ['izrada sajtova za hotele crna gora', 'automatizacija restorana budva tivat', 'it usluge crna gora', 'veb dizajn crna gora', 'Corebit Studio'],
   },
   srb: {
-    title:       'Corebit Studio | Izrada sajtova i IT sistema za hotele i restorane u Crnoj Gori',
-    description: 'Izrađujemo visoko-konverzione sajtove i sisteme automatizacije za premijum ugostiteljstvo i biznise. Povećajte broj rezervacija i prihode u roku od 30 dana.',
+    title:       'Corebit Studio | Izrada sajtova i IT sistema za restorane i auto servise u Srbiji',
+    description: 'Kreiramo visoko-konverzione sajtove i sisteme automatizacije za srpske restorane, auto servise i salone lepote. Više rezervacija i prijava online za 30 dana.',
     ogLocale:    'sr_RS',
-    twitterDesc: 'Izrada sajtova i online rezervacionih sistema za hotele i restorane u Crnoj Gori. Povećajte profit.',
-    keywords:    ['izrada sajtova za hotele crna gora', 'automatizacija restorana budva', 'it usluge crna gora', 'veb dizajn crna gora', 'Corebit Studio'],
+    twitterDesc: 'Izrada sajtova i sistema za online rezervacije za restorane, auto servise i salone lepote u Srbiji — Beograd, Novi Sad.',
+    keywords:    ['izrada sajtova za restorane srbija', 'automatizacija auto servisa beograd', 'it usluge srbija', 'veb dizajn beograd novi sad', 'Corebit Studio'],
   },
   sq: {
     title:       'Corebit Studio | Zhvillim Ueb & Sisteme IT për Hotele dhe Restorante në Mal të Zi',
@@ -381,7 +381,7 @@ export default async function RootLayout({
         <link rel="alternate" href={`${SITE_URL}/ru`} hrefLang="ru" />
         <link rel="alternate" href={`${SITE_URL}/sq`} hrefLang="sq" />
         <link rel="alternate" href={`${SITE_URL}/cnr`} hrefLang="sr-ME" />
-        <link rel="alternate" href={`${SITE_URL}/srb`} hrefLang="sr-ME" />
+        <link rel="alternate" href={`${SITE_URL}/srb`} hrefLang="sr-RS" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

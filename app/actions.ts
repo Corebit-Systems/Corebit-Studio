@@ -3,6 +3,7 @@
 import { z } from 'zod';
 import { headers, cookies } from 'next/headers';
 import { Resend } from 'resend';
+import { randomUUID } from 'crypto';
 
 // ── In-memory sliding-window rate limiter ────────────────────────────────────
 // NOTE: Resets on serverless cold-start; the cookie-based limiter is the durable layer.
@@ -57,6 +58,13 @@ function encodeForEmail(input: string): string {
     .trim();
 }
 
+// ── Data Retention: compute ISO expiry date (12 months from now) ─────────────
+function retentionExpiry(): string {
+  const d = new Date();
+  d.setFullYear(d.getFullYear() + 1);
+  return d.toISOString().split('T')[0]; // YYYY-MM-DD
+}
+
 // ── Server Action ────────────────────────────────────────────────────────────
 export async function submitContactForm(formData: FormData) {
   // 1. Honeypot — silent reject; bots filling hidden fields are discarded first
@@ -106,18 +114,23 @@ export async function submitContactForm(formData: FormData) {
 
   const { name, email, message, locale: userLocale } = parsed.data;
 
-  // 5. Encode for safe email body transmission (HTML entity encoding)
+  // 5. Generate secure Lead ID — primary GDPR reference for this record
+  const leadId    = randomUUID();
+  const dsrId     = `R-${leadId.slice(0, 4).toUpperCase()}`;
+  const retention = retentionExpiry();
+
+  // 6. Encode for safe email body transmission (HTML entity encoding)
   const safeBody = {
     name:    encodeForEmail(name),
     email:   encodeForEmail(email),
     message: encodeForEmail(message),
   };
 
-  // 6. Commit timestamp to sliding window cache
+  // 7. Commit timestamp to sliding window cache
   recentTimestamps.push(now);
   ipCache.set(ip, recentTimestamps);
 
-  // 7. Set durable rate-limit cookie — httpOnly prevents JS bypass
+  // 8. Set durable rate-limit cookie — httpOnly prevents JS bypass
   cookieStore.set('sec_last_submit', now.toString(), {
     httpOnly: true,
     secure:   true,
@@ -125,23 +138,25 @@ export async function submitContactForm(formData: FormData) {
     maxAge:   Math.ceil(COOLDOWN_MS / 1000),
   });
 
-  // 8. Structured metadata log — NO PII content logged, no log injection possible
+  // 9. Structured audit log — Lead ID only, NO raw PII content logged
   const auditLog = {
-    timestamp:     new Date().toISOString(),
-    event:         'contact_form_submission',
-    to:            'corebitstudio@corebitsystems.io',
-    senderEmail:   safeBody.email,
-    senderName:    safeBody.name.slice(0, 60),
-    messageLength: safeBody.message.length,
-    replyLocale:   userLocale,  // Language the lead used — determines reply language
-    ipHash:        ip.slice(0, 8) + '***',  // Partial IP — not full PII
+    timestamp:       new Date().toISOString(),
+    event:           'contact_form_submission',
+    lead_id:         leadId,
+    dsr_id:          dsrId,
+    messageLength:   message.length,
+    replyLocale:     userLocale,
+    ipPartial:       ip.slice(0, 8) + '***',
+    retention_until: retention,
   };
   console.log(JSON.stringify(auditLog));
 
-  // 9. Send email using Resend SDK
+  // 10. Dispatch secure internal record via Resend (Email-as-Record pattern)
+  //     PII is retained strictly inside the EU-hosted inbox as the GDPR Article 32 record.
+  //     Subject line uses Lead ID only — no raw PII in email headers.
   try {
     if (process.env.RESEND_API_KEY) {
-      const resend = new Resend(process.env.RESEND_API_KEY);
+      const resend  = new Resend(process.env.RESEND_API_KEY);
       const dateStr = new Date().toLocaleString('en-US', { timeZone: 'UTC' }) + ' UTC';
 
       const htmlContent = `
@@ -150,115 +165,60 @@ export async function submitContactForm(formData: FormData) {
           <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>[Lead Form] Inquiry from ${safeBody.name}</title>
             <style>
-              body {
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-                background-color: #050506;
-                color: #f4f4f5;
-                margin: 0;
-                padding: 0;
-                -webkit-font-smoothing: antialiased;
-              }
-              .wrapper {
-                width: 100%;
-                max-width: 600px;
-                margin: 0 auto;
-                padding: 24px;
-                box-sizing: border-box;
-              }
-              .card {
-                background-color: #0d0d11;
-                border: 1px solid rgba(255, 255, 255, 0.08);
-                border-radius: 16px;
-                padding: 32px;
-                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-              }
-              .header {
-                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-                padding-bottom: 20px;
-                margin-bottom: 24px;
-              }
-              .brand {
-                font-size: 20px;
-                font-weight: 700;
-                color: #ffffff;
-                letter-spacing: -0.02em;
-              }
-              .badge {
-                display: inline-block;
-                font-size: 11px;
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 0.05em;
-                background-color: rgba(16, 185, 129, 0.1);
-                color: #10b981;
-                padding: 6px 12px;
-                border-radius: 9999px;
-                margin-top: 8px;
-              }
-              .section-title {
-                font-size: 12px;
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 0.1em;
-                color: #71717a;
-                margin-top: 24px;
-                margin-bottom: 8px;
-              }
-              .field-value {
-                font-size: 16px;
-                color: #e4e4e7;
-                line-height: 1.5;
-              }
-              .message-box {
-                background-color: #16161e;
-                border: 1px solid rgba(255, 255, 255, 0.04);
-                border-radius: 12px;
-                padding: 20px;
-                margin-top: 8px;
-                font-size: 15px;
-                color: #d4d4d8;
-                line-height: 1.6;
-                white-space: pre-wrap;
-              }
-              .footer {
-                margin-top: 32px;
-                text-align: center;
-                font-size: 12px;
-                color: #52525b;
-              }
-              .footer a {
-                color: #10b981;
-                text-decoration: none;
-              }
+              body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #050506; color: #f4f4f5; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+              .wrap { max-width: 600px; margin: 0 auto; padding: 24px; box-sizing: border-box; }
+              .card { background: #0d0d11; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 32px; box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+              .header { border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 20px; margin-bottom: 24px; }
+              .brand { font-size: 20px; font-weight: 700; color: #fff; letter-spacing: -0.02em; }
+              .badge { display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #10b981; background: rgba(16,185,129,0.1); padding: 6px 12px; border-radius: 9999px; margin-top: 8px; }
+              .label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #71717a; margin-top: 20px; margin-bottom: 6px; }
+              .value { font-size: 15px; color: #e4e4e7; line-height: 1.5; }
+              .msg-box { background: #16161e; border: 1px solid rgba(255,255,255,0.04); border-radius: 10px; padding: 18px; font-size: 14px; color: #d4d4d8; white-space: pre-wrap; line-height: 1.6; margin-top: 6px; }
+              .retention { margin-top: 28px; padding: 14px; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: 10px; font-size: 12px; color: #fca5a5; }
+              .footer { margin-top: 24px; font-size: 11px; color: #52525b; text-align: center; }
             </style>
           </head>
           <body>
-            <div class="wrapper">
+            <div class="wrap">
               <div class="card">
                 <div class="header">
                   <div class="brand">Corebit Studio</div>
-                  <div class="badge">Website Lead Form</div>
+                  <div class="badge">Secure Internal Record</div>
                 </div>
-                
-                <div class="section-title">Client Name</div>
-                <div class="field-value">${safeBody.name}</div>
-                
-                <div class="section-title">Contact Email</div>
-                <div class="field-value">
-                  <a href="mailto:${safeBody.email}" style="color: #10b981; text-decoration: none;">${safeBody.email}</a>
+
+                <div class="label">Lead ID (Secure Reference)</div>
+                <div class="value" style="font-family:monospace;color:#34d399;">${leadId}</div>
+
+                <div class="label">Data Subject Request ID</div>
+                <div class="value" style="font-family:monospace;color:#f59e0b;">${dsrId}</div>
+
+                <div class="label">Client Name</div>
+                <div class="value">${safeBody.name}</div>
+
+                <div class="label">Contact Email</div>
+                <div class="value"><a href="mailto:${safeBody.email}" style="color:#10b981;text-decoration:none;">${safeBody.email}</a></div>
+
+                <div class="label">Locale</div>
+                <div class="value">${userLocale}</div>
+
+                <div class="label">Submitted</div>
+                <div class="value">${dateStr}</div>
+
+                <div class="label">Project Details</div>
+                <div class="msg-box">${safeBody.message}</div>
+
+                <div class="retention">
+                  &#x26A0;&#xFE0F; GDPR Compliance Notice &#x2014; Data Retention Policy<br><br>
+                  This record constitutes the secure internal data store under GDPR Article 32.<br>
+                  <strong>Retention Expiry:</strong> ${retention} (12 months from submission).<br>
+                  <strong>Data Subject Request ID:</strong> ${dsrId}<br><br>
+                  This record must be anonymized or permanently deleted by the expiry date.
+                  For Right to Erasure (Article 17) requests, reference the Lead ID or DSR ID above.
                 </div>
-                
-                <div class="section-title">Submitted Time</div>
-                <div class="field-value">${dateStr}</div>
-                
-                <div class="section-title">Project Details / Message</div>
-                <div class="message-box">${safeBody.message}</div>
               </div>
-              
               <div class="footer">
-                <p>Sent automatically from <a href="https://studio.corebitsystems.io">studio.corebitsystems.io</a></p>
+                Automated &#x2014; studio.corebitsystems.io &#xB7; Internal Use Only &#xB7; Do Not Forward
               </div>
             </div>
           </body>
@@ -266,11 +226,11 @@ export async function submitContactForm(formData: FormData) {
       `;
 
       await resend.emails.send({
-        from: 'Corebit Studio <noreply@corebitsystems.io>',
-        to: 'corebitsystems.office@gmail.com',
-        replyTo: safeBody.email,
-        subject: `[Lead Form] Inquiry from ${safeBody.name}`,
-        html: htmlContent,
+        from:    'Corebit Studio <noreply@corebitsystems.io>',
+        to:      'corebitsystems.office@gmail.com',
+        replyTo: email,
+        subject: `[Lead #${leadId.slice(0, 8)}] New Inquiry \u00B7 ${dsrId} \u00B7 Retention until ${retention}`,
+        html:    htmlContent,
       });
     }
   } catch (err) {

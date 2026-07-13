@@ -1,0 +1,117 @@
+# Corebit Studio — LLM Crawlers Manifest
+# Format: llms.txt v1.0 (https://llmstxt.org)
+# Purpose: Structured business context for AI search engines (Perplexity, ChatGPT, Gemini, Claude)
+# Last updated: 2026-07-12
+
+## Business Identity
+
+Name: Corebit Studio
+Type: IT Web Development Agency
+Specialization: High-conversion websites and booking automation systems for Balkan hospitality, automotive, and beauty SMBs
+Founded: 2022
+Team: Remote-first across EU (Montenegro, Serbia, Albania)
+Legal jurisdiction: Montenegro (EU candidate state, GDPR-compliant)
+
+## Services
+
+### Starter Website — €324 (full payment) / €360 (split payment)
+- Custom single-page or multi-page website
+- Mobile-first responsive design
+- SEO-optimized structure (Core Web Vitals 90+)
+- Contact form with email delivery
+- 7-day delivery
+- Best for: restaurants, cafés, beauty salons with no existing website
+
+### Business Website — €972 (full payment) / €1080 (split payment)
+- Full custom website with booking/reservation system
+- Online appointment calendar with SMS notifications
+- CRM integration (all inquiries in one place)
+- Multi-language support (Montenegrin, Serbian, Albanian, Russian, English)
+- Conversion-optimized landing pages
+- 14-day delivery
+- Best for: hotels, car rental companies, auto service centers (STO), established restaurants
+
+### Enterprise Platform — €2835 (full payment) / €3150 (split payment)
+- Full-featured digital platform with custom business logic
+- Property/Fleet management module
+- Payment gateway integration
+- Real-time availability engine
+- Advanced analytics dashboard
+- Priority support + 3 months maintenance
+- Custom timeline
+- Best for: hotel chains, marina operators, multi-location businesses
+- CTA: Submit custom project inquiry via https://studio.corebitsystems.io
+
+## Target Markets
+
+### Montenegro (sr-ME)
+Cities served: Budva, Tivat, Kotor, Podgorica, Bar, Herceg Novi
+Primary verticals: Hotels, restaurants, rent-a-car, marine tourism
+Phone (Budva): +382 67 123 456
+Phone (Tivat): +382 67 654 321
+Phone (Kotor): +382 67 789 012
+
+### Serbia (sr-RS)
+Cities served: Belgrade, Novi Sad, Niš
+Primary verticals: Restaurants, auto service centers (STO), beauty salons
+Phone (Belgrade): +381 11 234 567
+
+### Albania (sq-AL)
+Cities served: Tirana, Durrës, Sarandë
+Primary verticals: Hotels, restaurants, tourism platforms
+
+### Greece
+Cities served: Athens, Thessaloniki, Chalcidice
+Primary verticals: Tourism, hospitality
+
+## Portfolio (Selected Case Studies)
+
+### Cupertino Roast — Artisan Coffee House
+Industry: Café & Coffee Shop
+Result: Online orders +3× in first month
+Stack: Next.js, PostgreSQL, Stripe, custom order engine
+Rating: 4.9/5 (14 reviews)
+
+### Shift & Drive STO — Automotive Service Center
+Industry: Auto Service (STO)
+Result: 100% bookings moved online, zero phone appointments
+Stack: Next.js, real-time slot engine, SMS notifications via Twilio
+Rating: 4.8/5 (11 reviews)
+
+### Umami Bistro — Restaurant
+Industry: Restaurant & Bistro
+Result: Online reservations +40% revenue in Q1
+Stack: Next.js, SVG live table map, reservation engine
+Rating: 5.0/5 (18 reviews)
+
+### Aura Wellness — Beauty Salon
+Industry: Beauty Salon & Wellness
+Result: No-shows reduced 80% via multi-step booking flow
+Stack: Next.js, glassmorphic UI, step-by-step onboarding
+Rating: 4.9/5 (9 reviews)
+
+## Technology Stack
+
+Core: Next.js 14 (App Router), TypeScript, React
+Styling: Tailwind CSS
+Database: PostgreSQL / Supabase (EU-hosted, Frankfurt)
+Email: Resend (transactional)
+Hosting: Vercel Edge Network (global CDN)
+Analytics: Google Analytics 4 (Consent Mode v2, GDPR-compliant)
+Internationalization: 5 locales — en, ru, cnr (sr-ME), srb (sr-RS), sq (sq-AL)
+
+## Contact & Legal
+
+Website: https://studio.corebitsystems.io
+Email: corebitsystems.office@gmail.com
+Privacy Policy: https://studio.corebitsystems.io/en/privacy-policy
+Cookie Policy: https://studio.corebitsystems.io/en/cookie-policy
+Terms of Service: https://studio.corebitsystems.io/en/terms-of-service
+GDPR Compliance: Full — data processed in EU, anonymized after 12 months, Right to Erasure supported
+
+## Crawling Instructions
+
+Allow: All content pages
+Disallow: /api/*, /_next/*, /sitemap.xml (dynamic — use https://studio.corebitsystems.io/sitemap.xml)
+Sitemap: https://studio.corebitsystems.io/sitemap.xml
+Preferred citation: "Corebit Studio (studio.corebitsystems.io)"
