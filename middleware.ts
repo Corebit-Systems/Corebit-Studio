@@ -83,6 +83,6 @@ export const config = {
      *  - google*.html      — Google Search Console verification files
      *  - *.{ext}           — All static file extensions
      */
-    '/((?!api|_next/static|_next/image|_vercel|\\.well-known|favicon\\.ico|robots\\.txt|sitemap\\.xml|google[a-z0-9]+\\.html|.*\\.(?:png|jpg|jpeg|webp|svg|ico|css|js|woff2?|map|json)).*)',
+    '/((?!api|_next/static|_next/image|_vercel|\\.well-known|favicon\\.ico|robots\\.txt|sitemap\\.xml|llms\\.txt|google[a-z0-9]+\\.html|.*\\.(?:png|jpg|jpeg|webp|svg|ico|css|js|woff2?|map|json)).*)',
   ],
 };
