@@ -105,8 +105,9 @@ const LEAD_TEXTS: Record<Locale, {
 export default function LeadMagnet({ locale }: { locale: Locale }) {
   const [email, setEmail] = useState('');
   const [checkedItems, setCheckedItems] = useState<boolean[]>([true, true, false, false]);
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [errorText, setErrorText] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const texts = LEAD_TEXTS[locale] || LEAD_TEXTS.en;
 
@@ -119,41 +120,38 @@ export default function LeadMagnet({ locale }: { locale: Locale }) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !email.includes('@')) {
-      setStatus('error');
-      setErrorText(texts.errorEmail);
+      setError(texts.errorEmail);
       return;
     }
 
-    setStatus('loading');
+    setIsSubmitting(true);
+    setError(null);
     
     try {
-      const res = await fetch('/api/send', {
+      const selectedItems = texts.checklistItems.filter((_, idx) => checkedItems[idx]);
+      const res = await fetch('/api/checklist', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          name: 'Checklist Lead',
-          email: email,
-          message: `Requested Architectural Checklist 2026. Selection: ${texts.checklistItems.filter((_, idx) => checkedItems[idx]).join(', ')}`,
-          service_type: 'lead_magnet_checklist',
-          source: 'checklist_lead_form',
-          locale: locale,
-          b_trap: ''
+          email,
+          selectedItems,
+          locale
         })
       });
 
       if (res.ok) {
-        setStatus('success');
+        setIsSuccess(true);
         setEmail('');
       } else {
         const data = await res.json().catch(() => ({}));
-        setStatus('error');
-        setErrorText(data.error || 'Failed to process. Please try again.');
+        setError(data.error || 'Failed to process. Please try again.');
       }
     } catch (err) {
-      setStatus('error');
-      setErrorText('Network error. Please try again.');
+      setError('Network error. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -203,7 +201,7 @@ export default function LeadMagnet({ locale }: { locale: Locale }) {
 
         {/* Lead Form Box */}
         <div className="flex-1 flex flex-col justify-center bg-white/[0.02] border border-white/5 backdrop-blur-md rounded-2xl p-6 sm:p-8">
-          {status === 'success' ? (
+          {isSuccess ? (
             <div className="text-center flex flex-col items-center gap-4 py-8 animate-in fade-in duration-300">
               <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-500">
                 <Download size={28} className="animate-bounce" />
@@ -222,6 +220,7 @@ export default function LeadMagnet({ locale }: { locale: Locale }) {
                   <input
                     type="email"
                     required
+                    disabled={isSubmitting}
                     id="lead-email"
                     name="email"
                     autoComplete="email"
@@ -233,16 +232,16 @@ export default function LeadMagnet({ locale }: { locale: Locale }) {
                 </div>
               </div>
 
-              {status === 'error' && (
-                <p className="text-xs font-medium text-red-500">{errorText}</p>
+              {error && (
+                <p className="text-xs font-medium text-red-500">{error}</p>
               )}
 
               <button
                 type="submit"
-                disabled={status === 'loading'}
+                disabled={isSubmitting}
                 className="group relative w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white text-black font-bold text-sm hover:scale-[1.02] transition-all active:scale-[0.98] disabled:opacity-50 disabled:hover:scale-100 cursor-pointer"
               >
-                {status === 'loading' ? (
+                {isSubmitting ? (
                   <>
                     <Loader2 size={16} className="animate-spin" />
                     <span>{texts.submitting}</span>
