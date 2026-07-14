@@ -154,6 +154,9 @@ export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
   };
   const isLoading = status === 'submitted' || status === 'streaming';
   const isOnline = !error;
+  const isLeadSent = messages.some(m =>
+    m.parts?.some(p => p.type === 'tool-sendLeadToManager')
+  );
 
   // Parse UTM tags
   useEffect(() => {
@@ -461,13 +464,14 @@ export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
                     type="text"
                     value={input}
                     onChange={onInputChange}
-                    placeholder={texts.placeholder}
-                    className="flex-1 bg-zinc-900 border border-white/5 focus:border-emerald-500/30 text-white rounded-xl px-3 py-2.5 text-xs sm:text-sm font-light outline-none transition-colors pr-10"
+                    disabled={isLeadSent}
+                    placeholder={isLeadSent ? "Заявка отправлена, чат закрыт" : texts.placeholder}
+                    className="flex-1 bg-zinc-900 border border-white/5 focus:border-emerald-500/30 text-white rounded-xl px-3 py-2.5 text-xs sm:text-sm font-light outline-none transition-colors pr-10 disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                   <button 
                     type="submit"
-                    disabled={!input.trim() || isLoading}
-                    className="absolute right-1.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg bg-emerald-500 hover:bg-emerald-400 disabled:bg-zinc-800 text-white disabled:text-zinc-500 flex items-center justify-center transition-colors cursor-pointer"
+                    disabled={!input.trim() || isLoading || isLeadSent}
+                    className="absolute right-1.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg bg-emerald-500 hover:bg-emerald-400 disabled:bg-zinc-800 text-white disabled:text-zinc-500 flex items-center justify-center transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Send size={14} />
                   </button>
