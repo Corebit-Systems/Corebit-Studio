@@ -144,7 +144,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
   return (
     <div
       id="contact"
-      className="w-full max-w-2xl mx-auto p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-[2.5rem] md:rounded-[3rem] bg-white/[0.02] border border-white/10 backdrop-blur-2xl relative overflow-hidden shadow-2xl"
+      className="w-full max-w-2xl mx-auto p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-[2.5rem] md:rounded-[3rem] bg-white/[0.03] border border-white/10 hover:border-emerald-500/20 backdrop-blur-2xl relative overflow-hidden shadow-2xl hover:shadow-[0_0_50px_-12px_rgba(16,185,129,0.15)] focus-within:border-emerald-500/30 focus-within:shadow-[0_0_50px_-6px_rgba(16,185,129,0.25)] transition-all duration-500"
     >
       <div className="absolute top-0 right-0 w-48 sm:w-64 h-48 sm:h-64 bg-emerald-600/10 blur-[100px] rounded-full pointer-events-none" />
 

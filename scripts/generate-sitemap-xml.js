@@ -26,7 +26,7 @@ const path = require('path');
 const SITE_URL   = 'https://studio.corebitsystems.io';
 const LOCALES    = ['en', 'ru', 'cnr', 'srb', 'sq'];
 const PORTFOLIOS = ['cupertino-roast', 'shift-drive', 'umami-bistro', 'aura-wellness'];
-const SERVICE_IDS = ['rent_a_car', 'sto', 'restoran', 'salon'];
+const SERVICE_IDS = ['rent_a_car', 'sto', 'restoran', 'salon', 'nekretnine', 'hoteli', 'charter', 'klinike', 'ciscenje', 'transferi'];
 
 const slugMap = JSON.parse(
   fs.readFileSync(path.join(__dirname, '..', 'i18n', 'slug-map.json'), 'utf8'),

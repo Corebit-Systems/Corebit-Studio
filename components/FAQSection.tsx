@@ -16,8 +16,25 @@ interface FAQSectionProps {
 }
 
 export default function FAQSection({ dict }: FAQSectionProps) {
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: (dict.items || []).map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a,
+      },
+    })),
+  };
+
   return (
     <section id="faq" className="w-full max-w-4xl mx-auto flex flex-col gap-8 sm:gap-12 relative z-10 px-2 py-8 sm:py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="text-center flex flex-col gap-3 sm:gap-4">
         <div className="flex justify-center">
           <div className="p-3 bg-emerald-600/10 rounded-2xl w-fit border border-emerald-600/20 text-emerald-500">

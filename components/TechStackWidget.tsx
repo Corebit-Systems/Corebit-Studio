@@ -1,8 +1,7 @@
 // File: C:\dev\Corebit-Studio\components\TechStackWidget.tsx
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Gauge, Layers, Brush, Cloud, Users } from 'lucide-react';
+import { Gauge, Layers, Brush, Cloud } from 'lucide-react';
 import { Locale } from '@/i18n/getDictionary';
 
 interface TechStackWidgetProps {
@@ -12,7 +11,6 @@ interface TechStackWidgetProps {
 const WIDGET_TEXTS: Record<Locale, {
   title: string;
   uptime: string;
-  onlineUsers: string;
   speedLabel: string;
   archLabel: string;
   styleLabel: string;
@@ -25,7 +23,6 @@ const WIDGET_TEXTS: Record<Locale, {
   en: {
     title: 'Corebit Tech Stack: How This Site is Engineered',
     uptime: 'System autonomous · Uptime: 99.99%',
-    onlineUsers: 'Online right now: {users} users',
     speedLabel: 'Loading Speed',
     archLabel: 'Architecture',
     styleLabel: 'Styling Framework',
@@ -38,7 +35,6 @@ const WIDGET_TEXTS: Record<Locale, {
   ru: {
     title: 'Corebit Tech Stack: как устроен этот сайт',
     uptime: 'Система автономна · Аптайм: 99.99%',
-    onlineUsers: 'Прямо сейчас на сайте: {users} онлайн',
     speedLabel: 'Скорость загрузки',
     archLabel: 'Архитектура',
     styleLabel: 'Стилизация',
@@ -51,7 +47,6 @@ const WIDGET_TEXTS: Record<Locale, {
   cnr: {
     title: 'Corebit Tech Stack: Kako je ovaj sajt dizajniran',
     uptime: 'Sistem je autonoman · Uptime: 99.99%',
-    onlineUsers: 'Trenutno na sajtu: {users} korisnika',
     speedLabel: 'Brzina učitavanja',
     archLabel: 'Arhitektura',
     styleLabel: 'Stilizacija',
@@ -64,7 +59,6 @@ const WIDGET_TEXTS: Record<Locale, {
   srb: {
     title: 'Corebit Tech Stack: Kako je ovaj sajt dizajniran',
     uptime: 'Sistem je autonoman · Uptime: 99.99%',
-    onlineUsers: 'Trenutno na sajtu: {users} korisnika',
     speedLabel: 'Brzina učitavanja',
     archLabel: 'Arhitektura',
     styleLabel: 'Stilizacija',
@@ -77,7 +71,6 @@ const WIDGET_TEXTS: Record<Locale, {
   sq: {
     title: 'Corebit Tech Stack: Si është inxhinieruar kjo faqe',
     uptime: 'Sistemi autonom · Uptime: 99.99%',
-    onlineUsers: 'Online tani: {users} përdorues',
     speedLabel: 'Shpejtësia e Ngarkimit',
     archLabel: 'Arkitektura',
     styleLabel: 'Stilizimi',
@@ -90,24 +83,7 @@ const WIDGET_TEXTS: Record<Locale, {
 };
 
 export default function TechStackWidget({ locale }: TechStackWidgetProps) {
-  const [onlineCount, setOnlineCount] = useState(7);
   const texts = WIDGET_TEXTS[locale] || WIDGET_TEXTS.en;
-
-  useEffect(() => {
-    // Periodically fluctuate online user count to simulate real traffic
-    const interval = setInterval(() => {
-      setOnlineCount((prev) => {
-        const delta = Math.random() > 0.5 ? 1 : -1;
-        const nextVal = prev + delta;
-        // Keep within 3-12 range
-        if (nextVal < 3) return 4;
-        if (nextVal > 12) return 11;
-        return nextVal;
-      });
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 mt-16 sm:mt-24">
@@ -136,12 +112,6 @@ export default function TechStackWidget({ locale }: TechStackWidgetProps) {
               <span className="text-xs text-emerald-400 font-medium">
                 {texts.uptime}
               </span>
-            </div>
-
-            {/* Simulated Live User Count */}
-            <div className="flex items-center gap-2 text-xs text-neutral-400 font-light">
-              <Users size={12} className="text-neutral-500 shrink-0" />
-              <span>{texts.onlineUsers.replace('{users}', String(onlineCount))}</span>
             </div>
           </div>
         </div>

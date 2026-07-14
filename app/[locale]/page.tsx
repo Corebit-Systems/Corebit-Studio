@@ -433,7 +433,7 @@ export default async function HomePage({
       <FAQSection dict={dict.faq} />
 
       {/* 10. Pricing & TechStackWidget */}
-      <PricingSection dict={dict.pricing} />
+      <PricingSection dict={dict.pricing} locale={locale} />
 
       <TechStackWidget locale={locale} />
 

@@ -60,7 +60,7 @@ const locations = [
   'saranda', 'skopye', 'ohrid', 'sarajevo', 'mostar', 'trebinje', 'pristina', 'athens', 'thessaloniki', 'chalcidice',
   'zagreb', 'split', 'dubrovnik', 'ljubljana', 'maribor'
 ];
-const services = ['rent-a-car', 'sto', 'restoran', 'salon'];
+const services = ['rent-a-car', 'sto', 'restoran', 'salon', 'nekretnine', 'hoteli', 'charter', 'klinike', 'ciscenje', 'transferi'];
 const locales = ['en', 'ru', 'cnr', 'srb', 'sq'];
 
 
@@ -71,31 +71,61 @@ const serviceNames: Record<string, Record<string, string>> = {
     "rent-a-car": "for car rental",
     "sto": "for auto service (STO)",
     "restoran": "for restaurant and cafe",
-    "salon": "for beauty salon"
+    "salon": "for beauty salon",
+    "nekretnine": "for real estate agency",
+    "hoteli": "for hotel and villa",
+    "charter": "for yacht charter",
+    "klinike": "for medical clinic",
+    "ciscenje": "for cleaning services",
+    "transferi": "for airport transfer"
   },
   ru: {
     "rent-a-car": "для аренды авто",
     "sto": "для автосервиса (СТО)",
     "restoran": "для ресторана и кафе",
-    "salon": "для салона красоты"
+    "salon": "для салона красоты",
+    "nekretnine": "для агентства недвижимости",
+    "hoteli": "для отеля и виллы",
+    "charter": "для аренды яхт",
+    "klinike": "для клиники и стоматологии",
+    "ciscenje": "для клининговой службы",
+    "transferi": "для трансфера и такси"
   },
   cnr: {
     "rent-a-car": "za rent a car",
     "sto": "za auto servis (STO)",
     "restoran": "za restoran i kafić",
-    "salon": "za salon ljepote"
+    "salon": "za salon ljepote",
+    "nekretnine": "za agenciju za nekretnine",
+    "hoteli": "za hotel i vilu",
+    "charter": "za iznajmljivanje jahti",
+    "klinike": "za medicinsku kliniku",
+    "ciscenje": "za usluge čišćenja",
+    "transferi": "za transfere i taksi"
   },
   srb: {
     "rent-a-car": "za rent a car",
     "sto": "za auto servis (STO)",
     "restoran": "za restoran i kafić",
-    "salon": "za salon lepote"
+    "salon": "za salon lepote",
+    "nekretnine": "za agenciju za nekretnine",
+    "hoteli": "za hotel i vilu",
+    "charter": "za iznajmljivanje jahti",
+    "klinike": "za medicinsku kliniku",
+    "ciscenje": "za usluge čišćenja",
+    "transferi": "za transfere i taksi"
   },
   sq: {
     "rent-a-car": "për makina me qira",
     "sto": "për auto-servis",
     "restoran": "për restorant dhe kafene",
-    "salon": "për sallon bukurie"
+    "salon": "për sallon bukurie",
+    "nekretnine": "për agjenci imobiliare",
+    "hoteli": "për hotel dhe vilë",
+    "charter": "për rent a jaht",
+    "klinike": "për klinikë mjekësore",
+    "ciscenje": "për shërbime pastrimi",
+    "transferi": "për transferta dhe taksi"
   }
 };
 
@@ -105,35 +135,65 @@ const serviceReplacements: Record<string, Record<string, string>> = {
     "rent-a-car": "car rentals",
     "sto": "auto services",
     "restoran": "restaurants",
-    "salon": "beauty salons"
+    "salon": "beauty salons",
+    "nekretnine": "real estate agencies",
+    "hoteli": "hotels and villas",
+    "charter": "yacht charters",
+    "klinike": "medical clinics",
+    "ciscenje": "cleaning services",
+    "transferi": "airport transfers"
   },
   ru: {
     phrase: "ресторанов, автосервисов и аренды авто",
     "rent-a-car": "аренды авто",
     "sto": "автосервисов",
     "restoran": "ресторанов",
-    "salon": "салонов красоты"
+    "salon": "салонов красоты",
+    "nekretnine": "агентств недвижимости",
+    "hoteli": "отелей и вилл",
+    "charter": "аренды яхт",
+    "klinike": "медицинских клиник",
+    "ciscenje": "клининговых услуг",
+    "transferi": "трансферов и такси"
   },
   cnr: {
     phrase: "restorane, auto servise i rent a car",
     "rent-a-car": "rent a car",
     "sto": "auto servise",
     "restoran": "restorane",
-    "salon": "salone ljepote"
+    "salon": "salone ljepote",
+    "nekretnine": "agencije za nekretnine",
+    "hoteli": "hotele i vile",
+    "charter": "iznajmljivanje jahti",
+    "klinike": "medicinske klinike",
+    "ciscenje": "usluge čišćenja",
+    "transferi": "transfere i taksi"
   },
   srb: {
     phrase: "restorane, auto servise i rent a car",
     "rent-a-car": "rent a car",
     "sto": "auto servise",
     "restoran": "restorane",
-    "salon": "salone lepote"
+    "salon": "salone lepote",
+    "nekretnine": "agencije za nekretnine",
+    "hoteli": "hotele i vile",
+    "charter": "iznajmljivanje jahti",
+    "klinike": "medicinske klinike",
+    "ciscenje": "usluge čišćenja",
+    "transferi": "transfere i taksi"
   },
   sq: {
     phrase: "restorante, auto-servise dhe makina me qira",
     "rent-a-car": "makina me qira",
     "sto": "auto-servise",
     "restoran": "restorante",
-    "salon": "sallone bukurie"
+    "salon": "sallone bukurie",
+    "nekretnine": "agjenci imobiliare",
+    "hoteli": "hotele dhe vila",
+    "charter": "rent a jaht",
+    "klinike": "klinika mjekësore",
+    "ciscenje": "shërbime pastrimi",
+    "transferi": "transferta dhe taksi"
   }
 };
 
@@ -170,7 +230,7 @@ export async function generateMetadata({
     // Derive city/service from id for title/description templates
     const parts = resolved.entry.id.split('_');
     // id examples: "budva", "budva_restoran", "budva_rent_a_car"
-    const serviceKeys = ['rent', 'sto', 'restoran', 'salon'];
+    const serviceKeys = ['rent', 'sto', 'restoran', 'salon', 'nekretnine', 'hoteli', 'charter', 'klinike', 'ciscenje', 'transferi'];
     const svcIdx = parts.findIndex((p) => serviceKeys.includes(p));
     city = svcIdx > 0 ? parts.slice(0, svcIdx).join('_') : parts.join('_');
     service = svcIdx > 0 ? parts.slice(svcIdx).join('_').replace('rent_a_car', 'rent-a-car') : '';
@@ -217,17 +277,17 @@ export async function generateMetadata({
     const titles: Record<string, string> = {
       en: `Order website ${serviceName} ${where} under key — Corebit Studio`,
       ru: `Заказать сайт ${serviceName} ${where} под ключ — Corebit Studio`,
-      cnr: `Izrada sajta ${serviceName} ${where} ključ u ruke — Corebit Studio`,
-      srb: `Izrada sajta ${serviceName} ${where} ključ u ruke — Corebit Studio`,
-      sq: `Porosit uebfaqe ${serviceName} ${where} nën çelës — Corebit Studio`
+      cnr: `Izrada Next.js sajta ${serviceName} ${where} (brzo rezervisanje) — Corebit`,
+      srb: `Izrada Next.js sajta ${serviceName} ${where} (brza rezervacija) — Corebit`,
+      sq: `Zhvillim uebfaqe Next.js ${serviceName} ${where} (rezervime) — Corebit`
     };
 
     const descriptions: Record<string, string> = {
       en: `Development of fast websites with online booking ${serviceName} ${where}. Ready business solutions, CRM integration, launch in 7 days. Get price!`,
       ru: `Разработка быстрых сайтов с онлайн-записью ${serviceName} ${where}. Готовые решения для бизнеса, интеграция с CRM, запуск за 7 дней. Узнайте цену!`,
-      cnr: `Izrada brzih sajtova sa online rezervacijama ${serviceName} ${where}. Gotova rešenja, CRM integracija, pokretanje za 7 dana. Saznajte cenu!`,
-      srb: `Izrada brzih sajtova sa online rezervacijama ${serviceName} ${where}. Gotova rešenja, CRM integracija, pokretanje za 7 dana. Saznajte cenu!`,
-      sq: `Zhvillim i uebfaqeve të shpejta me rezervime online ${serviceName} ${where}. Zgjidhje të gatshme, integrim CRM, fillim për 7 ditë. Mëso çmimin!`
+      cnr: `Brzi sajtovi ${serviceName} ${where} na Next.js. Automatizacija rezervacija za HoReCa i STO, integrisan CRM i kalkulator izgubljene dobiti. Saznajte cijenu!`,
+      srb: `Brzi sajtovi ${serviceName} ${where} na Next.js. Automatizacija rezervacija za HoReCa i STO, integrisan CRM i kalkulator izgubljene dobiti. Saznajte cenu!`,
+      sq: `Uebfaqe ultra të shpejta Next.js ${serviceName} ${where}. Automatizim rezervimesh (HoReCa/Auto-servis), CRM dhe kalkulator i fitimit të humbur. Mëso çmimin!`
     };
 
     const title = (titles[locale] || titles.en).replace('{where}', where);
@@ -244,17 +304,17 @@ export async function generateMetadata({
     const titles: Record<string, string> = {
       en: `Corebit Studio | Website development under key ${where}`,
       ru: `Corebit Studio | Создание сайтов под ключ ${where}`,
-      cnr: `Corebit Studio | Izrada sajtova ključ u ruke ${where}`,
-      srb: `Corebit Studio | Izrada sajtova ključ u ruke ${where}`,
-      sq: `Corebit Studio | Zhvillim uebfaqesh nën çelës ${where}`
+      cnr: `Corebit | Izrada Next.js sajtova i automatizacija ${where}`,
+      srb: `Corebit | Izrada Next.js sajtova i automatizacija ${where}`,
+      sq: `Corebit | Zhvillim uebfaqesh Next.js dhe automatizim ${where}`
     };
 
     const descriptions: Record<string, string> = {
       en: `Professional website development and booking automation systems ${where} for restaurants, auto services, beauty salons, and car rentals. Get price!`,
       ru: `Профессиональная разработка и создание сайтов под ключ ${where} для ресторанов, автосервисов (СТО), салонов красоты и аренды авто. Узнайте цену!`,
-      cnr: `Profesionalna izrada sajtova i automatizacija rezervacija ${where} za restorane, auto servise, salone i rent a car. Saznajte cenu!`,
-      srb: `Profesionalna izrada sajtova i automatizacija rezervacija ${where} za restorane, auto servise, salone i rent a car. Saznajte cenu!`,
-      sq: `Zhvillim profesional uebfaqesh dhe automatizim rezervimesh ${where} për restorante, auto-servise, sallone dhe makina me qira. Mëso çmimin!`
+      cnr: `Profesionalni Next.js sajtovi ${where}. Brzo online rezervisanje za restorane, auto servise (STO), salone i rent-a-car. Saznajte izgubljenu dobit i cijenu!`,
+      srb: `Profesionalni Next.js sajtovi ${where}. Brza online rezervacija za restorane, auto servise (STO), salone i rent-a-car. Saznajte izgubljenu dobit i cenu!`,
+      sq: `Uebfaqe profesionale Next.js ${where}. Automatizim rezervimesh për restorante, auto-servise, sallone dhe makina me qira. Llogarit fitimin e humbur!`
     };
 
     const title = (titles[locale] || titles.en).replace('{where}', where);
@@ -525,16 +585,7 @@ export default async function CatchAllSEOPage({
     ],
   };
 
-  const faqItems = (dict as any).faq?.items || [];
-  const faqSchema = faqItems.length > 0 ? {
-    '@context':  'https://schema.org',
-    '@type':     'FAQPage',
-    mainEntity:  faqItems.map((item: { q: string; a: string }) => ({
-      '@type':         'Question',
-      name:            item.q,
-      acceptedAnswer:  { '@type': 'Answer', text: item.a },
-    })),
-  } : null;
+  const faqSchema = null;
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24 flex flex-col gap-24 md:gap-32">
@@ -543,13 +594,7 @@ export default async function CatchAllSEOPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
-      {/* FAQPage JSON-LD */}
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
+
       <HeroSection dict={dict.hero} locale={locale} />
       <BeforeAfterSlider dict={dict.before_after} />
       
@@ -646,7 +691,7 @@ export default async function CatchAllSEOPage({
 
       <SpeedCheckWidget dict={dict.speed_check} />
       <RoiCalculator dict={dict.roi} />
-      <PricingSection dict={dict.pricing} />
+      <PricingSection dict={dict.pricing} locale={locale} />
 
       <section className="flex flex-col md:flex-row items-center gap-8 md:gap-16 p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-[3rem] bg-red-950/10 border border-red-900/20 backdrop-blur-xl relative overflow-hidden">
         <div className="absolute top-0 right-0 w-72 sm:w-[500px] h-72 sm:h-[500px] bg-red-600/5 blur-[150px] rounded-full pointer-events-none" />

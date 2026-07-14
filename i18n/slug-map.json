@@ -50,6 +50,66 @@
     }
   },
   {
+    "id": "montenegro_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-montenegro",
+      "en": "real-estate-website-montenegro",
+      "cnr": "izrada-sajta-za-nekretnine-montenegro",
+      "srb": "izrada-sajta-za-nekretnine-montenegro",
+      "sq": "webfaqe-per-agjentsi-imobiliare-montenegro"
+    }
+  },
+  {
+    "id": "montenegro_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-montenegro",
+      "en": "hotel-website-montenegro",
+      "cnr": "izrada-sajta-za-hotele-montenegro",
+      "srb": "izrada-sajta-za-hotele-montenegro",
+      "sq": "webfaqe-per-hotele-montenegro"
+    }
+  },
+  {
+    "id": "montenegro_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-montenegro",
+      "en": "yacht-charter-website-montenegro",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-montenegro",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-montenegro",
+      "sq": "webfaqe-per-rent-a-jaht-montenegro"
+    }
+  },
+  {
+    "id": "montenegro_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-montenegro",
+      "en": "medical-clinic-website-montenegro",
+      "cnr": "izrada-sajta-za-stomatologiju-montenegro",
+      "srb": "izrada-sajta-za-stomatologiju-montenegro",
+      "sq": "webfaqe-per-klinika-montenegro"
+    }
+  },
+  {
+    "id": "montenegro_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-montenegro",
+      "en": "cleaning-services-website-montenegro",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-montenegro",
+      "srb": "izrada-sajta-za-usluge-ciscenja-montenegro",
+      "sq": "webfaqe-per-sherbime-pastrimi-montenegro"
+    }
+  },
+  {
+    "id": "montenegro_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-montenegro",
+      "en": "airport-transfer-website-montenegro",
+      "cnr": "izrada-sajta-za-transfere-montenegro",
+      "srb": "izrada-sajta-za-transfere-montenegro",
+      "sq": "webfaqe-per-transferta-montenegro"
+    }
+  },
+  {
     "id": "serbia",
     "slugs": {
       "ru": "serbia",
@@ -97,6 +157,66 @@
       "cnr": "salon-sajt-serbia",
       "srb": "izrada-sajta-salon-serbia",
       "sq": "webfaqe-sallon-bukurie-serbia"
+    }
+  },
+  {
+    "id": "serbia_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-serbia",
+      "en": "real-estate-website-serbia",
+      "cnr": "izrada-sajta-za-nekretnine-serbia",
+      "srb": "izrada-sajta-za-nekretnine-serbia",
+      "sq": "webfaqe-per-agjentsi-imobiliare-serbia"
+    }
+  },
+  {
+    "id": "serbia_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-serbia",
+      "en": "hotel-website-serbia",
+      "cnr": "izrada-sajta-za-hotele-serbia",
+      "srb": "izrada-sajta-za-hotele-serbia",
+      "sq": "webfaqe-per-hotele-serbia"
+    }
+  },
+  {
+    "id": "serbia_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-serbia",
+      "en": "yacht-charter-website-serbia",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-serbia",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-serbia",
+      "sq": "webfaqe-per-rent-a-jaht-serbia"
+    }
+  },
+  {
+    "id": "serbia_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-serbia",
+      "en": "medical-clinic-website-serbia",
+      "cnr": "izrada-sajta-za-stomatologiju-serbia",
+      "srb": "izrada-sajta-za-stomatologiju-serbia",
+      "sq": "webfaqe-per-klinika-serbia"
+    }
+  },
+  {
+    "id": "serbia_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-serbia",
+      "en": "cleaning-services-website-serbia",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-serbia",
+      "srb": "izrada-sajta-za-usluge-ciscenja-serbia",
+      "sq": "webfaqe-per-sherbime-pastrimi-serbia"
+    }
+  },
+  {
+    "id": "serbia_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-serbia",
+      "en": "airport-transfer-website-serbia",
+      "cnr": "izrada-sajta-za-transfere-serbia",
+      "srb": "izrada-sajta-za-transfere-serbia",
+      "sq": "webfaqe-per-transferta-serbia"
     }
   },
   {
@@ -150,6 +270,66 @@
     }
   },
   {
+    "id": "albania_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-albania",
+      "en": "real-estate-website-albania",
+      "cnr": "izrada-sajta-za-nekretnine-albania",
+      "srb": "izrada-sajta-za-nekretnine-albania",
+      "sq": "webfaqe-per-agjentsi-imobiliare-albania"
+    }
+  },
+  {
+    "id": "albania_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-albania",
+      "en": "hotel-website-albania",
+      "cnr": "izrada-sajta-za-hotele-albania",
+      "srb": "izrada-sajta-za-hotele-albania",
+      "sq": "webfaqe-per-hotele-albania"
+    }
+  },
+  {
+    "id": "albania_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-albania",
+      "en": "yacht-charter-website-albania",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-albania",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-albania",
+      "sq": "webfaqe-per-rent-a-jaht-albania"
+    }
+  },
+  {
+    "id": "albania_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-albania",
+      "en": "medical-clinic-website-albania",
+      "cnr": "izrada-sajta-za-stomatologiju-albania",
+      "srb": "izrada-sajta-za-stomatologiju-albania",
+      "sq": "webfaqe-per-klinika-albania"
+    }
+  },
+  {
+    "id": "albania_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-albania",
+      "en": "cleaning-services-website-albania",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-albania",
+      "srb": "izrada-sajta-za-usluge-ciscenja-albania",
+      "sq": "webfaqe-per-sherbime-pastrimi-albania"
+    }
+  },
+  {
+    "id": "albania_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-albania",
+      "en": "airport-transfer-website-albania",
+      "cnr": "izrada-sajta-za-transfere-albania",
+      "srb": "izrada-sajta-za-transfere-albania",
+      "sq": "webfaqe-per-transferta-albania"
+    }
+  },
+  {
     "id": "north_macedonia",
     "slugs": {
       "ru": "north_macedonia",
@@ -197,6 +377,66 @@
       "cnr": "salon-sajt-north_macedonia",
       "srb": "izrada-sajta-salon-north_macedonia",
       "sq": "webfaqe-sallon-bukurie-north_macedonia"
+    }
+  },
+  {
+    "id": "north_macedonia_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-north_macedonia",
+      "en": "real-estate-website-north_macedonia",
+      "cnr": "izrada-sajta-za-nekretnine-north_macedonia",
+      "srb": "izrada-sajta-za-nekretnine-north_macedonia",
+      "sq": "webfaqe-per-agjentsi-imobiliare-north_macedonia"
+    }
+  },
+  {
+    "id": "north_macedonia_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-north_macedonia",
+      "en": "hotel-website-north_macedonia",
+      "cnr": "izrada-sajta-za-hotele-north_macedonia",
+      "srb": "izrada-sajta-za-hotele-north_macedonia",
+      "sq": "webfaqe-per-hotele-north_macedonia"
+    }
+  },
+  {
+    "id": "north_macedonia_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-north_macedonia",
+      "en": "yacht-charter-website-north_macedonia",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-north_macedonia",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-north_macedonia",
+      "sq": "webfaqe-per-rent-a-jaht-north_macedonia"
+    }
+  },
+  {
+    "id": "north_macedonia_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-north_macedonia",
+      "en": "medical-clinic-website-north_macedonia",
+      "cnr": "izrada-sajta-za-stomatologiju-north_macedonia",
+      "srb": "izrada-sajta-za-stomatologiju-north_macedonia",
+      "sq": "webfaqe-per-klinika-north_macedonia"
+    }
+  },
+  {
+    "id": "north_macedonia_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-north_macedonia",
+      "en": "cleaning-services-website-north_macedonia",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-north_macedonia",
+      "srb": "izrada-sajta-za-usluge-ciscenja-north_macedonia",
+      "sq": "webfaqe-per-sherbime-pastrimi-north_macedonia"
+    }
+  },
+  {
+    "id": "north_macedonia_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-north_macedonia",
+      "en": "airport-transfer-website-north_macedonia",
+      "cnr": "izrada-sajta-za-transfere-north_macedonia",
+      "srb": "izrada-sajta-za-transfere-north_macedonia",
+      "sq": "webfaqe-per-transferta-north_macedonia"
     }
   },
   {
@@ -250,6 +490,66 @@
     }
   },
   {
+    "id": "bosnia_herzegovina_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-bosnia_herzegovina",
+      "en": "real-estate-website-bosnia_herzegovina",
+      "cnr": "izrada-sajta-za-nekretnine-bosnia_herzegovina",
+      "srb": "izrada-sajta-za-nekretnine-bosnia_herzegovina",
+      "sq": "webfaqe-per-agjentsi-imobiliare-bosnia_herzegovina"
+    }
+  },
+  {
+    "id": "bosnia_herzegovina_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-bosnia_herzegovina",
+      "en": "hotel-website-bosnia_herzegovina",
+      "cnr": "izrada-sajta-za-hotele-bosnia_herzegovina",
+      "srb": "izrada-sajta-za-hotele-bosnia_herzegovina",
+      "sq": "webfaqe-per-hotele-bosnia_herzegovina"
+    }
+  },
+  {
+    "id": "bosnia_herzegovina_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-bosnia_herzegovina",
+      "en": "yacht-charter-website-bosnia_herzegovina",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-bosnia_herzegovina",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-bosnia_herzegovina",
+      "sq": "webfaqe-per-rent-a-jaht-bosnia_herzegovina"
+    }
+  },
+  {
+    "id": "bosnia_herzegovina_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-bosnia_herzegovina",
+      "en": "medical-clinic-website-bosnia_herzegovina",
+      "cnr": "izrada-sajta-za-stomatologiju-bosnia_herzegovina",
+      "srb": "izrada-sajta-za-stomatologiju-bosnia_herzegovina",
+      "sq": "webfaqe-per-klinika-bosnia_herzegovina"
+    }
+  },
+  {
+    "id": "bosnia_herzegovina_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-bosnia_herzegovina",
+      "en": "cleaning-services-website-bosnia_herzegovina",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-bosnia_herzegovina",
+      "srb": "izrada-sajta-za-usluge-ciscenja-bosnia_herzegovina",
+      "sq": "webfaqe-per-sherbime-pastrimi-bosnia_herzegovina"
+    }
+  },
+  {
+    "id": "bosnia_herzegovina_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-bosnia_herzegovina",
+      "en": "airport-transfer-website-bosnia_herzegovina",
+      "cnr": "izrada-sajta-za-transfere-bosnia_herzegovina",
+      "srb": "izrada-sajta-za-transfere-bosnia_herzegovina",
+      "sq": "webfaqe-per-transferta-bosnia_herzegovina"
+    }
+  },
+  {
     "id": "kosovo",
     "slugs": {
       "ru": "kosovo",
@@ -297,6 +597,66 @@
       "cnr": "salon-sajt-kosovo",
       "srb": "izrada-sajta-salon-kosovo",
       "sq": "webfaqe-sallon-bukurie-kosovo"
+    }
+  },
+  {
+    "id": "kosovo_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-kosovo",
+      "en": "real-estate-website-kosovo",
+      "cnr": "izrada-sajta-za-nekretnine-kosovo",
+      "srb": "izrada-sajta-za-nekretnine-kosovo",
+      "sq": "webfaqe-per-agjentsi-imobiliare-kosovo"
+    }
+  },
+  {
+    "id": "kosovo_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-kosovo",
+      "en": "hotel-website-kosovo",
+      "cnr": "izrada-sajta-za-hotele-kosovo",
+      "srb": "izrada-sajta-za-hotele-kosovo",
+      "sq": "webfaqe-per-hotele-kosovo"
+    }
+  },
+  {
+    "id": "kosovo_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-kosovo",
+      "en": "yacht-charter-website-kosovo",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-kosovo",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-kosovo",
+      "sq": "webfaqe-per-rent-a-jaht-kosovo"
+    }
+  },
+  {
+    "id": "kosovo_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-kosovo",
+      "en": "medical-clinic-website-kosovo",
+      "cnr": "izrada-sajta-za-stomatologiju-kosovo",
+      "srb": "izrada-sajta-za-stomatologiju-kosovo",
+      "sq": "webfaqe-per-klinika-kosovo"
+    }
+  },
+  {
+    "id": "kosovo_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-kosovo",
+      "en": "cleaning-services-website-kosovo",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-kosovo",
+      "srb": "izrada-sajta-za-usluge-ciscenja-kosovo",
+      "sq": "webfaqe-per-sherbime-pastrimi-kosovo"
+    }
+  },
+  {
+    "id": "kosovo_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-kosovo",
+      "en": "airport-transfer-website-kosovo",
+      "cnr": "izrada-sajta-za-transfere-kosovo",
+      "srb": "izrada-sajta-za-transfere-kosovo",
+      "sq": "webfaqe-per-transferta-kosovo"
     }
   },
   {
@@ -350,6 +710,66 @@
     }
   },
   {
+    "id": "greece_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-greece",
+      "en": "real-estate-website-greece",
+      "cnr": "izrada-sajta-za-nekretnine-greece",
+      "srb": "izrada-sajta-za-nekretnine-greece",
+      "sq": "webfaqe-per-agjentsi-imobiliare-greece"
+    }
+  },
+  {
+    "id": "greece_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-greece",
+      "en": "hotel-website-greece",
+      "cnr": "izrada-sajta-za-hotele-greece",
+      "srb": "izrada-sajta-za-hotele-greece",
+      "sq": "webfaqe-per-hotele-greece"
+    }
+  },
+  {
+    "id": "greece_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-greece",
+      "en": "yacht-charter-website-greece",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-greece",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-greece",
+      "sq": "webfaqe-per-rent-a-jaht-greece"
+    }
+  },
+  {
+    "id": "greece_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-greece",
+      "en": "medical-clinic-website-greece",
+      "cnr": "izrada-sajta-za-stomatologiju-greece",
+      "srb": "izrada-sajta-za-stomatologiju-greece",
+      "sq": "webfaqe-per-klinika-greece"
+    }
+  },
+  {
+    "id": "greece_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-greece",
+      "en": "cleaning-services-website-greece",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-greece",
+      "srb": "izrada-sajta-za-usluge-ciscenja-greece",
+      "sq": "webfaqe-per-sherbime-pastrimi-greece"
+    }
+  },
+  {
+    "id": "greece_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-greece",
+      "en": "airport-transfer-website-greece",
+      "cnr": "izrada-sajta-za-transfere-greece",
+      "srb": "izrada-sajta-za-transfere-greece",
+      "sq": "webfaqe-per-transferta-greece"
+    }
+  },
+  {
     "id": "croatia",
     "slugs": {
       "ru": "croatia",
@@ -397,6 +817,66 @@
       "cnr": "salon-sajt-croatia",
       "srb": "izrada-sajta-salon-croatia",
       "sq": "webfaqe-sallon-bukurie-croatia"
+    }
+  },
+  {
+    "id": "croatia_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-croatia",
+      "en": "real-estate-website-croatia",
+      "cnr": "izrada-sajta-za-nekretnine-croatia",
+      "srb": "izrada-sajta-za-nekretnine-croatia",
+      "sq": "webfaqe-per-agjentsi-imobiliare-croatia"
+    }
+  },
+  {
+    "id": "croatia_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-croatia",
+      "en": "hotel-website-croatia",
+      "cnr": "izrada-sajta-za-hotele-croatia",
+      "srb": "izrada-sajta-za-hotele-croatia",
+      "sq": "webfaqe-per-hotele-croatia"
+    }
+  },
+  {
+    "id": "croatia_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-croatia",
+      "en": "yacht-charter-website-croatia",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-croatia",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-croatia",
+      "sq": "webfaqe-per-rent-a-jaht-croatia"
+    }
+  },
+  {
+    "id": "croatia_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-croatia",
+      "en": "medical-clinic-website-croatia",
+      "cnr": "izrada-sajta-za-stomatologiju-croatia",
+      "srb": "izrada-sajta-za-stomatologiju-croatia",
+      "sq": "webfaqe-per-klinika-croatia"
+    }
+  },
+  {
+    "id": "croatia_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-croatia",
+      "en": "cleaning-services-website-croatia",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-croatia",
+      "srb": "izrada-sajta-za-usluge-ciscenja-croatia",
+      "sq": "webfaqe-per-sherbime-pastrimi-croatia"
+    }
+  },
+  {
+    "id": "croatia_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-croatia",
+      "en": "airport-transfer-website-croatia",
+      "cnr": "izrada-sajta-za-transfere-croatia",
+      "srb": "izrada-sajta-za-transfere-croatia",
+      "sq": "webfaqe-per-transferta-croatia"
     }
   },
   {
@@ -450,6 +930,66 @@
     }
   },
   {
+    "id": "slovenia_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-slovenia",
+      "en": "real-estate-website-slovenia",
+      "cnr": "izrada-sajta-za-nekretnine-slovenia",
+      "srb": "izrada-sajta-za-nekretnine-slovenia",
+      "sq": "webfaqe-per-agjentsi-imobiliare-slovenia"
+    }
+  },
+  {
+    "id": "slovenia_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-slovenia",
+      "en": "hotel-website-slovenia",
+      "cnr": "izrada-sajta-za-hotele-slovenia",
+      "srb": "izrada-sajta-za-hotele-slovenia",
+      "sq": "webfaqe-per-hotele-slovenia"
+    }
+  },
+  {
+    "id": "slovenia_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-slovenia",
+      "en": "yacht-charter-website-slovenia",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-slovenia",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-slovenia",
+      "sq": "webfaqe-per-rent-a-jaht-slovenia"
+    }
+  },
+  {
+    "id": "slovenia_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-slovenia",
+      "en": "medical-clinic-website-slovenia",
+      "cnr": "izrada-sajta-za-stomatologiju-slovenia",
+      "srb": "izrada-sajta-za-stomatologiju-slovenia",
+      "sq": "webfaqe-per-klinika-slovenia"
+    }
+  },
+  {
+    "id": "slovenia_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-slovenia",
+      "en": "cleaning-services-website-slovenia",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-slovenia",
+      "srb": "izrada-sajta-za-usluge-ciscenja-slovenia",
+      "sq": "webfaqe-per-sherbime-pastrimi-slovenia"
+    }
+  },
+  {
+    "id": "slovenia_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-slovenia",
+      "en": "airport-transfer-website-slovenia",
+      "cnr": "izrada-sajta-za-transfere-slovenia",
+      "srb": "izrada-sajta-za-transfere-slovenia",
+      "sq": "webfaqe-per-transferta-slovenia"
+    }
+  },
+  {
     "id": "budva",
     "slugs": {
       "ru": "budva",
@@ -497,6 +1037,66 @@
       "cnr": "salon-sajt-budva",
       "srb": "izrada-sajta-salon-budva",
       "sq": "webfaqe-sallon-bukurie-budva"
+    }
+  },
+  {
+    "id": "budva_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-budva",
+      "en": "real-estate-website-budva",
+      "cnr": "izrada-sajta-za-nekretnine-budva",
+      "srb": "izrada-sajta-za-nekretnine-budva",
+      "sq": "webfaqe-per-agjentsi-imobiliare-budva"
+    }
+  },
+  {
+    "id": "budva_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-budva",
+      "en": "hotel-website-budva",
+      "cnr": "izrada-sajta-za-hotele-budva",
+      "srb": "izrada-sajta-za-hotele-budva",
+      "sq": "webfaqe-per-hotele-budva"
+    }
+  },
+  {
+    "id": "budva_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-budva",
+      "en": "yacht-charter-website-budva",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-budva",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-budva",
+      "sq": "webfaqe-per-rent-a-jaht-budva"
+    }
+  },
+  {
+    "id": "budva_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-budva",
+      "en": "medical-clinic-website-budva",
+      "cnr": "izrada-sajta-za-stomatologiju-budva",
+      "srb": "izrada-sajta-za-stomatologiju-budva",
+      "sq": "webfaqe-per-klinika-budva"
+    }
+  },
+  {
+    "id": "budva_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-budva",
+      "en": "cleaning-services-website-budva",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-budva",
+      "srb": "izrada-sajta-za-usluge-ciscenja-budva",
+      "sq": "webfaqe-per-sherbime-pastrimi-budva"
+    }
+  },
+  {
+    "id": "budva_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-budva",
+      "en": "airport-transfer-website-budva",
+      "cnr": "izrada-sajta-za-transfere-budva",
+      "srb": "izrada-sajta-za-transfere-budva",
+      "sq": "webfaqe-per-transferta-budva"
     }
   },
   {
@@ -550,6 +1150,66 @@
     }
   },
   {
+    "id": "tivat_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-tivat",
+      "en": "real-estate-website-tivat",
+      "cnr": "izrada-sajta-za-nekretnine-tivat",
+      "srb": "izrada-sajta-za-nekretnine-tivat",
+      "sq": "webfaqe-per-agjentsi-imobiliare-tivat"
+    }
+  },
+  {
+    "id": "tivat_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-tivat",
+      "en": "hotel-website-tivat",
+      "cnr": "izrada-sajta-za-hotele-tivat",
+      "srb": "izrada-sajta-za-hotele-tivat",
+      "sq": "webfaqe-per-hotele-tivat"
+    }
+  },
+  {
+    "id": "tivat_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-tivat",
+      "en": "yacht-charter-website-tivat",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-tivat",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-tivat",
+      "sq": "webfaqe-per-rent-a-jaht-tivat"
+    }
+  },
+  {
+    "id": "tivat_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-tivat",
+      "en": "medical-clinic-website-tivat",
+      "cnr": "izrada-sajta-za-stomatologiju-tivat",
+      "srb": "izrada-sajta-za-stomatologiju-tivat",
+      "sq": "webfaqe-per-klinika-tivat"
+    }
+  },
+  {
+    "id": "tivat_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-tivat",
+      "en": "cleaning-services-website-tivat",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-tivat",
+      "srb": "izrada-sajta-za-usluge-ciscenja-tivat",
+      "sq": "webfaqe-per-sherbime-pastrimi-tivat"
+    }
+  },
+  {
+    "id": "tivat_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-tivat",
+      "en": "airport-transfer-website-tivat",
+      "cnr": "izrada-sajta-za-transfere-tivat",
+      "srb": "izrada-sajta-za-transfere-tivat",
+      "sq": "webfaqe-per-transferta-tivat"
+    }
+  },
+  {
     "id": "podgorica",
     "slugs": {
       "ru": "podgorica",
@@ -597,6 +1257,66 @@
       "cnr": "salon-sajt-podgorica",
       "srb": "izrada-sajta-salon-podgorica",
       "sq": "webfaqe-sallon-bukurie-podgorica"
+    }
+  },
+  {
+    "id": "podgorica_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-podgorica",
+      "en": "real-estate-website-podgorica",
+      "cnr": "izrada-sajta-za-nekretnine-podgorica",
+      "srb": "izrada-sajta-za-nekretnine-podgorica",
+      "sq": "webfaqe-per-agjentsi-imobiliare-podgorica"
+    }
+  },
+  {
+    "id": "podgorica_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-podgorica",
+      "en": "hotel-website-podgorica",
+      "cnr": "izrada-sajta-za-hotele-podgorica",
+      "srb": "izrada-sajta-za-hotele-podgorica",
+      "sq": "webfaqe-per-hotele-podgorica"
+    }
+  },
+  {
+    "id": "podgorica_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-podgorica",
+      "en": "yacht-charter-website-podgorica",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-podgorica",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-podgorica",
+      "sq": "webfaqe-per-rent-a-jaht-podgorica"
+    }
+  },
+  {
+    "id": "podgorica_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-podgorica",
+      "en": "medical-clinic-website-podgorica",
+      "cnr": "izrada-sajta-za-stomatologiju-podgorica",
+      "srb": "izrada-sajta-za-stomatologiju-podgorica",
+      "sq": "webfaqe-per-klinika-podgorica"
+    }
+  },
+  {
+    "id": "podgorica_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-podgorica",
+      "en": "cleaning-services-website-podgorica",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-podgorica",
+      "srb": "izrada-sajta-za-usluge-ciscenja-podgorica",
+      "sq": "webfaqe-per-sherbime-pastrimi-podgorica"
+    }
+  },
+  {
+    "id": "podgorica_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-podgorica",
+      "en": "airport-transfer-website-podgorica",
+      "cnr": "izrada-sajta-za-transfere-podgorica",
+      "srb": "izrada-sajta-za-transfere-podgorica",
+      "sq": "webfaqe-per-transferta-podgorica"
     }
   },
   {
@@ -650,6 +1370,66 @@
     }
   },
   {
+    "id": "bar_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-bar",
+      "en": "real-estate-website-bar",
+      "cnr": "izrada-sajta-za-nekretnine-bar",
+      "srb": "izrada-sajta-za-nekretnine-bar",
+      "sq": "webfaqe-per-agjentsi-imobiliare-bar"
+    }
+  },
+  {
+    "id": "bar_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-bar",
+      "en": "hotel-website-bar",
+      "cnr": "izrada-sajta-za-hotele-bar",
+      "srb": "izrada-sajta-za-hotele-bar",
+      "sq": "webfaqe-per-hotele-bar"
+    }
+  },
+  {
+    "id": "bar_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-bar",
+      "en": "yacht-charter-website-bar",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-bar",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-bar",
+      "sq": "webfaqe-per-rent-a-jaht-bar"
+    }
+  },
+  {
+    "id": "bar_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-bar",
+      "en": "medical-clinic-website-bar",
+      "cnr": "izrada-sajta-za-stomatologiju-bar",
+      "srb": "izrada-sajta-za-stomatologiju-bar",
+      "sq": "webfaqe-per-klinika-bar"
+    }
+  },
+  {
+    "id": "bar_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-bar",
+      "en": "cleaning-services-website-bar",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-bar",
+      "srb": "izrada-sajta-za-usluge-ciscenja-bar",
+      "sq": "webfaqe-per-sherbime-pastrimi-bar"
+    }
+  },
+  {
+    "id": "bar_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-bar",
+      "en": "airport-transfer-website-bar",
+      "cnr": "izrada-sajta-za-transfere-bar",
+      "srb": "izrada-sajta-za-transfere-bar",
+      "sq": "webfaqe-per-transferta-bar"
+    }
+  },
+  {
     "id": "kotor",
     "slugs": {
       "ru": "kotor",
@@ -697,6 +1477,66 @@
       "cnr": "salon-sajt-kotor",
       "srb": "izrada-sajta-salon-kotor",
       "sq": "webfaqe-sallon-bukurie-kotor"
+    }
+  },
+  {
+    "id": "kotor_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-kotor",
+      "en": "real-estate-website-kotor",
+      "cnr": "izrada-sajta-za-nekretnine-kotor",
+      "srb": "izrada-sajta-za-nekretnine-kotor",
+      "sq": "webfaqe-per-agjentsi-imobiliare-kotor"
+    }
+  },
+  {
+    "id": "kotor_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-kotor",
+      "en": "hotel-website-kotor",
+      "cnr": "izrada-sajta-za-hotele-kotor",
+      "srb": "izrada-sajta-za-hotele-kotor",
+      "sq": "webfaqe-per-hotele-kotor"
+    }
+  },
+  {
+    "id": "kotor_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-kotor",
+      "en": "yacht-charter-website-kotor",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-kotor",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-kotor",
+      "sq": "webfaqe-per-rent-a-jaht-kotor"
+    }
+  },
+  {
+    "id": "kotor_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-kotor",
+      "en": "medical-clinic-website-kotor",
+      "cnr": "izrada-sajta-za-stomatologiju-kotor",
+      "srb": "izrada-sajta-za-stomatologiju-kotor",
+      "sq": "webfaqe-per-klinika-kotor"
+    }
+  },
+  {
+    "id": "kotor_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-kotor",
+      "en": "cleaning-services-website-kotor",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-kotor",
+      "srb": "izrada-sajta-za-usluge-ciscenja-kotor",
+      "sq": "webfaqe-per-sherbime-pastrimi-kotor"
+    }
+  },
+  {
+    "id": "kotor_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-kotor",
+      "en": "airport-transfer-website-kotor",
+      "cnr": "izrada-sajta-za-transfere-kotor",
+      "srb": "izrada-sajta-za-transfere-kotor",
+      "sq": "webfaqe-per-transferta-kotor"
     }
   },
   {
@@ -750,6 +1590,66 @@
     }
   },
   {
+    "id": "herceg_novi_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-herceg_novi",
+      "en": "real-estate-website-herceg_novi",
+      "cnr": "izrada-sajta-za-nekretnine-herceg_novi",
+      "srb": "izrada-sajta-za-nekretnine-herceg_novi",
+      "sq": "webfaqe-per-agjentsi-imobiliare-herceg_novi"
+    }
+  },
+  {
+    "id": "herceg_novi_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-herceg_novi",
+      "en": "hotel-website-herceg_novi",
+      "cnr": "izrada-sajta-za-hotele-herceg_novi",
+      "srb": "izrada-sajta-za-hotele-herceg_novi",
+      "sq": "webfaqe-per-hotele-herceg_novi"
+    }
+  },
+  {
+    "id": "herceg_novi_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-herceg_novi",
+      "en": "yacht-charter-website-herceg_novi",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-herceg_novi",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-herceg_novi",
+      "sq": "webfaqe-per-rent-a-jaht-herceg_novi"
+    }
+  },
+  {
+    "id": "herceg_novi_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-herceg_novi",
+      "en": "medical-clinic-website-herceg_novi",
+      "cnr": "izrada-sajta-za-stomatologiju-herceg_novi",
+      "srb": "izrada-sajta-za-stomatologiju-herceg_novi",
+      "sq": "webfaqe-per-klinika-herceg_novi"
+    }
+  },
+  {
+    "id": "herceg_novi_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-herceg_novi",
+      "en": "cleaning-services-website-herceg_novi",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-herceg_novi",
+      "srb": "izrada-sajta-za-usluge-ciscenja-herceg_novi",
+      "sq": "webfaqe-per-sherbime-pastrimi-herceg_novi"
+    }
+  },
+  {
+    "id": "herceg_novi_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-herceg_novi",
+      "en": "airport-transfer-website-herceg_novi",
+      "cnr": "izrada-sajta-za-transfere-herceg_novi",
+      "srb": "izrada-sajta-za-transfere-herceg_novi",
+      "sq": "webfaqe-per-transferta-herceg_novi"
+    }
+  },
+  {
     "id": "belgrade",
     "slugs": {
       "ru": "belgrade",
@@ -797,6 +1697,66 @@
       "cnr": "salon-sajt-belgrade",
       "srb": "izrada-sajta-salon-belgrade",
       "sq": "webfaqe-sallon-bukurie-belgrade"
+    }
+  },
+  {
+    "id": "belgrade_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-belgrade",
+      "en": "real-estate-website-belgrade",
+      "cnr": "izrada-sajta-za-nekretnine-belgrade",
+      "srb": "izrada-sajta-za-nekretnine-belgrade",
+      "sq": "webfaqe-per-agjentsi-imobiliare-belgrade"
+    }
+  },
+  {
+    "id": "belgrade_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-belgrade",
+      "en": "hotel-website-belgrade",
+      "cnr": "izrada-sajta-za-hotele-belgrade",
+      "srb": "izrada-sajta-za-hotele-belgrade",
+      "sq": "webfaqe-per-hotele-belgrade"
+    }
+  },
+  {
+    "id": "belgrade_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-belgrade",
+      "en": "yacht-charter-website-belgrade",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-belgrade",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-belgrade",
+      "sq": "webfaqe-per-rent-a-jaht-belgrade"
+    }
+  },
+  {
+    "id": "belgrade_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-belgrade",
+      "en": "medical-clinic-website-belgrade",
+      "cnr": "izrada-sajta-za-stomatologiju-belgrade",
+      "srb": "izrada-sajta-za-stomatologiju-belgrade",
+      "sq": "webfaqe-per-klinika-belgrade"
+    }
+  },
+  {
+    "id": "belgrade_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-belgrade",
+      "en": "cleaning-services-website-belgrade",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-belgrade",
+      "srb": "izrada-sajta-za-usluge-ciscenja-belgrade",
+      "sq": "webfaqe-per-sherbime-pastrimi-belgrade"
+    }
+  },
+  {
+    "id": "belgrade_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-belgrade",
+      "en": "airport-transfer-website-belgrade",
+      "cnr": "izrada-sajta-za-transfere-belgrade",
+      "srb": "izrada-sajta-za-transfere-belgrade",
+      "sq": "webfaqe-per-transferta-belgrade"
     }
   },
   {
@@ -850,6 +1810,66 @@
     }
   },
   {
+    "id": "novi_sad_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-novi_sad",
+      "en": "real-estate-website-novi_sad",
+      "cnr": "izrada-sajta-za-nekretnine-novi_sad",
+      "srb": "izrada-sajta-za-nekretnine-novi_sad",
+      "sq": "webfaqe-per-agjentsi-imobiliare-novi_sad"
+    }
+  },
+  {
+    "id": "novi_sad_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-novi_sad",
+      "en": "hotel-website-novi_sad",
+      "cnr": "izrada-sajta-za-hotele-novi_sad",
+      "srb": "izrada-sajta-za-hotele-novi_sad",
+      "sq": "webfaqe-per-hotele-novi_sad"
+    }
+  },
+  {
+    "id": "novi_sad_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-novi_sad",
+      "en": "yacht-charter-website-novi_sad",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-novi_sad",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-novi_sad",
+      "sq": "webfaqe-per-rent-a-jaht-novi_sad"
+    }
+  },
+  {
+    "id": "novi_sad_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-novi_sad",
+      "en": "medical-clinic-website-novi_sad",
+      "cnr": "izrada-sajta-za-stomatologiju-novi_sad",
+      "srb": "izrada-sajta-za-stomatologiju-novi_sad",
+      "sq": "webfaqe-per-klinika-novi_sad"
+    }
+  },
+  {
+    "id": "novi_sad_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-novi_sad",
+      "en": "cleaning-services-website-novi_sad",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-novi_sad",
+      "srb": "izrada-sajta-za-usluge-ciscenja-novi_sad",
+      "sq": "webfaqe-per-sherbime-pastrimi-novi_sad"
+    }
+  },
+  {
+    "id": "novi_sad_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-novi_sad",
+      "en": "airport-transfer-website-novi_sad",
+      "cnr": "izrada-sajta-za-transfere-novi_sad",
+      "srb": "izrada-sajta-za-transfere-novi_sad",
+      "sq": "webfaqe-per-transferta-novi_sad"
+    }
+  },
+  {
     "id": "nis",
     "slugs": {
       "ru": "nis",
@@ -897,6 +1917,66 @@
       "cnr": "salon-sajt-nis",
       "srb": "izrada-sajta-salon-nis",
       "sq": "webfaqe-sallon-bukurie-nis"
+    }
+  },
+  {
+    "id": "nis_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-nis",
+      "en": "real-estate-website-nis",
+      "cnr": "izrada-sajta-za-nekretnine-nis",
+      "srb": "izrada-sajta-za-nekretnine-nis",
+      "sq": "webfaqe-per-agjentsi-imobiliare-nis"
+    }
+  },
+  {
+    "id": "nis_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-nis",
+      "en": "hotel-website-nis",
+      "cnr": "izrada-sajta-za-hotele-nis",
+      "srb": "izrada-sajta-za-hotele-nis",
+      "sq": "webfaqe-per-hotele-nis"
+    }
+  },
+  {
+    "id": "nis_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-nis",
+      "en": "yacht-charter-website-nis",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-nis",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-nis",
+      "sq": "webfaqe-per-rent-a-jaht-nis"
+    }
+  },
+  {
+    "id": "nis_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-nis",
+      "en": "medical-clinic-website-nis",
+      "cnr": "izrada-sajta-za-stomatologiju-nis",
+      "srb": "izrada-sajta-za-stomatologiju-nis",
+      "sq": "webfaqe-per-klinika-nis"
+    }
+  },
+  {
+    "id": "nis_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-nis",
+      "en": "cleaning-services-website-nis",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-nis",
+      "srb": "izrada-sajta-za-usluge-ciscenja-nis",
+      "sq": "webfaqe-per-sherbime-pastrimi-nis"
+    }
+  },
+  {
+    "id": "nis_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-nis",
+      "en": "airport-transfer-website-nis",
+      "cnr": "izrada-sajta-za-transfere-nis",
+      "srb": "izrada-sajta-za-transfere-nis",
+      "sq": "webfaqe-per-transferta-nis"
     }
   },
   {
@@ -950,6 +2030,66 @@
     }
   },
   {
+    "id": "tirana_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-tirana",
+      "en": "real-estate-website-tirana",
+      "cnr": "izrada-sajta-za-nekretnine-tirana",
+      "srb": "izrada-sajta-za-nekretnine-tirana",
+      "sq": "webfaqe-per-agjentsi-imobiliare-tirana"
+    }
+  },
+  {
+    "id": "tirana_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-tirana",
+      "en": "hotel-website-tirana",
+      "cnr": "izrada-sajta-za-hotele-tirana",
+      "srb": "izrada-sajta-za-hotele-tirana",
+      "sq": "webfaqe-per-hotele-tirana"
+    }
+  },
+  {
+    "id": "tirana_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-tirana",
+      "en": "yacht-charter-website-tirana",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-tirana",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-tirana",
+      "sq": "webfaqe-per-rent-a-jaht-tirana"
+    }
+  },
+  {
+    "id": "tirana_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-tirana",
+      "en": "medical-clinic-website-tirana",
+      "cnr": "izrada-sajta-za-stomatologiju-tirana",
+      "srb": "izrada-sajta-za-stomatologiju-tirana",
+      "sq": "webfaqe-per-klinika-tirana"
+    }
+  },
+  {
+    "id": "tirana_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-tirana",
+      "en": "cleaning-services-website-tirana",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-tirana",
+      "srb": "izrada-sajta-za-usluge-ciscenja-tirana",
+      "sq": "webfaqe-per-sherbime-pastrimi-tirana"
+    }
+  },
+  {
+    "id": "tirana_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-tirana",
+      "en": "airport-transfer-website-tirana",
+      "cnr": "izrada-sajta-za-transfere-tirana",
+      "srb": "izrada-sajta-za-transfere-tirana",
+      "sq": "webfaqe-per-transferta-tirana"
+    }
+  },
+  {
     "id": "durres",
     "slugs": {
       "ru": "durres",
@@ -997,6 +2137,66 @@
       "cnr": "salon-sajt-durres",
       "srb": "izrada-sajta-salon-durres",
       "sq": "webfaqe-sallon-bukurie-durres"
+    }
+  },
+  {
+    "id": "durres_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-durres",
+      "en": "real-estate-website-durres",
+      "cnr": "izrada-sajta-za-nekretnine-durres",
+      "srb": "izrada-sajta-za-nekretnine-durres",
+      "sq": "webfaqe-per-agjentsi-imobiliare-durres"
+    }
+  },
+  {
+    "id": "durres_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-durres",
+      "en": "hotel-website-durres",
+      "cnr": "izrada-sajta-za-hotele-durres",
+      "srb": "izrada-sajta-za-hotele-durres",
+      "sq": "webfaqe-per-hotele-durres"
+    }
+  },
+  {
+    "id": "durres_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-durres",
+      "en": "yacht-charter-website-durres",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-durres",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-durres",
+      "sq": "webfaqe-per-rent-a-jaht-durres"
+    }
+  },
+  {
+    "id": "durres_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-durres",
+      "en": "medical-clinic-website-durres",
+      "cnr": "izrada-sajta-za-stomatologiju-durres",
+      "srb": "izrada-sajta-za-stomatologiju-durres",
+      "sq": "webfaqe-per-klinika-durres"
+    }
+  },
+  {
+    "id": "durres_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-durres",
+      "en": "cleaning-services-website-durres",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-durres",
+      "srb": "izrada-sajta-za-usluge-ciscenja-durres",
+      "sq": "webfaqe-per-sherbime-pastrimi-durres"
+    }
+  },
+  {
+    "id": "durres_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-durres",
+      "en": "airport-transfer-website-durres",
+      "cnr": "izrada-sajta-za-transfere-durres",
+      "srb": "izrada-sajta-za-transfere-durres",
+      "sq": "webfaqe-per-transferta-durres"
     }
   },
   {
@@ -1050,6 +2250,66 @@
     }
   },
   {
+    "id": "saranda_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-saranda",
+      "en": "real-estate-website-saranda",
+      "cnr": "izrada-sajta-za-nekretnine-saranda",
+      "srb": "izrada-sajta-za-nekretnine-saranda",
+      "sq": "webfaqe-per-agjentsi-imobiliare-saranda"
+    }
+  },
+  {
+    "id": "saranda_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-saranda",
+      "en": "hotel-website-saranda",
+      "cnr": "izrada-sajta-za-hotele-saranda",
+      "srb": "izrada-sajta-za-hotele-saranda",
+      "sq": "webfaqe-per-hotele-saranda"
+    }
+  },
+  {
+    "id": "saranda_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-saranda",
+      "en": "yacht-charter-website-saranda",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-saranda",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-saranda",
+      "sq": "webfaqe-per-rent-a-jaht-saranda"
+    }
+  },
+  {
+    "id": "saranda_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-saranda",
+      "en": "medical-clinic-website-saranda",
+      "cnr": "izrada-sajta-za-stomatologiju-saranda",
+      "srb": "izrada-sajta-za-stomatologiju-saranda",
+      "sq": "webfaqe-per-klinika-saranda"
+    }
+  },
+  {
+    "id": "saranda_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-saranda",
+      "en": "cleaning-services-website-saranda",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-saranda",
+      "srb": "izrada-sajta-za-usluge-ciscenja-saranda",
+      "sq": "webfaqe-per-sherbime-pastrimi-saranda"
+    }
+  },
+  {
+    "id": "saranda_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-saranda",
+      "en": "airport-transfer-website-saranda",
+      "cnr": "izrada-sajta-za-transfere-saranda",
+      "srb": "izrada-sajta-za-transfere-saranda",
+      "sq": "webfaqe-per-transferta-saranda"
+    }
+  },
+  {
     "id": "skopye",
     "slugs": {
       "ru": "skopye",
@@ -1097,6 +2357,66 @@
       "cnr": "salon-sajt-skopye",
       "srb": "izrada-sajta-salon-skopye",
       "sq": "webfaqe-sallon-bukurie-skopye"
+    }
+  },
+  {
+    "id": "skopye_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-skopye",
+      "en": "real-estate-website-skopye",
+      "cnr": "izrada-sajta-za-nekretnine-skopye",
+      "srb": "izrada-sajta-za-nekretnine-skopye",
+      "sq": "webfaqe-per-agjentsi-imobiliare-skopye"
+    }
+  },
+  {
+    "id": "skopye_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-skopye",
+      "en": "hotel-website-skopye",
+      "cnr": "izrada-sajta-za-hotele-skopye",
+      "srb": "izrada-sajta-za-hotele-skopye",
+      "sq": "webfaqe-per-hotele-skopye"
+    }
+  },
+  {
+    "id": "skopye_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-skopye",
+      "en": "yacht-charter-website-skopye",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-skopye",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-skopye",
+      "sq": "webfaqe-per-rent-a-jaht-skopye"
+    }
+  },
+  {
+    "id": "skopye_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-skopye",
+      "en": "medical-clinic-website-skopye",
+      "cnr": "izrada-sajta-za-stomatologiju-skopye",
+      "srb": "izrada-sajta-za-stomatologiju-skopye",
+      "sq": "webfaqe-per-klinika-skopye"
+    }
+  },
+  {
+    "id": "skopye_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-skopye",
+      "en": "cleaning-services-website-skopye",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-skopye",
+      "srb": "izrada-sajta-za-usluge-ciscenja-skopye",
+      "sq": "webfaqe-per-sherbime-pastrimi-skopye"
+    }
+  },
+  {
+    "id": "skopye_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-skopye",
+      "en": "airport-transfer-website-skopye",
+      "cnr": "izrada-sajta-za-transfere-skopye",
+      "srb": "izrada-sajta-za-transfere-skopye",
+      "sq": "webfaqe-per-transferta-skopye"
     }
   },
   {
@@ -1150,6 +2470,66 @@
     }
   },
   {
+    "id": "ohrid_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-ohrid",
+      "en": "real-estate-website-ohrid",
+      "cnr": "izrada-sajta-za-nekretnine-ohrid",
+      "srb": "izrada-sajta-za-nekretnine-ohrid",
+      "sq": "webfaqe-per-agjentsi-imobiliare-ohrid"
+    }
+  },
+  {
+    "id": "ohrid_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-ohrid",
+      "en": "hotel-website-ohrid",
+      "cnr": "izrada-sajta-za-hotele-ohrid",
+      "srb": "izrada-sajta-za-hotele-ohrid",
+      "sq": "webfaqe-per-hotele-ohrid"
+    }
+  },
+  {
+    "id": "ohrid_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-ohrid",
+      "en": "yacht-charter-website-ohrid",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-ohrid",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-ohrid",
+      "sq": "webfaqe-per-rent-a-jaht-ohrid"
+    }
+  },
+  {
+    "id": "ohrid_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-ohrid",
+      "en": "medical-clinic-website-ohrid",
+      "cnr": "izrada-sajta-za-stomatologiju-ohrid",
+      "srb": "izrada-sajta-za-stomatologiju-ohrid",
+      "sq": "webfaqe-per-klinika-ohrid"
+    }
+  },
+  {
+    "id": "ohrid_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-ohrid",
+      "en": "cleaning-services-website-ohrid",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-ohrid",
+      "srb": "izrada-sajta-za-usluge-ciscenja-ohrid",
+      "sq": "webfaqe-per-sherbime-pastrimi-ohrid"
+    }
+  },
+  {
+    "id": "ohrid_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-ohrid",
+      "en": "airport-transfer-website-ohrid",
+      "cnr": "izrada-sajta-za-transfere-ohrid",
+      "srb": "izrada-sajta-za-transfere-ohrid",
+      "sq": "webfaqe-per-transferta-ohrid"
+    }
+  },
+  {
     "id": "sarajevo",
     "slugs": {
       "ru": "sarajevo",
@@ -1197,6 +2577,66 @@
       "cnr": "salon-sajt-sarajevo",
       "srb": "izrada-sajta-salon-sarajevo",
       "sq": "webfaqe-sallon-bukurie-sarajevo"
+    }
+  },
+  {
+    "id": "sarajevo_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-sarajevo",
+      "en": "real-estate-website-sarajevo",
+      "cnr": "izrada-sajta-za-nekretnine-sarajevo",
+      "srb": "izrada-sajta-za-nekretnine-sarajevo",
+      "sq": "webfaqe-per-agjentsi-imobiliare-sarajevo"
+    }
+  },
+  {
+    "id": "sarajevo_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-sarajevo",
+      "en": "hotel-website-sarajevo",
+      "cnr": "izrada-sajta-za-hotele-sarajevo",
+      "srb": "izrada-sajta-za-hotele-sarajevo",
+      "sq": "webfaqe-per-hotele-sarajevo"
+    }
+  },
+  {
+    "id": "sarajevo_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-sarajevo",
+      "en": "yacht-charter-website-sarajevo",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-sarajevo",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-sarajevo",
+      "sq": "webfaqe-per-rent-a-jaht-sarajevo"
+    }
+  },
+  {
+    "id": "sarajevo_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-sarajevo",
+      "en": "medical-clinic-website-sarajevo",
+      "cnr": "izrada-sajta-za-stomatologiju-sarajevo",
+      "srb": "izrada-sajta-za-stomatologiju-sarajevo",
+      "sq": "webfaqe-per-klinika-sarajevo"
+    }
+  },
+  {
+    "id": "sarajevo_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-sarajevo",
+      "en": "cleaning-services-website-sarajevo",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-sarajevo",
+      "srb": "izrada-sajta-za-usluge-ciscenja-sarajevo",
+      "sq": "webfaqe-per-sherbime-pastrimi-sarajevo"
+    }
+  },
+  {
+    "id": "sarajevo_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-sarajevo",
+      "en": "airport-transfer-website-sarajevo",
+      "cnr": "izrada-sajta-za-transfere-sarajevo",
+      "srb": "izrada-sajta-za-transfere-sarajevo",
+      "sq": "webfaqe-per-transferta-sarajevo"
     }
   },
   {
@@ -1250,6 +2690,66 @@
     }
   },
   {
+    "id": "mostar_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-mostar",
+      "en": "real-estate-website-mostar",
+      "cnr": "izrada-sajta-za-nekretnine-mostar",
+      "srb": "izrada-sajta-za-nekretnine-mostar",
+      "sq": "webfaqe-per-agjentsi-imobiliare-mostar"
+    }
+  },
+  {
+    "id": "mostar_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-mostar",
+      "en": "hotel-website-mostar",
+      "cnr": "izrada-sajta-za-hotele-mostar",
+      "srb": "izrada-sajta-za-hotele-mostar",
+      "sq": "webfaqe-per-hotele-mostar"
+    }
+  },
+  {
+    "id": "mostar_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-mostar",
+      "en": "yacht-charter-website-mostar",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-mostar",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-mostar",
+      "sq": "webfaqe-per-rent-a-jaht-mostar"
+    }
+  },
+  {
+    "id": "mostar_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-mostar",
+      "en": "medical-clinic-website-mostar",
+      "cnr": "izrada-sajta-za-stomatologiju-mostar",
+      "srb": "izrada-sajta-za-stomatologiju-mostar",
+      "sq": "webfaqe-per-klinika-mostar"
+    }
+  },
+  {
+    "id": "mostar_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-mostar",
+      "en": "cleaning-services-website-mostar",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-mostar",
+      "srb": "izrada-sajta-za-usluge-ciscenja-mostar",
+      "sq": "webfaqe-per-sherbime-pastrimi-mostar"
+    }
+  },
+  {
+    "id": "mostar_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-mostar",
+      "en": "airport-transfer-website-mostar",
+      "cnr": "izrada-sajta-za-transfere-mostar",
+      "srb": "izrada-sajta-za-transfere-mostar",
+      "sq": "webfaqe-per-transferta-mostar"
+    }
+  },
+  {
     "id": "trebinje",
     "slugs": {
       "ru": "trebinje",
@@ -1297,6 +2797,66 @@
       "cnr": "salon-sajt-trebinje",
       "srb": "izrada-sajta-salon-trebinje",
       "sq": "webfaqe-sallon-bukurie-trebinje"
+    }
+  },
+  {
+    "id": "trebinje_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-trebinje",
+      "en": "real-estate-website-trebinje",
+      "cnr": "izrada-sajta-za-nekretnine-trebinje",
+      "srb": "izrada-sajta-za-nekretnine-trebinje",
+      "sq": "webfaqe-per-agjentsi-imobiliare-trebinje"
+    }
+  },
+  {
+    "id": "trebinje_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-trebinje",
+      "en": "hotel-website-trebinje",
+      "cnr": "izrada-sajta-za-hotele-trebinje",
+      "srb": "izrada-sajta-za-hotele-trebinje",
+      "sq": "webfaqe-per-hotele-trebinje"
+    }
+  },
+  {
+    "id": "trebinje_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-trebinje",
+      "en": "yacht-charter-website-trebinje",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-trebinje",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-trebinje",
+      "sq": "webfaqe-per-rent-a-jaht-trebinje"
+    }
+  },
+  {
+    "id": "trebinje_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-trebinje",
+      "en": "medical-clinic-website-trebinje",
+      "cnr": "izrada-sajta-za-stomatologiju-trebinje",
+      "srb": "izrada-sajta-za-stomatologiju-trebinje",
+      "sq": "webfaqe-per-klinika-trebinje"
+    }
+  },
+  {
+    "id": "trebinje_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-trebinje",
+      "en": "cleaning-services-website-trebinje",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-trebinje",
+      "srb": "izrada-sajta-za-usluge-ciscenja-trebinje",
+      "sq": "webfaqe-per-sherbime-pastrimi-trebinje"
+    }
+  },
+  {
+    "id": "trebinje_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-trebinje",
+      "en": "airport-transfer-website-trebinje",
+      "cnr": "izrada-sajta-za-transfere-trebinje",
+      "srb": "izrada-sajta-za-transfere-trebinje",
+      "sq": "webfaqe-per-transferta-trebinje"
     }
   },
   {
@@ -1350,6 +2910,66 @@
     }
   },
   {
+    "id": "pristina_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-pristina",
+      "en": "real-estate-website-pristina",
+      "cnr": "izrada-sajta-za-nekretnine-pristina",
+      "srb": "izrada-sajta-za-nekretnine-pristina",
+      "sq": "webfaqe-per-agjentsi-imobiliare-pristina"
+    }
+  },
+  {
+    "id": "pristina_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-pristina",
+      "en": "hotel-website-pristina",
+      "cnr": "izrada-sajta-za-hotele-pristina",
+      "srb": "izrada-sajta-za-hotele-pristina",
+      "sq": "webfaqe-per-hotele-pristina"
+    }
+  },
+  {
+    "id": "pristina_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-pristina",
+      "en": "yacht-charter-website-pristina",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-pristina",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-pristina",
+      "sq": "webfaqe-per-rent-a-jaht-pristina"
+    }
+  },
+  {
+    "id": "pristina_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-pristina",
+      "en": "medical-clinic-website-pristina",
+      "cnr": "izrada-sajta-za-stomatologiju-pristina",
+      "srb": "izrada-sajta-za-stomatologiju-pristina",
+      "sq": "webfaqe-per-klinika-pristina"
+    }
+  },
+  {
+    "id": "pristina_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-pristina",
+      "en": "cleaning-services-website-pristina",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-pristina",
+      "srb": "izrada-sajta-za-usluge-ciscenja-pristina",
+      "sq": "webfaqe-per-sherbime-pastrimi-pristina"
+    }
+  },
+  {
+    "id": "pristina_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-pristina",
+      "en": "airport-transfer-website-pristina",
+      "cnr": "izrada-sajta-za-transfere-pristina",
+      "srb": "izrada-sajta-za-transfere-pristina",
+      "sq": "webfaqe-per-transferta-pristina"
+    }
+  },
+  {
     "id": "athens",
     "slugs": {
       "ru": "athens",
@@ -1397,6 +3017,66 @@
       "cnr": "salon-sajt-athens",
       "srb": "izrada-sajta-salon-athens",
       "sq": "webfaqe-sallon-bukurie-athens"
+    }
+  },
+  {
+    "id": "athens_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-athens",
+      "en": "real-estate-website-athens",
+      "cnr": "izrada-sajta-za-nekretnine-athens",
+      "srb": "izrada-sajta-za-nekretnine-athens",
+      "sq": "webfaqe-per-agjentsi-imobiliare-athens"
+    }
+  },
+  {
+    "id": "athens_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-athens",
+      "en": "hotel-website-athens",
+      "cnr": "izrada-sajta-za-hotele-athens",
+      "srb": "izrada-sajta-za-hotele-athens",
+      "sq": "webfaqe-per-hotele-athens"
+    }
+  },
+  {
+    "id": "athens_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-athens",
+      "en": "yacht-charter-website-athens",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-athens",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-athens",
+      "sq": "webfaqe-per-rent-a-jaht-athens"
+    }
+  },
+  {
+    "id": "athens_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-athens",
+      "en": "medical-clinic-website-athens",
+      "cnr": "izrada-sajta-za-stomatologiju-athens",
+      "srb": "izrada-sajta-za-stomatologiju-athens",
+      "sq": "webfaqe-per-klinika-athens"
+    }
+  },
+  {
+    "id": "athens_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-athens",
+      "en": "cleaning-services-website-athens",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-athens",
+      "srb": "izrada-sajta-za-usluge-ciscenja-athens",
+      "sq": "webfaqe-per-sherbime-pastrimi-athens"
+    }
+  },
+  {
+    "id": "athens_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-athens",
+      "en": "airport-transfer-website-athens",
+      "cnr": "izrada-sajta-za-transfere-athens",
+      "srb": "izrada-sajta-za-transfere-athens",
+      "sq": "webfaqe-per-transferta-athens"
     }
   },
   {
@@ -1450,6 +3130,66 @@
     }
   },
   {
+    "id": "thessaloniki_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-thessaloniki",
+      "en": "real-estate-website-thessaloniki",
+      "cnr": "izrada-sajta-za-nekretnine-thessaloniki",
+      "srb": "izrada-sajta-za-nekretnine-thessaloniki",
+      "sq": "webfaqe-per-agjentsi-imobiliare-thessaloniki"
+    }
+  },
+  {
+    "id": "thessaloniki_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-thessaloniki",
+      "en": "hotel-website-thessaloniki",
+      "cnr": "izrada-sajta-za-hotele-thessaloniki",
+      "srb": "izrada-sajta-za-hotele-thessaloniki",
+      "sq": "webfaqe-per-hotele-thessaloniki"
+    }
+  },
+  {
+    "id": "thessaloniki_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-thessaloniki",
+      "en": "yacht-charter-website-thessaloniki",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-thessaloniki",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-thessaloniki",
+      "sq": "webfaqe-per-rent-a-jaht-thessaloniki"
+    }
+  },
+  {
+    "id": "thessaloniki_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-thessaloniki",
+      "en": "medical-clinic-website-thessaloniki",
+      "cnr": "izrada-sajta-za-stomatologiju-thessaloniki",
+      "srb": "izrada-sajta-za-stomatologiju-thessaloniki",
+      "sq": "webfaqe-per-klinika-thessaloniki"
+    }
+  },
+  {
+    "id": "thessaloniki_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-thessaloniki",
+      "en": "cleaning-services-website-thessaloniki",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-thessaloniki",
+      "srb": "izrada-sajta-za-usluge-ciscenja-thessaloniki",
+      "sq": "webfaqe-per-sherbime-pastrimi-thessaloniki"
+    }
+  },
+  {
+    "id": "thessaloniki_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-thessaloniki",
+      "en": "airport-transfer-website-thessaloniki",
+      "cnr": "izrada-sajta-za-transfere-thessaloniki",
+      "srb": "izrada-sajta-za-transfere-thessaloniki",
+      "sq": "webfaqe-per-transferta-thessaloniki"
+    }
+  },
+  {
     "id": "chalcidice",
     "slugs": {
       "ru": "chalcidice",
@@ -1497,6 +3237,66 @@
       "cnr": "salon-sajt-chalcidice",
       "srb": "izrada-sajta-salon-chalcidice",
       "sq": "webfaqe-sallon-bukurie-chalcidice"
+    }
+  },
+  {
+    "id": "chalcidice_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-chalcidice",
+      "en": "real-estate-website-chalcidice",
+      "cnr": "izrada-sajta-za-nekretnine-chalcidice",
+      "srb": "izrada-sajta-za-nekretnine-chalcidice",
+      "sq": "webfaqe-per-agjentsi-imobiliare-chalcidice"
+    }
+  },
+  {
+    "id": "chalcidice_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-chalcidice",
+      "en": "hotel-website-chalcidice",
+      "cnr": "izrada-sajta-za-hotele-chalcidice",
+      "srb": "izrada-sajta-za-hotele-chalcidice",
+      "sq": "webfaqe-per-hotele-chalcidice"
+    }
+  },
+  {
+    "id": "chalcidice_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-chalcidice",
+      "en": "yacht-charter-website-chalcidice",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-chalcidice",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-chalcidice",
+      "sq": "webfaqe-per-rent-a-jaht-chalcidice"
+    }
+  },
+  {
+    "id": "chalcidice_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-chalcidice",
+      "en": "medical-clinic-website-chalcidice",
+      "cnr": "izrada-sajta-za-stomatologiju-chalcidice",
+      "srb": "izrada-sajta-za-stomatologiju-chalcidice",
+      "sq": "webfaqe-per-klinika-chalcidice"
+    }
+  },
+  {
+    "id": "chalcidice_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-chalcidice",
+      "en": "cleaning-services-website-chalcidice",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-chalcidice",
+      "srb": "izrada-sajta-za-usluge-ciscenja-chalcidice",
+      "sq": "webfaqe-per-sherbime-pastrimi-chalcidice"
+    }
+  },
+  {
+    "id": "chalcidice_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-chalcidice",
+      "en": "airport-transfer-website-chalcidice",
+      "cnr": "izrada-sajta-za-transfere-chalcidice",
+      "srb": "izrada-sajta-za-transfere-chalcidice",
+      "sq": "webfaqe-per-transferta-chalcidice"
     }
   },
   {
@@ -1550,6 +3350,66 @@
     }
   },
   {
+    "id": "zagreb_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-zagreb",
+      "en": "real-estate-website-zagreb",
+      "cnr": "izrada-sajta-za-nekretnine-zagreb",
+      "srb": "izrada-sajta-za-nekretnine-zagreb",
+      "sq": "webfaqe-per-agjentsi-imobiliare-zagreb"
+    }
+  },
+  {
+    "id": "zagreb_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-zagreb",
+      "en": "hotel-website-zagreb",
+      "cnr": "izrada-sajta-za-hotele-zagreb",
+      "srb": "izrada-sajta-za-hotele-zagreb",
+      "sq": "webfaqe-per-hotele-zagreb"
+    }
+  },
+  {
+    "id": "zagreb_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-zagreb",
+      "en": "yacht-charter-website-zagreb",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-zagreb",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-zagreb",
+      "sq": "webfaqe-per-rent-a-jaht-zagreb"
+    }
+  },
+  {
+    "id": "zagreb_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-zagreb",
+      "en": "medical-clinic-website-zagreb",
+      "cnr": "izrada-sajta-za-stomatologiju-zagreb",
+      "srb": "izrada-sajta-za-stomatologiju-zagreb",
+      "sq": "webfaqe-per-klinika-zagreb"
+    }
+  },
+  {
+    "id": "zagreb_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-zagreb",
+      "en": "cleaning-services-website-zagreb",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-zagreb",
+      "srb": "izrada-sajta-za-usluge-ciscenja-zagreb",
+      "sq": "webfaqe-per-sherbime-pastrimi-zagreb"
+    }
+  },
+  {
+    "id": "zagreb_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-zagreb",
+      "en": "airport-transfer-website-zagreb",
+      "cnr": "izrada-sajta-za-transfere-zagreb",
+      "srb": "izrada-sajta-za-transfere-zagreb",
+      "sq": "webfaqe-per-transferta-zagreb"
+    }
+  },
+  {
     "id": "split",
     "slugs": {
       "ru": "split",
@@ -1597,6 +3457,66 @@
       "cnr": "salon-sajt-split",
       "srb": "izrada-sajta-salon-split",
       "sq": "webfaqe-sallon-bukurie-split"
+    }
+  },
+  {
+    "id": "split_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-split",
+      "en": "real-estate-website-split",
+      "cnr": "izrada-sajta-za-nekretnine-split",
+      "srb": "izrada-sajta-za-nekretnine-split",
+      "sq": "webfaqe-per-agjentsi-imobiliare-split"
+    }
+  },
+  {
+    "id": "split_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-split",
+      "en": "hotel-website-split",
+      "cnr": "izrada-sajta-za-hotele-split",
+      "srb": "izrada-sajta-za-hotele-split",
+      "sq": "webfaqe-per-hotele-split"
+    }
+  },
+  {
+    "id": "split_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-split",
+      "en": "yacht-charter-website-split",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-split",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-split",
+      "sq": "webfaqe-per-rent-a-jaht-split"
+    }
+  },
+  {
+    "id": "split_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-split",
+      "en": "medical-clinic-website-split",
+      "cnr": "izrada-sajta-za-stomatologiju-split",
+      "srb": "izrada-sajta-za-stomatologiju-split",
+      "sq": "webfaqe-per-klinika-split"
+    }
+  },
+  {
+    "id": "split_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-split",
+      "en": "cleaning-services-website-split",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-split",
+      "srb": "izrada-sajta-za-usluge-ciscenja-split",
+      "sq": "webfaqe-per-sherbime-pastrimi-split"
+    }
+  },
+  {
+    "id": "split_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-split",
+      "en": "airport-transfer-website-split",
+      "cnr": "izrada-sajta-za-transfere-split",
+      "srb": "izrada-sajta-za-transfere-split",
+      "sq": "webfaqe-per-transferta-split"
     }
   },
   {
@@ -1650,6 +3570,66 @@
     }
   },
   {
+    "id": "dubrovnik_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-dubrovnik",
+      "en": "real-estate-website-dubrovnik",
+      "cnr": "izrada-sajta-za-nekretnine-dubrovnik",
+      "srb": "izrada-sajta-za-nekretnine-dubrovnik",
+      "sq": "webfaqe-per-agjentsi-imobiliare-dubrovnik"
+    }
+  },
+  {
+    "id": "dubrovnik_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-dubrovnik",
+      "en": "hotel-website-dubrovnik",
+      "cnr": "izrada-sajta-za-hotele-dubrovnik",
+      "srb": "izrada-sajta-za-hotele-dubrovnik",
+      "sq": "webfaqe-per-hotele-dubrovnik"
+    }
+  },
+  {
+    "id": "dubrovnik_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-dubrovnik",
+      "en": "yacht-charter-website-dubrovnik",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-dubrovnik",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-dubrovnik",
+      "sq": "webfaqe-per-rent-a-jaht-dubrovnik"
+    }
+  },
+  {
+    "id": "dubrovnik_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-dubrovnik",
+      "en": "medical-clinic-website-dubrovnik",
+      "cnr": "izrada-sajta-za-stomatologiju-dubrovnik",
+      "srb": "izrada-sajta-za-stomatologiju-dubrovnik",
+      "sq": "webfaqe-per-klinika-dubrovnik"
+    }
+  },
+  {
+    "id": "dubrovnik_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-dubrovnik",
+      "en": "cleaning-services-website-dubrovnik",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-dubrovnik",
+      "srb": "izrada-sajta-za-usluge-ciscenja-dubrovnik",
+      "sq": "webfaqe-per-sherbime-pastrimi-dubrovnik"
+    }
+  },
+  {
+    "id": "dubrovnik_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-dubrovnik",
+      "en": "airport-transfer-website-dubrovnik",
+      "cnr": "izrada-sajta-za-transfere-dubrovnik",
+      "srb": "izrada-sajta-za-transfere-dubrovnik",
+      "sq": "webfaqe-per-transferta-dubrovnik"
+    }
+  },
+  {
     "id": "ljubljana",
     "slugs": {
       "ru": "ljubljana",
@@ -1700,6 +3680,66 @@
     }
   },
   {
+    "id": "ljubljana_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-ljubljana",
+      "en": "real-estate-website-ljubljana",
+      "cnr": "izrada-sajta-za-nekretnine-ljubljana",
+      "srb": "izrada-sajta-za-nekretnine-ljubljana",
+      "sq": "webfaqe-per-agjentsi-imobiliare-ljubljana"
+    }
+  },
+  {
+    "id": "ljubljana_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-ljubljana",
+      "en": "hotel-website-ljubljana",
+      "cnr": "izrada-sajta-za-hotele-ljubljana",
+      "srb": "izrada-sajta-za-hotele-ljubljana",
+      "sq": "webfaqe-per-hotele-ljubljana"
+    }
+  },
+  {
+    "id": "ljubljana_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-ljubljana",
+      "en": "yacht-charter-website-ljubljana",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-ljubljana",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-ljubljana",
+      "sq": "webfaqe-per-rent-a-jaht-ljubljana"
+    }
+  },
+  {
+    "id": "ljubljana_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-ljubljana",
+      "en": "medical-clinic-website-ljubljana",
+      "cnr": "izrada-sajta-za-stomatologiju-ljubljana",
+      "srb": "izrada-sajta-za-stomatologiju-ljubljana",
+      "sq": "webfaqe-per-klinika-ljubljana"
+    }
+  },
+  {
+    "id": "ljubljana_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-ljubljana",
+      "en": "cleaning-services-website-ljubljana",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-ljubljana",
+      "srb": "izrada-sajta-za-usluge-ciscenja-ljubljana",
+      "sq": "webfaqe-per-sherbime-pastrimi-ljubljana"
+    }
+  },
+  {
+    "id": "ljubljana_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-ljubljana",
+      "en": "airport-transfer-website-ljubljana",
+      "cnr": "izrada-sajta-za-transfere-ljubljana",
+      "srb": "izrada-sajta-za-transfere-ljubljana",
+      "sq": "webfaqe-per-transferta-ljubljana"
+    }
+  },
+  {
     "id": "maribor",
     "slugs": {
       "ru": "maribor",
@@ -1747,6 +3787,66 @@
       "cnr": "salon-sajt-maribor",
       "srb": "izrada-sajta-salon-maribor",
       "sq": "webfaqe-sallon-bukurie-maribor"
+    }
+  },
+  {
+    "id": "maribor_nekretnine",
+    "slugs": {
+      "ru": "sajt-nedvizhimosti-maribor",
+      "en": "real-estate-website-maribor",
+      "cnr": "izrada-sajta-za-nekretnine-maribor",
+      "srb": "izrada-sajta-za-nekretnine-maribor",
+      "sq": "webfaqe-per-agjentsi-imobiliare-maribor"
+    }
+  },
+  {
+    "id": "maribor_hoteli",
+    "slugs": {
+      "ru": "sajt-dlya-otelya-maribor",
+      "en": "hotel-website-maribor",
+      "cnr": "izrada-sajta-za-hotele-maribor",
+      "srb": "izrada-sajta-za-hotele-maribor",
+      "sq": "webfaqe-per-hotele-maribor"
+    }
+  },
+  {
+    "id": "maribor_charter",
+    "slugs": {
+      "ru": "arenda-yaht-sajt-maribor",
+      "en": "yacht-charter-website-maribor",
+      "cnr": "izrada-sajta-za-iznajmljivanje-jahti-maribor",
+      "srb": "izrada-sajta-za-iznajmljivanje-jahti-maribor",
+      "sq": "webfaqe-per-rent-a-jaht-maribor"
+    }
+  },
+  {
+    "id": "maribor_klinike",
+    "slugs": {
+      "ru": "sajt-stomatologii-maribor",
+      "en": "medical-clinic-website-maribor",
+      "cnr": "izrada-sajta-za-stomatologiju-maribor",
+      "srb": "izrada-sajta-za-stomatologiju-maribor",
+      "sq": "webfaqe-per-klinika-maribor"
+    }
+  },
+  {
+    "id": "maribor_ciscenje",
+    "slugs": {
+      "ru": "sajt-klininga-maribor",
+      "en": "cleaning-services-website-maribor",
+      "cnr": "izrada-sajta-za-usluge-ciscenja-maribor",
+      "srb": "izrada-sajta-za-usluge-ciscenja-maribor",
+      "sq": "webfaqe-per-sherbime-pastrimi-maribor"
+    }
+  },
+  {
+    "id": "maribor_transferi",
+    "slugs": {
+      "ru": "sajt-transfera-maribor",
+      "en": "airport-transfer-website-maribor",
+      "cnr": "izrada-sajta-za-transfere-maribor",
+      "srb": "izrada-sajta-za-transfere-maribor",
+      "sq": "webfaqe-per-transferta-maribor"
     }
   }
 ]

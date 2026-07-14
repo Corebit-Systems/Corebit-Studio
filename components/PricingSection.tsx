@@ -23,13 +23,31 @@ interface PricingDict {
 
 interface PricingSectionProps {
   dict: PricingDict;
+  locale: string;
 }
 
-export default function PricingSection({ dict }: PricingSectionProps) {
+export default function PricingSection({ dict, locale }: PricingSectionProps) {
   const [isFullPayment, setIsFullPayment] = useState(false);
 
   const calculatePrice = (basePrice: number): number => {
     return isFullPayment ? Math.floor(basePrice * 0.9) : basePrice;
+  };
+
+  const getRsdTooltip = (basePrice: number): string | null => {
+    if (locale !== 'srb') return null;
+    const finalPrice = calculatePrice(basePrice);
+    
+    // Маппинг для красивых сербских цен (включая скидку 10% при полной оплате)
+    const mapping: Record<number, string> = {
+      360: '~42.000 RSD',
+      324: '~38.000 RSD',
+      1080: '~126.000 RSD',
+      972: '~113.000 RSD',
+      3150: '~368.000 RSD',
+      2835: '~331.000 RSD',
+    };
+
+    return mapping[finalPrice] || `~${Math.round(finalPrice * 117).toLocaleString('sr-RS')} RSD`;
   };
 
   return (
@@ -67,7 +85,14 @@ export default function PricingSection({ dict }: PricingSectionProps) {
         <article className="group relative flex flex-col p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2.5rem] border border-white/10 bg-white/[0.02] backdrop-blur-xl gap-4 sm:gap-6 hover:bg-white/[0.04] hover:scale-[1.02] transition-all duration-300">
           <div className="absolute inset-0 rounded-[inherit] shadow-[0_0_50px_rgba(255,255,255,0.03)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-[-1] will-change-opacity" />
           <h3 className="text-xl sm:text-2xl font-semibold">{dict.tier1.title}</h3>
-          <div className="text-3xl sm:text-4xl font-bold">€{calculatePrice(dict.tier1.price)}</div>
+          <div>
+            <div className="text-3xl sm:text-4xl font-bold">€{calculatePrice(dict.tier1.price)}</div>
+            {getRsdTooltip(dict.tier1.price) && (
+              <div className="text-xs sm:text-sm text-neutral-400 font-light mt-1.5 animate-fadeIn">
+                {getRsdTooltip(dict.tier1.price)}
+              </div>
+            )}
+          </div>
           <p className="text-neutral-400 text-sm flex-grow">{dict.tier1.desc}</p>
           <a
             href="#contact"
@@ -82,7 +107,14 @@ export default function PricingSection({ dict }: PricingSectionProps) {
           <div className="absolute inset-0 rounded-[inherit] shadow-[0_0_60px_rgba(16,185,129,0.15)] opacity-50 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-[-1] will-change-opacity" />
           <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-emerald-600/0 via-emerald-600 to-emerald-600/0" />
           <h3 className="text-xl sm:text-2xl font-semibold text-emerald-400">{dict.tier2.title}</h3>
-          <div className="text-3xl sm:text-4xl font-bold">€{calculatePrice(dict.tier2.price)}</div>
+          <div>
+            <div className="text-3xl sm:text-4xl font-bold">€{calculatePrice(dict.tier2.price)}</div>
+            {getRsdTooltip(dict.tier2.price) && (
+              <div className="text-xs sm:text-sm text-emerald-400/80 font-light mt-1.5 animate-fadeIn">
+                {getRsdTooltip(dict.tier2.price)}
+              </div>
+            )}
+          </div>
           <p className="text-neutral-400 text-sm flex-grow">{dict.tier2.desc}</p>
           <a
             href="#contact"
@@ -96,7 +128,14 @@ export default function PricingSection({ dict }: PricingSectionProps) {
         <article className="group relative flex flex-col p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2.5rem] border border-white/10 bg-white/[0.02] backdrop-blur-xl gap-4 sm:gap-6 hover:bg-white/[0.04] hover:scale-[1.02] transition-all duration-300">
           <div className="absolute inset-0 rounded-[inherit] shadow-[0_0_50px_rgba(255,255,255,0.03)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-[-1] will-change-opacity" />
           <h3 className="text-xl sm:text-2xl font-semibold">{dict.tier3.title}</h3>
-          <div className="text-3xl sm:text-4xl font-bold">€{calculatePrice(dict.tier3.price)}</div>
+          <div>
+            <div className="text-3xl sm:text-4xl font-bold">€{calculatePrice(dict.tier3.price)}</div>
+            {getRsdTooltip(dict.tier3.price) && (
+              <div className="text-xs sm:text-sm text-neutral-400 font-light mt-1.5 animate-fadeIn">
+                {getRsdTooltip(dict.tier3.price)}
+              </div>
+            )}
+          </div>
           <p className="text-neutral-400 text-sm flex-grow">{dict.tier3.desc}</p>
           <a
             href="#contact"

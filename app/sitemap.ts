@@ -29,7 +29,7 @@ const PORTFOLIOS = [
 ] as const;
 
 // Niche service IDs present in slug-map entry ids (used to classify entries)
-const SERVICE_IDS = ['rent_a_car', 'sto', 'restoran', 'salon'];
+const SERVICE_IDS = ['rent_a_car', 'sto', 'restoran', 'salon', 'nekretnine', 'hoteli', 'charter', 'klinike', 'ciscenje', 'transferi'];
 
 type SlugEntry = { id: string; slugs: Record<string, string> };
 const slugMap: SlugEntry[] = slugMapData as SlugEntry[];
