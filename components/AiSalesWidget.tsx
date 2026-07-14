@@ -120,7 +120,6 @@ const WIDGET_TEXTS: Record<string, {
 
 export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isOnline, setIsOnline] = useState(true);
   const [showQuickReplies, setShowQuickReplies] = useState(true);
   const [isFallback, setIsFallback] = useState(false);
   const [fallbackSent, setFallbackSent] = useState(false);
@@ -154,17 +153,7 @@ export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
     setInput(e.target.value);
   };
   const isLoading = status === 'submitted' || status === 'streaming';
-
-  // Calculate online status (09:00 - 19:00)
-  useEffect(() => {
-    const updateOnlineStatus = () => {
-      const hour = new Date().getHours();
-      setIsOnline(hour >= 9 && hour < 19);
-    };
-    updateOnlineStatus();
-    const timer = setInterval(updateOnlineStatus, 60000);
-    return () => clearInterval(timer);
-  }, []);
+  const isOnline = !error;
 
   // Parse UTM tags
   useEffect(() => {
