@@ -1,6 +1,6 @@
 // File: c:\dev\Corebit-Studio\app\api\chat\route.ts
 import { google } from '@ai-sdk/google';
-import { streamText } from 'ai';
+import { streamText, convertToModelMessages } from 'ai';
 
 export const maxDuration = 30;
 
@@ -15,7 +15,7 @@ export async function POST(req: Request) {
 
     const result = await streamText({
       model: google('gemini-1.5-flash'),
-      messages,
+      messages: await convertToModelMessages(messages),
       system: "Ты — профессиональный ИИ-сейлз. Твоя задача — коротко и емко консультировать клиентов и собирать их контакты для передачи менеджеру. Отвечай лаконично, держи инициативу в диалоге, всегда задавай встречный вопрос. Категорически запрещено общаться на отвлеченные темы, не связанные с услугами компании.",
     });
 
