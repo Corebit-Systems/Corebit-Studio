@@ -8,6 +8,9 @@ import CookieBanner from '@/components/CookieBanner';
 import AnalyticsConsentProvider from '@/components/AnalyticsConsentProvider';
 import FloatingWidgets from '@/components/FloatingWidgets';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
+import dynamic from 'next/dynamic';
+
+const AiSalesWidget = dynamic(() => import('@/components/AiSalesWidget'), { ssr: false });
 
 const inter = Inter({ subsets: ['latin', 'cyrillic'], display: 'swap', weight: ['400', '500', '700'] });
 const SITE_URL = 'https://studio.corebitsystems.io';
@@ -80,6 +83,7 @@ export async function generateMetadata({
       shortcut: '/favicon.ico',
       apple: '/apple-icon.png',
     },
+    manifest: '/manifest.json',
 
     title:       meta.title,
     description: meta.description,
@@ -371,6 +375,9 @@ export default async function RootLayout({
 
         {/* Global floating user utilities (FAB contact menu + Scroll-to-top) */}
         <FloatingWidgets locale={locale as Locale} />
+
+        {/* Dynamic AI Sales widget */}
+        <AiSalesWidget locale={locale} />
       </body>
     </html>
   );
