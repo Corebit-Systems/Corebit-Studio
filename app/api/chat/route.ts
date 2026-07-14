@@ -14,7 +14,7 @@ export async function POST(req: Request) {
     }
 
     const result = await streamText({
-      model: google('gemini-1.5-flash'),
+      model: google('gemini-3.5-flash'),
       messages: await convertToModelMessages(messages),
       system: "Ты — профессиональный ИИ-сейлз. Твоя задача — коротко и емко консультировать клиентов и собирать их контакты для передачи менеджеру. Отвечай лаконично, держи инициативу в диалоге, всегда задавай встречный вопрос. Категорически запрещено общаться на отвлеченные темы, не связанные с услугами компании.",
     });
