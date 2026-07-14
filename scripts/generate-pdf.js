@@ -35,15 +35,18 @@ const htmlContent = `
       background-color: var(--bg);
       color: var(--text);
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.5;
+      line-height: 1.4;
       -webkit-print-color-adjust: exact;
     }
 
+    /* A4 specific dimensions */
     .page {
-      padding: 30px 40px;
+      width: 210mm;
+      height: 297mm;
+      padding: 25mm 20mm;
       page-break-after: always;
       position: relative;
-      height: 100vh;
+      overflow: hidden;
     }
 
     .header {
@@ -51,10 +54,10 @@ const htmlContent = `
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid var(--border);
-      padding-bottom: 12px;
-      margin-bottom: 24px;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
+      font-size: 8px;
       color: var(--accent);
       text-transform: uppercase;
       letter-spacing: 0.1em;
@@ -62,13 +65,13 @@ const htmlContent = `
     
     .footer {
       border-top: 1px solid var(--border);
-      padding-top: 12px;
+      padding-top: 10px;
       position: absolute;
-      bottom: 30px;
-      left: 40px;
-      right: 40px;
+      bottom: 20mm;
+      left: 20mm;
+      right: 20mm;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
+      font-size: 8px;
       color: var(--accent);
       display: flex;
       justify-content: space-between;
@@ -86,34 +89,31 @@ const htmlContent = `
     }
 
     h1 {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 700;
       color: #fff;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       letter-spacing: -0.02em;
-      text-align: left;
     }
 
     h2 {
-      font-size: 15px;
+      font-size: 14px;
       color: var(--accent);
       border-bottom: 1px dashed var(--border);
-      padding-bottom: 6px;
-      margin-top: 24px;
-      margin-bottom: 16px;
+      padding-bottom: 4px;
+      margin-top: 15px;
+      margin-bottom: 10px;
       font-weight: 600;
-      text-align: left;
     }
 
     h3 {
-      font-size: 12px;
+      font-size: 11px;
       color: #fff;
-      margin-top: 16px;
-      margin-bottom: 6px;
+      margin-top: 12px;
+      margin-bottom: 4px;
       display: flex;
       align-items: center;
       gap: 6px;
-      text-align: left;
     }
 
     h3::before {
@@ -123,20 +123,19 @@ const htmlContent = `
     }
 
     p {
-      font-size: 10px;
+      font-size: 9px;
       color: var(--text-muted);
       margin-top: 0;
-      margin-bottom: 8px;
-      text-align: left;
+      margin-bottom: 6px;
     }
 
     pre {
       background: var(--code-bg);
       border-radius: 4px;
-      padding: 10px;
-      margin: 8px 0 16px 0;
+      padding: 8px;
+      margin: 6px 0 10px 0;
       font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
-      font-size: 9px;
+      font-size: 8px;
       color: #d4d4d8;
       overflow-x: hidden;
       white-space: pre-wrap;
@@ -151,8 +150,8 @@ const htmlContent = `
       border: 1px solid var(--border);
       background: rgba(255, 255, 255, 0.02);
       border-radius: 6px;
-      padding: 16px;
-      margin-bottom: 16px;
+      padding: 12px 15px;
+      margin-bottom: 12px;
       page-break-inside: avoid;
     }
 
@@ -161,17 +160,17 @@ const htmlContent = `
       background: var(--text);
       color: var(--bg);
       font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
+      font-size: 8px;
       font-weight: bold;
-      padding: 4px 8px;
-      border-radius: 4px;
-      margin-bottom: 12px;
+      padding: 3px 6px;
+      border-radius: 3px;
+      margin-bottom: 10px;
     }
   </style>
 </head>
 <body>
 
-  <!-- ==================== SECTION 1: ENGLISH ==================== -->
+  <!-- ==================== PAGE 1: ENGLISH P1 ==================== -->
   <div class="page">
     <div class="header">
       <div>Corebit Studio // Systems Engineering</div>
@@ -180,7 +179,7 @@ const htmlContent = `
     
     <span class="lang-label">SECTION 1: ENGLISH (EN)</span>
     <h1>Architectural Checklist 2026</h1>
-    <p style="font-size: 11px; margin-bottom: 24px;">
+    <p style="font-size: 10px; margin-bottom: 20px;">
       Technical blueprint for next-generation web engineering.
     </p>
 
@@ -230,6 +229,7 @@ export const dynamic = 'force-dynamic';</code></pre>
     </div>
   </div>
 
+  <!-- ==================== PAGE 2: ENGLISH P2 ==================== -->
   <div class="page">
     <div class="header">
       <div>Corebit Studio // Systems Engineering</div>
@@ -254,7 +254,7 @@ export async function POST(req: Request) {
 }</code></pre>
 
       <h3>Vector Cache & Retry Policy</h3>
-      <p>Cache embeddings in Redis/Valkey before querying Pinecone to reduce API costs. Implement an exponential backoff retry strategy for handling 429/503 HTTP errors from provider APIs.</p>
+      <p>Cache embeddings in Redis/Valkey before querying Pinecone to reduce API costs. Implement an exponential backoff retry strategy for handling 429/503 HTTP errors.</p>
     </div>
 
     <div class="card">
@@ -275,7 +275,8 @@ module.exports = {
 
       <h3>Streaming HTML via Suspense</h3>
       <p>Separate heavy SQL queries from the initial HTML document response:</p>
-<pre><code>&lt;Suspense fallback={&lt;Spinner /&gt;}&gt;
+<pre><code>import { Suspense } from 'react';
+&lt;Suspense fallback={&lt;Spinner /&gt;}&gt;
   &lt;HeavyDatabaseComponent /&gt;
 &lt;/Suspense&gt;</code></pre>
     </div>
@@ -305,7 +306,7 @@ encrypted += cipher.final('hex');</code></pre>
     </div>
   </div>
 
-  <!-- ==================== SECTION 2: SRB ==================== -->
+  <!-- ==================== PAGE 3: SRB P1 ==================== -->
   <div class="page">
     <div class="header">
       <div>Corebit Studio // Systems Engineering</div>
@@ -314,7 +315,7 @@ encrypted += cipher.final('hex');</code></pre>
     
     <span class="lang-label">SECTION 2: SRPSKI / CRNOGORSKI (SRB/CNR)</span>
     <h1>Arhitektonski ček-list 2026</h1>
-    <p style="font-size: 11px; margin-bottom: 24px;">
+    <p style="font-size: 10px; margin-bottom: 20px;">
       Tehnički nacrt za sledeću generaciju veb inženjeringa.
     </p>
 
@@ -364,6 +365,7 @@ export const dynamic = 'force-dynamic';</code></pre>
     </div>
   </div>
 
+  <!-- ==================== PAGE 4: SRB P2 ==================== -->
   <div class="page">
     <div class="header">
       <div>Corebit Studio // Systems Engineering</div>
@@ -409,7 +411,8 @@ module.exports = {
 
       <h3>Streaming HTML (Suspense)</h3>
       <p>Odvojte teške SQL upite od početnog HTML odgovora:</p>
-<pre><code>&lt;Suspense fallback={&lt;Spinner /&gt;}&gt;
+<pre><code>import { Suspense } from 'react';
+&lt;Suspense fallback={&lt;Spinner /&gt;}&gt;
   &lt;HeavyDatabaseComponent /&gt;
 &lt;/Suspense&gt;</code></pre>
     </div>
@@ -439,7 +442,7 @@ encrypted += cipher.final('hex');</code></pre>
     </div>
   </div>
 
-  <!-- ==================== SECTION 3: RU ==================== -->
+  <!-- ==================== PAGE 5: RU P1 ==================== -->
   <div class="page">
     <div class="header">
       <div>Corebit Studio // Systems Engineering</div>
@@ -448,7 +451,7 @@ encrypted += cipher.final('hex');</code></pre>
     
     <span class="lang-label">СЕКЦИЯ 3: РУССКИЙ (RU)</span>
     <h1>Архитектурный чек-лист 2026</h1>
-    <p style="font-size: 11px; margin-bottom: 24px;">
+    <p style="font-size: 10px; margin-bottom: 20px;">
       Технический чертеж для веб-инженерии следующего поколения.
     </p>
 
@@ -498,7 +501,8 @@ export const dynamic = 'force-dynamic';</code></pre>
     </div>
   </div>
 
-  <div class="page">
+  <!-- ==================== PAGE 6: RU P2 ==================== -->
+  <div class="page" style="page-break-after: auto;">
     <div class="header">
       <div>Corebit Studio // Systems Engineering</div>
       <div>Confidential / 2026</div>
@@ -543,7 +547,8 @@ module.exports = {
 
       <h3>Streaming HTML</h3>
       <p>Отделение тяжелых SQL-запросов от мгновенного ответа сервера:</p>
-<pre><code>&lt;Suspense fallback={&lt;Spinner /&gt;}&gt;
+<pre><code>import { Suspense } from 'react';
+&lt;Suspense fallback={&lt;Spinner /&gt;}&gt;
   &lt;HeavyDatabaseComponent /&gt;
 &lt;/Suspense&gt;</code></pre>
     </div>
