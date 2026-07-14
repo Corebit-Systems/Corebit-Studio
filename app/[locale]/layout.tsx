@@ -77,6 +77,9 @@ export async function generateMetadata({
     metadataBase: new URL(SITE_URL),
     verification: {
       google: 'G8PO2v-HeIoMTxZXUb8qNopkCV6sQPH4Cd0VEftJyVQ',
+      other: {
+        'yandex-verification': '41ee1bc24c5e3a3e',
+      },
     },
     icons: {
       icon: '/icon.png',
