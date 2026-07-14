@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 const path = require('path');
 
-const outDir = path.join(__dirname, '../public');
+const outDir = path.join(__dirname, '../public/docs');
 if (!fs.existsSync(outDir)) {
   fs.mkdirSync(outDir, { recursive: true });
 }
@@ -24,7 +24,7 @@ const htmlContent = `
       --text: #e4e4e7;
       --text-muted: #a1a1aa;
       --border: rgba(255, 255, 255, 0.1);
-      --code-bg: rgba(0, 0, 0, 0.4);
+      --code-bg: #18181b;
     }
 
     * { box-sizing: border-box; }
@@ -43,6 +43,7 @@ const htmlContent = `
       padding: 30px 40px;
       page-break-after: always;
       position: relative;
+      height: 100vh;
     }
 
     .header {
@@ -71,6 +72,12 @@ const htmlContent = `
       color: var(--accent);
       display: flex;
       justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-text {
+      text-align: right;
+      flex-grow: 1;
     }
 
     .footer a {
@@ -84,6 +91,7 @@ const htmlContent = `
       color: #fff;
       margin-bottom: 6px;
       letter-spacing: -0.02em;
+      text-align: left;
     }
 
     h2 {
@@ -94,6 +102,7 @@ const htmlContent = `
       margin-top: 24px;
       margin-bottom: 16px;
       font-weight: 600;
+      text-align: left;
     }
 
     h3 {
@@ -104,12 +113,13 @@ const htmlContent = `
       display: flex;
       align-items: center;
       gap: 6px;
+      text-align: left;
     }
 
     h3::before {
       content: '■';
       color: var(--accent);
-      font-size: 8px;
+      font-size: 10px;
     }
 
     p {
@@ -117,21 +127,20 @@ const htmlContent = `
       color: var(--text-muted);
       margin-top: 0;
       margin-bottom: 8px;
-      padding-left: 14px;
+      text-align: left;
     }
 
     pre {
       background: var(--code-bg);
-      border: 1px solid rgba(16, 185, 129, 0.15);
-      border-left: 2px solid var(--accent);
       border-radius: 4px;
-      padding: 8px 12px;
-      margin: 8px 0 16px 14px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 8.5px;
+      padding: 10px;
+      margin: 8px 0 16px 0;
+      font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+      font-size: 9px;
       color: #d4d4d8;
       overflow-x: hidden;
       white-space: pre-wrap;
+      page-break-inside: avoid;
     }
 
     .code-hl {
@@ -144,6 +153,7 @@ const htmlContent = `
       border-radius: 6px;
       padding: 16px;
       margin-bottom: 16px;
+      page-break-inside: avoid;
     }
 
     .lang-label {
@@ -170,7 +180,7 @@ const htmlContent = `
     
     <span class="lang-label">SECTION 1: ENGLISH (EN)</span>
     <h1>Architectural Checklist 2026</h1>
-    <p style="padding-left: 0; font-size: 11px; margin-bottom: 24px;">
+    <p style="font-size: 11px; margin-bottom: 24px;">
       Technical blueprint for next-generation web engineering.
     </p>
 
@@ -181,13 +191,16 @@ const htmlContent = `
       <p>Combine static shell with dynamic holes for instant loading:</p>
 <pre><code><span class="code-hl">// next.config.js</span>
 const nextConfig = { experimental: { ppr: 'incremental' } };
+
 <span class="code-hl">// page.tsx</span>
 import { Suspense } from 'react';
 export default function Page() {
   return (
     &lt;main&gt;
       &lt;StaticHeader /&gt;
-      &lt;Suspense fallback={&lt;Skeleton /&gt;}&gt; &lt;DynamicContent /&gt; &lt;/Suspense&gt;
+      &lt;Suspense fallback={&lt;Skeleton /&gt;}&gt;
+        &lt;DynamicContent /&gt;
+      &lt;/Suspense&gt;
     &lt;/main&gt;
   );
 }</code></pre>
@@ -211,6 +224,18 @@ export const revalidate = 3600;
 export const dynamic = 'force-dynamic';</code></pre>
     </div>
 
+    <div class="footer">
+      <div>Page 1 of 6</div>
+      <div class="footer-text">Corebit Studio // Systems Engineering // <a href="https://corebitsystems.io">corebitsystems.io</a></div>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="header">
+      <div>Corebit Studio // Systems Engineering</div>
+      <div>Confidential / 2026</div>
+    </div>
+
     <div class="card">
       <h2>02. AI & LLM Dialog Agents Integration</h2>
       
@@ -230,18 +255,6 @@ export async function POST(req: Request) {
 
       <h3>Vector Cache & Retry Policy</h3>
       <p>Cache embeddings in Redis/Valkey before querying Pinecone to reduce API costs. Implement an exponential backoff retry strategy for handling 429/503 HTTP errors from provider APIs.</p>
-    </div>
-
-    <div class="footer">
-      <div>Corebit Studio // Systems Engineering // <a href="https://corebitsystems.io">corebitsystems.io</a></div>
-      <div>Page 1 of 6</div>
-    </div>
-  </div>
-
-  <div class="page">
-    <div class="header">
-      <div>Corebit Studio // Systems Engineering</div>
-      <div>Confidential / 2026</div>
     </div>
 
     <div class="card">
@@ -287,8 +300,8 @@ encrypted += cipher.final('hex');</code></pre>
     </div>
 
     <div class="footer">
-      <div>Corebit Studio // Systems Engineering // <a href="https://corebitsystems.io">corebitsystems.io</a></div>
       <div>Page 2 of 6</div>
+      <div class="footer-text">Corebit Studio // Systems Engineering // <a href="https://corebitsystems.io">corebitsystems.io</a></div>
     </div>
   </div>
 
@@ -301,7 +314,7 @@ encrypted += cipher.final('hex');</code></pre>
     
     <span class="lang-label">SECTION 2: SRPSKI / CRNOGORSKI (SRB/CNR)</span>
     <h1>Arhitektonski ček-list 2026</h1>
-    <p style="padding-left: 0; font-size: 11px; margin-bottom: 24px;">
+    <p style="font-size: 11px; margin-bottom: 24px;">
       Tehnički nacrt za sledeću generaciju veb inženjeringa.
     </p>
 
@@ -312,13 +325,16 @@ encrypted += cipher.final('hex');</code></pre>
       <p>Kombinujte statički kostur sa dinamičkim delovima za trenutno učitavanje:</p>
 <pre><code><span class="code-hl">// next.config.js</span>
 const nextConfig = { experimental: { ppr: 'incremental' } };
+
 <span class="code-hl">// page.tsx</span>
 import { Suspense } from 'react';
 export default function Page() {
   return (
     &lt;main&gt;
       &lt;StaticHeader /&gt;
-      &lt;Suspense fallback={&lt;Skeleton /&gt;}&gt; &lt;DynamicContent /&gt; &lt;/Suspense&gt;
+      &lt;Suspense fallback={&lt;Skeleton /&gt;}&gt;
+        &lt;DynamicContent /&gt;
+      &lt;/Suspense&gt;
     &lt;/main&gt;
   );
 }</code></pre>
@@ -342,6 +358,18 @@ export const revalidate = 3600;
 export const dynamic = 'force-dynamic';</code></pre>
     </div>
 
+    <div class="footer">
+      <div>Page 3 of 6</div>
+      <div class="footer-text">Corebit Studio // Systems Engineering // <a href="https://corebitsystems.io">corebitsystems.io</a></div>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="header">
+      <div>Corebit Studio // Systems Engineering</div>
+      <div>Confidential / 2026</div>
+    </div>
+
     <div class="card">
       <h2>02. Integracija AI i LLM agenata</h2>
       
@@ -360,19 +388,7 @@ export async function POST(req: Request) {
 }</code></pre>
 
       <h3>Vector Cache i Retry Policy</h3>
-      <p>Keširajte embedding podatke u Redis/Valkey bazama. Implementirajte eksponencijalni backoff za rešavanje 429/503 grešaka sa API provajderima.</p>
-    </div>
-
-    <div class="footer">
-      <div>Corebit Studio // Systems Engineering // <a href="https://corebitsystems.io">corebitsystems.io</a></div>
-      <div>Page 3 of 6</div>
-    </div>
-  </div>
-
-  <div class="page">
-    <div class="header">
-      <div>Corebit Studio // Systems Engineering</div>
-      <div>Confidential / 2026</div>
+      <p>Keširajte embedding podatke u Redis/Valkey bazama. Implementirajte eksponencijalni backoff za rešavanje grešaka (429/503).</p>
     </div>
 
     <div class="card">
@@ -402,7 +418,7 @@ module.exports = {
       <h2>04. Usklađenost sa EU GDPR i PII enkripcija</h2>
       
       <h3>Zero-Knowledge Architecture</h3>
-      <p>Enkriptujte PII pre unosa u bazu podataka (Postgres) koristeći Node crypto:</p>
+      <p>Enkriptujte PII pre unosa u bazu (Postgres) koristeći Node crypto:</p>
 <pre><code>import crypto from 'crypto';
 const cipher = crypto.createCipheriv('aes-256-gcm', key, iv);
 let encrypted = cipher.update(piiData, 'utf8', 'hex');
@@ -414,12 +430,12 @@ encrypted += cipher.final('hex');</code></pre>
 &lt;Script src="gtm.js" strategy="worker" /&gt;</code></pre>
 
       <h3>Data Residency</h3>
-      <p>Rutirajte zahteve dinamički pomoću zaglavlja <code>x-vercel-ip-country</code> kako biste osigurali da EU podaci ostanu u EU regiji.</p>
+      <p>Rutirajte zahteve dinamički pomoću zaglavlja <code>x-vercel-ip-country</code>.</p>
     </div>
 
     <div class="footer">
-      <div>Corebit Studio // Systems Engineering // <a href="https://corebitsystems.io">corebitsystems.io</a></div>
       <div>Page 4 of 6</div>
+      <div class="footer-text">Corebit Studio // Systems Engineering // <a href="https://corebitsystems.io">corebitsystems.io</a></div>
     </div>
   </div>
 
@@ -432,7 +448,7 @@ encrypted += cipher.final('hex');</code></pre>
     
     <span class="lang-label">СЕКЦИЯ 3: РУССКИЙ (RU)</span>
     <h1>Архитектурный чек-лист 2026</h1>
-    <p style="padding-left: 0; font-size: 11px; margin-bottom: 24px;">
+    <p style="font-size: 11px; margin-bottom: 24px;">
       Технический чертеж для веб-инженерии следующего поколения.
     </p>
 
@@ -443,13 +459,16 @@ encrypted += cipher.final('hex');</code></pre>
       <p>Комбинация статического скелета и динамических островов для мгновенной загрузки:</p>
 <pre><code><span class="code-hl">// next.config.js</span>
 const nextConfig = { experimental: { ppr: 'incremental' } };
+
 <span class="code-hl">// page.tsx</span>
 import { Suspense } from 'react';
 export default function Page() {
   return (
     &lt;main&gt;
       &lt;StaticHeader /&gt;
-      &lt;Suspense fallback={&lt;Skeleton /&gt;}&gt; &lt;DynamicContent /&gt; &lt;/Suspense&gt;
+      &lt;Suspense fallback={&lt;Skeleton /&gt;}&gt;
+        &lt;DynamicContent /&gt;
+      &lt;/Suspense&gt;
     &lt;/main&gt;
   );
 }</code></pre>
@@ -473,6 +492,18 @@ export const revalidate = 3600;
 export const dynamic = 'force-dynamic';</code></pre>
     </div>
 
+    <div class="footer">
+      <div>Page 5 of 6</div>
+      <div class="footer-text">Corebit Studio // Systems Engineering // <a href="https://corebitsystems.io">corebitsystems.io</a></div>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="header">
+      <div>Corebit Studio // Systems Engineering</div>
+      <div>Confidential / 2026</div>
+    </div>
+
     <div class="card">
       <h2>02. Интеграция ИИ и Диалоговых агентов (AI & LLM)</h2>
       
@@ -491,19 +522,7 @@ export async function POST(req: Request) {
 }</code></pre>
 
       <h3>Vector Cache & Retry Policy</h3>
-      <p>Локальное кэширование эмбеддингов в Redis/Valkey перед Pinecone. Реализация паттерна экспоненциального бэк-оффа (retry-policy) при ошибках 429/503 от провайдера.</p>
-    </div>
-
-    <div class="footer">
-      <div>Corebit Studio // Systems Engineering // <a href="https://corebitsystems.io">corebitsystems.io</a></div>
-      <div>Page 5 of 6</div>
-    </div>
-  </div>
-
-  <div class="page">
-    <div class="header">
-      <div>Corebit Studio // Systems Engineering</div>
-      <div>Confidential / 2026</div>
+      <p>Локальное кэширование эмбеддингов в Redis/Valkey перед Pinecone. Реализация паттерна экспоненциального бэк-оффа (retry-policy) при ошибках 429/503.</p>
     </div>
 
     <div class="card">
@@ -545,12 +564,12 @@ encrypted += cipher.final('hex');</code></pre>
 &lt;Script src="gtm.js" strategy="worker" /&gt;</code></pre>
 
       <h3>Data Residency</h3>
-      <p>Проксирование запросов на основе заголовка <code>x-vercel-ip-country</code>, гарантирующее хранение данных резидентов ЕС исключительно внутри ЕС.</p>
+      <p>Проксирование запросов на основе заголовка <code>x-vercel-ip-country</code>.</p>
     </div>
 
     <div class="footer">
-      <div>Corebit Studio // Systems Engineering // <a href="https://corebitsystems.io">corebitsystems.io</a></div>
       <div>Page 6 of 6</div>
+      <div class="footer-text">Corebit Studio // Systems Engineering // <a href="https://corebitsystems.io">corebitsystems.io</a></div>
     </div>
   </div>
 
