@@ -127,17 +127,12 @@ const htmlContent = `
       border: 1px solid rgba(16, 185, 129, 0.2);
     }
     
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-    
     .card {
       border: 1px solid var(--border);
       background: rgba(255, 255, 255, 0.02);
       border-radius: 8px;
       padding: 20px;
+      margin-bottom: 20px;
     }
 
     .lang-label {
@@ -155,21 +150,175 @@ const htmlContent = `
 </head>
 <body>
 
-  <!-- PAGE 1: RU -->
+  <!-- ==================== SECTION 1: ENGLISH ==================== -->
   <div class="page">
     <div class="header">
       <div>Corebit Studio // Systems Engineering</div>
       <div>Confidential / 2026</div>
     </div>
     
-    <span class="lang-label">RU VERSION</span>
+    <span class="lang-label">SECTION 1: ENGLISH (EN)</span>
+    <h1>Architectural Checklist 2026</h1>
+    <p style="padding-left: 0; font-size: 14px; margin-bottom: 30px;">
+      Evaluate your system readiness for the next generation of web engineering.
+    </p>
+
+    <div class="card">
+      <h2>01. Next.js App Router & SSR Optimization</h2>
+      
+      <h3>Partial Prerendering (PPR)</h3>
+      <p>How to correctly combine static skeletons and dynamic islands in 2026 for instant load times.</p>
+      
+      <h3>Server Actions Security</h3>
+      <p>Mutation protection checklist: strict <span class="code-tag">Zod</span> validation, authorization checks, and per-action Rate Limiting.</p>
+      
+      <h3>Route Segment Config</h3>
+      <p>Optimal use of <span class="code-tag">force-dynamic</span> vs revalidation timeouts for high-traffic pages and caching.</p>
+    </div>
+
+    <div class="card">
+      <h2>02. AI & LLM Dialog Agents Integration</h2>
+      
+      <h3>Latency Optimization</h3>
+      <p>Migrating to streaming responses via <span class="code-tag">Vercel AI SDK</span> and <span class="code-tag">Server-Sent Events</span>.</p>
+      
+      <h3>Context Window & Vector Cache</h3>
+      <p>Utilizing local embedding caching to reduce API costs and optimize RAG pipelines.</p>
+      
+      <h3>Failover & Fallbacks</h3>
+      <p>Graceful degradation strategy in case OpenAI/Anthropic APIs are overloaded or unavailable.</p>
+    </div>
+
+    <div class="footer">
+      <div>Corebit Studio // Systems Engineering // <a href="https://corebitsystems.io">corebitsystems.io</a></div>
+      <div>Page 1 of 4</div>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="header">
+      <div>Corebit Studio // Systems Engineering</div>
+      <div>Confidential / 2026</div>
+    </div>
+
+    <div class="card">
+      <h2>03. Sub-100ms LCP on Edge CDN</h2>
+      
+      <h3>Edge Runtime</h3>
+      <p>Migrating mission-critical middleware and API routes to Edge infrastructure (executing closer to the user).</p>
+      
+      <h3>Advanced Asset Optimization</h3>
+      <p>Modern formats (AVIF), aggressive font caching, and purging unused CSS.</p>
+      
+      <h3>Streaming HTML</h3>
+      <p>Progressive rendering of heavy data pages via <span class="code-tag">React Suspense</span>.</p>
+    </div>
+
+    <div class="card">
+      <h2>04. EU GDPR Compliance & PII Encryption</h2>
+      
+      <h3>Zero-Knowledge Architecture</h3>
+      <p>Storing Personally Identifiable Information (PII) securely encrypted on the database side.</p>
+      
+      <h3>Consent Management</h3>
+      <p>Correct Cookie Consent integration without impacting CLS (Cumulative Layout Shift) and SEO metrics.</p>
+      
+      <h3>Data Residency</h3>
+      <p>Routing European user requests strictly through EU-based servers (e.g., Frankfurt/Paris).</p>
+    </div>
+
+    <div class="footer">
+      <div>Corebit Studio // Systems Engineering // <a href="https://corebitsystems.io">corebitsystems.io</a></div>
+      <div>Page 2 of 4</div>
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 2: SRB/CNR ==================== -->
+  <div class="page">
+    <div class="header">
+      <div>Corebit Studio // Systems Engineering</div>
+      <div>Confidential / 2026</div>
+    </div>
+    
+    <span class="lang-label">SECTION 2: SRPSKI / CRNOGORSKI (SRB/CNR)</span>
+    <h1>Arhitektonski ček-list 2026</h1>
+    <p style="padding-left: 0; font-size: 14px; margin-bottom: 30px;">
+      Procenite spremnost vašeg sistema za sledeću generaciju veb inženjeringa.
+    </p>
+
+    <div class="card">
+      <h2>01. Next.js App Router i SSR optimizacija</h2>
+      
+      <h3>Partial Prerendering (PPR)</h3>
+      <p>Kako pravilno kombinovati statičke kosture i dinamička ostrva u 2026. za trenutno učitavanje.</p>
+      
+      <h3>Server Actions Security</h3>
+      <p>Ček-lista za zaštitu mutacija: stroga <span class="code-tag">Zod</span> validacija, provera autorizacije i Rate Limiting na nivou akcije.</p>
+      
+      <h3>Route Segment Config</h3>
+      <p>Optimalno korišćenje <span class="code-tag">force-dynamic</span> vs revalidation timeout-a za stranice sa velikim saobraćajem i keširanje.</p>
+    </div>
+
+    <div class="card">
+      <h2>02. Integracija AI i LLM agenata</h2>
+      
+      <h3>Latency Optimization</h3>
+      <p>Prelazak na strimovanje odgovora preko <span class="code-tag">Vercel AI SDK</span> i <span class="code-tag">Server-Sent Events</span>.</p>
+      
+      <h3>Context Window & Vector Cache</h3>
+      <p>Korišćenje lokalnog keširanja embedding-a za smanjenje troškova API poziva i optimizaciju RAG cevovoda.</p>
+      
+      <h3>Failover & Fallbacks</h3>
+      <p>Strategija postepene degradacije ukoliko su OpenAI/Anthropic API-ji preopterećeni ili nedostupni.</p>
+    </div>
+
+    <div class="card">
+      <h2>03. Sub-100ms LCP na Edge CDN-u</h2>
+      
+      <h3>Edge Runtime</h3>
+      <p>Premeštanje kritičnog middleware-a i API ruta na Edge infrastrukturu (bliže korisniku).</p>
+      
+      <h3>Advanced Asset Optimization</h3>
+      <p>Moderni formati (AVIF), agresivno keširanje fontova i uklanjanje nekorišćenog CSS-a (Purge).</p>
+      
+      <h3>Streaming HTML</h3>
+      <p>Progresivno renderovanje teških stranica preko <span class="code-tag">React Suspense</span>.</p>
+    </div>
+
+    <div class="card">
+      <h2>04. Usklađenost sa EU GDPR i enkripcija PII podataka</h2>
+      
+      <h3>Zero-Knowledge Architecture</h3>
+      <p>Čuvanje ličnih podataka (PII) u bezbedno šifrovanom obliku na strani baze podataka.</p>
+      
+      <h3>Consent Management</h3>
+      <p>Pravilna integracija Cookie Consent-a bez uticaja na CLS (Cumulative Layout Shift) i SEO metrike.</p>
+      
+      <h3>Data Residency</h3>
+      <p>Rutiranje zahteva evropskih korisnika isključivo preko servera u EU (npr. Frankfurt/Pariz).</p>
+    </div>
+
+    <div class="footer">
+      <div>Corebit Studio // Systems Engineering // <a href="https://corebitsystems.io">corebitsystems.io</a></div>
+      <div>Page 3 of 4</div>
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 3: RU ==================== -->
+  <div class="page">
+    <div class="header">
+      <div>Corebit Studio // Systems Engineering</div>
+      <div>Confidential / 2026</div>
+    </div>
+    
+    <span class="lang-label">СЕКЦИЯ 3: РУССКИЙ (RU)</span>
     <h1>Архитектурный чек-лист 2026</h1>
     <p style="padding-left: 0; font-size: 14px; margin-bottom: 30px;">
       Оцените готовность вашей системы к следующему поколению веб-разработки.
     </p>
 
     <div class="card">
-      <h2>01. Оптимизация Next.js 14/15+ App Router & SSR</h2>
+      <h2>01. Оптимизация Next.js App Router & SSR</h2>
       
       <h3>Partial Prerendering (PPR)</h3>
       <p>Как правильно комбинировать статический скелет и динамические острова в 2026 году для достижения мгновенной загрузки.</p>
@@ -181,7 +330,7 @@ const htmlContent = `
       <p>Оптимальное использование <span class="code-tag">force-dynamic</span> vs revalidation тайм-аутов для высоконагруженных страниц и кеширования.</p>
     </div>
 
-    <div class="card" style="margin-top: 20px;">
+    <div class="card">
       <h2>02. Интеграция ИИ и Диалоговых агентов (AI & LLM)</h2>
       
       <h3>Latency Optimization</h3>
@@ -192,19 +341,6 @@ const htmlContent = `
       
       <h3>Failover & Fallbacks</h3>
       <p>Стратегия плавного ухудшения интерфейса, если API OpenAI/Anthropic перегружен или недоступен.</p>
-    </div>
-
-    <div class="footer">
-      <div><a href="https://corebitsystems.io">corebitsystems.io</a></div>
-      <div>Page 1 of 2</div>
-    </div>
-  </div>
-
-  <!-- PAGE 2: RU Cont + EN/SRB -->
-  <div class="page">
-    <div class="header">
-      <div>Corebit Studio // Systems Engineering</div>
-      <div>Confidential / 2026</div>
     </div>
 
     <div class="card">
@@ -220,7 +356,7 @@ const htmlContent = `
       <p>Постепенный рендеринг тяжелых страниц через <span class="code-tag">React Suspense</span>.</p>
     </div>
 
-    <div class="card" style="margin-top: 20px;">
+    <div class="card">
       <h2>04. Соответствие EU GDPR и Шифрование PII данных</h2>
       
       <h3>Zero-Knowledge Architecture</h3>
@@ -234,8 +370,8 @@ const htmlContent = `
     </div>
 
     <div class="footer">
-      <div><a href="https://corebitsystems.io">corebitsystems.io</a></div>
-      <div>Page 2 of 2</div>
+      <div>Corebit Studio // Systems Engineering // <a href="https://corebitsystems.io">corebitsystems.io</a></div>
+      <div>Page 4 of 4</div>
     </div>
   </div>
 
