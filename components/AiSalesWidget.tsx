@@ -2,8 +2,17 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { useChat } from 'ai/react';
+import { useChat, UIMessage } from '@ai-sdk/react';
 import { useSearchParams } from 'next/navigation';
+
+const getMessageText = (m: UIMessage | any): string => {
+  if (m.content) return m.content;
+  if (!m.parts) return '';
+  return m.parts
+    .filter((p: any) => p.type === 'text')
+    .map((p: any) => p.text)
+    .join('');
+};
 import { Send, X, MessageSquare, Share2, Sparkles, User, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -130,16 +139,21 @@ export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
   const texts = WIDGET_TEXTS[locale] || WIDGET_TEXTS.en;
 
   // Initialize useChat hook
-  const { messages, input, handleInputChange, handleSubmit, setInput, append, isLoading } = useChat({
-    api: '/api/chat',
-    initialMessages: [
-      { id: 'welcome', role: 'assistant', content: texts.welcome }
+  const { messages, sendMessage, status, error } = useChat<UIMessage>({
+    messages: [
+      { id: 'welcome', role: 'assistant', parts: [{ type: 'text', text: texts.welcome }] }
     ],
     onError: (err) => {
       console.error('Gemini API execution error:', err);
       setIsFallback(true);
     }
   });
+
+  const [input, setInput] = useState('');
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
+  };
+  const isLoading = status === 'submitted' || status === 'streaming';
 
   // Calculate online status (09:00 - 19:00)
   useEffect(() => {
@@ -224,7 +238,7 @@ export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
     const lastMessage = messages[messages.length - 1];
     if (!lastMessage || lastMessage.role !== 'user') return;
 
-    const text = lastMessage.content;
+    const text = getMessageText(lastMessage);
     const EMAIL_REGEX = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
     const PHONE_REGEX = /(\+?\d{1,4}[-.\s]?)?(\(?\d{3}\)?[-.\s]?)?\d{3}[-.\s]?\d{4}/g;
 
@@ -247,7 +261,7 @@ export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
           contact,
           message: lastMsg,
           utmParams,
-          history: messages
+          history: messages.map(m => ({ role: m.role, content: getMessageText(m) }))
         })
       });
     } catch (e) {
@@ -257,7 +271,7 @@ export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
 
   const handleQuickReply = (reply: string) => {
     setShowQuickReplies(false);
-    append({ role: 'user', content: reply });
+    sendMessage({ text: reply });
   };
 
   const handleFormSubmit = async (e: React.FormEvent) => {
@@ -304,7 +318,9 @@ export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
 
   const handleChatSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleSubmit(e);
+    if (!input.trim()) return;
+    sendMessage({ text: input });
+    setInput('');
     localStorage.removeItem('ai_sales_draft');
   };
 
@@ -357,12 +373,12 @@ export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
                       </div>
                       <div className="flex flex-col gap-1.5">
                         <div className={`p-3 rounded-2xl text-xs sm:text-sm font-light leading-relaxed ${m.role === 'user' ? 'bg-zinc-900 border border-white/5 text-white rounded-tr-none' : 'bg-zinc-900/40 border border-white/5 text-zinc-300 rounded-tl-none'}`}>
-                          {m.content}
+                          {getMessageText(m)}
                         </div>
                         {/* Share Button (AI answers only) */}
                         {m.role === 'assistant' && m.id !== 'welcome' && (
                           <button
-                            onClick={() => handleShare(m.content)}
+                            onClick={() => handleShare(getMessageText(m))}
                             className="flex items-center gap-1 text-[10px] text-emerald-400 hover:text-emerald-300 self-start transition-colors px-1 cursor-pointer"
                           >
                             <Share2 size={10} /> Поделиться расчетом

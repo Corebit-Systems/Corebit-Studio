@@ -1,6 +1,6 @@
 // File: c:\dev\Corebit-Studio\app\api\chat\route.ts
-import { GoogleGenerativeAI } from '@google/generative-ai';
-import { GoogleGenerativeAIStream, StreamingTextResponse } from 'ai';
+import { google } from '@ai-sdk/google';
+import { streamText } from 'ai';
 
 export const maxDuration = 30;
 
@@ -13,28 +13,13 @@ export async function POST(req: Request) {
       throw new Error('GOOGLE_GENERATIVE_AI_API_KEY is not configured');
     }
 
-    const genAI = new GoogleGenerativeAI(apiKey);
+    const result = await streamText({
+      model: google('gemini-1.5-flash'),
+      messages,
+      system: "Ты — профессиональный ИИ-сейлз. Твоя задача — коротко и емко консультировать клиентов и собирать их контакты для передачи менеджеру. Отвечай лаконично, держи инициативу в диалоге, всегда задавай встречный вопрос. Категорически запрещено общаться на отвлеченные темы, не связанные с услугами компании.",
+    });
 
-    // Convert messages to Gemini API format. Filter out system/welcome placeholder if any.
-    // Roles must alternate between 'user' and 'model'.
-    const formattedMessages = messages
-      .filter((m: any) => m.role === 'user' || m.role === 'assistant')
-      .map((m: any) => ({
-        role: m.role === 'user' ? 'user' : 'model',
-        parts: [{ text: m.content }]
-      }));
-
-    const geminiStream = await genAI
-      .getGenerativeModel({
-        model: 'gemini-1.5-flash-002',
-        systemInstruction: "Ты — профессиональный ИИ-сейлз. Твоя задача — коротко и емко консультировать клиентов и собирать их контакты для передачи менеджеру. Отвечай лаконично, держи инициативу в диалоге, всегда задавай встречный вопрос. Категорически запрещено общаться на отвлеченные темы, не связанные с услугами компании."
-      })
-      .generateContentStream({
-        contents: formattedMessages
-      });
-
-    const stream = GoogleGenerativeAIStream(geminiStream);
-    return new StreamingTextResponse(stream);
+    return result.toUIMessageStreamResponse();
   } catch (err: any) {
     console.error('AI chat endpoint error:', err);
     return new Response(JSON.stringify({ error: err.message }), {
