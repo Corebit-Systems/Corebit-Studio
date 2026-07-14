@@ -26,7 +26,7 @@ export async function POST(req: Request) {
 
     const geminiStream = await genAI
       .getGenerativeModel({
-        model: 'gemini-1.5-flash',
+        model: 'gemini-1.5-flash-latest',
         systemInstruction: "Ты — профессиональный ИИ-сейлз. Твоя задача — коротко и емко консультировать клиентов и собирать их контакты для передачи менеджеру. Отвечай лаконично, держи инициативу в диалоге, всегда задавай встречный вопрос. Категорически запрещено общаться на отвлеченные темы, не связанные с услугами компании."
       })
       .generateContentStream({
