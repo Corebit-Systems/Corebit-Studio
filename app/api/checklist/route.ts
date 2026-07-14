@@ -106,7 +106,7 @@ export async function POST(request: Request) {
       ? 'Vaša arhitektonska kontrolna lista 2026 — Corebit Studio'
       : 'Ваш архитектурный чек-лист 2026 — Corebit Studio';
 
-    const pdfUrl = 'https://studio.corebitsystems.io/docs/architectural-checklist-2026.pdf';
+    const pdfUrl = 'https://studio.corebitsystems.io/api/download-checklist';
 
     const titleText = isBalkan ? 'Arhitektonski ček-list 2026' : 'Архитектурный чек-лист 2026';
     const introText = isBalkan
