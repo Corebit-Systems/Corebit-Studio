@@ -179,15 +179,15 @@
     "items": [
       {
         "q": "Koje tehnologije koristite?",
-        "a": "Gradimo koristeći Next.js 14 (App Router) i Tailwind CSS, koristeći Vercel Edge mreže za postizanje učitavanja ispod 100ms. Za baze podataka i prilagođene sisteme, integrišemo PostgreSQL, Redis i sigurne Webhook sisteme."
+        "a": "Razvijamo ultra brze veb sajtove koristeći Next.js 14 (App Router) i Tailwind CSS. Svi projekti su optimizovani za maksimalne LCP performanse i hostovani na globalnoj Vercel Edge mreži. Integrišemo sigurne PostgreSQL baze podataka, Redis keširanje i besprekornu sinhronizaciju sa CRM sistemima kako bismo povećali vaš ROI i poslovnu konverziju."
       },
       {
         "q": "Koji je rok izrade za prilagođene module automatizacije?",
-        "a": "Standardni moduli (poput rezervacije stolova ili zakazivanja termina) se obično puštaju u rad za 2-4 nedelje. Automatizacija kompleksnih sistema na nivou preduzeća traje između 6-8 nedelja."
+        "a": "Standardni B2B moduli, kao što su sistemi za automatsko rezervisanje i kalendari osoblja, isporučuju se za 2 do 4 nedelje. Kompletna rješenja na nivou preduzeća sa integracijom CRM-a, platnih šluzova i kalkulatora dobiti razvijaju se za 6 do 8 nedelja, garantujući visoke performanse i uštedu vremena menadžera."
       },
       {
         "q": "Da li pružaš lokalizovanu tehničku podršku u Crnoj Gori, Srbiji i Albaniji?",
-        "a": "Da! Pružamo posvećenu daljinsku i terensku tehničku podršku za kompanije u Crnoj Gori (Tivat, Budva, Podgorica), Srbiji (Beograd) i Albaniji (Tirana) sa vremenom odziva ispod 2 sata."
+        "a": "Da! Pružamo namjensku tehničku podršku za kompanije u Crnoj Gori (Budva, Tivat, Podgorica), Srbiji (Beograd) i Albaniji (Tirana). Garantujemo vrijeme odgovora po SLA ugovoru kraće od 2 sata, štedeći radno vrijeme vaših zaposlenih, kontrolišući integraciju CRM-a i osiguravajući stabilan rad kalkulatora ROI-ja i rezervacija."
       }
     ]
   },

@@ -179,15 +179,15 @@
     "items": [
       {
         "q": "What do I actually get with a booking system?",
-        "a": "Your clients book directly on your website 24/7 — no phone calls, no WhatsApp messages. They pick a time, confirm instantly, and get an automatic SMS reminder. You see all bookings in one dashboard and never deal with double-bookings again."
+        "a": "With our booking system, your clients book directly on your website 24/7 without phone calls or WhatsApp messages. It automatically sends SMS reminders, prevents double-bookings, and integrates seamlessly with popular CRMs. This reduces manual workload, secures client data in PostgreSQL, and yields a fast, measurable return on investment (ROI)."
       },
       {
         "q": "How quickly will my website be ready?",
-        "a": "A starter website with a contact form is ready in 7 days. A full booking platform with SMS notifications takes 2–4 weeks. For large-scale custom platforms we agree on the timeline individually."
+        "a": "A starter website featuring a fast contact form is ready in 7 days. A full business booking platform with SMS notifications, CRM synchronization, and a custom profit calculator takes 2 to 4 weeks. Large-scale corporate web systems are developed within 6 to 8 weeks, ensuring high page speed and fully optimized code."
       },
       {
         "q": "Do you provide support for businesses in Montenegro, Serbia, and Albania?",
-        "a": "Yes — we provide dedicated remote and on-site support for businesses in Montenegro (Tivat, Budva, Podgorica), Serbia (Belgrade), and Albania (Tirana) with response times under 2 hours."
+        "a": "Yes! We provide dedicated remote and on-site support for businesses in Montenegro (Tivat, Budva, Podgorica), Serbia (Belgrade), and Albania (Tirana). We guarantee response times under 2 hours via SLA, saving business owners time, maintaining database sync, and ensuring the profit-loss calculator and booking workflows perform flawlessly."
       }
     ]
   },

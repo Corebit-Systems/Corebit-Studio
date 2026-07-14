@@ -275,19 +275,19 @@ export async function generateMetadata({
     const serviceName = currentServiceNames[service.toLowerCase()] || service;
 
     const titles: Record<string, string> = {
-      en: `Order website ${serviceName} ${where} under key — Corebit Studio`,
-      ru: `Заказать сайт ${serviceName} ${where} под ключ — Corebit Studio`,
-      cnr: `Izrada Next.js sajta ${serviceName} ${where} (brzo rezervisanje) — Corebit`,
-      srb: `Izrada Next.js sajta ${serviceName} ${where} (brza rezervacija) — Corebit`,
-      sq: `Zhvillim uebfaqe Next.js ${serviceName} ${where} (rezervime) — Corebit`
+      en: `Website ${serviceName} ${where} — Corebit`,
+      ru: `Сайт ${serviceName} ${where} под ключ — Corebit`,
+      cnr: `Izrada sajta ${serviceName} ${where} — Corebit`,
+      srb: `Izrada sajta ${serviceName} ${where} — Corebit`,
+      sq: `Uebfaqe ${serviceName} ${where} — Corebit`
     };
 
     const descriptions: Record<string, string> = {
-      en: `Development of fast websites with online booking ${serviceName} ${where}. Ready business solutions, CRM integration, launch in 7 days. Get price!`,
-      ru: `Разработка быстрых сайтов с онлайн-записью ${serviceName} ${where}. Готовые решения для бизнеса, интеграция с CRM, запуск за 7 дней. Узнайте цену!`,
-      cnr: `Brzi sajtovi ${serviceName} ${where} na Next.js. Automatizacija rezervacija za HoReCa i STO, integrisan CRM i kalkulator izgubljene dobiti. Saznajte cijenu!`,
-      srb: `Brzi sajtovi ${serviceName} ${where} na Next.js. Automatizacija rezervacija za HoReCa i STO, integrisan CRM i kalkulator izgubljene dobiti. Saznajte cenu!`,
-      sq: `Uebfaqe ultra të shpejta Next.js ${serviceName} ${where}. Automatizim rezervimesh (HoReCa/Auto-servis), CRM dhe kalkulator i fitimit të humbur. Mëso çmimin!`
+      en: `Fast web development ${serviceName} ${where} with CRM integration, booking automation and ROI growth. Launch in 7 days. Get a price quote!`,
+      ru: `Быстрые сайты ${serviceName} ${where} с интеграцией CRM, автобронированием и ростом ROI. Запуск за 7 дней. Узнайте стоимость!`,
+      cnr: `Next.js sajtovi ${serviceName} ${where}. Automatizacija rezervacija, integrisan CRM i kalkulator izgubljene dobiti. Saznajte cijenu!`,
+      srb: `Next.js sajtovi ${serviceName} ${where}. Automatizacija rezervacija, integrisan CRM i kalkulator izgubljene dobiti. Saznajte cenu!`,
+      sq: `Uebfaqe Next.js ${serviceName} ${where}. Automatizim rezervimesh, CRM integrim dhe llogaritja e ROI-së. Mëso çmimin!`
     };
 
     const title = (titles[locale] || titles.en).replace('{where}', where);
@@ -423,15 +423,25 @@ export default async function CatchAllSEOPage({
   let city = '';
   let service = '';
 
-  if (slugStr.includes('-sajt-')) {
-    const parts = slugStr.split('-sajt-');
-    if (parts.length !== 2) {
-      notFound();
-    }
-    service = parts[0];
-    city = parts[1];
+  const resolved = resolveSlugEntry(locale, slugStr);
+  if (resolved) {
+    const parts = resolved.entry.id.split('_');
+    const serviceKeys = ['rent', 'sto', 'restoran', 'salon', 'nekretnine', 'hoteli', 'charter', 'klinike', 'ciscenje', 'transferi'];
+    const svcIdx = parts.findIndex((p) => serviceKeys.includes(p));
+    city = svcIdx > 0 ? parts.slice(0, svcIdx).join('_') : parts.join('_');
+    service = svcIdx > 0 ? parts.slice(svcIdx).join('_').replace('rent_a_car', 'rent-a-car') : '';
   } else {
-    city = slugStr;
+    // Fallback for legacy format
+    if (slugStr.includes('-sajt-')) {
+      const parts = slugStr.split('-sajt-');
+      if (parts.length !== 2) {
+        notFound();
+      }
+      service = parts[0];
+      city = parts[1];
+    } else {
+      city = slugStr;
+    }
   }
 
   const isValidCity = locations.includes(city.toLowerCase());

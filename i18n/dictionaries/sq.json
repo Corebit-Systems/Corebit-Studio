@@ -179,15 +179,15 @@
     "items": [
       {
         "q": "Çfarë teknologjish përdorni?",
-        "a": "Ne ndërtojmë me Next.js 14 (App Router) dhe Tailwind CSS, duke shfrytëzuar rrjetet Vercel Edge për të arritur kohë ngarkimi nën 100ms. Për bazat e të dhënave dhe integrimet tona, ne përdorim PostgreSQL, Redis dhe sisteme të sigurta Webhook."
+        "a": "Ne ndërtojmë me Next.js 14 (App Router) dhe Tailwind CSS, duke shfrytëzuar rrjetet Vercel Edge për të arritur kohë ngarkimi nën 100ms. Për bazat e të dhënave dhe integrimet tona, ne përdorim PostgreSQL, Redis dhe sisteme të sigurta Webhook si dhe CRM integrime për rritjen e ROI."
       },
       {
         "q": "Sa është afati i prodhimit për modulet e automatizimit të biznesit?",
-        "a": "Modulet standarde (si rezervimet e tavolinave ose rezervimet e takimeve) vendosen në punë brenda 2-4 javëve. Automatizimi i sistemeve të ndërlikuara ndërmarrjeje zgjat midis 6-8 javëve."
+        "a": "Modulet standarde B2B, si sistemet e rezervimit automatik dhe kalendarët e stafit, dorëzohen në 2 deri në 4 javë. Zgjidhjet e plota ndërmarrëse me integrim të plotë CRM, sisteme pagesash të sigurta dhe kalkulatorë të fitimit humbur zhvillohen për 6 deri në 8 javë, duke garantuar performancë të lartë."
       },
       {
         "q": "A ofroni mbështetje teknike lokale për kompanitë në Mal të Zi, Serbi dhe Shqipëri?",
-        "a": "Po! Ne ofrojmë mbështetje teknike të dedikuar nga distanca dhe në vend për kompanitë në Mal të Zi (Tivat, Budvë, Podgoricë), Serbi (Beograd) dhe Shqipëri (Tiranë) me kohë reagimi sipas SLA nën 2 orë."
+        "a": "Po! Ne ofrojmë mbështetje teknike të dedikuar nga distanca dhe në vend për kompanitë në Mal të Zi (Tivat, Budvë, Podgoricë), Serbi (Beograd) dhe Shqipëri (Tiranë) me kohë reagimi sipas SLA nën 2 orë, duke siguruar ROI dhe ruajtjen e të dhënave."
       }
     ]
   },
