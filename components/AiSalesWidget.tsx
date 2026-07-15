@@ -372,7 +372,7 @@ export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
                         {m.role === 'assistant' && m.id !== 'welcome' && (
                           <button
                             onClick={() => handleShare(getMessageText(m))}
-                            className="flex items-center gap-1 text-[10px] text-emerald-400 hover:text-emerald-300 self-start transition-colors px-2 py-3 -my-2.5 -mx-1 cursor-pointer min-h-[44px]"
+                            className="flex items-center gap-1 text-[10px] text-emerald-400 hover:text-emerald-300 self-start transition-colors px-3 py-3.5 -my-3.5 -mx-2 cursor-pointer min-h-[48px]"
                           >
                             <Share2 size={10} /> Поделиться расчетом
                           </button>

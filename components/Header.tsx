@@ -92,7 +92,7 @@ export default function Header({ dict, locale }: HeaderProps) {
         }`}
       >
         {/* Логотип */}
-        <Link href={`/${locale}`} onClick={closeMenu} className="flex items-center gap-2 group relative z-[60] shrink-0">
+        <Link href={`/${locale}`} onClick={closeMenu} className="flex items-center gap-2 group relative z-[60] shrink-0 py-3">
           <span className="font-bold text-lg sm:text-xl tracking-tight text-white group-hover:text-emerald-400 transition-colors duration-300">
             Corebit Studio
           </span>

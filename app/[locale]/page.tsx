@@ -1,19 +1,27 @@
 import type { Metadata } from 'next';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
-import BentoCard from '@/components/BentoCard';
-import PricingSection from '@/components/PricingSection';
-import ContactForm from '@/components/ContactForm';
+import dynamic from 'next/dynamic';
+
+// Above-the-fold components: statically imported for critical path/LCP optimization
 import HeroSection from '@/components/HeroSection';
-import FAQSection from '@/components/FAQSection';
-import RoiCalculator from '@/components/RoiCalculator';
-import ReviewsAccordion from '@/components/ReviewsAccordion';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider';
-import SpeedCheckWidget from '@/components/SpeedCheckWidget';
-import TechEcosystem from '@/components/TechEcosystem';
-import LeadMagnet from '@/components/LeadMagnet';
-import DevelopmentProcess from '@/components/DevelopmentProcess';
-import TechStackWidget from '@/components/TechStackWidget';
+import BentoCard from '@/components/BentoCard';
 import ScrollAnimate from '@/components/ScrollAnimate';
+
+// Below-the-fold components: dynamically loaded to split JS bundle and reduce TBT
+const PricingSection = dynamic(() => import('@/components/PricingSection'));
+const ContactForm = dynamic(() => import('@/components/ContactForm'));
+const FAQSection = dynamic(() => import('@/components/FAQSection'));
+const ReviewsAccordion = dynamic(() => import('@/components/ReviewsAccordion'));
+const TechEcosystem = dynamic(() => import('@/components/TechEcosystem'));
+const LeadMagnet = dynamic(() => import('@/components/LeadMagnet'));
+const DevelopmentProcess = dynamic(() => import('@/components/DevelopmentProcess'));
+const TechStackWidget = dynamic(() => import('@/components/TechStackWidget'));
+
+// Non-SEO-critical interactive calculators: loaded without SSR to optimize initial HTML payload
+const RoiCalculator = dynamic(() => import('@/components/RoiCalculator'), { ssr: false });
+const SpeedCheckWidget = dynamic(() => import('@/components/SpeedCheckWidget'), { ssr: false });
+
 import { ArrowRight, CheckCircle2, CalendarClock, Utensils, CalendarHeart } from 'lucide-react';
 
 const SITE_URL = 'https://studio.corebitsystems.io';

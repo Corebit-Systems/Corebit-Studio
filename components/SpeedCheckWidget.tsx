@@ -134,7 +134,7 @@ export default function SpeedCheckWidget({ dict }: SpeedCheckWidgetProps) {
 
             <button
               onClick={handleScrollToContact}
-              className="w-full py-3.5 sm:py-4 rounded-xl bg-emerald-600 text-white font-bold text-sm sm:text-base hover:bg-emerald-700 active:scale-95 transition-all text-center"
+              className="w-full min-h-[48px] py-3.5 sm:py-4 rounded-xl bg-emerald-600 text-white font-bold text-sm sm:text-base hover:bg-emerald-700 active:scale-95 transition-all flex items-center justify-center text-center"
             >
               {dict.cta_btn}
             </button>
