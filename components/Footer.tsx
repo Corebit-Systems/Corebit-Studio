@@ -95,7 +95,7 @@ export default function Footer({ dict, locale }: FooterProps) {
                 href="https://corebitsystems.io"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-emerald-400 underline transition-colors"
+                className="hover:text-emerald-400 underline transition-colors p-2 -m-2"
               >
                 Corebit Systems
               </a>
@@ -103,14 +103,14 @@ export default function Footer({ dict, locale }: FooterProps) {
           </div>
 
           {/* Block 2: Policy Links */}
-          <div className="flex flex-wrap items-center justify-center gap-6 text-[11px] sm:text-xs text-neutral-300 font-medium">
-            <Link href={`/${locale}/privacy-policy`} className="hover:text-emerald-400 transition-colors">
+          <div className="flex flex-wrap items-center justify-center gap-4 text-[11px] sm:text-xs text-neutral-300 font-medium">
+            <Link href={`/${locale}/privacy-policy`} className="hover:text-emerald-400 transition-colors inline-flex items-center min-h-[48px] py-3 px-2">
               {dict.policies?.privacy_title || 'Privacy Policy'}
             </Link>
-            <Link href={`/${locale}/cookie-policy`} className="hover:text-emerald-400 transition-colors">
+            <Link href={`/${locale}/cookie-policy`} className="hover:text-emerald-400 transition-colors inline-flex items-center min-h-[48px] py-3 px-2">
               {dict.policies?.cookie_title || 'Cookie Policy'}
             </Link>
-            <Link href={`/${locale}/terms-of-service`} className="hover:text-emerald-400 transition-colors">
+            <Link href={`/${locale}/terms-of-service`} className="hover:text-emerald-400 transition-colors inline-flex items-center min-h-[48px] py-3 px-2">
               {dict.policies?.terms_title || 'Terms of Service'}
             </Link>
           </div>
@@ -121,7 +121,7 @@ export default function Footer({ dict, locale }: FooterProps) {
               href="/sitemap.xml"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors font-mono text-xs"
+              className="hover:text-white transition-colors font-mono text-xs inline-flex items-center min-h-[48px] py-3 px-2"
               title="XML Sitemap"
             >
               sitemap.xml

@@ -345,9 +345,10 @@ export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
               </div>
               <button 
                 onClick={() => setIsOpen(false)}
-                className="w-8 h-8 rounded-full border border-white/5 hover:border-white/20 flex items-center justify-center text-zinc-400 hover:text-white transition-colors cursor-pointer"
+                className="w-12 h-12 rounded-full border border-white/5 hover:border-white/20 flex items-center justify-center text-zinc-400 hover:text-white transition-colors cursor-pointer"
+                aria-label="Close chat"
               >
-                <X size={16} />
+                <X size={20} />
               </button>
             </div>
 
@@ -371,7 +372,7 @@ export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
                         {m.role === 'assistant' && m.id !== 'welcome' && (
                           <button
                             onClick={() => handleShare(getMessageText(m))}
-                            className="flex items-center gap-1 text-[10px] text-emerald-400 hover:text-emerald-300 self-start transition-colors px-1 cursor-pointer"
+                            className="flex items-center gap-1 text-[10px] text-emerald-400 hover:text-emerald-300 self-start transition-colors px-2 py-3 -my-2.5 -mx-1 cursor-pointer min-h-[44px]"
                           >
                             <Share2 size={10} /> Поделиться расчетом
                           </button>
@@ -445,12 +446,12 @@ export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
               <div className="p-3 border-t border-white/10 flex flex-col gap-2.5 bg-zinc-900/20">
                 {/* Quick Replies */}
                 {showQuickReplies && messages.length === 1 && (
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-2">
                     {texts.quickReplies.map((reply, i) => (
                       <button
                         key={i}
                         onClick={() => handleQuickReply(reply)}
-                        className="px-2.5 py-1 border border-white/5 bg-zinc-900/50 hover:bg-zinc-800 text-[10px] sm:text-xs text-zinc-400 hover:text-white rounded-full transition-colors cursor-pointer"
+                        className="px-4 py-2.5 min-h-[48px] border border-white/5 bg-zinc-900/50 hover:bg-zinc-800 text-[10px] sm:text-xs text-zinc-400 hover:text-white rounded-full transition-colors cursor-pointer flex items-center justify-center"
                       >
                         {reply}
                       </button>
@@ -466,14 +467,15 @@ export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
                     onChange={onInputChange}
                     disabled={isLeadSent}
                     placeholder={isLeadSent ? "Заявка отправлена, чат закрыт" : texts.placeholder}
-                    className="flex-1 bg-zinc-900 border border-white/5 focus:border-emerald-500/30 text-white rounded-xl px-3 py-2.5 text-xs sm:text-sm font-light outline-none transition-colors pr-10 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex-1 bg-zinc-900 border border-white/5 focus:border-emerald-500/30 text-white rounded-xl px-3 py-2.5 text-xs sm:text-sm font-light outline-none transition-colors pr-16 disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                   <button 
                     type="submit"
                     disabled={!input.trim() || isLoading || isLeadSent}
-                    className="absolute right-1.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg bg-emerald-500 hover:bg-emerald-400 disabled:bg-zinc-800 text-white disabled:text-zinc-500 flex items-center justify-center transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="absolute right-1 top-1/2 -translate-y-1/2 w-12 h-12 rounded-xl bg-emerald-500 hover:bg-emerald-400 disabled:bg-zinc-800 text-white disabled:text-zinc-500 flex items-center justify-center transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                    aria-label="Send message"
                   >
-                    <Send size={14} />
+                    <Send size={18} />
                   </button>
                 </form>
               </div>

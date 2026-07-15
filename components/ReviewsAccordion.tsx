@@ -162,7 +162,7 @@ export default function ReviewsAccordion({ dict }: ReviewsAccordionProps) {
         {!isFormOpen && status !== 'success' && (
           <button
             onClick={() => setIsFormOpen(true)}
-            className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-emerald-500/50 hover:bg-emerald-500/5 text-white font-medium transition-all text-sm flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 active:scale-95"
+            className="px-6 py-3 min-h-[48px] rounded-xl bg-white/5 border border-white/10 hover:border-emerald-500/50 hover:bg-emerald-500/5 text-white font-medium transition-all text-sm flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 active:scale-95"
           >
             {dict.leave_btn}
           </button>
@@ -196,7 +196,7 @@ export default function ReviewsAccordion({ dict }: ReviewsAccordionProps) {
                 <button
                   type="button"
                   onClick={() => setIsFormOpen(false)}
-                  className="text-xs text-neutral-400 hover:text-white transition-colors"
+                  className="text-xs text-neutral-400 hover:text-white transition-colors p-3 -m-3 min-h-[48px] inline-flex items-center"
                 >
                   {dict.close_btn}
                 </button>
@@ -250,7 +250,7 @@ export default function ReviewsAccordion({ dict }: ReviewsAccordionProps) {
                         type="button"
                         onClick={() => setRating(starValue)}
                         disabled={status === 'loading'}
-                        className="text-neutral-500 hover:text-emerald-500 transition-colors focus:outline-none"
+                        className="text-neutral-500 hover:text-emerald-500 transition-colors focus:outline-none w-12 h-12 flex items-center justify-center"
                         aria-label={dict.form_rating_aria ? dict.form_rating_aria.replace('{stars}', String(starValue)) : `Rate ${starValue} Stars`}
                       >
                         <Star
@@ -286,7 +286,7 @@ export default function ReviewsAccordion({ dict }: ReviewsAccordionProps) {
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full py-3 rounded-xl bg-white text-black font-semibold hover:bg-neutral-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-h-[46px]"
+                className="w-full py-3.5 rounded-xl bg-white text-black font-semibold hover:bg-neutral-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-h-[48px]"
               >
                 <AnimatePresence mode="wait">
                   {status === 'loading' ? (

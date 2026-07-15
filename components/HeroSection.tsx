@@ -105,7 +105,6 @@ export default function HeroSection({ dict, locale }: HeroSectionProps) {
         </motion.div>
 
         <h1 
-          {...{ fetchPriority: 'high' }}
           className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-white/40 max-w-5xl leading-tight"
         >
           {dict.title}

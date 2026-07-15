@@ -65,13 +65,13 @@ export default function PricingSection({ dict, locale }: PricingSectionProps) {
         />
         <button
           onClick={() => setIsFullPayment(true)}
-          className={`relative z-10 flex-1 px-3 sm:px-6 py-3 text-xs sm:text-sm font-semibold transition-colors duration-300 whitespace-nowrap ${isFullPayment ? 'text-white' : 'text-neutral-400 hover:text-white'}`}
+          className={`relative z-10 flex-1 px-3 sm:px-6 py-3.5 min-h-[48px] flex items-center justify-center text-xs sm:text-sm font-semibold transition-colors duration-300 whitespace-nowrap ${isFullPayment ? 'text-white' : 'text-neutral-400 hover:text-white'}`}
         >
           {dict.toggle_full}
         </button>
         <button
           onClick={() => setIsFullPayment(false)}
-          className={`relative z-10 flex-1 px-3 sm:px-6 py-3 text-xs sm:text-sm font-semibold transition-colors duration-300 whitespace-nowrap ${!isFullPayment ? 'text-white' : 'text-neutral-400 hover:text-white'}`}
+          className={`relative z-10 flex-1 px-3 sm:px-6 py-3.5 min-h-[48px] flex items-center justify-center text-xs sm:text-sm font-semibold transition-colors duration-300 whitespace-nowrap ${!isFullPayment ? 'text-white' : 'text-neutral-400 hover:text-white'}`}
         >
           {dict.toggle_split}
         </button>

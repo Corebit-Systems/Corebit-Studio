@@ -216,7 +216,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
             disabled={status === 'loading' || isRateLimited}
             checked={agreeGDPR}
             onChange={(e) => setAgreeGDPR(e.target.checked)}
-            className="mt-1 h-4.5 w-4.5 rounded border-white/10 bg-white/5 text-emerald-600 focus:ring-emerald-500 shrink-0 cursor-pointer disabled:opacity-40"
+            className="mt-1 h-6 w-6 rounded border-white/10 bg-white/5 text-emerald-600 focus:ring-emerald-500 shrink-0 cursor-pointer disabled:opacity-40"
           />
           <label htmlFor="gdpr-consent" className="text-xs sm:text-sm text-neutral-400 leading-normal cursor-pointer select-none">
             {dict.gdpr_text}{' '}
@@ -314,7 +314,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
             <span>{dict.or_email_label || 'Or:'}</span>
             <a
               href="mailto:corebitstudio@corebitsystems.io"
-              className="hover:text-emerald-400 transition-colors underline"
+              className="hover:text-emerald-400 transition-colors underline inline-flex items-center min-h-[48px] py-3 px-2"
             >
               corebitstudio@corebitsystems.io
             </a>

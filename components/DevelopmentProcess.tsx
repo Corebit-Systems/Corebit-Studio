@@ -91,6 +91,13 @@ export default function DevelopmentProcess({ locale }: DevelopmentProcessProps) 
   const [hoveredStep, setHoveredStep] = useState<string | null>(null);
   const [activeStepId, setActiveStepId] = useState<string>('analytics');
 
+  const handleKeyDown = (e: React.KeyboardEvent, id: string) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      setActiveStepId(id);
+    }
+  };
+
   const stepsList = [
     { id: 'analytics', icon: <Shield size={20} /> },
     { id: 'design', icon: <Sparkles size={20} /> },
@@ -139,6 +146,10 @@ export default function DevelopmentProcess({ locale }: DevelopmentProcessProps) 
               {/* Step Circle */}
               <div 
                 onClick={() => setActiveStepId(step.id)}
+                onKeyDown={(e) => handleKeyDown(e, step.id)}
+                role="button"
+                tabIndex={0}
+                aria-label={`Select stage ${stepInfo.title}`}
                 className={`relative w-14 h-14 rounded-full flex items-center justify-center border transition-all duration-300 cursor-pointer ${
                   isCurrentActive 
                     ? 'bg-emerald-500/10 border-emerald-400 text-emerald-400 shadow-[0_0_20px_rgba(52,211,153,0.3)] animate-pulse'

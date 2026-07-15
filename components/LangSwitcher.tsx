@@ -120,7 +120,7 @@ export default function LangSwitcher({ currentLocale }: { currentLocale: string 
     <div className="relative" ref={dropdownRef}>
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all text-sm font-semibold backdrop-blur-md"
+        className="flex items-center gap-2.5 min-h-[48px] px-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all text-sm font-semibold backdrop-blur-md"
         aria-label="Change Language"
         aria-expanded={isOpen}
       >
@@ -137,7 +137,7 @@ export default function LangSwitcher({ currentLocale }: { currentLocale: string 
                 <button
                   key={loc.code}
                   onClick={() => switchLang(loc.code)}
-                  className={`flex items-center gap-2.5 w-full px-3.5 py-2.5 rounded-xl text-sm transition-all text-left ${
+                  className={`flex items-center gap-2.5 w-full min-h-[48px] px-4 py-3 rounded-xl text-sm transition-all text-left ${
                     currentLocale === loc.code 
                       ? 'text-emerald-400 font-bold bg-white/5' 
                       : 'text-neutral-300 hover:text-white hover:bg-white/5'

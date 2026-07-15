@@ -357,12 +357,21 @@ export default async function RootLayout({
     })) || []
   };
 
+  const websiteLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Corebit Studio",
+    "alternateName": ["Corebit Studio Montenegro", "Corebit"],
+    "url": SITE_URL
+  };
+
   return (
     <html lang={locale} className="dark scroll-smooth">
       <head>
         {/* Consolidated linked JSON-LD blocks to prevent graph fragmentation */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }} />
       </head>
       <body
         className={`${inter.className} bg-[#050506] text-white antialiased min-h-screen selection:bg-white/20 selection:text-white flex flex-col overflow-x-hidden`}

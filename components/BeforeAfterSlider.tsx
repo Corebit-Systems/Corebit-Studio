@@ -212,11 +212,14 @@ export default function BeforeAfterSlider({ dict }: BeforeAfterSliderProps) {
 
         {/* SLIDER HANDLEBAR */}
         <div
-          className="absolute top-0 bottom-0 w-0.5 bg-white/50 cursor-ew-resize z-30"
+          className="absolute top-0 bottom-0 w-12 -ml-6 cursor-ew-resize z-30 flex items-center justify-center"
           style={{ left: `${position}%` }}
           onMouseDown={handleMouseDown}
           onTouchStart={handleTouchStart}
         >
+          {/* Sleek visual white dividing line */}
+          <div className="w-0.5 h-full bg-white/50" />
+
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white text-black rounded-full shadow-[0_0_20px_rgba(255,255,255,0.4)] flex items-center justify-center text-xs font-bold border border-neutral-300">
             ↔
           </div>

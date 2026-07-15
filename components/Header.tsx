@@ -127,10 +127,10 @@ export default function Header({ dict, locale }: HeaderProps) {
             </Link>
           )}
 
-          {/* Мобильный бургер — минимум 44x44px для пальца */}
+          {/* Мобильный бургер — минимум 48x48px для пальца */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden relative w-11 h-11 flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded-xl"
+            className="md:hidden relative w-12 h-12 flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded-xl"
             aria-label={isOpen ? 'Закрыть меню' : 'Открыть меню'}
             aria-expanded={isOpen}
           >

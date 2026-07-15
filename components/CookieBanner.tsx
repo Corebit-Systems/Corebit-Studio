@@ -74,20 +74,20 @@ export default function CookieBanner({ dict, locale }: CookieBannerProps) {
           <div className="flex items-center justify-between gap-4 mt-2 relative z-10">
             <Link
               href={`/${locale}/cookie-policy`}
-              className="text-xs text-neutral-400 hover:text-white underline font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500/50 rounded px-1 -ml-1"
+              className="inline-flex items-center min-h-[48px] py-3 text-xs text-neutral-400 hover:text-white underline font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500/50 rounded px-1 -ml-1"
             >
               {dict.link}
             </Link>
-            <div className="flex gap-2">
+            <div className="flex gap-2 items-center">
               <button
                 onClick={handleReject}
-                className="px-4 py-2 rounded-xl border border-white/10 text-neutral-300 font-medium text-xs sm:text-sm hover:bg-white/5 active:scale-95 transition-all cursor-pointer whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-white/20"
+                className="px-4 min-h-[48px] py-3 rounded-xl border border-white/10 text-neutral-300 font-medium text-xs sm:text-sm hover:bg-white/5 active:scale-95 transition-all cursor-pointer whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-white/20 flex items-center justify-center"
               >
                 {dict.reject || 'Reject Non-Essential'}
               </button>
               <button
                 onClick={handleAccept}
-                className="px-4 py-2 rounded-xl bg-white text-black font-semibold text-xs sm:text-sm hover:bg-neutral-200 active:scale-95 transition-all cursor-pointer whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-emerald-500/50 shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+                className="px-4 min-h-[48px] py-3 rounded-xl bg-white text-black font-semibold text-xs sm:text-sm hover:bg-neutral-200 active:scale-95 transition-all cursor-pointer whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-emerald-500/50 shadow-[0_0_15px_rgba(255,255,255,0.2)] flex items-center justify-center"
               >
                 {dict.accept}
               </button>
