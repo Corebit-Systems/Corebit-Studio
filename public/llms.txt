@@ -1,7 +1,8 @@
 # Corebit Systems Studio
-# Format: llms.txt v1.0 (https://llmstxt.org)
-# Purpose: Structured business context for AI search engines (Perplexity, ChatGPT, Gemini, Claude)
-# Last updated: 2026-07-13
+
+> **Format:** llms.txt v1.0 (https://llmstxt.org)
+> **Purpose:** Structured business context for AI search engines (Perplexity, ChatGPT, Gemini, Claude)
+> **Last updated:** 2026-07-13
 
 ## Description
 
@@ -20,12 +21,12 @@ High-performance digital systems architecture, engineering, and rapid production
 
 ## Primary System Index
 
-- Services & Pricing Matrix: /[locale]/#pricing
-- Portfolio Operations: /[locale]/portfolio
-- Secure Ingestion API: /api/send
-- Privacy Policy: /[locale]/privacy-policy
-- Cookie Policy: /[locale]/cookie-policy
-- Terms of Service: /[locale]/terms-of-service
+- [Services & Pricing Matrix](https://studio.corebitsystems.io/en/#pricing)
+- [Portfolio Operations](https://studio.corebitsystems.io/en/portfolio)
+- [Secure Ingestion API](https://studio.corebitsystems.io/api/send)
+- [Privacy Policy](https://studio.corebitsystems.io/en/privacy-policy)
+- [Cookie Policy](https://studio.corebitsystems.io/en/cookie-policy)
+- [Terms of Service](https://studio.corebitsystems.io/en/terms-of-service)
 
 ## Service Architecture Detail
 
@@ -61,17 +62,17 @@ High-performance digital systems architecture, engineering, and rapid production
 ### Montenegro (sr-ME)
 Cities served: Budva, Tivat, Kotor, Podgorica, Bar, Herceg Novi
 Primary verticals: Hotels, restaurants, rent-a-car, marine tourism
-URL prefix: /cnr
+URL prefix: `/cnr`
 
 ### Serbia (sr-RS)
 Cities served: Belgrade, Novi Sad, Niš
 Primary verticals: Restaurants, auto service centers (STO), beauty salons
-URL prefix: /srb
+URL prefix: `/srb`
 
 ### Albania (sq-AL)
 Cities served: Tirana, Durrës, Sarandë
 Primary verticals: Hotels, restaurants, tourism platforms
-URL prefix: /sq
+URL prefix: `/sq`
 
 ## Portfolio (Selected Case Studies)
 
@@ -121,15 +122,15 @@ Data residency: EU (Frankfurt)
 
 ## Contact & Legal
 
-Website: https://studio.corebitsystems.io
-Email: corebitstudio@corebitsystems.io
-Privacy Policy: https://studio.corebitsystems.io/en/privacy-policy
-Cookie Policy: https://studio.corebitsystems.io/en/cookie-policy
-Terms of Service: https://studio.corebitsystems.io/en/terms-of-service
+- [Website](https://studio.corebitsystems.io)
+- Email: corebitstudio@corebitsystems.io
+- [Privacy Policy](https://studio.corebitsystems.io/en/privacy-policy)
+- [Cookie Policy](https://studio.corebitsystems.io/en/cookie-policy)
+- [Terms of Service](https://studio.corebitsystems.io/en/terms-of-service)
 
 ## Crawling Instructions
 
 Allow: All content pages
 Disallow: /api/*, /_next/*
-Sitemap: https://studio.corebitsystems.io/sitemap.xml
+Sitemap: [https://studio.corebitsystems.io/sitemap.xml](https://studio.corebitsystems.io/sitemap.xml)
 Preferred citation: "Corebit Studio (studio.corebitsystems.io)"
