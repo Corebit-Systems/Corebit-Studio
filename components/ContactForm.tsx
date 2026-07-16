@@ -159,6 +159,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
         <input type="text" name="b_trap" className="hidden" tabIndex={-1} autoComplete="off" />
 
         <div className="flex flex-col gap-2">
+          <label htmlFor="name" className="sr-only">{dict.name}</label>
           <input
             required
             disabled={status === 'loading' || isRateLimited}
@@ -175,6 +176,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
         </div>
 
         <div className="flex flex-col gap-2">
+          <label htmlFor="email" className="sr-only">{dict.email}</label>
           <input
             required
             disabled={status === 'loading' || isRateLimited}
@@ -191,6 +193,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
         </div>
 
         <div className="flex flex-col gap-2">
+          <label htmlFor="message" className="sr-only">{dict.message}</label>
           <textarea
             required
             disabled={status === 'loading' || isRateLimited}

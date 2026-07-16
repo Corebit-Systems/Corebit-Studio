@@ -82,6 +82,7 @@ export default function SpeedCheckWidget({ dict }: SpeedCheckWidgetProps) {
 
         {status === 'idle' && (
           <form onSubmit={handleCheck} className="flex flex-col sm:flex-row gap-3 w-full mt-2">
+            <label htmlFor="speed-check-url" className="sr-only">URL</label>
             <input
               required
               type="text"

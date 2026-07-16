@@ -204,6 +204,7 @@ export default function ReviewsAccordion({ dict }: ReviewsAccordionProps) {
 
               {/* Name & Title */}
               <div className="flex flex-col gap-2">
+                <label htmlFor="review-name" className="sr-only">{dict.form_name}</label>
                 <input
                   required
                   disabled={status === 'loading'}
@@ -221,6 +222,7 @@ export default function ReviewsAccordion({ dict }: ReviewsAccordionProps) {
 
               {/* Company & Industry */}
               <div className="flex flex-col gap-2">
+                <label htmlFor="review-company" className="sr-only">{dict.form_company}</label>
                 <input
                   required
                   disabled={status === 'loading'}
@@ -266,6 +268,7 @@ export default function ReviewsAccordion({ dict }: ReviewsAccordionProps) {
 
               {/* Review Text */}
               <div className="flex flex-col gap-2">
+                <label htmlFor="review-text" className="sr-only">{dict.form_text}</label>
                 <textarea
                   required
                   disabled={status === 'loading'}

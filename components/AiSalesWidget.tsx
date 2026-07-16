@@ -407,7 +407,9 @@ export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
                         <h5 className="text-sm font-semibold mt-1 text-white">{texts.fallbackTitle}</h5>
                         <p className="text-xs text-zinc-400 font-light mt-1">{texts.fallbackDesc}</p>
                       </div>
+                      <label htmlFor="chat-offline-name" className="sr-only">{texts.formName}</label>
                       <input
+                        id="chat-offline-name"
                         type="text"
                         required
                         placeholder={texts.formName}
@@ -415,7 +417,9 @@ export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
                         onChange={(e) => setFormName(e.target.value)}
                         className="w-full bg-zinc-900 border border-white/5 focus:border-emerald-500/30 text-white rounded-xl px-3 py-2 text-xs sm:text-sm font-light outline-none transition-colors"
                       />
+                      <label htmlFor="chat-offline-contact" className="sr-only">{texts.formContact}</label>
                       <input
+                        id="chat-offline-contact"
                         type="text"
                         required
                         placeholder={texts.formContact}
@@ -461,7 +465,9 @@ export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
 
                 {/* Input form */}
                 <form onSubmit={handleChatSubmit} className="flex gap-2 relative">
+                  <label htmlFor="chat-message-input" className="sr-only">{texts.placeholder}</label>
                   <input
+                    id="chat-message-input"
                     type="text"
                     value={input}
                     onChange={onInputChange}
