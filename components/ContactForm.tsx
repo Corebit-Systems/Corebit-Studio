@@ -223,7 +223,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
             <a 
               href={`/${agreeGDPR ? '#' : 'en'}/privacy-policy`} 
               onClick={(e) => e.stopPropagation()}
-              className="text-emerald-400 hover:text-emerald-300 underline font-medium transition-colors p-1 -m-1 inline-block"
+              className="text-emerald-400 hover:text-emerald-300 underline font-medium transition-colors p-2 -m-2 inline-block"
             >
               {dict.privacy_policy_link}
             </a>

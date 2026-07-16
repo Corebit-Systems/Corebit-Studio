@@ -92,36 +92,36 @@ export default function Header({ dict, locale }: HeaderProps) {
         }`}
       >
         {/* Логотип */}
-        <Link href={`/${locale}`} onClick={closeMenu} className="flex items-center gap-2 group relative z-[60] shrink-0 py-3">
+        <Link href={`/${locale}`} onClick={closeMenu} className="flex items-center gap-2 group relative z-[60] shrink-0 min-h-[48px] py-2">
           <span className="font-bold text-lg sm:text-xl tracking-tight text-white group-hover:text-emerald-400 transition-colors duration-300">
             Corebit Studio
           </span>
         </Link>
-
+ 
         {/* Десктопная навигация */}
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-400">
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="hover:text-white transition-colors">
+            <Link key={link.href} href={link.href} className="hover:text-white transition-colors min-h-[48px] flex items-center py-2 px-1">
               {link.name}
             </Link>
           ))}
         </nav>
-
+ 
         {/* Экшены (LangSwitcher + CTA + Burger) */}
         <div className="flex items-center gap-2 sm:gap-4 relative z-[60]">
           <LangSwitcher currentLocale={locale} />
-
+ 
           {isPolicyPage ? (
             <Link
               href={`/${locale}`}
-              className="hidden sm:block px-4 py-2 rounded-xl border border-white/10 hover:bg-white/5 text-white text-sm font-semibold transition-colors whitespace-nowrap"
+              className="hidden sm:inline-flex items-center justify-center px-4 py-3 min-h-[48px] rounded-xl border border-white/10 hover:bg-white/5 text-white text-sm font-semibold transition-colors whitespace-nowrap"
             >
               {backLabel}
             </Link>
           ) : (
             <Link
               href={`/${locale}#contact`}
-              className="hidden sm:block px-4 py-2 rounded-xl bg-white text-black text-sm font-semibold hover:bg-neutral-200 transition-colors whitespace-nowrap"
+              className="hidden sm:inline-flex items-center justify-center px-4 py-3 min-h-[48px] rounded-xl bg-white text-black text-sm font-semibold hover:bg-neutral-200 transition-colors whitespace-nowrap"
             >
               {dict.hero.cta}
             </Link>

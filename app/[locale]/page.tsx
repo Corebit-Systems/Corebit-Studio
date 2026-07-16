@@ -4,11 +4,11 @@ import dynamic from 'next/dynamic';
 
 // Above-the-fold components: statically imported for critical path/LCP optimization
 import HeroSection from '@/components/HeroSection';
-import BeforeAfterSlider from '@/components/BeforeAfterSlider';
 import BentoCard from '@/components/BentoCard';
 import ScrollAnimate from '@/components/ScrollAnimate';
 
 // Below-the-fold components: dynamically loaded to split JS bundle and reduce TBT
+const BeforeAfterSlider = dynamic(() => import('@/components/BeforeAfterSlider'));
 const PricingSection = dynamic(() => import('@/components/PricingSection'));
 const ContactForm = dynamic(() => import('@/components/ContactForm'));
 const FAQSection = dynamic(() => import('@/components/FAQSection'));
