@@ -1,4 +1,5 @@
 // File: C:\dev\Corebit-Studio\app\[locale]\layout.tsx
+import '@/app/zod-init';
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import '@/app/globals.css';
