@@ -79,6 +79,7 @@ export async function generateMetadata({
       google: 'G8PO2v-HeIoMTxZXUb8qNopkCV6sQPH4Cd0VEftJyVQ',
       other: {
         'yandex-verification': '41ee1bc24c5e3a3e',
+        'msvalidate.01': '313628409F2DAD61CADA8822F8BEC4AA',
       },
     },
     icons: {
