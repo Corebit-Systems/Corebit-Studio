@@ -13,7 +13,14 @@ import dynamic from 'next/dynamic';
 
 const AiSalesWidget = dynamic(() => import('@/components/AiSalesWidget'), { ssr: false });
 
-const inter = Inter({ subsets: ['latin', 'cyrillic'], display: 'swap', weight: ['400', '500', '700'] });
+const inter = Inter({
+  subsets: ['latin', 'cyrillic'],
+  display: 'swap',
+  weight: ['400', '500', '700'],
+  fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+  adjustFontFallback: true,
+  preload: true,
+});
 const SITE_URL = 'https://studio.corebitsystems.io';
 
 // ── Per-locale metadata registry ─────────────────────────────────────────────
