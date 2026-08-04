@@ -2,6 +2,7 @@
 const isDev = process.env.NODE_ENV === 'development';
 
 const nextConfig = {
+  swcMinify: true,
 
   experimental: {
     optimizeCss: true,
