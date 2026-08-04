@@ -59,7 +59,7 @@ export default function CookieBanner({ dict, locale }: CookieBannerProps) {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 50, opacity: 0 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 lg:right-8 md:max-w-[480px] z-50 p-5 sm:p-6 rounded-2xl border border-white/10 bg-[#050506]/70 backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.1)] flex flex-col gap-4 pointer-events-auto overflow-hidden"
+          className="fixed bottom-6 left-4 right-4 md:left-auto md:right-6 lg:right-8 md:max-w-[480px] z-50 p-5 sm:p-6 rounded-2xl border border-white/10 bg-[#050506]/70 backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.1)] flex flex-col gap-4 pointer-events-auto overflow-hidden"
         >
           {/* Subtle glow effect behind */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 blur-[50px] rounded-full pointer-events-none" />
@@ -74,7 +74,7 @@ export default function CookieBanner({ dict, locale }: CookieBannerProps) {
           <div className="flex items-center justify-between gap-4 mt-2 relative z-10">
             <Link
               href={`/${locale}/cookie-policy`}
-              className="inline-flex items-center min-h-[48px] py-3 text-xs text-neutral-400 hover:text-white underline font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500/50 rounded px-1 -ml-1"
+              className="inline-flex items-center min-h-[48px] min-w-[48px] py-3 px-2 text-xs text-neutral-400 hover:text-white underline font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500/50 rounded -ml-1 my-1"
             >
               {dict.link}
             </Link>

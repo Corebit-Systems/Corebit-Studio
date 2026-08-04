@@ -23,11 +23,9 @@ interface FooterProps {
 export default function Footer({ dict, locale }: FooterProps) {
   return (
     // ФИКС: mt-32 → mt-16 sm:mt-32, убраны px-6 → px-4 sm:px-6
-    <footer className="w-full mt-16 sm:mt-32 border-t border-white/10 bg-[#050506]/80 backdrop-blur-3xl pt-12 sm:pt-24 pb-8 sm:pb-12 px-4 sm:px-6 relative overflow-hidden flex flex-col items-center">
+    <footer className="w-full mt-16 sm:mt-32 border-t border-white/10 bg-[#050506]/80 backdrop-blur-3xl pt-12 sm:pt-24 pb-20 sm:pb-12 px-4 sm:px-6 relative overflow-hidden flex flex-col items-center">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[100px] bg-emerald-500/10 blur-[100px] pointer-events-none" />
-
-
 
       <div className="max-w-7xl mx-auto flex flex-col items-center gap-8 sm:gap-12 w-full">
         {/* Contact cards */}
@@ -85,7 +83,7 @@ export default function Footer({ dict, locale }: FooterProps) {
         <div className="w-full h-[1px] bg-white/10" />
 
         {/* Bottom bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center w-full text-xs sm:text-sm gap-6 text-center md:text-left">
+        <div className="flex flex-col md:flex-row justify-between items-center w-full text-xs sm:text-sm gap-6 text-center md:text-left pb-12 sm:pb-4">
           {/* Block 1: Copyright + Subsidiary */}
           <div className="flex flex-col gap-1 items-center md:items-start text-neutral-400">
             <p className="font-light">{dict.footer.rights}</p>
@@ -95,7 +93,7 @@ export default function Footer({ dict, locale }: FooterProps) {
                 href="https://corebitsystems.io"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-emerald-400 underline transition-colors p-2 -m-2"
+                className="hover:text-emerald-400 underline transition-colors p-2 -m-2 min-h-[48px] inline-flex items-center"
               >
                 Corebit Systems
               </a>
@@ -103,14 +101,16 @@ export default function Footer({ dict, locale }: FooterProps) {
           </div>
 
           {/* Block 2: Policy Links */}
-          <div className="flex flex-wrap items-center justify-center gap-4 text-[11px] sm:text-xs text-neutral-300 font-medium">
-            <Link href={`/${locale}/privacy-policy`} className="hover:text-emerald-400 transition-colors inline-flex items-center min-h-[48px] py-3 px-2">
+          <div className="flex flex-wrap items-center justify-center gap-4 text-[11px] sm:text-xs text-neutral-300 font-medium my-2 sm:my-0">
+            <Link href={`/${locale}/privacy-policy`} className="hover:text-emerald-400 transition-colors inline-flex items-center min-h-[48px] py-3 px-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500/50">
               {dict.policies?.privacy_title || 'Privacy Policy'}
             </Link>
-            <Link href={`/${locale}/cookie-policy`} className="hover:text-emerald-400 transition-colors inline-flex items-center min-h-[48px] py-3 px-2">
-              {dict.policies?.cookie_title || 'Cookie Policy'}
-            </Link>
-            <Link href={`/${locale}/terms-of-service`} className="hover:text-emerald-400 transition-colors inline-flex items-center min-h-[48px] py-3 px-2">
+            <div className="mb-2 sm:mb-0 inline-flex items-center">
+              <Link href={`/${locale}/cookie-policy`} className="hover:text-emerald-400 transition-colors inline-flex items-center min-h-[48px] py-3 px-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500/50 bg-white/[0.02] sm:bg-transparent border border-white/5 sm:border-none">
+                {dict.policies?.cookie_title || 'Cookie Policy'}
+              </Link>
+            </div>
+            <Link href={`/${locale}/terms-of-service`} className="hover:text-emerald-400 transition-colors inline-flex items-center min-h-[48px] py-3 px-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500/50">
               {dict.policies?.terms_title || 'Terms of Service'}
             </Link>
           </div>
@@ -121,7 +121,7 @@ export default function Footer({ dict, locale }: FooterProps) {
               href="/sitemap.xml"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors font-mono text-xs inline-flex items-center min-h-[48px] py-3 px-2"
+              className="hover:text-white transition-colors font-mono text-xs inline-flex items-center min-h-[48px] py-3 px-3"
               title="XML Sitemap"
             >
               sitemap.xml

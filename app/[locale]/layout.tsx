@@ -370,6 +370,9 @@ export default async function RootLayout({
   return (
     <html lang={locale} className="dark scroll-smooth">
       <head>
+        {/* Preconnect & Resource hints for critical fonts and styles */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* Consolidated linked JSON-LD blocks to prevent graph fragmentation */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageLd) }} />

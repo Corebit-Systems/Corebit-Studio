@@ -4,6 +4,7 @@ const isDev = process.env.NODE_ENV === 'development';
 const nextConfig = {
 
   experimental: {
+    optimizeCss: true,
     outputFileTracingIncludes: {
       '/[locale]/privacy-policy':   ['./content/legal/privacy/**'],
       '/[locale]/cookie-policy':    ['./content/legal/cookie/**'],

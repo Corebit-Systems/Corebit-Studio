@@ -317,7 +317,7 @@ export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
   };
 
   return (
-    <div ref={widgetRef} className="fixed bottom-6 left-6 z-50 flex flex-col items-start">
+    <div ref={widgetRef} className="fixed bottom-6 left-4 sm:left-6 z-50 flex flex-col items-start">
       <AnimatePresence>
         {isOpen && (
           <motion.div
