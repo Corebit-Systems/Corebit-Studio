@@ -7,6 +7,7 @@ import { ShieldCheck, Loader2, Mail } from 'lucide-react';
 import { submitContactForm } from '@/app/actions';
 import { trackLeadEvent } from './leadAnalytics';
 import { pricingSelectionEvent, type PricingInquiry } from './pricingInquiry';
+import { contactDraftEvent, contactMessageLimit, mergeContactDraft, takeContactDraft } from './contactDraft';
 
 interface ContactFormDict {
   title: string;
@@ -53,6 +54,16 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    const applyDraft = () => {
+      const draft = takeContactDraft();
+      if (draft) setMessage((current) => mergeContactDraft(current, draft));
+    };
+    window.addEventListener(contactDraftEvent, applyDraft);
+    applyDraft();
+    return () => window.removeEventListener(contactDraftEvent, applyDraft);
+  }, []);
 
   // Rate Limiting States — driven by useRef timer; NOT localStorage
   // Using a ref for the interval means DevTools cannot bypass by deleting localStorage keys.
@@ -127,7 +138,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
         // UX Clean reset
         setName('');
         setEmail('');
-        setMessage('');
+        setMessage((current) => current === message ? '' : current);
         setSelectedPlan((current) => current === selectedPlan ? null : current);
 
         // Delay the rate limit lock in the UI by 3 seconds so the user can read the success message.
@@ -257,7 +268,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
             placeholder={isRateLimited ? `${dict.error_rate} (${countdown}s)` : dict.message}
             aria-label={dict.message}
             rows={4}
-            maxLength={1000}
+            maxLength={contactMessageLimit}
             className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-600/50 focus:bg-white/10 transition-all resize-none text-base disabled:opacity-40 disabled:cursor-not-allowed"
           />
         </div>

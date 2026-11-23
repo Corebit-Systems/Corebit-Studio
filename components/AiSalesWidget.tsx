@@ -2,10 +2,12 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import { useChat } from '@ai-sdk/react';
 import { DefaultChatTransport, type UIMessage } from 'ai';
 import { Send, X, Share2, Sparkles, User, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { stageContactDraft } from './contactDraft';
 
 const getMessageText = (message: UIMessage) => message.parts
   .filter((part) => part.type === 'text')
@@ -48,7 +50,7 @@ const WIDGET_TEXTS: Record<string, {
     offline: "Offline",
     fallbackTitle: "AI Assistant is Busy",
     fallbackDesc: "Use our contact form to discuss your project with the team.",
-    contact: "Contact the team",
+    contact: "Prepare an email inquiry",
     shareTitle: "Corebit Studio Proposal",
     shareText: "Check out this web development proposal from Corebit Studio!"
   },
@@ -61,7 +63,7 @@ const WIDGET_TEXTS: Record<string, {
     offline: "Не в сети",
     fallbackTitle: "Ассистент занят",
     fallbackDesc: "Оставьте заявку через форму, чтобы обсудить проект с командой.",
-    contact: "Связаться с командой",
+    contact: "Подготовить заявку на почту",
     shareTitle: "Предложение от Corebit Studio",
     shareText: "Посмотрите предложение по веб-разработке от Corebit Studio!"
   },
@@ -74,7 +76,7 @@ const WIDGET_TEXTS: Record<string, {
     offline: "Van mreže",
     fallbackTitle: "Asistent je zauzet",
     fallbackDesc: "Pošaljite upit putem kontakt forme.",
-    contact: "Kontaktirajte tim",
+    contact: "Pripremite upit za slanje mejlom",
     shareTitle: "Ponuda Corebit Studio",
     shareText: "Pogledajte ovu ponudu za razvoj veb sajta od Corebit Studio!"
   },
@@ -87,7 +89,7 @@ const WIDGET_TEXTS: Record<string, {
     offline: "Van mreže",
     fallbackTitle: "Asistent je zauzet",
     fallbackDesc: "Pošaljite upit putem kontakt forme.",
-    contact: "Kontaktirajte tim",
+    contact: "Pripremite upit za slanje mejlom",
     shareTitle: "Ponuda Corebit Studio",
     shareText: "Pogledajte ovu ponudu za razvoj veb sajta od Corebit Studio!"
   },
@@ -100,13 +102,14 @@ const WIDGET_TEXTS: Record<string, {
     offline: "Jashtë linje",
     fallbackTitle: "Asistenti është i zënë",
     fallbackDesc: "Përdorni formularin e kontaktit për të diskutuar projektin me ekipin.",
-    contact: "Kontaktoni ekipin",
+    contact: "Përgatitni kërkesën me email",
     shareTitle: "Propozim nga Corebit Studio",
     shareText: "Shikoni këtë propozim për zhvillim uebi nga Corebit Studio!"
   }
 };
 
 export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [showQuickReplies, setShowQuickReplies] = useState(true);
   const chatEndRef = useRef<HTMLDivElement>(null);
@@ -125,6 +128,26 @@ export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
   const isLoading = status === 'submitted' || status === 'streaming';
   const isOnline = !error;
   const contactHref = `/${locale}#contact`;
+
+  const prepareInquiry = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+
+    event.preventDefault();
+    stageContactDraft(messages
+      .filter((message) => message.role === 'user')
+      .map(getMessageText)
+      .filter((message) => !texts.quickReplies.includes(message)));
+    setIsOpen(false);
+
+    const contact = document.getElementById('contact');
+    if (!contact) {
+      router.push(contactHref);
+    } else if (window.location.hash !== '#contact') {
+      window.location.hash = 'contact';
+    } else {
+      contact.scrollIntoView();
+    }
+  };
 
   // Scroll to bottom
   useEffect(() => {
@@ -297,7 +320,7 @@ export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
             )}
             <a
               href={contactHref}
-              onClick={() => setIsOpen(false)}
+              onClick={prepareInquiry}
               className="flex min-h-11 items-center justify-center border-t border-white/10 px-4 text-sm font-medium text-emerald-300 transition-colors hover:text-emerald-200"
             >
               {texts.contact}
