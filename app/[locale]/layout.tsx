@@ -175,6 +175,12 @@ interface LayoutDict {
     cta_btn: string;
     rights:  string;
   };
+  policies?: {
+    back_btn: string;
+    privacy_title: string;
+    cookie_title: string;
+    terms_title: string;
+  };
   cookie: {
     text: string;
     accept: string;

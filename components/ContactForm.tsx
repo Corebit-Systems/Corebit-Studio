@@ -3,7 +3,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShieldCheck, Loader2 } from 'lucide-react';
+import { ShieldCheck, Loader2, Mail } from 'lucide-react';
 import { submitContactForm } from '@/app/actions';
 
 interface ContactFormDict {
@@ -24,7 +24,6 @@ interface ContactFormDict {
   prefilled_msg?: string;
   locked_label?: string;
   or_label?: string;
-  or_email_label?: string;
 }
 
 interface ContactFormProps {
@@ -284,34 +283,28 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
             {errorMessage}
           </motion.p>
         )}
-
-        {/* Quick Contact links */}
-        <div className="mt-6 pt-6 border-t border-white/10 flex flex-col gap-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
-            <a
-              href={`https://wa.me/359882905657?text=${encodeURIComponent(dict.prefilled_msg || '')}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 px-5 py-4 rounded-xl bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/20 hover:border-[#25D366]/40 text-[#25D366] transition-all text-sm font-semibold active:scale-95 shadow-lg"
-            >
-              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                <path d="M12.012 2c-5.506 0-9.988 4.475-9.988 9.981 0 1.762.456 3.481 1.325 5.012L2 22l5.138-1.344a9.92 9.92 0 0 0 4.875 1.275h.005c5.506 0 9.994-4.475 9.994-9.981 0-2.669-1.038-5.175-2.925-7.062C17.188 3.037 14.688 2 12.012 2zm5.787 13.987c-.244.688-1.219 1.25-1.688 1.344-.438.094-.981.169-2.95-.65-2.519-1.044-4.138-3.612-4.262-3.781-.125-.169-.994-1.325-.994-2.525 0-1.2.625-1.787.844-2.031.219-.244.488-.306.65-.306.169 0 .344.006.494.013.156.006.363-.063.569.444.206.506.712 1.731.775 1.862.063.131.106.288.019.462-.088.175-.169.3-.338.5-.169.194-.35.394-.5.562-.169.181-.344.375-.15.712.194.331.862 1.419 1.844 2.294.125.112.231.2.338.281.812.637 1.287.544 1.5-.281.088-.175.4-.813.506-1.031.106-.219.219-.175.331-.131.119.044.75.356 1.538.744.788.388.906.575.981.7.075.125.075.725-.169 1.412z"/>
-              </svg>
-              <span>{dict.whatsapp_btn || 'WhatsApp Chat'}</span>
-            </a>
-          </div>
-          
-          <div className="flex items-center justify-center gap-2 text-xs text-neutral-400">
-            <span>{dict.or_email_label || 'Or:'}</span>
-            <a
-              href="mailto:corebitstudio@corebitsystems.io"
-              className="hover:text-emerald-400 transition-colors underline inline-flex items-center min-h-[48px] py-3 px-2"
-            >
-              corebitstudio@corebitsystems.io
-            </a>
-          </div>
-        </div>
       </form>
+
+      <div className="relative mt-8 grid gap-3 border-t border-white/10 pt-5 md:grid-cols-2">
+        <a
+          href={`https://wa.me/359882905657?text=${encodeURIComponent(dict.prefilled_msg || '')}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex min-h-[48px] items-center justify-center gap-2.5 rounded-xl border border-[#25D366]/20 bg-[#25D366]/[0.07] px-3 py-3 text-center text-sm font-semibold text-[#25D366] transition-colors hover:border-[#25D366]/40 hover:bg-[#25D366]/[0.12] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
+        >
+          <svg aria-hidden="true" className="h-5 w-5 shrink-0 fill-current" viewBox="0 0 24 24">
+            <path d="M12.012 2c-5.506 0-9.988 4.475-9.988 9.981 0 1.762.456 3.481 1.325 5.012L2 22l5.138-1.344a9.92 9.92 0 0 0 4.875 1.275h.005c5.506 0 9.994-4.475 9.994-9.981 0-2.669-1.038-5.175-2.925-7.062C17.188 3.037 14.688 2 12.012 2zm5.787 13.987c-.244.688-1.219 1.25-1.688 1.344-.438.094-.981.169-2.95-.65-2.519-1.044-4.138-3.612-4.262-3.781-.125-.169-.994-1.325-.994-2.525 0-1.2.625-1.787.844-2.031.219-.244.488-.306.65-.306.169 0 .344.006.494.013.156.006.363-.063.569.444.206.506.712 1.731.775 1.862.063.131.106.288.019.462-.088.175-.169.3-.338.5-.169.194-.35.394-.5.562-.169.181-.344.375-.15.712.194.331.862 1.419 1.844 2.294.125.112.231.2.338.281.812.637 1.287.544 1.5-.281.088-.175.4-.813.506-1.031.106-.219.219-.175.331-.131.119.044.75.356 1.538.744.788.388.906.575.981.7.075.125.075.725-.169 1.412z"/>
+          </svg>
+          <span>{dict.whatsapp_btn || 'WhatsApp Chat'}</span>
+        </a>
+        <a
+          href="mailto:corebitstudio@corebitsystems.io"
+          className="flex min-h-[48px] items-center justify-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-3 text-center text-sm text-neutral-300 transition-colors hover:border-white/20 hover:bg-white/[0.07] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
+        >
+          <Mail aria-hidden="true" className="h-4 w-4 shrink-0 text-neutral-400" />
+          <span className="min-w-0 [overflow-wrap:anywhere]">corebitstudio@corebitsystems.io</span>
+        </a>
+      </div>
     </div>
   );
 }

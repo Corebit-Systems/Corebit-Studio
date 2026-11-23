@@ -1,10 +1,17 @@
-// File: C:\dev\Corebit-Studio\components\Footer.tsx
-import { Phone, Mail, MessageCircle, ArrowRight } from 'lucide-react';
+import { Mail, MessageCircle, Phone } from 'lucide-react';
 import Link from 'next/link';
 
 interface FooterDict {
+  nav: {
+    services: string;
+    portfolio: string;
+    pricing: string;
+    contact?: string;
+  };
+  hero: {
+    cta: string;
+  };
   footer: {
-    cta_btn: string;
     rights: string;
   };
   policies?: {
@@ -19,91 +26,113 @@ interface FooterProps {
   locale: string;
 }
 
+const linkFocus = 'rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400';
+const contactLink = `${linkFocus} inline-flex min-h-11 max-w-full items-center gap-3 text-sm text-neutral-300 transition-colors hover:text-emerald-300`;
+
 export default function Footer({ dict, locale }: FooterProps) {
+  const home = `/${locale}`;
+  const siteLinks = [
+    { href: `${home}#modules`, label: dict.nav.services },
+    { href: `${home}#portfolio`, label: dict.nav.portfolio },
+    { href: `${home}#pricing`, label: dict.nav.pricing },
+  ];
+  const policyLinks = [
+    { href: `${home}/privacy-policy`, label: dict.policies?.privacy_title || 'Privacy Policy' },
+    { href: `${home}/cookie-policy`, label: dict.policies?.cookie_title || 'Cookie Policy' },
+    { href: `${home}/terms-of-service`, label: dict.policies?.terms_title || 'Terms of Service' },
+  ];
+
   return (
-    // ФИКС: mt-32 → mt-16 sm:mt-32, убраны px-6 → px-4 sm:px-6
-    <footer className="w-full mt-16 sm:mt-32 border-t border-white/10 bg-[#050506]/80 backdrop-blur-3xl pt-12 sm:pt-24 pb-20 sm:pb-12 px-4 sm:px-6 relative overflow-hidden flex flex-col items-center">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[100px] bg-emerald-500/10 blur-[100px] pointer-events-none" />
+    <footer className="relative mt-16 w-full border-t border-white/10 bg-[#08090a] px-4 pb-36 pt-10 sm:mt-24 sm:px-6 sm:pt-14 md:px-8">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(ellipse_at_top_left,rgba(16,185,129,0.10),transparent_65%)]"
+      />
 
-      <div className="max-w-7xl mx-auto flex flex-col items-center gap-8 sm:gap-12 w-full">
-        {/* Contact cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+      <div className="relative mx-auto max-w-7xl">
+        <div className="grid gap-6 pb-8 sm:pb-10 md:grid-cols-[minmax(0,1fr)_minmax(0,0.7fr)_minmax(0,1.15fr)] md:gap-8">
+          <div className="flex flex-col items-start gap-4">
+            <Link
+              href={home}
+              className={`${linkFocus} inline-flex min-h-11 items-center text-2xl font-bold tracking-tight text-white transition-colors hover:text-emerald-300 sm:text-3xl`}
+            >
+              Corebit Studio
+            </Link>
+            <Link
+              href={`${home}#contact`}
+              className="inline-flex min-h-11 items-center rounded-xl border border-emerald-500/25 bg-emerald-500/[0.07] px-4 py-2.5 text-sm font-semibold text-emerald-300 transition-colors hover:border-emerald-400/40 hover:bg-emerald-500/[0.14] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400"
+            >
+              {dict.hero.cta}
+            </Link>
+          </div>
 
-          <a
-            href="tel:+38268914816"
-            className="group flex flex-col items-center gap-3 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/[0.02] border border-white/10 hover:border-white/30 hover:bg-white/[0.04] transition-all"
-          >
-            <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-white/5 text-neutral-400 group-hover:text-white group-hover:bg-white/10 transition-all shrink-0">
-              <Phone size={22} />
-            </div>
-            <span className="font-mono text-base sm:text-lg tracking-wider text-white">+382 68 914 816</span>
-          </a>
+          <ul className="flex flex-wrap gap-x-5 md:flex-col md:items-start">
+            {siteLinks.map(({ href, label }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className={`${linkFocus} inline-flex min-h-11 items-center text-sm font-medium text-neutral-300 transition-colors hover:text-emerald-300`}
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
 
-          <a
-            href="https://wa.me/359882905657"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex flex-col items-center gap-3 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/[0.02] border border-white/10 hover:border-emerald-600/50 hover:bg-emerald-600/5 transition-all"
-          >
-            <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-emerald-600/10 text-emerald-400 group-hover:bg-emerald-600/20 transition-all shrink-0">
-              <MessageCircle size={22} />
-            </div>
-            <span className="font-mono text-base sm:text-lg tracking-wider text-white text-center leading-none">+359 88 290 5657</span>
-            <span className="text-xs text-neutral-400 font-light text-center leading-tight -mt-1">(International Sales & WhatsApp)</span>
-          </a>
-
-          <a
-            href="mailto:corebitstudio@corebitsystems.io"
-            className="group flex flex-col items-center gap-3 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/[0.02] border border-white/10 hover:border-white/30 hover:bg-white/[0.04] transition-all w-full"
-          >
-            <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-white/5 text-neutral-400 group-hover:text-white group-hover:bg-white/10 transition-all shrink-0">
-              <Mail size={22} />
-            </div>
-            <span className="font-mono text-[min(3.8vw,16px)] sm:text-sm md:text-base tracking-wider text-white whitespace-nowrap block text-center">corebitstudio@corebitsystems.io</span>
-          </a>
-
+          <div className="min-w-0">
+            <h2 className="mb-1 text-sm font-semibold text-white">{dict.nav.contact || 'Contact'}</h2>
+            <ul>
+              <li>
+                <a href="tel:+38268914816" className={contactLink}>
+                  <Phone aria-hidden="true" size={16} className="shrink-0 text-emerald-400" />
+                  <span>+382 68 914 816</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/359882905657"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={contactLink}
+                >
+                  <MessageCircle aria-hidden="true" size={16} className="shrink-0 text-emerald-400" />
+                  <span>WhatsApp <span className="text-neutral-400">·</span> +359 88 290 5657</span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:corebitstudio@corebitsystems.io" className={contactLink}>
+                  <Mail aria-hidden="true" size={16} className="shrink-0 text-emerald-400" />
+                  <span className="min-w-0 [overflow-wrap:anywhere]">corebitstudio@corebitsystems.io</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div className="w-full h-[1px] bg-white/10" />
-
-        {/* Bottom bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center w-full text-xs sm:text-sm gap-6 text-center md:text-left pb-12 sm:pb-4">
-          {/* Block 1: Copyright + Subsidiary */}
-          <div className="flex flex-col gap-1 items-center md:items-start text-neutral-400">
-            <p className="font-light">{dict.footer.rights}</p>
-          </div>
-
-          {/* Block 2: Policy Links */}
-          <div className="flex flex-wrap items-center justify-center gap-4 text-[11px] sm:text-xs text-neutral-300 font-medium my-2 sm:my-0">
-            <Link href={`/${locale}/privacy-policy`} className="hover:text-emerald-400 transition-colors inline-flex items-center min-h-[48px] py-3 px-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500/50">
-              {dict.policies?.privacy_title || 'Privacy Policy'}
-            </Link>
-            <div className="mb-2 sm:mb-0 inline-flex items-center">
-              <Link href={`/${locale}/cookie-policy`} className="hover:text-emerald-400 transition-colors inline-flex items-center min-h-[48px] py-3 px-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500/50 bg-white/[0.02] sm:bg-transparent border border-white/5 sm:border-none">
-                {dict.policies?.cookie_title || 'Cookie Policy'}
-              </Link>
-            </div>
-            <Link href={`/${locale}/terms-of-service`} className="hover:text-emerald-400 transition-colors inline-flex items-center min-h-[48px] py-3 px-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500/50">
-              {dict.policies?.terms_title || 'Terms of Service'}
-            </Link>
-          </div>
-
-          {/* Block 3: Tech Metadata */}
-          <div className="flex items-center justify-center md:justify-end gap-4 text-neutral-400">
+        <div className="border-t border-white/10 pt-4">
+          <div className="flex flex-wrap items-start justify-between gap-x-6">
+            <ul className="flex flex-wrap gap-x-6">
+              {policyLinks.map(({ href, label }) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    className={`${linkFocus} inline-flex min-h-11 items-center py-2 text-sm text-neutral-300 transition-colors hover:text-emerald-300`}
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
             <a
               href="/sitemap.xml"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors font-mono text-xs inline-flex items-center min-h-[48px] py-3 px-3"
-              title="XML Sitemap"
+              className={`${linkFocus} inline-flex min-h-11 items-center font-mono text-xs text-neutral-400 transition-colors hover:text-emerald-300`}
             >
               sitemap.xml
             </a>
-            <span className="text-white/5">|</span>
-            <span className="text-[11px] font-mono">Next.js 14</span>
-            <span className="text-[11px] font-mono">Vercel Edge</span>
           </div>
+          <p className="mt-2 text-xs leading-relaxed text-neutral-400 sm:text-sm">{dict.footer.rights}</p>
         </div>
       </div>
     </footer>
