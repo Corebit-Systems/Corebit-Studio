@@ -1,8 +1,9 @@
 // File: C:\dev\Corebit-Studio\components\TechStackWidget.tsx
-'use client';
-
 import { Gauge, Layers, Brush, Cloud } from 'lucide-react';
-import { Locale } from '@/i18n/getDictionary';
+import type { Locale } from '@/i18n/getDictionary';
+import { dependencies } from '@/package.json';
+
+const nextMajor = dependencies.next.split('.')[0];
 
 interface TechStackWidgetProps {
   locale: Locale;
@@ -10,73 +11,55 @@ interface TechStackWidgetProps {
 
 const WIDGET_TEXTS: Record<Locale, {
   title: string;
-  uptime: string;
   speedLabel: string;
   archLabel: string;
   styleLabel: string;
   hostLabel: string;
-  speedDesc: string;
-  archDesc: string;
   styleDesc: string;
   hostDesc: string;
 }> = {
   en: {
     title: 'Corebit Tech Stack: How This Site is Engineered',
-    uptime: 'System autonomous · Uptime: 99.99%',
     speedLabel: 'Loading Speed',
     archLabel: 'Architecture',
     styleLabel: 'Styling Framework',
     hostLabel: 'Hosting & CDN',
-    speedDesc: '99/100 PageSpeed / 0.4s load',
-    archDesc: 'Next.js 14 (SSR / ISR)',
     styleDesc: 'Tailwind CSS',
     hostDesc: 'Edge Network / Vercel Cloud'
   },
   ru: {
     title: 'Corebit Tech Stack: как устроен этот сайт',
-    uptime: 'Система автономна · Аптайм: 99.99%',
     speedLabel: 'Скорость загрузки',
     archLabel: 'Архитектура',
     styleLabel: 'Стилизация',
     hostLabel: 'Хостинг и CDN',
-    speedDesc: '99/100 PageSpeed / 0.4s load',
-    archDesc: 'Next.js 14 (SSR / ISR)',
     styleDesc: 'Tailwind CSS',
     hostDesc: 'Edge Network / Vercel Cloud'
   },
   cnr: {
     title: 'Corebit Tech Stack: Kako je ovaj sajt dizajniran',
-    uptime: 'Sistem je autonoman · Uptime: 99.99%',
     speedLabel: 'Brzina učitavanja',
     archLabel: 'Arhitektura',
     styleLabel: 'Stilizacija',
     hostLabel: 'Hosting i CDN',
-    speedDesc: '99/100 PageSpeed / 0.4s load',
-    archDesc: 'Next.js 14 (SSR / ISR)',
     styleDesc: 'Tailwind CSS',
     hostDesc: 'Edge Network / Vercel Cloud'
   },
   srb: {
     title: 'Corebit Tech Stack: Kako je ovaj sajt dizajniran',
-    uptime: 'Sistem je autonoman · Uptime: 99.99%',
     speedLabel: 'Brzina učitavanja',
     archLabel: 'Arhitektura',
     styleLabel: 'Stilizacija',
     hostLabel: 'Hosting i CDN',
-    speedDesc: '99/100 PageSpeed / 0.4s load',
-    archDesc: 'Next.js 14 (SSR / ISR)',
     styleDesc: 'Tailwind CSS',
     hostDesc: 'Edge Network / Vercel Cloud'
   },
   sq: {
     title: 'Corebit Tech Stack: Si është inxhinieruar kjo faqe',
-    uptime: 'Sistemi autonom · Uptime: 99.99%',
     speedLabel: 'Shpejtësia e Ngarkimit',
     archLabel: 'Arkitektura',
     styleLabel: 'Stilizimi',
     hostLabel: 'Hosting & CDN',
-    speedDesc: '99/100 PageSpeed / 0.4s ngarkim',
-    archDesc: 'Next.js 14 (SSR / ISR)',
     styleDesc: 'Tailwind CSS',
     hostDesc: 'Edge Network / Vercel Cloud'
   }
@@ -93,27 +76,7 @@ export default function TechStackWidget({ locale }: TechStackWidgetProps) {
 
         {/* Widget Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/10 pb-6 mb-8 relative z-10">
-          <div>
-            <span className="text-xs font-bold text-emerald-500 uppercase tracking-widest">
-              Live Infrastructure
-            </span>
-            <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight mt-1">
-              {texts.title}
-            </h3>
-          </div>
-          
-          <div className="flex flex-col gap-2 shrink-0">
-            {/* Autonomous Uptime Indicator */}
-            <div className="flex items-center gap-2">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-              </span>
-              <span className="text-xs text-emerald-400 font-medium">
-                {texts.uptime}
-              </span>
-            </div>
-          </div>
+          <h3 className="text-lg font-bold tracking-tight text-white sm:text-xl">{texts.title}</h3>
         </div>
 
         {/* Tech Stack Metrics Grid */}
@@ -125,7 +88,7 @@ export default function TechStackWidget({ locale }: TechStackWidgetProps) {
             </div>
             <div>
               <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">{texts.speedLabel}</p>
-              <p className="text-sm font-bold text-white mt-1">{texts.speedDesc}</p>
+              <p className="text-sm font-bold text-white mt-1">99/100 PageSpeed</p>
             </div>
           </div>
 
@@ -136,7 +99,7 @@ export default function TechStackWidget({ locale }: TechStackWidgetProps) {
             </div>
             <div>
               <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">{texts.archLabel}</p>
-              <p className="text-sm font-bold text-white mt-1">{texts.archDesc}</p>
+              <p className="text-sm font-bold text-white mt-1">Next.js {nextMajor} (App Router)</p>
             </div>
           </div>
 

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 import { RoiCalculator, SpeedCheckWidget } from '@/components/LazyWidgets';
+import type { SpeedCheckDict } from '@/components/SpeedCheckWidget';
 import dynamic from 'next/dynamic';
 
 // Above-the-fold components: statically imported for critical path/LCP optimization
@@ -122,32 +123,13 @@ interface PageDict {
     subtitle: string;
     before_label: string;
     after_label: string;
-    after_badge: string;
     after_title: string;
     after_desc: string;
-    after_status: string;
-    after_score: string;
-    before_badge: string;
     before_title: string;
     before_desc: string;
-    before_status: string;
-    before_score: string;
     before_site_label: string;
   };
-  speed_check: {
-    title: string;
-    subtitle: string;
-    placeholder: string;
-    btn_check: string;
-    btn_analyzing: string;
-    result_text: string;
-    cta_btn: string;
-    alert_title: string;
-    step1: string;
-    step2: string;
-    step3: string;
-    step4: string;
-  };
+  speed_check: SpeedCheckDict;
   ecosystem: {
     title: string;
     subtitle: string;
@@ -421,7 +403,7 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* Mock Speed Self-Diagnostic Widget */}
+      {/* PageSpeed Insights */}
       <SpeedCheckWidget dict={dict.speed_check} />
 
       {/* Interactive Profit Leakage Calculator */}

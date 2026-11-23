@@ -227,12 +227,7 @@ export default async function RootLayout({
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Tivat",
-      "addressCountry": "Montenegro"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 42.4350,
-      "longitude": 18.6961
+      "addressCountry": "ME"
     },
     "parentOrganization": {
       "@type": "Organization",

@@ -97,7 +97,7 @@
   "leak": {
     "title": "Losing Clients While You're Not Looking?",
     "subtitle": "A slow website and manual booking processes are draining your revenue every day.",
-    "text": "Every extra second your website takes to load costs you 20% of potential clients. Meanwhile, your team is stuck manually juggling time-slots in WhatsApp — leading to double-bookings and lost revenue. We replace that chaos with a site that loads instantly and a booking system that handles everything automatically, so you capture every client, every time."
+    "text": "Slow pages can get in the way of a booking. Managing appointments in chat can lead to missed or duplicate reservations. Online booking shows available times and keeps inquiries together."
   },
   "contact_form": {
     "selected_plan": "Selected package",
@@ -207,10 +207,10 @@
     "back": "Back to Home"
   },
   "roi": {
-    "title": "Profit Leakage Calculator",
+    "title": "Estimated missed revenue",
     "slider1_label": "How many bookings or clients do you lose per month due to manual coordination?",
     "slider2_label": "Average check per booking / client (€)",
-    "result_desc": "Your business is missing out on approximately {amount} € every month. Our digital ecosystem pays for itself within the first 1.5 months.",
+    "result_desc": "Based on your inputs, missed revenue could be about €{amount} per month.",
     "cta_btn": "Get website price"
   },
   "reviews": {
@@ -256,35 +256,23 @@
     ]
   },
   "before_after": {
-    "title": "Visual Proof: Legacy vs Corebit Studio",
-    "subtitle": "Drag the slider to compare standard slow loading with our performance standards.",
-    "before_label": "Legacy design & slow load (LCP > 6s)",
-    "after_label": "Premium architecture & instant paint (LCP < 1.5s)",
-    "after_badge": "LCP < 1.5s (Instant Paint)",
-    "after_title": "High-Conversion Digital Assets Built for Growth",
-    "after_desc": "Ultra-fast load speeds secure guest retention, seamless checkouts, and maximum direct revenue booking conversions.",
-    "after_status": "Status: Online / Protected",
-    "after_score": "100% Performance Score",
-    "before_badge": "LCP > 6s (Severe Delay)",
-    "before_title": "Outdated Templates & Manual Scheduling Layouts",
-    "before_desc": "Slow loading drops conversion rates, leading to heavy dropouts and lost reservations.",
-    "before_status": "Status: Critical Package Overhead",
-    "before_score": "42% Bounce Rate",
-    "before_site_label": "Legacy Standard Site"
+    "title": "Compare two website approaches",
+    "subtitle": "Drag the slider to compare manual scheduling and online booking.",
+    "before_label": "Manual scheduling",
+    "after_label": "Online booking",
+    "after_title": "Customers choose an available time",
+    "after_desc": "Guests book on the website, and staff can find inquiries in one place.",
+    "before_title": "Scheduling by phone and messages",
+    "before_desc": "Customers contact staff and wait for a confirmed time.",
+    "before_site_label": "Manual scheduling"
   },
   "speed_check": {
     "title": "Test Your Website Speed",
-    "subtitle": "See how much traffic and potential bookings your current website is losing.",
+    "subtitle": "Google PageSpeed Insights opens in a new tab and reports on the page you enter.",
     "placeholder": "Enter website URL (e.g., mysite.com)",
-    "btn_check": "Analyze",
-    "btn_analyzing": "Scanning server response...",
-    "result_text": "Your current website is loading too slowly. According to Google Core Web Vitals, you are losing up to 40% of mobile traffic and bookings. Our standard for hospitality and premium B2B businesses is under 1.5 seconds.",
-    "cta_btn": "Get website price",
-    "alert_title": "Performance Alert",
-    "step1": "Initializing HTTP handshake...",
-    "step2": "Analyzing Largest Contentful Paint (LCP)...",
-    "step3": "Checking layout shift triggers (CLS)...",
-    "step4": "Evaluating JS package thread blockades..."
+    "btn_check": "Open PageSpeed Insights",
+    "invalid_url": "Enter a public website address, such as example.com.",
+    "cta_btn": "Get website price"
   },
   "ecosystem": {
     "title": "Integrated Business IT Ecosystem",

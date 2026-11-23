@@ -97,7 +97,7 @@
   "leak": {
     "title": "A po humbisni klientë pa e vënë re?",
     "subtitle": "Ngarkimi i ngadaltë dhe koordinimi manual po zvogëlojnë fitimin tuaj.",
-    "text": "Çdo sekondë vonesë në faqen tuaj të uebit ul konvertimet me 20%. Ndërsa konkurrenca humb klientë për shkak të faqeve të ngadalta, administratorët tuaj humbasin orë të tëra duke koordinuar manualisht takimet në WhatsApp, duke shkaktuar gabime dhe rezervime të dyfishta. Ne e zëvendësojmë këtih kaos me rrjete Edge ultra të shpejta dhe automatizim autonom."
+    "text": "Ngarkimi i ngadaltë mund ta vështirësojë rezervimin. Caktimi i orareve me mesazhe mund të çojë në rezervime të humbura ose të dyfishta. Rezervimi në internet tregon oraret e lira dhe mbledh kërkesat në një vend."
   },
   "contact_form": {
     "selected_plan": "Paketa e zgjedhur",
@@ -184,7 +184,7 @@
     "items": [
       {
         "q": "Çfarë teknologjish përdorni?",
-        "a": "Ne ndërtojmë me Next.js 14 (App Router) dhe Tailwind CSS, duke shfrytëzuar rrjetet Vercel Edge për të arritur kohë ngarkimi nën 100ms. Për bazat e të dhënave dhe integrimet tona, ne përdorim PostgreSQL, Redis dhe sisteme të sigurta Webhook si dhe CRM integrime për rritjen e ROI."
+        "a": "Ne ndërtojmë me Next.js (App Router) dhe Tailwind CSS, duke shfrytëzuar rrjetet Vercel Edge për të optimizuar ngarkimin e faqeve. Për bazat e të dhënave dhe integrimet tona, ne përdorim PostgreSQL, Redis dhe sisteme të sigurta Webhook si dhe CRM integrime për rritjen e ROI."
       },
       {
         "q": "Sa është afati i prodhimit për modulet e automatizimit të biznesit?",
@@ -207,10 +207,10 @@
     "back": "Kthehu në fëllesë"
   },
   "roi": {
-    "title": "Kalkulatori i Humbjes së Fitimit",
+    "title": "Vlerësimi i të ardhurave të humbura",
     "slider1_label": "Sa rezervime apo klientë humbisni në muaj për shkak të koordinimit manual?",
     "slider2_label": "Fatura mesatare për rezervim / klient (€)",
-    "result_desc": "Biznesi juaj po humbet rreth {amount} € çdo muaj. Ekosistemi ynë digjital e shpaguajnë veten brenda 1.5 muajve të parë.",
+    "result_desc": "Sipas vlerave të futura, të ardhurat e humbura mund të jenë rreth {amount} € në muaj.",
     "cta_btn": "Mëso çmimin e uebfaqes"
   },
   "reviews": {
@@ -257,35 +257,23 @@
     ]
   },
   "before_after": {
-    "title": "Provë Vizuale: Uebfaqja e Vjetër vs Corebit Studio",
-    "subtitle": "Tërhiqni rrëshqitësin për të krahasuar ngarkimin standard të ngadaltë me standardet tona të performancës.",
-    "before_label": "Dizajn i vjetëruar & ngarkim i ngadaltë (LCP > 6s)",
-    "after_label": "Arkitekturë premium & ngarkim i menjëhershëm (LCP < 1.5s)",
-    "after_badge": "LCP < 1.5s (Ngarkim i menjëhershëm)",
-    "after_title": "Asete digjitale me konvertim të lartë për rritjen e biznesit",
-    "after_desc": "Shpejtësia e lartë e ngarkimit siguron mbajtjen e mysafirëve, pagesa të sigurta dhe konvertim maksimal të rezervimeve të drejtpërdrejta.",
-    "after_status": "Statusi: Aktiv / E mbrojtur",
-    "after_score": "100% Performanca",
-    "before_badge": "LCP > 6s (Vonesë kritike)",
-    "before_title": "Shabllone të vjetëruara dhe koordinim manual i orareve",
-    "before_desc": "Ngarkimi i ngadaltë ul shkallën e konvertimit, duke çuar në humbjen e klientëve dhe rezervimeve.",
-    "before_status": "Statusi: Madhësi e madhe e paketave",
-    "before_score": "42% Shkalla e largimit",
-    "before_site_label": "Uebfaqja tipike e ngadaltë"
+    "title": "Krahasoni dy qasje për faqen",
+    "subtitle": "Lëvizni rrëshqitësin për të krahasuar rezervimet manuale dhe ato në internet.",
+    "before_label": "Rezervime manuale",
+    "after_label": "Rezervime në internet",
+    "after_title": "Klienti zgjedh një orar të lirë",
+    "after_desc": "Vizitorët rezervojnë në faqe dhe ekipi i sheh kërkesat në një vend.",
+    "before_title": "Rezervime me telefon dhe mesazhe",
+    "before_desc": "Klientët kontaktojnë stafin dhe presin konfirmimin e orarit.",
+    "before_site_label": "Rezervime manuale"
   },
   "speed_check": {
     "title": "Testoni Shpejtësinë e Uebfaqes Suaj",
-    "subtitle": "Shikoni sa trafik dhe rezervime potenciale po humb uebfaqja juaj aktuale.",
+    "subtitle": "Google PageSpeed Insights hapet në një skedë të re dhe shfaq raportin për faqen e futur.",
     "placeholder": "Vendosni URL-në e uebfaqes (p.sh., mysite.com)",
-    "btn_check": "Analizo",
-    "btn_analyzing": "Duke skanuar përgjigjen e serverit...",
-    "result_text": "Uebfaqja juaj aktuale po ngarkohet shumë ngadalë. Sipas Google Core Web Vitals, po humbisni deri në 40% të trafikut celular dhe rezervimeve. Standardi ynë për bizneset e hotelerisë dhe ato premium B2B është nën 1.5 sekonda.",
-    "cta_btn": "Mëso çmimin e uebfaqes",
-    "alert_title": "Paralajmërim Performance",
-    "step1": "Duke filluar HTTP handshake...",
-    "step2": "Duke analizuar Largest Contentful Paint (LCP)...",
-    "step3": "Duke kontrolluar zhvendosjet e faqeve (CLS)...",
-    "step4": "Duke vlerësuar bllokimet e JS..."
+    "btn_check": "Hap PageSpeed Insights",
+    "invalid_url": "Vendosni adresën e një faqeje publike, për shembull example.com.",
+    "cta_btn": "Mëso çmimin e uebfaqes"
   },
   "ecosystem": {
     "title": "Ekosistemi i Integruar IT i Biznesit",

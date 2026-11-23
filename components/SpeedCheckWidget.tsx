@@ -1,146 +1,88 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { ShieldAlert, Loader2, Gauge } from 'lucide-react';
+import { Gauge } from 'lucide-react';
 
-interface SpeedCheckDict {
+export interface SpeedCheckDict {
   title: string;
   subtitle: string;
   placeholder: string;
   btn_check: string;
-  btn_analyzing: string;
-  result_text: string;
+  invalid_url: string;
   cta_btn: string;
-  alert_title: string;
-  step1: string;
-  step2: string;
-  step3: string;
-  step4: string;
 }
 
-interface SpeedCheckWidgetProps {
-  dict: SpeedCheckDict;
-}
+export function normalizeSpeedCheckUrl(input: string) {
+  const value = input.trim();
+  if (!value) return null;
+  const candidate = /^[a-z][a-z\d+.-]*:\/\//i.test(value) ? value : `https://${value}`;
 
-export default function SpeedCheckWidget({ dict }: SpeedCheckWidgetProps) {
-  const [url, setUrl] = useState('');
-  const [status, setStatus] = useState<'idle' | 'scanning' | 'done'>('idle');
-  const [scanStep, setScanStep] = useState(0);
-
-  const steps = [
-    dict.step1,
-    dict.step2,
-    dict.step3,
-    dict.step4
-  ];
-
-  const handleCheck = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!url) return;
-
-    setStatus('scanning');
-    setScanStep(0);
-  };
-
-  useEffect(() => {
-    if (status !== 'scanning') return;
-
-    const timer = setInterval(() => {
-      setScanStep((prev) => {
-        if (prev >= steps.length - 1) {
-          clearInterval(timer);
-          setStatus('done');
-          return prev;
-        }
-        return prev + 1;
-      });
-    }, 800);
-
-    return () => clearInterval(timer);
-  }, [status]);
-
-  const handleScrollToContact = () => {
-    const el = document.getElementById('contact');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+  try {
+    const url = new URL(candidate);
+    if (!['http:', 'https:'].includes(url.protocol) || !url.hostname.includes('.') || url.username || url.password) {
+      return null;
     }
+    url.hash = '';
+    return url.href;
+  } catch {
+    return null;
+  }
+}
+
+export default function SpeedCheckWidget({ dict }: { dict: SpeedCheckDict }) {
+  const handleCheck = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const input = event.currentTarget.elements.namedItem('url');
+    if (!(input instanceof HTMLInputElement)) return;
+
+    const url = normalizeSpeedCheckUrl(input.value);
+    if (!url) {
+      input.setCustomValidity(dict.invalid_url);
+      input.reportValidity();
+      return;
+    }
+
+    const report = new URL('https://pagespeed.web.dev/analysis');
+    report.searchParams.set('url', url);
+    window.open(report.href, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <section className="w-full max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-16 relative z-10">
-      <div className="flex flex-col gap-6 p-6 sm:p-10 rounded-2xl sm:rounded-[2.5rem] bg-white/[0.02] border border-white/10 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-        <div className="absolute top-0 right-0 w-48 sm:w-64 h-48 sm:h-64 bg-emerald-600/10 blur-[100px] rounded-full pointer-events-none" />
-
+    <section className="relative z-10 mx-auto w-full max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+      <div className="relative flex flex-col gap-5 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] p-6 shadow-2xl backdrop-blur-xl sm:rounded-[2.5rem] sm:p-10">
+        <div aria-hidden="true" className="pointer-events-none absolute right-0 top-0 h-48 w-48 rounded-full bg-emerald-600/10 blur-[100px] sm:h-64 sm:w-64" />
         <div className="flex items-center gap-3">
-          <Gauge className="text-emerald-500 shrink-0 animate-pulse" size={24} />
-          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white">{dict.title}</h2>
+          <Gauge aria-hidden="true" className="shrink-0 text-emerald-500" size={24} />
+          <h2 className="text-xl font-bold tracking-tight text-white sm:text-2xl">{dict.title}</h2>
         </div>
+        <p className="text-sm leading-relaxed text-neutral-300">{dict.subtitle}</p>
 
-        <p className="text-xs sm:text-sm text-neutral-350 leading-relaxed font-light -mt-2">
-          {dict.subtitle}
-        </p>
+        <form
+          onSubmit={handleCheck}
+          className="flex w-full flex-col gap-3 sm:flex-row"
+        >
+          <label htmlFor="speed-check-url" className="sr-only">{dict.placeholder}</label>
+          <input
+            required
+            type="text"
+            inputMode="url"
+            id="speed-check-url"
+            name="url"
+            autoComplete="url"
+            onInput={(event) => event.currentTarget.setCustomValidity('')}
+            placeholder={dict.placeholder}
+            className="min-h-[50px] min-w-0 flex-1 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-neutral-500 transition-colors focus:border-emerald-600/50 focus:outline-none sm:text-base"
+          />
+          <button
+            type="submit"
+            className="min-h-[50px] rounded-xl bg-white px-5 py-3 text-sm font-semibold text-black transition-colors hover:bg-neutral-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
+          >
+            {dict.btn_check}
+          </button>
+        </form>
 
-        {status === 'idle' && (
-          <form onSubmit={handleCheck} className="flex flex-col sm:flex-row gap-3 w-full mt-2">
-            <label htmlFor="speed-check-url" className="sr-only">URL</label>
-            <input
-              required
-              type="text"
-              id="speed-check-url"
-              name="url"
-              autoComplete="url"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              placeholder={dict.placeholder}
-              aria-label="Website URL for speed test"
-              className="flex-grow px-4 py-3 sm:py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-600/50 focus:bg-white/10 transition-all text-sm sm:text-base min-h-[50px]"
-            />
-            <button
-              type="submit"
-              className="px-6 py-3 sm:py-4 rounded-xl bg-white text-black font-semibold hover:bg-neutral-100 transition-colors text-sm sm:text-base whitespace-nowrap min-h-[50px] active:scale-95"
-            >
-              {dict.btn_check}
-            </button>
-          </form>
-        )}
-
-        {status === 'scanning' && (
-          <div className="flex flex-col items-center justify-center py-6 gap-4 text-center">
-            <Loader2 className="animate-spin text-emerald-500" size={36} />
-            <div className="flex flex-col gap-1.5">
-              <span className="text-sm font-semibold text-white tracking-wide">{dict.btn_analyzing}</span>
-              <span className="text-xs text-neutral-400 font-mono transition-all duration-300">{steps[scanStep]}</span>
-            </div>
-            {/* Progress bar mock */}
-            <div className="w-full max-w-md h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5 mt-2">
-              <div
-                className="h-full bg-emerald-500 transition-all duration-300 ease-out"
-                style={{ width: `${((scanStep + 1) / steps.length) * 100}%` }}
-              />
-            </div>
-          </div>
-        )}
-
-        {status === 'done' && (
-          <div className="flex flex-col gap-6 py-2">
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-5 rounded-xl bg-red-500/10 border border-red-500/20 text-center sm:text-left">
-              <ShieldAlert className="text-red-400 shrink-0" size={28} />
-              <div className="flex flex-col gap-2">
-                <span className="text-sm font-bold text-red-400 uppercase tracking-widest">{dict.alert_title}</span>
-                <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed font-light">
-                  {dict.result_text}
-                </p>
-              </div>
-            </div>
-
-            <button
-              onClick={handleScrollToContact}
-              className="w-full min-h-[48px] py-3.5 sm:py-4 rounded-xl bg-emerald-600 text-white font-bold text-sm sm:text-base hover:bg-emerald-700 active:scale-95 transition-all flex items-center justify-center text-center"
-            >
-              {dict.cta_btn}
-            </button>
-          </div>
-        )}
+        <a href="#contact" className="inline-flex min-h-11 items-center self-start rounded-md text-sm font-medium text-emerald-300 underline underline-offset-4 hover:text-emerald-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400">
+          {dict.cta_btn}
+        </a>
       </div>
     </section>
   );

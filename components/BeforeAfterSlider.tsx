@@ -8,16 +8,10 @@ interface BeforeAfterSliderProps {
     subtitle: string;
     before_label: string;
     after_label: string;
-    after_badge: string;
     after_title: string;
     after_desc: string;
-    after_status: string;
-    after_score: string;
-    before_badge: string;
     before_title: string;
     before_desc: string;
-    before_status: string;
-    before_score: string;
     before_site_label: string;
   };
 }
@@ -130,7 +124,7 @@ export default function BeforeAfterSlider({ dict }: BeforeAfterSliderProps) {
         aria-valuenow={position}
         aria-valuemin={0}
         aria-valuemax={100}
-        aria-label="Before and after website speed comparison slider"
+        aria-label={dict.title}
         className="relative w-full aspect-[16/10] sm:aspect-[21/9] overflow-hidden rounded-3xl border border-white/10 select-none cursor-ew-resize focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
       >
         {/* RIGHT LAYER (AFTER): Corebit Premium Speed Setup */}
@@ -147,9 +141,6 @@ export default function BeforeAfterSlider({ dict }: BeforeAfterSliderProps) {
             </div>
 
             <div className="flex flex-col gap-4 sm:gap-6 my-auto text-left max-w-md sm:max-w-xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold w-fit">
-                {dict.after_badge}
-              </div>
               <h3 className="text-2xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
                 {dict.after_title}
               </h3>
@@ -158,10 +149,6 @@ export default function BeforeAfterSlider({ dict }: BeforeAfterSliderProps) {
               </p>
             </div>
 
-            <div className="flex justify-between items-center border-t border-white/5 pt-4 text-[10px] sm:text-xs text-neutral-400 font-mono">
-              <span>{dict.after_status}</span>
-              <span>{dict.after_score}</span>
-            </div>
           </div>
           
           {/* Label Tag */}
@@ -187,9 +174,6 @@ export default function BeforeAfterSlider({ dict }: BeforeAfterSliderProps) {
             </div>
 
             <div className="flex flex-col gap-4 sm:gap-6 my-auto text-left max-w-md sm:max-w-xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-semibold w-fit animate-pulse">
-                {dict.before_badge}
-              </div>
               <h3 className="text-2xl sm:text-4xl font-bold tracking-tight text-neutral-300 line-through leading-tight decoration-red-500/50">
                 {dict.before_title}
               </h3>
@@ -198,10 +182,6 @@ export default function BeforeAfterSlider({ dict }: BeforeAfterSliderProps) {
               </p>
             </div>
 
-            <div className="flex justify-between items-center border-t border-red-900/20 pt-4 text-[10px] sm:text-xs text-red-400 font-mono">
-              <span>{dict.before_status}</span>
-              <span>{dict.before_score}</span>
-            </div>
           </div>
 
           {/* Label Tag */}

@@ -24,9 +24,9 @@ const LEAD_TEXTS: Record<Locale, {
     title: 'Architectural Checklist 2026',
     subtitle: 'Evaluate your system readiness for the next generation of web engineering.',
     checklistItems: [
-      'Next.js 14+ App Router & SSR Optimization',
+      'Next.js App Router & SSR Optimization',
       'AI Integration & Conversational Agents Ready',
-      'Sub-100ms LCP & Edge CDN Distribution',
+      'LCP Optimization & Edge CDN Distribution',
       'EU GDPR Compliance & Encrypted PII Proxy'
     ],
     emailPlaceholder: 'Enter your business email',
@@ -40,9 +40,9 @@ const LEAD_TEXTS: Record<Locale, {
     title: 'Архитектурный чек-лист 2026',
     subtitle: 'Оцените готовность вашей системы к следующему поколению веб-разработки.',
     checklistItems: [
-      'Оптимизация Next.js 14+ App Router и SSR',
+      'Оптимизация Next.js App Router и SSR',
       'Интеграция ИИ и диалоговых агентов',
-      'Загрузка Sub-100ms LCP на Edge CDN сетях',
+      'Оптимизация LCP и доставка контента через CDN',
       'Соответствие EU GDPR и шифрование PII данных'
     ],
     emailPlaceholder: 'Введите корпоративный email',
@@ -56,9 +56,9 @@ const LEAD_TEXTS: Record<Locale, {
     title: 'Arhitektonski ček-list 2026',
     subtitle: 'Procijenite spremnost vašeg sistema za sljedeću generaciju veb inženjeringa.',
     checklistItems: [
-      'Next.js 14+ App Router i SSR optimizacija',
+      'Next.js App Router i SSR optimizacija',
       'Integracija AI-a i konverzacionih agenata',
-      'Učitavanje ispod 100ms LCP na Edge CDN mreži',
+      'Optimizacija LCP-a i distribucija sadržaja preko CDN-a',
       'Usklađenost sa EU GDPR i enkripcija PII podataka'
     ],
     emailPlaceholder: 'Unesite Vaš poslovni e-mail',
@@ -72,9 +72,9 @@ const LEAD_TEXTS: Record<Locale, {
     title: 'Arhitektonski ček-list 2026',
     subtitle: 'Procenite spremnost vašeg sistema za sledeću generaciju veb inženjeringa.',
     checklistItems: [
-      'Next.js 14+ App Router i SSR optimizacija',
+      'Next.js App Router i SSR optimizacija',
       'Integracija AI-a i konverzacionih agenata',
-      'Učitavanje ispod 100ms LCP na Edge CDN mreži',
+      'Optimizacija LCP-a i distribucija sadržaja preko CDN-a',
       'Usklađenost sa EU GDPR i enkripcija PII podataka'
     ],
     emailPlaceholder: 'Unesite Vaš poslovni e-mail',
@@ -88,9 +88,9 @@ const LEAD_TEXTS: Record<Locale, {
     title: 'Lista e Kontrollit Arkitekturor 2026',
     subtitle: 'Vlerësoni gatishmërinë e sistemit tuaj për gjeneratën e ardhshme të inxhinierisë ueb.',
     checklistItems: [
-      'Next.js 14+ App Router & Optimizimi SSR',
+      'Next.js App Router & Optimizimi SSR',
       'Integrimi i AI-t & Agjentëve të Bisedës',
-      'Ngarkimi nën 100ms LCP në Rrjetet Edge CDN',
+      'Optimizimi i LCP dhe shpërndarja e përmbajtjes përmes CDN-së',
       'Përputhshmëria me EU GDPR & Enkriptimi i PII'
     ],
     emailPlaceholder: 'Shkruani emailin tuaj të biznesit',

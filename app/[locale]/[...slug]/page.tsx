@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 import { RoiCalculator, SpeedCheckWidget } from '@/components/LazyWidgets';
+import type { SpeedCheckDict } from '@/components/SpeedCheckWidget';
 import BentoCard from '@/components/BentoCard';
 import PricingSection from '@/components/PricingSection';
 import ContactForm from '@/components/ContactForm';
@@ -366,32 +367,13 @@ interface PageDict {
     subtitle: string;
     before_label: string;
     after_label: string;
-    after_badge: string;
     after_title: string;
     after_desc: string;
-    after_status: string;
-    after_score: string;
-    before_badge: string;
     before_title: string;
     before_desc: string;
-    before_status: string;
-    before_score: string;
     before_site_label: string;
   };
-  speed_check: {
-    title: string;
-    subtitle: string;
-    placeholder: string;
-    btn_check: string;
-    btn_analyzing: string;
-    result_text: string;
-    cta_btn: string;
-    alert_title: string;
-    step1: string;
-    step2: string;
-    step3: string;
-    step4: string;
-  };
+  speed_check: SpeedCheckDict;
   ecosystem: {
     title: string;
     subtitle: string;
@@ -550,68 +532,23 @@ export default async function CatchAllSEOPage({
     </div>
   );
 
-  // ── City-specific LocalBusiness data ────────────────────────────────────
-  // Unique NAP + geo per city prevents Google thin-content / doorway flags
-  const CITY_NAP: Record<string, { phone: string; addressLocality: string; lat: number; lng: number }> = {
-    budva:          { phone: '+38267123456', addressLocality: 'Budva',       lat: 42.2864, lng: 18.8400 },
-    tivat:          { phone: '+38267654321', addressLocality: 'Tivat',       lat: 42.4337, lng: 18.6983 },
-    kotor:          { phone: '+38267789012', addressLocality: 'Kotor',       lat: 42.4246, lng: 18.7712 },
-    podgorica:      { phone: '+38267345678', addressLocality: 'Podgorica',   lat: 42.4411, lng: 19.2636 },
-    herceg_novi:    { phone: '+38267901234', addressLocality: 'Herceg Novi', lat: 42.4531, lng: 18.5375 },
-    bar:            { phone: '+38267567890', addressLocality: 'Bar',         lat: 42.0959, lng: 19.0980 },
-    belgrade:       { phone: '+38111234567', addressLocality: 'Belgrade',    lat: 44.7866, lng: 20.4489 },
-    novi_sad:       { phone: '+38121234567', addressLocality: 'Novi Sad',    lat: 45.2671, lng: 19.8335 },
-    tirana:         { phone: '+35542123456', addressLocality: 'Tirana',      lat: 41.3275, lng: 19.8187 },
-    athens:         { phone: '+302101234567', addressLocality: 'Athens',     lat: 37.9838, lng: 23.7275 },
-    zagreb:         { phone: '+38512345678', addressLocality: 'Zagreb',      lat: 45.8150, lng: 15.9819 },
-    split:          { phone: '+38521345678', addressLocality: 'Split',       lat: 43.5081, lng: 16.4402 },
-  };
-
-  const cityNap = CITY_NAP[cityKey];
-
-  const localBusinessSchema = {
+  const cityServiceSchema = {
     '@context': 'https://schema.org',
-    '@type':    ['LocalBusiness', 'ProfessionalService'],
-    name:        'Corebit Studio',
-    url:         `${SITE_URL}/${locale}/${slugStr}`,
-    telephone:   cityNap?.phone || '+38267000000',
-    email:       'corebitsystems.office@gmail.com',
-    priceRange:  '€€',
-    currenciesAccepted: 'EUR',
-    address: {
-      '@type':           'PostalAddress',
-      addressLocality:   cityNap?.addressLocality || activeGeo.name,
-      addressCountry:    locale === 'srb' ? 'RS' : 'ME',
-    },
-    ...(cityNap ? {
-      geo: {
-        '@type':    'GeoCoordinates',
-        latitude:   cityNap.lat,
-        longitude:  cityNap.lng,
-      },
-    } : {}),
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name:    'Web Development & Automation Services',
-      itemListElement: [
-        { '@type': 'Offer', name: 'Starter Website',     priceCurrency: 'EUR', price: '324'  },
-        { '@type': 'Offer', name: 'Business Website',    priceCurrency: 'EUR', price: '972'  },
-        { '@type': 'Offer', name: 'Enterprise Platform', priceCurrency: 'EUR', price: '2835' },
-      ],
-    },
-    sameAs: [
-      'https://studio.corebitsystems.io',
-    ],
+    '@type': 'Service',
+    name: service ? hero.title : dict.automation.seo_tagline || dict.automation.title,
+    url: `${SITE_URL}/${locale}/${slugStr}`,
+    provider: { '@id': `${SITE_URL}/#organization` },
+    areaServed: geoDict[cityKey]?.name || city.replaceAll('_', ' '),
   };
 
   const faqSchema = null;
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24 flex flex-col gap-24 md:gap-32">
-      {/* LocalBusiness JSON-LD */}
+      {/* Localized service and its area of operation */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(cityServiceSchema) }}
       />
 
       <HeroSection dict={hero} starterPrice={dict.pricing.tier1.price} featured={featured} />

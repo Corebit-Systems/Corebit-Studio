@@ -97,7 +97,7 @@
   "leak": {
     "title": "Gubite li klijente a da toga niste ni svesni?",
     "subtitle": "Spora učitavanja i manuelna koordinacija smanjuju vaš profit.",
-    "text": "Svaka sekunda kašnjenja vašeg veb sajta smanjuje stopu konverzije za 20%. Dok vaša konkurencija gubi klijente zbog sporog učitavanja stranica, vaši menadžeri gube sate manuelno usklađujući termine na WhatsApp-u, što dovodi do duplih rezervacija i propuštenih prilika. Ovaj operativni haos zamenjujemo brzim Edge mrežama i autonomnim modulima za instant rezervacije."
+    "text": "Sporo učitavanje može otežati rezervaciju. Ručno dogovaranje termina u porukama može dovesti do propuštenih ili dvostrukih rezervacija. Onlajn rezervacije prikazuju slobodne termine i objedinjuju upite."
   },
   "contact_form": {
     "selected_plan": "Izabrani paket",
@@ -184,7 +184,7 @@
     "items": [
       {
         "q": "Koje tehnologije koristite?",
-        "a": "Razvijamo ultra brze veb sajtove koristeći Next.js 14 (App Router) i Tailwind CSS. Svi projekti su optimizovani za maksimalne LCP performanse i hostovani na globalnoj Vercel Edge mreži. Integrišemo sigurne PostgreSQL baze podataka, Redis keširanje i besprekornu sinhronizaciju sa CRM sistemima kako bismo povećali vaš ROI i poslovnu konverziju."
+        "a": "Razvijamo ultra brze veb sajtove koristeći Next.js (App Router) i Tailwind CSS. Svi projekti su optimizovani za maksimalne LCP performanse i hostovani na globalnoj Vercel Edge mreži. Integrišemo sigurne PostgreSQL baze podataka, Redis keširanje i besprekornu sinhronizaciju sa CRM sistemima kako bismo povećali vaš ROI i poslovnu konverziju."
       },
       {
         "q": "Koji je rok izrade za prilagođene module automatizacije?",
@@ -207,10 +207,10 @@
     "back": "Nazad na početnu"
   },
   "roi": {
-    "title": "Kalkulator izgubljene dobiti",
+    "title": "Procena propuštenog prihoda",
     "slider1_label": "Koliko rezervacija ili klijenata gubite mesečno zbog ručne koordinacije?",
     "slider2_label": "Prosečan račun po rezervaciji / klijentu (€)",
-    "result_desc": "Vaš biznis gubi oko {amount} € svakog meseca. Naš digitalni ekosistem se otplaćuje u prvih 1.5 meseci rada.",
+    "result_desc": "Prema unetim vrednostima, propušteni prihod može iznositi oko {amount} € mesečno.",
     "cta_btn": "Saznaj cenu sajta"
   },
   "reviews": {
@@ -257,35 +257,23 @@
     ]
   },
   "before_after": {
-    "title": "Vizuelni dokaz: Stari sajt vs Corebit Studio",
-    "subtitle": "Prevucite klizač da biste uporedili standardno sporo učitavanje sa našim standardima performansi.",
-    "before_label": "Zastarjeli dizajn i sporo učitavanje (LCP > 6s)",
-    "after_label": "Vrhunska arhitektura i trenutno učitavanje (LCP < 1.5s)",
-    "after_badge": "LCP < 1.5s (Trenutno učitavanje)",
-    "after_title": "Visoko-konverzioni digitalni sajtovi za rast poslovanja",
-    "after_desc": "Ultra brza učitavanja osiguravaju zadržavanje posetilaca, sigurna plaćanja i maksimalan broj direktnih rezervacija.",
-    "after_status": "Status: Aktivno / Zaštićeno",
-    "after_score": "100% Performanse",
-    "before_badge": "LCP > 6s (Kritično kašnjenje)",
-    "before_title": "Zastarjeli šabloni i manuelno usklađivanje termina",
-    "before_desc": "Sporo učitavanje smanjuje stopu konverzije, što dovodi do gubitka upita i rezervacija.",
-    "before_status": "Status: Prevelika veličina fajlova",
-    "before_score": "42% Stopa napuštanja",
-    "before_site_label": "Tipičan spori sajt"
+    "title": "Uporedite dva pristupa izradi sajta",
+    "subtitle": "Pomerite klizač da uporedite ručno zakazivanje i onlajn rezervacije.",
+    "before_label": "Ručno zakazivanje",
+    "after_label": "Onlajn rezervacije",
+    "after_title": "Klijent bira slobodan termin",
+    "after_desc": "Gosti rezervišu na sajtu, a tim vidi upite na jednom mestu.",
+    "before_title": "Zakazivanje telefonom i porukama",
+    "before_desc": "Klijenti kontaktiraju osoblje i čekaju potvrdu termina.",
+    "before_site_label": "Ručno zakazivanje"
   },
   "speed_check": {
     "title": "Proverite brzinu vašeg sajta",
-    "subtitle": "Saznajte koliko saobraćaja i potencijalnih rezervacija gubite sa trenutnim sajtom.",
+    "subtitle": "Google PageSpeed Insights se otvara u novoj kartici i prikazuje izveštaj za unetu stranicu.",
     "placeholder": "Unesite adresu sajta (npr. mysite.com)",
-    "btn_check": "Proveri",
-    "btn_analyzing": "Skeniranje odgovora servera...",
-    "result_text": "Vaš trenutni sajt se učitava previše sporo. Prema Google Core Web Vitals, gubite do 40% mobilnog saobraćaja i rezervacija. Naš standard za ugostiteljstvo i premijum B2B je ispod 1.5 sekundi.",
-    "cta_btn": "Saznaj cenu sajta",
-    "alert_title": "Upozorenje performansi",
-    "step1": "Inicijalizacija HTTP veze...",
-    "step2": "Analiza Largest Contentful Paint (LCP)...",
-    "step3": "Provera pomeranja rasporeda (CLS)...",
-    "step4": "Procena blokada JS paketa..."
+    "btn_check": "Otvori PageSpeed Insights",
+    "invalid_url": "Unesite adresu javnog sajta, na primer example.com.",
+    "cta_btn": "Saznaj cenu sajta"
   },
   "ecosystem": {
     "title": "Integracija u IT ekosistem poslovanja",
