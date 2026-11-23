@@ -91,6 +91,7 @@ export default function Footer({ dict, locale }: FooterProps) {
               <li>
                 <a
                   href="https://wa.me/359882905657"
+                  data-whatsapp-source="footer"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={contactLink}

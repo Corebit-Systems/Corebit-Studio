@@ -6,19 +6,24 @@
     "contact": "Kontakt"
   },
   "hero": {
-    "badge": "Inženjering platformi visokih performansi",
-    "title": "Vaš sajt bi trebao da prodaje dok vi spavate",
-    "subtitle": "Pravimo brze sajtove ključ u ruke sa online zakazivanjem za restorane, auto servise i rent a car {where}. Transparentna cijena i pokretanje za 7 dana.",
-    "cta": "Saznaj cijenu sajta"
+    "title": "Sajtovi sa onlajn rezervacijama {where}",
+    "subtitle": "Izrađujemo sajtove za restorane, auto servise i rent a car, uz onlajn rezervacije, zakazivanje i obavještenja za klijente.",
+    "cta": "Saznaj cijenu sajta",
+    "starter": "Početni sajt od {price} · Izrada od 7 dana",
+    "cases_cta": "Pogledajte projekte",
+    "case_label": "Projekat studija",
+    "case_cta": "Pogledajte projekat",
+    "industry_title": "Sajtovi za {industry} {where}",
+    "module_cta": "Pogledajte modul"
   },
   "about": {
     "title": "Arhitektura Visoke Konverzije",
     "desc": "Naš veb studio se nalazi odmah pored vas — {where}. Klijent posjeti vaš sajt i odmah želi vašu uslugu. To postižemo kombinovanjem dizajna u stilu Apple sa ultra-brzim učitavanjem.",
     "badges": [
-      "Učitavanje < 100ms",
-      "Besprekoran Mobilni UX",
-      "Zadržavanje pažnje 3s",
-      "Apsolutna Sigurnost"
+      "Prilagođeno mobilnim uređajima",
+      "Onlajn rezervacije",
+      "Višejezične stranice",
+      "HTTPS i provjera obrazaca"
     ]
   },
   "automation": {
@@ -44,19 +49,19 @@
     "items": {
       "cupertino-roast": {
         "title": "Cupertino Roast",
-        "desc": "Premium digitalni izlog i interaktivni meni za zanatsku kafeteriju."
+        "desc": "Sajt i interaktivni meni za zanatsku kafeteriju."
       },
       "shift-drive": {
         "title": "Shift & Drive STO",
-        "desc": "Moderan portal za auto servise sa ugrađenim sistemom zakazivanja u realnom vremenu."
+        "desc": "Sajt auto servisa sa onlajn zakazivanjem slobodnih termina kod mehaničara."
       },
       "umami-bistro": {
         "title": "Umami Bistro",
-        "desc": "Zapanjujući web sajt restorana sa naprednim sistemom za rezervaciju stolova."
+        "desc": "Sajt restorana na kojem gosti mogu da izaberu sto i rezervišu ga onlajn."
       },
       "aura-wellness": {
         "title": "Aura Wellness",
-        "desc": "Elegantna platforma za luksuzni salon ljepote sa glatkim procesom zakazivanja."
+        "desc": "Sajt salona ljepote sa onlajn zakazivanjem korak po korak."
       }
     }
   },
@@ -73,19 +78,19 @@
     "tier1": {
       "title": "Entry / Kickstart",
       "price": 360,
-      "desc": "Brze landing stranice za trenutan prihvat posjetilaca. Za lokalni SMB i servise za iznajmljivanje. Namijenjeno za: restorane i klinike. Uticaj: Zadržava 98% mobilne pažnje. Povrat investicije (ROI): Odmah otplaćuje troškove sa prvih 5-10 klijenata.",
+      "desc": "Početni sajt za pregledan prikaz usluga, cijena i kontakata na računaru i telefonu.",
       "btn": "Naruči Start sajt"
     },
     "tier2": {
       "title": "Growth / Business",
       "price": 1080,
-      "desc": "Interaktivne platforme sa integrisanim sistemima rezervacija. Za lokalni SMB i servise za iznajmljivanje. Namijenjeno za: auto servise (STO) i ordinacije. Uticaj: Štedi 15+ sati rada nedjeljno. Povrat investicije (ROI): Otplata u roku od 30-45 dana.",
+      "desc": "Poslovni sajt sa kalendarom rezervacija, SMS podsjetnicima i upitima na jednom mjestu.",
       "btn": "Naruči Biznis sajt"
     },
     "tier3": {
       "title": "Enterprise Arhitektura",
       "price": 3150,
-      "desc": "Duboka integracija API sistema i napredna sigurnost. Idealno za premium hotele i restorane. Namijenjeno za: mrežne brendove i brendove sa velikim prometom. Uticaj: Eliminiše ljudske greške u potpunosti. Povrat investicije (ROI): Otplata za manje od 90 dana.",
+      "desc": "Platforma po mjeri za složene rezervacije i upravljanje sa više lokacija iz jednog panela.",
       "btn": "Pošalji upit za individualni projekat"
     }
   },

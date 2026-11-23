@@ -4,7 +4,7 @@ import { RoiCalculator, SpeedCheckWidget } from '@/components/LazyWidgets';
 import dynamic from 'next/dynamic';
 
 // Above-the-fold components: statically imported for critical path/LCP optimization
-import HeroSection from '@/components/HeroSection';
+import HeroSection, { type HeroDict } from '@/components/HeroSection';
 import BentoCard from '@/components/BentoCard';
 import ScrollAnimate from '@/components/ScrollAnimate';
 
@@ -87,12 +87,7 @@ export async function generateStaticParams() {
 
 
 interface PageDict {
-  hero: {
-    badge: string;
-    title: string;
-    subtitle: string;
-    cta: string;
-  };
+  hero: HeroDict;
   about: {
     title: string;
     desc: string;
@@ -298,7 +293,11 @@ export default async function HomePage({
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24 flex flex-col gap-24 md:gap-32">
 
       {/* 1. Animated Hero Section */}
-      <HeroSection dict={dict.hero} locale={locale} />
+      <HeroSection
+        dict={dict.hero}
+        starterPrice={dict.pricing.tier1.price}
+        featured={{ ...dict.portfolio.items['umami-bistro'], href: `/${locale}/portfolio/umami-bistro` }}
+      />
 
       {/* 2. Before / After visual slider comparison */}
       <BeforeAfterSlider dict={dict.before_after} />

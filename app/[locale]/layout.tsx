@@ -404,7 +404,7 @@ export default async function RootLayout({
         <CookieBanner dict={dict.cookie} locale={locale} />
 
         {/* Vercel telemetry — loaded only after affirmative cookie consent (GDPR/ePrivacy) */}
-        <AnalyticsConsentProvider />
+        <AnalyticsConsentProvider locale={locale} />
 
         {/* Global floating user utilities (FAB contact menu + Scroll-to-top) */}
         <FloatingWidgets locale={locale as Locale} />

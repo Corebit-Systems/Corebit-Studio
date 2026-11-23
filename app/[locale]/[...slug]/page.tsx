@@ -6,7 +6,7 @@ import { RoiCalculator, SpeedCheckWidget } from '@/components/LazyWidgets';
 import BentoCard from '@/components/BentoCard';
 import PricingSection from '@/components/PricingSection';
 import ContactForm from '@/components/ContactForm';
-import HeroSection from '@/components/HeroSection';
+import HeroSection, { type HeroDict } from '@/components/HeroSection';
 import FAQSection from '@/components/FAQSection';
 import ReviewsAccordion from '@/components/ReviewsAccordion';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider';
@@ -331,12 +331,7 @@ export async function generateMetadata({
 
 
 interface PageDict {
-  hero: {
-    badge: string;
-    title: string;
-    subtitle: string;
-    cta: string;
-  };
+  hero: HeroDict;
   about: {
     title: string;
     desc: string;
@@ -507,6 +502,20 @@ export default async function CatchAllSEOPage({
   };
 
   const dict = interpolate(rawDict) as unknown as PageDict;
+  const projectByService: Partial<Record<string, string>> = {
+    restoran: 'umami-bistro',
+    sto: 'shift-drive',
+    salon: 'aura-wellness',
+  };
+  const projectSlug = service ? projectByService[service.toLowerCase()] : 'umami-bistro';
+  const featured = projectSlug
+    ? { ...dict.portfolio.items[projectSlug], href: `/${locale}/portfolio/${projectSlug}` }
+    : service === 'rent-a-car'
+      ? { ...dict.automation.booking, href: '#modules', label: dict.automation.title, cta: dict.hero.module_cta }
+      : undefined;
+  const hero = service
+    ? { ...dict.hero, title: dict.hero.industry_title.replace('{industry}', replacementPhrase) }
+    : dict.hero;
 
   const CupertinoVisual = (
     <div className="absolute inset-0 bg-gradient-to-br from-amber-900/40 to-orange-600/20 flex items-center justify-center">
@@ -605,7 +614,7 @@ export default async function CatchAllSEOPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
 
-      <HeroSection dict={dict.hero} locale={locale} />
+      <HeroSection dict={hero} starterPrice={dict.pricing.tier1.price} featured={featured} />
       <BeforeAfterSlider dict={dict.before_after} />
       
       <section className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16 p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-[3rem] bg-white/[0.02] border border-white/10 backdrop-blur-xl relative overflow-hidden">

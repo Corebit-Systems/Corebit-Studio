@@ -83,6 +83,7 @@ export default function FloatingWidgets({ locale }: FloatingWidgetsProps) {
             {/* WhatsApp Button */}
             <a
               href={waLink}
+              data-whatsapp-source="floating_widget"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white shadow-lg transition-transform hover:scale-110 active:scale-95 cursor-pointer"

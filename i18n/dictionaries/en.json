@@ -6,19 +6,24 @@
     "contact": "Contact"
   },
   "hero": {
-    "badge": "Engineering High-Performance Assets",
-    "title": "Your Website Should Sell While You Sleep",
-    "subtitle": "We build quick, high-converting websites under key with online client booking for restaurants, auto services, and car rentals {where}. Transparent pricing and launch in 7 days.",
-    "cta": "Get website price"
+    "title": "Websites with online booking {where}",
+    "subtitle": "We build websites for restaurants, auto services, and car rentals, with online reservations, appointment scheduling and customer notifications.",
+    "cta": "Get website price",
+    "starter": "Starter website from {price} · Launch from 7 days",
+    "cases_cta": "See our work",
+    "case_label": "Featured project",
+    "case_cta": "View case study",
+    "industry_title": "Websites for {industry} {where}",
+    "module_cta": "See the booking module"
   },
   "about": {
     "title": "High-Conversion Architecture",
     "desc": "Our web studio is located right next to you — {where}. A client visits your site and instantly desires your service. We achieve this by combining Apple-grade design with ultra-fast load speeds.",
     "badges": [
-      "Sub-100ms Load",
-      "Flawless Mobile UX",
-      "3s Attention Capture",
-      "Absolute Security"
+      "Mobile-friendly pages",
+      "Online booking",
+      "Multilingual pages",
+      "HTTPS and form validation"
     ]
   },
   "automation": {
@@ -44,19 +49,19 @@
     "items": {
       "cupertino-roast": {
         "title": "Cupertino Roast",
-        "desc": "A premium, high-converting digital storefront and interactive menu for an artisan coffee house."
+        "desc": "A website and interactive menu for an artisan coffee house."
       },
       "shift-drive": {
         "title": "Shift & Drive STO",
-        "desc": "A sleek, high-performance automotive service portal with built-in real-time mechanics schedule booking."
+        "desc": "A car service website with online booking for available mechanic time slots."
       },
       "umami-bistro": {
         "title": "Umami Bistro",
-        "desc": "A breathtaking restaurant website featuring an advanced, interactive live table reservation engine."
+        "desc": "A restaurant website where guests can pick a table and book online."
       },
       "aura-wellness": {
         "title": "Aura Wellness",
-        "desc": "An elegant, glassmorphic booking platform for a luxury beauty salon with smooth step-by-step onboarding."
+        "desc": "A beauty salon website with step-by-step appointment booking."
       }
     }
   },
@@ -73,19 +78,19 @@
     "tier1": {
       "title": "Entry / Kickstart",
       "price": 360,
-      "desc": "A premium, lightning-fast website that puts your business on the map. Designed for local restaurants, beauty salons, and rental services ready for their first digital win. Captures 98% of mobile visitors. Pays for itself the moment your first 5 online clients walk through the door.",
+      "desc": "A starter site to present your services, prices and contact details clearly on desktop and mobile.",
       "btn": "Order Starter Website"
     },
     "tier2": {
       "title": "Growth / Business",
       "price": 1080,
-      "desc": "A full website with an online booking calendar, SMS reminders, and all inquiries in one place. No more missed calls or double-bookings. Saves your team 15+ hours per week and fully pays back within 30-45 days through zero scheduling errors.",
+      "desc": "A business website with a booking calendar, SMS reminders and inquiries in one place.",
       "btn": "Order Business Website"
     },
     "tier3": {
       "title": "Enterprise Architecture",
       "price": 3150,
-      "desc": "A custom digital platform built around your exact business workflow. Handles hundreds of bookings simultaneously, connects all your locations into one dashboard, and completely eliminates manual coordination. ROI realized in under 90 days through massive operational savings.",
+      "desc": "A custom platform for complex booking workflows and multiple locations in one dashboard.",
       "btn": "Submit Custom Project Inquiry"
     }
   },

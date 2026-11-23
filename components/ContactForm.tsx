@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, Loader2, Mail } from 'lucide-react';
 import { submitContactForm } from '@/app/actions';
+import { trackLeadEvent } from './leadAnalytics';
 
 interface ContactFormDict {
   title: string;
@@ -46,6 +47,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
   const [countdown, setCountdown] = useState(0);
   const [isRateLimited, setIsRateLimited] = useState(false);
   const cooldownRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const inquiryStarted = useRef(false);
 
   // On mount: check if server cookie signal is present (httpOnly prevents JS read,
   // but document.cookie lets us detect presence to sync UI with server-side block).
@@ -98,6 +100,10 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
       const response = await submitContactForm(formData);
 
       if (response.success) {
+        if (!formData.get('bot_field') && !formData.get('b_trap')) {
+          trackLeadEvent('generate_lead', locale, 'contact_form');
+        }
+        inquiryStarted.current = false;
         // Write localStorage hint (secondary only — actual security is server-side cookie)
         localStorage.setItem('last_submit_time', Date.now().toString());
         setStatus('success');
@@ -151,7 +157,21 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{dict.title}</h2>
       </div>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:gap-6 relative z-10">
+      <form
+        onSubmit={handleSubmit}
+        onChange={(event) => {
+          const field = event.target;
+          if (
+            !inquiryStarted.current
+            && (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement)
+            && (field.name === 'name' || field.name === 'email' || field.name === 'message')
+            && field.value.trim()
+          ) {
+            inquiryStarted.current = trackLeadEvent('inquiry_start', locale, 'contact_form');
+          }
+        }}
+        className="flex flex-col gap-4 sm:gap-6 relative z-10"
+      >
         {/* Invisible Honeypot */}
         <input type="text" name="bot_field" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
         <input type="text" name="b_trap" className="hidden" tabIndex={-1} autoComplete="off" />
@@ -290,6 +310,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
       <div className="relative mt-8 grid gap-3 border-t border-white/10 pt-5 md:grid-cols-2">
         <a
           href={`https://wa.me/359882905657?text=${encodeURIComponent(dict.prefilled_msg || '')}`}
+          data-whatsapp-source="contact_form"
           target="_blank"
           rel="noopener noreferrer"
           className="flex min-h-[48px] items-center justify-center gap-2.5 rounded-xl border border-[#25D366]/20 bg-[#25D366]/[0.07] px-3 py-3 text-center text-sm font-semibold text-[#25D366] transition-colors hover:border-[#25D366]/40 hover:bg-[#25D366]/[0.12] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"

@@ -127,6 +127,7 @@ interface PortfolioPageDict { tech_stack: string; features: string; back: string
 interface PageDict {
   portfolio:      { items: Record<string, PortfolioItem | undefined> };
   portfolio_page: PortfolioPageDict;
+  hero: { cta: string };
   portfolio_tech: Record<string, TechData | undefined>;
 }
 
@@ -271,6 +272,12 @@ export default async function PortfolioProjectPage({
           </div>
         </div>
       )}
+      <Link
+        href={`/${locale}#contact`}
+        className="inline-flex min-h-12 items-center justify-center self-start rounded-xl bg-white px-5 text-sm font-semibold text-black transition-colors hover:bg-neutral-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400"
+      >
+        {dict.hero.cta}
+      </Link>
     </div>
   );
 }
