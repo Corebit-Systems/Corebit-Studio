@@ -6,7 +6,7 @@ import { Resend } from 'resend';
 import { randomUUID } from 'crypto';
 
 // ── In-memory sliding-window rate limiter ────────────────────────────────────
-// NOTE: Resets on serverless cold-start; the cookie-based limiter is the durable layer.
+// This limiter and the browser cooldown complement platform-level rate limits.
 const ipCache = new Map<string, number[]>();
 const WINDOW_MS   = 5 * 60 * 1000; // 5 minutes
 const MAX_HITS    = 3;
@@ -43,6 +43,7 @@ const ContactSchema = z.object({
     .optional()
     .default('en'),
   bot_field: z.literal('').optional(),
+  consent: z.literal('accepted'),
 });
 
 // ── Safe HTML encoder for plain-text email body context ─────────────────────
@@ -75,7 +76,7 @@ export async function submitContactForm(formData: FormData) {
   }
 
   // 2. IP-based rate limiter: max MAX_HITS submissions within WINDOW_MS
-  const headerList = headers();
+  const headerList = await headers();
   const rawIp = headerList.get('x-forwarded-for') || headerList.get('x-real-ip') || '127.0.0.1';
   const ip = rawIp.split(',')[0].trim().slice(0, 45); // Bound IPv6 length
   const now = Date.now();
@@ -88,7 +89,7 @@ export async function submitContactForm(formData: FormData) {
   }
 
   // 3. Cookie-based rate limiter: max 1 submission per COOLDOWN_MS
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const lastSubmitCookie = cookieStore.get('sec_last_submit')?.value;
   if (lastSubmitCookie && now - parseInt(lastSubmitCookie, 10) < COOLDOWN_MS) {
     return { success: false, errorType: 'rate' };
@@ -101,6 +102,7 @@ export async function submitContactForm(formData: FormData) {
     message:   formData.get('message'),
     locale:    formData.get('locale') ?? 'en',
     bot_field: formData.get('bot_field') ?? '',
+    consent:   formData.get('consent'),
   };
 
   const parsed = ContactSchema.safeParse(raw);
@@ -130,18 +132,10 @@ export async function submitContactForm(formData: FormData) {
   recentTimestamps.push(now);
   ipCache.set(ip, recentTimestamps);
 
-  // 8. Set durable rate-limit cookie — httpOnly prevents JS bypass
-  cookieStore.set('sec_last_submit', now.toString(), {
-    httpOnly: true,
-    secure:   true,
-    sameSite: 'strict',
-    maxAge:   Math.ceil(COOLDOWN_MS / 1000),
-  });
-
-  // 9. Structured audit log — Lead ID only, NO raw PII content logged
+  // Structured audit log — Lead ID only, no form content
   const auditLog = {
     timestamp:       new Date().toISOString(),
-    event:           'contact_form_submission',
+    event:           'contact_form_attempt',
     lead_id:         leadId,
     dsr_id:          dsrId,
     messageLength:   message.length,
@@ -225,17 +219,33 @@ export async function submitContactForm(formData: FormData) {
         </html>
       `;
 
-      await resend.emails.send({
+      const { data, error } = await resend.emails.send({
         from:    'Corebit Studio <noreply@corebitsystems.io>',
         to:      'corebitsystems.office@gmail.com',
         replyTo: email,
         subject: `[Lead #${leadId.slice(0, 8)}] New Inquiry \u00B7 ${dsrId} \u00B7 Retention until ${retention}`,
         html:    htmlContent,
       });
+
+      if (error || !data?.id) {
+        console.error('Contact form delivery rejected', { leadId, reason: error?.name });
+        return { success: false, errorType: 'general' };
+      }
+    } else {
+      console.error('Contact form delivery is not configured');
+      return { success: false, errorType: 'general' };
     }
   } catch (err) {
-    console.error('Resend email dispatch error:', err);
+    console.error('Contact form delivery failed', { leadId, reason: err instanceof Error ? err.name : 'unknown' });
+    return { success: false, errorType: 'general' };
   }
+
+  cookieStore.set('sec_last_submit', Date.now().toString(), {
+    httpOnly: true,
+    secure:   true,
+    sameSite: 'strict',
+    maxAge:   Math.ceil(COOLDOWN_MS / 1000),
+  });
 
   return { success: true };
 }

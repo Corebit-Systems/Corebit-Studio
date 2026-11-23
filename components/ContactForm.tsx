@@ -85,7 +85,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!agreeGDPR || isRateLimited || status === 'loading') return;
+    if (!agreeGDPR || isRateLimited || status === 'loading' || status === 'success') return;
 
     setStatus('loading');
     setErrorMessage('');
@@ -212,6 +212,8 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
         <div className="flex items-start gap-3 mt-2">
           <input
             id="gdpr-consent"
+            name="consent"
+            value="accepted"
             type="checkbox"
             required
             disabled={status === 'loading' || isRateLimited}
@@ -222,7 +224,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
           <label htmlFor="gdpr-consent" className="text-xs sm:text-sm text-neutral-400 leading-normal cursor-pointer select-none">
             {dict.gdpr_text}{' '}
             <a 
-              href={`/${agreeGDPR ? '#' : 'en'}/privacy-policy`} 
+              href={`/${locale}/privacy-policy`}
               onClick={(e) => e.stopPropagation()}
               className="text-emerald-400 hover:text-emerald-300 underline font-medium transition-colors p-2 -m-2 inline-block"
             >
@@ -232,7 +234,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
         </div>
 
         <button
-          disabled={status === 'loading' || !agreeGDPR || isRateLimited}
+          disabled={status === 'loading' || status === 'success' || !agreeGDPR || isRateLimited}
           type="submit"
           className="w-full py-4 mt-2 rounded-2xl bg-emerald-600 text-white font-bold text-base sm:text-lg hover:bg-emerald-700 active:scale-95 transition-all flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed min-h-[56px]"
         >

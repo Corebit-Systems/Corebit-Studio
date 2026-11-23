@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
+import { RoiCalculator, SpeedCheckWidget } from '@/components/LazyWidgets';
 import dynamic from 'next/dynamic';
 
 // Above-the-fold components: statically imported for critical path/LCP optimization
@@ -19,8 +20,6 @@ const DevelopmentProcess = dynamic(() => import('@/components/DevelopmentProcess
 const TechStackWidget = dynamic(() => import('@/components/TechStackWidget'));
 
 // Non-SEO-critical interactive calculators: loaded without SSR to optimize initial HTML payload
-const RoiCalculator = dynamic(() => import('@/components/RoiCalculator'), { ssr: false });
-const SpeedCheckWidget = dynamic(() => import('@/components/SpeedCheckWidget'), { ssr: false });
 
 import { ArrowRight, CheckCircle2, CalendarClock, Utensils, CalendarHeart } from 'lucide-react';
 
@@ -36,10 +35,11 @@ const HOME_META: Record<string, { title: string; description: string; ogLocale: 
 };
 
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
+  const { locale } = await params;
   const meta     = HOME_META[locale] ?? HOME_META.en;
   const ogImage  = `${SITE_URL}/og-image-${locale in HOME_META ? locale : 'en'}.png`;
   const pageUrl  = `${SITE_URL}/${locale}`;
@@ -207,12 +207,13 @@ interface ContactFormDict {
 }
 
 export default async function HomePage({
-  params: { locale },
+  params,
   searchParams
 }: {
-  params: { locale: Locale };
-  searchParams?: { city?: string };
+  params: Promise<{ locale: Locale }>;
+  searchParams?: Promise<{ city?: string | string[] }>;
 }) {
+  const { locale } = await params;
   const rawDict = await getDictionary(locale);
 
   // Dynamic geo-localization mapping for Balkan region & other locales fallback
@@ -225,7 +226,8 @@ export default async function HomePage({
   };
 
   const geoDict = (rawDict as any).geo || {};
-  const cityKey = (searchParams?.city || 'montenegro').toLowerCase();
+  const { city } = (await searchParams) ?? {};
+  const cityKey = (typeof city === 'string' ? city : 'montenegro').toLowerCase();
 
   const defaultGeo = defaults[locale] || defaults.en;
   const activeGeo = geoDict[cityKey] || {

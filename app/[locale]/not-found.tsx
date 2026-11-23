@@ -11,7 +11,7 @@ import { headers } from 'next/headers';
 export default async function NotFound() {
   // Extract locale from the x-pathname header (set by middleware or Next internals)
   // Fallback gracefully to 'en' if absent
-  const headersList = headers();
+  const headersList = await headers();
   const pathname = headersList.get('x-pathname') || headersList.get('referer') || '/en';
   const segments = pathname.split('/').filter(Boolean);
   const rawLocale = segments[0] as Locale;

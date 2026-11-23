@@ -28,10 +28,11 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
+  const { locale } = await params;
   const content = policyMap[locale] ?? policyMap.en;
 
   return {
@@ -64,10 +65,11 @@ export async function generateMetadata({
 }
 
 export default async function CookiePolicyPage({
-  params: { locale },
+  params,
 }: {
-  params: { locale: Locale };
+  params: Promise<{ locale: Locale }>;
 }) {
+  const { locale } = await params;
   const rawDict  = await getDictionary(locale);
   const policies = (rawDict.policies as any) || {};
   const content  = policyMap[locale] ?? policyMap.en;

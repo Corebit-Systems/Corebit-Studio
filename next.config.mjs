@@ -2,17 +2,16 @@
 const isDev = process.env.NODE_ENV === 'development';
 
 const nextConfig = {
-  swcMinify: true,
-
+  poweredByHeader: false,
+  outputFileTracingIncludes: {
+    '/[locale]/privacy-policy':   ['./content/legal/privacy/**'],
+    '/[locale]/cookie-policy':    ['./content/legal/cookie/**'],
+    '/[locale]/terms-of-service': ['./content/legal/terms/**'],
+    '/[locale]':                  ['./i18n/dictionaries/**'],
+    '/[locale]/[...slug]':        ['./i18n/dictionaries/**'],
+  },
   experimental: {
     optimizeCss: true,
-    outputFileTracingIncludes: {
-      '/[locale]/privacy-policy':   ['./content/legal/privacy/**'],
-      '/[locale]/cookie-policy':    ['./content/legal/cookie/**'],
-      '/[locale]/terms-of-service': ['./content/legal/terms/**'],
-      '/[locale]':                  ['./i18n/dictionaries/**'],
-      '/[locale]/[...slug]':        ['./i18n/dictionaries/**'],
-    },
   },
 
   async headers() {

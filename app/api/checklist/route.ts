@@ -95,7 +95,7 @@ export async function POST(request: Request) {
 
     if (!process.env.RESEND_API_KEY) {
       console.warn('[api/checklist] RESEND_API_KEY not set — email not dispatched.');
-      return NextResponse.json({ success: true });
+      return NextResponse.json({ error: 'Email service unavailable' }, { status: 503 });
     }
 
     const resend = new Resend(process.env.RESEND_API_KEY);
@@ -167,12 +167,17 @@ export async function POST(request: Request) {
       </html>
     `;
 
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: 'Corebit Studio <info@corebitsystems.io>',
       to: email,
       subject: subject,
       html: emailHtml,
     });
+
+    if (error || !data?.id) {
+      console.error('[api/checklist] Email delivery rejected', { reason: error?.name });
+      return NextResponse.json({ error: 'Email service unavailable' }, { status: 502 });
+    }
 
     return NextResponse.json({ success: true });
 

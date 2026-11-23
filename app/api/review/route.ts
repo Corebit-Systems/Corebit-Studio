@@ -126,7 +126,7 @@ export async function POST(request: Request) {
     // 7. Guard: only send email if API key is configured
     if (!process.env.RESEND_API_KEY) {
       console.warn('[api/review] RESEND_API_KEY not set — email not dispatched.');
-      return NextResponse.json({ success: true });
+      return NextResponse.json({ error: 'Email service unavailable' }, { status: 503 });
     }
 
     const subject = `[Corebit Studio] Новый отзыв на модерацию от ${name}`;
@@ -179,12 +179,17 @@ export async function POST(request: Request) {
     `;
 
     const resend = new Resend(process.env.RESEND_API_KEY);
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: 'Corebit Studio <noreply@corebitsystems.io>',
       to: ['corebitsystems.office@gmail.com'],
       subject,
       html: htmlContent,
     });
+
+    if (error || !data?.id) {
+      console.error('[api/review] Email delivery rejected', { reason: error?.name });
+      return NextResponse.json({ error: 'Email service unavailable' }, { status: 502 });
+    }
 
     return NextResponse.json({ success: true });
 

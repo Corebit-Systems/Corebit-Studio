@@ -81,10 +81,11 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({
-  params: { locale, slug },
+  params,
 }: {
-  params: { locale: string; slug: string };
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
+  const { locale, slug } = await params;
   const rawDict = await getDictionary(locale as any);
   const dict    = rawDict as unknown as PageDict;
   const project = dict.portfolio?.items?.[slug];
@@ -130,10 +131,11 @@ interface PageDict {
 }
 
 export default async function PortfolioProjectPage({
-  params: { locale, slug },
+  params,
 }: {
-  params: { locale: Locale; slug: string };
+  params: Promise<{ locale: Locale; slug: string }>;
 }) {
+  const { locale, slug } = await params;
   const rawDict = await getDictionary(locale);
   const dict    = rawDict as unknown as PageDict;
   const project = dict.portfolio?.items?.[slug];

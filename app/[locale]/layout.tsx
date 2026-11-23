@@ -9,9 +9,7 @@ import CookieBanner from '@/components/CookieBanner';
 import AnalyticsConsentProvider from '@/components/AnalyticsConsentProvider';
 import FloatingWidgets from '@/components/FloatingWidgets';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
-import dynamic from 'next/dynamic';
-
-const AiSalesWidget = dynamic(() => import('@/components/AiSalesWidget'), { ssr: false });
+import { AiSalesWidget } from '@/components/LazyWidgets';
 
 const inter = Inter({
   subsets: ['latin', 'cyrillic'],
@@ -67,10 +65,11 @@ const LOCALE_META: Record<
 };
 
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
+  const { locale } = await params;
   const meta     = LOCALE_META[locale] ?? LOCALE_META.en;
   const ogImage  = `${SITE_URL}/og-image-${locale in LOCALE_META ? locale : 'en'}.png`;
   const ogAltMap: Record<string, string> = {
@@ -204,11 +203,12 @@ export async function generateStaticParams() {
 
 export default async function RootLayout({
   children,
-  params: { locale },
+  params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
   const rawDict = await getDictionary(locale as Locale);
   const dict    = rawDict as unknown as LayoutDict;
 

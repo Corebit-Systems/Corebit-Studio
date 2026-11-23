@@ -2,7 +2,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
-import dynamic from 'next/dynamic';
+import { RoiCalculator, SpeedCheckWidget } from '@/components/LazyWidgets';
 import BentoCard from '@/components/BentoCard';
 import PricingSection from '@/components/PricingSection';
 import ContactForm from '@/components/ContactForm';
@@ -15,8 +15,6 @@ import { ArrowRight, CheckCircle2, CalendarClock, Utensils, CalendarHeart } from
 import slugMapData from '@/i18n/slug-map.json';
 
 // Heavy client-only widgets deferred to avoid blocking the RSC shell
-const SpeedCheckWidget = dynamic(() => import('@/components/SpeedCheckWidget'), { ssr: false });
-const RoiCalculator    = dynamic(() => import('@/components/RoiCalculator'),    { ssr: false });
 
 
 export const dynamicParams = false;
@@ -213,10 +211,11 @@ export async function generateStaticParams() {
 
 
 export async function generateMetadata({
-  params: { locale, slug }
+  params
 }: {
-  params: { locale: string; slug: string[] };
+  params: Promise<{ locale: string; slug: string[] }>;
 }): Promise<Metadata> {
+  const { locale, slug } = await params;
   const slugStr = slug[0];
 
   // ── Resolve cross-locale alternates from slug-map ─────────────────────
@@ -413,10 +412,11 @@ interface PageDict {
 }
 
 export default async function CatchAllSEOPage({
-  params: { locale, slug }
+  params
 }: {
-  params: { locale: Locale; slug: string[] };
+  params: Promise<{ locale: Locale; slug: string[] }>;
 }) {
+  const { locale, slug } = await params;
   const rawDict = await getDictionary(locale);
   
   const slugStr = slug[0];
