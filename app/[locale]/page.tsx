@@ -196,6 +196,8 @@ interface ContactFormDict {
   error_general: string;
   gdpr_text: string;
   privacy_policy_link: string;
+  selected_plan: string;
+  clear_plan: string;
   whatsapp_btn?: string;
   telegram_btn?: string;
   prefilled_msg?: string;

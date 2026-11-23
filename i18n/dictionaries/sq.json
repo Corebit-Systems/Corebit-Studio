@@ -100,6 +100,8 @@
     "text": "Çdo sekondë vonesë në faqen tuaj të uebit ul konvertimet me 20%. Ndërsa konkurrenca humb klientë për shkak të faqeve të ngadalta, administratorët tuaj humbasin orë të tëra duke koordinuar manualisht takimet në WhatsApp, duke shkaktuar gabime dhe rezervime të dyfishta. Ne e zëvendësojmë këtih kaos me rrjete Edge ultra të shpejta dhe automatizim autonom."
   },
   "contact_form": {
+    "selected_plan": "Paketa e zgjedhur",
+    "clear_plan": "Hiq paketën",
     "title": "Mëso çmimin e uebfaqes",
     "name": "Emri i Plotë",
     "email": "Email i Korporatës",

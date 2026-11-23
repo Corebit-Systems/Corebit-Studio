@@ -100,6 +100,8 @@
     "text": "Svaka sekunda kašnjenja vašeg veb sajta smanjuje stopu konverzije za 20%. Dok vaša konkurencija gubi klijente zbog sporog učitavanja stranica, vaši menadžeri gube sate manuelno usklađujući termine na WhatsApp-u, što dovodi do duplih rezervacija i propuštenih prilika. Ovaj operativni haos zamenjujemo brzim Edge mrežama i autonomnim modulima za instant rezervacije."
   },
   "contact_form": {
+    "selected_plan": "Izabrani paket",
+    "clear_plan": "Ukloni paket",
     "title": "Saznaj cenu sajta",
     "name": "Puno Ime",
     "email": "Poslovni Email",

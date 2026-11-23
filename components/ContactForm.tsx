@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, Loader2, Mail } from 'lucide-react';
 import { submitContactForm } from '@/app/actions';
 import { trackLeadEvent } from './leadAnalytics';
+import { pricingSelectionEvent, type PricingInquiry } from './pricingInquiry';
 
 interface ContactFormDict {
   title: string;
@@ -20,6 +21,8 @@ interface ContactFormDict {
   error_general: string;
   gdpr_text: string;
   privacy_policy_link: string;
+  selected_plan: string;
+  clear_plan: string;
   disclaimer?: string;
   whatsapp_btn?: string;
   prefilled_msg?: string;
@@ -36,6 +39,15 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [agreeGDPR, setAgreeGDPR] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<PricingInquiry | null>(null);
+
+  useEffect(() => {
+    const handleSelection = (event: Event) => {
+      setSelectedPlan((event as CustomEvent<PricingInquiry>).detail);
+    };
+    window.addEventListener(pricingSelectionEvent, handleSelection);
+    return () => window.removeEventListener(pricingSelectionEvent, handleSelection);
+  }, []);
 
   // Controlled input states
   const [name, setName] = useState('');
@@ -95,6 +107,10 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
     const formData = new FormData(e.currentTarget);
     // Always include locale in payload so the server knows which language to reply in
     formData.set('locale', locale);
+    if (selectedPlan) {
+      formData.set('plan', selectedPlan.plan);
+      formData.set('payment', selectedPlan.payment);
+    }
 
     try {
       const response = await submitContactForm(formData);
@@ -112,6 +128,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
         setName('');
         setEmail('');
         setMessage('');
+        setSelectedPlan((current) => current === selectedPlan ? null : current);
 
         // Delay the rate limit lock in the UI by 3 seconds so the user can read the success message.
         // After 3 seconds, we start the cooldown with the remaining time (~57s).
@@ -172,6 +189,23 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
         }}
         className="flex flex-col gap-4 sm:gap-6 relative z-10"
       >
+        {selectedPlan && (
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 rounded-xl border border-emerald-500/20 bg-emerald-500/[0.06] px-4 py-3">
+            <div aria-live="polite" className="min-w-0 space-y-1">
+              <p className="text-xs font-medium text-emerald-300">{dict.selected_plan}</p>
+              <p className="break-words text-sm font-semibold text-white">{selectedPlan.title}</p>
+              <p className="text-xs text-neutral-300">{selectedPlan.paymentLabel}</p>
+            </div>
+            <button
+              type="button"
+              disabled={status === 'loading'}
+              onClick={() => setSelectedPlan(null)}
+              className="min-h-11 shrink-0 rounded-md text-sm text-neutral-300 underline underline-offset-4 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400 disabled:opacity-50"
+            >
+              {dict.clear_plan}
+            </button>
+          </div>
+        )}
         {/* Invisible Honeypot */}
         <input type="text" name="bot_field" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
         <input type="text" name="b_trap" className="hidden" tabIndex={-1} autoComplete="off" />

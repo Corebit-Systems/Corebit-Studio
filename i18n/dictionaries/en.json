@@ -100,6 +100,8 @@
     "text": "Every extra second your website takes to load costs you 20% of potential clients. Meanwhile, your team is stuck manually juggling time-slots in WhatsApp — leading to double-bookings and lost revenue. We replace that chaos with a site that loads instantly and a booking system that handles everything automatically, so you capture every client, every time."
   },
   "contact_form": {
+    "selected_plan": "Selected package",
+    "clear_plan": "Remove package",
     "title": "Get website price",
     "name": "Full Name",
     "email": "Email address",

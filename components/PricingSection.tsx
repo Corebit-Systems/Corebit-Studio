@@ -2,6 +2,7 @@
 'use client';
 
 import { useState } from 'react';
+import { pricingSelectionEvent, type PricingInquiry } from './pricingInquiry';
 
 // ФИКС: Строгая типизация вместо dict: any
 interface PricingTier {
@@ -28,6 +29,19 @@ interface PricingSectionProps {
 
 export default function PricingSection({ dict, locale }: PricingSectionProps) {
   const [isFullPayment, setIsFullPayment] = useState(false);
+
+  const selectPlan = (event: React.MouseEvent<HTMLAnchorElement>, plan: PricingInquiry['plan'], title: string) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+
+    window.dispatchEvent(new CustomEvent<PricingInquiry>(pricingSelectionEvent, {
+      detail: {
+        plan,
+        title,
+        payment: isFullPayment ? 'full' : 'split',
+        paymentLabel: isFullPayment ? dict.toggle_full : dict.toggle_split,
+      },
+    }));
+  };
 
   const calculatePrice = (basePrice: number): number => {
     return isFullPayment ? Math.floor(basePrice * 0.9) : basePrice;
@@ -65,12 +79,14 @@ export default function PricingSection({ dict, locale }: PricingSectionProps) {
         />
         <button
           onClick={() => setIsFullPayment(true)}
+          aria-pressed={isFullPayment}
           className={`relative z-10 flex-1 px-3 sm:px-6 py-3.5 min-h-[48px] flex items-center justify-center text-xs sm:text-sm font-semibold transition-colors duration-300 whitespace-nowrap ${isFullPayment ? 'text-white' : 'text-neutral-400 hover:text-white'}`}
         >
           {dict.toggle_full}
         </button>
         <button
           onClick={() => setIsFullPayment(false)}
+          aria-pressed={!isFullPayment}
           className={`relative z-10 flex-1 px-3 sm:px-6 py-3.5 min-h-[48px] flex items-center justify-center text-xs sm:text-sm font-semibold transition-colors duration-300 whitespace-nowrap ${!isFullPayment ? 'text-white' : 'text-neutral-400 hover:text-white'}`}
         >
           {dict.toggle_split}
@@ -96,6 +112,7 @@ export default function PricingSection({ dict, locale }: PricingSectionProps) {
           <p className="text-neutral-400 text-sm flex-grow">{dict.tier1.desc}</p>
           <a
             href="#contact"
+            onClick={(event) => selectPlan(event, 'starter', dict.tier1.title)}
             className="w-full py-4 mt-auto rounded-2xl bg-white text-black text-center font-semibold hover:bg-neutral-200 transition-colors min-h-[52px] flex items-center justify-center"
           >
             {dict.tier1.btn}
@@ -118,6 +135,7 @@ export default function PricingSection({ dict, locale }: PricingSectionProps) {
           <p className="text-neutral-400 text-sm flex-grow">{dict.tier2.desc}</p>
           <a
             href="#contact"
+            onClick={(event) => selectPlan(event, 'business', dict.tier2.title)}
             className="w-full py-4 mt-auto rounded-2xl bg-emerald-500 text-black text-center font-bold hover:bg-emerald-600 transition-colors min-h-[52px] flex items-center justify-center"
           >
             {dict.tier2.btn}
@@ -139,6 +157,7 @@ export default function PricingSection({ dict, locale }: PricingSectionProps) {
           <p className="text-neutral-400 text-sm flex-grow">{dict.tier3.desc}</p>
           <a
             href="#contact"
+            onClick={(event) => selectPlan(event, 'enterprise', dict.tier3.title)}
             className="w-full py-4 mt-auto rounded-2xl border border-white/20 text-white text-center font-semibold hover:bg-white/10 transition-colors min-h-[52px] flex items-center justify-center"
           >
             {dict.tier3.btn}
