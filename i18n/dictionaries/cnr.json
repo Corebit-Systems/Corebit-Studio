@@ -108,7 +108,6 @@
     "gdpr_text": "Saglasan sam sa obradom mojih podataka u skladu sa",
     "privacy_policy_link": "Politikom privatnosti.",
     "whatsapp_btn": "WhatsApp ćaskanje",
-    "telegram_btn": "Telegram podrška",
     "prefilled_msg": "Dobar dan! Želim da razgovaram o veb razvoju i automatizaciji za moj biznis...",
     "locked_label": "Zaključano",
     "or_label": "Ili se povežite putem:",
@@ -116,8 +115,7 @@
   },
   "footer": {
     "cta_btn": "Diskutuj o sajtu na Telegramu",
-    "rights": "© 2026 Corebit Studio. Sva prava zadržana. Tivat, Crna Gora.",
-    "subsidiary_text": "Corebit Studio je podružnica kompanije "
+    "rights": "© 2026 Corebit Studio. Sva prava zadržana. Tivat, Crna Gora."
   },
   "portfolio_tech": {
     "cupertino-roast": {

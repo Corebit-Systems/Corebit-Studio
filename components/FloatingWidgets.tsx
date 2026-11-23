@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ArrowUp, MessageCircle, Send, MessageSquare } from 'lucide-react';
+import { ArrowUp, MessageCircle, MessageSquare } from 'lucide-react';
 import { Locale } from '@/i18n/getDictionary';
 
 interface FloatingWidgetsProps {
@@ -69,7 +69,6 @@ export default function FloatingWidgets({ locale }: FloatingWidgetsProps) {
   };
 
   const texts = WIDGET_TEXTS[locale] || WIDGET_TEXTS.en;
-  const tgLink = "https://t.me/corebitsystems?text=Привет!%20Хочу%20обсудить%20проект%20для%20Corebit%20Studio";
   const waLink = `https://wa.me/359882905657?text=${encodeURIComponent(texts.waMessage)}`;
 
   return (
@@ -81,16 +80,6 @@ export default function FloatingWidgets({ locale }: FloatingWidgetsProps) {
       >
         {menuOpen && (
           <div className="flex flex-col gap-2 mb-2 transition-all duration-300">
-            {/* Telegram Button */}
-            <a
-              href={tgLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center w-12 h-12 rounded-full bg-sky-500 hover:bg-sky-400 text-white shadow-lg transition-transform hover:scale-110 active:scale-95 cursor-pointer"
-              title="Telegram"
-            >
-              <Send size={20} className="ml-[-2px] mt-[1px]" />
-            </a>
             {/* WhatsApp Button */}
             <a
               href={waLink}

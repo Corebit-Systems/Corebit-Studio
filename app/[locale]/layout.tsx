@@ -249,8 +249,7 @@ export default async function RootLayout({
       }
     ],
     "sameAs": [
-      "https://wa.me/359882905657",
-      "https://t.me/corebitsystems"
+      "https://wa.me/359882905657"
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",

@@ -6,7 +6,6 @@ interface FooterDict {
   footer: {
     cta_btn: string;
     rights: string;
-    subsidiary_text?: string;
   };
   policies?: {
     privacy_title: string;
@@ -29,7 +28,7 @@ export default function Footer({ dict, locale }: FooterProps) {
 
       <div className="max-w-7xl mx-auto flex flex-col items-center gap-8 sm:gap-12 w-full">
         {/* Contact cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
 
           <a
             href="tel:+38268914816"
@@ -55,20 +54,6 @@ export default function Footer({ dict, locale }: FooterProps) {
           </a>
 
           <a
-            href="https://t.me/corebitsystems"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex flex-col items-center gap-3 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/[0.02] border border-white/10 hover:border-emerald-600/50 hover:bg-emerald-600/5 transition-all"
-          >
-            <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-sky-500/10 text-sky-400 group-hover:bg-sky-500/20 transition-all shrink-0">
-              <svg className="w-[22px] h-[22px] fill-current block" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M21.9,2.1C21.7,2 21.4,2 21.2,2.1L2.3,9.3C1.8,9.5 1.7,10.1 2.1,10.4L7.6,13.6L18.6,5.3C18.8,5.1 19,5.4 18.8,5.6L10,13.9V19.8C10,20.4 10.7,20.7 11.1,20.2L13.8,16.8L18.6,20.4C18.9,20.6 19.3,20.4 19.4,20.1L22.9,3C23,2.7 22.8,2.3 21.9,2.1Z" />
-              </svg>
-            </div>
-            <span className="font-mono text-base sm:text-lg tracking-wider text-white">@corebitsystems</span>
-          </a>
-
-          <a
             href="mailto:corebitstudio@corebitsystems.io"
             className="group flex flex-col items-center gap-3 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/[0.02] border border-white/10 hover:border-white/30 hover:bg-white/[0.04] transition-all w-full"
           >
@@ -87,17 +72,6 @@ export default function Footer({ dict, locale }: FooterProps) {
           {/* Block 1: Copyright + Subsidiary */}
           <div className="flex flex-col gap-1 items-center md:items-start text-neutral-400">
             <p className="font-light">{dict.footer.rights}</p>
-            <p className="text-[11px] sm:text-xs text-neutral-400 font-light">
-              {dict.footer.subsidiary_text || 'Corebit Studio is a subsidiary of '}{' '}
-              <a
-                href="https://corebitsystems.io"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-emerald-400 underline transition-colors p-2 -m-2 min-h-[48px] inline-flex items-center"
-              >
-                Corebit Systems
-              </a>
-            </p>
           </div>
 
           {/* Block 2: Policy Links */}
