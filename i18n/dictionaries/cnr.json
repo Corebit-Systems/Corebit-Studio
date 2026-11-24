@@ -126,6 +126,25 @@
     "back": "Nazad na Početnu"
   },
   "pricing": {
+    "project_terms": {
+      "title": "Uslovi saradnje",
+      "agreement": "Prije početka rada dogovaramo obim, cijenu i rokove i unosimo ih u ugovor.",
+      "contact": "Razgovarajmo o uslovima",
+      "items": [
+        {
+          "question": "Šta se može naplaćivati posebno?",
+          "answer": "Ako su projektu potrebni domen, hosting ili plaćene usluge poput SMS-a, u ponudi navodimo koji se troškovi plaćaju posebno."
+        },
+        {
+          "question": "Ko će imati pristup nakon lansiranja?",
+          "answer": "Unaprijed dogovaramo koje pristupe sajtu, domenu i hostingu dobija vaš tim i na čije ime će nalozi biti registrovani."
+        },
+        {
+          "question": "Da li je dostupna podrška nakon lansiranja?",
+          "answer": "Možemo unaprijed dogovoriti ažuriranja i održavanje nakon lansiranja, šta podrška obuhvata i koliko košta."
+        }
+      ]
+    },
     "title": "Komercijalni Paketi",
     "subtitle": "Transparentna inženjerska rješenja fokusirana na ROI vašeg poslovanja.",
     "toggle_full": "Puna Uplata (-10%)",

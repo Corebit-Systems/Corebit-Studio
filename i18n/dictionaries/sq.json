@@ -126,6 +126,25 @@
     "back": "Kthehu në Fillim"
   },
   "pricing": {
+    "project_terms": {
+      "title": "Kushtet e bashkëpunimit",
+      "agreement": "Para se të fillojmë, biem dakord për punën, çmimin dhe afatet dhe i përcaktojmë në kontratë.",
+      "contact": "Diskuto kushtet e projektit",
+      "items": [
+        {
+          "question": "Cilat kosto mund të faturohen veçmas?",
+          "answer": "Nëse projekti kërkon domen, hostim ose shërbime me pagesë si SMS, oferta tregon cilat kosto faturohen veçmas."
+        },
+        {
+          "question": "Kush do të ketë qasje pas lansimit?",
+          "answer": "Biem dakord paraprakisht se çfarë qasjeje do të ketë ekipi juaj në faqe, domen dhe hostim, si dhe në emër të kujt do të jenë llogaritë."
+        },
+        {
+          "question": "A ofrohet mbështetje pas lansimit?",
+          "answer": "Mund të diskutojmë paraprakisht përditësimet dhe mirëmbajtjen pas lansimit, çfarë përfshin mbështetja dhe sa kushton."
+        }
+      ]
+    },
     "title": "Paketat Tregtare",
     "subtitle": "Zgjidhje inxhinierike transparente të fokusuara në ROI për biznesin tuaj.",
     "toggle_full": "Pagesë e Plotë (-10%)",

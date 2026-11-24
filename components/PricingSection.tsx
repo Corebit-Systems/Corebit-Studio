@@ -24,6 +24,12 @@ export interface PricingDict {
   first_payment: string;
   second_payment: string;
   case_label: string;
+  project_terms: {
+    title: string;
+    agreement: string;
+    items: { question: string; answer: string }[];
+    contact: string;
+  };
   tier1: PricingTier;
   tier2: PricingTier;
   tier3: PricingTier;
@@ -184,6 +190,27 @@ export default function PricingSection({ dict, locale }: PricingSectionProps) {
           );
         })}
       </div>
+
+      <section id="pricing-terms" aria-labelledby="pricing-terms-title" className="w-full scroll-mt-28 border-y border-white/10 py-6 sm:py-8">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+          <div className="max-w-2xl space-y-2">
+            <h3 id="pricing-terms-title" className="text-xl font-semibold tracking-tight text-white sm:text-2xl">{dict.project_terms.title}</h3>
+            <p className="text-sm leading-relaxed text-neutral-400">{dict.project_terms.agreement}</p>
+          </div>
+          <a href="#contact" className={`inline-flex min-h-11 w-fit shrink-0 items-center gap-2 rounded text-sm font-medium text-emerald-300 transition-colors hover:text-emerald-200 ${focusOutline}`}>
+            {dict.project_terms.contact}
+            <ArrowUpRight aria-hidden="true" size={16} />
+          </a>
+        </div>
+        <dl className="mt-3 grid divide-y divide-white/10 sm:mt-6 lg:grid-cols-3 lg:divide-x lg:divide-y-0">
+          {dict.project_terms.items.map(({ question, answer }) => (
+            <div key={question} className="min-w-0 py-4 first:pt-0 last:pb-0 lg:px-6 lg:py-0 lg:first:pl-0 lg:last:pr-0">
+              <dt className="text-sm font-semibold text-white">{question}</dt>
+              <dd className="mt-1.5 text-sm leading-relaxed text-neutral-300">{answer}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
     </section>
   );
 }

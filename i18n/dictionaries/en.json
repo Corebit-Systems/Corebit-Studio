@@ -126,6 +126,25 @@
     "back": "Back to Home"
   },
   "pricing": {
+    "project_terms": {
+      "title": "Project terms",
+      "agreement": "Before work starts, we agree on the scope, price and timeline and put them in the contract.",
+      "contact": "Discuss project terms",
+      "items": [
+        {
+          "question": "Which costs may be billed separately?",
+          "answer": "If your project needs a domain, hosting or paid services such as SMS, the proposal shows which costs are billed separately."
+        },
+        {
+          "question": "Who gets access after launch?",
+          "answer": "We agree in advance what access your team will have to the site, domain and hosting, and whose name each account will be in."
+        },
+        {
+          "question": "Is support available after launch?",
+          "answer": "We can discuss updates and ongoing support in advance, including what’s covered and how much it costs."
+        }
+      ]
+    },
     "title": "Commercial Directives",
     "subtitle": "Transparent, high-conversion engineering packages focused on business ROI.",
     "toggle_full": "Full Payment (-10%)",
