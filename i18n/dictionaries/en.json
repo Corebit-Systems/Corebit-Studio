@@ -197,6 +197,7 @@
     "text": "Slow pages can get in the way of a booking. Managing appointments in chat can lead to missed or duplicate reservations. Online booking shows available times and keeps inquiries together."
   },
   "contact_form": {
+    "email_subject": "Website inquiry",
     "message_hint": {
       "default": "Tell us what your business does, what the site should do, and when you’d like to launch.",
       "cupertino-roast": "What should the menu include and how should guests place an order?",

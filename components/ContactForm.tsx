@@ -40,6 +40,7 @@ export interface ContactFormDict {
   disclaimer?: string;
   whatsapp_btn?: string;
   prefilled_msg?: string;
+  email_subject: string;
   locked_label?: string;
   or_label?: string;
 }
@@ -53,6 +54,7 @@ interface ContactFormProps {
 
 const cooldownMs = 60_000;
 const cooldownStorageKey = 'last_submit_time';
+const contactEmail = 'corebitstudio@corebitsystems.io';
 
 function isContactFieldValid(field: ContactField, input: HTMLInputElement | HTMLTextAreaElement) {
   const value = input.value.trim();
@@ -87,12 +89,16 @@ export default function ContactForm({ dict, locale, example, initialPricing }: C
   const pendingFieldFocus = useRef<ContactField | null>(null);
   const [copyFeedback, setCopyFeedback] = useState<{ text: string; result: 'success' | 'manual' } | null>(null);
   const reference = example === removedReference ? undefined : example;
-  const whatsappMessage = [
-    dict.prefilled_msg,
-    reference && `${dict.project_reference}: ${projectReferences[reference]}`,
+  const projectTitle = reference ? projectReferences[reference] : undefined;
+  const contactContext = [
+    projectTitle && `${dict.project_reference}: ${projectTitle}`,
     selectedPlan && `${dict.selected_plan}: ${selectedPlan.title}`,
     selectedPlan?.paymentLabel,
-  ].filter(Boolean).join('\n');
+  ].filter(Boolean);
+  const whatsappMessage = [dict.prefilled_msg, ...contactContext].filter(Boolean).join('\n');
+  const emailSubject = [dict.email_subject, selectedPlan?.title, projectTitle].filter(Boolean).join(' · ');
+  const emailBody = [dict.prefilled_msg, contactContext.join('\r\n')].filter(Boolean).join('\r\n\r\n');
+  const emailHref = `mailto:${contactEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
   const clearProjectReference = () => {
     setRemovedReference(reference);
@@ -358,7 +364,7 @@ export default function ContactForm({ dict, locale, example, initialPricing }: C
               <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 py-3">
                 <div className="min-w-0 space-y-1">
                   <p className="text-xs font-medium text-emerald-300">{dict.project_reference}</p>
-                  <p className="text-sm font-semibold text-white">{projectReferences[reference]}</p>
+                  <p className="text-sm font-semibold text-white">{projectTitle}</p>
                 </div>
                 <button
                   type="button"
@@ -556,11 +562,11 @@ export default function ContactForm({ dict, locale, example, initialPricing }: C
           <span>{dict.whatsapp_btn || 'WhatsApp Chat'}</span>
         </a>
         <a
-          href="mailto:corebitstudio@corebitsystems.io"
+          href={emailHref}
           className="flex min-h-[48px] items-center justify-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-3 text-center text-sm text-neutral-300 transition-colors hover:border-white/20 hover:bg-white/[0.07] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
         >
           <Mail aria-hidden="true" className="h-4 w-4 shrink-0 text-neutral-400" />
-          <span className="min-w-0 [overflow-wrap:anywhere]">corebitstudio@corebitsystems.io</span>
+          <span className="min-w-0 [overflow-wrap:anywhere]">{contactEmail}</span>
         </a>
       </div>
     </div>
