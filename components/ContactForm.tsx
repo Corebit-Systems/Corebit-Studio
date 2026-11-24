@@ -47,6 +47,7 @@ interface ContactFormProps {
   dict: ContactFormDict;
   locale: string;
   example?: ProjectReferenceId;
+  initialPricing?: PricingInquiry;
 }
 
 const cooldownMs = 60_000;
@@ -64,12 +65,20 @@ function isContactFieldValid(field: ContactField, input: HTMLInputElement | HTML
   }
 }
 
-export default function ContactForm({ dict, locale, example }: ContactFormProps) {
+function clearPricingQuery() {
+  const url = new URL(window.location.href);
+  if (!url.searchParams.has('plan') && !url.searchParams.has('payment')) return;
+  url.searchParams.delete('plan');
+  url.searchParams.delete('payment');
+  window.history.replaceState(null, '', url);
+}
+
+export default function ContactForm({ dict, locale, example, initialPricing }: ContactFormProps) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorType, setErrorType] = useState<'rate' | 'general' | null>(null);
   const [invalidFields, setInvalidFields] = useState<ContactField[]>([]);
   const [agreeGDPR, setAgreeGDPR] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState<PricingInquiry | null>(null);
+  const [selectedPlan, setSelectedPlan] = useState<PricingInquiry | null>(initialPricing ?? null);
   const [removedReference, setRemovedReference] = useState<ProjectReferenceId>();
   const headingRef = useRef<HTMLHeadingElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
@@ -96,6 +105,7 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
   useEffect(() => {
     const handleSelection = (event: Event) => {
       setSelectedPlan((event as CustomEvent<PricingInquiry>).detail);
+      clearPricingQuery();
       setStatus((current) => current === 'success' ? 'idle' : current);
     };
     window.addEventListener(pricingSelectionEvent, handleSelection);
@@ -235,6 +245,7 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
         setEmail('');
         setMessage((current) => current === message ? '' : current);
         setSelectedPlan((current) => current === selectedPlan ? null : current);
+        if (selectedPlan) clearPricingQuery();
         setAgreeGDPR(false);
         if (reference) clearProjectReference();
         setStatus('success');
@@ -363,7 +374,10 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
                 <button
                   type="button"
                   disabled={status === 'loading'}
-                  onClick={() => setSelectedPlan(null)}
+                  onClick={() => {
+                    setSelectedPlan(null);
+                    clearPricingQuery();
+                  }}
                   className="min-h-11 shrink-0 rounded-md text-sm text-neutral-300 underline underline-offset-4 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400 disabled:opacity-50"
                 >
                   {dict.clear_plan}

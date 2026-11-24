@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, Check } from 'lucide-react';
-import { pricingSelectionEvent, type PricingInquiry } from './pricingInquiry';
+import { describePricingSelection, pricingPlans, pricingSelectionEvent, pricingTierKeys, type PricingInquiry } from './pricingInquiry';
 import { projectReferences, type ProjectReferenceId } from './projectReference';
 
 interface PricingTier {
@@ -38,6 +38,7 @@ export interface PricingDict {
 interface PricingSectionProps {
   dict: PricingDict;
   locale: string;
+  initialPayment?: PricingInquiry['payment'];
 }
 
 const relatedProjects = {
@@ -63,8 +64,8 @@ const approximateRsd: Partial<Record<number, string>> = {
 
 const focusOutline = 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400';
 
-export default function PricingSection({ dict, locale }: PricingSectionProps) {
-  const [isFullPayment, setIsFullPayment] = useState(false);
+export default function PricingSection({ dict, locale, initialPayment }: PricingSectionProps) {
+  const [isFullPayment, setIsFullPayment] = useState(initialPayment === 'full');
   const euro = new Intl.NumberFormat(locale === 'cnr' ? 'sr-Latn-ME' : locale === 'srb' ? 'sr-Latn-RS' : locale, {
     style: 'currency',
     currency: 'EUR',
@@ -72,22 +73,13 @@ export default function PricingSection({ dict, locale }: PricingSectionProps) {
     maximumFractionDigits: 2,
   });
 
-  const tiers = [
-    { plan: 'starter', tier: dict.tier1 },
-    { plan: 'business', tier: dict.tier2 },
-    { plan: 'enterprise', tier: dict.tier3 },
-  ] as const;
+  const payment = isFullPayment ? 'full' : 'split';
 
-  function selectPlan(event: React.MouseEvent<HTMLAnchorElement>, plan: PricingInquiry['plan'], title: string) {
+  function selectPlan(event: React.MouseEvent<HTMLAnchorElement>, plan: PricingInquiry['plan']) {
     if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
 
     window.dispatchEvent(new CustomEvent<PricingInquiry>(pricingSelectionEvent, {
-      detail: {
-        plan,
-        title,
-        payment: isFullPayment ? 'full' : 'split',
-        paymentLabel: isFullPayment ? dict.toggle_full : dict.toggle_split,
-      },
+      detail: describePricingSelection({ plan, payment }, dict),
     }));
   }
 
@@ -122,7 +114,8 @@ export default function PricingSection({ dict, locale }: PricingSectionProps) {
       </div>
 
       <div className="grid w-full grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-5">
-        {tiers.map(({ plan, tier }) => {
+        {pricingPlans.map((plan) => {
+          const tier = dict[pricingTierKeys[plan]];
           const featured = plan === 'business';
           const example = relatedProjects[plan];
           const price = isFullPayment ? Math.floor(tier.price * 0.9) : tier.price;
@@ -172,13 +165,13 @@ export default function PricingSection({ dict, locale }: PricingSectionProps) {
               <div className="mt-auto flex flex-col gap-2">
                 <a
                   href="#contact"
-                  onClick={(event) => selectPlan(event, plan, tier.title)}
+                  onClick={(event) => selectPlan(event, plan)}
                   className={`flex min-h-[52px] items-center justify-center rounded-2xl px-3 py-3 text-center text-sm font-bold transition-colors ${planButtons[plan]} ${focusOutline}`}
                 >
                   {tier.btn}
                 </a>
                 <Link
-                  href={`/${locale}/portfolio/${example}`}
+                  href={`/${locale}/portfolio/${example}?${new URLSearchParams({ plan, payment })}`}
                   prefetch={false}
                   className={`group inline-flex min-h-11 items-center justify-center gap-1.5 rounded-lg px-2 text-center text-sm text-neutral-300 transition-colors hover:text-emerald-300 ${focusOutline}`}
                 >

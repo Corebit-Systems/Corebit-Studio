@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowLeft, CalendarCheck, CheckCircle2, ClipboardList, Cpu, Table2 } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import ProjectFlowPreview, { type ProjectPreviewCopy } from '@/components/ProjectFlowPreview';
+import { readPricingSelection, type PricingSearchParams } from '@/components/pricingInquiry';
 import { isProjectReference, projectReferenceQuery, projectWorkflowAnchor, type ProjectReferenceId } from '@/components/projectReference';
 
 const SITE_URL = 'https://studio.corebitsystems.io';
@@ -148,8 +149,10 @@ interface PageDict {
 
 export default async function PortfolioProjectPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: Locale; slug: string }>;
+  searchParams?: Promise<PricingSearchParams>;
 }) {
   const { locale, slug } = await params;
   const rawDict = await getDictionary(locale);
@@ -163,8 +166,10 @@ export default async function PortfolioProjectPage({
   const booking = slug === 'umami-bistro' ? dict.portfolio_page.umami_booking : undefined;
   const reference = isProjectReference(slug) ? slug : undefined;
   const preview = reference && !booking ? dict.portfolio_page.previews[reference] : undefined;
-  const referenceQuery = reference ? `?${projectReferenceQuery}=${reference}` : '';
-  const contactHref = `/${locale}${referenceQuery}#contact`;
+  const pricingSelection = readPricingSelection(await searchParams);
+  const contactQuery = new URLSearchParams(pricingSelection);
+  if (reference) contactQuery.set(projectReferenceQuery, reference);
+  const contactHref = `/${locale}${contactQuery.size ? `?${contactQuery}` : ''}#contact`;
 
   // ── Product + Review + AggregateRating JSON-LD ───────────────────────────
   const jsonLd = schema ? {

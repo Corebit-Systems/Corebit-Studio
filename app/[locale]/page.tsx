@@ -5,6 +5,7 @@ import type { ContactFormDict } from '@/components/ContactForm';
 import type { PricingDict } from '@/components/PricingSection';
 import type { SpeedCheckDict } from '@/components/SpeedCheckWidget';
 import { isProjectReference, projectReferenceQuery } from '@/components/projectReference';
+import { describePricingSelection, readPricingSelection, type PricingSearchParams } from '@/components/pricingInquiry';
 import dynamic from 'next/dynamic';
 
 // Above-the-fold components: statically imported for critical path/LCP optimization
@@ -157,7 +158,7 @@ export default async function HomePage({
   searchParams
 }: {
   params: Promise<{ locale: Locale }>;
-  searchParams?: Promise<{ city?: string | string[]; [projectReferenceQuery]?: string | string[] }>;
+  searchParams?: Promise<PricingSearchParams & { city?: string | string[]; [projectReferenceQuery]?: string | string[] }>;
 }) {
   const { locale } = await params;
   const rawDict = await getDictionary(locale);
@@ -172,7 +173,9 @@ export default async function HomePage({
   };
 
   const geoDict = (rawDict as any).geo || {};
-  const { city, [projectReferenceQuery]: example } = (await searchParams) ?? {};
+  const query = await searchParams;
+  const { city, [projectReferenceQuery]: example } = query ?? {};
+  const pricingSelection = readPricingSelection(query);
   const cityKey = (typeof city === 'string' ? city : 'montenegro').toLowerCase();
 
   const defaultGeo = defaults[locale] || defaults.en;
@@ -361,12 +364,17 @@ export default async function HomePage({
       <FAQSection dict={dict.faq} />
 
       {/* 10. Pricing & TechStackWidget */}
-      <PricingSection dict={dict.pricing} locale={locale} />
+      <PricingSection dict={dict.pricing} locale={locale} initialPayment={pricingSelection?.payment} />
 
       <TechStackWidget locale={locale} />
 
       {/* 11. Final Contact Lead Form */}
-      <ContactForm dict={dict.contact_form} locale={locale} example={isProjectReference(example) ? example : undefined} />
+      <ContactForm
+        dict={dict.contact_form}
+        locale={locale}
+        example={isProjectReference(example) ? example : undefined}
+        initialPricing={pricingSelection && describePricingSelection(pricingSelection, dict.pricing)}
+      />
     </div>
   );
 }
