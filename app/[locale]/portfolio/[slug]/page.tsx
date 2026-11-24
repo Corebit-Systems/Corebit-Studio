@@ -1,9 +1,10 @@
 // File: c:\dev\Corebit-Studio\app\[locale]\portfolio\[slug]\page.tsx
 import type { Metadata } from 'next';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
+import { getProjectServiceLink } from '@/i18n/serviceSearchContent';
 import { searchAlternates, searchLanguageTags, searchSiteUrl as SITE_URL } from '@/i18n/searchUrls';
 import Link from 'next/link';
-import { ArrowLeft, CalendarCheck, CheckCircle2, ClipboardList, Cpu, Table2 } from 'lucide-react';
+import { ArrowLeft, ArrowRight, CalendarCheck, CheckCircle2, ClipboardList, Cpu, Table2 } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import ProjectFlowPreview, { type ProjectPreviewCopy } from '@/components/ProjectFlowPreview';
 import { readPricingSelection, type PricingSearchParams } from '@/components/pricingInquiry';
@@ -145,6 +146,7 @@ export default async function PortfolioProjectPage({
   const booking = slug === 'umami-bistro' ? dict.portfolio_page.umami_booking : undefined;
   const reference = slug;
   const preview = reference && !booking ? dict.portfolio_page.previews[reference] : undefined;
+  const relatedService = getProjectServiceLink(locale, slug);
   const pricingSelection = readPricingSelection(await searchParams);
   const contactQuery = new URLSearchParams(pricingSelection);
   if (reference) contactQuery.set(projectReferenceQuery, reference);
@@ -187,6 +189,14 @@ export default async function PortfolioProjectPage({
         <p className="text-base sm:text-xl text-neutral-400 max-w-3xl leading-relaxed">
           {project.desc}
         </p>
+        {relatedService && (
+          <Link
+            href={relatedService.href}
+            className="inline-flex min-h-11 w-fit items-center gap-2 text-sm font-medium text-emerald-300 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400"
+          >
+            {relatedService.title}<ArrowRight aria-hidden="true" size={15} className="shrink-0" />
+          </Link>
+        )}
         {schema && (
           <div className="flex items-center gap-3 text-sm text-neutral-400">
             <span className="text-amber-400">{'★'.repeat(Math.round(schema.ratingValue))}</span>

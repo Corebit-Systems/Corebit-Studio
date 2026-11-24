@@ -33,6 +33,9 @@ interface HeaderProps {
 export default function Header({ dict, locale }: HeaderProps) {
   const pathname = usePathname();
   const isPolicyPage = pathname.includes('/privacy-policy') || pathname.includes('/cookie-policy') || pathname.includes('/terms-of-service');
+  const homeHref = `/${locale}`;
+  const sectionBase = isPolicyPage || pathname.startsWith(`${homeHref}/portfolio/`) ? homeHref : '';
+  const contactHref = isPolicyPage ? homeHref : `${sectionBase}#contact`;
   const backLabel = dict.policies?.back_btn || 'Back to Home';
 
   const [isOpen, setIsOpen] = useState(false);
@@ -73,9 +76,9 @@ export default function Header({ dict, locale }: HeaderProps) {
   };
 
   const navLinks = [
-    { name: dict.nav.services, href: `/${locale}#modules` },
-    { name: dict.nav.portfolio, href: `/${locale}#portfolio` },
-    { name: dict.nav.pricing, href: `/${locale}#pricing` },
+    { name: dict.nav.services, href: `${sectionBase}#modules` },
+    { name: dict.nav.portfolio, href: `${sectionBase}#portfolio` },
+    { name: dict.nav.pricing, href: `${sectionBase}#pricing` },
   ];
 
   return (
@@ -120,7 +123,7 @@ export default function Header({ dict, locale }: HeaderProps) {
             </Link>
           ) : (
             <Link
-              href={`/${locale}#contact`}
+              href={contactHref}
               className="hidden sm:inline-flex items-center justify-center px-4 py-3 min-h-[48px] rounded-xl bg-white text-black text-sm font-semibold hover:bg-neutral-200 transition-colors whitespace-nowrap"
             >
               {dict.hero.cta}
@@ -195,7 +198,7 @@ export default function Header({ dict, locale }: HeaderProps) {
               className="mt-auto flex flex-col gap-6 pt-8"
             >
               <Link
-                href={isPolicyPage ? `/${locale}` : `/${locale}#contact`}
+                href={contactHref}
                 onClick={closeMenu}
                 className="w-full py-5 rounded-2xl bg-white text-black text-center font-bold text-xl hover:bg-neutral-200 transition-colors shadow-[0_0_40px_rgba(255,255,255,0.2)] active:scale-95"
               >

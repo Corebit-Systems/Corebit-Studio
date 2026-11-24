@@ -57,6 +57,14 @@ async function checkPage(path, locale, localizedPaths, type, project) {
   const schema = structuredData(html);
   assert.equal(schema.some(item => item.aggregateRating), false, path);
   if (type !== 'case') assert.ok(html.includes('id="faq"'), path);
+  if (type !== 'case') {
+    const header = html.match(/<header\b[^>]*>([\s\S]*?)<\/header>/)?.[1];
+    assert.ok(header, `Missing navigation on ${path}`);
+    const navigationLinks = tags(header, 'a').map(link => link.href);
+    for (const section of ['modules', 'portfolio', 'pricing', 'contact']) {
+      assert.ok(navigationLinks.includes(`#${section}`) && html.includes(`id="${section}"`), path);
+    }
+  }
 
   if (type === 'home') {
     const links = tags(html, 'a').map(link => link.href);
@@ -76,6 +84,8 @@ async function checkPage(path, locale, localizedPaths, type, project) {
   if (type === 'case') {
     assert.ok(schema.some(item => item['@type'] === 'WebPage' && item.mainEntity?.['@type'] === 'CreativeWork'), path);
     assert.ok(html.includes('id="project-workflow"'), path);
+    const relatedService = servicePaths.find(service => service.project && path.endsWith(`/${service.project}`));
+    if (relatedService) assert.ok(tags(html, 'a').some(link => link.href === relatedService.path(locale)), path);
   }
   return path;
 }

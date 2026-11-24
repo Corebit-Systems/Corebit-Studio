@@ -1,9 +1,15 @@
 import type { Locale } from './getDictionary';
 import slugMap from './slug-map.json';
+import type { ProjectReferenceId } from '@/components/projectReference';
 
 export const serviceSearchIds = ['budva_restoran', 'podgorica_sto', 'budva_rent_a_car'] as const;
 type ServiceId = (typeof serviceSearchIds)[number];
 type ServiceCopy = [title: string, description: string, question: string, answer: string];
+
+const serviceByProject: Partial<Record<ProjectReferenceId, ServiceId>> = {
+  'umami-bistro': 'budva_restoran',
+  'shift-drive': 'podgorica_sto',
+};
 
 const copy: Record<Locale, { title: string; services: ServiceCopy[] }> = {
   ru: { title: 'Сайты для бизнеса в Черногории', services: [
@@ -86,12 +92,22 @@ export function getServiceSearchCopy(locale: Locale, id: string | undefined) {
 }
 
 export function getServiceSearchLinks(locale: Locale) {
-  const localized = copy[locale];
   return {
-    title: localized.title,
-    links: serviceSearchIds.flatMap((id, index) => {
-      const slug = slugMap.find(entry => entry.id === id)?.slugs[locale];
-      return slug ? [{ href: `/${locale}/${slug}`, title: localized.services[index][0] }] : [];
+    title: copy[locale].title,
+    links: serviceSearchIds.flatMap(id => {
+      const link = getServiceSearchLink(locale, id);
+      return link ? [link] : [];
     }),
   };
+}
+
+function getServiceSearchLink(locale: Locale, id: ServiceId) {
+  const slug = slugMap.find(entry => entry.id === id)?.slugs[locale];
+  if (!slug) return undefined;
+  return { href: `/${locale}/${slug}`, title: copy[locale].services[serviceSearchIds.indexOf(id)][0] };
+}
+
+export function getProjectServiceLink(locale: Locale, project: ProjectReferenceId) {
+  const id = serviceByProject[project];
+  return id ? getServiceSearchLink(locale, id) : undefined;
 }
