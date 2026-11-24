@@ -254,7 +254,9 @@ export default async function HomePage({
       />
 
       {/* 2. Before / After visual slider comparison */}
-      <BeforeAfterSlider dict={dict.before_after} />
+      <ScrollAnimate>
+        <BeforeAfterSlider dict={dict.before_after} />
+      </ScrollAnimate>
 
       {/* 3. About / Архитектура высокой конверсии */}
       <ScrollAnimate>

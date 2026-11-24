@@ -12,11 +12,7 @@ export default function ScrollAnimate({ children }: ScrollAnimateProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Check if the user agent supports intersection observers
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      setIsVisible(true);
-      return;
-    }
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -47,9 +43,7 @@ export default function ScrollAnimate({ children }: ScrollAnimateProps) {
   return (
     <div
       ref={ref}
-      className={`transition-all duration-1000 ease-out will-change-transform-opacity ${
-        isVisible ? 'opacity-100 translate-y-0 filter blur-0' : 'opacity-0 translate-y-5 filter blur-[2px]'
-      }`}
+      className={isVisible ? 'section-enter' : undefined}
     >
       {children}
     </div>

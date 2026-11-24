@@ -12,6 +12,7 @@ import HeroSection, { type HeroDict } from '@/components/HeroSection';
 import FAQSection from '@/components/FAQSection';
 import ReviewsAccordion from '@/components/ReviewsAccordion';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider';
+import ScrollAnimate from '@/components/ScrollAnimate';
 import TechEcosystem from '@/components/TechEcosystem';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import slugMapData from '@/i18n/slug-map.json';
@@ -546,7 +547,9 @@ export default async function CatchAllSEOPage({
       />
 
       <HeroSection dict={hero} starterPrice={dict.pricing.tier1.price} featured={featured} />
-      <BeforeAfterSlider dict={dict.before_after} />
+      <ScrollAnimate>
+        <BeforeAfterSlider dict={dict.before_after} />
+      </ScrollAnimate>
       
       <section className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16 p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-[3rem] bg-white/[0.02] border border-white/10 backdrop-blur-xl relative overflow-hidden">
         <div className="absolute top-0 right-0 w-72 sm:w-[500px] h-72 sm:h-[500px] bg-emerald-600/10 blur-[150px] rounded-full pointer-events-none" />
@@ -563,7 +566,9 @@ export default async function CatchAllSEOPage({
         </div>
       </section>
 
-      <AutomationModules dict={dict.automation} locale={locale} />
+      <ScrollAnimate>
+        <AutomationModules dict={dict.automation} locale={locale} />
+      </ScrollAnimate>
 
       <section id="portfolio" className="flex flex-col gap-8 sm:gap-12 relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[300px] sm:h-[400px] bg-emerald-600/5 blur-[200px] rounded-full pointer-events-none" />

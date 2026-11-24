@@ -82,20 +82,79 @@
     overflow-x: hidden;
   }
 
-  @keyframes infinite-shimmer {
-    0% {
-      transform: translateX(-150%) skewX(-12deg);
+  .hero-artwork {
+    height: clamp(15rem, 53vw, 27rem);
+  }
+
+  .hero-artwork::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background: linear-gradient(to bottom, #050506, transparent 30%, transparent 78%, #050506);
+  }
+
+  .hero-artwork-image img {
+    transform: scale(1.25);
+    transform-origin: right center;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-artwork {
+      top: 0;
+      height: auto;
     }
-    15% {
-      transform: translateX(250%) skewX(-12deg);
+
+    .hero-artwork-scroll {
+      inset: -3.5rem 0 0;
     }
-    100% {
-      transform: translateX(250%) skewX(-12deg);
+
+    .hero-artwork-image img {
+      transform: scale(1.04);
+    }
+
+    .hero-artwork::after {
+      background:
+        linear-gradient(90deg, #050506 3%, rgba(5, 5, 6, .98) 27%, rgba(5, 5, 6, .62) 46%, transparent 66%),
+        linear-gradient(0deg, #050506, transparent 24%, transparent 84%, #050506 100%);
     }
   }
 
-  .animate-shimmer {
-    animation: infinite-shimmer 4.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  @keyframes hero-enter {
+    from {
+      transform: translateY(14px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes section-enter {
+    from {
+      opacity: .65;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-enter {
+      animation: hero-enter .75s cubic-bezier(.18, .7, .28, 1) both;
+    }
+
+    .hero-enter-detail {
+      animation-delay: .07s;
+    }
+
+    .hero-enter-actions {
+      animation-delay: .14s;
+    }
+
+    .section-enter {
+      animation: section-enter .65s cubic-bezier(.18, .7, .28, 1);
+    }
   }
 }
 
