@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 import { RoiCalculator, SpeedCheckWidget } from '@/components/LazyWidgets';
 import type { ContactFormDict } from '@/components/ContactForm';
+import type { BeforeAfterDict } from '@/components/BeforeAfterSlider';
 import type { PricingDict } from '@/components/PricingSection';
 import type { SpeedCheckDict } from '@/components/SpeedCheckWidget';
 import { isProjectReference, projectReferenceQuery } from '@/components/projectReference';
@@ -116,17 +117,7 @@ interface PageDict {
     result_desc: string;
     cta_btn: string;
   };
-  before_after: {
-    title: string;
-    subtitle: string;
-    before_label: string;
-    after_label: string;
-    after_title: string;
-    after_desc: string;
-    before_title: string;
-    before_desc: string;
-    before_site_label: string;
-  };
+  before_after: BeforeAfterDict;
   speed_check: SpeedCheckDict;
   ecosystem: {
     title: string;

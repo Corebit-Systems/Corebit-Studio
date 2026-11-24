@@ -11,7 +11,7 @@ import ContactForm from '@/components/ContactForm';
 import HeroSection, { type HeroDict } from '@/components/HeroSection';
 import FAQSection from '@/components/FAQSection';
 import ReviewsAccordion from '@/components/ReviewsAccordion';
-import BeforeAfterSlider from '@/components/BeforeAfterSlider';
+import BeforeAfterSlider, { type BeforeAfterDict } from '@/components/BeforeAfterSlider';
 import ScrollAnimate from '@/components/ScrollAnimate';
 import TechEcosystem from '@/components/TechEcosystem';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
@@ -357,17 +357,7 @@ interface PageDict {
     result_desc: string;
     cta_btn: string;
   };
-  before_after: {
-    title: string;
-    subtitle: string;
-    before_label: string;
-    after_label: string;
-    after_title: string;
-    after_desc: string;
-    before_title: string;
-    before_desc: string;
-    before_site_label: string;
-  };
+  before_after: BeforeAfterDict;
   speed_check: SpeedCheckDict;
   ecosystem: {
     title: string;

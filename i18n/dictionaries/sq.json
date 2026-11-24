@@ -379,8 +379,7 @@
     "after_title": "Klienti zgjedh një orar të lirë",
     "after_desc": "Vizitorët rezervojnë në faqe dhe ekipi i sheh kërkesat në një vend.",
     "before_title": "Rezervime me telefon dhe mesazhe",
-    "before_desc": "Klientët kontaktojnë stafin dhe presin konfirmimin e orarit.",
-    "before_site_label": "Rezervime manuale"
+    "before_desc": "Klientët kontaktojnë stafin dhe presin konfirmimin e orarit."
   },
   "speed_check": {
     "title": "Testoni Shpejtësinë e Uebfaqes Suaj",

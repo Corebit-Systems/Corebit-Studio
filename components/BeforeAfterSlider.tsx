@@ -1,208 +1,132 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, type PointerEvent } from 'react';
+import { CalendarCheck, ChevronsLeftRight, Clock3, MessageCircle } from 'lucide-react';
 
-interface BeforeAfterSliderProps {
-  dict: {
-    title: string;
-    subtitle: string;
-    before_label: string;
-    after_label: string;
-    after_title: string;
-    after_desc: string;
-    before_title: string;
-    before_desc: string;
-    before_site_label: string;
-  };
+export interface BeforeAfterDict {
+  title: string;
+  subtitle: string;
+  before_label: string;
+  after_label: string;
+  before_title: string;
+  before_desc: string;
+  after_title: string;
+  after_desc: string;
 }
 
-export default function BeforeAfterSlider({ dict }: BeforeAfterSliderProps) {
+const slots = ['10:00', '11:30', '14:00', '15:30'];
+const endpointStyle = 'min-h-11 rounded-lg px-2 text-left text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400 sm:px-3 sm:text-sm';
+
+export default function BeforeAfterSlider({ dict }: { dict: BeforeAfterDict }) {
   const [position, setPosition] = useState(50);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isDragging = useRef(false);
-  const containerRect = useRef<DOMRect | null>(null);
-  const [containerWidth, setContainerWidth] = useState<number | undefined>(undefined);
+  const [animate, setAnimate] = useState(false);
 
-  const handleMove = (clientX: number) => {
-    if (!containerRect.current) return;
-    const rect = containerRect.current;
-    const x = clientX - rect.left;
-    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
-    requestAnimationFrame(() => setPosition(percentage));
-  };
-
-  const handleTouchMove = (e: TouchEvent) => {
-    if (!isDragging.current) return;
-    handleMove(e.touches[0].clientX);
-  };
-
-  const handleMouseMove = (e: MouseEvent) => {
-    if (!isDragging.current) return;
-    handleMove(e.clientX);
-  };
-
-  const handleMouseUp = () => {
-    isDragging.current = false;
-    window.removeEventListener('mousemove', handleMouseMove);
-    window.removeEventListener('mouseup', handleMouseUp);
-  };
-
-  const handleTouchEnd = () => {
-    isDragging.current = false;
-    window.removeEventListener('touchmove', handleTouchMove);
-    window.removeEventListener('touchend', handleTouchEnd);
-  };
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (containerRef.current) {
-      containerRect.current = containerRef.current.getBoundingClientRect();
-    }
-    isDragging.current = true;
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseup', handleMouseUp);
-  };
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    if (containerRef.current) {
-      containerRect.current = containerRef.current.getBoundingClientRect();
-    }
-    isDragging.current = true;
-    window.addEventListener('touchmove', handleTouchMove, { passive: true });
-    window.addEventListener('touchend', handleTouchEnd);
-  };
-
-  // Keyboard accessibility
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      setPosition((prev) => Math.max(0, prev - 5));
-    } else if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      setPosition((prev) => Math.min(100, prev + 5));
-    }
-  };
-
-  useEffect(() => {
-    if (containerRef.current) {
-      const observer = new ResizeObserver((entries) => {
-        requestAnimationFrame(() => setContainerWidth(entries[0].contentRect.width));
-      });
-      observer.observe(containerRef.current);
-      return () => {
-        observer.disconnect();
-        window.removeEventListener('mousemove', handleMouseMove);
-        window.removeEventListener('mouseup', handleMouseUp);
-        window.removeEventListener('touchmove', handleTouchMove);
-        window.removeEventListener('touchend', handleTouchEnd);
-      };
-    }
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
-      window.removeEventListener('touchmove', handleTouchMove);
-      window.removeEventListener('touchend', handleTouchEnd);
-    };
-  }, []);
+  function moveDivider(event: PointerEvent<HTMLDivElement>) {
+    const { left, width } = event.currentTarget.getBoundingClientRect();
+    setPosition(Math.round(Math.max(0, Math.min(100, (event.clientX - left) / width * 100))));
+  }
 
   return (
-    <section className="w-full max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16 flex flex-col gap-8 sm:gap-12 relative z-10">
-      <div className="flex flex-col items-center text-center gap-4">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-white/40">
+    <section aria-labelledby="site-comparison-title" className="relative z-10 mx-auto flex w-full max-w-5xl flex-col gap-6 py-12 sm:gap-8 sm:px-6 sm:py-16">
+      <div className="mx-auto max-w-2xl space-y-3 px-2 text-center">
+        <h2 id="site-comparison-title" className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
           {dict.title}
         </h2>
-        <p className="text-base sm:text-lg text-neutral-350 max-w-2xl font-light">
-          {dict.subtitle}
-        </p>
+        <p className="text-sm leading-relaxed text-neutral-300 sm:text-lg">{dict.subtitle}</p>
       </div>
 
-      <div
-        ref={containerRef}
-        onKeyDown={handleKeyDown}
-        tabIndex={0}
-        role="slider"
-        aria-valuenow={position}
-        aria-valuemin={0}
-        aria-valuemax={100}
-        aria-label={dict.title}
-        className="relative w-full aspect-[16/10] sm:aspect-[21/9] overflow-hidden rounded-3xl border border-white/10 select-none cursor-ew-resize focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
-      >
-        {/* RIGHT LAYER (AFTER): Corebit Premium Speed Setup */}
-        <div className="absolute inset-0 w-full h-full bg-[#050506]">
-          <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-10 bg-gradient-to-tr from-emerald-950/20 via-neutral-950 to-neutral-950">
-            {/* Mock Premium Interface */}
-            <div className="flex justify-between items-center border-b border-white/5 pb-4">
-              <span className="text-xs sm:text-sm font-semibold tracking-widest text-emerald-400 uppercase">Corebit Studio</span>
-              <div className="flex gap-2">
-                <div className="h-2 w-2 rounded-full bg-white/20" />
-                <div className="h-2 w-2 rounded-full bg-white/20" />
-                <div className="h-2 w-2 rounded-full bg-white/20" />
+      <div className="rounded-2xl border border-white/10 bg-white/[0.025] p-2 sm:rounded-3xl sm:p-3">
+        <div aria-hidden="true" className="flex h-9 items-center gap-1.5 px-3 sm:h-10">
+          <span className="h-2 w-2 rounded-full bg-white/15" />
+          <span className="h-2 w-2 rounded-full bg-white/15" />
+          <span className="h-2 w-2 rounded-full bg-emerald-400/40" />
+        </div>
+        <div
+          aria-hidden="true"
+          className="relative h-52 touch-pan-y select-none overflow-hidden rounded-xl border border-white/10 bg-[#070c0b] cursor-ew-resize sm:h-72 sm:rounded-2xl"
+          onPointerDown={(event) => {
+            if (!event.isPrimary || event.button !== 0) return;
+            event.currentTarget.setPointerCapture(event.pointerId);
+            setAnimate(false);
+            if (event.pointerType === 'mouse') moveDivider(event);
+          }}
+          onPointerMove={(event) => {
+            if (event.currentTarget.hasPointerCapture(event.pointerId)) moveDivider(event);
+          }}
+          onPointerUp={(event) => {
+            if (event.currentTarget.hasPointerCapture(event.pointerId)) moveDivider(event);
+          }}
+        >
+          <div className="absolute inset-0 flex items-center justify-end bg-[radial-gradient(ellipse_at_right,_rgba(16,185,129,0.19),_transparent_72%)] p-3 sm:p-9">
+            <div className="w-[43%] max-w-xs rounded-xl border border-emerald-400/25 bg-[#0b1512] p-2.5 shadow-lg sm:p-5">
+              <div className="mb-3 flex items-center justify-between text-emerald-300">
+                <CalendarCheck size={21} />
+                <span className="hidden h-px w-8 bg-emerald-400/40 sm:block" />
+              </div>
+              <div className="grid grid-cols-2 gap-1 sm:gap-2">
+                {slots.map((slot) => (
+                  <span key={slot} className={`rounded-md border px-0.5 py-2 text-center text-[9px] font-semibold tabular-nums sm:px-2 sm:text-xs ${slot === '14:00' ? 'border-emerald-300/70 bg-emerald-300 text-emerald-950' : 'border-white/10 bg-white/5 text-neutral-200'}`}>
+                    {slot}
+                  </span>
+                ))}
               </div>
             </div>
-
-            <div className="flex flex-col gap-4 sm:gap-6 my-auto text-left max-w-md sm:max-w-xl">
-              <h3 className="text-2xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
-                {dict.after_title}
-              </h3>
-              <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed hidden sm:block">
-                {dict.after_desc}
-              </p>
-            </div>
-
           </div>
-          
-          {/* Label Tag */}
-          <span className="absolute bottom-4 right-4 z-20 px-3 py-1.5 rounded-lg bg-emerald-500 text-black text-xs font-bold shadow-lg">
-            {dict.after_label}
-          </span>
+          <div
+            className={`absolute inset-0 flex items-center bg-[radial-gradient(ellipse_at_left,_#202123,_#101112_72%)] p-3 sm:p-9 ${animate ? 'motion-safe:transition-[clip-path] motion-safe:duration-500 motion-safe:ease-out' : ''}`}
+            style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
+          >
+            <div className="w-[43%] max-w-xs space-y-2 rounded-xl border border-white/10 bg-[#18191b] p-2.5 shadow-lg sm:space-y-3 sm:p-5">
+              <MessageCircle size={21} className="mb-3 text-neutral-300" />
+              <div className="flex h-6 w-4/5 items-center rounded-lg rounded-bl-sm bg-white/10 px-2 sm:h-8">
+                <div className="h-px w-full bg-neutral-500" />
+              </div>
+              <div className="ml-auto flex h-6 w-3/4 items-center justify-end rounded-lg rounded-br-sm bg-white/[0.06] px-2 text-neutral-300 sm:h-8">
+                <Clock3 size={13} />
+              </div>
+              <div className="flex h-6 w-2/3 items-center rounded-lg rounded-bl-sm bg-white/10 px-2 sm:h-8">
+                <div className="h-px w-full bg-neutral-500" />
+              </div>
+            </div>
+          </div>
+          <div
+            className={`pointer-events-none absolute inset-y-0 w-px bg-emerald-200/65 ${animate ? 'motion-safe:transition-[left] motion-safe:duration-500 motion-safe:ease-out' : ''}`}
+            style={{ left: `${position}%` }}
+          >
+            <span className="absolute left-0 top-1/2 grid h-10 w-10 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-emerald-200/60 bg-[#091510] text-emerald-100 shadow-[0_0_28px_rgba(16,185,129,0.34)]">
+              <ChevronsLeftRight size={19} />
+            </span>
+          </div>
         </div>
 
-        {/* LEFT LAYER (BEFORE): Slow Legacy Website Mock */}
-        <div
-          className="absolute inset-0 h-full overflow-hidden bg-neutral-900"
-          style={{ width: `${position}%` }}
-        >
-          <div className="absolute inset-0 w-full h-full p-6 sm:p-10 bg-neutral-950 flex flex-col justify-between" style={{ width: containerWidth }}>
-            {/* Mock Legacy Interface */}
-            <div className="flex justify-between items-center border-b border-red-900/20 pb-4">
-              <span className="text-xs sm:text-sm font-semibold tracking-widest text-red-500 uppercase">{dict.before_site_label}</span>
-              <div className="flex gap-2">
-                <div className="h-2 w-2 rounded-full bg-white/10" />
-                <div className="h-2 w-2 rounded-full bg-white/10" />
-                <div className="h-2 w-2 rounded-full bg-white/10" />
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-4 sm:gap-6 my-auto text-left max-w-md sm:max-w-xl">
-              <h3 className="text-2xl sm:text-4xl font-bold tracking-tight text-neutral-300 line-through leading-tight decoration-red-500/50">
-                {dict.before_title}
-              </h3>
-              <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed hidden sm:block">
-                {dict.before_desc}
-              </p>
-            </div>
-
-          </div>
-
-          {/* Label Tag */}
-          <span className="absolute bottom-4 left-4 z-20 px-3 py-1.5 rounded-lg bg-red-600 text-white text-xs font-bold shadow-lg whitespace-nowrap">
+        <div className="flex items-center justify-between gap-2 px-1 pt-1 sm:gap-4">
+          <button type="button" className={`${endpointStyle} text-neutral-300 hover:bg-white/5 hover:text-white`} onClick={() => { setAnimate(true); setPosition(100); }}>
             {dict.before_label}
-          </span>
+          </button>
+          <input
+            type="range"
+            min={0}
+            max={100}
+            value={position}
+            aria-label={dict.title}
+            aria-valuetext={`${dict.before_label} ${position}%, ${dict.after_label} ${100 - position}%`}
+            className="h-11 min-w-8 flex-1 cursor-ew-resize rounded-full accent-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
+            onChange={(event) => { setAnimate(false); setPosition(Number(event.target.value)); }}
+          />
+          <button type="button" className={`${endpointStyle} text-right text-emerald-300 hover:bg-emerald-400/10 hover:text-emerald-200`} onClick={() => { setAnimate(true); setPosition(0); }}>
+            {dict.after_label}
+          </button>
         </div>
+      </div>
 
-        {/* SLIDER HANDLEBAR */}
-        <div
-          className="absolute top-0 bottom-0 w-12 -ml-6 cursor-ew-resize z-30 flex items-center justify-center"
-          style={{ left: `${position}%` }}
-          onMouseDown={handleMouseDown}
-          onTouchStart={handleTouchStart}
-        >
-          {/* Sleek visual white dividing line */}
-          <div className="w-0.5 h-full bg-white/50" />
-
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white text-black rounded-full shadow-[0_0_20px_rgba(255,255,255,0.4)] flex items-center justify-center text-xs font-bold border border-neutral-300">
-            ↔
-          </div>
+      <div className="grid gap-4 divide-y divide-white/10 px-2 sm:grid-cols-2 sm:gap-8 sm:divide-x sm:divide-y-0">
+        <div>
+          <h3 className="text-base font-semibold text-white">{dict.before_title}</h3>
+          <p className="mt-1 text-sm leading-relaxed text-neutral-400">{dict.before_desc}</p>
+        </div>
+        <div className="pt-4 sm:pl-8 sm:pt-0">
+          <h3 className="text-base font-semibold text-white">{dict.after_title}</h3>
+          <p className="mt-1 text-sm leading-relaxed text-neutral-400">{dict.after_desc}</p>
         </div>
       </div>
     </section>

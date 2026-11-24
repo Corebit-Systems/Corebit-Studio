@@ -379,8 +379,7 @@
     "after_title": "Klijent bira slobodan termin",
     "after_desc": "Gosti rezervišu na sajtu, a tim vidi upite na jednom mjestu.",
     "before_title": "Zakazivanje telefonom i porukama",
-    "before_desc": "Klijenti kontaktiraju osoblje i čekaju potvrdu termina.",
-    "before_site_label": "Ručno zakazivanje"
+    "before_desc": "Klijenti kontaktiraju osoblje i čekaju potvrdu termina."
   },
   "speed_check": {
     "title": "Provjerite brzinu vašeg sajta",

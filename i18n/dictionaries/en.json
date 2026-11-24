@@ -378,8 +378,7 @@
     "after_title": "Customers choose an available time",
     "after_desc": "Guests book on the website, and staff can find inquiries in one place.",
     "before_title": "Scheduling by phone and messages",
-    "before_desc": "Customers contact staff and wait for a confirmed time.",
-    "before_site_label": "Manual scheduling"
+    "before_desc": "Customers contact staff and wait for a confirmed time."
   },
   "speed_check": {
     "title": "Test Your Website Speed",
