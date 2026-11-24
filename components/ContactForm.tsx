@@ -3,7 +3,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, ShieldCheck, Loader2, Mail } from 'lucide-react';
+import { Check, Copy, ShieldCheck, Loader2, Mail } from 'lucide-react';
 import { submitContactForm } from '@/app/actions';
 import { trackLeadEvent } from './leadAnalytics';
 import { pricingSelectionEvent, type PricingInquiry } from './pricingInquiry';
@@ -23,6 +23,10 @@ export interface ContactFormDict {
   error_rate: string;
   error_spam: string;
   error_general: string;
+  copy_description: string;
+  copy_description_hint: string;
+  copy_description_success: string;
+  copy_description_manual: string;
   gdpr_text: string;
   privacy_policy_link: string;
   selected_plan: string;
@@ -47,11 +51,13 @@ const cooldownStorageKey = 'last_submit_time';
 
 export default function ContactForm({ dict, locale, example }: ContactFormProps) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorType, setErrorType] = useState<'rate' | 'spam' | 'general' | null>(null);
   const [agreeGDPR, setAgreeGDPR] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<PricingInquiry | null>(null);
   const [removedReference, setRemovedReference] = useState<ProjectReferenceId>();
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
+  const [copyFeedback, setCopyFeedback] = useState<{ text: string; result: 'success' | 'manual' } | null>(null);
   const reference = example === removedReference ? undefined : example;
   const whatsappMessage = [
     dict.prefilled_msg,
@@ -82,6 +88,19 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const showCopy = status === 'error' && errorType !== 'spam' && message.trim().length > 0;
+  const copyResult = copyFeedback?.text === message ? copyFeedback.result : 'hint';
+
+  const copyDescription = async () => {
+    try {
+      await navigator.clipboard.writeText(message);
+      setCopyFeedback({ text: message, result: 'success' });
+    } catch {
+      setCopyFeedback({ text: message, result: 'manual' });
+      messageRef.current?.focus();
+      messageRef.current?.select();
+    }
+  };
 
   useEffect(() => {
     const applyDraft = () => {
@@ -142,7 +161,8 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
     if (!agreeGDPR || isRateLimited || status === 'loading' || status === 'success') return;
 
     setStatus('loading');
-    setErrorMessage('');
+    setErrorType(null);
+    setCopyFeedback(null);
 
     const formData = new FormData(e.currentTarget);
     // Always include locale in payload so the server knows which language to reply in
@@ -178,19 +198,17 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
         setStatus('success');
       } else {
         if (response.errorType === 'rate') {
-          setErrorMessage(dict.error_rate);
           // Server told us we're rate-limited — enforce UI lock regardless of localStorage
           startCooldown(cooldownMs);
-        } else if (response.errorType === 'spam') {
-          setErrorMessage(dict.error_spam);
+          setErrorType('rate');
         } else {
-          setErrorMessage(dict.error_general);
+          setErrorType(response.errorType === 'spam' ? 'spam' : 'general');
         }
         setStatus('error');
       }
     } catch {
       // Never expose raw error to client — use generic message only
-      setErrorMessage(dict.error_general);
+      setErrorType('general');
       setStatus('error');
     }
   };
@@ -334,8 +352,10 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
         <div className="flex flex-col gap-2">
           <label htmlFor="message" className="sr-only">{dict.message}</label>
           <textarea
+            ref={messageRef}
             required
-            disabled={status === 'loading' || isRateLimited}
+            disabled={status === 'loading'}
+            readOnly={isRateLimited}
             id="message"
             name="message"
             autoComplete="off"
@@ -402,25 +422,40 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
           </AnimatePresence>
         </button>
 
-        {dict.disclaimer && (
-          <p className="text-[11px] sm:text-xs text-neutral-400 leading-relaxed text-center mt-3">
-            {dict.disclaimer}
-          </p>
-        )}
-
-        {status === 'error' && (
+        {status === 'error' && errorType && (
           <motion.p
             role="alert"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-red-400 text-sm text-center font-medium"
           >
-            {errorMessage}
+            {dict[`error_${errorType}`]}
           </motion.p>
+        )}
+
+        {dict.disclaimer && (
+          <p className="text-[11px] sm:text-xs text-neutral-400 leading-relaxed text-center mt-3">
+            {dict.disclaimer}
+          </p>
         )}
       </form>
 
       <div className="relative mt-8 grid gap-3 border-t border-white/10 pt-5 md:grid-cols-2">
+        {showCopy && (
+          <div className="flex flex-col items-start gap-2 pb-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4 md:col-span-2">
+            <p role="status" className="text-sm leading-relaxed text-neutral-300">
+              {dict[`copy_description_${copyResult}`]}
+            </p>
+            <button
+              type="button"
+              onClick={copyDescription}
+              className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] px-3 text-left text-sm font-medium text-white transition-colors hover:border-white/20 hover:bg-white/[0.07] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
+            >
+              {copyResult === 'success' ? <Check aria-hidden="true" size={16} /> : <Copy aria-hidden="true" size={16} />}
+              {dict.copy_description}
+            </button>
+          </div>
+        )}
         <a
           href={`https://wa.me/359882905657?text=${encodeURIComponent(whatsappMessage)}`}
           data-whatsapp-source="contact_form"
