@@ -1,6 +1,7 @@
 // File: c:\dev\Corebit-Studio\app\[locale]\portfolio\[slug]\page.tsx
 import type { Metadata } from 'next';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
+import { searchAlternates, searchLanguageTags, searchSiteUrl as SITE_URL } from '@/i18n/searchUrls';
 import Link from 'next/link';
 import { ArrowLeft, CalendarCheck, CheckCircle2, ClipboardList, Cpu, Table2 } from 'lucide-react';
 import { notFound } from 'next/navigation';
@@ -8,20 +9,12 @@ import ProjectFlowPreview, { type ProjectPreviewCopy } from '@/components/Projec
 import { readPricingSelection, type PricingSearchParams } from '@/components/pricingInquiry';
 import { isProjectReference, projectReferenceQuery, projectWorkflowAnchor, type ProjectReferenceId } from '@/components/projectReference';
 
-const SITE_URL = 'https://studio.corebitsystems.io';
-
-// ── Static portfolio metadata for Schema.org ──────────────────────────────────
-// Maintained here so Product/Review schemas stay correct and typed
-const PORTFOLIO_SCHEMA: Record<string, {
-  priceEur:      number;
-  reviewCount:   number;
+const PORTFOLIO_DETAILS: Record<ProjectReferenceId, {
   ratingValue:   number;
   industry:      string;
   reviews:       Array<{ author: string; rating: number; body: string; date: string }>;
 }> = {
   'cupertino-roast': {
-    priceEur:    972,
-    reviewCount: 14,
     ratingValue: 4.9,
     industry:    'Coffee Shop & Café',
     reviews: [
@@ -30,8 +23,6 @@ const PORTFOLIO_SCHEMA: Record<string, {
     ],
   },
   'shift-drive': {
-    priceEur:    972,
-    reviewCount: 11,
     ratingValue: 4.8,
     industry:    'Automotive Service Center',
     reviews: [
@@ -40,8 +31,6 @@ const PORTFOLIO_SCHEMA: Record<string, {
     ],
   },
   'umami-bistro': {
-    priceEur:    972,
-    reviewCount: 18,
     ratingValue: 5.0,
     industry:    'Restaurant & Bistro',
     reviews: [
@@ -50,8 +39,6 @@ const PORTFOLIO_SCHEMA: Record<string, {
     ],
   },
   'aura-wellness': {
-    priceEur:    972,
-    reviewCount: 9,
     ratingValue: 4.9,
     industry:    'Beauty Salon & Wellness Center',
     reviews: [
@@ -79,7 +66,7 @@ const CLIENT_REVIEWS_TITLE: Record<string, string> = {
 
 export async function generateStaticParams() {
   const locales = ['en', 'ru', 'cnr', 'srb', 'sq'];
-  const slugs   = Object.keys(PORTFOLIO_SCHEMA);
+  const slugs   = Object.keys(PORTFOLIO_DETAILS);
   return locales.flatMap((locale) => slugs.map((slug) => ({ locale, slug })));
 }
 
@@ -91,27 +78,18 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   const rawDict = await getDictionary(locale as any);
   const dict    = rawDict as unknown as PageDict;
-  const project = dict.portfolio?.items?.[slug];
-  const schema  = PORTFOLIO_SCHEMA[slug];
+  const project = isProjectReference(slug) ? dict.portfolio?.items?.[slug] : undefined;
+  if (!project) return {};
 
-  if (!project || !schema) return {};
-
-  const title       = `${project.title} | Portfolio — Corebit Studio`;
-  const description = `${project.desc} — ${schema.industry}. Rating ${schema.ratingValue}/5 from ${schema.reviews.length} clients.`;
+  const title = `${project.title} | Corebit Studio`;
+  const description = project.desc;
 
   return {
     title,
     description,
     alternates: {
       canonical: `${SITE_URL}/${locale}/portfolio/${slug}`,
-      languages: {
-        'x-default': `${SITE_URL}/en/portfolio/${slug}`,
-        en:           `${SITE_URL}/en/portfolio/${slug}`,
-        ru:           `${SITE_URL}/ru/portfolio/${slug}`,
-        'sq-AL':      `${SITE_URL}/sq/portfolio/${slug}`,
-        'sr-RS':      `${SITE_URL}/srb/portfolio/${slug}`,
-        'sr-ME':      `${SITE_URL}/cnr/portfolio/${slug}`,
-      } as Record<string, string>,
+      languages: searchAlternates(language => `/${language}/portfolio/${slug}`),
     },
     openGraph: {
       type:        'website',
@@ -155,6 +133,7 @@ export default async function PortfolioProjectPage({
   searchParams?: Promise<PricingSearchParams>;
 }) {
   const { locale, slug } = await params;
+  if (!isProjectReference(slug)) notFound();
   const rawDict = await getDictionary(locale);
   const dict    = rawDict as unknown as PageDict;
   const project = dict.portfolio?.items?.[slug];
@@ -162,58 +141,37 @@ export default async function PortfolioProjectPage({
   if (!project) { notFound(); return null; }
 
   const details     = dict.portfolio_tech?.[slug];
-  const schema      = PORTFOLIO_SCHEMA[slug];
+  const schema      = PORTFOLIO_DETAILS[slug];
   const booking = slug === 'umami-bistro' ? dict.portfolio_page.umami_booking : undefined;
-  const reference = isProjectReference(slug) ? slug : undefined;
+  const reference = slug;
   const preview = reference && !booking ? dict.portfolio_page.previews[reference] : undefined;
   const pricingSelection = readPricingSelection(await searchParams);
   const contactQuery = new URLSearchParams(pricingSelection);
   if (reference) contactQuery.set(projectReferenceQuery, reference);
   const contactHref = `/${locale}${contactQuery.size ? `?${contactQuery}` : ''}#contact`;
 
-  // ── Product + Review + AggregateRating JSON-LD ───────────────────────────
-  const jsonLd = schema ? {
-    '@context':    'https://schema.org',
-    '@type':       'Product',
-    name:          project.title,
-    description:   project.desc,
-    brand: {
-      '@type': 'Organization',
-      name:    'Corebit Studio',
-      url:     SITE_URL,
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    url: `${SITE_URL}/${locale}/portfolio/${slug}`,
+    name: project.title,
+    description: project.desc,
+    inLanguage: searchLanguageTags[locale],
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    mainEntity: {
+      '@type': 'CreativeWork',
+      name: project.title,
+      description: project.desc,
+      creator: { '@id': `${SITE_URL}/#organization` },
     },
-    offers: {
-      '@type':         'Offer',
-      priceCurrency:   'EUR',
-      price:           schema.priceEur.toString(),
-      priceValidUntil: '2026-12-31',
-      availability:    'https://schema.org/InStock',
-      url:             `${SITE_URL}/${locale}/portfolio/${slug}`,
-    },
-    aggregateRating: {
-      '@type':       'AggregateRating',
-      ratingValue:   schema.ratingValue.toFixed(1),
-      reviewCount:   schema.reviews.length,
-      bestRating:    '5',
-      worstRating:   '1',
-    },
-    review: schema.reviews.map((r) => ({
-      '@type':       'Review',
-      author:        { '@type': 'Person', name: r.author },
-      reviewRating:  { '@type': 'Rating', ratingValue: r.rating, bestRating: 5, worstRating: 1 },
-      reviewBody:    r.body,
-      datePublished: r.date,
-    })),
-  } : null;
+  };
 
   return (
     <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-16 md:py-24 flex flex-col gap-8 sm:gap-12 md:gap-16">
-      {jsonLd && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+      />
 
       <Link
         href={`/${locale}`}

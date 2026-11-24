@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
+import { getServiceSearchLinks } from '@/i18n/serviceSearchContent';
+import { searchAlternates, searchSiteUrl as SITE_URL } from '@/i18n/searchUrls';
+import Link from 'next/link';
 import { RoiCalculator, SpeedCheckWidget } from '@/components/LazyWidgets';
 import type { ContactFormDict } from '@/components/ContactForm';
 import type { BeforeAfterDict } from '@/components/BeforeAfterSlider';
@@ -30,7 +33,6 @@ const TechStackWidget = dynamic(() => import('@/components/TechStackWidget'));
 
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
-const SITE_URL = 'https://studio.corebitsystems.io';
 
 // ── Per-locale page-level metadata (decoupled from layout inheritance chain) ──
 const HOME_META: Record<string, { title: string; description: string; ogLocale: string }> = {
@@ -56,14 +58,7 @@ export async function generateMetadata({
     description: meta.description,
     alternates: {
       canonical: pageUrl,
-      languages: {
-        'x-default': `${SITE_URL}/en`,
-        en:          `${SITE_URL}/en`,
-        ru:          `${SITE_URL}/ru`,
-        'sq-AL':     `${SITE_URL}/sq`,
-        'sr-RS':     `${SITE_URL}/srb`,
-        'sr-ME':     `${SITE_URL}/cnr`,
-      } as Record<string, string>,
+      languages: searchAlternates(language => `/${language}`),
     },
     openGraph: {
       type:        'website',
@@ -194,6 +189,7 @@ export default async function HomePage({
   };
 
   const dict = interpolate(rawDict) as unknown as PageDict;
+  const services = getServiceSearchLinks(locale);
 
   // Schema moved to layout.tsx for global SSR AEO extraction
 
@@ -236,6 +232,19 @@ export default async function HomePage({
       <ScrollAnimate>
         <AutomationModules dict={dict.automation} locale={locale} />
       </ScrollAnimate>
+
+      <section aria-labelledby="local-services-title" className="border-y border-white/10 py-6 sm:py-8">
+        <h2 id="local-services-title" className="text-xl font-semibold tracking-tight sm:text-2xl">{services.title}</h2>
+        <ul className="mt-3 flex flex-wrap gap-x-6">
+          {services.links.map(({ href, title }) => (
+            <li key={href}>
+              <Link href={href} prefetch={false} className="inline-flex min-h-11 items-center gap-2 text-sm font-medium text-emerald-300 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400">
+                {title}<ArrowRight aria-hidden="true" size={15} className="shrink-0" />
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       {/* 5. Portfolio / Впечатляющие цифровые активы */}
       <PortfolioShowcase dict={dict.portfolio} locale={locale} linkLabel={dict.hero.case_cta} />

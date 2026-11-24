@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "node scripts/generate-sitemap-xml.js",
-    "generate:sitemap": "node scripts/generate-sitemap-xml.js",
+    "audit:seo": "node scripts/seo-aeo-geo-audit.js",
     "start": "next start",
     "typecheck": "tsc --noEmit"
   },

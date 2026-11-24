@@ -9,6 +9,7 @@ import CookieBanner from '@/components/CookieBanner';
 import AnalyticsConsentProvider from '@/components/AnalyticsConsentProvider';
 import FloatingWidgets from '@/components/FloatingWidgets';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
+import { searchLanguageTags, searchSiteUrl as SITE_URL } from '@/i18n/searchUrls';
 import { AiSalesWidget } from '@/components/LazyWidgets';
 
 const inter = Inter({
@@ -19,7 +20,6 @@ const inter = Inter({
   adjustFontFallback: true,
   preload: true,
 });
-const SITE_URL = 'https://studio.corebitsystems.io';
 
 // ── Per-locale metadata registry ─────────────────────────────────────────────
 // Each entry drives title, description, OG image, and Twitter card for its route.
@@ -186,9 +186,6 @@ interface LayoutDict {
     link: string;
     reject?: string;
   };
-  faq: {
-    items: Array<{ q: string; a: string }>;
-  };
 }
 
 export async function generateStaticParams() {
@@ -276,110 +273,23 @@ export default async function RootLayout({
         }
       ]
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "5",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Marko J."
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "reviewBody": "Before switching to Corebit Studio, we were losing up to 20% of evening bookings due to the slow loading of our old website. The team built an instant booking system for us. Excellent ROI."
-      },
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Elena R."
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "reviewBody": "We were looking for a local agency that understands hotel business on the Adriatic. Direct bookings through the website bypassing aggregators grew by 35%."
-      },
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Christophe B."
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "reviewBody": "For our business, it is critical that clients can easily send inquiries in one click. Now we get clean, verified leads directly to our corporate email without spam."
-      },
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Anja V."
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "reviewBody": "Automation saved our customer service. Thanks to Corebit Studio, the integration of schedules went seamlessly. Fully responsive and intuitive."
-      },
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Thomas M."
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "reviewBody": "Exceptional technical expertise, scalable Next.js code, and strict compliance with deadlines. Highly recommended."
-      }
-    ]
-  };
-
-  const faqPageLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "publisher": {
-      "@id": "https://studio.corebitsystems.io/#organization"
-    },
-    "provider": {
-      "@id": "https://studio.corebitsystems.io/#organization"
-    },
-    "mainEntity": dict.faq?.items?.map((item) => ({
-      "@type": "Question",
-      "name": item.q,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.a
-      }
-    })) || []
   };
 
   const websiteLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
     "name": "Corebit Studio",
     "alternateName": ["Corebit Studio Montenegro", "Corebit"],
-    "url": SITE_URL
+    "url": SITE_URL,
+    "publisher": { "@id": professionalServiceLd["@id"] }
   };
 
   return (
-    <html lang={locale} className="dark scroll-smooth">
+    <html lang={searchLanguageTags[locale as Locale] ?? 'en'} className="dark scroll-smooth">
       <head>
         {/* Consolidated linked JSON-LD blocks to prevent graph fragmentation */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceLd) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }} />
       </head>
       <body

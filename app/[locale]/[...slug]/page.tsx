@@ -2,6 +2,8 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
+import { getServiceSearchCopy } from '@/i18n/serviceSearchContent';
+import { searchAlternates, searchSiteUrl as SITE_URL } from '@/i18n/searchUrls';
 import { RoiCalculator, SpeedCheckWidget } from '@/components/LazyWidgets';
 import type { SpeedCheckDict } from '@/components/SpeedCheckWidget';
 import PortfolioShowcase, { type PortfolioShowcaseDict } from '@/components/PortfolioShowcase';
@@ -38,21 +40,10 @@ function resolveSlugEntry(
   const entry = slugMap.find((e) => e.slugs[locale] === slugStr);
   if (!entry) return null;
 
-  const bcp47: Record<string, string> = {
-    en:  'en',
-    ru:  'ru',
-    sq:  'sq-AL',
-    srb: 'sr-RS',
-    cnr: 'sr-ME',
-  };
-
-  const alternates: Record<string, string> = {
-    'x-default': `${SITE_URL}/en/${entry.slugs['en']}`,
-  };
-  for (const [loc, tag] of Object.entries(bcp47)) {
-    const locSlug = entry.slugs[loc];
-    if (locSlug) alternates[tag] = `${SITE_URL}/${loc}/${locSlug}`;
-  }
+  const alternates = searchAlternates(language => {
+    const slug = entry.slugs[language];
+    return slug ? `/${language}/${slug}` : undefined;
+  });
   return { entry, alternates };
 }
 
@@ -66,7 +57,6 @@ const services = ['rent-a-car', 'sto', 'restoran', 'salon', 'nekretnine', 'hotel
 const locales = ['en', 'ru', 'cnr', 'srb', 'sq'];
 
 
-const SITE_URL = 'https://studio.corebitsystems.io';
 
 const serviceNames: Record<string, Record<string, string>> = {
   en: {
@@ -217,7 +207,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params
 }: {
-  params: Promise<{ locale: string; slug: string[] }>;
+  params: Promise<{ locale: Locale; slug: string[] }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
   const slugStr = slug[0];
@@ -253,7 +243,7 @@ export async function generateMetadata({
     notFound();
   }
 
-  const rawDict = await getDictionary(locale as any);
+  const rawDict = await getDictionary(locale);
   const geoDict = (rawDict as any).geo || {};
   const activeGeo = geoDict[city.toLowerCase()] || { name: city, where: city };
   const where = activeGeo.where;
@@ -272,6 +262,7 @@ export async function generateMetadata({
       })();
 
   const canonical = `${SITE_URL}/${locale}/${slugStr}`;
+  const serviceCopy = getServiceSearchCopy(locale, resolved?.entry.id);
 
   if (service) {
     const currentServiceNames = serviceNames[locale] || serviceNames.en;
@@ -293,8 +284,8 @@ export async function generateMetadata({
       sq: `Uebfaqe Next.js ${serviceName} ${where}. Automatizim rezervimesh, CRM integrim dhe llogaritja e ROI-së. Mëso çmimin!`
     };
 
-    const title = (titles[locale] || titles.en).replace('{where}', where);
-    const description = (descriptions[locale] || descriptions.en).replace('{where}', where);
+    const title = serviceCopy ? `${serviceCopy[0]} | Corebit Studio` : (titles[locale] || titles.en).replace('{where}', where);
+    const description = serviceCopy?.[1] ?? (descriptions[locale] || descriptions.en).replace('{where}', where);
 
     return {
       title,
@@ -383,6 +374,7 @@ export default async function CatchAllSEOPage({
   let service = '';
 
   const resolved = resolveSlugEntry(locale, slugStr);
+  const serviceCopy = getServiceSearchCopy(locale, resolved?.entry.id);
   if (resolved) {
     const parts = resolved.entry.id.split('_');
     const serviceKeys = ['rent', 'sto', 'restoran', 'salon', 'nekretnine', 'hoteli', 'charter', 'klinike', 'ciscenje', 'transferi'];
@@ -477,7 +469,9 @@ export default async function CatchAllSEOPage({
     : service === 'rent-a-car'
       ? { ...dict.automation.booking, href: '#modules', label: dict.automation.title, cta: dict.hero.module_cta }
       : undefined;
-  const hero = service
+  const hero = serviceCopy
+    ? { ...dict.hero, title: serviceCopy[0], subtitle: serviceCopy[1] }
+    : service
     ? { ...dict.hero, title: dict.hero.industry_title.replace('{industry}', replacementPhrase) }
     : dict.hero;
 
@@ -485,22 +479,30 @@ export default async function CatchAllSEOPage({
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: service ? hero.title : dict.automation.seo_tagline || dict.automation.title,
+    description: hero.subtitle,
     url: `${SITE_URL}/${locale}/${slugStr}`,
     provider: { '@id': `${SITE_URL}/#organization` },
     areaServed: geoDict[cityKey]?.name || city.replaceAll('_', ' '),
   };
-
-  const faqSchema = null;
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24 flex flex-col gap-24 md:gap-32">
       {/* Localized service and its area of operation */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(cityServiceSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(cityServiceSchema).replace(/</g, '\\u003c') }}
       />
 
       <HeroSection dict={hero} starterPrice={dict.pricing.tier1.price} featured={featured} />
+      {serviceCopy && (
+        <section aria-labelledby="service-answer-title" className="mx-auto w-full max-w-4xl border-y border-white/10 py-6 sm:py-8">
+          <h2 id="service-answer-title" className="text-2xl font-semibold tracking-tight">{serviceCopy[2]}</h2>
+          <p className="mt-3 max-w-3xl text-base leading-relaxed text-neutral-300">{serviceCopy[3]}</p>
+          <a href="#pricing" className="mt-2 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-emerald-300 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400">
+            {dict.pricing.title}<ArrowRight aria-hidden="true" size={15} />
+          </a>
+        </section>
+      )}
       <ScrollAnimate>
         <BeforeAfterSlider dict={dict.before_after} />
       </ScrollAnimate>
