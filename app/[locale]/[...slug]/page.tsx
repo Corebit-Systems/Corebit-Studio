@@ -439,7 +439,7 @@ export default async function CatchAllSEOPage({
   const cityServiceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: service ? hero.title : dict.automation.seo_tagline || dict.automation.title,
+    name: serviceCopy || service ? hero.title : dict.automation.seo_tagline || dict.automation.title,
     description: hero.subtitle,
     url: `${SITE_URL}/${locale}/${slugStr}`,
     provider: { '@id': searchOrganizationId },
@@ -459,7 +459,7 @@ export default async function CatchAllSEOPage({
         <section aria-labelledby="service-answer-title" className="mx-auto w-full max-w-4xl border-y border-white/10 py-6 sm:py-8">
           <h2 id="service-answer-title" className="text-2xl font-semibold tracking-tight">{serviceCopy.question}</h2>
           <p className="mt-3 max-w-3xl text-base leading-relaxed text-neutral-300">{serviceCopy.answer}</p>
-          {projectSlug && featured && (
+          {service && projectSlug && featured && (
             <a href={`${featured.href}#${projectWorkflowAnchor}`} className="mt-1 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-emerald-300 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400">
               {featured.title}<ArrowRight aria-hidden="true" size={15} />
             </a>

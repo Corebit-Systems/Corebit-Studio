@@ -22,7 +22,7 @@
 
 ## Services in Montenegro
 
-- [Web development in Tivat](https://studio.corebitsystems.io/en/tivat).
+- [Web development in Tivat](https://studio.corebitsystems.io/en/tivat): How we scope a website and what to share for a quote.
 - [Restaurant websites in Budva](https://studio.corebitsystems.io/en/restaurant-website-budva).
 - [Auto repair websites in Podgorica](https://studio.corebitsystems.io/en/auto-service-website-podgorica).
 - [Car rental websites in Budva](https://studio.corebitsystems.io/en/car-rental-website-budva).

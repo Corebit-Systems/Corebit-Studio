@@ -14,6 +14,7 @@ const servicePaths = [
   { path: localePathsFor('budva_restoran'), project: 'umami-bistro' },
   { path: localePathsFor('podgorica_sto'), project: 'shift-drive' },
   { path: localePathsFor('budva_rent_a_car') },
+  { path: localePathsFor('tivat') },
 ];
 const regionalPaths = ['kotor', 'kotor_salon'].map(localePathsFor);
 
@@ -136,6 +137,7 @@ async function checkPage(path, locale, localizedPaths, type, project) {
   if (type === 'service' || type === 'region') {
     const service = schema.find(item => item['@type'] === 'Service' && item.url === canonicalOrigin + path);
     assert.equal(service?.provider?.['@id'], organizationId, path);
+    if (type === 'service') assert.equal(pageTitle, `${service.name} | Corebit Studio`, path);
   }
   if (type === 'case') {
     const casePage = schema.find(item => item['@type'] === 'WebPage');
