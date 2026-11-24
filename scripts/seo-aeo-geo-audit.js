@@ -3,6 +3,9 @@ const slugMap = require('../i18n/slug-map.json');
 
 const origin = process.env.SEO_AUDIT_URL || 'http://localhost:3000';
 const canonicalOrigin = 'https://studio.corebitsystems.io';
+const organizationId = `${canonicalOrigin}/#organization`;
+const websiteId = `${canonicalOrigin}/#website`;
+const logoPath = '/apple-icon.png';
 const languages = { en: 'en', ru: 'ru', cnr: 'sr-ME', srb: 'sr-RS', sq: 'sq-AL' };
 const projects = ['cupertino-roast', 'shift-drive', 'umami-bistro', 'aura-wellness'];
 const servicePaths = [
@@ -30,6 +33,32 @@ function structuredData(html) {
     .map(([, json]) => JSON.parse(json));
 }
 
+function checkStudioIdentity(schema, html, path) {
+  const organizations = schema.filter(item => item['@id'] === organizationId);
+  assert.equal(organizations.length, 1, path);
+  const [organization] = organizations;
+  assert.equal(organization['@type'], 'Organization', path);
+  assert.equal(organization.name, 'Corebit Studio', path);
+  assert.equal(organization.url, canonicalOrigin, path);
+  assert.equal(organization.logo, canonicalOrigin + logoPath, path);
+  assert.equal(organization.address?.addressLocality, 'Tivat', path);
+  assert.equal(organization.address?.addressCountry, 'ME', path);
+  assert.match(organization.telephone, /^\+382\d+$/, path);
+  assert.equal(organization.contactPoint?.['@type'], 'ContactPoint', path);
+  assert.match(organization.contactPoint.url, /^https:\/\/wa\.me\/\d+$/, path);
+
+  const footer = html.match(/<footer\b[^>]*>([\s\S]*?)<\/footer>/)?.[1];
+  assert.ok(footer, path);
+  const contactLinks = tags(footer, 'a').map(link => link.href);
+  for (const contact of [`tel:${organization.telephone}`, `mailto:${organization.email}`, organization.contactPoint.url]) {
+    assert.ok(contactLinks.includes(contact), `Contact mismatch for ${path}`);
+  }
+
+  const website = schema.find(item => item['@type'] === 'WebSite');
+  assert.equal(website?.['@id'], websiteId, path);
+  assert.equal(website?.publisher?.['@id'], organizationId, path);
+}
+
 async function get(path) {
   return fetch(new URL(path, origin), { redirect: 'manual', signal: AbortSignal.timeout(25000) });
 }
@@ -55,6 +84,7 @@ async function checkPage(path, locale, localizedPaths, type, project) {
   assert.equal(alternates['x-default'], canonicalOrigin + localizedPaths('en'), path);
 
   const schema = structuredData(html);
+  checkStudioIdentity(schema, html, path);
   assert.equal(schema.some(item => item.aggregateRating), false, path);
   if (type !== 'case') assert.ok(html.includes('id="faq"'), path);
   if (type !== 'case') {
@@ -79,10 +109,14 @@ async function checkPage(path, locale, localizedPaths, type, project) {
     if (project) assert.ok(guideLinks.includes(`/${locale}/portfolio/${project}#project-workflow`), path);
   }
   if (type === 'service' || type === 'region') {
-    assert.ok(schema.some(item => item['@type'] === 'Service' && item.url === canonicalOrigin + path), path);
+    const service = schema.find(item => item['@type'] === 'Service' && item.url === canonicalOrigin + path);
+    assert.equal(service?.provider?.['@id'], organizationId, path);
   }
   if (type === 'case') {
-    assert.ok(schema.some(item => item['@type'] === 'WebPage' && item.mainEntity?.['@type'] === 'CreativeWork'), path);
+    const casePage = schema.find(item => item['@type'] === 'WebPage');
+    assert.equal(casePage?.isPartOf?.['@id'], websiteId, path);
+    assert.equal(casePage?.mainEntity?.['@type'], 'CreativeWork', path);
+    assert.equal(casePage.mainEntity.creator?.['@id'], organizationId, path);
     assert.ok(html.includes('id="project-workflow"'), path);
     const relatedService = servicePaths.find(service => service.project && path.endsWith(`/${service.project}`));
     if (relatedService) assert.ok(tags(html, 'a').some(link => link.href === relatedService.path(locale)), path);
@@ -91,6 +125,13 @@ async function checkPage(path, locale, localizedPaths, type, project) {
 }
 
 async function audit() {
+  const logo = await get(logoPath);
+  assert.equal(logo.status, 200);
+  assert.match(logo.headers.get('content-type') || '', /^image\/png\b/i);
+  const png = Buffer.from(await logo.arrayBuffer());
+  assert.equal(png.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
+  assert.ok(png.readUInt32BE(16) >= 112 && png.readUInt32BE(20) >= 112, 'Logo is too small');
+
   const robots = await get('/robots.txt');
   assert.equal(robots.status, 200);
   const rules = await robots.text();

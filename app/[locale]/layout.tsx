@@ -9,7 +9,8 @@ import CookieBanner from '@/components/CookieBanner';
 import AnalyticsConsentProvider from '@/components/AnalyticsConsentProvider';
 import FloatingWidgets from '@/components/FloatingWidgets';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
-import { searchLanguageTags, searchSiteUrl as SITE_URL } from '@/i18n/searchUrls';
+import { searchLanguageTags, searchOrganizationId, searchSiteUrl as SITE_URL, searchWebsiteId } from '@/i18n/searchUrls';
+import { studioContact } from '@/content/studioContact';
 import { AiSalesWidget } from '@/components/LazyWidgets';
 
 const inter = Inter({
@@ -209,18 +210,15 @@ export default async function RootLayout({
   const rawDict = await getDictionary(locale as Locale);
   const dict    = rawDict as unknown as LayoutDict;
 
-  // ── Schema.org JSON-LD — 2 independent entity blocks (no array wrapper) ─────
-  // Connected via @id references to prevent graph fragmentation.
-  const professionalServiceLd = {
+  const organizationLd = {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": "Organization",
+    "@id": searchOrganizationId,
     "name": "Corebit Studio",
-    "image": `${SITE_URL}/og-image-en.png`,
-    "@id": "https://studio.corebitsystems.io/#organization",
-    "url": "https://studio.corebitsystems.io",
-    "telephone": "+38268914816",
-    "email": "corebitstudio@corebitsystems.io",
-    "priceRange": "€360 - €3150",
+    "url": SITE_URL,
+    "logo": `${SITE_URL}/apple-icon.png`,
+    "telephone": studioContact.telephone,
+    "email": studioContact.email,
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Tivat",
@@ -232,64 +230,27 @@ export default async function RootLayout({
       "@id": "https://corebitsystems.io/#organization",
       "url": "https://corebitsystems.io"
     },
-    "contactPoint": [
-      {
-        "@type": "ContactPoint",
-        "telephone": "+38268914816",
-        "contactType": "customer support",
-        "areaServed": ["ME", "RS", "AL"]
-      },
-      {
-        "@type": "ContactPoint",
-        "telephone": "+359882905657",
-        "contactType": "International Sales & WhatsApp Support",
-        "areaServed": "Worldwide"
-      }
-    ],
-    "sameAs": [
-      "https://wa.me/359882905657"
-    ],
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Web Architecture & Automation Services",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "name": "Entry / Kickstart",
-          "price": "360",
-          "priceCurrency": "EUR"
-        },
-        {
-          "@type": "Offer",
-          "name": "Growth / Business",
-          "price": "1080",
-          "priceCurrency": "EUR"
-        },
-        {
-          "@type": "Offer",
-          "name": "Enterprise Architecture",
-          "price": "3150",
-          "priceCurrency": "EUR"
-        }
-      ]
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "WhatsApp",
+      "url": studioContact.whatsappUrl,
     },
   };
 
   const websiteLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": `${SITE_URL}/#website`,
+    "@id": searchWebsiteId,
     "name": "Corebit Studio",
     "alternateName": ["Corebit Studio Montenegro", "Corebit"],
     "url": SITE_URL,
-    "publisher": { "@id": professionalServiceLd["@id"] }
+    "publisher": { "@id": searchOrganizationId }
   };
 
   return (
     <html lang={searchLanguageTags[locale as Locale] ?? 'en'} className="dark scroll-smooth">
       <head>
-        {/* Consolidated linked JSON-LD blocks to prevent graph fragmentation */}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }} />
       </head>
       <body

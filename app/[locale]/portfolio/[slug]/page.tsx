@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 import { getProjectServiceLink } from '@/i18n/serviceSearchContent';
-import { searchAlternates, searchLanguageTags, searchSiteUrl as SITE_URL } from '@/i18n/searchUrls';
+import { searchAlternates, searchLanguageTags, searchOrganizationId, searchSiteUrl as SITE_URL, searchWebsiteId } from '@/i18n/searchUrls';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, CalendarCheck, CheckCircle2, ClipboardList, Cpu, Table2 } from 'lucide-react';
 import { notFound } from 'next/navigation';
@@ -159,12 +159,12 @@ export default async function PortfolioProjectPage({
     name: project.title,
     description: project.desc,
     inLanguage: searchLanguageTags[locale],
-    isPartOf: { '@id': `${SITE_URL}/#website` },
+    isPartOf: { '@id': searchWebsiteId },
     mainEntity: {
       '@type': 'CreativeWork',
       name: project.title,
       description: project.desc,
-      creator: { '@id': `${SITE_URL}/#organization` },
+      creator: { '@id': searchOrganizationId },
     },
   };
 

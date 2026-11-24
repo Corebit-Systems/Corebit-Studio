@@ -1,5 +1,6 @@
 import { Mail, MessageCircle, Phone } from 'lucide-react';
 import Link from 'next/link';
+import { studioContact } from '@/content/studioContact';
 
 interface FooterDict {
   nav: {
@@ -83,27 +84,27 @@ export default function Footer({ dict, locale }: FooterProps) {
             <h2 className="mb-1 text-sm font-semibold text-white">{dict.nav.contact || 'Contact'}</h2>
             <ul>
               <li>
-                <a href="tel:+38268914816" className={contactLink}>
+                <a href={`tel:${studioContact.telephone}`} className={contactLink}>
                   <Phone aria-hidden="true" size={16} className="shrink-0 text-emerald-400" />
-                  <span>+382 68 914 816</span>
+                  <span>{studioContact.phoneLabel}</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="https://wa.me/359882905657"
+                  href={studioContact.whatsappUrl}
                   data-whatsapp-source="footer"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={contactLink}
                 >
                   <MessageCircle aria-hidden="true" size={16} className="shrink-0 text-emerald-400" />
-                  <span>WhatsApp <span className="text-neutral-400">·</span> +359 88 290 5657</span>
+                  <span>WhatsApp <span className="text-neutral-400">·</span> {studioContact.whatsappLabel}</span>
                 </a>
               </li>
               <li>
-                <a href="mailto:corebitstudio@corebitsystems.io" className={contactLink}>
+                <a href={`mailto:${studioContact.email}`} className={contactLink}>
                   <Mail aria-hidden="true" size={16} className="shrink-0 text-emerald-400" />
-                  <span className="min-w-0 [overflow-wrap:anywhere]">corebitstudio@corebitsystems.io</span>
+                  <span className="min-w-0 [overflow-wrap:anywhere]">{studioContact.email}</span>
                 </a>
               </li>
             </ul>

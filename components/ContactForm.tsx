@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, Copy, ShieldCheck, Loader2, Mail } from 'lucide-react';
 import { submitContactForm } from '@/app/actions';
+import { studioContact } from '@/content/studioContact';
 import { trackLeadEvent } from './leadAnalytics';
 import { pricingSelectionEvent, type PricingInquiry } from './pricingInquiry';
 import { contactDraftEvent, contactMessageLimit, mergeContactDraft, takeContactDraft } from './contactDraft';
@@ -54,7 +55,6 @@ interface ContactFormProps {
 
 const cooldownMs = 60_000;
 const cooldownStorageKey = 'last_submit_time';
-const contactEmail = 'corebitstudio@corebitsystems.io';
 
 function isContactFieldValid(field: ContactField, input: HTMLInputElement | HTMLTextAreaElement) {
   const value = input.value.trim();
@@ -98,7 +98,7 @@ export default function ContactForm({ dict, locale, example, initialPricing }: C
   const whatsappMessage = [dict.prefilled_msg, ...contactContext].filter(Boolean).join('\n');
   const emailSubject = [dict.email_subject, selectedPlan?.title, projectTitle].filter(Boolean).join(' · ');
   const emailBody = [dict.prefilled_msg, contactContext.join('\r\n')].filter(Boolean).join('\r\n\r\n');
-  const emailHref = `mailto:${contactEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+  const emailHref = `mailto:${studioContact.email}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
   const clearProjectReference = () => {
     setRemovedReference(reference);
@@ -550,7 +550,7 @@ export default function ContactForm({ dict, locale, example, initialPricing }: C
           </div>
         )}
         <a
-          href={`https://wa.me/359882905657?text=${encodeURIComponent(whatsappMessage)}`}
+          href={`${studioContact.whatsappUrl}?text=${encodeURIComponent(whatsappMessage)}`}
           data-whatsapp-source="contact_form"
           target="_blank"
           rel="noopener noreferrer"
@@ -566,7 +566,7 @@ export default function ContactForm({ dict, locale, example, initialPricing }: C
           className="flex min-h-[48px] items-center justify-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-3 text-center text-sm text-neutral-300 transition-colors hover:border-white/20 hover:bg-white/[0.07] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
         >
           <Mail aria-hidden="true" className="h-4 w-4 shrink-0 text-neutral-400" />
-          <span className="min-w-0 [overflow-wrap:anywhere]">{contactEmail}</span>
+          <span className="min-w-0 [overflow-wrap:anywhere]">{studioContact.email}</span>
         </a>
       </div>
     </div>

@@ -4,6 +4,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowUp, MessageCircle, MessageSquare } from 'lucide-react';
 import { Locale } from '@/i18n/getDictionary';
+import { studioContact } from '@/content/studioContact';
 
 interface FloatingWidgetsProps {
   locale: Locale;
@@ -69,7 +70,7 @@ export default function FloatingWidgets({ locale }: FloatingWidgetsProps) {
   };
 
   const texts = WIDGET_TEXTS[locale] || WIDGET_TEXTS.en;
-  const waLink = `https://wa.me/359882905657?text=${encodeURIComponent(texts.waMessage)}`;
+  const waLink = `${studioContact.whatsappUrl}?text=${encodeURIComponent(texts.waMessage)}`;
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-3">

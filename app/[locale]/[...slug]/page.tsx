@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 import { getServiceSearchCopy } from '@/i18n/serviceSearchContent';
-import { searchAlternates, searchSiteUrl as SITE_URL } from '@/i18n/searchUrls';
+import { searchAlternates, searchOrganizationId, searchSiteUrl as SITE_URL } from '@/i18n/searchUrls';
 import { RoiCalculator, SpeedCheckWidget } from '@/components/LazyWidgets';
 import type { SpeedCheckDict } from '@/components/SpeedCheckWidget';
 import PortfolioShowcase, { type PortfolioShowcaseDict } from '@/components/PortfolioShowcase';
@@ -442,7 +442,7 @@ export default async function CatchAllSEOPage({
     name: service ? hero.title : dict.automation.seo_tagline || dict.automation.title,
     description: hero.subtitle,
     url: `${SITE_URL}/${locale}/${slugStr}`,
-    provider: { '@id': `${SITE_URL}/#organization` },
+    provider: { '@id': searchOrganizationId },
     areaServed: geoDict[cityKey]?.name || city.replaceAll('_', ' '),
   };
 

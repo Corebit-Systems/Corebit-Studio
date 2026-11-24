@@ -1,6 +1,8 @@
 import type { Locale } from './getDictionary';
 
 export const searchSiteUrl = 'https://studio.corebitsystems.io';
+export const searchOrganizationId = `${searchSiteUrl}/#organization`;
+export const searchWebsiteId = `${searchSiteUrl}/#website`;
 export const searchLocales = ['en', 'ru', 'cnr', 'srb', 'sq'] as const satisfies readonly Locale[];
 
 export const searchLanguageTags = {
