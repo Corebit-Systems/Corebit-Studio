@@ -2,6 +2,7 @@ const assert = require('node:assert/strict');
 const slugMap = require('../i18n/slug-map.json');
 
 const origin = process.env.SEO_AUDIT_URL || 'http://localhost:3000';
+const fullAudit = process.argv.includes('--full');
 const canonicalOrigin = 'https://studio.corebitsystems.io';
 const organizationId = `${canonicalOrigin}/#organization`;
 const websiteId = `${canonicalOrigin}/#website`;
@@ -10,18 +11,23 @@ const languages = { en: 'en', ru: 'ru', cnr: 'sr-ME', srb: 'sr-RS', sq: 'sq-AL' 
 const socialLocales = { en: 'en_US', ru: 'ru_RU', cnr: 'sr_ME', srb: 'sr_RS', sq: 'sq_AL' };
 const policySlugs = ['privacy-policy', 'cookie-policy', 'terms-of-service'];
 const projects = ['cupertino-roast', 'shift-drive', 'umami-bistro', 'aura-wellness'];
-const servicePaths = [
-  { path: localePathsFor('budva_restoran'), project: 'umami-bistro' },
-  { path: localePathsFor('podgorica_sto'), project: 'shift-drive' },
-  { path: localePathsFor('budva_rent_a_car') },
-  { path: localePathsFor('tivat') },
+const priorityServices = [
+  { id: 'budva_restoran', project: 'umami-bistro' },
+  { id: 'podgorica_sto', project: 'shift-drive' },
+  { id: 'budva_rent_a_car' },
+  { id: 'tivat' },
 ];
-const regionalPaths = ['kotor', 'kotor_salon'].map(localePathsFor);
+const servicePaths = priorityServices.map(({ id, project }) => ({ path: localePathsFor(id), project }));
+
+function pathForSlug(entry, locale) {
+  const slug = entry.slugs[locale];
+  return slug ? `/${locale}/${slug}` : undefined;
+}
 
 function localePathsFor(id) {
   const entry = slugMap.find(item => item.id === id);
   assert.ok(entry, `Missing localized slug entry for ${id}`);
-  return locale => `/${locale}/${entry.slugs[locale]}`;
+  return locale => pathForSlug(entry, locale);
 }
 
 function tags(html, name) {
@@ -88,13 +94,16 @@ function checkSocialMetadata(meta, locale, path, title, description) {
 async function checkPage(path, locale, localizedPaths, type, project) {
   const response = await get(path, { 'user-agent': 'facebookexternalhit/1.1' });
   assert.equal(response.status, 200, `HTTP status for ${path}`);
-  assert.doesNotMatch(response.headers.get('x-robots-tag') || '', /\bnoindex\b/i, path);
+  assert.doesNotMatch(response.headers.get('x-robots-tag') || '', /\b(?:noindex|none)\b/i, path);
   const html = await response.text();
   const pageTitle = html.match(/<title>([^<]+)<\/title>/i)?.[1];
   assert.ok(pageTitle && (type === 'policy' || pageTitle.includes('Corebit Studio')), `Missing title for ${path}`);
   const head = html.match(/<head>([\s\S]*?)<\/head>/i)?.[1];
   assert.ok(head, `Missing head for ${path}`);
   const meta = tags(head, 'meta');
+  for (const tag of meta.filter(tag => ['robots', 'googlebot', 'bingbot'].includes(tag.name?.toLowerCase()))) {
+    assert.doesNotMatch(tag.content || '', /\b(?:noindex|none)\b/i, path);
+  }
   const descriptions = meta.filter(tag => tag.name === 'description');
   assert.equal(descriptions.length, 1, `Expected one description for ${path}`);
   assert.ok(descriptions[0].content?.trim(), `Missing description for ${path}`);
@@ -103,11 +112,15 @@ async function checkPage(path, locale, localizedPaths, type, project) {
   assert.equal(tags(html, 'h1').length, 1, path);
   const links = tags(html, 'link');
   assert.deepEqual(links.filter(link => link.rel === 'canonical').map(link => link.href), [canonicalOrigin + path], path);
-  const alternates = Object.fromEntries(links.filter(link => link.rel === 'alternate' && link.hreflang).map(link => [link.hreflang, link.href]));
+  const alternates = links.filter(link => link.rel === 'alternate' && link.hreflang);
+  const expectedAlternates = {};
   for (const [language, tag] of Object.entries(languages)) {
-    assert.equal(alternates[tag], canonicalOrigin + localizedPaths(language), path);
+    const localizedPath = localizedPaths(language);
+    if (localizedPath) expectedAlternates[tag] = canonicalOrigin + localizedPath;
   }
-  assert.equal(alternates['x-default'], canonicalOrigin + localizedPaths('en'), path);
+  if (expectedAlternates.en) expectedAlternates['x-default'] = expectedAlternates.en;
+  assert.equal(alternates.length, Object.keys(expectedAlternates).length, `Unexpected language links for ${path}`);
+  assert.deepEqual(Object.fromEntries(alternates.map(link => [link.hreflang, link.href])), expectedAlternates, path);
 
   const schema = structuredData(html);
   checkStudioIdentity(schema, html, path);
@@ -180,29 +193,56 @@ async function audit() {
   assert.equal(sitemap.status, 200);
   const xml = await sitemap.text();
   const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url);
-  const expected = new Set(Object.keys(languages).flatMap(locale => [
+  const expectedUrls = Object.keys(languages).flatMap(locale => [
     `${canonicalOrigin}/${locale}`,
     ...projects.map(project => `${canonicalOrigin}/${locale}/portfolio/${project}`),
-    ...slugMap.flatMap(entry => entry.slugs[locale] ? [`${canonicalOrigin}/${locale}/${entry.slugs[locale]}`] : []),
-  ]));
+    ...slugMap.flatMap(entry => {
+      const path = pathForSlug(entry, locale);
+      return path ? [canonicalOrigin + path] : [];
+    }),
+  ]);
+  const expected = new Set(expectedUrls);
+  assert.equal(expectedUrls.length, expected.size, 'Multiple entries resolve to the same URL');
   assert.equal(urls.length, new Set(urls).size, 'Sitemap contains duplicate URLs');
   assert.deepEqual(new Set(urls), expected);
 
+  const regions = fullAudit
+    ? slugMap.filter(entry => !priorityServices.some(service => service.id === entry.id))
+        .map(entry => locale => pathForSlug(entry, locale))
+    : ['kotor', 'kotor_salon'].map(localePathsFor);
   const pageGroups = [
     [locale => `/${locale}`, 'home'],
     ...servicePaths.map(({ path, project }) => [path, 'service', project]),
-    ...regionalPaths.map(path => [path, 'region']),
+    ...regions.map(path => [path, 'region']),
     ...policySlugs.map(slug => [locale => `/${locale}/${slug}`, 'policy']),
     ...projects.map(project => [locale => `/${locale}/portfolio/${project}`, 'case']),
   ];
-  for (const [paths, type, project] of pageGroups) {
-    const results = await Promise.allSettled(Object.keys(languages).map(locale => checkPage(paths(locale), locale, paths, type, project)));
+  const verified = new Set();
+  const auditErrors = [];
+  for (const [index, [paths, type, project]] of pageGroups.entries()) {
+    const jobs = Object.keys(languages).flatMap(locale => {
+      const path = paths(locale);
+      return path ? [checkPage(path, locale, paths, type, project)] : [];
+    });
+    const results = await Promise.allSettled(jobs);
     const errors = results.filter(result => result.status === 'rejected').map(result => result.reason);
-    if (errors.length) throw new AggregateError(errors, `Failed checks for ${type}`);
-    console.log(`OK ${type}: ${results.map(result => result.value).join(', ')}`);
+    const passed = results.filter(result => result.status === 'fulfilled').map(result => result.value);
+    passed.forEach(path => verified.add(canonicalOrigin + path));
+    if (!fullAudit && errors.length) throw new AggregateError(errors, `Failed checks for ${type}`);
+    auditErrors.push(...errors);
+    if (!fullAudit) console.log(`OK ${type}: ${passed.join(', ')}`);
+    if (fullAudit && (index + 1) % 25 === 0) {
+      console.log(`Checked ${index + 1}/${pageGroups.length} page groups. ${verified.size} passed, ${auditErrors.length} failed.`);
+    }
   }
 
-  console.log(`Verified robots, ${urls.length} sitemap URLs and ${pageGroups.length * Object.keys(languages).length} localized pages.`);
+  if (auditErrors.length) {
+    throw new AggregateError(auditErrors.slice(0, 20), `${auditErrors.length} pages failed the full audit (up to 20 shown)`);
+  }
+  if (fullAudit) {
+    assert.deepEqual(new Set([...verified].filter(url => expected.has(url))), expected, 'Full audit did not cover the whole sitemap');
+  }
+  console.log(`Verified robots, ${urls.length} sitemap URLs and ${verified.size} localized pages.`);
 }
 
 audit().catch(error => {
