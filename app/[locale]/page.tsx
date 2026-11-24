@@ -34,11 +34,11 @@ const SITE_URL = 'https://studio.corebitsystems.io';
 
 // ── Per-locale page-level metadata (decoupled from layout inheritance chain) ──
 const HOME_META: Record<string, { title: string; description: string; ogLocale: string }> = {
-  en:  { title: 'Corebit Studio | Web Development & IT Systems for Hotels and Restaurants in Montenegro & Europe', description: 'We build high-converting websites and automation systems for premium hospitality and SMBs. Boost your bookings and revenue within 30 days.', ogLocale: 'en_US' },
-  ru:  { title: 'Corebit Studio | Разработка сайтов и ИТ-систем для отелей и ресторанов в Черногории', description: 'Создаем высококонверсионные сайты и системы автоматизации для премиального бизнеса. Увеличьте поток бронирований и доход вашего отеля или ресторана уже через 30 дней.', ogLocale: 'ru_RU' },
-  cnr: { title: 'Corebit Studio | Izrada sajtova i IT sistema za hotele i restorane u Crnoj Gori', description: 'Izrađujemo visoko-konverzione sajtove i sisteme automatizacije za crnogorski turizam i ugostiteljstvo na Jadranu. Povećajte broj direktnih rezervacija za 30% u roku od 30 dana.', ogLocale: 'sr_ME' },
-  srb: { title: 'Corebit Studio | Izrada sajtova i IT sistema za restorane i auto servise u Srbiji', description: 'Kreiramo visoko-konverzione sajtove i sisteme automatizacije za srpske restorane, auto servise i salone lepote. Više rezervacija i prijava online za 30 dana.', ogLocale: 'sr_RS' },
-  sq:  { title: 'Corebit Studio | Zhvillim Ueb & Sisteme IT për Hotele dhe Restorante në Mal të Zi', description: 'Ne ndërtojmë uebfaqe me konvertim të lartë dhe sisteme automatizimi për hoteleri dhe biznese. Rritni rezervimet dhe të ardhurat tuaja brenda 30 ditëve.', ogLocale: 'sq_AL' },
+  en:  { title: 'Web Development & Online Booking in Montenegro | Corebit Studio', description: 'Web development studio in Tivat, Montenegro. Websites and online booking for restaurants, auto repair shops and car rental companies. Websites from €360.', ogLocale: 'en_US' },
+  ru:  { title: 'Разработка сайтов в Черногории | Corebit Studio', description: 'Веб-студия в Тивате. Создаём сайты с онлайн-бронированием и записью для ресторанов, автосервисов и прокатов авто в Черногории. Базовый сайт от €360.', ogLocale: 'ru_RU' },
+  cnr: { title: 'Izrada sajtova i onlajn rezervacije u Crnoj Gori | Corebit Studio', description: 'Veb studio u Tivtu. Izrađujemo sajtove sa onlajn rezervacijama za restorane, auto-servise i rent-a-car agencije u Crnoj Gori. Osnovni sajt od 360 €.', ogLocale: 'sr_ME' },
+  srb: { title: 'Izrada sajtova i onlajn zakazivanje za firme | Corebit Studio', description: 'Izrađujemo sajtove sa onlajn zakazivanjem za restorane, auto-servise i salone lepote u Srbiji. Pogledajte primere projekata i pakete od 360 €.', ogLocale: 'sr_RS' },
+  sq:  { title: 'Zhvillim faqesh dhe rezervime online në Mal të Zi | Corebit Studio', description: 'Studio uebi në Tivat. Ndërtojmë faqe me rezervime online për restorante, autoservise dhe biznese të makinave me qira në Mal të Zi. Faqe nga 360 €.', ogLocale: 'sq_AL' },
 };
 
 export async function generateMetadata({

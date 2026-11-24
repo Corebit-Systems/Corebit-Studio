@@ -1,136 +1,35 @@
-# Corebit Systems Studio
+# Corebit Studio
 
-> **Format:** llms.txt v1.0 (https://llmstxt.org)
-> **Purpose:** Structured business context for AI search engines (Perplexity, ChatGPT, Gemini, Claude)
-> **Last updated:** 2026-07-13
+> Corebit Studio is a web development studio in Tivat, Montenegro. It builds websites and online booking systems for businesses, including restaurants, auto repair shops, car rental companies, and beauty salons.
 
-## Description
+## Website and pricing
 
-High-performance digital systems architecture, engineering, and rapid production-grade website development optimized for local B2B and consumer industries inside the Balkan region (Montenegro, Serbia, Albania).
+- [Montenegrin website](https://studio.corebitsystems.io/cnr): Services and portfolio in Montenegrin.
+- [Russian website](https://studio.corebitsystems.io/ru): Services and portfolio in Russian.
+- [English website](https://studio.corebitsystems.io/en): Services and portfolio in English.
+- [Serbian website](https://studio.corebitsystems.io/srb): Services and portfolio in Serbian.
+- [Albanian website](https://studio.corebitsystems.io/sq): Services and portfolio in Albanian.
+- [Packages and payment options](https://studio.corebitsystems.io/en#pricing): Starter €360, Business €1080, and Enterprise €3150 at the published 50/50 rates.
+- [Project terms](https://studio.corebitsystems.io/en#pricing-terms): Scope, price, and timing are agreed in the project contract.
+- [Request a quote](https://studio.corebitsystems.io/en#contact): Contact the studio about a project.
 
-## Core Entity Architecture
+## Selected projects
 
-- **Brand Entity:** Corebit Systems / Corebit Studio
-- **Core Stack:** Next.js App Router, sub-100ms Vercel Edge Networks, isolated serverless processing layers.
-- **Service Offers:**
-  - Start Package (€324 EUR) — Optimized entry infrastructure.
-  - Business Aggregator Framework (€972 EUR) — Multi-country operational engines.
-  - Enterprise Architecture (€2835 EUR) — Custom digital ecosystems.
-- **Geographical Focus:** Montenegro (Budva, Tivat, Kotor, Podgorica), Serbia (Belgrade), Albania.
-- **Data Compliance:** EU GDPR Proxy compliant, encrypted EU-residency records management, automated anonymization after 12 months, Art. 5(1)(e) storage limitation enforced.
+- [Cupertino Roast](https://studio.corebitsystems.io/en/portfolio/cupertino-roast): Website with an interactive coffee shop menu.
+- [Shift & Drive STO](https://studio.corebitsystems.io/en/portfolio/shift-drive): Auto repair website with online appointment scheduling.
+- [Umami Bistro](https://studio.corebitsystems.io/en/portfolio/umami-bistro): Restaurant website with table selection and online reservation requests.
+- [Aura Wellness](https://studio.corebitsystems.io/en/portfolio/aura-wellness): Salon website with a step-by-step appointment flow.
 
-## Primary System Index
+## Services in Montenegro
 
-- [Services & Pricing Matrix](https://studio.corebitsystems.io/en/#pricing)
-- [Portfolio Operations](https://studio.corebitsystems.io/en/portfolio)
-- [Secure Ingestion API](https://studio.corebitsystems.io/api/send)
-- [Privacy Policy](https://studio.corebitsystems.io/en/privacy-policy)
-- [Cookie Policy](https://studio.corebitsystems.io/en/cookie-policy)
-- [Terms of Service](https://studio.corebitsystems.io/en/terms-of-service)
+- [Web development in Tivat](https://studio.corebitsystems.io/en/tivat).
+- [Restaurant websites in Budva](https://studio.corebitsystems.io/en/restaurant-website-budva).
+- [Auto repair websites in Podgorica](https://studio.corebitsystems.io/en/auto-service-website-podgorica).
+- [Car rental websites in Budva](https://studio.corebitsystems.io/en/car-rental-website-budva).
 
-## Service Architecture Detail
+## Contact
 
-### Start Package — €324 (full payment) / €360 (installment)
-- Custom single-page or multi-page website
-- Mobile-first responsive design
-- SEO-optimized structure (Core Web Vitals 90+)
-- Contact form with encrypted email delivery
-- 7-day delivery timeline
-- Target verticals: restaurants, cafés, beauty salons
-
-### Business Aggregator Framework — €972 (full payment) / €1080 (installment)
-- Full custom website with booking/reservation automation
-- Online appointment calendar with SMS notifications
-- CRM integration (unified inquiry management)
-- Multi-language support (Montenegrin, Serbian, Albanian, Russian, English)
-- Conversion-optimized landing pages
-- 14-day delivery timeline
-- Target verticals: hotels, car rental, auto service centers (STO), restaurants
-
-### Enterprise Architecture — €2835 (full payment) / €3150 (installment)
-- Full-featured digital platform with custom business logic
-- Property/Fleet management module
-- Payment gateway integration
-- Real-time availability engine
-- Advanced analytics dashboard
-- Priority support + 3 months maintenance
-- Custom delivery timeline
-- Target verticals: hotel chains, marina operators, multi-location businesses
-
-## Target Markets
-
-### Montenegro (sr-ME)
-Cities served: Budva, Tivat, Kotor, Podgorica, Bar, Herceg Novi
-Primary verticals: Hotels, restaurants, rent-a-car, marine tourism
-URL prefix: `/cnr`
-
-### Serbia (sr-RS)
-Cities served: Belgrade, Novi Sad, Niš
-Primary verticals: Restaurants, auto service centers (STO), beauty salons
-URL prefix: `/srb`
-
-### Albania (sq-AL)
-Cities served: Tirana, Durrës, Sarandë
-Primary verticals: Hotels, restaurants, tourism platforms
-URL prefix: `/sq`
-
-## Portfolio (Selected Case Studies)
-
-### Cupertino Roast — Artisan Coffee House
-Industry: Café & Coffee Shop
-Result: Online orders +3× in first month
-Stack: Next.js, PostgreSQL, Stripe, custom order engine
-Rating: 4.9/5 (14 reviews)
-
-### Shift & Drive STO — Automotive Service Center
-Industry: Auto Service (STO)
-Result: 100% bookings moved online, zero phone appointments
-Stack: Next.js, real-time slot engine, SMS notifications
-Rating: 4.8/5 (11 reviews)
-
-### Umami Bistro — Restaurant
-Industry: Restaurant & Bistro
-Result: Online reservations +40% revenue in Q1
-Stack: Next.js, SVG live table map, reservation engine
-Rating: 5.0/5 (18 reviews)
-
-### Aura Wellness — Beauty Salon
-Industry: Beauty Salon & Wellness
-Result: No-shows reduced 80% via multi-step booking flow
-Stack: Next.js, glassmorphic UI, step-by-step onboarding
-Rating: 4.9/5 (9 reviews)
-
-## Technology Stack
-
-Core: Next.js 14 (App Router), TypeScript, React
-Styling: Tailwind CSS
-Database: PostgreSQL / Supabase (EU-hosted, Frankfurt region)
-Email: Resend (transactional, GDPR-compliant)
-Hosting: Vercel Edge Network (sub-100ms global CDN)
-Analytics: Google Analytics 4 (Consent Mode v2, GDPR-compliant)
-Internationalization: 5 locales — en, ru, cnr (sr-ME), srb (sr-RS), sq (sq-AL)
-Architecture: Isolated serverless processing layers, App Router RSC
-
-## Data Compliance
-
-GDPR Standard: Full EU GDPR compliance
-Storage Limitation: Art. 5(1)(e) — 12-month retention from date of capture
-Disposal Method: Automated anonymization or permanent erasure
-Sub-processors: Meta Platforms Ireland Ltd. (WhatsApp, SCC basis), Telegram FZ-LLC (UAE, explicit consent)
-Right to Erasure: Supported — contact corebitstudio@corebitsystems.io
-Data residency: EU (Frankfurt)
-
-## Contact & Legal
-
-- [Website](https://studio.corebitsystems.io)
 - Email: corebitstudio@corebitsystems.io
-- [Privacy Policy](https://studio.corebitsystems.io/en/privacy-policy)
-- [Cookie Policy](https://studio.corebitsystems.io/en/cookie-policy)
-- [Terms of Service](https://studio.corebitsystems.io/en/terms-of-service)
-
-## Crawling Instructions
-
-Allow: All content pages
-Disallow: /api/*, /_next/*
-Sitemap: [https://studio.corebitsystems.io/sitemap.xml](https://studio.corebitsystems.io/sitemap.xml)
-Preferred citation: "Corebit Studio (studio.corebitsystems.io)"
+- Phone: +382 68 914 816
+- [Privacy policy](https://studio.corebitsystems.io/en/privacy-policy)
+- [XML sitemap](https://studio.corebitsystems.io/sitemap.xml)
