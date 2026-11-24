@@ -128,6 +128,10 @@ export async function submitContactForm(formData: FormData) {
   const { name, email, message, locale: userLocale, pricing, reference } = parsed.data;
   const planNames = { starter: 'Starter', business: 'Business', enterprise: 'Enterprise' };
   const paymentNames = { full: 'Full payment (-10%)', split: 'Milestone payments (50/50)' };
+  const projectTitle = reference ? projectReferences[reference] : undefined;
+  const packageName = pricing ? planNames[pricing.plan] : undefined;
+  const packageDetails = pricing ? `${planNames[pricing.plan]} · ${paymentNames[pricing.payment]}` : undefined;
+  const inquiryContext = [packageName, projectTitle].filter(Boolean).join(' / ');
 
   // 5. Generate secure Lead ID — primary GDPR reference for this record
   const leadId    = randomUUID();
@@ -138,8 +142,9 @@ export async function submitContactForm(formData: FormData) {
   const safeBody = {
     name:    encodeForEmail(name),
     email:   encodeForEmail(email),
-    message: encodeForEmail(message),
+    message: message.split(/\r\n|\n|\r/).map(encodeForEmail).join('<br>'),
   };
+  const replyHref = `mailto:${encodeURIComponent(email).replace('%40', '@')}`;
 
   // 7. Commit timestamp to sliding window cache
   recentTimestamps.push(now);
@@ -160,7 +165,7 @@ export async function submitContactForm(formData: FormData) {
 
   // 10. Dispatch secure internal record via Resend (Email-as-Record pattern)
   //     PII is retained strictly inside the EU-hosted inbox as the GDPR Article 32 record.
-  //     Subject line uses Lead ID only — no raw PII in email headers.
+  //     The subject identifies the lead and selected service context without customer text.
   try {
     if (process.env.RESEND_API_KEY) {
       const resend  = new Resend(process.env.RESEND_API_KEY);
@@ -181,7 +186,7 @@ export async function submitContactForm(formData: FormData) {
               .badge { display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #10b981; background: rgba(16,185,129,0.1); padding: 6px 12px; border-radius: 9999px; margin-top: 8px; }
               .label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #71717a; margin-top: 20px; margin-bottom: 6px; }
               .value { font-size: 15px; color: #e4e4e7; line-height: 1.5; }
-              .msg-box { background: #16161e; border: 1px solid rgba(255,255,255,0.04); border-radius: 10px; padding: 18px; font-size: 14px; color: #d4d4d8; white-space: pre-wrap; line-height: 1.6; margin-top: 6px; }
+              .msg-box { background: #16161e; border: 1px solid rgba(255,255,255,0.04); border-radius: 10px; padding: 18px; font-size: 14px; color: #d4d4d8; overflow-wrap: anywhere; line-height: 1.6; margin-top: 6px; }
               .retention { margin-top: 28px; padding: 14px; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: 10px; font-size: 12px; color: #fca5a5; }
               .footer { margin-top: 24px; font-size: 11px; color: #52525b; text-align: center; }
             </style>
@@ -194,36 +199,31 @@ export async function submitContactForm(formData: FormData) {
                   <div class="badge">Secure Internal Record</div>
                 </div>
 
-                <div class="label">Lead ID (Secure Reference)</div>
-                <div class="value" style="font-family:monospace;color:#34d399;">${leadId}</div>
-
-                <div class="label">Data Subject Request ID</div>
-                <div class="value" style="font-family:monospace;color:#f59e0b;">${dsrId}</div>
-
                 <div class="label">Client Name</div>
                 <div class="value">${safeBody.name}</div>
 
                 <div class="label">Contact Email</div>
-                <div class="value"><a href="mailto:${safeBody.email}" style="color:#10b981;text-decoration:none;">${safeBody.email}</a></div>
+                <div class="value">${safeBody.email}</div>
+                <a href="${replyHref}" style="display:inline-block;margin-top:12px;padding:11px 16px;border-radius:8px;background:#047857;color:#ffffff;font-size:14px;font-weight:700;text-decoration:none;">Reply to client</a>
 
-                <div class="label">Locale</div>
-                <div class="value">${userLocale}</div>
-
-                <div class="label">Submitted</div>
-                <div class="value">${dateStr}</div>
-
-                ${reference ? `
+                ${projectTitle ? `
                   <div class="label">Reference Project</div>
-                  <div class="value">${encodeForEmail(projectReferences[reference])}</div>
+                  <div class="value">${encodeForEmail(projectTitle)}</div>
                 ` : ''}
 
-                ${pricing ? `
+                ${packageDetails ? `
                   <div class="label">Selected Package</div>
-                  <div class="value">${planNames[pricing.plan]} · ${paymentNames[pricing.payment]}</div>
+                  <div class="value">${packageDetails}</div>
                 ` : ''}
 
                 <div class="label">Project Details</div>
                 <div class="msg-box">${safeBody.message}</div>
+
+                <div class="label">Locale and submission time</div>
+                <div class="value">${userLocale} · ${dateStr}</div>
+
+                <div class="label">Lead ID (Secure Reference)</div>
+                <div class="value" style="font-family:monospace;color:#34d399;">${leadId}</div>
 
                 <div class="retention">
                   &#x26A0;&#xFE0F; GDPR Compliance Notice &#x2014; Data Retention Policy<br><br>
@@ -242,12 +242,30 @@ export async function submitContactForm(formData: FormData) {
         </html>
       `;
 
+      const textContent = [
+        'Corebit Studio — New inquiry',
+        `Client: ${name.replace(/\r\n|\n|\r/g, ' ')}`,
+        `Reply to: ${email}`,
+        projectTitle && `Reference project: ${projectTitle}`,
+        packageDetails && `Selected package: ${packageDetails}`,
+        '',
+        'Project details',
+        message,
+        '',
+        `Locale: ${userLocale} · Submitted: ${dateStr}`,
+        `Lead ID: ${leadId}`,
+        `Data Subject Request ID: ${dsrId}`,
+        `Retention expiry: ${retention}. Anonymize or delete this record by the expiry date.`,
+        'Internal use only. Do not forward.',
+      ].filter((line) => line !== undefined).join('\n');
+
       const { data, error } = await resend.emails.send({
         from:    'Corebit Studio <noreply@corebitsystems.io>',
         to:      'corebitsystems.office@gmail.com',
         replyTo: email,
-        subject: `[Lead #${leadId.slice(0, 8)}] New Inquiry \u00B7 ${dsrId} \u00B7 Retention until ${retention}`,
+        subject: `[Lead #${leadId.slice(0, 8)}] New Inquiry${inquiryContext ? ` · ${inquiryContext}` : ''} · ${dsrId} · Retention until ${retention}`,
         html:    htmlContent,
+        text:    textContent,
       });
 
       if (error || !data?.id) {
