@@ -5,7 +5,7 @@ import { getDictionary, Locale } from '@/i18n/getDictionary';
 import { RoiCalculator, SpeedCheckWidget } from '@/components/LazyWidgets';
 import type { SpeedCheckDict } from '@/components/SpeedCheckWidget';
 import BentoCard from '@/components/BentoCard';
-import PricingSection from '@/components/PricingSection';
+import PricingSection, { type PricingDict } from '@/components/PricingSection';
 import ContactForm from '@/components/ContactForm';
 import HeroSection, { type HeroDict } from '@/components/HeroSection';
 import FAQSection from '@/components/FAQSection';
@@ -351,7 +351,7 @@ interface PageDict {
     subtitle: string;
     items: Record<string, { title: string; desc: string }>;
   };
-  pricing: any;
+  pricing: PricingDict;
   contact_form: any;
   faq: any;
   leak: { title: string; subtitle: string; text: string };

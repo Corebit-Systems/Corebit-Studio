@@ -94,22 +94,42 @@
     "subtitle": "Transparent, high-conversion engineering packages focused on business ROI.",
     "toggle_full": "Full Payment (-10%)",
     "toggle_split": "Milestone (50/50)",
+    "audience_label": "Best for",
+    "includes_label": "What’s included",
+    "first_payment": "First payment",
+    "second_payment": "Second payment",
+    "case_label": "Project example",
     "tier1": {
       "title": "Entry / Kickstart",
       "price": 360,
-      "desc": "A starter site to present your services, prices and contact details clearly on desktop and mobile.",
+      "audience": "Small businesses and professionals who need a simple website.",
+      "includes": [
+        "Services and prices",
+        "Business contact details",
+        "Mobile and desktop layouts"
+      ],
       "btn": "Order Starter Website"
     },
     "tier2": {
       "title": "Growth / Business",
       "price": 1080,
-      "desc": "A business website with a booking calendar, SMS reminders and inquiries in one place.",
+      "audience": "Businesses that take appointments or reservations online.",
+      "includes": [
+        "Online booking calendar",
+        "SMS reminders",
+        "Inquiries in one place"
+      ],
       "btn": "Order Business Website"
     },
     "tier3": {
       "title": "Enterprise Architecture",
       "price": 3150,
-      "desc": "A custom platform for complex booking workflows and multiple locations in one dashboard.",
+      "audience": "Multi-location businesses and teams with complex booking needs.",
+      "includes": [
+        "Custom booking workflows",
+        "Manage multiple locations",
+        "One shared dashboard"
+      ],
       "btn": "Submit Custom Project Inquiry"
     }
   },

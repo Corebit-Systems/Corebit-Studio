@@ -94,23 +94,43 @@
     "subtitle": "Zgjidhje inxhinierike transparente të fokusuara në ROI për biznesin tuaj.",
     "toggle_full": "Pagesë e Plotë (-10%)",
     "toggle_split": "Pagesë me Faza (50/50)",
+    "audience_label": "Për kë është",
+    "includes_label": "Çfarë përfshihet",
+    "first_payment": "Pagesa e parë",
+    "second_payment": "Pagesa e dytë",
+    "case_label": "Shembull projekti",
     "tier1": {
       "title": "Entry / Kickstart",
       "price": 360,
-      "desc": "Faqe bazë për të prezantuar qartë shërbimet, çmimet dhe kontaktet në kompjuter dhe celular.",
+      "audience": "Për bizneset e vogla dhe profesionistët që duan një faqe të thjeshtë.",
+      "includes": [
+        "Shërbimet dhe çmimet",
+        "Kontaktet e biznesit",
+        "Pamje për celular dhe kompjuter"
+      ],
       "btn": "Porosit uebfaqe «Start»"
     },
     "tier2": {
       "title": "Growth / Business",
       "price": 1080,
-      "desc": "Faqe biznesi me kalendar rezervimesh, kujtesa me SMS dhe të gjitha kërkesat në një vend.",
+      "audience": "Për bizneset që pranojnë termine ose rezervime online.",
+      "includes": [
+        "Kalendar për rezervime online",
+        "Kujtesa me SMS",
+        "Kërkesat në një vend"
+      ],
       "btn": "Porosit uebfaqe «Biznes»"
     },
     "tier3": {
       "title": "Enterprise Arkitekturë",
       "price": 3150,
-      "desc": "Platformë e personalizuar për rezervime komplekse dhe menaxhimin e disa pikave nga një panel.",
-      "btn": "Diskuto për uebfaqen në Telegram"
+      "audience": "Për biznese me disa pika ose me procese komplekse rezervimi.",
+      "includes": [
+        "Rezervime të përshtatura për biznesin",
+        "Menaxhimi i disa pikave",
+        "Një panel i përbashkët"
+      ],
+      "btn": "Diskuto projektin tënd"
     }
   },
   "leak": {

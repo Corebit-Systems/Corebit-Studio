@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 import { RoiCalculator, SpeedCheckWidget } from '@/components/LazyWidgets';
 import type { ContactFormDict } from '@/components/ContactForm';
+import type { PricingDict } from '@/components/PricingSection';
 import type { SpeedCheckDict } from '@/components/SpeedCheckWidget';
 import { isProjectReference, projectReferenceQuery } from '@/components/projectReference';
 import dynamic from 'next/dynamic';
@@ -155,16 +156,6 @@ interface FAQDict {
   title: string;
   subtitle: string;
   items: FAQItem[];
-}
-
-interface PricingDict {
-  title: string;
-  subtitle: string;
-  toggle_full: string;
-  toggle_split: string;
-  tier1: { title: string; price: number; desc: string; btn: string };
-  tier2: { title: string; price: number; desc: string; btn: string };
-  tier3: { title: string; price: number; desc: string; btn: string };
 }
 
 export default async function HomePage({

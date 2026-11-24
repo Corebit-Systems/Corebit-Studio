@@ -94,22 +94,42 @@
     "subtitle": "Transparentna inženjerska rešenja fokusirana na ROI vašeg poslovanja.",
     "toggle_full": "Puna Uplata (-10%)",
     "toggle_split": "Plaćanje na rate (50/50)",
+    "audience_label": "Kome odgovara",
+    "includes_label": "Šta je uključeno",
+    "first_payment": "Prva uplata",
+    "second_payment": "Druga uplata",
+    "case_label": "Primer projekta",
     "tier1": {
       "title": "Entry / Kickstart",
       "price": 360,
-      "desc": "Početni sajt za pregledan prikaz usluga, cena i kontakata na računaru i telefonu.",
+      "audience": "Malim firmama i stručnjacima kojima je potreban jednostavan sajt.",
+      "includes": [
+        "Usluge i cene",
+        "Kontakt podaci firme",
+        "Prikaz na telefonu i računaru"
+      ],
       "btn": "Naruči Start sajt"
     },
     "tier2": {
       "title": "Growth / Business",
       "price": 1080,
-      "desc": "Poslovni sajt sa kalendarom rezervacija, SMS podsetnicima i upitima na jednom mestu.",
+      "audience": "Firmama koje primaju termine ili rezervacije preko sajta.",
+      "includes": [
+        "Kalendar za onlajn rezervacije",
+        "SMS podsetnici",
+        "Upiti na jednom mestu"
+      ],
       "btn": "Naruči Biznis sajt"
     },
     "tier3": {
       "title": "Enterprise Arhitektura",
       "price": 3150,
-      "desc": "Platforma po meri za složene rezervacije i upravljanje sa više lokacija iz jednog panela.",
+      "audience": "Firmama sa više lokacija ili složenim rezervacijama.",
+      "includes": [
+        "Rezervacije prilagođene poslovanju",
+        "Upravljanje sa više lokacija",
+        "Jedinstven upravljački panel"
+      ],
       "btn": "Pošalji upit za individualni projekat"
     }
   },
