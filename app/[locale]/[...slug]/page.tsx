@@ -15,7 +15,7 @@ import FAQSection from '@/components/FAQSection';
 import ReviewsAccordion from '@/components/ReviewsAccordion';
 import BeforeAfterSlider, { type BeforeAfterDict } from '@/components/BeforeAfterSlider';
 import ScrollAnimate from '@/components/ScrollAnimate';
-import type { ProjectReferenceId } from '@/components/projectReference';
+import { projectWorkflowAnchor, type ProjectReferenceId } from '@/components/projectReference';
 import TechEcosystem from '@/components/TechEcosystem';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import slugMapData from '@/i18n/slug-map.json';
@@ -273,8 +273,8 @@ export async function generateMetadata({
     srb: `Sajtovi i online rezervacije ${where} za restorane, auto servise, salone i rent-a-car agencije. Pogledajte projekte i cene.`,
     sq: `Faqe interneti dhe rezervime online ${where} për restorante, autoservise, sallone dhe agjenci makinash me qira. Shikoni projektet dhe çmimet.`,
   };
-  const title = `${serviceCopy?.[0] ?? titles[locale]} | Corebit Studio`;
-  const description = serviceCopy?.[1] ?? (service ? serviceDescriptions[locale] : locationDescriptions[locale]);
+  const title = `${serviceCopy?.title ?? titles[locale]} | Corebit Studio`;
+  const description = serviceCopy?.description ?? (service ? serviceDescriptions[locale] : locationDescriptions[locale]);
 
   return {
     title,
@@ -431,7 +431,7 @@ export default async function CatchAllSEOPage({
       ? { ...dict.automation.booking, href: '#modules', label: dict.automation.title, cta: dict.hero.module_cta }
       : undefined;
   const hero = serviceCopy
-    ? { ...dict.hero, title: serviceCopy[0], subtitle: serviceCopy[1] }
+    ? { ...dict.hero, title: serviceCopy.title, subtitle: serviceCopy.description }
     : service
     ? { ...dict.hero, title: dict.hero.industry_title.replace('{industry}', replacementPhrase) }
     : dict.hero;
@@ -457,11 +457,23 @@ export default async function CatchAllSEOPage({
       <HeroSection dict={hero} starterPrice={dict.pricing.tier1.price} featured={featured} />
       {serviceCopy && (
         <section aria-labelledby="service-answer-title" className="mx-auto w-full max-w-4xl border-y border-white/10 py-6 sm:py-8">
-          <h2 id="service-answer-title" className="text-2xl font-semibold tracking-tight">{serviceCopy[2]}</h2>
-          <p className="mt-3 max-w-3xl text-base leading-relaxed text-neutral-300">{serviceCopy[3]}</p>
-          <a href="#pricing" className="mt-2 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-emerald-300 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400">
-            {dict.pricing.title}<ArrowRight aria-hidden="true" size={15} />
-          </a>
+          <h2 id="service-answer-title" className="text-2xl font-semibold tracking-tight">{serviceCopy.question}</h2>
+          <p className="mt-3 max-w-3xl text-base leading-relaxed text-neutral-300">{serviceCopy.answer}</p>
+          {projectSlug && featured && (
+            <a href={`${featured.href}#${projectWorkflowAnchor}`} className="mt-1 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-emerald-300 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400">
+              {featured.title}<ArrowRight aria-hidden="true" size={15} />
+            </a>
+          )}
+          <h3 id="service-quote-title" className="mt-6 text-lg font-semibold tracking-tight">{serviceCopy.briefTitle}</h3>
+          <p className="mt-2 max-w-3xl text-base leading-relaxed text-neutral-300">{serviceCopy.brief}</p>
+          <div className="mt-2 flex flex-wrap items-center gap-x-6">
+            <a href="#contact" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-emerald-300 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400">
+              {dict.hero.cta}<ArrowRight aria-hidden="true" size={15} />
+            </a>
+            <a href="#pricing" className="inline-flex min-h-11 items-center text-sm font-medium text-neutral-300 underline-offset-4 hover:text-white hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400">
+              {dict.pricing.title}
+            </a>
+          </div>
         </section>
       )}
       <ScrollAnimate>

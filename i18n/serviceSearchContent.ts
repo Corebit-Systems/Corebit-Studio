@@ -33,9 +33,56 @@ const copy: Record<Locale, { title: string; services: ServiceCopy[] }> = {
   ] },
 };
 
+const quoteBrief: Record<Locale, { title: string; byService: Record<ServiceId, string> }> = {
+  ru: {
+    title: 'Что прислать для расчёта стоимости',
+    byService: {
+      budva_restoran: 'Пришлите ссылку на меню, список языков сайта и часы приёма брони. Если гости должны выбирать столик, добавьте ссылку на схему зала. Уточните, какие заявки ресторан подтверждает вручную и когда бронирование закрывается.',
+      podgorica_sto: 'Пришлите список работ, их примерную длительность и количество постов. Уточните, на какие услуги клиент может записаться сразу, а где сначала нужна диагностика или звонок мастера.',
+      budva_rent_a_car: 'Пришлите список машин, правила расчёта цены и точки выдачи. Уточните, где сейчас хранится информация о занятости парка и должна ли форма сразу подтверждать бронь или отправлять запрос менеджеру.',
+    },
+  },
+  en: {
+    title: 'What to send for a quote',
+    byService: {
+      budva_restoran: 'Send a menu link, site languages and reservation hours. Add a link to the floor plan if guests should choose their table. Tell us which requests staff need to approve and when bookings should close.',
+      podgorica_sto: 'Send your service list, estimated job durations and number of workshop bays. Tell us which jobs customers can book directly and which need an inspection or a call first.',
+      budva_rent_a_car: 'Send your fleet list, pricing rules and pickup locations. Tell us where you track availability and whether the site should confirm bookings immediately or send requests to staff for review.',
+    },
+  },
+  cnr: {
+    title: 'Šta poslati za procjenu cijene',
+    byService: {
+      budva_restoran: 'Pošaljite link do menija, jezike sajta i vrijeme kada primate rezervacije. Dodajte link do plana sale ako gosti biraju sto. Navedite koje zahtjeve osoblje potvrđuje i kada se zatvara prijem rezervacija.',
+      podgorica_sto: 'Pošaljite spisak usluga, okvirno trajanje radova i broj servisnih mjesta. Navedite šta klijenti mogu odmah zakazati, a za šta je prvo potreban pregled ili poziv majstoru.',
+      budva_rent_a_car: 'Pošaljite spisak vozila, pravila obračuna cijene i mjesta preuzimanja. Recite nam gdje vodite evidenciju dostupnosti i da li sajt odmah potvrđuje rezervaciju ili šalje upit osoblju.',
+    },
+  },
+  srb: {
+    title: 'Šta poslati za procenu cene',
+    byService: {
+      budva_restoran: 'Pošaljite link do menija, jezike sajta i vreme kada primate rezervacije. Dodajte link do plana sale ako gosti biraju sto. Navedite koje zahteve osoblje potvrđuje i kada se zatvara prijem rezervacija.',
+      podgorica_sto: 'Pošaljite spisak usluga, okvirno trajanje radova i broj servisnih mesta. Navedite šta klijenti mogu odmah da zakažu, a za šta je prvo potreban pregled ili poziv majstoru.',
+      budva_rent_a_car: 'Pošaljite spisak vozila, pravila obračuna cene i mesta preuzimanja. Recite nam gde vodite evidenciju dostupnosti i da li sajt odmah potvrđuje rezervaciju ili šalje zahtev osoblju.',
+    },
+  },
+  sq: {
+    title: 'Çfarë të dërgoni për një ofertë',
+    byService: {
+      budva_restoran: 'Dërgoni lidhjen e menusë, gjuhët e faqes dhe orarin e rezervimeve. Shtoni një lidhje me planin e sallës nëse mysafirët mund të zgjedhin tavolinën. Tregoni cilat kërkesa konfirmon stafi dhe kur mbyllen rezervimet.',
+      podgorica_sto: 'Dërgoni listën e shërbimeve, kohëzgjatjen e përafërt të punëve dhe numrin e vendeve të punës në servis. Tregoni cilat shërbime rezervohen menjëherë dhe cilat kërkojnë kontroll ose telefonatë paraprake.',
+      budva_rent_a_car: 'Dërgoni listën e automjeteve, rregullat e çmimeve dhe pikat e marrjes. Tregoni ku e regjistroni disponueshmërinë dhe nëse faqja duhet të konfirmojë rezervimin menjëherë apo t’ia dërgojë kërkesën stafit.',
+    },
+  },
+};
+
 export function getServiceSearchCopy(locale: Locale, id: string | undefined) {
   const index = serviceSearchIds.findIndex(service => service === id);
-  return index < 0 ? undefined : copy[locale].services[index];
+  if (index < 0) return undefined;
+
+  const [title, description, question, answer] = copy[locale].services[index];
+  const brief = quoteBrief[locale];
+  return { title, description, question, answer, briefTitle: brief.title, brief: brief.byService[serviceSearchIds[index]] };
 }
 
 export function getServiceSearchLinks(locale: Locale) {

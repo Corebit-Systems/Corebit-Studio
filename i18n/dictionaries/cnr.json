@@ -17,8 +17,8 @@
     "module_cta": "Pogledajte modul"
   },
   "about": {
-    "title": "Arhitektura Visoke Konverzije",
-    "desc": "Naš veb studio se nalazi odmah pored vas — {where}. Klijent posjeti vaš sajt i odmah želi vašu uslugu. To postižemo kombinovanjem dizajna u stilu Apple sa ultra-brzim učitavanjem.",
+    "title": "Od prve posjete do upita",
+    "desc": "Pravimo sajtove na kojima klijenti lako mogu da pronađu uslugu, provjere uslove i pošalju upit s telefona. Po potrebi dodajemo jezičke verzije, kalendar termina i obavještenja.",
     "badges": [
       "Prilagođeno mobilnim uređajima",
       "Onlajn rezervacije",

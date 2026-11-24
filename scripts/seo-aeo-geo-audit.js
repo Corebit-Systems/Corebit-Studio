@@ -5,7 +5,11 @@ const origin = process.env.SEO_AUDIT_URL || 'http://localhost:3000';
 const canonicalOrigin = 'https://studio.corebitsystems.io';
 const languages = { en: 'en', ru: 'ru', cnr: 'sr-ME', srb: 'sr-RS', sq: 'sq-AL' };
 const projects = ['cupertino-roast', 'shift-drive', 'umami-bistro', 'aura-wellness'];
-const servicePaths = ['budva_restoran', 'podgorica_sto', 'budva_rent_a_car'].map(localePathsFor);
+const servicePaths = [
+  { path: localePathsFor('budva_restoran'), project: 'umami-bistro' },
+  { path: localePathsFor('podgorica_sto'), project: 'shift-drive' },
+  { path: localePathsFor('budva_rent_a_car') },
+];
 const regionalPaths = ['kotor', 'kotor_salon'].map(localePathsFor);
 
 function localePathsFor(id) {
@@ -30,7 +34,7 @@ async function get(path) {
   return fetch(new URL(path, origin), { redirect: 'manual', signal: AbortSignal.timeout(25000) });
 }
 
-async function checkPage(path, locale, localizedPaths, type) {
+async function checkPage(path, locale, localizedPaths, type, project) {
   const response = await get(path);
   assert.equal(response.status, 200, `HTTP status for ${path}`);
   assert.doesNotMatch(response.headers.get('x-robots-tag') || '', /\bnoindex\b/i, path);
@@ -56,16 +60,22 @@ async function checkPage(path, locale, localizedPaths, type) {
 
   if (type === 'home') {
     const links = tags(html, 'a').map(link => link.href);
-    for (const service of servicePaths) assert.ok(links.includes(service(locale)), path);
+    for (const service of servicePaths) assert.ok(links.includes(service.path(locale)), path);
   }
   if (type === 'service') {
-    assert.ok(html.includes('id="service-answer-title"'), path);
+    const guide = html.match(/<section aria-labelledby="service-answer-title"[^>]*>([\s\S]*?)<\/section>/)?.[1];
+    assert.ok(guide?.includes('id="service-answer-title"') && guide.includes('id="service-quote-title"'), path);
+    const guideLinks = tags(guide, 'a').map(link => link.href);
+    assert.ok(guideLinks.includes('#contact') && guideLinks.includes('#pricing'), path);
+    assert.ok(html.includes('id="contact"') && html.includes('id="pricing"'), path);
+    if (project) assert.ok(guideLinks.includes(`/${locale}/portfolio/${project}#project-workflow`), path);
   }
   if (type === 'service' || type === 'region') {
     assert.ok(schema.some(item => item['@type'] === 'Service' && item.url === canonicalOrigin + path), path);
   }
   if (type === 'case') {
     assert.ok(schema.some(item => item['@type'] === 'WebPage' && item.mainEntity?.['@type'] === 'CreativeWork'), path);
+    assert.ok(html.includes('id="project-workflow"'), path);
   }
   return path;
 }
@@ -92,12 +102,12 @@ async function audit() {
 
   const pageGroups = [
     [locale => `/${locale}`, 'home'],
-    ...servicePaths.map(path => [path, 'service']),
+    ...servicePaths.map(({ path, project }) => [path, 'service', project]),
     ...regionalPaths.map(path => [path, 'region']),
     ...projects.map(project => [locale => `/${locale}/portfolio/${project}`, 'case']),
   ];
-  for (const [paths, type] of pageGroups) {
-    const results = await Promise.allSettled(Object.keys(languages).map(locale => checkPage(paths(locale), locale, paths, type)));
+  for (const [paths, type, project] of pageGroups) {
+    const results = await Promise.allSettled(Object.keys(languages).map(locale => checkPage(paths(locale), locale, paths, type, project)));
     const errors = results.filter(result => result.status === 'rejected').map(result => result.reason);
     if (errors.length) throw new AggregateError(errors, `Failed checks for ${type}`);
     console.log(`OK ${type}: ${results.map(result => result.value).join(', ')}`);

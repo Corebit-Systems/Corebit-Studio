@@ -17,8 +17,8 @@
     "module_cta": "Shihni modulin"
   },
   "about": {
-    "title": "Arkitekturë me Konvertim të Lartë",
-    "desc": "Studioja jonë e uebit ndodhet pranë jush — {where}. Një klient viziton faqen tuaj dhe menjëherë dëshiron shërbimin tuaj. Ne e arrijmë këtë duke kombinuar dizajnin e stilit Apple me ngarkim ultra të shpejtë.",
+    "title": "Nga vizita e parë te kërkesa",
+    "desc": "Krijojmë faqe ku klientët mund të gjejnë shërbimin, të lexojnë kushtet dhe të dërgojnë një kërkesë nga telefoni. Sipas projektit, shtojmë versione në gjuhë të ndryshme, kalendar takimesh dhe njoftime.",
     "badges": [
       "Përshtatje për celularë",
       "Rezervime në internet",
