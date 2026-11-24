@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 import { getServiceSearchCopy } from '@/i18n/serviceSearchContent';
+import { socialMetadata } from '@/i18n/socialMetadata';
 import { searchAlternates, searchOrganizationId, searchSiteUrl as SITE_URL } from '@/i18n/searchUrls';
 import { RoiCalculator, SpeedCheckWidget } from '@/components/LazyWidgets';
 import type { SpeedCheckDict } from '@/components/SpeedCheckWidget';
@@ -280,8 +281,7 @@ export async function generateMetadata({
     title,
     description,
     alternates: { canonical, languages: resolved?.alternates },
-    openGraph: { type: 'website', url: canonical, title, description, siteName: 'Corebit Studio' },
-    twitter: { card: 'summary_large_image', title, description },
+    ...socialMetadata(locale, canonical, title, description),
   };
 }
 

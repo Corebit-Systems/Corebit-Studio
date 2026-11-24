@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
+import { socialMetadata } from '@/i18n/socialMetadata';
 
 import cookieEn  from '@/content/legal/cookie/en.json';
 import cookieRu  from '@/content/legal/cookie/ru.json';
@@ -34,12 +35,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const content = policyMap[locale] ?? policyMap.en;
+  const title = content.title || 'Cookie Policy';
+  const description = content.subtitle || '';
+  const canonical = `${SITE_URL}/${locale}/cookie-policy`;
 
   return {
-    title:       content.title || 'Cookie Policy',
-    description: content.subtitle || '',
+    title,
+    description,
     alternates: {
-      canonical: `${SITE_URL}/${locale}/cookie-policy`,
+      canonical,
       languages: {
         'x-default': `${SITE_URL}/en/cookie-policy`,
         en:           `${SITE_URL}/en/cookie-policy`,
@@ -49,18 +53,7 @@ export async function generateMetadata({
         'sr-ME':      `${SITE_URL}/cnr/cookie-policy`,
       } as Record<string, string>,
     },
-    openGraph: {
-      type:        'website',
-      url:         `${SITE_URL}/${locale}/cookie-policy`,
-      title:       content.title || 'Cookie Policy',
-      description: content.subtitle || '',
-      siteName:    'Corebit Studio',
-    },
-    twitter: {
-      card:        'summary_large_image',
-      title:       content.title || 'Cookie Policy',
-      description: content.subtitle || '',
-    },
+    ...socialMetadata(locale, canonical, title, description),
   };
 }
 

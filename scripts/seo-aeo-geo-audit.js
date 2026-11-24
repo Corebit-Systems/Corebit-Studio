@@ -7,6 +7,8 @@ const organizationId = `${canonicalOrigin}/#organization`;
 const websiteId = `${canonicalOrigin}/#website`;
 const logoPath = '/apple-icon.png';
 const languages = { en: 'en', ru: 'ru', cnr: 'sr-ME', srb: 'sr-RS', sq: 'sq-AL' };
+const socialLocales = { en: 'en_US', ru: 'ru_RU', cnr: 'sr_ME', srb: 'sr_RS', sq: 'sq_AL' };
+const policySlugs = ['privacy-policy', 'cookie-policy', 'terms-of-service'];
 const projects = ['cupertino-roast', 'shift-drive', 'umami-bistro', 'aura-wellness'];
 const servicePaths = [
   { path: localePathsFor('budva_restoran'), project: 'umami-bistro' },
@@ -59,20 +61,43 @@ function checkStudioIdentity(schema, html, path) {
   assert.equal(website?.publisher?.['@id'], organizationId, path);
 }
 
-async function get(path) {
-  return fetch(new URL(path, origin), { redirect: 'manual', signal: AbortSignal.timeout(25000) });
+async function get(path, headers) {
+  return fetch(new URL(path, origin), { headers, redirect: 'manual', signal: AbortSignal.timeout(25000) });
+}
+
+function checkSocialMetadata(meta, locale, path, title, description) {
+  const card = Object.fromEntries(meta.map(tag => [tag.property || tag.name, tag.content]));
+  const image = `${canonicalOrigin}/${locale}/opengraph-image`;
+  assert.equal(card['og:url'], canonicalOrigin + path, path);
+  assert.equal(card['og:locale'], socialLocales[locale], path);
+  assert.equal(card['og:title'], title, path);
+  assert.equal(card['og:description'], description, path);
+  assert.equal(card['og:image'], image, path);
+  assert.equal(card['og:image:type'], 'image/png', path);
+  assert.equal(card['og:image:width'], '1200', path);
+  assert.equal(card['og:image:height'], '630', path);
+  assert.equal(card['og:image:alt'], 'Corebit Studio', path);
+  assert.equal(card['twitter:card'], 'summary_large_image', path);
+  assert.equal(card['twitter:title'], title, path);
+  assert.equal(card['twitter:description'], description, path);
+  assert.equal(card['twitter:image'], image, path);
+  assert.equal(card['twitter:image:alt'], 'Corebit Studio', path);
 }
 
 async function checkPage(path, locale, localizedPaths, type, project) {
-  const response = await get(path);
+  const response = await get(path, { 'user-agent': 'facebookexternalhit/1.1' });
   assert.equal(response.status, 200, `HTTP status for ${path}`);
   assert.doesNotMatch(response.headers.get('x-robots-tag') || '', /\bnoindex\b/i, path);
   const html = await response.text();
   const pageTitle = html.match(/<title>([^<]+)<\/title>/i)?.[1];
-  assert.ok(pageTitle && pageTitle.includes('Corebit Studio'), `Missing title for ${path}`);
-  const descriptions = tags(html, 'meta').filter(meta => meta.name === 'description');
+  assert.ok(pageTitle && (type === 'policy' || pageTitle.includes('Corebit Studio')), `Missing title for ${path}`);
+  const head = html.match(/<head>([\s\S]*?)<\/head>/i)?.[1];
+  assert.ok(head, `Missing head for ${path}`);
+  const meta = tags(head, 'meta');
+  const descriptions = meta.filter(tag => tag.name === 'description');
   assert.equal(descriptions.length, 1, `Expected one description for ${path}`);
   assert.ok(descriptions[0].content?.trim(), `Missing description for ${path}`);
+  checkSocialMetadata(meta, locale, path, pageTitle, descriptions[0].content);
   assert.equal(tags(html, 'html')[0]?.lang, languages[locale], path);
   assert.equal(tags(html, 'h1').length, 1, path);
   const links = tags(html, 'link');
@@ -86,8 +111,8 @@ async function checkPage(path, locale, localizedPaths, type, project) {
   const schema = structuredData(html);
   checkStudioIdentity(schema, html, path);
   assert.equal(schema.some(item => item.aggregateRating), false, path);
-  if (type !== 'case') assert.ok(html.includes('id="faq"'), path);
-  if (type !== 'case') {
+  if (type !== 'case' && type !== 'policy') {
+    assert.ok(html.includes('id="faq"'), path);
     const header = html.match(/<header\b[^>]*>([\s\S]*?)<\/header>/)?.[1];
     assert.ok(header, `Missing navigation on ${path}`);
     const navigationLinks = tags(header, 'a').map(link => link.href);
@@ -132,6 +157,16 @@ async function audit() {
   assert.equal(png.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
   assert.ok(png.readUInt32BE(16) >= 112 && png.readUInt32BE(20) >= 112, 'Logo is too small');
 
+  for (const locale of Object.keys(languages)) {
+    const path = `/${locale}/opengraph-image`;
+    const response = await get(path);
+    assert.equal(response.status, 200, path);
+    assert.match(response.headers.get('content-type') || '', /^image\/png\b/i, path);
+    const image = Buffer.from(await response.arrayBuffer());
+    assert.equal(image.subarray(0, 8).toString('hex'), '89504e470d0a1a0a', path);
+    assert.deepEqual([image.readUInt32BE(16), image.readUInt32BE(20)], [1200, 630], path);
+  }
+
   const robots = await get('/robots.txt');
   assert.equal(robots.status, 200);
   const rules = await robots.text();
@@ -155,6 +190,7 @@ async function audit() {
     [locale => `/${locale}`, 'home'],
     ...servicePaths.map(({ path, project }) => [path, 'service', project]),
     ...regionalPaths.map(path => [path, 'region']),
+    ...policySlugs.map(slug => [locale => `/${locale}/${slug}`, 'policy']),
     ...projects.map(project => [locale => `/${locale}/portfolio/${project}`, 'case']),
   ];
   for (const [paths, type, project] of pageGroups) {

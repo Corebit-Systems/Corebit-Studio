@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 import { getServiceSearchLinks } from '@/i18n/serviceSearchContent';
+import { socialMetadata } from '@/i18n/socialMetadata';
 import { searchAlternates, searchSiteUrl as SITE_URL } from '@/i18n/searchUrls';
 import Link from 'next/link';
 import { RoiCalculator, SpeedCheckWidget } from '@/components/LazyWidgets';
@@ -35,12 +36,12 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 
 // ── Per-locale page-level metadata (decoupled from layout inheritance chain) ──
-const HOME_META: Record<string, { title: string; description: string; ogLocale: string }> = {
-  en:  { title: 'Web Development & Online Booking in Montenegro | Corebit Studio', description: 'Web development studio in Tivat, Montenegro. Websites and online booking for restaurants, auto repair shops and car rental companies. Websites from €360.', ogLocale: 'en_US' },
-  ru:  { title: 'Разработка сайтов в Черногории | Corebit Studio', description: 'Веб-студия в Тивате. Создаём сайты с онлайн-бронированием и записью для ресторанов, автосервисов и прокатов авто в Черногории. Базовый сайт от €360.', ogLocale: 'ru_RU' },
-  cnr: { title: 'Izrada sajtova i onlajn rezervacije u Crnoj Gori | Corebit Studio', description: 'Veb studio u Tivtu. Izrađujemo sajtove sa onlajn rezervacijama za restorane, auto-servise i rent-a-car agencije u Crnoj Gori. Osnovni sajt od 360 €.', ogLocale: 'sr_ME' },
-  srb: { title: 'Izrada sajtova i onlajn zakazivanje za firme | Corebit Studio', description: 'Izrađujemo sajtove sa onlajn zakazivanjem za restorane, auto-servise i salone lepote u Srbiji. Pogledajte primere projekata i pakete od 360 €.', ogLocale: 'sr_RS' },
-  sq:  { title: 'Zhvillim faqesh dhe rezervime online në Mal të Zi | Corebit Studio', description: 'Studio uebi në Tivat. Ndërtojmë faqe me rezervime online për restorante, autoservise dhe biznese të makinave me qira në Mal të Zi. Faqe nga 360 €.', ogLocale: 'sq_AL' },
+const HOME_META: Record<string, { title: string; description: string }> = {
+  en:  { title: 'Web Development & Online Booking in Montenegro | Corebit Studio', description: 'Web development studio in Tivat, Montenegro. Websites and online booking for restaurants, auto repair shops and car rental companies. Websites from €360.' },
+  ru:  { title: 'Разработка сайтов в Черногории | Corebit Studio', description: 'Веб-студия в Тивате. Создаём сайты с онлайн-бронированием и записью для ресторанов, автосервисов и прокатов авто в Черногории. Базовый сайт от €360.' },
+  cnr: { title: 'Izrada sajtova i onlajn rezervacije u Crnoj Gori | Corebit Studio', description: 'Veb studio u Tivtu. Izrađujemo sajtove sa onlajn rezervacijama za restorane, auto-servise i rent-a-car agencije u Crnoj Gori. Osnovni sajt od 360 €.' },
+  srb: { title: 'Izrada sajtova i onlajn zakazivanje za firme | Corebit Studio', description: 'Izrađujemo sajtove sa onlajn zakazivanjem za restorane, auto-servise i salone lepote u Srbiji. Pogledajte primere projekata i pakete od 360 €.' },
+  sq:  { title: 'Zhvillim faqesh dhe rezervime online në Mal të Zi | Corebit Studio', description: 'Studio uebi në Tivat. Ndërtojmë faqe me rezervime online për restorante, autoservise dhe biznese të makinave me qira në Mal të Zi. Faqe nga 360 €.' },
 };
 
 export async function generateMetadata({
@@ -50,7 +51,6 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const meta     = HOME_META[locale] ?? HOME_META.en;
-  const ogImage  = `${SITE_URL}/og-image-${locale in HOME_META ? locale : 'en'}.png`;
   const pageUrl  = `${SITE_URL}/${locale}`;
 
   return {
@@ -60,20 +60,7 @@ export async function generateMetadata({
       canonical: pageUrl,
       languages: searchAlternates(language => `/${language}`),
     },
-    openGraph: {
-      type:        'website',
-      url:         pageUrl,
-      siteName:    'Corebit Studio',
-      title:       meta.title,
-      description: meta.description,
-      locale:      meta.ogLocale,
-      images: [{
-        url:    ogImage,
-        width:  1200,
-        height: 630,
-        type:   'image/png',
-      }],
-    },
+    ...socialMetadata(locale, pageUrl, meta.title, meta.description),
   };
 }
 

@@ -2,6 +2,7 @@
 import type { Metadata } from 'next';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 import { getProjectServiceLink } from '@/i18n/serviceSearchContent';
+import { socialMetadata } from '@/i18n/socialMetadata';
 import { searchAlternates, searchLanguageTags, searchOrganizationId, searchSiteUrl as SITE_URL, searchWebsiteId } from '@/i18n/searchUrls';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, CalendarCheck, CheckCircle2, ClipboardList, Cpu, Table2 } from 'lucide-react';
@@ -84,22 +85,16 @@ export async function generateMetadata({
 
   const title = `${project.title} | Corebit Studio`;
   const description = project.desc;
+  const canonical = `${SITE_URL}/${locale}/portfolio/${slug}`;
 
   return {
     title,
     description,
     alternates: {
-      canonical: `${SITE_URL}/${locale}/portfolio/${slug}`,
+      canonical,
       languages: searchAlternates(language => `/${language}/portfolio/${slug}`),
     },
-    openGraph: {
-      type:        'website',
-      url:         `${SITE_URL}/${locale}/portfolio/${slug}`,
-      title,
-      description,
-      siteName:    'Corebit Studio',
-    },
-    twitter: { card: 'summary_large_image', title, description },
+    ...socialMetadata(locale, canonical, title, description),
   };
 }
 

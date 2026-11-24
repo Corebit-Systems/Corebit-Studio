@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
+import { socialMetadata } from '@/i18n/socialMetadata';
 
 import termsEn  from '@/content/legal/terms/en.json';
 import termsRu  from '@/content/legal/terms/ru.json';
@@ -34,12 +35,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const content = policyMap[locale] ?? policyMap.en;
+  const title = content.title || 'Terms of Service';
+  const description = content.subtitle || '';
+  const canonical = `${SITE_URL}/${locale}/terms-of-service`;
 
   return {
-    title:       content.title || 'Terms of Service',
-    description: content.subtitle || '',
+    title,
+    description,
     alternates: {
-      canonical: `${SITE_URL}/${locale}/terms-of-service`,
+      canonical,
       languages: {
         'x-default': `${SITE_URL}/en/terms-of-service`,
         en:           `${SITE_URL}/en/terms-of-service`,
@@ -49,18 +53,7 @@ export async function generateMetadata({
         'sr-ME':      `${SITE_URL}/cnr/terms-of-service`,
       } as Record<string, string>,
     },
-    openGraph: {
-      type:        'website',
-      url:         `${SITE_URL}/${locale}/terms-of-service`,
-      title:       content.title || 'Terms of Service',
-      description: content.subtitle || '',
-      siteName:    'Corebit Studio',
-    },
-    twitter: {
-      card:        'summary_large_image',
-      title:       content.title || 'Terms of Service',
-      description: content.subtitle || '',
-    },
+    ...socialMetadata(locale, canonical, title, description),
   };
 }
 

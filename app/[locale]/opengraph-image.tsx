@@ -1,10 +1,11 @@
 // File: c:\dev\Corebit-Studio\app\[locale]\opengraph-image.tsx
 import { ImageResponse } from 'next/og';
+import { socialImageAlt, socialImageSize, socialImageType } from '@/i18n/socialMetadata';
 
 export const runtime = 'edge';
-export const alt = 'Corebit Studio';
-export const size = { width: 1200, height: 630 };
-export const contentType = 'image/png';
+export const alt = socialImageAlt;
+export const size = socialImageSize;
+export const contentType = socialImageType;
 
 export default async function Image({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

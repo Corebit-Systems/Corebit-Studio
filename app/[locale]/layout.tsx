@@ -11,6 +11,7 @@ import FloatingWidgets from '@/components/FloatingWidgets';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 import { searchLanguageTags, searchOrganizationId, searchSiteUrl as SITE_URL, searchWebsiteId } from '@/i18n/searchUrls';
 import { studioContact } from '@/content/studioContact';
+import { socialMetadata } from '@/i18n/socialMetadata';
 import { AiSalesWidget } from '@/components/LazyWidgets';
 
 const inter = Inter({
@@ -26,41 +27,31 @@ const inter = Inter({
 // Each entry drives title, description, OG image, and Twitter card for its route.
 const LOCALE_META: Record<
   string,
-  { title: string; description: string; ogLocale: string; twitterDesc: string; keywords: string[] }
+  { title: string; description: string; keywords: string[] }
 > = {
   en: {
     title:       'Corebit Studio | Web Development & IT Systems for Hotels and Restaurants in Montenegro & Europe',
     description: 'We build high-converting websites and automation systems for premium hospitality and SMBs. Boost your bookings and revenue within 30 days.',
-    ogLocale:    'en_US',
-    twitterDesc: 'Boost bookings and revenue with high-converting websites and booking automation. Tailored for hotels, restaurants, and SMBs in Montenegro.',
     keywords:    ['hotel web design montenegro', 'restaurant booking software budva', 'it services tivat', 'web development montenegro', 'Corebit Studio'],
   },
   ru: {
     title:       'Corebit Studio | Разработка сайтов и ИТ-систем для отелей и ресторанов в Черногории',
     description: 'Создаем высококонверсионные сайты и системы автоматизации для премиального бизнеса. Увеличьте поток бронирований и доход вашего отеля или ресторана уже через 30 дней.',
-    ogLocale:    'ru_RU',
-    twitterDesc: 'Высококонверсионные сайты и системы автоматизации для отелей и ресторанов в Черногории. Рост броней за 30 дней.',
     keywords:    ['разработка сайтов для отелей черногория', 'автоматизация ресторанов будва тиват', 'ит услуги черногория', 'создание сайтов черногория', 'Corebit Studio'],
   },
   cnr: {
     title:       'Corebit Studio | Izrada sajtova i IT sistema za hotele i restorane u Crnoj Gori',
     description: 'Izrađujemo visoko-konverzione sajtove i sisteme automatizacije za crnogorski turizam i ugostiteljstvo na Jadranu. Povećajte broj direktnih rezervacija za 30% u roku od 30 dana.',
-    ogLocale:    'sr_ME',
-    twitterDesc: 'Izrada sajtova i online rezervacionih sistema za hotele i restorane u Crnoj Gori — Budva, Tivat, Kotor.',
     keywords:    ['izrada sajtova za hotele crna gora', 'automatizacija restorana budva tivat', 'it usluge crna gora', 'veb dizajn crna gora', 'Corebit Studio'],
   },
   srb: {
     title:       'Corebit Studio | Izrada sajtova i IT sistema za restorane i auto servise u Srbiji',
     description: 'Kreiramo visoko-konverzione sajtove i sisteme automatizacije za srpske restorane, auto servise i salone lepote. Više rezervacija i prijava online za 30 dana.',
-    ogLocale:    'sr_RS',
-    twitterDesc: 'Izrada sajtova i sistema za online rezervacije za restorane, auto servise i salone lepote u Srbiji — Beograd, Novi Sad.',
     keywords:    ['izrada sajtova za restorane srbija', 'automatizacija auto servisa beograd', 'it usluge srbija', 'veb dizajn beograd novi sad', 'Corebit Studio'],
   },
   sq: {
     title:       'Corebit Studio | Zhvillim Ueb & Sisteme IT për Hotele dhe Restorante në Mal të Zi',
     description: 'Ne ndërtojmë uebfaqe me konvertim të lartë dhe sisteme automatizimi për hoteleri dhe biznese. Rritni rezervimet dhe të ardhurat tuaja brenda 30 ditëve.',
-    ogLocale:    'sq_AL',
-    twitterDesc: 'Zhvillim ueb dhe sisteme automatizimi për hotele dhe restorante në Mal të Zi. Rritni të ardhurat tuaja.',
     keywords:    ['zhvillim uebfaqesh per hotele mal i zi', 'automatizim restorantesh budva', 'sherbime it mal i zi', 'dizajn ueb mal i zi', 'Corebit Studio'],
   },
 };
@@ -72,14 +63,6 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const meta     = LOCALE_META[locale] ?? LOCALE_META.en;
-  const ogImage  = `${SITE_URL}/og-image-${locale in LOCALE_META ? locale : 'en'}.png`;
-  const ogAltMap: Record<string, string> = {
-    en:  'Corebit Studio — Premium Glassmorphic Web Architecture Banner',
-    ru:  'Corebit Studio — Высокопроизводительная веб-архитектура',
-    cnr: 'Corebit Studio — Vrhunska veb arhitektura i automatizacija',
-    srb: 'Corebit Studio — Vrhunska veb arhitektura i automatizacija',
-    sq:  'Corebit Studio — Arkitekturë Ueb me Performancë të Lartë',
-  };
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -102,34 +85,7 @@ export async function generateMetadata({
 
 
 
-    // ── Open Graph ───────────────────────────────────────────────────────
-    openGraph: {
-      type:        'website',
-      url:         `${SITE_URL}/${locale}`,
-      siteName:    'Corebit Studio',
-      title:       meta.title,
-      description: meta.description,
-      locale:      meta.ogLocale,
-      images: [
-        {
-          url:    ogImage,
-          width:  1200,
-          height: 630,
-          alt:    ogAltMap[locale] ?? ogAltMap.en,
-          type:   'image/png',
-        },
-      ],
-    },
-
-    // ── Twitter / X Card ─────────────────────────────────────────────────
-    twitter: {
-      card:        'summary_large_image',
-      site:        '@CorebitStudio',
-      creator:     '@CorebitStudio',
-      title:       meta.title,
-      description: meta.twitterDesc,
-      images:      [ogImage],
-    },
+    ...socialMetadata(locale, `${SITE_URL}/${locale}`, meta.title, meta.description),
 
 
     // ── Robots ────────────────────────────────────────────────────────────
