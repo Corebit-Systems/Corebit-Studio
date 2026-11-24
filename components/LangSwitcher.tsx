@@ -2,6 +2,8 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
+import type { Locale } from '@/i18n/getDictionary';
+import { searchLanguageTags, searchLocales } from '@/i18n/searchUrls';
 
 // Inline vector flags for absolute operating-system compatibility (Windows emoji-rendering fallback fix)
 const EnFlag = () => (
@@ -55,7 +57,7 @@ const locales = [
   { code: 'sq', label: 'Shqip', flag: SqFlag },
   { code: 'srb', label: 'Српски', flag: SrbFlag },
   { code: 'cnr', label: 'Црногорски', flag: CnrFlag }
-];
+] as const;
 
 export default function LangSwitcher({ currentLocale }: { currentLocale: string }) {
   const pathname = usePathname();
@@ -74,41 +76,21 @@ export default function LangSwitcher({ currentLocale }: { currentLocale: string 
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const switchLang = (newLocale: string) => {
+  const switchLang = (newLocale: Locale) => {
     if (!pathname) return;
 
-    // BCP47 tag used in hreflang for each internal locale code
-    const localeToBcp47: Record<string, string> = {
-      en:  'en',
-      ru:  'ru',
-      sq:  'sq-al',   // canonical lowercase for attribute matching
-      srb: 'sr-rs',
-      cnr: 'sr-me',
-    };
-
-    // Try to read the pre-rendered hreflang alternate from <head>
-    const targetTag = localeToBcp47[newLocale];
-    if (targetTag && typeof document !== 'undefined') {
-      const link = document.querySelector<HTMLLinkElement>(
-        `link[rel="alternate"][hreflang="${targetTag}"]`,
-      );
-      if (link?.href) {
-        router.push(new URL(link.href).pathname);
-        setIsOpen(false);
-        return;
-      }
-    }
-
-    // Fallback: simple locale-segment swap (works for non-slug pages)
+    const targetTag = searchLanguageTags[newLocale];
+    const alternate = document.querySelector<HTMLLinkElement>(`link[rel="alternate"][hreflang="${targetTag}" i]`);
     const segments = pathname.split('/');
-    const supportedLocales = ['en', 'ru', 'cnr', 'srb', 'sq'];
-    if (supportedLocales.includes(segments[1])) {
+    if (searchLocales.some((locale) => locale === segments[1])) {
       segments[1] = newLocale;
     } else {
       segments.splice(1, 0, newLocale);
     }
 
-    router.push(segments.join('/') || '/');
+    const target = alternate?.href ? new URL(alternate.href).pathname : segments.join('/');
+    const { search, hash } = window.location;
+    if (newLocale !== currentLocale) router.push(`${target}${search}${hash}`);
     setIsOpen(false);
   };
 
@@ -119,6 +101,7 @@ export default function LangSwitcher({ currentLocale }: { currentLocale: string 
   return (
     <div className="relative" ref={dropdownRef}>
       <button 
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2.5 min-h-[48px] px-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all text-sm font-semibold backdrop-blur-md"
         aria-label="Change Language"
@@ -135,6 +118,7 @@ export default function LangSwitcher({ currentLocale }: { currentLocale: string 
               const Flag = loc.flag;
               return (
                 <button
+                  type="button"
                   key={loc.code}
                   onClick={() => switchLang(loc.code)}
                   className={`flex items-center gap-2.5 w-full min-h-[48px] px-4 py-3 rounded-xl text-sm transition-all text-left ${

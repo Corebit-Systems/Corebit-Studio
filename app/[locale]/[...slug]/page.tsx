@@ -248,80 +248,41 @@ export async function generateMetadata({
   const activeGeo = geoDict[city.toLowerCase()] || { name: city, where: city };
   const where = activeGeo.where;
 
-  // Use slug-map alternates if available, otherwise fall back to computed
-  const languageAlternates: Record<string, string> = resolved
-    ? resolved.alternates
-    : (() => {
-        const alts: Record<string, string> = {};
-        locales.forEach((l) => {
-          const tag = l === 'sq' ? 'sq-AL' : l === 'srb' ? 'sr-RS' : l === 'cnr' ? 'sr-ME' : l;
-          alts[tag] = `${SITE_URL}/${l}/${service ? `${service}-sajt-${city}` : city}`;
-        });
-        alts['x-default'] = `${SITE_URL}/en/${service ? `${service}-sajt-${city}` : city}`;
-        return alts;
-      })();
-
   const canonical = `${SITE_URL}/${locale}/${slugStr}`;
   const serviceCopy = getServiceSearchCopy(locale, resolved?.entry.id);
+  const serviceName = serviceNames[locale][service.toLowerCase()] ?? service;
+  const subject = serviceName ? `${serviceName} ${where}` : where;
+  const titles: Record<Locale, string> = {
+    en: `Web Design ${subject}`,
+    ru: `Разработка сайтов ${subject}`,
+    cnr: `Izrada sajtova ${subject}`,
+    srb: `Izrada sajtova ${subject}`,
+    sq: `Zhvillim faqesh interneti ${subject}`,
+  };
+  const serviceDescriptions: Record<Locale, string> = {
+    en: `Website design and development ${subject}. Explore our projects and see what each package includes.`,
+    ru: `Разработка сайтов под ключ ${subject}. Посмотрите примеры проектов, цены и состав тарифов.`,
+    cnr: `Dizajn i izrada sajtova ${subject}. Pogledajte primjere projekata, cijene i sadržaj paketa.`,
+    srb: `Dizajn i izrada sajtova ${subject}. Pogledajte primere projekata, cene i sadržaj paketa.`,
+    sq: `Dizajnim dhe zhvillim faqesh interneti ${subject}. Shikoni shembuj projektesh, çmimet dhe çfarë përfshijnë paketat.`,
+  };
+  const locationDescriptions: Record<Locale, string> = {
+    en: `Websites and online booking ${where} for restaurants, auto repair shops, salons and car rental companies. View projects and prices.`,
+    ru: `Сайты с онлайн-бронированием ${where} для ресторанов, автосервисов, салонов и проката авто. Посмотрите проекты и цены.`,
+    cnr: `Sajtovi i online rezervacije ${where} za restorane, auto servise, salone i rent-a-car agencije. Pogledajte projekte i cijene.`,
+    srb: `Sajtovi i online rezervacije ${where} za restorane, auto servise, salone i rent-a-car agencije. Pogledajte projekte i cene.`,
+    sq: `Faqe interneti dhe rezervime online ${where} për restorante, autoservise, sallone dhe agjenci makinash me qira. Shikoni projektet dhe çmimet.`,
+  };
+  const title = `${serviceCopy?.[0] ?? titles[locale]} | Corebit Studio`;
+  const description = serviceCopy?.[1] ?? (service ? serviceDescriptions[locale] : locationDescriptions[locale]);
 
-  if (service) {
-    const currentServiceNames = serviceNames[locale] || serviceNames.en;
-    const serviceName = currentServiceNames[service.toLowerCase()] || service;
-
-    const titles: Record<string, string> = {
-      en: `Website ${serviceName} ${where} — Corebit`,
-      ru: `Сайт ${serviceName} ${where} под ключ — Corebit`,
-      cnr: `Izrada sajta ${serviceName} ${where} — Corebit`,
-      srb: `Izrada sajta ${serviceName} ${where} — Corebit`,
-      sq: `Uebfaqe ${serviceName} ${where} — Corebit`
-    };
-
-    const descriptions: Record<string, string> = {
-      en: `Fast web development ${serviceName} ${where} with CRM integration, booking automation and ROI growth. Launch in 7 days. Get a price quote!`,
-      ru: `Быстрые сайты ${serviceName} ${where} с интеграцией CRM, автобронированием и ростом ROI. Запуск за 7 дней. Узнайте стоимость!`,
-      cnr: `Next.js sajtovi ${serviceName} ${where}. Automatizacija rezervacija, integrisan CRM i kalkulator izgubljene dobiti. Saznajte cijenu!`,
-      srb: `Next.js sajtovi ${serviceName} ${where}. Automatizacija rezervacija, integrisan CRM i kalkulator izgubljene dobiti. Saznajte cenu!`,
-      sq: `Uebfaqe Next.js ${serviceName} ${where}. Automatizim rezervimesh, CRM integrim dhe llogaritja e ROI-së. Mëso çmimin!`
-    };
-
-    const title = serviceCopy ? `${serviceCopy[0]} | Corebit Studio` : (titles[locale] || titles.en).replace('{where}', where);
-    const description = serviceCopy?.[1] ?? (descriptions[locale] || descriptions.en).replace('{where}', where);
-
-    return {
-      title,
-      description,
-      alternates: { canonical, languages: languageAlternates },
-      openGraph: { type: 'website', url: canonical, title, description, siteName: 'Corebit Studio' },
-      twitter: { card: 'summary_large_image', title, description },
-    };
-  } else {
-    const titles: Record<string, string> = {
-      en: `Corebit Studio | Website development under key ${where}`,
-      ru: `Corebit Studio | Создание сайтов под ключ ${where}`,
-      cnr: `Corebit | Izrada Next.js sajtova i automatizacija ${where}`,
-      srb: `Corebit | Izrada Next.js sajtova i automatizacija ${where}`,
-      sq: `Corebit | Zhvillim uebfaqesh Next.js dhe automatizim ${where}`
-    };
-
-    const descriptions: Record<string, string> = {
-      en: `Professional website development and booking automation systems ${where} for restaurants, auto services, beauty salons, and car rentals. Get price!`,
-      ru: `Профессиональная разработка и создание сайтов под ключ ${where} для ресторанов, автосервисов (СТО), салонов красоты и аренды авто. Узнайте цену!`,
-      cnr: `Profesionalni Next.js sajtovi ${where}. Brzo online rezervisanje za restorane, auto servise (STO), salone i rent-a-car. Saznajte izgubljenu dobit i cijenu!`,
-      srb: `Profesionalni Next.js sajtovi ${where}. Brza online rezervacija za restorane, auto servise (STO), salone i rent-a-car. Saznajte izgubljenu dobit i cenu!`,
-      sq: `Uebfaqe profesionale Next.js ${where}. Automatizim rezervimesh për restorante, auto-servise, sallone dhe makina me qira. Llogarit fitimin e humbur!`
-    };
-
-    const title = (titles[locale] || titles.en).replace('{where}', where);
-    const description = (descriptions[locale] || descriptions.en).replace('{where}', where);
-
-    return {
-      title,
-      description,
-      alternates: { canonical, languages: languageAlternates },
-      openGraph: { type: 'website', url: canonical, title, description, siteName: 'Corebit Studio' },
-      twitter: { card: 'summary_large_image', title, description },
-    };
-  }
+  return {
+    title,
+    description,
+    alternates: { canonical, languages: resolved?.alternates },
+    openGraph: { type: 'website', url: canonical, title, description, siteName: 'Corebit Studio' },
+    twitter: { card: 'summary_large_image', title, description },
+  };
 }
 
 

@@ -5,12 +5,14 @@ const origin = process.env.SEO_AUDIT_URL || 'http://localhost:3000';
 const canonicalOrigin = 'https://studio.corebitsystems.io';
 const languages = { en: 'en', ru: 'ru', cnr: 'sr-ME', srb: 'sr-RS', sq: 'sq-AL' };
 const projects = ['cupertino-roast', 'shift-drive', 'umami-bistro', 'aura-wellness'];
-const serviceIds = ['budva_restoran', 'podgorica_sto', 'budva_rent_a_car'];
-const servicePaths = serviceIds.map(id => {
+const servicePaths = ['budva_restoran', 'podgorica_sto', 'budva_rent_a_car'].map(localePathsFor);
+const regionalPaths = ['kotor', 'kotor_salon'].map(localePathsFor);
+
+function localePathsFor(id) {
   const entry = slugMap.find(item => item.id === id);
   assert.ok(entry, `Missing localized slug entry for ${id}`);
   return locale => `/${locale}/${entry.slugs[locale]}`;
-});
+}
 
 function tags(html, name) {
   const tagPattern = new RegExp(`<${name}\\b[^>]*>`, 'gi');
@@ -35,6 +37,9 @@ async function checkPage(path, locale, localizedPaths, type) {
   const html = await response.text();
   const pageTitle = html.match(/<title>([^<]+)<\/title>/i)?.[1];
   assert.ok(pageTitle && pageTitle.includes('Corebit Studio'), `Missing title for ${path}`);
+  const descriptions = tags(html, 'meta').filter(meta => meta.name === 'description');
+  assert.equal(descriptions.length, 1, `Expected one description for ${path}`);
+  assert.ok(descriptions[0].content?.trim(), `Missing description for ${path}`);
   assert.equal(tags(html, 'html')[0]?.lang, languages[locale], path);
   assert.equal(tags(html, 'h1').length, 1, path);
   const links = tags(html, 'link');
@@ -55,6 +60,8 @@ async function checkPage(path, locale, localizedPaths, type) {
   }
   if (type === 'service') {
     assert.ok(html.includes('id="service-answer-title"'), path);
+  }
+  if (type === 'service' || type === 'region') {
     assert.ok(schema.some(item => item['@type'] === 'Service' && item.url === canonicalOrigin + path), path);
   }
   if (type === 'case') {
@@ -86,6 +93,7 @@ async function audit() {
   const pageGroups = [
     [locale => `/${locale}`, 'home'],
     ...servicePaths.map(path => [path, 'service']),
+    ...regionalPaths.map(path => [path, 'region']),
     ...projects.map(project => [locale => `/${locale}/portfolio/${project}`, 'case']),
   ];
   for (const [paths, type] of pageGroups) {
