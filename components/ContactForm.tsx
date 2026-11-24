@@ -329,8 +329,12 @@ export default function ContactForm({ dict, locale, example, initialPricing }: C
         </div>
       )}
 
+      <p id="contact-submit-status" role="status" className="sr-only">
+        {status === 'loading' ? dict.sending : ''}
+      </p>
       <form
         ref={formRef}
+        aria-busy={status === 'loading' || undefined}
         noValidate
         onSubmit={handleSubmit}
         onChange={(event) => {
@@ -393,7 +397,7 @@ export default function ContactForm({ dict, locale, example, initialPricing }: C
         <input type="text" name="b_trap" className="hidden" tabIndex={-1} autoComplete="off" />
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="name" className="sr-only">{dict.name}</label>
+          <label htmlFor="name" className="text-sm font-medium text-neutral-200">{dict.name}</label>
           <input
             required
             disabled={status === 'loading' || isRateLimited}
@@ -403,7 +407,6 @@ export default function ContactForm({ dict, locale, example, initialPricing }: C
             autoComplete="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder={dict.name}
             maxLength={contactNameMaxLength}
             {...fieldAccessibility('name')}
             className="w-full scroll-mt-28 px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-600/50 focus:bg-white/10 aria-[invalid=true]:border-red-400/70 transition-all text-base min-h-[52px] disabled:opacity-40 disabled:cursor-not-allowed"
@@ -412,7 +415,7 @@ export default function ContactForm({ dict, locale, example, initialPricing }: C
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="email" className="sr-only">{dict.email}</label>
+          <label htmlFor="email" className="text-sm font-medium text-neutral-200">{dict.email}</label>
           <input
             required
             disabled={status === 'loading' || isRateLimited}
@@ -422,7 +425,6 @@ export default function ContactForm({ dict, locale, example, initialPricing }: C
             autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder={dict.email}
             maxLength={contactEmailMaxLength}
             {...fieldAccessibility('email')}
             className="w-full scroll-mt-28 px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-600/50 focus:bg-white/10 aria-[invalid=true]:border-red-400/70 transition-all text-base min-h-[52px] disabled:opacity-40 disabled:cursor-not-allowed"
@@ -431,7 +433,7 @@ export default function ContactForm({ dict, locale, example, initialPricing }: C
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="message" className="sr-only">{dict.message}</label>
+          <label htmlFor="message" className="text-sm font-medium text-neutral-200">{dict.message}</label>
           <textarea
             ref={messageRef}
             required
@@ -442,7 +444,7 @@ export default function ContactForm({ dict, locale, example, initialPricing }: C
             autoComplete="off"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            placeholder={isRateLimited ? `${dict.error_rate} (${countdown}s)` : dict.message}
+            placeholder={isRateLimited ? dict.error_rate : undefined}
             {...fieldAccessibility('message', 'contact-message-hint')}
             rows={4}
             maxLength={contactMessageLimit}
@@ -497,7 +499,7 @@ export default function ContactForm({ dict, locale, example, initialPricing }: C
                 exit={{ opacity: 0 }}
                 className="flex items-center gap-2"
               >
-                <Loader2 className="animate-spin" size={20} /> {dict.sending}
+                <Loader2 aria-hidden="true" className="motion-safe:animate-spin" size={20} /> {dict.sending}
               </motion.span>
             ) : (
               <motion.span key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
