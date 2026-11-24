@@ -41,6 +41,9 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
   const [errorMessage, setErrorMessage] = useState('');
   const [agreeGDPR, setAgreeGDPR] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<PricingInquiry | null>(null);
+  const whatsappMessage = selectedPlan
+    ? [dict.prefilled_msg, `${dict.selected_plan}: ${selectedPlan.title}`, selectedPlan.paymentLabel].filter(Boolean).join('\n')
+    : dict.prefilled_msg || '';
 
   useEffect(() => {
     const handleSelection = (event: Event) => {
@@ -354,7 +357,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
 
       <div className="relative mt-8 grid gap-3 border-t border-white/10 pt-5 md:grid-cols-2">
         <a
-          href={`https://wa.me/359882905657?text=${encodeURIComponent(dict.prefilled_msg || '')}`}
+          href={`https://wa.me/359882905657?text=${encodeURIComponent(whatsappMessage)}`}
           data-whatsapp-source="contact_form"
           target="_blank"
           rel="noopener noreferrer"

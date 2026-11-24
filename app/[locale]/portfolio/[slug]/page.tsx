@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 import Link from 'next/link';
-import { ArrowLeft, CheckCircle2, Cpu } from 'lucide-react';
+import { ArrowLeft, CalendarCheck, CheckCircle2, ClipboardList, Cpu, Table2 } from 'lucide-react';
 import { notFound } from 'next/navigation';
 
 const SITE_URL = 'https://studio.corebitsystems.io';
@@ -123,7 +123,18 @@ export async function generateMetadata({
 
 interface PortfolioItem { title: string; desc: string }
 interface TechData      { stack: string[]; features: string[] }
-interface PortfolioPageDict { tech_stack: string; features: string; back: string }
+interface PortfolioPageDict {
+  tech_stack: string;
+  features: string;
+  back: string;
+  umami_booking: {
+    title: string;
+    steps: { title: string; description: string }[];
+    cta: string;
+  };
+}
+
+const bookingIcons = [Table2, CalendarCheck, ClipboardList];
 interface PageDict {
   portfolio:      { items: Record<string, PortfolioItem | undefined> };
   portfolio_page: PortfolioPageDict;
@@ -145,6 +156,7 @@ export default async function PortfolioProjectPage({
 
   const details     = dict.portfolio_tech?.[slug];
   const schema      = PORTFOLIO_SCHEMA[slug];
+  const booking = slug === 'umami-bistro' ? dict.portfolio_page.umami_booking : undefined;
 
   // ── Product + Review + AggregateRating JSON-LD ───────────────────────────
   const jsonLd = schema ? {
@@ -216,6 +228,32 @@ export default async function PortfolioProjectPage({
         )}
       </div>
 
+      {booking && (
+        <section aria-labelledby="umami-booking-title" className="rounded-2xl border border-emerald-400/20 bg-gradient-to-br from-emerald-500/[0.07] to-white/[0.02] p-5 sm:rounded-3xl sm:p-8">
+          <h2 id="umami-booking-title" className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+            {booking.title}
+          </h2>
+          <ol className="mt-5 grid divide-y divide-white/10 md:grid-cols-3 md:divide-x md:divide-y-0">
+            {booking.steps.map((step, index) => {
+              const Icon = bookingIcons[index];
+              return (
+                <li key={step.title} className="min-w-0 py-4 md:px-5 md:first:pl-0 md:last:pr-0">
+                  <Icon aria-hidden="true" size={22} className="mb-3 text-emerald-300" />
+                  <h3 className="text-base font-semibold text-white">{step.title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-neutral-300">{step.description}</p>
+                </li>
+              );
+            })}
+          </ol>
+          <Link
+            href={`/${locale}#contact`}
+            className="mt-4 inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-white px-5 py-2.5 text-center text-sm font-semibold text-black transition-colors hover:bg-neutral-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400 sm:w-auto"
+          >
+            {booking.cta}
+          </Link>
+        </section>
+      )}
+
       {details ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 items-stretch">
           <div className="flex flex-col h-full p-5 sm:p-8 md:p-10 rounded-2xl sm:rounded-[2.5rem] border border-white/10 bg-white/[0.02] backdrop-blur-xl gap-4 sm:gap-6">
@@ -272,12 +310,14 @@ export default async function PortfolioProjectPage({
           </div>
         </div>
       )}
-      <Link
-        href={`/${locale}#contact`}
-        className="inline-flex min-h-12 items-center justify-center self-start rounded-xl bg-white px-5 text-sm font-semibold text-black transition-colors hover:bg-neutral-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400"
-      >
-        {dict.hero.cta}
-      </Link>
+      {!booking && (
+        <Link
+          href={`/${locale}#contact`}
+          className="inline-flex min-h-12 items-center justify-center self-start rounded-xl bg-white px-5 text-sm font-semibold text-black transition-colors hover:bg-neutral-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400"
+        >
+          {dict.hero.cta}
+        </Link>
+      )}
     </div>
   );
 }

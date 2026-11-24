@@ -66,6 +66,24 @@
     }
   },
   "portfolio_page": {
+    "umami_booking": {
+      "title": "Si rezervojnë tavolinë vizitorët",
+      "steps": [
+        {
+          "title": "Zgjedhin tavolinën",
+          "description": "Vizitori hap planin interaktiv të sallës dhe zgjedh tavolinën."
+        },
+        {
+          "title": "Dërgojnë kërkesën",
+          "description": "Vizitori cakton datën dhe orën dhe dërgon kërkesën nga faqja."
+        },
+        {
+          "title": "Restoranti merr kërkesën",
+          "description": "Menaxheri e sheh rezervimin në panel dhe mund të menaxhojë kërkesat dhe listën e pritjes."
+        }
+      ],
+      "cta": "Dua një sistem rezervimesh si ky"
+    },
     "tech_stack": "Teknologjia",
     "features": "Karakteristika të Avancuara",
     "back": "Kthehu në Fillim"

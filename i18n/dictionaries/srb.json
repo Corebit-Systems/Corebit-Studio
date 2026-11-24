@@ -66,6 +66,24 @@
     }
   },
   "portfolio_page": {
+    "umami_booking": {
+      "title": "Kako gosti rezervišu sto",
+      "steps": [
+        {
+          "title": "Biraju sto",
+          "description": "Gost otvara interaktivni plan sale i bira sto koji mu odgovara."
+        },
+        {
+          "title": "Šalju zahtev za rezervaciju",
+          "description": "Gost bira datum i vreme i šalje zahtev putem sajta."
+        },
+        {
+          "title": "Restoran prima zahtev",
+          "description": "Menadžer vidi rezervaciju u panelu i može da upravlja zahtevima i listom čekanja."
+        }
+      ],
+      "cta": "Želim ovakav sistem rezervacija"
+    },
     "tech_stack": "Tehnološki Stek",
     "features": "Napredne Funkcije",
     "back": "Nazad na Početnu"

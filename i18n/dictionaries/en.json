@@ -66,6 +66,24 @@
     }
   },
   "portfolio_page": {
+    "umami_booking": {
+      "title": "How guests book a table",
+      "steps": [
+        {
+          "title": "Choose a table",
+          "description": "Guests open the interactive floor plan and pick a table."
+        },
+        {
+          "title": "Request a reservation",
+          "description": "They enter the date and time and submit a request on the website."
+        },
+        {
+          "title": "The restaurant receives it",
+          "description": "The manager sees the reservation in the dashboard and can manage requests and the waitlist."
+        }
+      ],
+      "cta": "I want a booking system like this"
+    },
     "tech_stack": "Technology Stack",
     "features": "Advanced Features",
     "back": "Back to Home"
