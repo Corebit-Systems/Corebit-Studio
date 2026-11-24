@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
@@ -11,8 +11,6 @@ interface BentoCardProps {
   description: string;
   icon?: React.ReactNode;
   visual?: React.ReactNode;
-  /** Accessible description for Google Images / AI vision bots */
-  visualAlt?: string;
   className?: string;
   delay?: number;
   href?: string;
@@ -24,13 +22,13 @@ export default function BentoCard({
   description,
   icon,
   visual,
-  visualAlt,
   className = '',
   delay = 0,
   href,
   linkLabel,
 }: BentoCardProps) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement>(null);
+  const reduceMotion = useReducedMotion();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const mousePX = useMotionValue(0);
@@ -40,12 +38,11 @@ export default function BentoCard({
   const mouseXSpring = useSpring(x, springConfig);
   const mouseYSpring = useSpring(y, springConfig);
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['10deg', '-10deg']);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-10deg', '10deg']);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['3deg', '-3deg']);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-3deg', '3deg']);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
-    if (typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches) return;
+  const handlePointerMove = (e: React.PointerEvent<HTMLElement>) => {
+    if (reduceMotion || e.pointerType !== 'mouse' || !ref.current) return;
     
     const rect = ref.current.getBoundingClientRect();
     x.set((e.clientX - rect.left) / rect.width - 0.5);
@@ -68,15 +65,14 @@ export default function BentoCard({
   const CardContent = (
     <motion.article
       ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      initial={{ opacity: 0, y: 40 }}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handleMouseLeave}
+      initial={reduceMotion ? false : { opacity: 0.78, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.02 }}
-      viewport={{ once: true, margin: '-80px' }}
+      viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.7, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
-      style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
-      className={`relative group rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-2xl p-5 sm:p-8 flex flex-col h-full overflow-hidden ${className} ${href ? 'cursor-pointer hover:border-emerald-600/50 transition-colors' : ''}`}
+      style={{ rotateX: reduceMotion ? 0 : rotateX, rotateY: reduceMotion ? 0 : rotateY }}
+      className={`relative group rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-2xl p-5 sm:p-8 flex flex-col h-full overflow-hidden motion-reduce:!transform-none motion-reduce:!opacity-100 ${className} ${href ? 'cursor-pointer hover:border-emerald-600/50 transition-colors' : ''}`}
     >
       {/* GPU-composited shadow glow using opacity transition */}
       <div className="absolute inset-0 rounded-[inherit] shadow-[0_0_50px_rgba(16,185,129,0.15)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-[-1] will-change-opacity" />
@@ -89,13 +85,11 @@ export default function BentoCard({
         style={{ background: spotlightBg }}
       />
 
-      <div style={{ transform: 'translateZ(30px)' }} className="flex flex-col h-full">
+      <div className="relative flex h-full flex-col">
         {visual && (
-          // ФИКС: h-48 → h-36 sm:h-48 — уменьшаем высоту визуала на мобиле
           <div
-            className="w-full h-36 sm:h-48 mb-4 sm:mb-6 rounded-xl sm:rounded-2xl overflow-hidden relative border border-white/5"
-            role="img"
-            aria-label={visualAlt ?? title}
+            aria-hidden="true"
+            className="relative mb-4 h-36 w-full overflow-hidden rounded-xl border border-white/10 bg-[#060908] sm:mb-6 sm:h-48 sm:rounded-2xl"
           >
             {visual}
           </div>

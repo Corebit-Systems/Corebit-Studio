@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 import { RoiCalculator, SpeedCheckWidget } from '@/components/LazyWidgets';
 import type { SpeedCheckDict } from '@/components/SpeedCheckWidget';
-import BentoCard from '@/components/BentoCard';
+import PortfolioShowcase, { type PortfolioShowcaseDict } from '@/components/PortfolioShowcase';
 import AutomationModules, { type AutomationDict } from '@/components/AutomationModules';
 import PricingSection, { type PricingDict } from '@/components/PricingSection';
 import ContactForm from '@/components/ContactForm';
@@ -13,6 +13,7 @@ import FAQSection from '@/components/FAQSection';
 import ReviewsAccordion from '@/components/ReviewsAccordion';
 import BeforeAfterSlider, { type BeforeAfterDict } from '@/components/BeforeAfterSlider';
 import ScrollAnimate from '@/components/ScrollAnimate';
+import type { ProjectReferenceId } from '@/components/projectReference';
 import TechEcosystem from '@/components/TechEcosystem';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import slugMapData from '@/i18n/slug-map.json';
@@ -341,11 +342,7 @@ interface PageDict {
     badges: string[];
   };
   automation: AutomationDict;
-  portfolio: {
-    title: string;
-    subtitle: string;
-    items: Record<string, { title: string; desc: string }>;
-  };
+  portfolio: PortfolioShowcaseDict;
   pricing: PricingDict;
   contact_form: any;
   faq: any;
@@ -469,7 +466,7 @@ export default async function CatchAllSEOPage({
   };
 
   const dict = interpolate(rawDict) as unknown as PageDict;
-  const projectByService: Partial<Record<string, string>> = {
+  const projectByService: Partial<Record<string, ProjectReferenceId>> = {
     restoran: 'umami-bistro',
     sto: 'shift-drive',
     salon: 'aura-wellness',
@@ -483,39 +480,6 @@ export default async function CatchAllSEOPage({
   const hero = service
     ? { ...dict.hero, title: dict.hero.industry_title.replace('{industry}', replacementPhrase) }
     : dict.hero;
-
-  const CupertinoVisual = (
-    <div className="absolute inset-0 bg-gradient-to-br from-amber-900/40 to-orange-600/20 flex items-center justify-center">
-      <div className="w-full h-full bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px]" />
-      <div className="absolute w-24 h-24 bg-amber-500/20 blur-2xl rounded-full" />
-      <div className="absolute w-32 h-16 border border-amber-500/30 rounded-xl bg-black/40 backdrop-blur-md shadow-2xl" />
-    </div>
-  );
-
-  const ShiftDriveVisual = (
-    <div className="absolute inset-0 bg-slate-950 flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 border-[0.5px] border-lime-500/10 m-4 rounded-lg" />
-      <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-lime-500/20" />
-      <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-lime-500/20" />
-      <div className="w-20 h-10 border border-lime-400/50 rounded bg-lime-900/20 shadow-[0_0_15px_rgba(132,204,22,0.2)]" />
-    </div>
-  );
-
-  const UmamiVisual = (
-    <div className="absolute inset-0 bg-gradient-to-br from-rose-950 to-red-900/40 flex items-center justify-center">
-      <div className="w-12 h-12 rounded-full border border-red-500/30 absolute top-6 left-8 bg-red-500/5" />
-      <div className="w-16 h-16 rounded-full border border-red-500/30 absolute bottom-6 right-10 bg-red-500/5" />
-      <div className="w-28 h-14 border border-red-500/20 rounded-full absolute bg-black/40 backdrop-blur-md" />
-    </div>
-  );
-
-  const AuraVisual = (
-    <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/40 to-emerald-600/20 flex items-center justify-center">
-      <div className="w-24 h-24 bg-emerald-400/20 rounded-full blur-xl absolute left-8" />
-      <div className="w-24 h-24 bg-amber-200/10 rounded-full blur-xl absolute right-8" />
-      <div className="w-3/4 h-1/2 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl shadow-2xl" />
-    </div>
-  );
 
   const cityServiceSchema = {
     '@context': 'https://schema.org',
@@ -560,47 +524,7 @@ export default async function CatchAllSEOPage({
         <AutomationModules dict={dict.automation} locale={locale} />
       </ScrollAnimate>
 
-      <section id="portfolio" className="flex flex-col gap-8 sm:gap-12 relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[300px] sm:h-[400px] bg-emerald-600/5 blur-[200px] rounded-full pointer-events-none" />
-        <div className="text-center flex flex-col gap-3 sm:gap-4 relative z-10 px-2">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">{dict.portfolio.title}</h2>
-          <p className="text-base sm:text-xl text-neutral-400">{dict.portfolio.subtitle}</p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 relative z-10 items-stretch">
-          <BentoCard
-            href={`/${locale}/portfolio/cupertino-roast`}
-            title={dict.portfolio.items['cupertino-roast'].title}
-            description={dict.portfolio.items['cupertino-roast'].desc}
-            visual={CupertinoVisual}
-            visualAlt="Cupertino Roast menu"
-            delay={0.1}
-          />
-          <BentoCard
-            href={`/${locale}/portfolio/shift-drive`}
-            title={dict.portfolio.items['shift-drive'].title}
-            description={dict.portfolio.items['shift-drive'].desc}
-            visual={ShiftDriveVisual}
-            visualAlt="Shift & Drive STO booking"
-            delay={0.2}
-          />
-          <BentoCard
-            href={`/${locale}/portfolio/umami-bistro`}
-            title={dict.portfolio.items['umami-bistro'].title}
-            description={dict.portfolio.items['umami-bistro'].desc}
-            visual={UmamiVisual}
-            visualAlt="Umami Bistro reservations"
-            delay={0.3}
-          />
-          <BentoCard
-            href={`/${locale}/portfolio/aura-wellness`}
-            title={dict.portfolio.items['aura-wellness'].title}
-            description={dict.portfolio.items['aura-wellness'].desc}
-            visual={AuraVisual}
-            visualAlt="Aura Wellness salons"
-            delay={0.4}
-          />
-        </div>
-      </section>
+      <PortfolioShowcase dict={dict.portfolio} locale={locale} linkLabel={dict.hero.case_cta} />
 
       <SpeedCheckWidget dict={dict.speed_check} />
       <RoiCalculator dict={dict.roi} />
