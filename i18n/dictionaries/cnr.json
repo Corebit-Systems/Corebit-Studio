@@ -31,14 +31,17 @@
     "subtitle": "Pretvorite vaš sajt u autonomnu mašinu za prodaju 24/7.",
     "seo_tagline": "Automatizacija poslovanja Crna Gora & Veb Razvoj",
     "tables": {
+      "case_cta": "Pogledajte rezervacije u Umami Bistrou",
       "title": "Pametne Rezervacije Stolova",
       "desc": "Interaktivni rasporedi i sistemi za rezervaciju u realnom vremenu za premium restorane."
     },
     "booking": {
+      "case_cta": "Kalendar na primjeru Shift & Drive STO",
       "title": "Dinamičko Zakazivanje",
       "desc": "Sajt za rent a car {where} sa kalendarom zauzetosti."
     },
     "schedule": {
+      "case_cta": "Pogledajte zakazivanje u Aura Wellnessu",
       "title": "Automatizovani Rasporedi",
       "desc": "Besprekorni sistemi zakazivanja za salone ljepote sa SMS/Email obavještenjima."
     }

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ArrowLeft, CalendarCheck, CheckCircle2, ClipboardList, Cpu, Table2 } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import ProjectFlowPreview, { type ProjectPreviewCopy } from '@/components/ProjectFlowPreview';
-import { isProjectReference, projectReferenceQuery, type ProjectReferenceId } from '@/components/projectReference';
+import { isProjectReference, projectReferenceQuery, projectWorkflowAnchor, type ProjectReferenceId } from '@/components/projectReference';
 
 const SITE_URL = 'https://studio.corebitsystems.io';
 
@@ -162,7 +162,7 @@ export default async function PortfolioProjectPage({
   const schema      = PORTFOLIO_SCHEMA[slug];
   const booking = slug === 'umami-bistro' ? dict.portfolio_page.umami_booking : undefined;
   const reference = isProjectReference(slug) ? slug : undefined;
-  const preview = reference ? dict.portfolio_page.previews[reference] : undefined;
+  const preview = reference && !booking ? dict.portfolio_page.previews[reference] : undefined;
   const referenceQuery = reference ? `?${projectReferenceQuery}=${reference}` : '';
   const contactHref = `/${locale}${referenceQuery}#contact`;
 
@@ -237,7 +237,7 @@ export default async function PortfolioProjectPage({
       </div>
 
       {booking && (
-        <section aria-labelledby="umami-booking-title" className="rounded-2xl border border-emerald-400/20 bg-gradient-to-br from-emerald-500/[0.07] to-white/[0.02] p-5 sm:rounded-3xl sm:p-8">
+        <section id={projectWorkflowAnchor} aria-labelledby="umami-booking-title" className="rounded-2xl border border-emerald-400/20 bg-gradient-to-br from-emerald-500/[0.07] to-white/[0.02] p-5 sm:rounded-3xl sm:p-8">
           <h2 id="umami-booking-title" className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
             {booking.title}
           </h2>
@@ -264,6 +264,7 @@ export default async function PortfolioProjectPage({
 
       {preview && (
         <section
+          id={projectWorkflowAnchor}
           aria-labelledby="project-preview-title"
           className="grid gap-5 rounded-2xl border border-emerald-400/20 bg-emerald-500/[0.04] p-5 sm:gap-6 sm:rounded-3xl sm:p-8 md:grid-cols-2 md:gap-x-10"
         >

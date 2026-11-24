@@ -4,6 +4,7 @@
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 interface BentoCardProps {
   title: string;
@@ -15,6 +16,7 @@ interface BentoCardProps {
   className?: string;
   delay?: number;
   href?: string;
+  linkLabel?: string;
 }
 
 export default function BentoCard({
@@ -26,6 +28,7 @@ export default function BentoCard({
   className = '',
   delay = 0,
   href,
+  linkLabel,
 }: BentoCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
@@ -108,13 +111,23 @@ export default function BentoCard({
           <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-white">{title}</h3>
           <p className="text-sm text-neutral-400 leading-relaxed">{description}</p>
         </div>
+        {href && linkLabel && (
+          <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 group-hover:text-emerald-200">
+            {linkLabel}
+            <ArrowRight aria-hidden="true" size={16} className="shrink-0 motion-safe:transition-transform motion-safe:group-hover:translate-x-0.5" />
+          </span>
+        )}
       </div>
     </motion.article>
   );
 
   // ФИКС: Link обёртка — добавлен min-h-0 чтобы Link не ломал flex-контейнеры
   return href ? (
-    <Link href={href} className="block h-full min-h-0">
+    <Link
+      href={href}
+      aria-label={linkLabel ? `${title} · ${linkLabel}` : undefined}
+      className="block h-full min-h-0 rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400 sm:rounded-3xl"
+    >
       {CardContent}
     </Link>
   ) : (

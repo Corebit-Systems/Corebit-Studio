@@ -1,4 +1,5 @@
 export const projectReferenceQuery = 'example';
+export const projectWorkflowAnchor = 'project-workflow';
 
 export const projectReferences = {
   'cupertino-roast': 'Cupertino Roast',

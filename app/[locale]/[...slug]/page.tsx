@@ -5,6 +5,7 @@ import { getDictionary, Locale } from '@/i18n/getDictionary';
 import { RoiCalculator, SpeedCheckWidget } from '@/components/LazyWidgets';
 import type { SpeedCheckDict } from '@/components/SpeedCheckWidget';
 import BentoCard from '@/components/BentoCard';
+import AutomationModules, { type AutomationDict } from '@/components/AutomationModules';
 import PricingSection, { type PricingDict } from '@/components/PricingSection';
 import ContactForm from '@/components/ContactForm';
 import HeroSection, { type HeroDict } from '@/components/HeroSection';
@@ -12,7 +13,7 @@ import FAQSection from '@/components/FAQSection';
 import ReviewsAccordion from '@/components/ReviewsAccordion';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider';
 import TechEcosystem from '@/components/TechEcosystem';
-import { ArrowRight, CheckCircle2, CalendarClock, Utensils, CalendarHeart } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import slugMapData from '@/i18n/slug-map.json';
 
 // Heavy client-only widgets deferred to avoid blocking the RSC shell
@@ -338,14 +339,7 @@ interface PageDict {
     desc: string;
     badges: string[];
   };
-  automation: {
-    title: string;
-    subtitle: string;
-    seo_tagline?: string;
-    tables: { title: string; desc: string };
-    booking: { title: string; desc: string };
-    schedule: { title: string; desc: string };
-  };
+  automation: AutomationDict;
   portfolio: {
     title: string;
     subtitle: string;
@@ -569,39 +563,7 @@ export default async function CatchAllSEOPage({
         </div>
       </section>
 
-      <section id="modules" className="flex flex-col gap-8 sm:gap-12">
-        <div className="text-center flex flex-col gap-3 sm:gap-4 px-2">
-          {dict.automation.seo_tagline && (
-            <h3 className="text-xs sm:text-sm font-bold tracking-wider text-emerald-500 uppercase">
-              {dict.automation.seo_tagline}
-            </h3>
-          )}
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">{dict.automation.title}</h2>
-          <p className="text-base sm:text-xl text-neutral-400">{dict.automation.subtitle}</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 items-stretch">
-          <BentoCard
-            title={dict.automation.tables.title}
-            description={dict.automation.tables.desc}
-            icon={<Utensils size={24} aria-label="Restaurant table booking module icon" />}
-            delay={0.1}
-          />
-          <BentoCard
-            title={dict.automation.booking.title}
-            description={dict.automation.booking.desc}
-            icon={<CalendarClock size={24} aria-label="Time-slot booking calendar module icon" />}
-            delay={0.2}
-            className="md:col-span-2"
-          />
-          <BentoCard
-            title={dict.automation.schedule.title}
-            description={dict.automation.schedule.desc}
-            icon={<CalendarHeart size={24} aria-label="Beauty salon appointment scheduler module icon" />}
-            delay={0.3}
-            className="md:col-span-3"
-          />
-        </div>
-      </section>
+      <AutomationModules dict={dict.automation} locale={locale} />
 
       <section id="portfolio" className="flex flex-col gap-8 sm:gap-12 relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[300px] sm:h-[400px] bg-emerald-600/5 blur-[200px] rounded-full pointer-events-none" />

@@ -31,14 +31,17 @@
     "subtitle": "Turn your website into a 24/7 autonomous sales and booking engine.",
     "seo_tagline": "Web Development in Montenegro & Balkan Business Automation",
     "tables": {
+      "case_cta": "See table booking at Umami Bistro",
       "title": "Smart Table Reservations",
       "desc": "Live interactive layouts and real-time booking engines for premium restaurants and cafes."
     },
     "booking": {
+      "case_cta": "See the calendar in Shift & Drive STO",
       "title": "Dynamic Time-Slot Booking",
       "desc": "Website for car rentals {where} with availability calendar."
     },
     "schedule": {
+      "case_cta": "See appointment booking at Aura Wellness",
       "title": "Automated Schedulers",
       "desc": "Seamless appointment flows for beauty salons featuring step-by-step onboarding and SMS/Email webhooks."
     }

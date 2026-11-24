@@ -10,6 +10,7 @@ import dynamic from 'next/dynamic';
 // Above-the-fold components: statically imported for critical path/LCP optimization
 import HeroSection, { type HeroDict } from '@/components/HeroSection';
 import BentoCard from '@/components/BentoCard';
+import AutomationModules, { type AutomationDict } from '@/components/AutomationModules';
 import ScrollAnimate from '@/components/ScrollAnimate';
 
 // Below-the-fold components: dynamically loaded to split JS bundle and reduce TBT
@@ -25,7 +26,7 @@ const TechStackWidget = dynamic(() => import('@/components/TechStackWidget'));
 
 // Non-SEO-critical interactive calculators: loaded without SSR to optimize initial HTML payload
 
-import { ArrowRight, CheckCircle2, CalendarClock, Utensils, CalendarHeart } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const SITE_URL = 'https://studio.corebitsystems.io';
 
@@ -97,14 +98,7 @@ interface PageDict {
     desc: string;
     badges: string[];
   };
-  automation: {
-    title: string;
-    subtitle: string;
-    seo_tagline?: string;
-    tables: { title: string; desc: string };
-    booking: { title: string; desc: string };
-    schedule: { title: string; desc: string };
-  };
+  automation: AutomationDict;
   portfolio: {
     title: string;
     subtitle: string;
@@ -281,39 +275,7 @@ export default async function HomePage({
 
       {/* 4. Modules / Собственные модули */}
       <ScrollAnimate>
-        <section id="modules" className="flex flex-col gap-8 sm:gap-12">
-          <div className="text-center flex flex-col gap-3 sm:gap-4 px-2">
-            {dict.automation.seo_tagline && (
-              <h3 className="text-xs sm:text-sm font-bold tracking-wider text-emerald-500 uppercase">
-                {dict.automation.seo_tagline}
-              </h3>
-            )}
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">{dict.automation.title}</h2>
-            <p className="text-base sm:text-xl text-neutral-400">{dict.automation.subtitle}</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 items-stretch">
-            <BentoCard
-              title={dict.automation.tables.title}
-              description={dict.automation.tables.desc}
-              icon={<Utensils size={24} aria-label="Restaurant table booking module icon" />}
-              delay={0.1}
-            />
-            <BentoCard
-              title={dict.automation.booking.title}
-              description={dict.automation.booking.desc}
-              icon={<CalendarClock size={24} aria-label="Time-slot booking calendar module icon" />}
-              delay={0.2}
-              className="md:col-span-2"
-            />
-            <BentoCard
-              title={dict.automation.schedule.title}
-              description={dict.automation.schedule.desc}
-              icon={<CalendarHeart size={24} aria-label="Beauty salon appointment scheduler module icon" />}
-              delay={0.3}
-              className="md:col-span-3"
-            />
-          </div>
-        </section>
+        <AutomationModules dict={dict.automation} locale={locale} />
       </ScrollAnimate>
 
       {/* 5. Portfolio / Впечатляющие цифровые активы */}

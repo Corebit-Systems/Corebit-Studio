@@ -31,14 +31,17 @@
     "subtitle": "Kthejeni faqen tuaj në një makinë shitjeje autonome 24/7.",
     "seo_tagline": "Zgjidhje softuerike në Shqipëri & Automatizim Biznesi",
     "tables": {
+      "case_cta": "Shiko rezervimet te Umami Bistro",
       "title": "Rezervime të Zgjuara",
       "desc": "Sisteme rezervimi në kohë reale dhe plane interaktive për restorante premium."
     },
     "booking": {
+      "case_cta": "Shiko kalendarin te Shift & Drive STO",
       "title": "Rezervim Dinamik i Kohës",
       "desc": "Uebfaqe për makina me qira {where} me kalendar disponueshmërie."
     },
     "schedule": {
+      "case_cta": "Shiko rezervimin e termineve te Aura Wellness",
       "title": "Planifikues të Automatizuar",
       "desc": "Flukse takimesh pa probleme për sallone bukurie me njoftime SMS/Email."
     }
