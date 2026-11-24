@@ -4,7 +4,8 @@ import { getDictionary, Locale } from '@/i18n/getDictionary';
 import Link from 'next/link';
 import { ArrowLeft, CalendarCheck, CheckCircle2, ClipboardList, Cpu, Table2 } from 'lucide-react';
 import { notFound } from 'next/navigation';
-import { isProjectReference, projectReferenceQuery } from '@/components/projectReference';
+import ProjectFlowPreview, { type ProjectPreviewCopy } from '@/components/ProjectFlowPreview';
+import { isProjectReference, projectReferenceQuery, type ProjectReferenceId } from '@/components/projectReference';
 
 const SITE_URL = 'https://studio.corebitsystems.io';
 
@@ -129,6 +130,8 @@ interface PortfolioPageDict {
   features: string;
   back: string;
   similar_project: string;
+  preview_label: string;
+  previews: Partial<Record<ProjectReferenceId, ProjectPreviewCopy>>;
   umami_booking: {
     title: string;
     steps: { title: string; description: string }[];
@@ -158,7 +161,9 @@ export default async function PortfolioProjectPage({
   const details     = dict.portfolio_tech?.[slug];
   const schema      = PORTFOLIO_SCHEMA[slug];
   const booking = slug === 'umami-bistro' ? dict.portfolio_page.umami_booking : undefined;
-  const referenceQuery = isProjectReference(slug) ? `?${projectReferenceQuery}=${slug}` : '';
+  const reference = isProjectReference(slug) ? slug : undefined;
+  const preview = reference ? dict.portfolio_page.previews[reference] : undefined;
+  const referenceQuery = reference ? `?${projectReferenceQuery}=${reference}` : '';
   const contactHref = `/${locale}${referenceQuery}#contact`;
 
   // ── Product + Review + AggregateRating JSON-LD ───────────────────────────
@@ -257,6 +262,27 @@ export default async function PortfolioProjectPage({
         </section>
       )}
 
+      {preview && (
+        <section
+          aria-labelledby="project-preview-title"
+          className="grid gap-5 rounded-2xl border border-emerald-400/20 bg-emerald-500/[0.04] p-5 sm:gap-6 sm:rounded-3xl sm:p-8 md:grid-cols-2 md:gap-x-10"
+        >
+          <div className="self-center">
+            <h2 id="project-preview-title" className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">{preview.title}</h2>
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-neutral-300 sm:text-base">{preview.description}</p>
+          </div>
+          <div className="w-full md:col-start-2 md:row-start-1 md:row-span-2">
+            <ProjectFlowPreview copy={preview} label={dict.portfolio_page.preview_label} />
+          </div>
+          <Link
+            href={contactHref}
+            className="inline-flex min-h-12 items-center justify-center self-start rounded-xl bg-white px-5 py-2.5 text-center text-sm font-semibold text-black transition-colors hover:bg-neutral-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400 sm:justify-self-start"
+          >
+            {dict.portfolio_page.similar_project}
+          </Link>
+        </section>
+      )}
+
       {details ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 items-stretch">
           <div className="flex flex-col h-full p-5 sm:p-8 md:p-10 rounded-2xl sm:rounded-[2.5rem] border border-white/10 bg-white/[0.02] backdrop-blur-xl gap-4 sm:gap-6">
@@ -313,7 +339,7 @@ export default async function PortfolioProjectPage({
           </div>
         </div>
       )}
-      {!booking && (
+      {!booking && !preview && (
         <Link
           href={contactHref}
           className="inline-flex min-h-12 items-center justify-center self-start rounded-xl bg-white px-5 text-sm font-semibold text-black transition-colors hover:bg-neutral-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400"

@@ -66,6 +66,42 @@
     }
   },
   "portfolio_page": {
+    "preview_label": "Interaktivni primjer",
+    "previews": {
+      "shift-drive": {
+        "title": "Kako klijent zakazuje posjetu servisu",
+        "description": "Klijent bira uslugu i termin u kalendaru auto-servisa.",
+        "choice": "Usluga",
+        "options": [
+          "Dijagnostika",
+          "Zamjena ulja"
+        ],
+        "time": "Vrijeme posjete",
+        "summary": "Detalji termina"
+      },
+      "aura-wellness": {
+        "title": "Kako klijent zakazuje posjetu salonu",
+        "description": "Klijent bira tretman i termin u obrascu koji ga vodi korak po korak.",
+        "choice": "Tretman",
+        "options": [
+          "Masaža",
+          "Njega lica"
+        ],
+        "time": "Vrijeme posjete",
+        "summary": "Detalji termina"
+      },
+      "cupertino-roast": {
+        "title": "Kako gost bira napitak",
+        "description": "Pogledajte kako gost bira napitak iz digitalnog menija kafića.",
+        "choice": "Napitak",
+        "options": [
+          "Espreso",
+          "Kapučino",
+          "Late"
+        ],
+        "summary": "Izabrani napitak"
+      }
+    },
     "similar_project": "Razgovarajmo o sličnom projektu",
     "umami_booking": {
       "title": "Kako gosti rezervišu sto",

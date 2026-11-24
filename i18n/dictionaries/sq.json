@@ -66,6 +66,42 @@
     }
   },
   "portfolio_page": {
+    "preview_label": "Shembull interaktiv",
+    "previews": {
+      "shift-drive": {
+        "title": "Si cakton klienti një vizitë në autoservis",
+        "description": "Klienti zgjedh shërbimin dhe orarin në kalendarin e autoservisit.",
+        "choice": "Shërbimi",
+        "options": [
+          "Diagnostikim",
+          "Ndërrim vaji"
+        ],
+        "time": "Orari i vizitës",
+        "summary": "Detajet e rezervimit"
+      },
+      "aura-wellness": {
+        "title": "Si cakton klienti një vizitë në sallon",
+        "description": "Klienti zgjedh trajtimin dhe orarin në një formular me disa hapa.",
+        "choice": "Trajtimi",
+        "options": [
+          "Masazh",
+          "Trajtim fytyre"
+        ],
+        "time": "Orari i vizitës",
+        "summary": "Detajet e rezervimit"
+      },
+      "cupertino-roast": {
+        "title": "Si zgjedh mysafiri një pije",
+        "description": "Shihni si zgjedh mysafiri një pije nga menuja digjitale e kafenesë.",
+        "choice": "Pija",
+        "options": [
+          "Espreso",
+          "Kapuçino",
+          "Late"
+        ],
+        "summary": "Pija e zgjedhur"
+      }
+    },
     "similar_project": "Diskutoni një projekt të ngjashëm",
     "umami_booking": {
       "title": "Si rezervojnë tavolinë vizitorët",

@@ -66,6 +66,42 @@
     }
   },
   "portfolio_page": {
+    "preview_label": "Interactive example",
+    "previews": {
+      "shift-drive": {
+        "title": "How customers book a workshop visit",
+        "description": "Customers pick a service and time using the workshop’s booking calendar.",
+        "choice": "Service",
+        "options": [
+          "Diagnostics",
+          "Oil change"
+        ],
+        "time": "Visit time",
+        "summary": "Appointment details"
+      },
+      "aura-wellness": {
+        "title": "How customers book a salon visit",
+        "description": "Customers choose a treatment and a time in a step-by-step form.",
+        "choice": "Treatment",
+        "options": [
+          "Massage",
+          "Facial"
+        ],
+        "time": "Visit time",
+        "summary": "Appointment details"
+      },
+      "cupertino-roast": {
+        "title": "How guests choose a drink",
+        "description": "See how a guest picks an item from the coffee shop’s digital menu.",
+        "choice": "Drink",
+        "options": [
+          "Espresso",
+          "Cappuccino",
+          "Latte"
+        ],
+        "summary": "Selected drink"
+      }
+    },
     "similar_project": "Discuss a similar project",
     "umami_booking": {
       "title": "How guests book a table",
