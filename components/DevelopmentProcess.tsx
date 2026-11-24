@@ -34,7 +34,7 @@ const processCopy: Record<Locale, ProcessCopy> = {
     ],
   },
   ru: {
-    title: 'Как мы разрабатываем сайты',
+    title: 'Как мы работаем',
     subtitle: 'Пять этапов от первого разговора до запуска.',
     resultLabel: 'Результат этапа',
     steps: [
@@ -112,8 +112,23 @@ export default function DevelopmentProcess({ locale }: { locale: Locale }) {
         <p className="text-base text-neutral-400 sm:text-lg">{copy.subtitle}</p>
       </div>
 
-      <div className="grid gap-4 rounded-3xl border border-white/10 bg-white/[0.025] p-3 sm:gap-5 sm:p-5 md:grid-cols-[minmax(14rem,1fr)_2fr]">
-        <div role="tablist" aria-labelledby="development-process-title" onKeyDown={navigateSteps} className="grid grid-cols-1 gap-2 min-[380px]:grid-cols-2 md:grid-cols-1">
+      <div className="grid gap-5 sm:gap-7">
+        <div
+          role="tablist"
+          aria-labelledby="development-process-title"
+          onKeyDown={navigateSteps}
+          className="relative grid gap-3 md:grid-cols-5 md:gap-0"
+        >
+          <div aria-hidden="true" className="absolute bottom-7 left-7 top-7 w-px overflow-hidden bg-white/[0.15] md:bottom-auto md:left-[10%] md:right-[10%] md:h-px md:w-auto">
+            <div
+              className="h-full w-full origin-top bg-emerald-400 motion-safe:transition-transform motion-safe:duration-300 md:hidden"
+              style={{ transform: `scaleY(${activeStep / lastStep})` }}
+            />
+            <div
+              className="hidden h-full w-full origin-left bg-emerald-400 motion-safe:transition-transform motion-safe:duration-300 md:block"
+              style={{ transform: `scaleX(${activeStep / lastStep})` }}
+            />
+          </div>
           {copy.steps.map((step, index) => {
             const Icon = stepIcons[index];
             const selected = index === activeStep;
@@ -128,19 +143,18 @@ export default function DevelopmentProcess({ locale }: { locale: Locale }) {
                 aria-controls={`process-panel-${index}`}
                 tabIndex={selected ? 0 : -1}
                 onClick={() => setActiveStep(index)}
-                className={`flex min-h-12 min-w-0 items-center gap-2 rounded-xl border px-2.5 py-2 text-left text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400 min-[380px]:max-md:last:col-span-2 sm:gap-3 sm:px-3 sm:text-sm ${selected ? 'border-emerald-400/35 bg-emerald-400/10 text-emerald-200' : 'border-transparent text-neutral-300 hover:bg-white/[0.06] hover:text-white'}`}
+                className={`group relative flex min-h-14 min-w-0 items-center gap-4 rounded-lg text-left text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400 sm:text-base md:flex-col md:gap-3 md:px-1 md:text-center ${selected ? 'text-emerald-300' : 'text-neutral-300 hover:text-white'}`}
               >
-                <Icon aria-hidden="true" size={17} className="shrink-0" />
+                <span className={`flex size-14 shrink-0 items-center justify-center rounded-full border bg-[#0c1010] transition-colors ${selected ? 'border-emerald-400 text-emerald-300 shadow-[0_0_24px_rgba(52,211,153,.25)]' : 'border-white/[0.15] text-neutral-400 group-hover:border-emerald-400/50 group-hover:text-emerald-200'}`}>
+                  <Icon aria-hidden="true" size={21} />
+                </span>
                 <span>{step.title}</span>
               </button>
             );
           })}
         </div>
 
-        <div className="min-w-0 rounded-2xl border border-emerald-400/15 bg-[radial-gradient(ellipse_at_top_right,_rgba(16,185,129,.15),_transparent_72%)] p-4 sm:p-6">
-          <div aria-hidden="true" className="mb-4 h-0.5 overflow-hidden rounded-full bg-white/10 sm:mb-5">
-            <div className="h-full rounded-full bg-emerald-300 motion-safe:transition-[width] motion-safe:duration-300 motion-safe:ease-out" style={{ width: `${((activeStep + 1) / stepIcons.length) * 100}%` }} />
-          </div>
+        <div className="mx-auto w-full max-w-2xl rounded-2xl border border-emerald-400/15 bg-[radial-gradient(ellipse_at_top_right,_rgba(16,185,129,.15),_transparent_72%)] p-4 sm:p-6">
           {copy.steps.map((step, index) => (
             <div
               key={step.title}

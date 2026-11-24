@@ -236,6 +236,10 @@ export default async function HomePage({
       {/* 5. Portfolio / Впечатляющие цифровые активы */}
       <PortfolioShowcase dict={dict.portfolio} locale={locale} linkLabel={dict.hero.case_cta} />
 
+      <ScrollAnimate>
+        <DevelopmentProcess locale={locale} />
+      </ScrollAnimate>
+
       {/* 6. Diagnostics, Warning Section, Calculator & Lead Magnet */}
       {/* Warning Section: Losing Clients */}
       <section className="flex flex-col md:flex-row items-center gap-8 md:gap-16 p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-[3rem] bg-red-950/10 border border-red-900/20 backdrop-blur-xl relative overflow-hidden">
@@ -264,11 +268,6 @@ export default async function HomePage({
 
       {/* 7. Interactive Business IT Ecosystem Diagram */}
       <TechEcosystem dict={dict.ecosystem} />
-
-      {/* 8. Transparent Development Process Timeline */}
-      <ScrollAnimate>
-        <DevelopmentProcess locale={locale} />
-      </ScrollAnimate>
 
       {/* 9. Client Reviews Accordion & Feedback Form + FAQ */}
       <ReviewsAccordion dict={(dict as any).reviews} />

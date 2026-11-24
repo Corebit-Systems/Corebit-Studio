@@ -167,6 +167,11 @@ async function checkPage(path, locale, localizedPaths, type, project) {
   if (type === 'home') {
     const links = tags(html, 'a').map(link => link.href);
     for (const service of servicePaths) assert.ok(links.includes(service.path(locale)), path);
+    const timeline = html.match(/<section id="development-process"[^>]*>([\s\S]*?)<\/section>/)?.[1];
+    assert.ok(timeline, `Missing development timeline on ${path}`);
+    const steps = tags(timeline, 'button').filter(button => button.role === 'tab');
+    assert.equal(steps.length, 5, path);
+    assert.equal(steps.filter(step => step['aria-selected'] === 'true').length, 1, path);
   }
   if (type === 'service') {
     const guide = html.match(/<section aria-labelledby="service-answer-title"[^>]*>([\s\S]*?)<\/section>/)?.[1];
