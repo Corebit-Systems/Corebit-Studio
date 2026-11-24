@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 import { RoiCalculator, SpeedCheckWidget } from '@/components/LazyWidgets';
+import type { ContactFormDict } from '@/components/ContactForm';
 import type { SpeedCheckDict } from '@/components/SpeedCheckWidget';
 import { isProjectReference, projectReferenceQuery } from '@/components/projectReference';
 import dynamic from 'next/dynamic';
@@ -164,28 +165,6 @@ interface PricingDict {
   tier1: { title: string; price: number; desc: string; btn: string };
   tier2: { title: string; price: number; desc: string; btn: string };
   tier3: { title: string; price: number; desc: string; btn: string };
-}
-
-interface ContactFormDict {
-  title: string;
-  name: string;
-  email: string;
-  message: string;
-  send: string;
-  sending: string;
-  success: string;
-  error_rate: string;
-  error_spam: string;
-  error_general: string;
-  gdpr_text: string;
-  privacy_policy_link: string;
-  selected_plan: string;
-  clear_plan: string;
-  project_reference: string;
-  clear_project_reference: string;
-  whatsapp_btn?: string;
-  telegram_btn?: string;
-  prefilled_msg?: string;
 }
 
 export default async function HomePage({

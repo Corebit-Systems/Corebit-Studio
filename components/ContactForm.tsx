@@ -3,14 +3,14 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShieldCheck, Loader2, Mail } from 'lucide-react';
+import { Check, ShieldCheck, Loader2, Mail } from 'lucide-react';
 import { submitContactForm } from '@/app/actions';
 import { trackLeadEvent } from './leadAnalytics';
 import { pricingSelectionEvent, type PricingInquiry } from './pricingInquiry';
 import { contactDraftEvent, contactMessageLimit, mergeContactDraft, takeContactDraft } from './contactDraft';
 import { projectReferences, projectReferenceQuery, type ProjectReferenceId } from './projectReference';
 
-interface ContactFormDict {
+export interface ContactFormDict {
   title: string;
   name: string;
   email: string;
@@ -18,6 +18,8 @@ interface ContactFormDict {
   send: string;
   sending: string;
   success: string;
+  success_detail: string;
+  new_inquiry: string;
   error_rate: string;
   error_spam: string;
   error_general: string;
@@ -40,12 +42,16 @@ interface ContactFormProps {
   example?: ProjectReferenceId;
 }
 
+const cooldownMs = 60_000;
+const cooldownStorageKey = 'last_submit_time';
+
 export default function ContactForm({ dict, locale, example }: ContactFormProps) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [agreeGDPR, setAgreeGDPR] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<PricingInquiry | null>(null);
   const [removedReference, setRemovedReference] = useState<ProjectReferenceId>();
+  const headingRef = useRef<HTMLHeadingElement>(null);
   const reference = example === removedReference ? undefined : example;
   const whatsappMessage = [
     dict.prefilled_msg,
@@ -66,6 +72,7 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
   useEffect(() => {
     const handleSelection = (event: Event) => {
       setSelectedPlan((event as CustomEvent<PricingInquiry>).detail);
+      setStatus((current) => current === 'success' ? 'idle' : current);
     };
     window.addEventListener(pricingSelectionEvent, handleSelection);
     return () => window.removeEventListener(pricingSelectionEvent, handleSelection);
@@ -79,31 +86,30 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
   useEffect(() => {
     const applyDraft = () => {
       const draft = takeContactDraft();
-      if (draft) setMessage((current) => mergeContactDraft(current, draft));
+      if (draft) {
+        setMessage((current) => mergeContactDraft(current, draft));
+        setStatus((current) => current === 'success' ? 'idle' : current);
+      }
     };
     window.addEventListener(contactDraftEvent, applyDraft);
     applyDraft();
     return () => window.removeEventListener(contactDraftEvent, applyDraft);
   }, []);
 
-  // Rate Limiting States — driven by useRef timer; NOT localStorage
-  // Using a ref for the interval means DevTools cannot bypass by deleting localStorage keys.
   const [countdown, setCountdown] = useState(0);
   const [isRateLimited, setIsRateLimited] = useState(false);
   const cooldownRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const inquiryStarted = useRef(false);
 
-  // On mount: check if server cookie signal is present (httpOnly prevents JS read,
-  // but document.cookie lets us detect presence to sync UI with server-side block).
-  // Also hydrate from localStorage as a secondary hint (not security-critical).
   useEffect(() => {
-    const lastSubmit = localStorage.getItem('last_submit_time');
-    if (lastSubmit) {
-      const elapsed = Date.now() - parseInt(lastSubmit, 10);
-      const remaining = 60000 - elapsed;
-      if (remaining > 0) {
-        startCooldown(Math.ceil(remaining / 1000));
+    try {
+      const lastSubmit = localStorage.getItem(cooldownStorageKey);
+      if (lastSubmit) {
+        const remaining = cooldownMs - (Date.now() - Number(lastSubmit));
+        if (remaining > 0 && remaining <= cooldownMs) startCooldown(remaining);
       }
+    } catch {
+      // The server still enforces limits if browser storage is unavailable.
     }
     return () => {
       if (cooldownRef.current) clearInterval(cooldownRef.current);
@@ -111,23 +117,25 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const startCooldown = (seconds: number) => {
+  useEffect(() => {
+    if (status === 'success') headingRef.current?.focus();
+  }, [status]);
+
+  function startCooldown(durationMs: number) {
+    const endsAt = Date.now() + durationMs;
     setIsRateLimited(true);
-    setCountdown(seconds);
-    // Clear any existing interval before starting a new one
+    setCountdown(Math.ceil(durationMs / 1000));
     if (cooldownRef.current) clearInterval(cooldownRef.current);
     cooldownRef.current = setInterval(() => {
-      setCountdown(prev => {
-        if (prev <= 1) {
-          clearInterval(cooldownRef.current!);
-          cooldownRef.current = null;
-          setIsRateLimited(false);
-          return 0;
-        }
-        return prev - 1;
-      });
+      const remaining = Math.max(0, Math.ceil((endsAt - Date.now()) / 1000));
+      setCountdown(remaining);
+      if (remaining === 0 && cooldownRef.current) {
+        clearInterval(cooldownRef.current);
+        cooldownRef.current = null;
+        setIsRateLimited(false);
+      }
     }, 1000);
-  };
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -155,35 +163,24 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
           trackLeadEvent('generate_lead', locale, 'contact_form');
         }
         inquiryStarted.current = false;
-        // Write localStorage hint (secondary only — actual security is server-side cookie)
-        localStorage.setItem('last_submit_time', Date.now().toString());
-        setStatus('success');
-
-        // UX Clean reset
+        try {
+          localStorage.setItem(cooldownStorageKey, Date.now().toString());
+        } catch {
+          // Storage should never turn a successful delivery into an error.
+        }
+        startCooldown(cooldownMs);
         setName('');
         setEmail('');
         setMessage((current) => current === message ? '' : current);
         setSelectedPlan((current) => current === selectedPlan ? null : current);
+        setAgreeGDPR(false);
         if (reference) clearProjectReference();
-
-        // Delay the rate limit lock in the UI by 3 seconds so the user can read the success message.
-        // After 3 seconds, we start the cooldown with the remaining time (~57s).
-        setTimeout(() => {
-          const lastSubmit = localStorage.getItem('last_submit_time');
-          if (lastSubmit) {
-            const elapsed = Date.now() - parseInt(lastSubmit, 10);
-            const remaining = 60000 - elapsed;
-            if (remaining > 0) {
-              startCooldown(Math.ceil(remaining / 1000));
-            }
-          }
-          setStatus('idle');
-        }, 3000);
+        setStatus('success');
       } else {
         if (response.errorType === 'rate') {
           setErrorMessage(dict.error_rate);
           // Server told us we're rate-limited — enforce UI lock regardless of localStorage
-          startCooldown(60);
+          startCooldown(cooldownMs);
         } else if (response.errorType === 'spam') {
           setErrorMessage(dict.error_spam);
         } else {
@@ -205,10 +202,44 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
     >
       <div className="absolute top-0 right-0 w-48 sm:w-64 h-48 sm:h-64 bg-emerald-600/10 blur-[100px] rounded-full pointer-events-none" />
 
-      <div className="flex items-center gap-3 mb-6 sm:mb-8">
-        <ShieldCheck className="text-emerald-500 shrink-0" size={24} />
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{dict.title}</h2>
+      <div className={status === 'success'
+        ? 'relative flex flex-col items-center gap-5 pt-6 text-center sm:pt-8'
+        : 'flex items-center gap-3 mb-6 sm:mb-8'}
+      >
+        {status === 'success' ? (
+          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-300">
+            <Check aria-hidden="true" size={28} />
+          </span>
+        ) : (
+          <ShieldCheck aria-hidden="true" className="text-emerald-500 shrink-0" size={24} />
+        )}
+        <h2
+          ref={headingRef}
+          tabIndex={-1}
+          aria-describedby={status === 'success' ? 'contact-success-detail' : undefined}
+          className="scroll-mt-28 rounded text-2xl font-bold tracking-tight focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400 sm:text-3xl"
+        >
+          {status === 'success' ? dict.success : dict.title}
+        </h2>
       </div>
+
+      {status === 'success' && (
+        <div className="relative flex flex-col items-center gap-4 pt-3 pb-3 text-center sm:pb-6">
+          <p id="contact-success-detail" className="max-w-sm text-sm leading-relaxed text-neutral-300 sm:text-base">
+            {dict.success_detail}
+          </p>
+          <button
+            type="button"
+            onClick={() => {
+              setStatus('idle');
+              requestAnimationFrame(() => headingRef.current?.focus());
+            }}
+            className="min-h-11 rounded-md px-3 text-sm font-medium text-neutral-300 underline underline-offset-4 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
+          >
+            {dict.new_inquiry}
+          </button>
+        </div>
+      )}
 
       <form
         onSubmit={handleSubmit}
@@ -223,7 +254,7 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
             inquiryStarted.current = trackLeadEvent('inquiry_start', locale, 'contact_form');
           }
         }}
-        className="flex flex-col gap-4 sm:gap-6 relative z-10"
+        className={status === 'success' ? 'hidden' : 'relative z-10 flex flex-col gap-4 sm:gap-6'}
       >
         {(reference || selectedPlan) && (
           <div className="divide-y divide-white/10 rounded-xl border border-emerald-500/20 bg-emerald-500/[0.06] px-4">
@@ -353,12 +384,8 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
               <motion.span key="limited" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                 {dict.locked_label || 'Locked'} ({countdown}s)
               </motion.span>
-            ) : status === 'idle' || status === 'error' ? (
-              <motion.span key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                {dict.send}
-              </motion.span>
             ) : status === 'loading' ? (
-              <motion.div
+              <motion.span
                 key="loading"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -366,15 +393,10 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
                 className="flex items-center gap-2"
               >
                 <Loader2 className="animate-spin" size={20} /> {dict.sending}
-              </motion.div>
+              </motion.span>
             ) : (
-              <motion.span
-                key="success"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-white text-center px-2"
-              >
-                ✓ {dict.success}
+              <motion.span key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                {dict.send}
               </motion.span>
             )}
           </AnimatePresence>
@@ -388,6 +410,7 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
 
         {status === 'error' && (
           <motion.p
+            role="alert"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-red-400 text-sm text-center font-medium"
