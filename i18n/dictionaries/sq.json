@@ -197,6 +197,13 @@
     "text": "Ngarkimi i ngadaltë mund ta vështirësojë rezervimin. Caktimi i orareve me mesazhe mund të çojë në rezervime të humbura ose të dyfishta. Rezervimi në internet tregon oraret e lira dhe mbledh kërkesat në një vend."
   },
   "contact_form": {
+    "message_hint": {
+      "default": "Na tregoni çfarë bën biznesi juaj, çfarë duhet të ofrojë faqja dhe kur doni ta publikoni.",
+      "cupertino-roast": "Çfarë duhet të përfshijë menuja dhe si duhet të porosisin mysafirët?",
+      "shift-drive": "Për cilat shërbime nevojiten rezervime online dhe si e zgjedhin klientët orarin tani?",
+      "umami-bistro": "Sa salla keni dhe si rezervojnë mysafirët një tavolinë tani?",
+      "aura-wellness": "Cilat trajtime duhet të mund të rezervojnë klientët dhe si organizohet orari i stafit?"
+    },
     "project_reference": "Projekti si shembull",
     "clear_project_reference": "Hiq shembullin",
     "selected_plan": "Paketa e zgjedhur",

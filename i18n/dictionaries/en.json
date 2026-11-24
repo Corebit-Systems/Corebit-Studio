@@ -197,6 +197,13 @@
     "text": "Slow pages can get in the way of a booking. Managing appointments in chat can lead to missed or duplicate reservations. Online booking shows available times and keeps inquiries together."
   },
   "contact_form": {
+    "message_hint": {
+      "default": "Tell us what your business does, what the site should do, and when you’d like to launch.",
+      "cupertino-roast": "What should the menu include and how should guests place an order?",
+      "shift-drive": "Which services need online booking, and how do customers choose a time today?",
+      "umami-bistro": "How many dining rooms do you have, and how do guests currently book a table?",
+      "aura-wellness": "Which treatments should clients be able to book, and how do you schedule staff?"
+    },
     "project_reference": "Reference project",
     "clear_project_reference": "Remove reference",
     "selected_plan": "Selected package",

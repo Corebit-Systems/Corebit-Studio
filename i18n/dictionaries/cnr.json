@@ -197,6 +197,13 @@
     "text": "Sporo učitavanje može otežati rezervaciju. Ručno dogovaranje termina u porukama može dovesti do propuštenih ili dvostrukih rezervacija. Onlajn rezervacije prikazuju slobodne termine i objedinjuju upite."
   },
   "contact_form": {
+    "message_hint": {
+      "default": "Opišite čime se bavite, šta sajt treba da omogućava i kada želite da ga pokrenete.",
+      "cupertino-roast": "Šta treba da bude u meniju i kako gosti treba da naručuju?",
+      "shift-drive": "Za koje usluge je potrebno onlajn zakazivanje i kako klijenti sada biraju termin?",
+      "umami-bistro": "Koliko sala imate i kako gosti sada rezervišu sto?",
+      "aura-wellness": "Koje tretmane klijenti treba da mogu zakazati i kako je organizovan raspored osoblja?"
+    },
     "project_reference": "Primjer projekta",
     "clear_project_reference": "Ukloni primjer",
     "selected_plan": "Odabrani paket",

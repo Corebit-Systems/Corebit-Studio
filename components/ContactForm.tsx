@@ -16,6 +16,7 @@ export interface ContactFormDict {
   name: string;
   email: string;
   message: string;
+  message_hint: Record<'default' | ProjectReferenceId, string>;
   send: string;
   sending: string;
   success: string;
@@ -270,9 +271,10 @@ export default function ContactForm({ dict, locale, example, initialPricing }: C
     }
   };
 
-  function fieldAccessibility(field: ContactField) {
+  function fieldAccessibility(field: ContactField, hintId?: string) {
     const invalid = invalidFields.includes(field);
-    return { 'aria-invalid': invalid || undefined, 'aria-describedby': invalid ? `contact-${field}-error` : undefined };
+    const descriptionIds = [invalid && `contact-${field}-error`, hintId].filter(Boolean).join(' ');
+    return { 'aria-invalid': invalid || undefined, 'aria-describedby': descriptionIds || undefined };
   }
 
   function fieldError(field: ContactField) {
@@ -441,12 +443,15 @@ export default function ContactForm({ dict, locale, example, initialPricing }: C
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder={isRateLimited ? `${dict.error_rate} (${countdown}s)` : dict.message}
-            {...fieldAccessibility('message')}
+            {...fieldAccessibility('message', 'contact-message-hint')}
             rows={4}
             maxLength={contactMessageLimit}
             className="w-full scroll-mt-28 px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-600/50 focus:bg-white/10 aria-[invalid=true]:border-red-400/70 transition-all resize-none text-base disabled:opacity-40 disabled:cursor-not-allowed"
           />
           {fieldError('message')}
+          <p id="contact-message-hint" className="text-sm leading-relaxed text-neutral-400">
+            {dict.message_hint[reference ?? 'default']}
+          </p>
         </div>
 
         {/* GDPR Compliance Consent Checkbox */}
