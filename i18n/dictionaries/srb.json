@@ -66,6 +66,7 @@
     }
   },
   "portfolio_page": {
+    "similar_project": "Razgovarajmo o sličnom projektu",
     "umami_booking": {
       "title": "Kako gosti rezervišu sto",
       "steps": [

@@ -4,7 +4,7 @@ import { getDictionary, Locale } from '@/i18n/getDictionary';
 import Link from 'next/link';
 import { ArrowLeft, CalendarCheck, CheckCircle2, ClipboardList, Cpu, Table2 } from 'lucide-react';
 import { notFound } from 'next/navigation';
-import { projectReference } from '@/components/projectReference';
+import { isProjectReference, projectReferenceQuery } from '@/components/projectReference';
 
 const SITE_URL = 'https://studio.corebitsystems.io';
 
@@ -128,6 +128,7 @@ interface PortfolioPageDict {
   tech_stack: string;
   features: string;
   back: string;
+  similar_project: string;
   umami_booking: {
     title: string;
     steps: { title: string; description: string }[];
@@ -139,7 +140,6 @@ const bookingIcons = [Table2, CalendarCheck, ClipboardList];
 interface PageDict {
   portfolio:      { items: Record<string, PortfolioItem | undefined> };
   portfolio_page: PortfolioPageDict;
-  hero: { cta: string };
   portfolio_tech: Record<string, TechData | undefined>;
 }
 
@@ -158,6 +158,8 @@ export default async function PortfolioProjectPage({
   const details     = dict.portfolio_tech?.[slug];
   const schema      = PORTFOLIO_SCHEMA[slug];
   const booking = slug === 'umami-bistro' ? dict.portfolio_page.umami_booking : undefined;
+  const referenceQuery = isProjectReference(slug) ? `?${projectReferenceQuery}=${slug}` : '';
+  const contactHref = `/${locale}${referenceQuery}#contact`;
 
   // ── Product + Review + AggregateRating JSON-LD ───────────────────────────
   const jsonLd = schema ? {
@@ -247,7 +249,7 @@ export default async function PortfolioProjectPage({
             })}
           </ol>
           <Link
-            href={`/${locale}?${projectReference.query}=${projectReference.id}#contact`}
+            href={contactHref}
             className="mt-4 inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-white px-5 py-2.5 text-center text-sm font-semibold text-black transition-colors hover:bg-neutral-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400 sm:w-auto"
           >
             {booking.cta}
@@ -313,10 +315,10 @@ export default async function PortfolioProjectPage({
       )}
       {!booking && (
         <Link
-          href={`/${locale}#contact`}
+          href={contactHref}
           className="inline-flex min-h-12 items-center justify-center self-start rounded-xl bg-white px-5 text-sm font-semibold text-black transition-colors hover:bg-neutral-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400"
         >
-          {dict.hero.cta}
+          {dict.portfolio_page.similar_project}
         </Link>
       )}
     </div>

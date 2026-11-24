@@ -8,7 +8,7 @@ import { submitContactForm } from '@/app/actions';
 import { trackLeadEvent } from './leadAnalytics';
 import { pricingSelectionEvent, type PricingInquiry } from './pricingInquiry';
 import { contactDraftEvent, contactMessageLimit, mergeContactDraft, takeContactDraft } from './contactDraft';
-import { projectReference } from './projectReference';
+import { projectReferences, projectReferenceQuery, type ProjectReferenceId } from './projectReference';
 
 interface ContactFormDict {
   title: string;
@@ -37,28 +37,28 @@ interface ContactFormDict {
 interface ContactFormProps {
   dict: ContactFormDict;
   locale: string;
-  hasProjectReference?: boolean;
+  example?: ProjectReferenceId;
 }
 
-export default function ContactForm({ dict, locale, hasProjectReference = false }: ContactFormProps) {
+export default function ContactForm({ dict, locale, example }: ContactFormProps) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [agreeGDPR, setAgreeGDPR] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<PricingInquiry | null>(null);
-  const [referenceRemoved, setReferenceRemoved] = useState(false);
-  const showProjectReference = hasProjectReference && !referenceRemoved;
+  const [removedReference, setRemovedReference] = useState<ProjectReferenceId>();
+  const reference = example === removedReference ? undefined : example;
   const whatsappMessage = [
     dict.prefilled_msg,
-    showProjectReference && `${dict.project_reference}: ${projectReference.title}`,
+    reference && `${dict.project_reference}: ${projectReferences[reference]}`,
     selectedPlan && `${dict.selected_plan}: ${selectedPlan.title}`,
     selectedPlan?.paymentLabel,
   ].filter(Boolean).join('\n');
 
   const clearProjectReference = () => {
-    setReferenceRemoved(true);
+    setRemovedReference(reference);
     const url = new URL(window.location.href);
-    if (url.searchParams.get(projectReference.query) === projectReference.id) {
-      url.searchParams.delete(projectReference.query);
+    if (url.searchParams.get(projectReferenceQuery) === reference) {
+      url.searchParams.delete(projectReferenceQuery);
       window.history.replaceState(null, '', url);
     }
   };
@@ -139,8 +139,8 @@ export default function ContactForm({ dict, locale, hasProjectReference = false 
     const formData = new FormData(e.currentTarget);
     // Always include locale in payload so the server knows which language to reply in
     formData.set('locale', locale);
-    if (showProjectReference) {
-      formData.set('reference', projectReference.id);
+    if (reference) {
+      formData.set('reference', reference);
     }
     if (selectedPlan) {
       formData.set('plan', selectedPlan.plan);
@@ -164,7 +164,7 @@ export default function ContactForm({ dict, locale, hasProjectReference = false 
         setEmail('');
         setMessage((current) => current === message ? '' : current);
         setSelectedPlan((current) => current === selectedPlan ? null : current);
-        if (showProjectReference) clearProjectReference();
+        if (reference) clearProjectReference();
 
         // Delay the rate limit lock in the UI by 3 seconds so the user can read the success message.
         // After 3 seconds, we start the cooldown with the remaining time (~57s).
@@ -225,13 +225,13 @@ export default function ContactForm({ dict, locale, hasProjectReference = false 
         }}
         className="flex flex-col gap-4 sm:gap-6 relative z-10"
       >
-        {(showProjectReference || selectedPlan) && (
+        {(reference || selectedPlan) && (
           <div className="divide-y divide-white/10 rounded-xl border border-emerald-500/20 bg-emerald-500/[0.06] px-4">
-            {showProjectReference && (
+            {reference && (
               <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 py-3">
                 <div className="min-w-0 space-y-1">
                   <p className="text-xs font-medium text-emerald-300">{dict.project_reference}</p>
-                  <p className="text-sm font-semibold text-white">{projectReference.title}</p>
+                  <p className="text-sm font-semibold text-white">{projectReferences[reference]}</p>
                 </div>
                 <button
                   type="button"

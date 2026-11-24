@@ -5,7 +5,7 @@ import { headers, cookies } from 'next/headers';
 import { Resend } from 'resend';
 import { randomUUID } from 'crypto';
 import { paymentOptions, pricingPlans } from '@/components/pricingInquiry';
-import { projectReference } from '@/components/projectReference';
+import { isProjectReference, projectReferences, type ProjectReferenceId } from '@/components/projectReference';
 
 // ── In-memory sliding-window rate limiter ────────────────────────────────────
 // This limiter and the browser cooldown complement platform-level rate limits.
@@ -46,7 +46,7 @@ const ContactSchema = z.object({
     .default('en'),
   bot_field: z.literal('').optional(),
   consent: z.literal('accepted'),
-  reference: z.literal(projectReference.id).optional(),
+  reference: z.custom<ProjectReferenceId>(isProjectReference).optional(),
   pricing: z.object({
     plan: z.enum(pricingPlans),
     payment: z.enum(paymentOptions),
@@ -214,7 +214,7 @@ export async function submitContactForm(formData: FormData) {
 
                 ${reference ? `
                   <div class="label">Reference Project</div>
-                  <div class="value">${projectReference.title}</div>
+                  <div class="value">${encodeForEmail(projectReferences[reference])}</div>
                 ` : ''}
 
                 ${pricing ? `

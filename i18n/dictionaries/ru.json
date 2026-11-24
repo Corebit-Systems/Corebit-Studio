@@ -66,6 +66,7 @@
     }
   },
   "portfolio_page": {
+    "similar_project": "Обсудить похожий проект",
     "umami_booking": {
       "title": "Как гости бронируют столик",
       "steps": [
