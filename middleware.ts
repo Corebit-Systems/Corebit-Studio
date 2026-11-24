@@ -1,42 +1,32 @@
 // File: c:\dev\Corebit-Studio\middleware.ts
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import type { Locale } from '@/i18n/getDictionary';
+import { searchLocales } from '@/i18n/searchUrls';
 
-const locales = ['en', 'ru', 'cnr', 'srb', 'sq'] as const;
-type Locale = typeof locales[number];
 const defaultLocale: Locale = 'en';
+const languagePreference = /^\s*([a-z]{1,8}(?:-[a-z0-9]{1,8})*|\*)\s*(?:;\s*q\s*=\s*(0(?:\.\d{0,3})?|1(?:\.0{0,3})?)\s*)?$/i;
 
-// Custom zero-dependency parser for Accept-Language headers to optimize Edge runtime
-function getLocale(request: NextRequest): string {
-  const acceptLanguage = request.headers.get('accept-language');
-  if (!acceptLanguage) return defaultLocale;
-
-  // Split and parse languages by quality/priority values
-  // e.g. "ru-RU,ru;q=0.9,en-US;q=0.8" -> [{locale: "ru-ru", baseLang: "ru"}, ...]
-  const parsedLocales = acceptLanguage
-    .split(',')
-    .map((pref) => {
-      const parts = pref.split(';');
-      const locale = parts[0].trim().toLowerCase();
-      const baseLang = locale.split('-')[0];
-      return { locale, baseLang };
-    });
-
-  // 1. Try exact matches (e.g. 'ru-RU' matching our 'ru')
-  for (const { locale } of parsedLocales) {
-    if ((locales as readonly string[]).includes(locale)) {
-      return locale;
-    }
+function matchLocale(tag: string): Locale | undefined {
+  const [language, scriptOrRegion, regionAfterScript] = tag.toLowerCase().split('-');
+  if (language === 'sr') {
+    const region = scriptOrRegion?.length === 4 ? regionAfterScript : scriptOrRegion;
+    return region === 'me' ? 'cnr' : 'srb';
   }
+  return searchLocales.find(locale => locale === language);
+}
 
-  // 2. Try base language family matches (e.g. 'ru' from 'ru-RU')
-  for (const { baseLang } of parsedLocales) {
-    if ((locales as readonly string[]).includes(baseLang)) {
-      return baseLang;
-    }
-  }
+function getLocale(acceptLanguage: string | null): Locale {
+  const preferences = acceptLanguage?.split(',').flatMap(value => {
+    const match = languagePreference.exec(value);
+    if (!match) return [];
+    const locale = matchLocale(match[1]);
+    const weight = Number(match[2] ?? 1);
+    return locale && weight > 0 ? [{ locale, weight }] : [];
+  }) ?? [];
 
-  return defaultLocale;
+  preferences.sort((first, second) => second.weight - first.weight);
+  return preferences[0]?.locale ?? defaultLocale;
 }
 
 export function middleware(request: NextRequest) {
@@ -47,9 +37,9 @@ export function middleware(request: NextRequest) {
 
   // Strict first-segment extraction — avoids startsWith() substring matching
   const segments = normalizedPathname.split('/');
-  const firstSegment = segments[1] as string;
+  const firstSegment = segments[1];
 
-  const pathnameHasLocale = (locales as readonly string[]).includes(firstSegment);
+  const pathnameHasLocale = searchLocales.some(locale => locale === firstSegment);
 
   if (pathnameHasLocale) {
     // Rewrite with the normalized path if it differs (collapsed double slashes)
@@ -60,12 +50,13 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Detect user locale dynamically from request headers
-  const locale = getLocale(request);
-  url.pathname = `/${locale}${normalizedPathname}`;
-  
-  // Use 307 Temporary Redirect so browsers don't cache locale preferences permanently
-  return NextResponse.redirect(url, { status: 307 });
+  const locale = getLocale(request.headers.get('accept-language'));
+  url.pathname = normalizedPathname === '/' ? `/${locale}` : `/${locale}${normalizedPathname}`;
+
+  const redirect = NextResponse.redirect(url, { status: 307 });
+  redirect.headers.append('vary', 'Accept-Language');
+  redirect.headers.set('cache-control', 'private, no-store');
+  return redirect;
 }
 
 export const config = {

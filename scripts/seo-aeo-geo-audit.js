@@ -72,6 +72,35 @@ async function get(path, headers) {
   return fetch(new URL(path, origin), { headers, redirect: 'manual', signal: AbortSignal.timeout(25000) });
 }
 
+async function checkLocaleRouting() {
+  const scenarios = [
+    ['sr-ME', 'cnr'],
+    ['sr-Latn-ME', 'cnr'],
+    ['sr-Latn-RS', 'srb'],
+    ['sr', 'srb'],
+    ['ru-RU,en;q=0.8', 'ru'],
+    ['en;q=0.2,ru-RU;q=0.9', 'ru'],
+    ['sq-AL,en;q=0.7', 'sq'],
+    ['ru;q=0,en;q=0.5', 'en'],
+    ['ru;q=2,en;q=0.5', 'en'],
+    ['ru;q=0.9,en;q=0.9', 'ru'],
+    ['fr-FR,de-DE;q=0.7', 'en'],
+  ];
+  for (const [header, locale] of scenarios) {
+    const response = await get('/?utm_source=seo-audit', { 'accept-language': header });
+    assert.equal(response.status, 307, header);
+    const location = response.headers.get('location');
+    assert.ok(location, header);
+    assert.equal(new URL(location, origin).href, new URL(`/${locale}?utm_source=seo-audit`, origin).href, header);
+    assert.match(response.headers.get('vary') || '', /\baccept-language\b/i, header);
+    assert.match(response.headers.get('cache-control') || '', /\bno-store\b/i, header);
+  }
+  const localized = await get('/sq/tivat', { 'accept-language': 'ru-RU' });
+  assert.equal(localized.status, 200, 'Explicit locale must take precedence');
+  assert.equal(tags(await localized.text(), 'html')[0]?.lang, languages.sq);
+  console.log(`Verified ${scenarios.length + 1} language routing scenarios.`);
+}
+
 function checkSocialMetadata(meta, locale, path, title, description) {
   const card = Object.fromEntries(meta.map(tag => [tag.property || tag.name, tag.content]));
   const image = `${canonicalOrigin}/${locale}/opengraph-image`;
@@ -165,6 +194,8 @@ async function checkPage(path, locale, localizedPaths, type, project) {
 }
 
 async function audit() {
+  await checkLocaleRouting();
+
   const logo = await get(logoPath);
   assert.equal(logo.status, 200);
   assert.match(logo.headers.get('content-type') || '', /^image\/png\b/i);
