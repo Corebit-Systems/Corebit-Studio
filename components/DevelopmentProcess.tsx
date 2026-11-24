@@ -1,202 +1,165 @@
-// File: C:\dev\Corebit-Studio\components\DevelopmentProcess.tsx
 'use client';
 
-import { useState } from 'react';
-import { Shield, Sparkles, Terminal, Activity, Rocket } from 'lucide-react';
-import { Locale } from '@/i18n/getDictionary';
+import { useState, type KeyboardEvent } from 'react';
+import { ClipboardList, Code2, Layers3, ListChecks, Rocket } from 'lucide-react';
+import type { Locale } from '@/i18n/getDictionary';
+
+const stepIcons = [ClipboardList, Layers3, Code2, ListChecks, Rocket] as const;
+const lastStep = stepIcons.length - 1;
 
 interface Step {
-  id: string;
-  icon: React.ReactNode;
-  active: boolean;
+  title: string;
+  description: string;
+  result: string;
 }
 
-interface DevelopmentProcessProps {
-  locale: Locale;
+interface ProcessCopy {
+  title: string;
+  subtitle: string;
+  resultLabel: string;
+  steps: [Step, Step, Step, Step, Step];
 }
 
-const PROCESS_TEXTS: Record<Locale, {
-  sectionTitle: string;
-  sectionSubtitle: string;
-  currentLabel: string;
-  steps: Record<string, {
-    title: string;
-    desc: string;
-  }>;
-}> = {
+const processCopy: Record<Locale, ProcessCopy> = {
   en: {
-    sectionTitle: 'Transparent Development Process',
-    sectionSubtitle: 'How we engineer high-performance systems from idea to production deployment.',
-    currentLabel: 'Active Stage',
-    steps: {
-      analytics: { title: 'Analytics', desc: 'In-depth market research, conversion funnel mapping, and user flow analysis.' },
-      design: { title: 'Design', desc: 'Premium glassmorphic layouts, high-fidelity UI design, and responsive prototyping.' },
-      development: { title: 'Development', desc: 'Production-ready Next.js SSR engineering, serverless optimization, and API isolation.' },
-      testing: { title: 'Testing', desc: 'Rigorous load testing, security audits, and type-safety verification.' },
-      release: { title: 'Release', desc: 'Zero-downtime deployment, Vercel Edge CDN setup, and real-time analytics monitoring.' }
-    }
+    title: 'How we build your website',
+    subtitle: 'Five steps from the first discussion to launch.',
+    resultLabel: 'What you get',
+    steps: [
+      { title: 'Discovery', description: 'We discuss your business, what customers need to do on the site, and which tasks should be automated.', result: 'A list of pages, features and priorities for the project.' },
+      { title: 'Design', description: 'We plan the customer journey and design the key screens for phones and computers.', result: 'A layout to review before development begins.' },
+      { title: 'Development', description: 'We build the approved pages and connect the features the project needs, such as booking or notifications.', result: 'A working site ready for review.' },
+      { title: 'Testing', description: 'We go through the main customer journeys and check forms and layouts at different screen sizes.', result: 'A site checked and ready for launch.' },
+      { title: 'Launch', description: 'We publish the site on the agreed domain and connect analytics and the other services in scope.', result: 'A live website at the agreed address.' },
+    ],
   },
   ru: {
-    sectionTitle: 'Прозрачный процесс разработки',
-    sectionSubtitle: 'Как мы создаем высокопроизводительные системы от идеи до продакшена.',
-    currentLabel: 'Текущий этап',
-    steps: {
-      analytics: { title: 'Аналитика', desc: 'Исследование рынка, проектирование воронки конверсий и сценариев пользователей.' },
-      design: { title: 'Проектирование', desc: 'Создание премиального дизайна интерфейсов, прототипов и адаптивной верстки.' },
-      development: { title: 'Разработка', desc: 'Написание чистого кода на Next.js SSR, оптимизация serverless и изоляция API.' },
-      testing: { title: 'Тестирование', desc: 'Тщательное нагрузочное тестирование, аудит безопасности и проверка типов.' },
-      release: { title: 'Релиз', desc: 'Развертывание без простоев, настройка Vercel Edge CDN и подключение аналитики.' }
-    }
+    title: 'Как мы разрабатываем сайты',
+    subtitle: 'Пять этапов от первого разговора до запуска.',
+    resultLabel: 'Результат этапа',
+    steps: [
+      { title: 'Анализ задачи', description: 'Обсуждаем ваш бизнес, что клиентам нужно делать на сайте и какие задачи стоит автоматизировать.', result: 'Список страниц, функций и приоритетов проекта.' },
+      { title: 'Проектирование', description: 'Продумываем путь клиента и рисуем ключевые экраны для телефона и компьютера.', result: 'Макеты, которые можно согласовать до разработки.' },
+      { title: 'Разработка', description: 'Собираем согласованные страницы и подключаем нужные функции, например бронирование или уведомления.', result: 'Рабочая версия сайта для проверки.' },
+      { title: 'Тестирование', description: 'Проходим основные сценарии клиента, проверяем формы и вёрстку на экранах разного размера.', result: 'Проверенный сайт, готовый к запуску.' },
+      { title: 'Запуск', description: 'Публикуем сайт на согласованном домене и подключаем аналитику и другие сервисы, предусмотренные проектом.', result: 'Сайт доступен по согласованному адресу.' },
+    ],
   },
   cnr: {
-    sectionTitle: 'Transparentan proces razvoja',
-    sectionSubtitle: 'Kako kreiramo sisteme visokih performansi od ideje do konačne produkcije.',
-    currentLabel: 'Aktivan korak',
-    steps: {
-      analytics: { title: 'Analitika', desc: 'Istraživanje tržišta, mapiranje toka konverzije i analiza korisničkog iskustva.' },
-      design: { title: 'Projektovanje', desc: 'Premium dizajn interfejsa, prototipovi i adaptivni raspored elemenata.' },
-      development: { title: 'Razvoj', desc: 'Next.js SSR programiranje spremno za produkciju, serverless i API izolacija.' },
-      testing: { title: 'Testiranje', desc: 'Detaljno testiranje opterećenja, bezbjednosni auditi i verifikacija tipova.' },
-      release: { title: 'Lansiranje', desc: 'Deployment bez prekida rada, podešavanje Edge CDN-a i integracija analitike.' }
-    }
+    title: 'Kako izrađujemo vaš sajt',
+    subtitle: 'Pet koraka od prvog razgovora do objave sajta.',
+    resultLabel: 'Rezultat ovog koraka',
+    steps: [
+      { title: 'Analiza', description: 'Razgovaramo o vašem poslovanju, o tome šta klijenti treba da urade na sajtu i koje zadatke vrijedi automatizovati.', result: 'Spisak stranica, funkcija i prioriteta projekta.' },
+      { title: 'Projektovanje', description: 'Planiramo kako će klijenti koristiti sajt i izrađujemo dizajn ključnih ekrana za telefon i računar.', result: 'Dizajn koji možete pregledati prije početka razvoja.' },
+      { title: 'Razvoj', description: 'Izrađujemo dogovorene stranice i povezujemo potrebne funkcije, poput rezervacija ili obavještenja.', result: 'Radna verzija sajta spremna za pregled.' },
+      { title: 'Testiranje', description: 'Provjeravamo glavne radnje klijenata, obrasce i prikaz na ekranima različitih veličina.', result: 'Provjeren sajt spreman za objavu.' },
+      { title: 'Objava sajta', description: 'Objavljujemo sajt na dogovorenom domenu i povezujemo analitiku i ostale usluge predviđene projektom.', result: 'Sajt je dostupan na dogovorenoj adresi.' },
+    ],
   },
   srb: {
-    sectionTitle: 'Transparentan proces razvoja',
-    sectionSubtitle: 'Kako kreiramo sisteme visokih performansi od ideje do konačne produkcije.',
-    currentLabel: 'Aktivan korak',
-    steps: {
-      analytics: { title: 'Analitika', desc: 'Istraživanje tržišta, mapiranje toka konverzije i analiza korisničkog iskustva.' },
-      design: { title: 'Projektovanje', desc: 'Premium dizajn interfejsa, prototipovi i adaptivni raspored elemenata.' },
-      development: { title: 'Razvoj', desc: 'Next.js SSR programiranje spremno za produkciju, serverless i API izolacija.' },
-      testing: { title: 'Testiranje', desc: 'Detaljno testiranje opterećenja, bezbednosni auditi i verifikacija tipova.' },
-      release: { title: 'Lansiranje', desc: 'Deployment bez prekida rada, podešavanje Edge CDN-a i integracija analitike.' }
-    }
+    title: 'Kako izrađujemo vaš sajt',
+    subtitle: 'Pet koraka od prvog razgovora do objave sajta.',
+    resultLabel: 'Rezultat ovog koraka',
+    steps: [
+      { title: 'Analiza', description: 'Razgovaramo o vašem poslovanju, o tome šta klijenti treba da urade na sajtu i koje zadatke vredi automatizovati.', result: 'Spisak stranica, funkcija i prioriteta projekta.' },
+      { title: 'Projektovanje', description: 'Planiramo kako će klijenti koristiti sajt i izrađujemo dizajn ključnih ekrana za telefon i računar.', result: 'Dizajn koji možete pregledati pre početka razvoja.' },
+      { title: 'Razvoj', description: 'Izrađujemo dogovorene stranice i povezujemo potrebne funkcije, poput rezervacija ili obaveštenja.', result: 'Radna verzija sajta spremna za pregled.' },
+      { title: 'Testiranje', description: 'Proveravamo glavne radnje klijenata, obrasce i prikaz na ekranima različitih veličina.', result: 'Proveren sajt spreman za objavu.' },
+      { title: 'Objava sajta', description: 'Objavljujemo sajt na dogovorenom domenu i povezujemo analitiku i ostale usluge predviđene projektom.', result: 'Sajt je dostupan na dogovorenoj adresi.' },
+    ],
   },
   sq: {
-    sectionTitle: 'Procesi Transparent i Zhvillimit',
-    sectionSubtitle: 'Si ne krijojmë sisteme me performancë të lartë nga ideja deri në vendosjen në prodhim.',
-    currentLabel: 'Faza Aktive',
-    steps: {
-      analytics: { title: 'Analitika', desc: 'Hulumtim i thelluar i tregut, hartëzimi i konvertimit dhe rrjedha e përdoruesit.' },
-      design: { title: 'Projektimi', desc: 'Dizajne premium glassmorphic, ndërfaqe UI me rezolucion të lartë dhe prototipe.' },
-      development: { title: 'Zhvillimi', desc: 'Inxhinieri Next.js SSR, optimizim serverless dhe izolim i API-ve.' },
-      testing: { title: 'Testimi', desc: 'Testim i rreptë i ngarkesës, audite sigurie dhe verifikim i sigurisë së tipit.' },
-      release: { title: 'Lansimi', desc: 'Vendosje pa ndërprerje, konfigurim i Edge CDN dhe monitorim i analitikës.' }
-    }
-  }
+    title: 'Si e ndërtojmë faqen tuaj',
+    subtitle: 'Pesë hapa nga biseda e parë deri te publikimi.',
+    resultLabel: 'Rezultati i këtij hapi',
+    steps: [
+      { title: 'Analiza', description: 'Diskutojmë për biznesin tuaj, çfarë duhet të bëjnë klientët në faqe dhe cilat detyra mund të automatizohen.', result: 'Lista e faqeve, funksioneve dhe përparësive të projektit.' },
+      { title: 'Dizajni', description: 'Planifikojmë si do ta përdorin klientët faqen dhe projektojmë ekranet kryesore për celular dhe kompjuter.', result: 'Një dizajn që mund ta shqyrtoni para zhvillimit.' },
+      { title: 'Zhvillimi', description: 'Ndërtojmë faqet e miratuara dhe lidhim funksionet e nevojshme, si rezervimet ose njoftimet.', result: 'Një version funksional i faqes për shqyrtim.' },
+      { title: 'Testimi', description: 'Provojmë veprimet kryesore të klientëve, formularët dhe pamjen në ekrane me madhësi të ndryshme.', result: 'Një faqe e kontrolluar dhe gati për publikim.' },
+      { title: 'Publikimi', description: 'Publikojmë faqen në domenin e dakorduar dhe lidhim analitikën e shërbimet e parashikuara në projekt.', result: 'Faqja është e disponueshme në adresën e dakorduar.' },
+    ],
+  },
 };
 
-export default function DevelopmentProcess({ locale }: DevelopmentProcessProps) {
-  const texts = PROCESS_TEXTS[locale] || PROCESS_TEXTS.en;
-  const [hoveredStep, setHoveredStep] = useState<string | null>(null);
-  const [activeStepId, setActiveStepId] = useState<string>('analytics');
+export default function DevelopmentProcess({ locale }: { locale: Locale }) {
+  const copy = processCopy[locale] ?? processCopy.en;
+  const [activeStep, setActiveStep] = useState(0);
 
-  const handleKeyDown = (e: React.KeyboardEvent, id: string) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      setActiveStepId(id);
-    }
-  };
+  function navigateSteps(event: KeyboardEvent<HTMLDivElement>) {
+    const positions: Partial<Record<string, number>> = {
+      ArrowRight: activeStep + 1,
+      ArrowDown: activeStep + 1,
+      ArrowLeft: activeStep - 1,
+      ArrowUp: activeStep - 1,
+      Home: 0,
+      End: lastStep,
+    };
+    const value = Object.hasOwn(positions, event.key) ? positions[event.key] : undefined;
+    if (value === undefined) return;
 
-  const stepsList = [
-    { id: 'analytics', icon: <Shield size={20} /> },
-    { id: 'design', icon: <Sparkles size={20} /> },
-    { id: 'development', icon: <Terminal size={20} /> },
-    { id: 'testing', icon: <Activity size={20} /> },
-    { id: 'release', icon: <Rocket size={20} /> }
-  ];
+    event.preventDefault();
+    const index = (value + stepIcons.length) % stepIcons.length;
+    setActiveStep(index);
+    event.currentTarget.querySelectorAll('button')[index]?.focus();
+  }
 
   return (
-    <section className="flex flex-col gap-8 sm:gap-12 relative w-full overflow-visible">
-      <div className="text-center flex flex-col gap-3 sm:gap-4 px-2">
-        <span className="text-xs sm:text-sm font-bold tracking-wider text-emerald-500 uppercase">
-          OUR METHODOLOGY
-        </span>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
-          {texts.sectionTitle}
-        </h2>
-        <p className="text-base sm:text-xl text-neutral-400 max-w-3xl mx-auto font-light">
-          {texts.sectionSubtitle}
-        </p>
+    <section id="development-process" aria-labelledby="development-process-title" className="mx-auto flex w-full max-w-5xl flex-col gap-7 sm:gap-9">
+      <div className="space-y-3 text-center">
+        <h2 id="development-process-title" className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">{copy.title}</h2>
+        <p className="text-base text-neutral-400 sm:text-lg">{copy.subtitle}</p>
       </div>
 
-      {/* Interactive Timeline Layout */}
-      <div className="relative flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 max-w-5xl w-full mx-auto px-4 py-8 overflow-visible">
-        
-        {/* Horizontal Connector Line for Desktop */}
-        <div className="absolute top-[52px] left-[5%] right-[5%] h-[2px] bg-white/10 hidden md:block z-0" />
+      <div className="grid gap-4 rounded-3xl border border-white/10 bg-white/[0.025] p-3 sm:gap-5 sm:p-5 md:grid-cols-[minmax(14rem,1fr)_2fr]">
+        <div role="tablist" aria-labelledby="development-process-title" onKeyDown={navigateSteps} className="grid grid-cols-1 gap-2 min-[380px]:grid-cols-2 md:grid-cols-1">
+          {copy.steps.map((step, index) => {
+            const Icon = stepIcons[index];
+            const selected = index === activeStep;
 
-        {stepsList.map((step, idx) => {
-          const stepInfo = texts.steps[step.id];
-          const isHovered = hoveredStep === step.id;
-          const isCurrentActive = step.id === activeStepId;
-          
-          return (
-            <div 
-              key={step.id} 
-              onMouseEnter={() => setHoveredStep(step.id)}
-              onMouseLeave={() => setHoveredStep(null)}
-              className="relative flex flex-col items-center flex-1 w-full md:w-auto z-10 group"
+            return (
+              <button
+                key={step.title}
+                id={`process-tab-${index}`}
+                role="tab"
+                type="button"
+                aria-selected={selected}
+                aria-controls={`process-panel-${index}`}
+                tabIndex={selected ? 0 : -1}
+                onClick={() => setActiveStep(index)}
+                className={`flex min-h-12 min-w-0 items-center gap-2 rounded-xl border px-2.5 py-2 text-left text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400 min-[380px]:max-md:last:col-span-2 sm:gap-3 sm:px-3 sm:text-sm ${selected ? 'border-emerald-400/35 bg-emerald-400/10 text-emerald-200' : 'border-transparent text-neutral-300 hover:bg-white/[0.06] hover:text-white'}`}
+              >
+                <Icon aria-hidden="true" size={17} className="shrink-0" />
+                <span>{step.title}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="min-w-0 rounded-2xl border border-emerald-400/15 bg-[radial-gradient(ellipse_at_top_right,_rgba(16,185,129,.15),_transparent_72%)] p-4 sm:p-6">
+          <div aria-hidden="true" className="mb-4 h-0.5 overflow-hidden rounded-full bg-white/10 sm:mb-5">
+            <div className="h-full rounded-full bg-emerald-300 motion-safe:transition-[width] motion-safe:duration-300 motion-safe:ease-out" style={{ width: `${((activeStep + 1) / stepIcons.length) * 100}%` }} />
+          </div>
+          {copy.steps.map((step, index) => (
+            <div
+              key={step.title}
+              id={`process-panel-${index}`}
+              role="tabpanel"
+              aria-labelledby={`process-tab-${index}`}
+              hidden={index !== activeStep}
+              tabIndex={0}
+              className="min-h-[12.5rem] rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400 motion-safe:[animation:section-enter_.35s_ease-out] sm:min-h-[11rem]"
             >
-              {/* Connector for Mobile */}
-              {idx > 0 && (
-                <div className="w-[2px] h-6 bg-white/10 md:hidden mb-2" />
-              )}
-
-              {/* Step Circle */}
-              <div 
-                onClick={() => setActiveStepId(step.id)}
-                onKeyDown={(e) => handleKeyDown(e, step.id)}
-                role="button"
-                tabIndex={0}
-                aria-label={`Select stage ${stepInfo.title}`}
-                className={`relative w-14 h-14 rounded-full flex items-center justify-center border transition-all duration-300 cursor-pointer ${
-                  isCurrentActive 
-                    ? 'bg-emerald-500/10 border-emerald-400 text-emerald-400 shadow-[0_0_20px_rgba(52,211,153,0.3)] animate-pulse'
-                    : 'bg-black/60 border-white/15 text-neutral-400 hover:border-white/40 hover:text-white'
-                }`}
-              >
-                {step.icon}
-                
-                {/* Active Indicator Pulse Ring */}
-                {isCurrentActive && (
-                  <span className="absolute inset-0 rounded-full border border-emerald-400/50 animate-ping opacity-75 pointer-events-none" />
-                )}
-              </div>
-
-              {/* Step Title */}
-              <span 
-                onClick={() => setActiveStepId(step.id)}
-                className={`text-sm sm:text-base font-bold mt-3 transition-colors flex items-center gap-1.5 cursor-pointer select-none ${
-                  isCurrentActive ? 'text-emerald-400' : 'text-neutral-300 group-hover:text-white'
-                }`}
-              >
-                {stepInfo.title}
-                {isCurrentActive && (
-                  <span className="text-[9px] font-bold tracking-widest px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 uppercase inline-block">
-                    {texts.currentLabel}
-                  </span>
-                )}
-              </span>
-
-              {/* Description Box */}
-              <div 
-                style={{
-                  transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)'
-                }}
-                className={`mt-2 md:absolute md:top-24 text-center max-w-[200px] transition-all duration-500 md:z-50 ${
-                  isHovered || isCurrentActive 
-                    ? 'opacity-100 scale-100 pointer-events-auto translate-y-0 block' 
-                    : 'opacity-0 scale-95 pointer-events-none md:translate-y-1 hidden md:block'
-                }`}
-              >
-                <p className="text-xs text-neutral-400 bg-white/[0.02] border border-white/5 md:bg-neutral-900/90 md:border-white/10 md:backdrop-blur-md px-3 py-2 rounded-lg shadow-xl leading-relaxed font-light">
-                  {stepInfo.desc}
-                </p>
+              <h3 className="text-xl font-bold tracking-tight text-white sm:text-2xl">{step.title}</h3>
+              <p className="mt-2 max-w-xl text-sm leading-relaxed text-neutral-300 sm:text-base">{step.description}</p>
+              <div className="mt-4 border-t border-white/10 pt-3 sm:mt-5">
+                <p className="text-xs font-semibold text-emerald-300">{copy.resultLabel}</p>
+                <p className="mt-1 text-sm leading-relaxed text-white">{step.result}</p>
               </div>
             </div>
-          );
-        })}
+          ))}
+        </div>
       </div>
     </section>
   );
