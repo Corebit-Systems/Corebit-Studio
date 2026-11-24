@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { headers, cookies } from 'next/headers';
 import { Resend } from 'resend';
 import { randomUUID } from 'crypto';
+import { contactEmailMaxLength, contactFields, contactMessageMinLength, contactNameMaxLength, contactNamePattern, hasContactMarkup } from '@/components/contactFields';
 import { paymentOptions, pricingPlans } from '@/components/pricingInquiry';
 import { isProjectReference, projectReferences, type ProjectReferenceId } from '@/components/projectReference';
 
@@ -20,22 +21,22 @@ const ContactSchema = z.object({
     .string()
     .trim()
     .min(1, 'Name is required')
-    .max(100, 'Name too long')
+    .max(contactNameMaxLength, 'Name too long')
     // Unicode-safe: allows Latin, Cyrillic, Albanian, Serbian, Montenegrin chars
-    .regex(/^[\p{L}\p{M}\s''\-,.]+$/u, 'Name contains invalid characters'),
+    .regex(contactNamePattern, 'Name contains invalid characters'),
   email: z
     .string()
     .trim()
     .email('Invalid email format')
-    .max(254, 'Email too long')
+    .max(contactEmailMaxLength, 'Email too long')
     .toLowerCase(),
   message: z
     .string()
     .trim()
-    .min(10, 'Message too short')
+    .min(contactMessageMinLength, 'Message too short')
     .max(2000, 'Message too long')
     // Hard reject any HTML/script tags inside the message body
-    .refine((val) => !/<[^>]+>/.test(val), {
+    .refine((val) => !hasContactMarkup(val), {
       message: 'HTML markup is not allowed in messages',
     }),
   locale: z
@@ -118,11 +119,13 @@ export async function submitContactForm(formData: FormData) {
 
   const parsed = ContactSchema.safeParse(raw);
   if (!parsed.success) {
-    // Classify error type without exposing internal Zod field paths to client
-    const isSpamLike = parsed.error.issues.some(
-      (issue) => issue.path[0] === 'email' || issue.message.includes('HTML')
+    const invalidFields = contactFields.filter((field) =>
+      parsed.error.issues.some((issue) => issue.path[0] === field)
     );
-    return { success: false, errorType: isSpamLike ? 'spam' : 'general' };
+    if (invalidFields.length) {
+      return { success: false, errorType: 'validation', invalidFields };
+    }
+    return { success: false, errorType: 'general' };
   }
 
   const { name, email, message, locale: userLocale, pricing, reference } = parsed.data;

@@ -8,6 +8,7 @@ import { submitContactForm } from '@/app/actions';
 import { trackLeadEvent } from './leadAnalytics';
 import { pricingSelectionEvent, type PricingInquiry } from './pricingInquiry';
 import { contactDraftEvent, contactMessageLimit, mergeContactDraft, takeContactDraft } from './contactDraft';
+import { contactEmailMaxLength, contactFields, contactMessageMinLength, contactNameMaxLength, contactNamePattern, hasContactMarkup, type ContactField } from './contactFields';
 import { projectReferences, projectReferenceQuery, type ProjectReferenceId } from './projectReference';
 
 export interface ContactFormDict {
@@ -21,8 +22,10 @@ export interface ContactFormDict {
   success_detail: string;
   new_inquiry: string;
   error_rate: string;
-  error_spam: string;
   error_general: string;
+  error_name: string;
+  error_email: string;
+  error_message: string;
   copy_description: string;
   copy_description_hint: string;
   copy_description_success: string;
@@ -49,14 +52,29 @@ interface ContactFormProps {
 const cooldownMs = 60_000;
 const cooldownStorageKey = 'last_submit_time';
 
+function isContactFieldValid(field: ContactField, input: HTMLInputElement | HTMLTextAreaElement) {
+  const value = input.value.trim();
+  switch (field) {
+    case 'name':
+      return value.length <= contactNameMaxLength && contactNamePattern.test(value);
+    case 'email':
+      return value.length > 0 && value.length <= contactEmailMaxLength && !input.validity.typeMismatch;
+    case 'message':
+      return value.length >= contactMessageMinLength && value.length <= contactMessageLimit && !hasContactMarkup(value);
+  }
+}
+
 export default function ContactForm({ dict, locale, example }: ContactFormProps) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [errorType, setErrorType] = useState<'rate' | 'spam' | 'general' | null>(null);
+  const [errorType, setErrorType] = useState<'rate' | 'general' | null>(null);
+  const [invalidFields, setInvalidFields] = useState<ContactField[]>([]);
   const [agreeGDPR, setAgreeGDPR] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<PricingInquiry | null>(null);
   const [removedReference, setRemovedReference] = useState<ProjectReferenceId>();
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
+  const pendingFieldFocus = useRef<ContactField | null>(null);
   const [copyFeedback, setCopyFeedback] = useState<{ text: string; result: 'success' | 'manual' } | null>(null);
   const reference = example === removedReference ? undefined : example;
   const whatsappMessage = [
@@ -88,7 +106,7 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const showCopy = status === 'error' && errorType !== 'spam' && message.trim().length > 0;
+  const showCopy = status === 'error' && message.trim().length > 0;
   const copyResult = copyFeedback?.text === message ? copyFeedback.result : 'hint';
 
   const copyDescription = async () => {
@@ -140,6 +158,13 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
     if (status === 'success') headingRef.current?.focus();
   }, [status]);
 
+  useEffect(() => {
+    if (status !== 'idle' || !pendingFieldFocus.current) return;
+    const input = formRef.current?.elements.namedItem(pendingFieldFocus.current);
+    pendingFieldFocus.current = null;
+    if (input instanceof HTMLElement) input.focus();
+  }, [invalidFields, status]);
+
   function startCooldown(durationMs: number) {
     const endsAt = Date.now() + durationMs;
     setIsRateLimited(true);
@@ -156,15 +181,32 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
     }, 1000);
   }
 
+  function showFieldErrors(fields: ContactField[]) {
+    pendingFieldFocus.current = fields[0] ?? null;
+    setInvalidFields(fields);
+    setStatus('idle');
+  }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!agreeGDPR || isRateLimited || status === 'loading' || status === 'success') return;
 
-    setStatus('loading');
+    const form = e.currentTarget;
     setErrorType(null);
     setCopyFeedback(null);
+    const fieldsToFix = contactFields.filter((field) => {
+      const input = form.elements.namedItem(field);
+      return (input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement)
+        && !isContactFieldValid(field, input);
+    });
+    if (fieldsToFix.length) {
+      showFieldErrors(fieldsToFix);
+      return;
+    }
+    setInvalidFields([]);
+    setStatus('loading');
 
-    const formData = new FormData(e.currentTarget);
+    const formData = new FormData(form);
     // Always include locale in payload so the server knows which language to reply in
     formData.set('locale', locale);
     if (reference) {
@@ -197,12 +239,16 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
         if (reference) clearProjectReference();
         setStatus('success');
       } else {
+        if (response.errorType === 'validation' && response.invalidFields?.length) {
+          showFieldErrors(response.invalidFields);
+          return;
+        }
         if (response.errorType === 'rate') {
           // Server told us we're rate-limited — enforce UI lock regardless of localStorage
           startCooldown(cooldownMs);
           setErrorType('rate');
         } else {
-          setErrorType(response.errorType === 'spam' ? 'spam' : 'general');
+          setErrorType('general');
         }
         setStatus('error');
       }
@@ -212,6 +258,17 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
       setStatus('error');
     }
   };
+
+  function fieldAccessibility(field: ContactField) {
+    const invalid = invalidFields.includes(field);
+    return { 'aria-invalid': invalid || undefined, 'aria-describedby': invalid ? `contact-${field}-error` : undefined };
+  }
+
+  function fieldError(field: ContactField) {
+    return invalidFields.includes(field) && (
+      <p id={`contact-${field}-error`} className="text-sm text-red-400">{dict[`error_${field}`]}</p>
+    );
+  }
 
   return (
     <div
@@ -260,15 +317,19 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
       )}
 
       <form
+        ref={formRef}
+        noValidate
         onSubmit={handleSubmit}
         onChange={(event) => {
           const field = event.target;
-          if (
-            !inquiryStarted.current
-            && (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement)
-            && (field.name === 'name' || field.name === 'email' || field.name === 'message')
-            && field.value.trim()
-          ) {
+          if (!(field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement)) return;
+          const contactField = contactFields.find((name) => name === field.name);
+          if (!contactField) return;
+
+          if (invalidFields.includes(contactField) && isContactFieldValid(contactField, field)) {
+            setInvalidFields((current) => current.filter((name) => name !== contactField));
+          }
+          if (!inquiryStarted.current && field.value.trim()) {
             inquiryStarted.current = trackLeadEvent('inquiry_start', locale, 'contact_form');
           }
         }}
@@ -327,9 +388,11 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder={dict.name}
-            aria-label={dict.name}
-            className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-600/50 focus:bg-white/10 transition-all text-base min-h-[52px] disabled:opacity-40 disabled:cursor-not-allowed"
+            maxLength={contactNameMaxLength}
+            {...fieldAccessibility('name')}
+            className="w-full scroll-mt-28 px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-600/50 focus:bg-white/10 aria-[invalid=true]:border-red-400/70 transition-all text-base min-h-[52px] disabled:opacity-40 disabled:cursor-not-allowed"
           />
+          {fieldError('name')}
         </div>
 
         <div className="flex flex-col gap-2">
@@ -344,9 +407,11 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder={dict.email}
-            aria-label={dict.email}
-            className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-600/50 focus:bg-white/10 transition-all text-base min-h-[52px] disabled:opacity-40 disabled:cursor-not-allowed"
+            maxLength={contactEmailMaxLength}
+            {...fieldAccessibility('email')}
+            className="w-full scroll-mt-28 px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-600/50 focus:bg-white/10 aria-[invalid=true]:border-red-400/70 transition-all text-base min-h-[52px] disabled:opacity-40 disabled:cursor-not-allowed"
           />
+          {fieldError('email')}
         </div>
 
         <div className="flex flex-col gap-2">
@@ -362,11 +427,12 @@ export default function ContactForm({ dict, locale, example }: ContactFormProps)
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder={isRateLimited ? `${dict.error_rate} (${countdown}s)` : dict.message}
-            aria-label={dict.message}
+            {...fieldAccessibility('message')}
             rows={4}
             maxLength={contactMessageLimit}
-            className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-600/50 focus:bg-white/10 transition-all resize-none text-base disabled:opacity-40 disabled:cursor-not-allowed"
+            className="w-full scroll-mt-28 px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-600/50 focus:bg-white/10 aria-[invalid=true]:border-red-400/70 transition-all resize-none text-base disabled:opacity-40 disabled:cursor-not-allowed"
           />
+          {fieldError('message')}
         </div>
 
         {/* GDPR Compliance Consent Checkbox */}
