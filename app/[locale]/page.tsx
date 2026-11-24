@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getDictionary, Locale } from '@/i18n/getDictionary';
 import { RoiCalculator, SpeedCheckWidget } from '@/components/LazyWidgets';
 import type { SpeedCheckDict } from '@/components/SpeedCheckWidget';
+import { projectReference } from '@/components/projectReference';
 import dynamic from 'next/dynamic';
 
 // Above-the-fold components: statically imported for critical path/LCP optimization
@@ -180,6 +181,8 @@ interface ContactFormDict {
   privacy_policy_link: string;
   selected_plan: string;
   clear_plan: string;
+  project_reference: string;
+  clear_project_reference: string;
   whatsapp_btn?: string;
   telegram_btn?: string;
   prefilled_msg?: string;
@@ -190,7 +193,7 @@ export default async function HomePage({
   searchParams
 }: {
   params: Promise<{ locale: Locale }>;
-  searchParams?: Promise<{ city?: string | string[] }>;
+  searchParams?: Promise<{ city?: string | string[]; [projectReference.query]?: string | string[] }>;
 }) {
   const { locale } = await params;
   const rawDict = await getDictionary(locale);
@@ -205,7 +208,7 @@ export default async function HomePage({
   };
 
   const geoDict = (rawDict as any).geo || {};
-  const { city } = (await searchParams) ?? {};
+  const { city, [projectReference.query]: example } = (await searchParams) ?? {};
   const cityKey = (typeof city === 'string' ? city : 'montenegro').toLowerCase();
 
   const defaultGeo = defaults[locale] || defaults.en;
@@ -431,7 +434,7 @@ export default async function HomePage({
       <TechStackWidget locale={locale} />
 
       {/* 11. Final Contact Lead Form */}
-      <ContactForm dict={dict.contact_form} locale={locale} />
+      <ContactForm dict={dict.contact_form} locale={locale} hasProjectReference={example === projectReference.id} />
     </div>
   );
 }

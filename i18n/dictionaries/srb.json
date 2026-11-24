@@ -118,6 +118,8 @@
     "text": "Sporo učitavanje može otežati rezervaciju. Ručno dogovaranje termina u porukama može dovesti do propuštenih ili dvostrukih rezervacija. Onlajn rezervacije prikazuju slobodne termine i objedinjuju upite."
   },
   "contact_form": {
+    "project_reference": "Primer projekta",
+    "clear_project_reference": "Ukloni primer",
     "selected_plan": "Izabrani paket",
     "clear_plan": "Ukloni paket",
     "title": "Saznaj cenu sajta",

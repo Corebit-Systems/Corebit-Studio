@@ -8,6 +8,7 @@ import { submitContactForm } from '@/app/actions';
 import { trackLeadEvent } from './leadAnalytics';
 import { pricingSelectionEvent, type PricingInquiry } from './pricingInquiry';
 import { contactDraftEvent, contactMessageLimit, mergeContactDraft, takeContactDraft } from './contactDraft';
+import { projectReference } from './projectReference';
 
 interface ContactFormDict {
   title: string;
@@ -24,6 +25,8 @@ interface ContactFormDict {
   privacy_policy_link: string;
   selected_plan: string;
   clear_plan: string;
+  project_reference: string;
+  clear_project_reference: string;
   disclaimer?: string;
   whatsapp_btn?: string;
   prefilled_msg?: string;
@@ -34,16 +37,31 @@ interface ContactFormDict {
 interface ContactFormProps {
   dict: ContactFormDict;
   locale: string;
+  hasProjectReference?: boolean;
 }
 
-export default function ContactForm({ dict, locale }: ContactFormProps) {
+export default function ContactForm({ dict, locale, hasProjectReference = false }: ContactFormProps) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [agreeGDPR, setAgreeGDPR] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<PricingInquiry | null>(null);
-  const whatsappMessage = selectedPlan
-    ? [dict.prefilled_msg, `${dict.selected_plan}: ${selectedPlan.title}`, selectedPlan.paymentLabel].filter(Boolean).join('\n')
-    : dict.prefilled_msg || '';
+  const [referenceRemoved, setReferenceRemoved] = useState(false);
+  const showProjectReference = hasProjectReference && !referenceRemoved;
+  const whatsappMessage = [
+    dict.prefilled_msg,
+    showProjectReference && `${dict.project_reference}: ${projectReference.title}`,
+    selectedPlan && `${dict.selected_plan}: ${selectedPlan.title}`,
+    selectedPlan?.paymentLabel,
+  ].filter(Boolean).join('\n');
+
+  const clearProjectReference = () => {
+    setReferenceRemoved(true);
+    const url = new URL(window.location.href);
+    if (url.searchParams.get(projectReference.query) === projectReference.id) {
+      url.searchParams.delete(projectReference.query);
+      window.history.replaceState(null, '', url);
+    }
+  };
 
   useEffect(() => {
     const handleSelection = (event: Event) => {
@@ -121,6 +139,9 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
     const formData = new FormData(e.currentTarget);
     // Always include locale in payload so the server knows which language to reply in
     formData.set('locale', locale);
+    if (showProjectReference) {
+      formData.set('reference', projectReference.id);
+    }
     if (selectedPlan) {
       formData.set('plan', selectedPlan.plan);
       formData.set('payment', selectedPlan.payment);
@@ -143,6 +164,7 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
         setEmail('');
         setMessage((current) => current === message ? '' : current);
         setSelectedPlan((current) => current === selectedPlan ? null : current);
+        if (showProjectReference) clearProjectReference();
 
         // Delay the rate limit lock in the UI by 3 seconds so the user can read the success message.
         // After 3 seconds, we start the cooldown with the remaining time (~57s).
@@ -203,21 +225,41 @@ export default function ContactForm({ dict, locale }: ContactFormProps) {
         }}
         className="flex flex-col gap-4 sm:gap-6 relative z-10"
       >
-        {selectedPlan && (
-          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 rounded-xl border border-emerald-500/20 bg-emerald-500/[0.06] px-4 py-3">
-            <div aria-live="polite" className="min-w-0 space-y-1">
-              <p className="text-xs font-medium text-emerald-300">{dict.selected_plan}</p>
-              <p className="break-words text-sm font-semibold text-white">{selectedPlan.title}</p>
-              <p className="text-xs text-neutral-300">{selectedPlan.paymentLabel}</p>
-            </div>
-            <button
-              type="button"
-              disabled={status === 'loading'}
-              onClick={() => setSelectedPlan(null)}
-              className="min-h-11 shrink-0 rounded-md text-sm text-neutral-300 underline underline-offset-4 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400 disabled:opacity-50"
-            >
-              {dict.clear_plan}
-            </button>
+        {(showProjectReference || selectedPlan) && (
+          <div className="divide-y divide-white/10 rounded-xl border border-emerald-500/20 bg-emerald-500/[0.06] px-4">
+            {showProjectReference && (
+              <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 py-3">
+                <div className="min-w-0 space-y-1">
+                  <p className="text-xs font-medium text-emerald-300">{dict.project_reference}</p>
+                  <p className="text-sm font-semibold text-white">{projectReference.title}</p>
+                </div>
+                <button
+                  type="button"
+                  disabled={status === 'loading'}
+                  onClick={clearProjectReference}
+                  className="min-h-11 shrink-0 rounded-md text-sm text-neutral-300 underline underline-offset-4 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400 disabled:opacity-50"
+                >
+                  {dict.clear_project_reference}
+                </button>
+              </div>
+            )}
+            {selectedPlan && (
+              <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 py-3">
+                <div aria-live="polite" className="min-w-0 space-y-1">
+                  <p className="text-xs font-medium text-emerald-300">{dict.selected_plan}</p>
+                  <p className="break-words text-sm font-semibold text-white">{selectedPlan.title}</p>
+                  <p className="text-xs text-neutral-300">{selectedPlan.paymentLabel}</p>
+                </div>
+                <button
+                  type="button"
+                  disabled={status === 'loading'}
+                  onClick={() => setSelectedPlan(null)}
+                  className="min-h-11 shrink-0 rounded-md text-sm text-neutral-300 underline underline-offset-4 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400 disabled:opacity-50"
+                >
+                  {dict.clear_plan}
+                </button>
+              </div>
+            )}
           </div>
         )}
         {/* Invisible Honeypot */}

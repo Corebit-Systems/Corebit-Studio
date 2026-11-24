@@ -118,6 +118,8 @@
     "text": "Ngarkimi i ngadaltë mund ta vështirësojë rezervimin. Caktimi i orareve me mesazhe mund të çojë në rezervime të humbura ose të dyfishta. Rezervimi në internet tregon oraret e lira dhe mbledh kërkesat në një vend."
   },
   "contact_form": {
+    "project_reference": "Projekti si shembull",
+    "clear_project_reference": "Hiq shembullin",
     "selected_plan": "Paketa e zgjedhur",
     "clear_plan": "Hiq paketën",
     "title": "Mëso çmimin e uebfaqes",

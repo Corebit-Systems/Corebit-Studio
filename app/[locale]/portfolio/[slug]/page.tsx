@@ -4,6 +4,7 @@ import { getDictionary, Locale } from '@/i18n/getDictionary';
 import Link from 'next/link';
 import { ArrowLeft, CalendarCheck, CheckCircle2, ClipboardList, Cpu, Table2 } from 'lucide-react';
 import { notFound } from 'next/navigation';
+import { projectReference } from '@/components/projectReference';
 
 const SITE_URL = 'https://studio.corebitsystems.io';
 
@@ -246,7 +247,7 @@ export default async function PortfolioProjectPage({
             })}
           </ol>
           <Link
-            href={`/${locale}#contact`}
+            href={`/${locale}?${projectReference.query}=${projectReference.id}#contact`}
             className="mt-4 inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-white px-5 py-2.5 text-center text-sm font-semibold text-black transition-colors hover:bg-neutral-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400 sm:w-auto"
           >
             {booking.cta}

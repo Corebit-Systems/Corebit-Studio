@@ -5,6 +5,7 @@ import { headers, cookies } from 'next/headers';
 import { Resend } from 'resend';
 import { randomUUID } from 'crypto';
 import { paymentOptions, pricingPlans } from '@/components/pricingInquiry';
+import { projectReference } from '@/components/projectReference';
 
 // ── In-memory sliding-window rate limiter ────────────────────────────────────
 // This limiter and the browser cooldown complement platform-level rate limits.
@@ -45,6 +46,7 @@ const ContactSchema = z.object({
     .default('en'),
   bot_field: z.literal('').optional(),
   consent: z.literal('accepted'),
+  reference: z.literal(projectReference.id).optional(),
   pricing: z.object({
     plan: z.enum(pricingPlans),
     payment: z.enum(paymentOptions),
@@ -110,6 +112,7 @@ export async function submitContactForm(formData: FormData) {
     locale:    formData.get('locale') ?? 'en',
     bot_field: formData.get('bot_field') ?? '',
     consent:   formData.get('consent'),
+    reference: formData.get('reference') ?? undefined,
     pricing:   plan === null && payment === null ? undefined : { plan, payment },
   };
 
@@ -122,7 +125,7 @@ export async function submitContactForm(formData: FormData) {
     return { success: false, errorType: isSpamLike ? 'spam' : 'general' };
   }
 
-  const { name, email, message, locale: userLocale, pricing } = parsed.data;
+  const { name, email, message, locale: userLocale, pricing, reference } = parsed.data;
   const planNames = { starter: 'Starter', business: 'Business', enterprise: 'Enterprise' };
   const paymentNames = { full: 'Full payment (-10%)', split: 'Milestone payments (50/50)' };
 
@@ -208,6 +211,11 @@ export async function submitContactForm(formData: FormData) {
 
                 <div class="label">Submitted</div>
                 <div class="value">${dateStr}</div>
+
+                ${reference ? `
+                  <div class="label">Reference Project</div>
+                  <div class="value">${projectReference.title}</div>
+                ` : ''}
 
                 ${pricing ? `
                   <div class="label">Selected Package</div>

@@ -118,6 +118,8 @@
     "text": "Slow pages can get in the way of a booking. Managing appointments in chat can lead to missed or duplicate reservations. Online booking shows available times and keeps inquiries together."
   },
   "contact_form": {
+    "project_reference": "Reference project",
+    "clear_project_reference": "Remove reference",
     "selected_plan": "Selected package",
     "clear_plan": "Remove package",
     "title": "Get website price",
