@@ -17,6 +17,7 @@ interface NavDict {
 
 interface HeroDict {
   cta: string;
+  discussion_cta: string;
 }
 
 interface HeaderProps {
@@ -37,6 +38,7 @@ export default function Header({ dict, locale }: HeaderProps) {
   const sectionBase = isPolicyPage || pathname.startsWith(`${homeHref}/portfolio/`) ? homeHref : '';
   const contactHref = isPolicyPage ? homeHref : `${sectionBase}#contact`;
   const backLabel = dict.policies?.back_btn || 'Back to Home';
+  const contactLabel = pathname === homeHref ? dict.hero.discussion_cta : dict.hero.cta;
 
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -126,7 +128,7 @@ export default function Header({ dict, locale }: HeaderProps) {
               href={contactHref}
               className="hidden sm:inline-flex items-center justify-center px-4 py-3 min-h-[48px] rounded-xl bg-white text-black text-sm font-semibold hover:bg-neutral-200 transition-colors whitespace-nowrap"
             >
-              {dict.hero.cta}
+              {contactLabel}
             </Link>
           )}
 
@@ -202,7 +204,7 @@ export default function Header({ dict, locale }: HeaderProps) {
                 onClick={closeMenu}
                 className="w-full py-5 rounded-2xl bg-white text-black text-center font-bold text-xl hover:bg-neutral-200 transition-colors shadow-[0_0_40px_rgba(255,255,255,0.2)] active:scale-95"
               >
-                {isPolicyPage ? backLabel : dict.hero.cta}
+                {isPolicyPage ? backLabel : contactLabel}
               </Link>
               <div className="flex items-center justify-center border-t border-white/10 pt-6">
                 <span className="text-sm font-medium text-neutral-300 tracking-widest uppercase">Corebit Studio</span>

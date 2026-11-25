@@ -188,7 +188,7 @@ export default function AiSalesWidget({ locale }: AiSalesWidgetProps) {
   };
 
   return (
-    <div className="fixed bottom-6 left-4 sm:left-6 z-50 flex flex-col items-start">
+    <div data-floating-launcher={isOpen ? 'open' : 'closed'} className="fixed bottom-6 left-4 sm:left-6 z-50 flex flex-col items-start">
       <AnimatePresence>
         {isOpen && (
           <motion.div

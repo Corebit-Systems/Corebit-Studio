@@ -126,6 +126,7 @@ interface LayoutDict {
   };
   hero: {
     cta: string;
+    discussion_cta: string;
   };
   footer: {
     cta_btn: string;

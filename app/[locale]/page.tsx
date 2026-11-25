@@ -17,6 +17,7 @@ import dynamic from 'next/dynamic';
 // Above-the-fold components: statically imported for critical path/LCP optimization
 import HeroSection, { type HeroDict } from '@/components/HeroSection';
 import PortfolioShowcase, { type PortfolioShowcaseDict } from '@/components/PortfolioShowcase';
+import FeaturedProject from '@/components/FeaturedProject';
 import AutomationModules, { type AutomationDict } from '@/components/AutomationModules';
 import ScrollAnimate from '@/components/ScrollAnimate';
 
@@ -180,13 +181,16 @@ export default async function HomePage({
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24 flex flex-col gap-24 md:gap-32">
 
-      {/* 1. Animated Hero Section */}
-      <HeroSection
-        dict={dict.hero}
-        starterPrice={dict.pricing.tier1.price}
-        interactiveCore
-        featured={{ ...dict.portfolio.items['umami-bistro'], href: `/${locale}/portfolio/umami-bistro` }}
-      />
+      <div className="flex flex-col gap-7 md:gap-12">
+        <HeroSection dict={dict.hero} projectHref="#featured-project" primaryLabel={dict.hero.discussion_cta} interactiveCore />
+        <FeaturedProject locale={locale} />
+      </div>
+
+      <PortfolioShowcase dict={dict.portfolio} locale={locale} linkLabel={dict.hero.case_cta} />
+
+      <ScrollAnimate>
+        <DevelopmentProcess locale={locale} />
+      </ScrollAnimate>
 
       {/* 2. Before / After visual slider comparison */}
       <ScrollAnimate>
@@ -234,13 +238,6 @@ export default async function HomePage({
           ))}
         </ul>
       </section>
-
-      {/* 5. Portfolio / Впечатляющие цифровые активы */}
-      <PortfolioShowcase dict={dict.portfolio} locale={locale} linkLabel={dict.hero.case_cta} featured />
-
-      <ScrollAnimate>
-        <DevelopmentProcess locale={locale} />
-      </ScrollAnimate>
 
       {/* 6. Diagnostics, Warning Section, Calculator & Lead Magnet */}
       {/* Warning Section: Losing Clients */}

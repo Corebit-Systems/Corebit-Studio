@@ -73,7 +73,7 @@ export default function FloatingWidgets({ locale }: FloatingWidgetsProps) {
   const waLink = `${studioContact.whatsappUrl}?text=${encodeURIComponent(texts.waMessage)}`;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-3">
+    <div data-floating-launcher={menuOpen ? 'open' : 'closed'} className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-3">
       {/* Floating Action Button with hover mini-menu */}
       <div 
         className="relative flex flex-col items-center"

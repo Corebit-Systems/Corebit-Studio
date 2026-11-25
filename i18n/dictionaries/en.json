@@ -9,6 +9,7 @@
     "title": "Your Website Should Sell While You Sleep",
     "subtitle": "We build websites for restaurants, auto services, and car rentals, with online reservations, appointment scheduling and customer notifications.",
     "cta": "Get website price",
+    "discussion_cta": "Discuss your project",
     "starter": "Starter website from {price} · Launch from 7 days",
     "cases_cta": "See our work",
     "case_label": "Featured project",
@@ -47,8 +48,8 @@
     }
   },
   "portfolio": {
-    "title": "Breathtaking Digital Assets",
-    "subtitle": "Recent high-converting platforms engineered by Corebit Studio.",
+    "title": "Selected projects",
+    "subtitle": "See how reservations, appointments and online orders work in our projects.",
     "items": {
       "cupertino-roast": {
         "title": "Cupertino Roast",

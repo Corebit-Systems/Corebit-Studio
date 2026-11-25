@@ -9,6 +9,7 @@
     "title": "Faqja juaj duhet të shesë ndërsa ju flini",
     "subtitle": "Krijojmë faqe për restorante, auto-servise dhe makina me qira, me rezervime, caktim oraresh dhe njoftime për klientët.",
     "cta": "Mëso çmimin e uebfaqes",
+    "discussion_cta": "Diskuto projektin",
     "starter": "Faqe bazë nga {price} · Gati nga 7 ditë",
     "cases_cta": "Shihni projektet",
     "case_label": "Projekt i studios",
@@ -47,8 +48,8 @@
     }
   },
   "portfolio": {
-    "title": "Asete Dixhitale Lënesh",
-    "subtitle": "Platformat e fundit me konvertim të lartë nga Corebit Studio.",
+    "title": "Projekte të përzgjedhura",
+    "subtitle": "Shihni si funksionojnë rezervimet, caktimi i takimeve dhe porositë online në projektet tona.",
     "items": {
       "cupertino-roast": {
         "title": "Cupertino Roast",

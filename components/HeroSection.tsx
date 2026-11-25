@@ -11,6 +11,7 @@ export interface HeroDict {
   title: string;
   subtitle: string;
   cta: string;
+  discussion_cta: string;
   starter: string;
   cases_cta: string;
   case_label: string;
@@ -21,8 +22,10 @@ export interface HeroDict {
 
 interface HeroSectionProps {
   dict: HeroDict;
-  starterPrice: number;
+  starterPrice?: number;
   interactiveCore?: boolean;
+  projectHref?: string;
+  primaryLabel?: string;
   featured?: {
     title: string;
     desc: string;
@@ -36,7 +39,7 @@ const pointerSpring = { stiffness: 75, damping: 24 };
 const focusStyle = 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400';
 const HeroCore = dynamic(() => import('./HeroCore'), { ssr: false });
 
-export default function HeroSection({ dict, starterPrice, featured, interactiveCore = false }: HeroSectionProps) {
+export default function HeroSection({ dict, starterPrice, featured, interactiveCore = false, projectHref = '#portfolio', primaryLabel = dict.cta }: HeroSectionProps) {
   const sceneRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
   const [coreReady, setCoreReady] = useState(false);
@@ -105,9 +108,11 @@ export default function HeroSection({ dict, starterPrice, featured, interactiveC
               {dict.subtitle}
             </p>
             <div className="hero-enter hero-enter-actions flex w-full flex-col gap-4">
-              <p className="text-sm font-medium text-emerald-300">
-                {dict.starter.replace('{price}', `€${starterPrice}`)}
-              </p>
+              {starterPrice !== undefined && (
+                <p className="text-sm font-medium text-emerald-300">
+                  {dict.starter.replace('{price}', `€${starterPrice}`)}
+                </p>
+              )}
               <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center">
                 <a
                   href="#contact"
@@ -117,11 +122,11 @@ export default function HeroSection({ dict, starterPrice, featured, interactiveC
                   onBlur={interactiveCore ? () => setQuoteFocused(false) : undefined}
                   className={`group relative inline-flex min-h-14 items-center justify-center gap-2 overflow-hidden rounded-2xl bg-white px-5 py-3 text-center text-base font-semibold text-black transition-colors hover:bg-emerald-50 sm:px-6 ${focusStyle}`}
                 >
-                  <span>{dict.cta}</span>
+                  <span>{primaryLabel}</span>
                   <ArrowRight aria-hidden="true" size={20} className="shrink-0 motion-safe:transition-transform motion-safe:group-hover:translate-x-1" />
                 </a>
                 <a
-                  href="#portfolio"
+                  href={projectHref}
                   className={`inline-flex min-h-14 items-center justify-center rounded-2xl border border-white/20 bg-[#050506]/50 px-5 py-3 text-center text-base font-semibold text-neutral-200 transition-colors hover:border-emerald-400/50 hover:text-white sm:px-6 ${focusStyle}`}
                 >
                   {dict.cases_cta}

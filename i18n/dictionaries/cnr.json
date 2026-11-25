@@ -9,6 +9,7 @@
     "title": "Vaš sajt bi trebao da prodaje dok vi spavate",
     "subtitle": "Izrađujemo sajtove za restorane, auto servise i rent a car, uz onlajn rezervacije, zakazivanje i obavještenja za klijente.",
     "cta": "Saznaj cijenu sajta",
+    "discussion_cta": "Razgovarajmo o projektu",
     "starter": "Početni sajt od {price} · Izrada od 7 dana",
     "cases_cta": "Pogledajte projekte",
     "case_label": "Projekat studija",
@@ -47,8 +48,8 @@
     }
   },
   "portfolio": {
-    "title": "Fascinantni Digitalni Projekti",
-    "subtitle": "Nedavne platforme visoke konverzije koje je razvio Corebit Studio.",
+    "title": "Odabrani projekti",
+    "subtitle": "Pogledajte kako na našim projektima funkcionišu rezervacije, zakazivanje i onlajn naručivanje.",
     "items": {
       "cupertino-roast": {
         "title": "Cupertino Roast",
