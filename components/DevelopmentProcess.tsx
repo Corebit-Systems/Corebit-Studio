@@ -3,6 +3,7 @@
 import { useState, type KeyboardEvent } from 'react';
 import { ClipboardList, Code2, Layers3, ListChecks, Rocket } from 'lucide-react';
 import type { Locale } from '@/i18n/getDictionary';
+import effects from './SectionEffects.module.css';
 
 const stepIcons = [ClipboardList, Layers3, Code2, ListChecks, Rocket] as const;
 const lastStep = stepIcons.length - 1;
@@ -145,8 +146,9 @@ export default function DevelopmentProcess({ locale }: { locale: Locale }) {
                 onClick={() => setActiveStep(index)}
                 className={`group relative flex min-h-14 min-w-0 items-center gap-4 rounded-lg text-left text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400 sm:text-base md:flex-col md:gap-3 md:px-1 md:text-center ${selected ? 'text-emerald-300' : 'text-neutral-300 hover:text-white'}`}
               >
-                <span className={`flex size-14 shrink-0 items-center justify-center rounded-full border bg-[#0c1010] transition-colors ${selected ? 'border-emerald-400 text-emerald-300 shadow-[0_0_24px_rgba(52,211,153,.25)]' : 'border-white/[0.15] text-neutral-400 group-hover:border-emerald-400/50 group-hover:text-emerald-200'}`}>
+                <span className={`relative flex size-14 shrink-0 items-center justify-center rounded-full border bg-[#0c1010] transition-colors ${selected ? 'border-emerald-400 text-emerald-300 shadow-[0_0_24px_rgba(52,211,153,.25)]' : 'border-white/[0.15] text-neutral-400 group-hover:border-emerald-400/50 group-hover:text-emerald-200'}`}>
                   <Icon aria-hidden="true" size={21} />
+                  {selected && <span aria-hidden="true" className={effects.stepPulse} />}
                 </span>
                 <span>{step.title}</span>
               </button>

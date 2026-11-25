@@ -2,6 +2,7 @@
 
 import { useId, useState } from 'react';
 import { Check, Clock3 } from 'lucide-react';
+import effects from './SectionEffects.module.css';
 
 export interface ProjectPreviewCopy {
   title: string;
@@ -68,9 +69,10 @@ export default function ProjectFlowPreview({ copy, label }: { copy: ProjectPrevi
         </fieldset>
       )}
 
-      <div className="mt-4 border-t border-white/10 pt-3">
-        <p className="text-xs text-neutral-400">{copy.summary}</p>
-        <output className="mt-1 block break-words text-sm font-semibold text-white">
+      <div className="relative mt-4 overflow-hidden border-t border-white/10 pt-3">
+        <span key={`${option}-${time}`} aria-hidden="true" className={effects.summaryPulse} />
+        <p className="relative text-xs text-neutral-400">{copy.summary}</p>
+        <output className="relative mt-1 block break-words text-sm font-semibold text-white">
           {copy.options[option]}{copy.time && ` · ${time}`}
         </output>
       </div>

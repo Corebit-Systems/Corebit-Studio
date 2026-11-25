@@ -5,6 +5,7 @@ import React, { useRef } from 'react';
 import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import effects from './SectionEffects.module.css';
 
 interface BentoCardProps {
   title: string;
@@ -31,8 +32,8 @@ export default function BentoCard({
   const reduceMotion = useReducedMotion();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const mousePX = useMotionValue(0);
-  const mousePY = useMotionValue(0);
+  const mousePX = useMotionValue('75%');
+  const mousePY = useMotionValue('12%');
 
   const springConfig = { damping: 20, stiffness: 150, mass: 0.5 };
   const mouseXSpring = useSpring(x, springConfig);
@@ -48,8 +49,8 @@ export default function BentoCard({
     x.set((e.clientX - rect.left) / rect.width - 0.5);
     y.set((e.clientY - rect.top) / rect.height - 0.5);
     
-    mousePX.set(e.clientX - rect.left);
-    mousePY.set(e.clientY - rect.top);
+    mousePX.set(`${e.clientX - rect.left}px`);
+    mousePY.set(`${e.clientY - rect.top}px`);
   };
 
   const handleMouseLeave = () => {
@@ -59,7 +60,11 @@ export default function BentoCard({
 
   const spotlightBg = useTransform(
     [mousePX, mousePY],
-    ([px, py]) => `radial-gradient(350px circle at ${px}px ${py}px, rgba(16, 185, 129, 0.09), transparent 80%)`
+    ([px, py]) => `radial-gradient(350px circle at ${px} ${py}, rgba(16, 185, 129, 0.12), transparent 80%)`
+  );
+  const edgeBg = useTransform(
+    [mousePX, mousePY],
+    ([px, py]) => `radial-gradient(180px circle at ${px} ${py}, #a7f3d0, #34d39982 46%, transparent 100%)`
   );
 
   const CardContent = (
@@ -67,12 +72,12 @@ export default function BentoCard({
       ref={ref}
       onPointerMove={handlePointerMove}
       onPointerLeave={handleMouseLeave}
-      initial={reduceMotion ? false : { opacity: 0.78, y: 18 }}
+      initial={{ opacity: 0.78, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.7, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
-      style={{ rotateX: reduceMotion ? 0 : rotateX, rotateY: reduceMotion ? 0 : rotateY }}
-      className={`relative group rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-2xl p-5 sm:p-8 flex flex-col h-full overflow-hidden motion-reduce:!transform-none motion-reduce:!opacity-100 ${className} ${href ? 'cursor-pointer hover:border-emerald-600/50 transition-colors' : ''}`}
+      style={{ rotateX, rotateY }}
+      className={`${effects.card} relative group rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-2xl p-5 sm:p-8 flex flex-col h-full overflow-hidden motion-reduce:!transform-none motion-reduce:!opacity-100 ${className} ${href ? 'cursor-pointer hover:border-emerald-600/50 transition-colors' : ''}`}
     >
       {/* GPU-composited shadow glow using opacity transition */}
       <div className="absolute inset-0 rounded-[inherit] shadow-[0_0_50px_rgba(16,185,129,0.15)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-[-1] will-change-opacity" />
@@ -84,12 +89,14 @@ export default function BentoCard({
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0 hidden md:block"
         style={{ background: spotlightBg }}
       />
+      <motion.div aria-hidden="true" className={effects.edge} style={{ background: edgeBg }} />
+      {icon && !visual && <div aria-hidden="true" className={effects.circuitBoard} />}
 
       <div className="relative flex h-full flex-col">
         {visual && (
           <div
             aria-hidden="true"
-            className="relative mb-4 h-36 w-full overflow-hidden rounded-xl border border-white/10 bg-[#060908] sm:mb-6 sm:h-48 sm:rounded-2xl"
+            className={`${effects.preview} relative mb-4 h-36 w-full overflow-hidden rounded-xl border border-white/10 bg-[#060908] sm:mb-6 sm:h-48 sm:rounded-2xl`}
           >
             {visual}
           </div>
@@ -120,7 +127,7 @@ export default function BentoCard({
     <Link
       href={href}
       aria-label={linkLabel ? `${title} · ${linkLabel}` : undefined}
-      className="block h-full min-h-0 rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400 sm:rounded-3xl"
+      className={`${effects.cardLink} block h-full min-h-0 rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400 sm:rounded-3xl`}
     >
       {CardContent}
     </Link>

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowUpRight, Check } from 'lucide-react';
 import { describePricingSelection, pricingPlans, pricingSelectionEvent, pricingTierKeys, type PricingInquiry } from './pricingInquiry';
 import { projectReferences, type ProjectReferenceId } from './projectReference';
+import effects from './SectionEffects.module.css';
 
 interface PricingTier {
   title: string;
@@ -130,7 +131,12 @@ export default function PricingSection({ dict, locale, initialPayment }: Pricing
             >
               <div className="space-y-2">
                 <h3 className={`text-xl font-semibold tracking-tight ${featured ? 'text-emerald-300' : 'text-white'}`}>{tier.title}</h3>
-                <p className="font-bold tabular-nums tracking-tight text-white text-3xl sm:text-4xl">{euro.format(price)}</p>
+                <p
+                  key={price}
+                  className={`${effects.price} text-3xl font-bold tabular-nums tracking-tight text-white sm:text-4xl`}
+                >
+                  {euro.format(price)}
+                </p>
                 {rsd && <p className="text-xs text-neutral-400">{rsd}</p>}
                 {!isFullPayment && (
                   <dl className="grid grid-cols-2 divide-x divide-white/10 overflow-hidden rounded-xl bg-black/20 text-sm">
