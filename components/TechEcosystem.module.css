@@ -1,0 +1,122 @@
+.console {
+  overflow: hidden;
+  border: 1px solid rgb(110 231 183 / .24);
+  border-radius: clamp(1.25rem, 4vw, 2rem);
+  background: #0a100e;
+  box-shadow: 0 24px 80px rgb(0 0 0 / .32);
+}
+
+.board {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  padding: clamp(.75rem, 2vw, 1.75rem);
+  border-bottom: 1px solid rgb(110 231 183 / .16);
+  background: radial-gradient(ellipse at 50% 44%, #15362b, #0a1512 68%, #080e0d);
+}
+
+.board::before, .board::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: '';
+  pointer-events: none;
+}
+
+.board::before {
+  background-image: linear-gradient(rgb(167 243 208 / .12) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(167 243 208 / .12) 1px, transparent 1px);
+  background-position: center;
+  background-size: 20px 20px;
+  mask-image: radial-gradient(ellipse at center, black 14%, transparent 77%);
+}
+
+.board::after {
+  opacity: 0;
+  background: radial-gradient(circle at var(--reflection-x, 50%) var(--reflection-y, 50%), rgb(110 231 183 / .26), transparent 42%);
+}
+
+.corners {
+  position: absolute;
+  inset: .7rem;
+  color: rgb(167 243 208 / .37);
+  background:
+    linear-gradient(currentColor, currentColor) left top / 11px 1px,
+    linear-gradient(currentColor, currentColor) left top / 1px 11px,
+    linear-gradient(currentColor, currentColor) right top / 11px 1px,
+    linear-gradient(currentColor, currentColor) right top / 1px 11px,
+    linear-gradient(currentColor, currentColor) left bottom / 11px 1px,
+    linear-gradient(currentColor, currentColor) left bottom / 1px 11px,
+    linear-gradient(currentColor, currentColor) right bottom / 11px 1px,
+    linear-gradient(currentColor, currentColor) right bottom / 1px 11px;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.aperture {
+  position: absolute;
+  inset: 6%;
+  border-radius: 50%;
+  background: repeating-conic-gradient(from 2deg, rgb(167 243 208 / .32) 0deg .55deg, transparent .55deg 6deg);
+  mask-image: radial-gradient(circle, transparent 67%, black 67.5% 69.5%, transparent 70%);
+  pointer-events: none;
+}
+
+.details {
+  min-height: 14rem;
+  background: radial-gradient(ellipse at right top, #10241d, transparent 72%), #0b1210;
+}
+
+.packet, .corePulse {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.packet {
+  inset: 0;
+}
+
+.packet::after {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #e2fff2;
+  box-shadow: 0 0 5px 2px #6ee7b7, 0 0 18px 4px #34d399;
+  content: '';
+}
+
+.corePulse {
+  inset: 0;
+  border: 1px solid #a7f3d0;
+  border-radius: inherit;
+}
+
+@media (min-width: 1024px) {
+  .board { border-right: 1px solid rgb(110 231 183 / .16); border-bottom: 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .packet { animation: transmit .67s cubic-bezier(.32, .09, .37, 1) both; }
+  .corePulse { animation: emit .5s ease-out both; }
+  .arrival { animation-delay: .43s; }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .board::after { transition: opacity .28s ease; }
+  .board:hover::after { opacity: 1; }
+}
+
+@keyframes transmit {
+  0% { opacity: 0; }
+  22%, 76% { opacity: 1; }
+  100% { transform: translate(var(--packet-x), var(--packet-y)); opacity: 0; }
+}
+
+@keyframes emit {
+  from { opacity: .7; transform: scale(1); }
+  to { opacity: 0; transform: scale(1.5); }
+}
