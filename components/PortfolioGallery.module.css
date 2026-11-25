@@ -1,0 +1,55 @@
+.dialog {
+  max-height: calc(100dvh - 1.5rem);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.dialog::backdrop {
+  background: #030705e8;
+  backdrop-filter: blur(10px);
+}
+
+.stage {
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(24rem, 65dvh, 42rem);
+}
+
+.frame[data-frame="waiting"] { opacity: 0; }
+.frame[data-frame="previous"] { z-index: 1; }
+.frame[data-frame="current"] { z-index: 2; }
+
+.shade {
+  background:
+    linear-gradient(90deg, #06100ef2, #06100eba 29%, #06100e21 75%),
+    linear-gradient(0deg, #040908dc, #04090800 68%);
+}
+
+@media (max-width: 639px) {
+  .stage { min-height: clamp(21rem, 57dvh, 32rem); }
+  .shade {
+    background: linear-gradient(0deg, #040b09fa 3%, #040b09bd 37%, #040b0915 78%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .frame[data-frame="current"][data-direction="forward"] { animation: wipe-forward .66s cubic-bezier(.2,.72,.25,1) both; }
+  .frame[data-frame="current"][data-direction="backward"] { animation: wipe-backward .66s cubic-bezier(.2,.72,.25,1) both; }
+  .caption { animation: caption-in .48s cubic-bezier(.2,.72,.25,1) both; }
+  .dialog[open] > div { animation: caption-in .4s ease-out both; }
+}
+
+@keyframes wipe-forward {
+  from { clip-path: inset(0 0 0 100%); transform: scale(1.065); }
+  to { clip-path: inset(0); transform: scale(1); }
+}
+
+@keyframes wipe-backward {
+  from { clip-path: inset(0 100% 0 0); transform: scale(1.065); }
+  to { clip-path: inset(0); transform: scale(1); }
+}
+
+@keyframes caption-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

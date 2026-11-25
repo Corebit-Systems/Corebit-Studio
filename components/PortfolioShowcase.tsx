@@ -1,5 +1,7 @@
 import { CalendarClock, Check, Coffee, LayoutGrid, Sparkles } from 'lucide-react';
 import BentoCard from './BentoCard';
+import PortfolioGallery from './PortfolioGallery';
+import type { Locale } from '@/i18n/getDictionary';
 import { projectWorkflowAnchor, type ProjectReferenceId } from './projectReference';
 
 export interface PortfolioShowcaseDict {
@@ -70,12 +72,13 @@ function ProjectPreview({ project }: { project: ProjectReferenceId }) {
   }
 }
 
-export default function PortfolioShowcase({ dict, locale, linkLabel }: { dict: PortfolioShowcaseDict; locale: string; linkLabel: string }) {
+export default function PortfolioShowcase({ dict, locale, linkLabel }: { dict: PortfolioShowcaseDict; locale: Locale; linkLabel: string }) {
   return (
     <section id="portfolio" aria-labelledby="portfolio-title" className="flex flex-col gap-8 sm:gap-12">
       <div className="flex flex-col gap-3 px-2 text-center sm:gap-4">
         <h2 id="portfolio-title" className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">{dict.title}</h2>
         <p className="text-base text-neutral-400 sm:text-xl">{dict.subtitle}</p>
+        <PortfolioGallery locale={locale} projects={projects.map(id => ({ id, ...dict.items[id] }))} />
       </div>
       <div className="grid items-stretch gap-4 sm:grid-cols-2 sm:gap-6">
         {projects.map((project, index) => (
