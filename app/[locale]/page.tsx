@@ -21,6 +21,7 @@ import ScrollAnimate from '@/components/ScrollAnimate';
 
 // Below-the-fold components: dynamically loaded to split JS bundle and reduce TBT
 const BeforeAfterSlider = dynamic(() => import('@/components/BeforeAfterSlider'));
+const BookingFlight = dynamic(() => import('@/components/BookingFlight'));
 const PricingSection = dynamic(() => import('@/components/PricingSection'));
 const ContactForm = dynamic(() => import('@/components/ContactForm'));
 const FAQSection = dynamic(() => import('@/components/FAQSection'));
@@ -194,6 +195,10 @@ export default async function HomePage({
       {/* 2. Before / After visual slider comparison */}
       <ScrollAnimate>
         <BeforeAfterSlider dict={dict.before_after} />
+      </ScrollAnimate>
+
+      <ScrollAnimate>
+        <BookingFlight locale={locale} />
       </ScrollAnimate>
 
       {/* 3. About / Архитектура высокой конверсии */}

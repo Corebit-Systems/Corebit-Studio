@@ -1,0 +1,32 @@
+.stage {
+  background:
+    radial-gradient(ellipse at 50% 43%, #167b5527, transparent 54%),
+    radial-gradient(ellipse at 46% 50%, #071f18, #030806 74%);
+}
+
+.staticTunnel {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  transition: opacity .4s ease-out;
+}
+
+.staticTunnel div {
+  position: absolute;
+  width: 80%;
+  height: 69%;
+  transform: translateY(-6%) rotate(-9deg);
+  border: 1px solid #73ffd492;
+  border-radius: 12%;
+  box-shadow: 0 0 25px #16edaa36, inset 0 0 25px #16edaa1e;
+}
+
+.staticTunnel div:nth-child(2) { scale: .69; rotate: 4deg; }
+.staticTunnel div:nth-child(3) { scale: .46; rotate: 11deg; }
+.staticTunnel div:nth-child(4) { scale: .21; rotate: 19deg; background: #38d49b55; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .stage:has(canvas[data-ready="true"]) .staticTunnel { opacity: 0; }
+}
