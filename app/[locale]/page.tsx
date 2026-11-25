@@ -22,6 +22,7 @@ import ScrollAnimate from '@/components/ScrollAnimate';
 // Below-the-fold components: dynamically loaded to split JS bundle and reduce TBT
 const BeforeAfterSlider = dynamic(() => import('@/components/BeforeAfterSlider'));
 const BookingFlight = dynamic(() => import('@/components/BookingFlight'));
+const ResponsivePreview = dynamic(() => import('@/components/ResponsivePreview'));
 const PricingSection = dynamic(() => import('@/components/PricingSection'));
 const ContactForm = dynamic(() => import('@/components/ContactForm'));
 const FAQSection = dynamic(() => import('@/components/FAQSection'));
@@ -274,6 +275,10 @@ export default async function HomePage({
 
       {/* 7. Interactive Business IT Ecosystem Diagram */}
       <TechEcosystem dict={dict.ecosystem} />
+
+      <ScrollAnimate>
+        <ResponsivePreview locale={locale} />
+      </ScrollAnimate>
 
       {/* 9. Client Reviews Accordion & Feedback Form + FAQ */}
       <ReviewsAccordion dict={(dict as any).reviews} />

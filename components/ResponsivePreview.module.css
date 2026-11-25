@@ -1,0 +1,36 @@
+.shell {
+  background: radial-gradient(ellipse at 45% 0%, #165a3f30, transparent 68%), #080e0c;
+}
+
+.workspace {
+  background:
+    radial-gradient(ellipse at 48% 18%, #09644427, transparent 68%),
+    radial-gradient(circle, #6ee7b733 1px, transparent 1.6px) 0 0 / 20px 20px;
+}
+
+.frame { transform-origin: top left; }
+.preview { container-type: inline-size; }
+.content { display: grid; }
+.photo { min-height: 11rem; }
+.booking { font-size: 1.45rem; }
+
+@container (min-width: 600px) {
+  .content { grid-template-columns: 1.5fr 1fr; }
+  .photo { min-height: 20rem; }
+  .fields { padding: 1.25rem; }
+  .booking { font-size: 2.2rem; padding: 1.25rem; }
+}
+
+@container (min-width: 900px) {
+  .content { grid-template-columns: 1.8fr 1fr; }
+  .photo { min-height: 23rem; }
+  .fields { padding: 1.6rem; }
+  .booking { font-size: 2.65rem; padding: 1.6rem; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .frame { transition: width .42s cubic-bezier(.2,.75,.3,1), transform .42s cubic-bezier(.2,.75,.3,1); }
+  .viewport { transition: width .42s cubic-bezier(.2,.75,.3,1); }
+  .lab:has(input:active) .frame,
+  .lab:has(input:active) .viewport { transition: none; }
+}
