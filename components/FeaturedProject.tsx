@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { ArrowRight, ArrowUpRight, Check, Users } from 'lucide-react';
 import type { Locale } from '@/i18n/getDictionary';
 import { stageContactDraft } from './contactDraft';
+import { projectReferenceQuery } from './projectReference';
 import styles from './FeaturedProject.module.css';
 
 const copyByLocale = {
@@ -65,8 +66,11 @@ export default function FeaturedProject({ locale }: { locale: Locale }) {
         <h3 id="featured-project-title" className="text-balance text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl xl:text-5xl">{copy.title}</h3>
         <p className="max-w-md text-sm leading-relaxed text-neutral-300 sm:text-base">{copy.description}</p>
         <div className="flex flex-wrap gap-3 pt-2">
-          <a href="#contact" onClick={event => {
-            if (!event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey) stageContactDraft([copy.draft]);
+          <a href={`?${projectReferenceQuery}=umami-bistro#contact`} onClick={event => {
+            if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+            event.preventDefault();
+            if (window.location.hash !== '#contact') window.history.pushState(null, '', '#contact');
+            stageContactDraft([copy.draft], 'umami-bistro');
           }} className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-emerald-200 px-4 py-2 text-sm font-bold text-emerald-950 hover:bg-emerald-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-300">
             {copy.cta}<ArrowRight aria-hidden="true" className="shrink-0" size={17} />
           </a>

@@ -1,10 +1,17 @@
+import type { ProjectReferenceId } from './projectReference';
+
 export const contactMessageLimit = 1000;
 export const contactDraftEvent = 'corebit:contact-draft';
 
-let pendingDraft = '';
+interface ContactDraft {
+  message: string;
+  reference?: ProjectReferenceId;
+}
 
-export function stageContactDraft(messages: string[]) {
-  pendingDraft = messages
+let pendingDraft: ContactDraft | undefined;
+
+export function stageContactDraft(messages: string[], reference?: ProjectReferenceId) {
+  const message = messages
     .map((message) => message.trim())
     .filter(Boolean)
     .join('\n\n')
@@ -12,12 +19,14 @@ export function stageContactDraft(messages: string[]) {
     .slice(0, contactMessageLimit)
     .trimEnd();
 
-  if (pendingDraft) window.dispatchEvent(new Event(contactDraftEvent));
+  if (!message && !reference) return;
+  pendingDraft = { message, reference };
+  window.dispatchEvent(new Event(contactDraftEvent));
 }
 
 export function takeContactDraft() {
   const draft = pendingDraft;
-  pendingDraft = '';
+  pendingDraft = undefined;
   return draft;
 }
 

@@ -82,13 +82,16 @@ export default function ContactForm({ dict, locale, example, initialPricing }: C
   const [invalidFields, setInvalidFields] = useState<ContactField[]>([]);
   const [agreeGDPR, setAgreeGDPR] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<PricingInquiry | null>(initialPricing ?? null);
+  const [draftReference, setDraftReference] = useState<ProjectReferenceId>();
   const [removedReference, setRemovedReference] = useState<ProjectReferenceId>();
+  const [draftFocusRequest, setDraftFocusRequest] = useState(0);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
   const pendingFieldFocus = useRef<ContactField | null>(null);
   const [copyFeedback, setCopyFeedback] = useState<{ text: string; result: 'success' | 'manual' } | null>(null);
-  const reference = example === removedReference ? undefined : example;
+  const selectedReference = draftReference ?? example;
+  const reference = selectedReference === removedReference ? undefined : selectedReference;
   const projectTitle = reference ? projectReferences[reference] : undefined;
   const contactContext = [
     projectTitle && `${dict.project_reference}: ${projectTitle}`,
@@ -140,15 +143,27 @@ export default function ContactForm({ dict, locale, example, initialPricing }: C
   useEffect(() => {
     const applyDraft = () => {
       const draft = takeContactDraft();
-      if (draft) {
-        setMessage((current) => mergeContactDraft(current, draft));
-        setStatus((current) => current === 'success' ? 'idle' : current);
+      if (!draft) return;
+      if (draft.message) setMessage((current) => mergeContactDraft(current, draft.message));
+      if (draft.reference) {
+        setDraftReference(draft.reference);
+        setRemovedReference(undefined);
+        setDraftFocusRequest(current => current + 1);
       }
+      setStatus((current) => current === 'success' ? 'idle' : current);
     };
     window.addEventListener(contactDraftEvent, applyDraft);
     applyDraft();
     return () => window.removeEventListener(contactDraftEvent, applyDraft);
   }, []);
+
+  useEffect(() => {
+    if (draftFocusRequest === 0) return;
+    const field = messageRef.current;
+    if (!field) return;
+    field.focus({ preventScroll: true });
+    field.scrollIntoView({ behavior: 'instant', block: 'center' });
+  }, [draftFocusRequest]);
 
   const [countdown, setCountdown] = useState(0);
   const [isRateLimited, setIsRateLimited] = useState(false);
@@ -292,7 +307,7 @@ export default function ContactForm({ dict, locale, example, initialPricing }: C
   return (
     <div
       id="contact"
-      className="w-full max-w-2xl mx-auto p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-[2.5rem] md:rounded-[3rem] bg-white/[0.03] border border-white/10 hover:border-emerald-500/20 backdrop-blur-2xl relative overflow-hidden shadow-2xl hover:shadow-[0_0_50px_-12px_rgba(16,185,129,0.15)] focus-within:border-emerald-500/30 focus-within:shadow-[0_0_50px_-6px_rgba(16,185,129,0.25)] transition-all duration-500"
+      className="w-full max-w-2xl mx-auto scroll-mt-28 p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-[2.5rem] md:rounded-[3rem] bg-white/[0.03] border border-white/10 hover:border-emerald-500/20 backdrop-blur-2xl relative overflow-hidden shadow-2xl hover:shadow-[0_0_50px_-12px_rgba(16,185,129,0.15)] focus-within:border-emerald-500/30 focus-within:shadow-[0_0_50px_-6px_rgba(16,185,129,0.25)] transition-all duration-500"
     >
       <div className="absolute top-0 right-0 w-48 sm:w-64 h-48 sm:h-64 bg-emerald-600/10 blur-[100px] rounded-full pointer-events-none" />
 
