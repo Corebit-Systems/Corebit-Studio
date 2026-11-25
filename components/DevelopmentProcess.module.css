@@ -1,0 +1,298 @@
+.deck {
+  display: grid;
+  overflow: hidden;
+  border: 1px solid rgb(110 231 183 / .24);
+  border-radius: 1.5rem;
+  background: #0b1110;
+  box-shadow: 0 24px 70px rgb(0 0 0 / .32);
+}
+
+.copy {
+  align-self: center;
+  min-height: 12rem;
+  min-width: 0;
+  padding: clamp(1.25rem, 3.5vw, 2.5rem);
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 14rem;
+  border-bottom: 1px solid rgb(110 231 183 / .19);
+  background: radial-gradient(ellipse at 50% 34%, #123328, #080d0c 75%);
+}
+
+.stage::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: '';
+  background-image: linear-gradient(rgb(110 231 183 / .13) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(110 231 183 / .13) 1px, transparent 1px);
+  background-size: 23px 23px;
+  mask-image: radial-gradient(ellipse, black 20%, transparent 77%);
+}
+
+.projection {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(79%, 20rem);
+  height: 11rem;
+  color: #a7f3d0;
+}
+
+.beam {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, #a7f3d0, transparent);
+  box-shadow: 0 0 16px #6ee7b7;
+  pointer-events: none;
+}
+
+.map {
+  display: grid;
+  justify-items: center;
+  width: min(100%, 17rem);
+}
+
+.mapRoot, .mapChildren > span, .window, .globe {
+  border: 1px solid rgb(110 231 183 / .43);
+  background: linear-gradient(155deg, #152c24, #0c1713);
+  box-shadow: 0 12px 30px rgb(0 0 0 / .28), inset 0 1px rgb(209 250 229 / .08);
+}
+
+.mapRoot, .globe {
+  display: grid;
+  place-items: center;
+  border-radius: .85rem;
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.mapTrunk {
+  height: 1.25rem;
+  width: 1px;
+  background: #6ee7b7;
+}
+
+.mapChildren {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+  gap: .5rem;
+  padding-top: 1.2rem;
+}
+
+.mapChildren::before {
+  position: absolute;
+  inset: 0 16% auto;
+  border-top: 1px solid #6ee7b7;
+  content: '';
+}
+
+.mapChildren > span {
+  position: relative;
+  height: 2.5rem;
+  border-radius: .45rem;
+}
+
+.mapChildren > span::before {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  height: 1.2rem;
+  width: 1px;
+  background: #6ee7b7;
+  content: '';
+}
+
+.mapChildren > span::after, .checkRow > span {
+  display: block;
+  height: 3px;
+  border-radius: 10px;
+  background: rgb(167 243 208 / .34);
+  content: '';
+}
+
+.mapChildren > span::after { margin: 1.1rem 19% 0; }
+
+.window {
+  overflow: hidden;
+  border-radius: .75rem;
+}
+
+.windowBar {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  height: 1.75rem;
+  padding-inline: .7rem;
+  border-bottom: 1px solid rgb(110 231 183 / .22);
+}
+
+.windowBar i {
+  height: .27rem;
+  width: .27rem;
+  border-radius: 50%;
+  background: #76caab;
+}
+
+.windowBar svg { margin-left: auto; }
+
+.devices {
+  display: flex;
+  align-items: end;
+  width: min(100%, 18rem);
+  padding-bottom: 1rem;
+}
+
+.desktop {
+  flex: 1;
+  min-width: 0;
+  transform: perspective(520px) rotateY(12deg);
+}
+
+.phone {
+  z-index: 1;
+  width: 31%;
+  margin-left: -.65rem;
+  transform: translateY(.85rem) perspective(520px) rotateY(-11deg);
+}
+
+.phone .windowBar { justify-content: center; }
+
+.wireframe {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .35rem;
+  padding: .6rem;
+}
+
+.wireframe span {
+  height: 1rem;
+  border-radius: .2rem;
+  background: #274639;
+}
+
+.wireframe span:first-child {
+  grid-column: 1 / -1;
+  height: 2.25rem;
+  background: linear-gradient(135deg, #45977b, #1d4b3b);
+}
+
+.phone .wireframe { grid-template-columns: 1fr; }
+.phone .wireframe span { height: .65rem; }
+.phone .wireframe span:first-child { height: 1.35rem; }
+
+.editor, .checklist { width: min(100%, 16rem); }
+
+.editor pre {
+  margin: 0;
+  padding: .85rem;
+  font-size: .75rem;
+  line-height: 1.6;
+}
+
+.checklist { padding-bottom: .45rem; }
+
+.checkRow {
+  display: grid;
+  grid-template-columns: 1rem 1fr;
+  align-items: center;
+  gap: .6rem;
+  padding: .5rem .8rem 0;
+}
+
+.checkRow > span { width: 84%; }
+.checkRow:nth-child(3) > span { width: 65%; }
+
+.launch {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.globe {
+  z-index: 1;
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 50%;
+  box-shadow: 0 0 46px rgb(52 211 153 / .25);
+}
+
+.orbit {
+  position: absolute;
+  width: min(94%, 16rem);
+  height: 44%;
+  border: 1px solid #528c75;
+  border-radius: 50%;
+  transform: rotate(-19deg);
+}
+
+.orbit:nth-child(2) { transform: rotate(19deg); }
+
+.orbit::after {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: .5rem;
+  height: .5rem;
+  border-radius: 50%;
+  background: #a7f3d0;
+  box-shadow: 0 0 14px #6ee7b7;
+  content: '';
+}
+
+.orbit:nth-child(2)::after { left: auto; right: 0; }
+
+@media (min-width: 768px) {
+  .deck { grid-template-columns: 1.1fr 1fr; }
+  .stage { min-height: 18rem; border-right: 1px solid rgb(110 231 183 / .19); border-bottom: 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .projection { animation: project .48s cubic-bezier(.2, .75, .25, 1) both; }
+  .beam { animation: scan .75s .09s ease-out both; }
+  .mapChildren { animation: connect .52s .08s ease-out both; }
+  .phone { animation: separate .55s .08s ease-out both; }
+  .editor pre { animation: connect .5s .14s ease-out both; }
+  .checkRow { animation: project .35s ease-out both; }
+  .orbit { animation: expand .7s ease-out both; }
+}
+
+@keyframes project {
+  from { opacity: 0; transform: translateY(9px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scan {
+  0% { opacity: 0; transform: translateY(0); }
+  23% { opacity: .65; }
+  100% { opacity: 0; transform: translateY(11rem); }
+}
+
+@keyframes expand {
+  from { scale: .7; opacity: 0; }
+  to { scale: 1; opacity: 1; }
+}
+
+@keyframes connect {
+  from { clip-path: inset(0 0 100%); }
+  to { clip-path: inset(0 0 -2rem); }
+}
+
+@keyframes separate {
+  from { translate: -22px -10px; opacity: 0; }
+  to { translate: 0 0; opacity: 1; }
+}

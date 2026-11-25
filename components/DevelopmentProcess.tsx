@@ -1,12 +1,69 @@
 'use client';
 
 import { useState, type KeyboardEvent } from 'react';
-import { ClipboardList, Code2, Layers3, ListChecks, Rocket } from 'lucide-react';
+import { Check, ClipboardList, Code2, Globe2, Layers3, ListChecks, Rocket } from 'lucide-react';
 import type { Locale } from '@/i18n/getDictionary';
 import effects from './SectionEffects.module.css';
+import styles from './DevelopmentProcess.module.css';
 
 const stepIcons = [ClipboardList, Layers3, Code2, ListChecks, Rocket] as const;
 const lastStep = stepIcons.length - 1;
+
+const validationRows = [0, 1, 2];
+
+function ProcessScene({ step }: { step: number }) {
+  return (
+    <div aria-hidden="true" className={styles.stage}>
+      <div key={step} className={styles.projection}>
+        <div className={styles.beam} />
+        {step === 0 && (
+          <div className={styles.map}>
+            <span className={styles.mapRoot}><ClipboardList size={26} /></span>
+            <span className={styles.mapTrunk} />
+            <div className={styles.mapChildren}>
+              <span /><span /><span />
+            </div>
+          </div>
+        )}
+        {step === 1 && (
+          <div className={styles.devices}>
+            <div className={`${styles.window} ${styles.desktop}`}>
+              <div className={styles.windowBar}><i /><i /><i /></div>
+              <div className={styles.wireframe}><span /><span /><span /></div>
+            </div>
+            <div className={`${styles.window} ${styles.phone}`}>
+              <div className={styles.windowBar}><i /></div>
+              <div className={styles.wireframe}><span /><span /><span /></div>
+            </div>
+          </div>
+        )}
+        {step === 2 && (
+          <div className={`${styles.window} ${styles.editor}`}>
+            <div className={styles.windowBar}><i /><i /><i /><Code2 size={16} /></div>
+            <pre>{'<Booking>\n  <Calendar />\n  <AvailableSlots />\n</Booking>'}</pre>
+          </div>
+        )}
+        {step === 3 && (
+          <div className={`${styles.window} ${styles.checklist}`}>
+            <div className={styles.windowBar}><i /><i /><i /></div>
+            {validationRows.map(row => (
+              <div key={row} className={styles.checkRow} style={{ animationDelay: `${row * 110}ms` }}>
+                <Check size={16} /><span />
+              </div>
+            ))}
+          </div>
+        )}
+        {step === lastStep && (
+          <div className={styles.launch}>
+            <span className={styles.orbit} />
+            <span className={styles.orbit} />
+            <span className={styles.globe}><Globe2 size={52} strokeWidth={1.1} /></span>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
 
 interface Step {
   title: string;
@@ -107,7 +164,7 @@ export default function DevelopmentProcess({ locale }: { locale: Locale }) {
   }
 
   return (
-    <section id="development-process" aria-labelledby="development-process-title" className="mx-auto flex w-full max-w-5xl flex-col gap-7 sm:gap-9">
+    <section id="development-process" aria-labelledby="development-process-title" className="mx-auto flex w-full max-w-5xl scroll-mt-28 flex-col gap-7 sm:gap-9">
       <div className="space-y-3 text-center">
         <h2 id="development-process-title" className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">{copy.title}</h2>
         <p className="text-base text-neutral-400 sm:text-lg">{copy.subtitle}</p>
@@ -156,7 +213,8 @@ export default function DevelopmentProcess({ locale }: { locale: Locale }) {
           })}
         </div>
 
-        <div className="mx-auto w-full max-w-2xl rounded-2xl border border-emerald-400/15 bg-[radial-gradient(ellipse_at_top_right,_rgba(16,185,129,.15),_transparent_72%)] p-4 sm:p-6">
+        <div className={styles.deck}>
+          <ProcessScene step={activeStep} />
           {copy.steps.map((step, index) => (
             <div
               key={step.title}
@@ -165,7 +223,7 @@ export default function DevelopmentProcess({ locale }: { locale: Locale }) {
               aria-labelledby={`process-tab-${index}`}
               hidden={index !== activeStep}
               tabIndex={0}
-              className="min-h-[12.5rem] rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400 motion-safe:[animation:section-enter_.35s_ease-out] sm:min-h-[11rem]"
+              className={`${styles.copy} focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-emerald-400 motion-safe:[animation:section-enter_.35s_ease-out]`}
             >
               <h3 className="text-xl font-bold tracking-tight text-white sm:text-2xl">{step.title}</h3>
               <p className="mt-2 max-w-xl text-sm leading-relaxed text-neutral-300 sm:text-base">{step.description}</p>
