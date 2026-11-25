@@ -187,7 +187,7 @@ export default async function HomePage({
       <HeroSection
         dict={dict.hero}
         starterPrice={dict.pricing.tier1.price}
-        interactiveLocale={locale}
+        interactiveCore
         featured={{ ...dict.portfolio.items['umami-bistro'], href: `/${locale}/portfolio/umami-bistro` }}
       />
 

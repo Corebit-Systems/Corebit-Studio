@@ -4,8 +4,7 @@ import { useRef, useState, type PointerEvent } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion';
-import { ArrowRight, ArrowUpRight, Layers3 } from 'lucide-react';
-import type { Locale } from '@/i18n/getDictionary';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import heroArtwork from '@/public/hero-emerald-core.webp';
 
 export interface HeroDict {
@@ -23,7 +22,7 @@ export interface HeroDict {
 interface HeroSectionProps {
   dict: HeroDict;
   starterPrice: number;
-  interactiveLocale?: Locale;
+  interactiveCore?: boolean;
   featured?: {
     title: string;
     desc: string;
@@ -36,19 +35,13 @@ interface HeroSectionProps {
 const pointerSpring = { stiffness: 75, damping: 24 };
 const focusStyle = 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400';
 const HeroCore = dynamic(() => import('./HeroCore'), { ssr: false });
-const coreLabels: Record<Locale, string> = {
-  en: 'Separate the layers',
-  ru: 'Раздвинуть слои',
-  cnr: 'Razdvoji slojeve',
-  srb: 'Razdvoji slojeve',
-  sq: 'Ndaji shtresat',
-};
 
-export default function HeroSection({ dict, starterPrice, featured, interactiveLocale }: HeroSectionProps) {
+export default function HeroSection({ dict, starterPrice, featured, interactiveCore = false }: HeroSectionProps) {
   const sceneRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
   const [coreReady, setCoreReady] = useState(false);
-  const [coreExpanded, setCoreExpanded] = useState(false);
+  const [quoteHovered, setQuoteHovered] = useState(false);
+  const [quoteFocused, setQuoteFocused] = useState(false);
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
   const artworkX = useSpring(pointerX, pointerSpring);
@@ -75,7 +68,7 @@ export default function HeroSection({ dict, starterPrice, featured, interactiveL
     <div className="relative w-screen self-center">
       <section
         ref={sceneRef}
-        data-interactive-core={Boolean(interactiveLocale)}
+        data-interactive-core={interactiveCore}
         onPointerMove={moveArtwork}
         onPointerLeave={resetArtwork}
         className="relative isolate overflow-hidden"
@@ -96,25 +89,12 @@ export default function HeroSection({ dict, starterPrice, featured, interactiveL
               />
             </motion.div>
           </motion.div>
-          {interactiveLocale && (
+          {interactiveCore && (
             <div className="hero-core absolute inset-y-0 right-0 w-full motion-reduce:hidden lg:w-[60%]">
-              <HeroCore expanded={coreExpanded} onReady={setCoreReady} />
+              <HeroCore expanded={quoteHovered || quoteFocused} onReady={setCoreReady} />
             </div>
           )}
         </div>
-        {interactiveLocale && coreReady && !reduceMotion && (
-          <div className="pointer-events-none absolute inset-x-0 bottom-4 z-10 mx-auto flex max-w-7xl justify-center px-4 sm:px-6 lg:justify-end">
-            <button
-              type="button"
-              aria-pressed={coreExpanded}
-              onClick={() => setCoreExpanded(previous => !previous)}
-              className={`pointer-events-auto inline-flex min-h-11 items-center gap-2 rounded-full border border-emerald-300/35 bg-[#080f0e]/95 px-4 text-sm font-medium text-emerald-200 transition-colors hover:border-emerald-300/70 hover:bg-[#10261f] aria-pressed:bg-emerald-300 aria-pressed:text-[#06100c] ${focusStyle}`}
-            >
-              <Layers3 aria-hidden="true" size={17} />
-              {coreLabels[interactiveLocale]}
-            </button>
-          </div>
-        )}
 
         <div className="hero-content relative mx-auto flex min-h-[34rem] w-full max-w-7xl items-center px-4 pb-44 pt-10 sm:px-6 sm:pb-52 sm:pt-12 lg:py-16">
           <div className="flex w-full max-w-[45rem] flex-col items-start gap-5 sm:gap-6 lg:w-[59%]">
@@ -131,6 +111,10 @@ export default function HeroSection({ dict, starterPrice, featured, interactiveL
               <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center">
                 <a
                   href="#contact"
+                  onPointerEnter={interactiveCore ? event => setQuoteHovered(event.pointerType === 'mouse') : undefined}
+                  onPointerLeave={interactiveCore ? () => setQuoteHovered(false) : undefined}
+                  onFocus={interactiveCore ? event => setQuoteFocused(event.currentTarget.matches(':focus-visible')) : undefined}
+                  onBlur={interactiveCore ? () => setQuoteFocused(false) : undefined}
                   className={`group relative inline-flex min-h-14 items-center justify-center gap-2 overflow-hidden rounded-2xl bg-white px-5 py-3 text-center text-base font-semibold text-black transition-colors hover:bg-emerald-50 sm:px-6 ${focusStyle}`}
                 >
                   <span>{dict.cta}</span>
