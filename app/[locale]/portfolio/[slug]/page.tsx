@@ -11,6 +11,7 @@ import ProjectFlowPreview, { type ProjectPreviewCopy } from '@/components/Projec
 import UmamiTablePlan from '@/components/UmamiTablePlan';
 import WorkshopSchedule from '@/components/WorkshopSchedule';
 import RoastOrderPreview from '@/components/RoastOrderPreview';
+import AuraVisitPlanner from '@/components/AuraVisitPlanner';
 import { readPricingSelection, type PricingSearchParams } from '@/components/pricingInquiry';
 import { isProjectReference, projectReferenceQuery, projectWorkflowAnchor, type ProjectReferenceId } from '@/components/projectReference';
 
@@ -259,6 +260,7 @@ export default async function PortfolioProjectPage({
 
       {slug === 'shift-drive' && <WorkshopSchedule locale={locale} />}
       {slug === 'cupertino-roast' && <RoastOrderPreview locale={locale} />}
+      {slug === 'aura-wellness' && <AuraVisitPlanner locale={locale} />}
 
       {details ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 items-stretch">

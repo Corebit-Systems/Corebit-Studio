@@ -1,0 +1,21 @@
+.panel {
+  background:
+    radial-gradient(ellipse at 15% -25%, #1d6a4752, transparent 68%),
+    radial-gradient(ellipse at 90% 100%, #1447372e, transparent 68%),
+    #080f0d;
+}
+
+.initial {
+  background: radial-gradient(circle at 30% 25%, #6ee7b747, #103225);
+}
+
+.summary {
+  border-color: #6ee7b735;
+  background: #101b15;
+  transition: background .2s, border-color .2s;
+}
+
+.summary[data-visit-selected="true"] {
+  border-color: #6ee7b777;
+  background: linear-gradient(105deg, #113d2d, #0c1813 75%);
+}
