@@ -236,7 +236,7 @@ export default async function HomePage({
       </section>
 
       {/* 5. Portfolio / Впечатляющие цифровые активы */}
-      <PortfolioShowcase dict={dict.portfolio} locale={locale} linkLabel={dict.hero.case_cta} />
+      <PortfolioShowcase dict={dict.portfolio} locale={locale} linkLabel={dict.hero.case_cta} featured />
 
       <ScrollAnimate>
         <DevelopmentProcess locale={locale} />
