@@ -1,0 +1,62 @@
+.console {
+  background: radial-gradient(ellipse at 75% 100%, #134f372e, transparent 64%), #080e0c;
+}
+
+.grid {
+  background:
+    repeating-linear-gradient(90deg, #a8efca0a 0 1px, transparent 1px 16px),
+    repeating-linear-gradient(0deg, #a8efca0a 0 1px, transparent 1px 16px),
+    #08120e;
+}
+
+.slot {
+  border-color: #6ee7b748;
+  color: #a7f3d0;
+  background: #17392c;
+}
+
+.slot[data-slot="1"] {
+  border-color: #909e9830;
+  background: repeating-linear-gradient(135deg, #65766e30 0 2px, transparent 2px 6px), #151c19;
+  color: #a7b3ad;
+}
+
+.slot[data-slot="2"] {
+  border-color: #71837a38;
+  background: #101915;
+  color: #7f9289;
+}
+
+.slot[data-slot="selection"] {
+  border-color: #9dffd3;
+  background: linear-gradient(140deg, #267f5c, #164839);
+  color: #e0fff0;
+  box-shadow: 0 0 16px #43efad40;
+}
+
+.slot:disabled { cursor: not-allowed; }
+
+.marker {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+[data-slot="1"] > .marker { opacity: 0; }
+[data-slot="2"] > .marker { width: 8px; height: 1px; }
+
+@media (hover: hover) and (pointer: fine) {
+  button.slot:not(:disabled):hover { border-color: #baffdf; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .slot { transition: color .18s, background .18s, box-shadow .18s; }
+  [data-slot="selection"] > .marker { animation: light-slot .42s ease-out both; }
+}
+
+@keyframes light-slot {
+  from { transform: scale(.5); }
+  50% { transform: scale(1.8); }
+  to { transform: scale(1); }
+}

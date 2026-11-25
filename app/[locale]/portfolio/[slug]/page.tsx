@@ -9,6 +9,7 @@ import { ArrowLeft, ArrowRight, CalendarCheck, CheckCircle2, ClipboardList, Cpu,
 import { notFound } from 'next/navigation';
 import ProjectFlowPreview, { type ProjectPreviewCopy } from '@/components/ProjectFlowPreview';
 import UmamiTablePlan from '@/components/UmamiTablePlan';
+import WorkshopSchedule from '@/components/WorkshopSchedule';
 import { readPricingSelection, type PricingSearchParams } from '@/components/pricingInquiry';
 import { isProjectReference, projectReferenceQuery, projectWorkflowAnchor, type ProjectReferenceId } from '@/components/projectReference';
 
@@ -254,6 +255,8 @@ export default async function PortfolioProjectPage({
           </Link>
         </section>
       )}
+
+      {slug === 'shift-drive' && <WorkshopSchedule locale={locale} />}
 
       {details ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 items-stretch">
