@@ -325,6 +325,8 @@
     "title": "Vlerësimi i të ardhurave të humbura",
     "slider1_label": "Sa rezervime apo klientë humbisni në muaj për shkak të koordinimit manual?",
     "slider2_label": "Fatura mesatare për rezervim / klient (€)",
+    "result_label": "Humbja e vlerësuar mujore",
+    "grid_label": "Çdo qelizë përfaqëson një klient ose një rezervim",
     "result_desc": "Sipas vlerave të futura, të ardhurat e humbura mund të jenë rreth {amount} € në muaj.",
     "cta_btn": "Mëso çmimin e uebfaqes"
   },

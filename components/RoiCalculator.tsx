@@ -1,128 +1,75 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { TrendingDown, ArrowRight } from 'lucide-react';
+import { ArrowRight, TrendingDown } from 'lucide-react';
+import styles from './RoiCalculator.module.css';
 
-interface RoiCalculatorDict {
+const maxClients = 50;
+const cells = Array.from({ length: maxClients }, (_, index) => index + 1);
+
+export interface RoiCalculatorDict {
   title: string;
   slider1_label: string;
   slider2_label: string;
+  result_label: string;
+  grid_label: string;
   result_desc: string;
   cta_btn: string;
 }
 
-interface RoiCalculatorProps {
-  dict: RoiCalculatorDict;
-}
+const rangeClass = 'min-h-11 w-full min-w-0 cursor-ew-resize accent-emerald-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300';
+const valueClass = 'shrink-0 font-mono text-xl font-semibold tabular-nums text-emerald-200';
 
-export default function RoiCalculator({ dict }: RoiCalculatorProps) {
+export default function RoiCalculator({ dict }: { dict: RoiCalculatorDict }) {
   const [lostClients, setLostClients] = useState(15);
   const [avgTicket, setAvgTicket] = useState(80);
-
-  const monthlyLoss = lostClients * avgTicket;
-
-  const handleScrollToContact = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  // Replace placeholder in translations securely
-  const formatResult = (template: string, amount: number) => {
-    const formattedAmount = amount.toLocaleString('de-DE'); // Use dot separators for Euro currency formats
-    return template.replace('{amount}', formattedAmount);
-  };
+  const monthlyLoss = (lostClients * avgTicket).toLocaleString('de-DE');
 
   return (
-    <section className="w-full p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-[3rem] bg-white/[0.02] border border-white/10 backdrop-blur-xl relative overflow-hidden flex flex-col gap-8 md:gap-12">
-      {/* Decorative background glow */}
-      <div className="absolute top-0 left-0 w-72 sm:w-[500px] h-72 sm:h-[500px] bg-emerald-600/5 blur-[150px] rounded-full pointer-events-none" />
-
-      <div className="flex items-center gap-3 relative z-10">
-        <TrendingDown className="text-red-500 shrink-0" size={24} />
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">{dict.title}</h2>
+    <section id="loss-calculator" aria-labelledby="loss-calculator-title" className={`${styles.shell} scroll-mt-28 p-4 sm:p-8 lg:p-12`}>
+      <div className="flex items-center gap-3">
+        <TrendingDown aria-hidden="true" className="shrink-0 text-rose-300" size={24} />
+        <h2 id="loss-calculator-title" className="text-2xl font-bold tracking-tight text-white sm:text-3xl">{dict.title}</h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 relative z-10">
-        {/* Sliders Block */}
-        <div className="flex flex-col gap-6 sm:gap-8 justify-center">
-          {/* Slider 1 */}
-          <div className="flex flex-col gap-3">
-            <div className="flex justify-between items-center text-sm text-neutral-400">
-              <span className="max-w-[80%] leading-relaxed font-light">{dict.slider1_label}</span>
-              <span className="font-mono text-xl font-bold text-white bg-white/5 px-3 py-1 rounded-lg border border-white/10 shrink-0">
-                {lostClients}
-              </span>
-            </div>
-            <input
-              type="range"
-              id="roi-lost-clients"
-              name="lost_clients"
-              autoComplete="off"
-              min="1"
-              max="50"
-              step="1"
-              value={lostClients}
-              onChange={(e) => setLostClients(Number(e.target.value))}
-              aria-label={dict.slider1_label}
-              className="w-full h-2 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
-            />
-          </div>
-
-          {/* Slider 2 */}
-          <div className="flex flex-col gap-3">
-            <div className="flex justify-between items-center text-sm text-neutral-400">
-              <span className="max-w-[80%] leading-relaxed font-light">{dict.slider2_label}</span>
-              <span className="font-mono text-xl font-bold text-white bg-white/5 px-3 py-1 rounded-lg border border-white/10 shrink-0">
-                {avgTicket}€
-              </span>
-            </div>
-            <input
-              type="range"
-              id="roi-avg-ticket"
-              name="avg_ticket"
-              autoComplete="off"
-              min="20"
-              max="500"
-              step="10"
-              value={avgTicket}
-              onChange={(e) => setAvgTicket(Number(e.target.value))}
-              aria-label={dict.slider2_label}
-              className="w-full h-2 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
-            />
-          </div>
+      <div className="mt-7 grid min-w-0 gap-6 sm:mt-9 lg:grid-cols-[1fr_1.16fr] lg:items-center lg:gap-12">
+        <div className="grid min-w-0 gap-4 sm:gap-6">
+          <label className="grid min-w-0 grid-cols-[1fr_auto] items-center gap-x-4 text-sm leading-relaxed text-neutral-300">
+            <span>{dict.slider1_label}</span>
+            <span aria-hidden="true" className={valueClass}>{lostClients}</span>
+            <input type="range" id="roi-lost-clients" name="lost_clients" autoComplete="off"
+              min={1} max={maxClients} step={1} value={lostClients} onChange={event => setLostClients(Number(event.currentTarget.value))}
+              className={`col-span-2 ${rangeClass}`} />
+          </label>
+          <label className="grid min-w-0 grid-cols-[1fr_auto] items-center gap-x-4 border-t border-emerald-200/10 pt-4 text-sm leading-relaxed text-neutral-300 sm:pt-6">
+            <span>{dict.slider2_label}</span>
+            <span aria-hidden="true" className={valueClass}>{avgTicket} €</span>
+            <input type="range" id="roi-avg-ticket" name="avg_ticket" autoComplete="off"
+              min={20} max={500} step={10} value={avgTicket} aria-valuetext={`${avgTicket} €`} onChange={event => setAvgTicket(Number(event.currentTarget.value))}
+              className={`col-span-2 ${rangeClass}`} />
+          </label>
         </div>
 
-        {/* Results Block */}
-        <div className="flex flex-col justify-between items-center md:items-start p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/5 border border-white/10 gap-6">
-          <div className="flex flex-col gap-2 text-center md:text-left">
-            <span className="text-xs sm:text-sm font-bold tracking-widest text-neutral-400 uppercase">
-              Monthly Loss Estimation
-            </span>
-            <motion.div
-              key={monthlyLoss}
-              initial={{ scale: 0.95, opacity: 0.8 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.2 }}
-              className="text-4xl sm:text-5xl font-extrabold text-red-500 tracking-tight"
-            >
-              -{monthlyLoss.toLocaleString('de-DE')} €
-            </motion.div>
-            <p className="text-sm sm:text-base text-neutral-400 mt-2 leading-relaxed font-light">
-              {formatResult(dict.result_desc, monthlyLoss)}
-            </p>
+        <div className={`${styles.result} grid min-w-0 gap-5 p-4 sm:p-7`}>
+          <div>
+            <p className="text-sm font-medium text-neutral-300">{dict.result_label}</p>
+            <output htmlFor="roi-lost-clients roi-avg-ticket" aria-label={dict.result_label} className="mt-1 block text-4xl font-semibold tracking-tight text-rose-200 tabular-nums sm:text-6xl">
+              −{monthlyLoss} €
+            </output>
           </div>
 
-          <button
-            onClick={handleScrollToContact}
-            className="group w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-white text-black font-bold text-base hover:bg-neutral-200 transition-colors active:scale-95"
-          >
+          <div className="grid gap-3">
+            <div aria-hidden="true" className={styles.matrix}>
+              {cells.map(cell => <span key={cell} data-filled={cell <= lostClients} data-edge={cell === lostClients} />)}
+            </div>
+            <p className="text-xs text-neutral-400">{dict.grid_label}</p>
+          </div>
+
+          <p className="text-sm leading-relaxed text-neutral-300">{dict.result_desc.replace('{amount}', monthlyLoss)}</p>
+          <a href="#contact" className="group inline-flex min-h-12 min-w-0 items-center justify-center gap-2 rounded-xl bg-white px-4 py-2 text-center text-sm font-bold text-black transition-colors hover:bg-emerald-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-300 sm:justify-self-start">
             {dict.cta_btn}
-            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-          </button>
+            <ArrowRight aria-hidden="true" size={17} className="shrink-0 motion-safe:transition-transform motion-safe:group-hover:translate-x-1" />
+          </a>
         </div>
       </div>
     </section>

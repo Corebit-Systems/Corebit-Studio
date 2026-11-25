@@ -325,6 +325,8 @@
     "title": "Procena propuštenog prihoda",
     "slider1_label": "Koliko rezervacija ili klijenata gubite mesečno zbog ručne koordinacije?",
     "slider2_label": "Prosečan račun po rezervaciji / klijentu (€)",
+    "result_label": "Procena mesečnog gubitka",
+    "grid_label": "Svako polje predstavlja jednog klijenta ili jednu rezervaciju",
     "result_desc": "Prema unetim vrednostima, propušteni prihod može iznositi oko {amount} € mesečno.",
     "cta_btn": "Saznaj cenu sajta"
   },

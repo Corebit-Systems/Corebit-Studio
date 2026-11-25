@@ -4,7 +4,8 @@ import { getServiceSearchLinks } from '@/i18n/serviceSearchContent';
 import { socialMetadata } from '@/i18n/socialMetadata';
 import { searchAlternates, searchSiteUrl as SITE_URL } from '@/i18n/searchUrls';
 import Link from 'next/link';
-import { RoiCalculator, SpeedCheckWidget } from '@/components/LazyWidgets';
+import { SpeedCheckWidget } from '@/components/LazyWidgets';
+import RoiCalculator, { type RoiCalculatorDict } from '@/components/RoiCalculator';
 import type { ContactFormDict } from '@/components/ContactForm';
 import type { BeforeAfterDict } from '@/components/BeforeAfterSlider';
 import type { PricingDict } from '@/components/PricingSection';
@@ -90,13 +91,7 @@ interface PageDict {
   contact_form: ContactFormDict;
   faq: FAQDict;
   leak: { title: string; subtitle: string; text: string };
-  roi: {
-    title: string;
-    slider1_label: string;
-    slider2_label: string;
-    result_desc: string;
-    cta_btn: string;
-  };
+  roi: RoiCalculatorDict;
   before_after: BeforeAfterDict;
   speed_check: SpeedCheckDict;
   ecosystem: {

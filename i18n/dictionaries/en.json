@@ -325,6 +325,8 @@
     "title": "Estimated missed revenue",
     "slider1_label": "How many bookings or clients do you lose per month due to manual coordination?",
     "slider2_label": "Average check per booking / client (€)",
+    "result_label": "Estimated monthly loss",
+    "grid_label": "Each cell represents one customer or booking",
     "result_desc": "Based on your inputs, missed revenue could be about €{amount} per month.",
     "cta_btn": "Get website price"
   },

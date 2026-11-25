@@ -1,0 +1,53 @@
+.shell {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgb(167 243 208 / .21);
+  border-radius: clamp(1.25rem, 4vw, 2.75rem);
+  background: radial-gradient(ellipse at 1% 100%, #102a22, transparent 63%), #0b1110;
+  box-shadow: 0 24px 85px rgb(0 0 0 / .29);
+}
+
+.result {
+  border: 1px solid rgb(167 243 208 / .22);
+  border-radius: clamp(.9rem, 2.5vw, 1.5rem);
+  background: radial-gradient(ellipse at 100% 0%, #192c26, transparent 63%), #0b1511;
+  box-shadow: inset 0 1px rgb(167 243 208 / .07), 0 12px 35px rgb(0 0 0 / .21);
+}
+
+.matrix {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: clamp(3px, .52vw, 7px);
+  padding: clamp(7px, 1.05vw, 14px);
+  border: 1px solid rgb(167 243 208 / .14);
+  border-radius: .7rem;
+  background: #09110e;
+}
+
+.matrix > span {
+  aspect-ratio: 1.65;
+  border: 1px solid #243d32;
+  border-radius: clamp(2px, .4vw, 5px);
+  background: #14231e;
+}
+
+.matrix > [data-filled='true'] {
+  border-color: #489b7e;
+  background: #367e66;
+}
+
+.matrix > [data-edge='true'] {
+  border-color: #b6ffe1;
+  background: #86edc4;
+  box-shadow: 0 0 13px rgb(110 231 183 / .56);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .matrix > span { transition: background-color .2s, border-color .2s, box-shadow .25s; }
+  .matrix > [data-edge='true'] { animation: resolve .36s ease-out; }
+}
+
+@keyframes resolve {
+  from { transform: scale(.83); }
+  to { transform: scale(1); }
+}

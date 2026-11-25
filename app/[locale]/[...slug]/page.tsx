@@ -5,7 +5,8 @@ import { getDictionary, Locale } from '@/i18n/getDictionary';
 import { getServiceSearchCopy } from '@/i18n/serviceSearchContent';
 import { socialMetadata } from '@/i18n/socialMetadata';
 import { searchAlternates, searchOrganizationId, searchSiteUrl as SITE_URL } from '@/i18n/searchUrls';
-import { RoiCalculator, SpeedCheckWidget } from '@/components/LazyWidgets';
+import { SpeedCheckWidget } from '@/components/LazyWidgets';
+import RoiCalculator, { type RoiCalculatorDict } from '@/components/RoiCalculator';
 import type { SpeedCheckDict } from '@/components/SpeedCheckWidget';
 import PortfolioShowcase, { type PortfolioShowcaseDict } from '@/components/PortfolioShowcase';
 import AutomationModules, { type AutomationDict } from '@/components/AutomationModules';
@@ -299,13 +300,7 @@ interface PageDict {
   contact_form: any;
   faq: any;
   leak: { title: string; subtitle: string; text: string };
-  roi: {
-    title: string;
-    slider1_label: string;
-    slider2_label: string;
-    result_desc: string;
-    cta_btn: string;
-  };
+  roi: RoiCalculatorDict;
   before_after: BeforeAfterDict;
   speed_check: SpeedCheckDict;
   ecosystem: {
